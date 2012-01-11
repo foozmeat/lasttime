@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>RandomLogEntry.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>39861AA414BD526D006F30A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>39D70CB114BD3515009C3615</key>
 		<dict>
 			<key>primary</key>

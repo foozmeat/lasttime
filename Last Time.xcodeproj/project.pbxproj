@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
+		39861AAA14BD526D006F30A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39861AA914BD526D006F30A0 /* main.m */; };
+		39861AB314BD5287006F30A0 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED56314BD3B1F00AE6625 /* LogEntry.m */; };
+		39861AB514BD5548006F30A0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
+		39AED55C14BD38BA00AE6625 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED55B14BD38BA00AE6625 /* Event.m */; };
+		39AED55D14BD38BA00AE6625 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED55B14BD38BA00AE6625 /* Event.m */; };
+		39AED56014BD395700AE6625 /* LogEntryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED55F14BD395700AE6625 /* LogEntryStore.m */; };
+		39AED56114BD395700AE6625 /* LogEntryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED55F14BD395700AE6625 /* LogEntryStore.m */; };
+		39AED56414BD3B1F00AE6625 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED56314BD3B1F00AE6625 /* LogEntry.m */; };
+		39AED56514BD3B1F00AE6625 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED56314BD3B1F00AE6625 /* LogEntry.m */; };
+		39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AED56614BD3B6600AE6625 /* CoreLocation.framework */; };
 		39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB614BD3515009C3615 /* UIKit.framework */; };
 		39D70CB914BD3515009C3615 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39D70CBB14BD3515009C3615 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CBA14BD3515009C3615 /* CoreGraphics.framework */; };
@@ -31,7 +42,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		39861AA314BD526D006F30A0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		39861AA514BD526D006F30A0 /* RandomLogEntry */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomLogEntry; sourceTree = BUILT_PRODUCTS_DIR; };
+		39861AA914BD526D006F30A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/RandomLogEntry/main.m"; sourceTree = SOURCE_ROOT; };
+		39861AAC14BD526D006F30A0 /* RandomLogEntry-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RandomLogEntry-Prefix.pch"; path = "../Last Time/Tools/RandomLogEntry/RandomLogEntry-Prefix.pch"; sourceTree = "<group>"; };
+		39861AB414BD5548006F30A0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		39AED55A14BD38BA00AE6625 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = Models/Event.h; sourceTree = "<group>"; };
+		39AED55B14BD38BA00AE6625 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = Models/Event.m; sourceTree = "<group>"; };
+		39AED55E14BD395700AE6625 /* LogEntryStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogEntryStore.h; path = Models/LogEntryStore.h; sourceTree = "<group>"; };
+		39AED55F14BD395700AE6625 /* LogEntryStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogEntryStore.m; path = Models/LogEntryStore.m; sourceTree = "<group>"; };
+		39AED56214BD3B1F00AE6625 /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogEntry.h; path = Models/LogEntry.h; sourceTree = "<group>"; };
+		39AED56314BD3B1F00AE6625 /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogEntry.m; path = Models/LogEntry.m; sourceTree = "<group>"; };
+		39AED56614BD3B6600AE6625 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		39D70CB214BD3515009C3615 /* Last Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Last Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D70CB614BD3515009C3615 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		39D70CB814BD3515009C3615 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,10 +86,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		39861AA214BD526D006F30A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39861AB514BD5548006F30A0 /* CoreLocation.framework in Frameworks */,
+				39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		39D70CAF14BD3515009C3615 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */,
 				39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */,
 				39D70CB914BD3515009C3615 /* Foundation.framework in Frameworks */,
 				39D70CBB14BD3515009C3615 /* CoreGraphics.framework in Frameworks */,
@@ -75,10 +119,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39861A9D14BD518C006F30A0 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				39861AA814BD526D006F30A0 /* RandomLogEntry */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		39861AA814BD526D006F30A0 /* RandomLogEntry */ = {
+			isa = PBXGroup;
+			children = (
+				39861AB414BD5548006F30A0 /* CoreLocation.framework */,
+				39861AA914BD526D006F30A0 /* main.m */,
+				39861AAC14BD526D006F30A0 /* RandomLogEntry-Prefix.pch */,
+			);
+			name = RandomLogEntry;
+			path = ../RandomLogEntry;
+			sourceTree = "<group>";
+		};
 		39D70CA714BD3515009C3615 = {
 			isa = PBXGroup;
 			children = (
-				39D70CE714BD369C009C3615 /* Models */,
 				39D70CBC14BD3515009C3615 /* Last Time */,
 				39D70CD614BD3515009C3615 /* Last TimeTests */,
 				39D70CB514BD3515009C3615 /* Frameworks */,
@@ -91,6 +153,7 @@
 			children = (
 				39D70CB214BD3515009C3615 /* Last Time.app */,
 				39D70CCF14BD3515009C3615 /* Last TimeTests.octest */,
+				39861AA514BD526D006F30A0 /* RandomLogEntry */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +161,7 @@
 		39D70CB514BD3515009C3615 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				39AED56614BD3B6600AE6625 /* CoreLocation.framework */,
 				39D70CB614BD3515009C3615 /* UIKit.framework */,
 				39D70CB814BD3515009C3615 /* Foundation.framework */,
 				39D70CBA14BD3515009C3615 /* CoreGraphics.framework */,
@@ -109,10 +173,12 @@
 		39D70CBC14BD3515009C3615 /* Last Time */ = {
 			isa = PBXGroup;
 			children = (
+				39D70CE714BD369C009C3615 /* Models */,
 				39D70CC514BD3515009C3615 /* LastTimeAppDelegate.h */,
 				39D70CC614BD3515009C3615 /* LastTimeAppDelegate.m */,
 				39D70CC814BD3515009C3615 /* MainWindow.xib */,
 				39D70CBD14BD3515009C3615 /* Supporting Files */,
+				39861A9D14BD518C006F30A0 /* Tools */,
 			);
 			path = "Last Time";
 			sourceTree = "<group>";
@@ -150,13 +216,37 @@
 		39D70CE714BD369C009C3615 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				39AED55A14BD38BA00AE6625 /* Event.h */,
+				39AED55B14BD38BA00AE6625 /* Event.m */,
+				39AED55E14BD395700AE6625 /* LogEntryStore.h */,
+				39AED55F14BD395700AE6625 /* LogEntryStore.m */,
+				39AED56214BD3B1F00AE6625 /* LogEntry.h */,
+				39AED56314BD3B1F00AE6625 /* LogEntry.m */,
 			);
 			name = Models;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		39861AA414BD526D006F30A0 /* RandomLogEntry */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39861AAF14BD526D006F30A0 /* Build configuration list for PBXNativeTarget "RandomLogEntry" */;
+			buildPhases = (
+				39861AA114BD526D006F30A0 /* Sources */,
+				39861AA214BD526D006F30A0 /* Frameworks */,
+				39861AA314BD526D006F30A0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RandomLogEntry;
+			productName = RandomLogEntry;
+			productReference = 39861AA514BD526D006F30A0 /* RandomLogEntry */;
+			productType = "com.apple.product-type.tool";
+		};
 		39D70CB114BD3515009C3615 /* Last Time */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39D70CE114BD3516009C3615 /* Build configuration list for PBXNativeTarget "Last Time" */;
@@ -216,6 +306,7 @@
 			targets = (
 				39D70CB114BD3515009C3615 /* Last Time */,
 				39D70CCE14BD3515009C3615 /* Last TimeTests */,
+				39861AA414BD526D006F30A0 /* RandomLogEntry */,
 			);
 		};
 /* End PBXProject section */
@@ -257,12 +348,24 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		39861AA114BD526D006F30A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39861AAA14BD526D006F30A0 /* main.m in Sources */,
+				39861AB314BD5287006F30A0 /* LogEntry.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		39D70CAE14BD3515009C3615 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				39D70CC314BD3515009C3615 /* main.m in Sources */,
 				39D70CC714BD3515009C3615 /* LastTimeAppDelegate.m in Sources */,
+				39AED55C14BD38BA00AE6625 /* Event.m in Sources */,
+				39AED56014BD395700AE6625 /* LogEntryStore.m in Sources */,
+				39AED56414BD3B1F00AE6625 /* LogEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +374,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				39D70CDE14BD3516009C3615 /* Last_TimeTests.m in Sources */,
+				39AED55D14BD38BA00AE6625 /* Event.m in Sources */,
+				39AED56114BD395700AE6625 /* LogEntryStore.m in Sources */,
+				39AED56514BD3B1F00AE6625 /* LogEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +410,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		39861AB014BD526D006F30A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Last Time/Tools/RandomLogEntry/RandomLogEntry-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		39861AB114BD526D006F30A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Last Time/Tools/RandomLogEntry/RandomLogEntry-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		39D70CDF14BD3516009C3615 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -354,6 +492,7 @@
 		39D70CE214BD3516009C3615 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
@@ -366,6 +505,7 @@
 		39D70CE314BD3516009C3615 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
@@ -413,6 +553,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		39861AAF14BD526D006F30A0 /* Build configuration list for PBXNativeTarget "RandomLogEntry" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39861AB014BD526D006F30A0 /* Debug */,
+				39861AB114BD526D006F30A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		39D70CAC14BD3515009C3615 /* Build configuration list for PBXProject "Last Time" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
