@@ -11,21 +11,25 @@
 
 @interface LogEntryStore : NSObject
 {
-	NSMutableArray *log;
-	NSTimeInterval *avgTime;
-	NSTimeInterval *meanTime;
-	NSDate *lastTime;
+	NSMutableArray *logEntries;
+	NSTimeInterval avgTime;
+	NSTimeInterval meanTime;
 	NSDate *nextTime;
+	BOOL needsSorting;
 }
 
-@property NSTimeInterval *avgTime;
-@property NSTimeInterval *meanTime;
+@property (nonatomic) NSTimeInterval avgTime;
+@property (nonatomic) NSTimeInterval meanTime;
+@property (nonatomic, strong) NSDate *nextTime;
 
+- (id)initWithRandomData;
 - (NSArray *)allLogEntries;
-- (NSArray *)nearbyEntries;
 - (LogEntry *)latestEntry;
-- (NSTimeInterval *)lastDuration;
-- (NSDate *)nextTime;
-- (CLLocationCoordinate2D *)lastLocation;
 
+
+//- (NSArray *)nearbyEntries;
+//- (NSTimeInterval *)lastDuration;
+//- (NSDate *)nextTime;
+//- (CLLocationCoordinate2D *)lastLocation;
+//
 @end
