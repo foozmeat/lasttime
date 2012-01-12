@@ -31,21 +31,20 @@
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"%@: at %f,%f, recorded on %@", logEntryNote, logEntryLocation.longitude, logEntryLocation.latitude, logEntryDateOccured];
-	
 }
 
 + (id)randomLogEntry
 {
 	NSArray *randomAdjectiveList = [NSArray arrayWithObjects:@"Terrible", @"OK", @"Good", @"Great!", @"Fantastic", nil];
 
-	long noteIndex = rand() % [randomAdjectiveList count];
+	long noteIndex = random() % [randomAdjectiveList count];
 
 	NSString *randomNote = [NSString stringWithFormat:@"%@",
 													[randomAdjectiveList objectAtIndex:noteIndex]];
 	
-	int randomDuration = 0 - rand() % 1000000;
+	long randomDuration = arc4random_uniform(60 * 60 * 24 * 30);
 	
-	NSDate *randomDate = [[NSDate alloc] initWithTimeIntervalSinceNow:randomDuration];
+	NSDate *randomDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-randomDuration];
 
 	double latitude = 37.33168900 + (float) ((random() % 100) +1) / 1000000.0;
 	double longitude = -122.03073100 + (float) ((random() % 100) +1) / 1000000.0;
