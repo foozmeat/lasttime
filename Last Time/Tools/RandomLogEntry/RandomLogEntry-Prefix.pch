@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'RandomLogEntry' target in the 'RandomLogEntry' project
-//
-
-#ifdef __OBJC__
-	#import <Foundation/Foundation.h>
-#endif
