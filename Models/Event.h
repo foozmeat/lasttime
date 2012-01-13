@@ -11,13 +11,13 @@
 
 @interface Event : NSObject
 {
-	NSString *name;
-	NSString *note;
+	NSString *eventName;
+	NSString *eventNote;
 	LogEntryStore *logEntryCollection;
 }
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *note;
+@property (nonatomic, strong) NSString *eventName;
+@property (nonatomic, strong) NSString *eventNote;
 @property (nonatomic, strong) LogEntryStore *logEntryCollection;
 
 - (id)initWithRandomData;

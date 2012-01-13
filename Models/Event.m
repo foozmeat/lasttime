@@ -10,7 +10,7 @@
 #import "LogEntryStore.h"
 
 @implementation Event
-@synthesize name, note, logEntryCollection;
+@synthesize eventName, eventNote, logEntryCollection;
 
 
 - (id)init
@@ -34,13 +34,13 @@
 			NSArray *randomEventList = [NSArray arrayWithObjects:@"Got a Massage", @"Took Vacation", @"Watered Plants", @"Bought Cat Food", @"Had Coffee", nil];
 			
 			long eventIndex = arc4random() % [randomEventList count];
-			name = [randomEventList objectAtIndex:eventIndex];
+			eventName = [randomEventList objectAtIndex:eventIndex];
 			
 			
 			NSArray *randomNoteList = [NSArray arrayWithObjects:@"Note 1", @"Note 2", @"Note 3", @"Note 4", @"Note 5", nil];
 			
 			long noteIndex = arc4random() % [randomNoteList count];
-			note = [randomNoteList objectAtIndex:noteIndex];
+			eventNote = [randomNoteList objectAtIndex:noteIndex];
 
 		}
 		
@@ -57,8 +57,8 @@
 {
 	NSMutableString *output = [[NSMutableString alloc] init];
 
-	[output appendFormat:@"\n%@", name];
-	[output appendFormat:@"\n%@", note];
+	[output appendFormat:@"\n%@", eventName];
+	[output appendFormat:@"\n%@", eventNote];
 	[output appendFormat:@"\n%@", [self subtitle]];
 	
 	[output appendFormat:@"%@", [self logEntryCollection]];
