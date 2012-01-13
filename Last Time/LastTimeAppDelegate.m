@@ -15,7 +15,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-		
+
+	NSLog(@"%@", application);
+	NSLog(@"%@", launchOptions);
+	
 	LogEntryViewController *logEntryViewController = [[LogEntryViewController alloc] init];
 	
 	[[self window] setRootViewController:logEntryViewController];

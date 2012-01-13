@@ -18,6 +18,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+	NSLog(@"%@", style);
 	return [self init];
 }
 @end
