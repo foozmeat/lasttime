@@ -11,7 +11,10 @@
 
 int main (int argc, const char * argv[])
 {
-	
+	// Avoid warnings
+	argc = argc;
+	argv = argv;
+
 	@autoreleasepool {
 		
 		// create a mutable array
