@@ -13,9 +13,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "39861AA414BD526D006F30A0"
-               BuildableName = "RandomLogEntry"
-               BlueprintName = "RandomLogEntry"
+               BlueprintIdentifier = "3950E86414BFE0AB009C6F6F"
+               BuildableName = "RandomEvent"
+               BlueprintName = "RandomEvent"
                ReferencedContainer = "container:Last Time.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,9 +31,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39861AA414BD526D006F30A0"
-            BuildableName = "RandomLogEntry"
-            BlueprintName = "RandomLogEntry"
+            BlueprintIdentifier = "3950E86414BFE0AB009C6F6F"
+            BuildableName = "RandomEvent"
+            BlueprintName = "RandomEvent"
             ReferencedContainer = "container:Last Time.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -49,23 +49,13 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39861AA414BD526D006F30A0"
-            BuildableName = "RandomLogEntry"
-            BlueprintName = "RandomLogEntry"
+            BlueprintIdentifier = "3950E86414BFE0AB009C6F6F"
+            BuildableName = "RandomEvent"
+            BlueprintName = "RandomEvent"
             ReferencedContainer = "container:Last Time.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "OBJC_PRINT_EXCEPTIONS"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
-         <AdditionalOption
-            key = "AUTO_LOG_ALL"
-            value = ""
-            isEnabled = "YES">
-         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -77,9 +67,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39861AA414BD526D006F30A0"
-            BuildableName = "RandomLogEntry"
-            BlueprintName = "RandomLogEntry"
+            BlueprintIdentifier = "3950E86414BFE0AB009C6F6F"
+            BuildableName = "RandomEvent"
+            BlueprintName = "RandomEvent"
             ReferencedContainer = "container:Last Time.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

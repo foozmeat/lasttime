@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3950E86014BFD6A1009C6F6F /* LogEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3950E85F14BFD6A1009C6F6F /* LogEntryViewController.m */; };
+		3950E86714BFE0AB009C6F6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
+		3950E86A14BFE0AB009C6F6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3950E86914BFE0AB009C6F6F /* main.m */; };
+		3950E87214BFE123009C6F6F /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED55B14BD38BA00AE6625 /* Event.m */; };
+		3950E87314BFE127009C6F6F /* LogEntryStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED55F14BD395700AE6625 /* LogEntryStore.m */; };
+		3950E87414BFE12B009C6F6F /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED56314BD3B1F00AE6625 /* LogEntry.m */; };
+		3950E87514BFE290009C6F6F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
 		39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39861AAA14BD526D006F30A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39861AA914BD526D006F30A0 /* main.m */; };
 		39861AB514BD5548006F30A0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
@@ -45,6 +52,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3950E86314BFE0AB009C6F6F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		39861AA314BD526D006F30A0 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +82,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3950E85E14BFD6A1009C6F6F /* LogEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogEntryViewController.h; path = Controllers/LogEntryViewController.h; sourceTree = "<group>"; };
+		3950E85F14BFD6A1009C6F6F /* LogEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogEntryViewController.m; path = Controllers/LogEntryViewController.m; sourceTree = "<group>"; };
+		3950E86514BFE0AB009C6F6F /* RandomEvent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomEvent; sourceTree = BUILT_PRODUCTS_DIR; };
+		3950E86914BFE0AB009C6F6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		39861AA514BD526D006F30A0 /* RandomLogEntry */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomLogEntry; sourceTree = BUILT_PRODUCTS_DIR; };
 		39861AA914BD526D006F30A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/RandomLogEntry/main.m"; sourceTree = SOURCE_ROOT; };
 		39861AB414BD5548006F30A0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
@@ -98,6 +118,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3950E86214BFE0AB009C6F6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3950E87514BFE290009C6F6F /* CoreLocation.framework in Frameworks */,
+				3950E86714BFE0AB009C6F6F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		39861AA214BD526D006F30A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -140,9 +169,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3950E85614BFCDD3009C6F6F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				39D70CC814BD3515009C3615 /* MainWindow.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		3950E85814BFCDEC009C6F6F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3950E85E14BFD6A1009C6F6F /* LogEntryViewController.h */,
+				3950E85F14BFD6A1009C6F6F /* LogEntryViewController.m */,
+				39D70CC514BD3515009C3615 /* LastTimeAppDelegate.h */,
+				39D70CC614BD3515009C3615 /* LastTimeAppDelegate.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3950E86814BFE0AB009C6F6F /* RandomEvent */ = {
+			isa = PBXGroup;
+			children = (
+				3950E86914BFE0AB009C6F6F /* main.m */,
+			);
+			name = RandomEvent;
+			path = "Last Time/Tools/RandomEvent";
+			sourceTree = SOURCE_ROOT;
+		};
 		39861A9D14BD518C006F30A0 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				3950E86814BFE0AB009C6F6F /* RandomEvent */,
 				39861AC114BD5D9D006F30A0 /* RandomLogEntryStore */,
 				39861AA814BD526D006F30A0 /* RandomLogEntry */,
 			);
@@ -184,6 +242,7 @@
 				39D70CCF14BD3515009C3615 /* Last TimeTests.octest */,
 				39861AA514BD526D006F30A0 /* RandomLogEntry */,
 				39861ABE14BD5D9D006F30A0 /* RandomLogEntryStore */,
+				3950E86514BFE0AB009C6F6F /* RandomEvent */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -204,10 +263,9 @@
 		39D70CBC14BD3515009C3615 /* Last Time */ = {
 			isa = PBXGroup;
 			children = (
+				3950E85814BFCDEC009C6F6F /* Controllers */,
+				3950E85614BFCDD3009C6F6F /* Views */,
 				39D70CE714BD369C009C3615 /* Models */,
-				39D70CC514BD3515009C3615 /* LastTimeAppDelegate.h */,
-				39D70CC614BD3515009C3615 /* LastTimeAppDelegate.m */,
-				39D70CC814BD3515009C3615 /* MainWindow.xib */,
 				39D70CBD14BD3515009C3615 /* Supporting Files */,
 				39861A9D14BD518C006F30A0 /* Tools */,
 			);
@@ -261,6 +319,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3950E86414BFE0AB009C6F6F /* RandomEvent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3950E86F14BFE0AB009C6F6F /* Build configuration list for PBXNativeTarget "RandomEvent" */;
+			buildPhases = (
+				3950E86114BFE0AB009C6F6F /* Sources */,
+				3950E86214BFE0AB009C6F6F /* Frameworks */,
+				3950E86314BFE0AB009C6F6F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RandomEvent;
+			productName = RandomEvent;
+			productReference = 3950E86514BFE0AB009C6F6F /* RandomEvent */;
+			productType = "com.apple.product-type.tool";
+		};
 		39861AA414BD526D006F30A0 /* RandomLogEntry */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39861AAF14BD526D006F30A0 /* Build configuration list for PBXNativeTarget "RandomLogEntry" */;
@@ -356,6 +431,7 @@
 				39D70CCE14BD3515009C3615 /* Last TimeTests */,
 				39861AA414BD526D006F30A0 /* RandomLogEntry */,
 				39861ABD14BD5D9D006F30A0 /* RandomLogEntryStore */,
+				3950E86414BFE0AB009C6F6F /* RandomEvent */,
 			);
 		};
 /* End PBXProject section */
@@ -397,6 +473,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3950E86114BFE0AB009C6F6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3950E86A14BFE0AB009C6F6F /* main.m in Sources */,
+				3950E87214BFE123009C6F6F /* Event.m in Sources */,
+				3950E87314BFE127009C6F6F /* LogEntryStore.m in Sources */,
+				3950E87414BFE12B009C6F6F /* LogEntry.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		39861AA114BD526D006F30A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,6 +512,7 @@
 				39AED55C14BD38BA00AE6625 /* Event.m in Sources */,
 				39AED56014BD395700AE6625 /* LogEntryStore.m in Sources */,
 				39AED56414BD3B1F00AE6625 /* LogEntry.m in Sources */,
+				3950E86014BFD6A1009C6F6F /* LogEntryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +554,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3950E87014BFE0AB009C6F6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3950E87114BFE0AB009C6F6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		39861AB014BD526D006F30A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -474,6 +590,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -491,6 +608,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_SHADOW = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -547,8 +665,18 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
@@ -565,9 +693,20 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -586,6 +725,7 @@
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -598,6 +738,7 @@
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -641,6 +782,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3950E86F14BFE0AB009C6F6F /* Build configuration list for PBXNativeTarget "RandomEvent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3950E87014BFE0AB009C6F6F /* Debug */,
+				3950E87114BFE0AB009C6F6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		39861AAF14BD526D006F30A0 /* Build configuration list for PBXNativeTarget "RandomLogEntry" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -648,6 +797,7 @@
 				39861AB114BD526D006F30A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39861AC814BD5D9D006F30A0 /* Build configuration list for PBXNativeTarget "RandomLogEntryStore" */ = {
 			isa = XCConfigurationList;
@@ -656,6 +806,7 @@
 				39861ACA14BD5D9D006F30A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39D70CAC14BD3515009C3615 /* Build configuration list for PBXProject "Last Time" */ = {
 			isa = XCConfigurationList;
