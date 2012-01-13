@@ -24,6 +24,11 @@
 	 dateOccured:(NSDate *)logEntryDateOccured
 			location:(CLLocationCoordinate2D)logEntryLocation;
 
+- (NSTimeInterval)secondsSinceNow;
+- (NSString *)stringFromLogEntryInterval;
+- (NSString *)subtitle;
+
 + (id)randomLogEntry;
++ (NSString *)stringFromInterval:(NSTimeInterval) interval;
 
 @end

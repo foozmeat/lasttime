@@ -28,9 +28,121 @@
 
 }
 
+- (NSTimeInterval)secondsSinceNow
+{
+	return [logEntryDateOccured timeIntervalSinceNow];
+}
+
++ (NSString *)suffixString:(NSTimeInterval) interval
+{
+	if (interval < 0) {
+		return @"ago";
+	} else {
+		return @"from now";
+	}
+
+}
+
+- (NSString *)stringFromLogEntryInterval
+{
+	return [LogEntry stringFromInterval:[self secondsSinceNow]];
+}
+
++ (NSString *)stringFromInterval:(NSTimeInterval) interval
+{
+		
+	// Get the system calendar
+	NSCalendar *sysCalendar = [NSCalendar currentCalendar];
+	
+	// Create the NSDates
+	NSDate *now = [[NSDate alloc] init];
+	NSDate *date2 = [[NSDate alloc] initWithTimeInterval:interval sinceDate:now]; 
+	
+	// Get conversion to months, days, hours, minutes
+	unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit;
+	
+	NSDateComponents *conversionInfo = [sysCalendar components:unitFlags fromDate:now  toDate:date2  options:0];
+	NSInteger month = ABS([conversionInfo month]);
+	NSInteger day = ABS([conversionInfo day]);
+	NSInteger hour = ABS([conversionInfo hour]);
+	NSInteger minute = ABS([conversionInfo minute]);
+	
+	NSArray *datePieces = [[NSArray alloc] initWithObjects:
+												 [NSNumber numberWithUnsignedInteger:month],
+												 [NSNumber numberWithUnsignedInteger:day],
+												 [NSNumber numberWithUnsignedInteger:hour],
+												 [NSNumber numberWithUnsignedInteger:minute],
+												 nil];
+	
+	// Figure date string pieces
+	NSString *nbmonth = nil;
+	if(month > 1)
+		nbmonth = @"months";
+	else
+		nbmonth = @"month";
+
+	NSString *nbday = nil;
+	if(day > 1)
+		nbday = @"days";
+	else
+		nbday = @"day";
+
+	NSString *nbhour = nil;
+	if(hour > 1)
+		nbhour = @"hours";
+	else
+		nbhour = @"hour";
+
+	NSString *nbmin = nil;
+	if(minute > 1)
+		nbmin = @"minutes";
+	else
+		nbmin = @"minute";
+	
+	NSMutableString *output = [[NSMutableString alloc] init];
+
+	NSArray *dateStringPieces = [[NSArray alloc] initWithObjects:nbmonth, nbday, nbhour, nbmin, nil];
+	
+	BOOL foundFirstPiece = NO;
+	int piecesFound = 0;
+	unsigned long i = 0;
+//	NSLog(@"%@", conversionInfo);
+	
+	while (piecesFound < 2 && i < [datePieces count]) {
+
+		if (![[datePieces objectAtIndex:i] isEqualToNumber:[NSNumber numberWithInt:0]]) {
+			foundFirstPiece = YES;
+			piecesFound++;
+			[output appendFormat:@"%@ %@ ", [datePieces objectAtIndex:i], [dateStringPieces objectAtIndex:i]];
+		} else if (foundFirstPiece) {
+			piecesFound++;
+		}
+		i++;
+//		NSLog(@"%lu", i);
+	}
+	if (piecesFound == 0) {
+		[output appendString:@"Now"];
+	} else {
+		[output appendFormat:@"%@",[self suffixString:interval]];
+	}
+		
+	return output;
+}
+
+- (NSString *)subtitle
+{
+	return [[NSString alloc] initWithFormat:@"%@ - %@",
+					logEntryNote,
+					[self stringFromLogEntryInterval]];
+}
+
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@: at %f,%f, recorded on %@", logEntryNote, logEntryLocation.longitude, logEntryLocation.latitude, logEntryDateOccured];
+	return [NSString stringWithFormat:@"%@: at %f,%f, recorded on %@, %@", 
+					logEntryNote, 
+					logEntryLocation.longitude, logEntryLocation.latitude, 
+					[logEntryDateOccured descriptionWithLocale:[NSLocale currentLocale]], 
+					[self stringFromLogEntryInterval]];
 }
 
 + (id)randomLogEntry
@@ -42,7 +154,12 @@
 	NSString *randomNote = [NSString stringWithFormat:@"%@",
 													[randomAdjectiveList objectAtIndex:noteIndex]];
 	
-	long randomDuration = arc4random_uniform(60 * 60 * 24 * 30);
+	long randomDuration = arc4random_uniform(60 * 60 * 24);
+	
+	// Set to 3 for past and future values
+	if (arc4random_uniform(2) > 1) {
+		randomDuration = 0 - randomDuration;
+	}
 	
 	NSDate *randomDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-randomDuration];
 

@@ -10,7 +10,6 @@
 #import "LogEntry.h"
 
 @implementation LogEntryStore
-@synthesize avgTime, meanTime, nextTime;
 
 - (id)init
 {
@@ -32,12 +31,11 @@
 		if (self) {
 			logEntries = [[NSMutableArray alloc] init];
 			
-			for (int i = 0; i <= 10; i++) {
+			for (int i = 0; i < 10; i++) {
 				LogEntry *le = [LogEntry randomLogEntry];
 				[logEntries insertObject:le atIndex:i];
 			}
 			needsSorting = YES;
-			nextTime = [[NSDate alloc] init];
 
 		}
 		
@@ -58,23 +56,51 @@
 	}
 }
 
-//- (NSTimeInterval)getAvgTime
-//{
-//	double runningTotal = 0.0;
+#pragma mark Average
+#pragma mark -
+- (NSTimeInterval)averageInterval
+{
+	if ([logEntries count] == 0.0) {
+		return 0;
+	}
 	
-//	for(NSNumber *number in array)
-//	{
-//		runningTotal += [number doubleValue];
-//	}
-//	
-//	return [NSNumber numberWithDouble:(runningTotal / [array count])];
+	[self sortEntries];
+
+	double runningTotal = 0.0;
+	LogEntry *lastEntry = [logEntries objectAtIndex:0];
+	double count = [logEntries count];
 	
-//}
+	@autoreleasepool {
+		for(LogEntry *entry in logEntries)
+		{
+			runningTotal += ABS([[entry logEntryDateOccured] timeIntervalSinceDate:[lastEntry logEntryDateOccured]]);
+			lastEntry = entry;
+		}
+	}
+	
+	double average = ABS(runningTotal / count);
+	return average;
+	
+}
+
+- (NSString *)averageStringInterval
+{
+	return [LogEntry stringFromInterval:[self averageInterval]];
+}
+
+#pragma mark Last
+#pragma mark -
 
 - (NSTimeInterval)lastDuration
 {
-	return [[[self latestEntry] logEntryDateOccured] timeIntervalSinceNow];
+	return [[self latestEntry] secondsSinceNow];
 }
+
+- (NSString *)lastStringInterval
+{
+	return [[self latestEntry] stringFromLogEntryInterval];
+}
+
 
 - (LogEntry *)latestEntry
 {
@@ -82,14 +108,24 @@
 	return [logEntries objectAtIndex:0];
 }
 
+- (NSDate *)nextTime
+{
+	NSTimeInterval interval = [self averageInterval];
+	NSDate *lastDate = [[self latestEntry] logEntryDateOccured];
+	
+	NSDate *nextDate = [[NSDate alloc] initWithTimeInterval:interval 
+																								sinceDate:lastDate];
+	return nextDate;
+}
+
+
 - (NSString *)description
 {
-	NSMutableString *d = [[NSMutableString alloc] initWithFormat:@"\nAverage Time: %d\n", avgTime];
+	NSMutableString *d = [[NSMutableString alloc] init];
 
-	[d appendFormat:@"Mean Time: %d\n", meanTime];
-	[d appendFormat:@"Last Duration: %d\n", [self lastDuration]];
-	[d appendFormat:@"Next Time: %@\n", nextTime];
-	[d appendFormat:@"Latest Entry: %@\n", [self latestEntry]];
+	[d appendFormat:@"\nLatest Entry: %@\n", [self latestEntry]];
+	[d appendFormat:@"Average Interval: %f - %@\n", [self averageInterval], [self averageStringInterval]];
+	[d appendFormat:@"Next Time: %@\n", [[self nextTime] descriptionWithLocale:[NSLocale currentLocale]]];
 
 	[d appendFormat:@"All Entries:\n"];
 	
@@ -99,11 +135,6 @@
 		}
 	}
 	return d;
-}
-
-- (NSArray *)allLogEntries
-{
-	return logEntries;
 }
 
 @end

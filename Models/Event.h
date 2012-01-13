@@ -15,4 +15,13 @@
 	NSString *note;
 	LogEntryStore *logEntryCollection;
 }
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *note;
+@property (nonatomic, strong) LogEntryStore *logEntryCollection;
+
+- (id)initWithRandomData;
+- (NSString *)subtitle;
+
 @end
+
