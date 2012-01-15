@@ -26,6 +26,9 @@
 - (LogEntry *)latestEntry;
 - (NSTimeInterval)averageInterval;
 - (NSDate *)nextTime;
+- (NSDate *)latestDate;
+- (NSString *)lastStringInterval;
+- (NSString *)objectName;
 
 @end
 

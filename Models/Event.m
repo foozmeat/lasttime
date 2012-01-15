@@ -68,7 +68,10 @@
 	}
 }
 
-
+- (NSString *)objectName
+{
+	return eventName;
+}
 
 #pragma mark Average
 #pragma mark -
@@ -122,6 +125,12 @@
 	return [logEntryCollection objectAtIndex:0];
 }
 
+- (NSDate *)latestDate
+{
+	LogEntry *le = [self latestEntry];
+	return [le logEntryDateOccured];
+}
+
 - (NSDate *)nextTime
 {
 	NSTimeInterval interval = [self averageInterval];
@@ -151,7 +160,7 @@
 	[output appendFormat:@"Average Interval: %f - %@\n", [self averageInterval], [self averageStringInterval]];
 	[output appendFormat:@"Next Time: %@\n", [[self nextTime] descriptionWithLocale:[NSLocale currentLocale]]];
 	
-	[output appendFormat:@"%@", [self logEntryCollection]];
+//	[output appendFormat:@"%@", [self logEntryCollection]];
 	
 	return output;
 }

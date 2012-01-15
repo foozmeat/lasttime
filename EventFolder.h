@@ -14,12 +14,20 @@
 	NSString *folderName;
 	NSMutableArray *eventCollection;
 	NSMutableArray *folderCollection;
+	NSMutableArray *allItems;
 	BOOL rootFolder;
+	BOOL needsSorting;
 }
 
 @property (nonatomic, strong) NSString *folderName;
 @property (nonatomic) BOOL rootFolder;
 
 - (id)initWithRandomDataAsRoot:(BOOL)root;
+- (NSString *)subtitle;
+- (void) sortItems;
+- (id)latestItem;
+- (NSDate *)latestDate;
+- (NSArray *)allItems;
+- (NSString *)objectName;
 
 @end
