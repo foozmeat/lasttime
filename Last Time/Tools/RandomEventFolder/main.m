@@ -1,24 +1,27 @@
 //
 //  main.m
-//  RandomLogEntryStore
+//  RandomEventFolder
 //
-//  Created by James Moore on 1/10/12.
+//  Created by James Moore on 1/13/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "LogEntryStore.h"
+#import "EventFolder.h"
 
 int main (int argc, const char * argv[])
 {
+
 	// Avoid warnings
 	argc = argc;
 	argv = argv;
+	
 
 	@autoreleasepool {
 	    
-		LogEntryStore *rles = [[LogEntryStore alloc] initWithRandomData];
-		NSLog(@"%@", rles);
+		EventFolder *ef = [[EventFolder alloc] initWithRandomDataAsRoot:YES];
+		NSLog(@"%@", ef);
+	    
 	}
     return 0;
 }

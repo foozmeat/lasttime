@@ -13,9 +13,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "39861ABD14BD5D9D006F30A0"
-               BuildableName = "RandomLogEntryStore"
-               BlueprintName = "RandomLogEntryStore"
+               BlueprintIdentifier = "3904CF9E14C078E200B7396A"
+               BuildableName = "RandomEventFolder"
+               BlueprintName = "RandomEventFolder"
                ReferencedContainer = "container:Last Time.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,9 +31,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39861ABD14BD5D9D006F30A0"
-            BuildableName = "RandomLogEntryStore"
-            BlueprintName = "RandomLogEntryStore"
+            BlueprintIdentifier = "3904CF9E14C078E200B7396A"
+            BuildableName = "RandomEventFolder"
+            BlueprintName = "RandomEventFolder"
             ReferencedContainer = "container:Last Time.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -49,9 +49,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39861ABD14BD5D9D006F30A0"
-            BuildableName = "RandomLogEntryStore"
-            BlueprintName = "RandomLogEntryStore"
+            BlueprintIdentifier = "3904CF9E14C078E200B7396A"
+            BuildableName = "RandomEventFolder"
+            BlueprintName = "RandomEventFolder"
             ReferencedContainer = "container:Last Time.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -67,9 +67,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39861ABD14BD5D9D006F30A0"
-            BuildableName = "RandomLogEntryStore"
-            BlueprintName = "RandomLogEntryStore"
+            BlueprintIdentifier = "3904CF9E14C078E200B7396A"
+            BuildableName = "RandomEventFolder"
+            BlueprintName = "RandomEventFolder"
             ReferencedContainer = "container:Last Time.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

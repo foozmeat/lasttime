@@ -7,21 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LogEntryStore.h"
+#import "LogEntry.h"
 
 @interface Event : NSObject
 {
 	NSString *eventName;
 	NSString *eventNote;
-	LogEntryStore *logEntryCollection;
+	NSMutableArray *logEntryCollection;
+	BOOL needsSorting;
 }
 
 @property (nonatomic, strong) NSString *eventName;
 @property (nonatomic, strong) NSString *eventNote;
-@property (nonatomic, strong) LogEntryStore *logEntryCollection;
+@property (nonatomic, strong) NSMutableArray *logEntryCollection;
 
 - (id)initWithRandomData;
 - (NSString *)subtitle;
+- (LogEntry *)latestEntry;
+- (NSTimeInterval)averageInterval;
+- (NSDate *)nextTime;
 
 @end
 
