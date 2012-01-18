@@ -154,7 +154,7 @@
 	NSString *randomNote = [NSString stringWithFormat:@"%@",
 													[randomAdjectiveList objectAtIndex:noteIndex]];
 	
-	long randomDuration = arc4random_uniform(60 * 60 * 24);
+	long randomDuration = arc4random_uniform(60 * 60 * 24 * 7);
 	
 	// Set to 3 for past and future values
 	if (arc4random_uniform(2) > 1) {

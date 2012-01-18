@@ -18,7 +18,7 @@ int main (int argc, const char * argv[])
 	
 	@autoreleasepool {
 		
-		Event *e = [[Event alloc] initWithRandomData];
+		Event *e = [Event randomEvent];
 		NSLog(@"%@", e);
 	}
 	return 0;

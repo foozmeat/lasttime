@@ -14,12 +14,13 @@
 		3904CFAD14C079AA00B7396A /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3904CF9914C076E900B7396A /* EventFolder.m */; };
 		3904CFAF14C07EC400B7396A /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED56314BD3B1F00AE6625 /* LogEntry.m */; };
 		3904CFB114C07ECC00B7396A /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED55B14BD38BA00AE6625 /* Event.m */; };
-		3950E86014BFD6A1009C6F6F /* LogEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3950E85F14BFD6A1009C6F6F /* LogEntryViewController.m */; };
+		3950E86014BFD6A1009C6F6F /* FolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3950E85F14BFD6A1009C6F6F /* FolderViewController.m */; };
 		3950E86714BFE0AB009C6F6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		3950E86A14BFE0AB009C6F6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3950E86914BFE0AB009C6F6F /* main.m */; };
 		3950E87214BFE123009C6F6F /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED55B14BD38BA00AE6625 /* Event.m */; };
 		3950E87414BFE12B009C6F6F /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED56314BD3B1F00AE6625 /* LogEntry.m */; };
 		3950E87514BFE290009C6F6F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
+		396910EB14C68C7F006E8272 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396910EA14C68C7F006E8272 /* HeaderView.xib */; };
 		39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39861AAA14BD526D006F30A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39861AA914BD526D006F30A0 /* main.m */; };
 		39861AB514BD5548006F30A0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
@@ -86,10 +87,11 @@
 		3904CF9914C076E900B7396A /* EventFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventFolder.m; sourceTree = "<group>"; };
 		3904CF9F14C078E200B7396A /* RandomEventFolder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomEventFolder; sourceTree = BUILT_PRODUCTS_DIR; };
 		3904CFA314C078E200B7396A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3950E85E14BFD6A1009C6F6F /* LogEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogEntryViewController.h; path = Controllers/LogEntryViewController.h; sourceTree = "<group>"; };
-		3950E85F14BFD6A1009C6F6F /* LogEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogEntryViewController.m; path = Controllers/LogEntryViewController.m; sourceTree = "<group>"; };
+		3950E85E14BFD6A1009C6F6F /* FolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderViewController.h; path = Controllers/FolderViewController.h; sourceTree = "<group>"; };
+		3950E85F14BFD6A1009C6F6F /* FolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderViewController.m; path = Controllers/FolderViewController.m; sourceTree = "<group>"; };
 		3950E86514BFE0AB009C6F6F /* RandomEvent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomEvent; sourceTree = BUILT_PRODUCTS_DIR; };
 		3950E86914BFE0AB009C6F6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		396910EA14C68C7F006E8272 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderView.xib; path = Views/HeaderView.xib; sourceTree = "<group>"; };
 		39861AA514BD526D006F30A0 /* RandomLogEntry */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomLogEntry; sourceTree = BUILT_PRODUCTS_DIR; };
 		39861AA914BD526D006F30A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/RandomLogEntry/main.m"; sourceTree = SOURCE_ROOT; };
 		39861AB414BD5548006F30A0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				39D70CC814BD3515009C3615 /* MainWindow.xib */,
+				396910EA14C68C7F006E8272 /* HeaderView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -189,8 +192,8 @@
 		3950E85814BFCDEC009C6F6F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3950E85E14BFD6A1009C6F6F /* LogEntryViewController.h */,
-				3950E85F14BFD6A1009C6F6F /* LogEntryViewController.m */,
+				3950E85E14BFD6A1009C6F6F /* FolderViewController.h */,
+				3950E85F14BFD6A1009C6F6F /* FolderViewController.m */,
 				39D70CC514BD3515009C3615 /* LastTimeAppDelegate.h */,
 				39D70CC614BD3515009C3615 /* LastTimeAppDelegate.m */,
 			);
@@ -443,6 +446,7 @@
 			files = (
 				39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */,
 				39D70CC914BD3515009C3615 /* MainWindow.xib in Resources */,
+				396910EB14C68C7F006E8272 /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,7 +515,7 @@
 				39D70CC714BD3515009C3615 /* LastTimeAppDelegate.m in Sources */,
 				39AED55C14BD38BA00AE6625 /* Event.m in Sources */,
 				39AED56414BD3B1F00AE6625 /* LogEntry.m in Sources */,
-				3950E86014BFD6A1009C6F6F /* LogEntryViewController.m in Sources */,
+				3950E86014BFD6A1009C6F6F /* FolderViewController.m in Sources */,
 				3904CF9A14C076E900B7396A /* EventFolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

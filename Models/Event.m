@@ -23,36 +23,42 @@
 	return self;
 }
 
-- (id)initWithRandomData
+- (id)initWithEventName:(NSString *)name eventNote:(NSString *)note logEntries:(NSMutableArray *)entries
 {
-	self = [super init];
-	
-	@autoreleasepool {
-    
-		if (self) {
-			logEntryCollection = [[NSMutableArray alloc] init];
-			
-			for (int i = 0; i < 3; i++) {
-				LogEntry *le = [LogEntry randomLogEntry];
-				[logEntryCollection insertObject:le atIndex:i];
-			}
-			needsSorting = YES;
-			
-			NSArray *randomEventList = [NSArray arrayWithObjects:@"Got a Massage", @"Took Vacation", @"Watered Plants", @"Bought Cat Food", @"Had Coffee", nil];
-			
-			long eventIndex = arc4random() % [randomEventList count];
-			eventName = [randomEventList objectAtIndex:eventIndex];
-			
-			
-			NSArray *randomNoteList = [NSArray arrayWithObjects:@"Note 1", @"Note 2", @"Note 3", @"Note 4", @"Note 5", nil];
-			
-			long noteIndex = arc4random() % [randomNoteList count];
-			eventNote = [randomNoteList objectAtIndex:noteIndex];
+	if (!(self = [super init]))
+		return nil;
 
-		}
-		
-	}
+	[self setEventName:name];
+	[self setEventNote:note];
+	[self setLogEntryCollection:entries];
+	
 	return self;
+}
+
+
++ (Event *)randomEvent
+{
+	NSMutableArray *lec = [[NSMutableArray alloc] init];
+	
+	for (int i = 0; i < 3; i++) {
+		LogEntry *le = [LogEntry randomLogEntry];
+		[lec insertObject:le atIndex:i];
+	}
+	
+	NSArray *randomEventList = [NSArray arrayWithObjects:@"Got a Massage", @"Took Vacation", @"Watered Plants", @"Bought Cat Food", @"Had Coffee", nil];
+	
+	long eventIndex = arc4random() % [randomEventList count];
+	NSString *name = [randomEventList objectAtIndex:eventIndex];
+		
+	NSArray *randomNoteList = [NSArray arrayWithObjects:@"Note 1", @"Note 2", @"Note 3", @"Note 4", @"Note 5", nil];
+	long noteIndex = arc4random() % [randomNoteList count];
+	NSString *note = [randomNoteList objectAtIndex:noteIndex];
+	
+	Event *newEvent = [[self alloc] initWithEventName:(NSString *)name
+																					eventNote:(NSString *)note
+																				 logEntries:(NSMutableArray *)lec];
+	return newEvent;
+
 }
 
 - (void)sortEntries

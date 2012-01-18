@@ -21,7 +21,10 @@
 @property (nonatomic, strong) NSString *eventNote;
 @property (nonatomic, strong) NSMutableArray *logEntryCollection;
 
-- (id)initWithRandomData;
+- (id)initWithEventName:(NSString *)name
+							eventNote:(NSString *)note
+						 logEntries:(NSMutableArray *)entries;
+
 - (NSString *)subtitle;
 - (LogEntry *)latestEntry;
 - (NSTimeInterval)averageInterval;
@@ -29,6 +32,8 @@
 - (NSDate *)latestDate;
 - (NSString *)lastStringInterval;
 - (NSString *)objectName;
+
++ (Event *)randomEvent;
 
 @end
 

@@ -17,8 +17,6 @@
 	self = [super init];
 	
 	if (self) {
-		eventCollection = [[NSMutableArray alloc] init];
-		folderCollection = [[NSMutableArray alloc] init];
 		allItems = [[NSMutableArray alloc] init];
 	}
 	return self;
@@ -33,28 +31,26 @@
     
 		if (self) {
 			allItems = [[NSMutableArray alloc] init];
-			eventCollection = [[NSMutableArray alloc] init];
 			needsSorting = YES;
 
 			@autoreleasepool {
-				for (int i = 0; i < 3; i++) {
-					Event *e = [[Event alloc] initWithRandomData];
-					[eventCollection insertObject:e atIndex:i];
+				for (int i = 0; i < 1; i++) {
+					Event *e = [Event randomEvent];
+					[allItems addObject:e];
 				}
 
 				if (rootFolder) {
-					folderCollection = [[NSMutableArray alloc] init];
 					
-					for (int i = 0; i < 3; i++) {
+					for (int i = 0; i < 1; i++) {
 						EventFolder *f = [[EventFolder alloc] initWithRandomDataAsRoot:NO];
-						[folderCollection insertObject:f atIndex:i];
+						[allItems addObject:f];
 					}
 				}
 
 				if (rootFolder) {
 					folderName = @"ROOT";
 				} else {
-					NSArray *randomFolderList = [NSArray arrayWithObjects:@"Health", @"Pet", @"Car", @"Vacation", @"Diet", nil];
+					NSArray *randomFolderList = [NSArray arrayWithObjects:@"F: Health", @"F: Pet", @"F: Car", @"F: Vacation", @"F: Diet", nil];
 					
 					long folderIndex = arc4random() % [randomFolderList count];
 					folderName = [randomFolderList objectAtIndex:folderIndex];
@@ -66,18 +62,31 @@
 	return self;
 }
 
+- (Event *)createEvent
+{
+	Event *e = [Event randomEvent];
+	
+	[allItems addObject:e];
+	needsSorting = YES;
+	
+	return e;
+}
+
+- (void)removeItem:(id)item
+{
+	[allItems removeObjectIdenticalTo:item];
+}
+
 - (NSString *)subtitle
 {
 	if (rootFolder) {
 		return @"";
 	}
 	
-	NSMutableString *output = [[NSMutableString alloc] init];
 	return [[NSString alloc] initWithFormat:@"%@ - %@", 
 					[[self latestItem] eventName], 
 					[[self latestItem] lastStringInterval]];
 	
-	return output;
 }
 
 - (NSString *)objectName
@@ -95,10 +104,6 @@
 {
 	if (needsSorting) {
 		
-		[allItems removeAllObjects];
-		[allItems addObjectsFromArray:eventCollection];
-		[allItems addObjectsFromArray:folderCollection];
-																
 		[allItems sortUsingComparator:^(id a, id b) {
 			NSDate *first = [(id)a latestDate];
 			NSDate *second = [(id)b latestDate];
@@ -134,27 +139,6 @@
 	}
 	return output;
 }
-
-//-(NSString *)eventDescriptions
-//{
-//
-//	NSMutableString *output = [[NSMutableString alloc] init];
-//	
-//	for (Event *event in eventCollection) {
-//		[output appendFormat:@"-> %@\n---> %@\n", [event eventName], [event subtitle]];
-//	}
-//	return output;
-//}
-//
-//-(NSString *)folderDescriptions
-//{
-//	NSMutableString *output = [[NSMutableString alloc] init];
-//	
-//	for (EventFolder *f in folderCollection) {
-//		[output appendFormat:@"%@", [f description]];
-//	}
-//	return output;
-//}
 
 -(NSString *)description
 {

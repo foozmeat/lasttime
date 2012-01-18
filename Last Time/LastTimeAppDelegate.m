@@ -7,7 +7,7 @@
 //
 
 #import "LastTimeAppDelegate.h"
-#import "LogEntryViewController.h"
+#import "FolderViewController.h"
 
 @implementation LastTimeAppDelegate
 
@@ -19,9 +19,9 @@
 	NSLog(@"%@", application);
 	NSLog(@"%@", launchOptions);
 	
-	LogEntryViewController *logEntryViewController = [[LogEntryViewController alloc] init];
+	FolderViewController *folderViewController = [[FolderViewController alloc] init];
 	
-	[[self window] setRootViewController:logEntryViewController];
+	[[self window] setRootViewController:folderViewController];
 	
 	
 	[[self window] makeKeyAndVisible];

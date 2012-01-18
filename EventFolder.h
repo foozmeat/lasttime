@@ -12,8 +12,6 @@
 @interface EventFolder : NSObject
 {
 	NSString *folderName;
-	NSMutableArray *eventCollection;
-	NSMutableArray *folderCollection;
 	NSMutableArray *allItems;
 	BOOL rootFolder;
 	BOOL needsSorting;
@@ -23,11 +21,16 @@
 @property (nonatomic) BOOL rootFolder;
 
 - (id)initWithRandomDataAsRoot:(BOOL)root;
+
 - (NSString *)subtitle;
+- (NSString *)objectName;
+
 - (void) sortItems;
 - (id)latestItem;
 - (NSDate *)latestDate;
 - (NSArray *)allItems;
-- (NSString *)objectName;
+
+- (Event *)createEvent;
+- (void)removeItem:(id)item;
 
 @end
