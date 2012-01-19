@@ -12,10 +12,8 @@
 @interface FolderViewController : UITableViewController
 {
 	EventFolder *rootFolder;
-	IBOutlet UIView *headerView;
 }
 
-- (UIView *)headerView;
 - (IBAction)addNewItem:(id)sender;
 - (IBAction)toggleEditingMode:(id)sender;
 

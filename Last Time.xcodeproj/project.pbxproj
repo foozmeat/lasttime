@@ -21,6 +21,8 @@
 		3950E87414BFE12B009C6F6F /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AED56314BD3B1F00AE6625 /* LogEntry.m */; };
 		3950E87514BFE290009C6F6F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
 		396910EB14C68C7F006E8272 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396910EA14C68C7F006E8272 /* HeaderView.xib */; };
+		396910FE14C7BF54006E8272 /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396910FC14C7BF54006E8272 /* EventDetailController.m */; };
+		396910FF14C7BF54006E8272 /* EventDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396910FD14C7BF54006E8272 /* EventDetailController.xib */; };
 		39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39861AAA14BD526D006F30A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39861AA914BD526D006F30A0 /* main.m */; };
 		39861AB514BD5548006F30A0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
@@ -92,13 +94,16 @@
 		3950E86514BFE0AB009C6F6F /* RandomEvent */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomEvent; sourceTree = BUILT_PRODUCTS_DIR; };
 		3950E86914BFE0AB009C6F6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		396910EA14C68C7F006E8272 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderView.xib; path = Views/HeaderView.xib; sourceTree = "<group>"; };
+		396910FB14C7BF54006E8272 /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailController.h; path = Controllers/EventDetailController.h; sourceTree = "<group>"; };
+		396910FC14C7BF54006E8272 /* EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailController.m; path = Controllers/EventDetailController.m; sourceTree = "<group>"; };
+		396910FD14C7BF54006E8272 /* EventDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventDetailController.xib; path = Views/EventDetailController.xib; sourceTree = "<group>"; };
 		39861AA514BD526D006F30A0 /* RandomLogEntry */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomLogEntry; sourceTree = BUILT_PRODUCTS_DIR; };
 		39861AA914BD526D006F30A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/RandomLogEntry/main.m"; sourceTree = SOURCE_ROOT; };
 		39861AB414BD5548006F30A0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
-		39AED55A14BD38BA00AE6625 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = Models/Event.h; sourceTree = "<group>"; };
-		39AED55B14BD38BA00AE6625 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = Models/Event.m; sourceTree = "<group>"; };
-		39AED56214BD3B1F00AE6625 /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogEntry.h; path = Models/LogEntry.h; sourceTree = "<group>"; };
-		39AED56314BD3B1F00AE6625 /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogEntry.m; path = Models/LogEntry.m; sourceTree = "<group>"; };
+		39AED55A14BD38BA00AE6625 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		39AED55B14BD38BA00AE6625 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		39AED56214BD3B1F00AE6625 /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEntry.h; sourceTree = "<group>"; };
+		39AED56314BD3B1F00AE6625 /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogEntry.m; sourceTree = "<group>"; };
 		39AED56614BD3B6600AE6625 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		39D70CB214BD3515009C3615 /* Last Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Last Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D70CB614BD3515009C3615 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -110,7 +115,7 @@
 		39D70CC414BD3515009C3615 /* Last Time-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Last Time-Prefix.pch"; sourceTree = "<group>"; };
 		39D70CC514BD3515009C3615 /* LastTimeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LastTimeAppDelegate.h; sourceTree = "<group>"; };
 		39D70CC614BD3515009C3615 /* LastTimeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LastTimeAppDelegate.m; sourceTree = "<group>"; };
-		39D70CC814BD3515009C3615 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		39D70CC814BD3515009C3615 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = Views/MainWindow.xib; sourceTree = "<group>"; };
 		39D70CCF14BD3515009C3615 /* Last TimeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Last TimeTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D70CD014BD3515009C3615 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		39D70CD814BD3515009C3615 /* Last TimeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Last TimeTests-Info.plist"; sourceTree = "<group>"; };
@@ -183,6 +188,7 @@
 		3950E85614BFCDD3009C6F6F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				396910FD14C7BF54006E8272 /* EventDetailController.xib */,
 				39D70CC814BD3515009C3615 /* MainWindow.xib */,
 				396910EA14C68C7F006E8272 /* HeaderView.xib */,
 			);
@@ -196,6 +202,8 @@
 				3950E85F14BFD6A1009C6F6F /* FolderViewController.m */,
 				39D70CC514BD3515009C3615 /* LastTimeAppDelegate.h */,
 				39D70CC614BD3515009C3615 /* LastTimeAppDelegate.m */,
+				396910FB14C7BF54006E8272 /* EventDetailController.h */,
+				396910FC14C7BF54006E8272 /* EventDetailController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -316,8 +324,8 @@
 				3904CF9914C076E900B7396A /* EventFolder.m */,
 			);
 			name = Models;
-			path = ..;
-			sourceTree = "<group>";
+			path = "Last Time/Models";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -447,6 +455,7 @@
 				39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */,
 				39D70CC914BD3515009C3615 /* MainWindow.xib in Resources */,
 				396910EB14C68C7F006E8272 /* HeaderView.xib in Resources */,
+				396910FF14C7BF54006E8272 /* EventDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +526,7 @@
 				39AED56414BD3B1F00AE6625 /* LogEntry.m in Sources */,
 				3950E86014BFD6A1009C6F6F /* FolderViewController.m in Sources */,
 				3904CF9A14C076E900B7396A /* EventFolder.m in Sources */,
+				396910FE14C7BF54006E8272 /* EventDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +686,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
@@ -706,7 +716,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

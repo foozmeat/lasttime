@@ -16,8 +16,17 @@
 {
 	self = [super initWithStyle:UITableViewStyleGrouped];
 	
-	rootFolder = [[EventFolder alloc] initWithRandomDataAsRoot:YES];
-	
+	if (self) {
+		UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
+																																				 target:self 
+																																				 action:@selector(addNewItem:)];
+		[[self navigationItem] setRightBarButtonItem:bbi];		
+		[[self navigationItem] setTitle:@"Home"];
+		[[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
+		 
+		rootFolder = [[EventFolder alloc] initWithRandomDataAsRoot:YES];
+	}
+		
 	return self;
 }
 
@@ -25,15 +34,6 @@
 {
 	NSLog(@"%@", style);
 	return [self init];
-}
-
-- (UIView *)headerView
-{
-	if (!headerView) {
-		[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-	}
-	
-	return headerView;
 }
 
 #pragma mark IBActions
@@ -66,16 +66,6 @@
 		
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 	}
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-	return [self headerView];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-	return [[self headerView] bounds].size.height;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

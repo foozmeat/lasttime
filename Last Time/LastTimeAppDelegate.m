@@ -16,14 +16,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-	NSLog(@"%@", application);
-	NSLog(@"%@", launchOptions);
-	
 	FolderViewController *folderViewController = [[FolderViewController alloc] init];
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:folderViewController];
 	
-	[[self window] setRootViewController:folderViewController];
-	
-	
+	[[self window] setRootViewController:navController];
+		
 	[[self window] makeKeyAndVisible];
 	return YES;
 }
