@@ -46,9 +46,7 @@
 					}
 				}
 
-				if (isRoot) {
-					folderName = @"Home";
-				} else {
+				if (!isRoot) {
 					NSArray *randomFolderList = [NSArray arrayWithObjects:@"Health", @"Pet", @"Car", @"Vacation", @"Diet", nil];
 					
 					long folderIndex = arc4random() % [randomFolderList count];
