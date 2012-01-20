@@ -1,1 +1,3 @@
-Last Time.xcodeproj/project.xcworkspace/xcuserdata/jam.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcuserstate
+*.xcuserdatad
+.DS_Store
