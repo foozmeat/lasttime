@@ -7,11 +7,12 @@
 //
 
 #import "FolderViewController.h"
-#import "EventFolder.h"
-#import "LogEntry.h"
-#import "Event.h"
+#import "EventDetailController.h"
 
 @implementation FolderViewController
+@synthesize rootFolder;
+
+
 - (id) init
 {
 	self = [super initWithStyle:UITableViewStyleGrouped];
@@ -20,11 +21,14 @@
 		UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
 																																				 target:self 
 																																				 action:@selector(addNewItem:)];
+
+		if (!rootFolder) {			
+			rootFolder = [[EventFolder alloc] initWithRandomDataAsRoot:YES];
+		}
+
 		[[self navigationItem] setRightBarButtonItem:bbi];		
-		[[self navigationItem] setTitle:@"Home"];
-		[[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
+		[[self navigationItem] setTitle:[rootFolder folderName]];
 		 
-		rootFolder = [[EventFolder alloc] initWithRandomDataAsRoot:YES];
 	}
 		
 	return self;
@@ -32,7 +36,6 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-	NSLog(@"%@", style);
 	return [self init];
 }
 
@@ -41,10 +44,10 @@
 - (void)toggleEditingMode:(id)sender
 {
 	if ([self isEditing]) {
-		[sender setTitle:@"Edit" forState:UIControlStateNormal];
+//		[sender setTitle:@"Edit" forState:UIControlStateNormal];
 		[self setEditing:NO animated:YES];
 	} else {
-		[sender setTitle:@"Done" forState:UIControlStateNormal];
+//		[sender setTitle:@"Done" forState:UIControlStateNormal];
 		[self setEditing:YES animated:YES];
 		
 	}
@@ -57,6 +60,36 @@
 	
 }
 #pragma mark TableView Delegate methods
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[[self tableView] reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	
+	id item = [[rootFolder allItems] objectAtIndex:[indexPath row]];
+	
+	NSLog(@"%@ %@", item, [item class]);
+	
+	if ([item isMemberOfClass:[Event class]]) {
+		EventDetailController *edc = [[EventDetailController alloc] init];
+		
+		[edc setEvent:item];
+		
+		[[self navigationController] pushViewController:edc animated:YES];
+		
+	} else if ([item isMemberOfClass:[EventFolder class]]) {
+		
+		FolderViewController *fdc = [[FolderViewController alloc] init];
+		[fdc setRootFolder:item];
+		[[self navigationController] pushViewController:fdc animated:YES];
+
+	}
+	
+}
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -82,6 +115,10 @@
 	}
 	
 	id item = [[rootFolder allItems] objectAtIndex:[indexPath row]];
+	
+	if ([item isMemberOfClass:[EventFolder class]]) {
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	}
 	
 	[[cell textLabel] setText:[item objectName]];
 	[[cell detailTextLabel] setText:[item subtitle]];

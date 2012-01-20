@@ -7,18 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Event.h"
+#import	"Event.h"
 
 @interface EventFolder : NSObject
 {
 	NSString *folderName;
 	NSMutableArray *allItems;
-	BOOL rootFolder;
+	BOOL isRoot;
 	BOOL needsSorting;
 }
 
 @property (nonatomic, strong) NSString *folderName;
-@property (nonatomic) BOOL rootFolder;
+@property (nonatomic) BOOL isRoot;
 
 - (id)initWithRandomDataAsRoot:(BOOL)root;
 

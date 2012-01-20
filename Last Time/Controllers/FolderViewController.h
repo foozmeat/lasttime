@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "EventFolder.h"
 
-@interface FolderViewController : UITableViewController
-{
+@interface FolderViewController : UITableViewController {
 	EventFolder *rootFolder;
 }
 
+@property (nonatomic, strong) EventFolder *rootFolder;
+
 - (IBAction)addNewItem:(id)sender;
-- (IBAction)toggleEditingMode:(id)sender;
 
 @end

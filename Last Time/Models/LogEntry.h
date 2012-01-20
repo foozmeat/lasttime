@@ -29,6 +29,7 @@
 - (NSString *)subtitle;
 
 + (id)randomLogEntry;
-+ (NSString *)stringFromInterval:(NSTimeInterval) interval;
++ (NSString *)stringFromInterval:(NSTimeInterval)interval
+											withSuffix:(BOOL)suffix;
 
 @end

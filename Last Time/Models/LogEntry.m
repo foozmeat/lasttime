@@ -45,10 +45,10 @@
 
 - (NSString *)stringFromLogEntryInterval
 {
-	return [LogEntry stringFromInterval:[self secondsSinceNow]];
+	return [LogEntry stringFromInterval:[self secondsSinceNow] withSuffix:YES];
 }
 
-+ (NSString *)stringFromInterval:(NSTimeInterval) interval
++ (NSString *)stringFromInterval:(NSTimeInterval)interval withSuffix:(BOOL)suffix
 {
 		
 	// Get the system calendar
@@ -122,7 +122,7 @@
 	}
 	if (piecesFound == 0) {
 		[output appendString:@"Now"];
-	} else {
+	} else if (suffix) {
 		[output appendFormat:@"%@",[self suffixString:interval]];
 	}
 		

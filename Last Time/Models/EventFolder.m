@@ -7,10 +7,9 @@
 //
 
 #import "EventFolder.h"
-#import "Event.h"
 
 @implementation EventFolder
-@synthesize folderName, rootFolder;
+@synthesize isRoot;
 
 - (id)init
 {
@@ -25,7 +24,7 @@
 - (id)initWithRandomDataAsRoot:(BOOL)root
 {
 	self = [super init];
-	rootFolder = root;
+	isRoot = root;
 	
 	@autoreleasepool {
     
@@ -39,7 +38,7 @@
 					[allItems addObject:e];
 				}
 
-				if (rootFolder) {
+				if (isRoot) {
 					
 					for (int i = 0; i < 1; i++) {
 						EventFolder *f = [[EventFolder alloc] initWithRandomDataAsRoot:NO];
@@ -47,10 +46,10 @@
 					}
 				}
 
-				if (rootFolder) {
-					folderName = @"ROOT";
+				if (isRoot) {
+					folderName = @"Home";
 				} else {
-					NSArray *randomFolderList = [NSArray arrayWithObjects:@"F: Health", @"F: Pet", @"F: Car", @"F: Vacation", @"F: Diet", nil];
+					NSArray *randomFolderList = [NSArray arrayWithObjects:@"Health", @"Pet", @"Car", @"Vacation", @"Diet", nil];
 					
 					long folderIndex = arc4random() % [randomFolderList count];
 					folderName = [randomFolderList objectAtIndex:folderIndex];
@@ -77,9 +76,23 @@
 	[allItems removeObjectIdenticalTo:item];
 }
 
+- (NSString *)folderName
+{
+	if (isRoot) {
+		return @"Home";
+	} else {
+		return folderName;
+	}
+}
+
+- (void)setFolderName:(NSString *)f
+{
+	folderName = f;
+}
+
 - (NSString *)subtitle
 {
-	if (rootFolder) {
+	if (isRoot) {
 		return @"";
 	}
 	
@@ -144,7 +157,7 @@
 {
 	NSMutableString *output = [[NSMutableString alloc] init];
 	
-	if (!rootFolder) {
+	if (!isRoot) {
 		[output appendFormat:@"\n%@\n", folderName];
 		[output appendFormat:@"-> %@\n", [self subtitle]];
 	}

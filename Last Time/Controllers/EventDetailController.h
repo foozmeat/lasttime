@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EventDetailController : UIViewController
+@class Event;
+
+@interface EventDetailController : UITableViewController
+{
+	
+	IBOutlet UITextField *nameField;
+	
+	Event *event;
+}
+
+@property (nonatomic, strong) Event *event;
+
+- (IBAction)addNewItem:(id)sender;
 
 @end

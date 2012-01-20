@@ -7,10 +7,9 @@
 //
 
 #import "Event.h"
-#import "LogEntry.h"
 
 @implementation Event
-@synthesize eventName, eventNote, logEntryCollection;
+@synthesize eventName, logEntryCollection;
 
 
 - (id)init
@@ -23,13 +22,12 @@
 	return self;
 }
 
-- (id)initWithEventName:(NSString *)name eventNote:(NSString *)note logEntries:(NSMutableArray *)entries
+- (id)initWithEventName:(NSString *)name logEntries:(NSMutableArray *)entries
 {
 	if (!(self = [super init]))
 		return nil;
 
 	[self setEventName:name];
-	[self setEventNote:note];
 	[self setLogEntryCollection:entries];
 	
 	return self;
@@ -49,13 +47,8 @@
 	
 	long eventIndex = arc4random() % [randomEventList count];
 	NSString *name = [randomEventList objectAtIndex:eventIndex];
-		
-	NSArray *randomNoteList = [NSArray arrayWithObjects:@"Note 1", @"Note 2", @"Note 3", @"Note 4", @"Note 5", nil];
-	long noteIndex = arc4random() % [randomNoteList count];
-	NSString *note = [randomNoteList objectAtIndex:noteIndex];
-	
+			
 	Event *newEvent = [[self alloc] initWithEventName:(NSString *)name
-																					eventNote:(NSString *)note
 																				 logEntries:(NSMutableArray *)lec];
 	return newEvent;
 
@@ -106,9 +99,9 @@
 	
 }
 
-- (NSString *)averageStringInterval
+- (NSString *)averageStringInterval;
 {
-	return [LogEntry stringFromInterval:[self averageInterval]];
+	return [LogEntry stringFromInterval:[self averageInterval] withSuffix:NO];
 }
 
 #pragma mark Last
@@ -160,7 +153,6 @@
 	NSMutableString *output = [[NSMutableString alloc] init];
 
 	[output appendFormat:@"\n%@", eventName];
-	[output appendFormat:@"\n%@", eventNote];
 	[output appendFormat:@"\n%@", [self subtitle]];
 	[output appendFormat:@"\nLatest Entry: %@\n", [self latestEntry]];
 	[output appendFormat:@"Average Interval: %f - %@\n", [self averageInterval], [self averageStringInterval]];

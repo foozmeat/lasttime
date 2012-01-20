@@ -9,25 +9,130 @@
 #import "EventDetailController.h"
 
 @implementation EventDetailController
+@synthesize event;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+	self = [super initWithStyle:UITableViewStyleGrouped];
+	
+	if (self) {
+		UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
+																																				 target:self 
+																																				 action:@selector(addNewItem:)];
+		
+		[[self navigationItem] setRightBarButtonItem:bbi];		
+		[[self navigationItem] setTitle:[event eventName]];
+		
+	}
+	
+	return self;
 }
 
-- (void)didReceiveMemoryWarning
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+	return [self init];
 }
+
+#pragma mark Model methods
+- (IBAction)addNewItem:(id)sender;
+{
+	
+}
+
+#pragma mark TableView Delegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	
+	
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	if (section == 0) {
+		return @"Previously";
+	} else if (section == 1) {
+		return @"";
+	} else if (section == 2) {
+		return @"";
+	} else {
+		return @"";
+	}
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	if (section == 0) {
+		return 1;
+	} else if (section == 1) {
+		return 2;
+	} else if (section == 2) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+	
+	if (!cell) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"UITableViewCell"];
+	}
+	
+	if ([indexPath section] == 0) {
+		cell.textLabel.text = [event subtitle];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	} else if ([indexPath section] == 1) {
+		
+		if ([indexPath row] == 0) {
+			cell.textLabel.text = @"Average";
+			cell.detailTextLabel.text = [event averageStringInterval];
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+		} else {
+			cell.textLabel.text = @"Next Time";
+
+			NSDateFormatter *df = [[NSDateFormatter alloc] init];
+			
+			[df setDateStyle:NSDateFormatterMediumStyle];
+			[df setTimeStyle:NSDateFormatterNoStyle];
+			
+			cell.detailTextLabel.text = [df stringFromDate:[event nextTime]];
+			
+		}
+	} else if ([indexPath section] == 2) {
+		cell.textLabel.text = @"History Log";
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	}
+	
+	
+	return cell;
+}
+
 
 #pragma mark - View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+
+	[nameField setText:[event eventName]];
+
+	[[self navigationItem] setTitle:[event eventName]];
+	[[self tableView] reloadData];
+
+}
 
 - (void)viewDidLoad
 {
@@ -37,6 +142,7 @@
 
 - (void)viewDidUnload
 {
+    nameField = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -47,5 +153,7 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
 
 @end

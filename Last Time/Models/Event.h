@@ -12,24 +12,25 @@
 @interface Event : NSObject
 {
 	NSString *eventName;
-	NSString *eventNote;
 	NSMutableArray *logEntryCollection;
 	BOOL needsSorting;
 }
 
 @property (nonatomic, strong) NSString *eventName;
-@property (nonatomic, strong) NSString *eventNote;
 @property (nonatomic, strong) NSMutableArray *logEntryCollection;
 
 - (id)initWithEventName:(NSString *)name
-							eventNote:(NSString *)note
 						 logEntries:(NSMutableArray *)entries;
 
 - (NSString *)subtitle;
-- (LogEntry *)latestEntry;
-- (NSTimeInterval)averageInterval;
-- (NSDate *)nextTime;
+
 - (NSDate *)latestDate;
+- (LogEntry *)latestEntry;
+
+- (NSTimeInterval)averageInterval;
+- (NSString *)averageStringInterval;
+
+- (NSDate *)nextTime;
 - (NSString *)lastStringInterval;
 - (NSString *)objectName;
 
