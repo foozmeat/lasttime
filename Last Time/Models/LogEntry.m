@@ -131,9 +131,7 @@
 
 - (NSString *)subtitle
 {
-	return [[NSString alloc] initWithFormat:@"%@ - %@",
-					logEntryNote,
-					[self stringFromLogEntryInterval]];
+	return [[NSString alloc] initWithFormat:@"%@", [self stringFromLogEntryInterval]];
 }
 
 - (NSString *)description

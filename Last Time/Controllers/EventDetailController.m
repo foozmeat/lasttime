@@ -7,6 +7,7 @@
 //
 
 #import "EventDetailController.h"
+#import "HistoryLogController.h"
 
 @implementation EventDetailController
 @synthesize event;
@@ -44,6 +45,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
+	if ([indexPath section] == 2) {
+		
+		HistoryLogController *hlc = [[HistoryLogController alloc] init];
+		[hlc setEvent:event];
+		[[self navigationController] pushViewController:hlc animated:YES];
+
+	}
 	
 }
 

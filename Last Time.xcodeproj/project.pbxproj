@@ -35,6 +35,8 @@
 		39D70CD314BD3515009C3615 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39D70CDB14BD3515009C3615 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39D70CD914BD3515009C3615 /* InfoPlist.strings */; };
 		39D70CDE14BD3516009C3615 /* Last_TimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D70CDD14BD3516009C3615 /* Last_TimeTests.m */; };
+		39F6F0E714D050E500DBA262 /* HistoryLogController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39F6F0E614D050E500DBA262 /* HistoryLogController.xib */; };
+		39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F0EA14D0510300DBA262 /* HistoryLogController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,9 @@
 		39D70CDA14BD3515009C3615 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39D70CDC14BD3515009C3615 /* Last_TimeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Last_TimeTests.h; sourceTree = "<group>"; };
 		39D70CDD14BD3516009C3615 /* Last_TimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Last_TimeTests.m; sourceTree = "<group>"; };
+		39F6F0E614D050E500DBA262 /* HistoryLogController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryLogController.xib; sourceTree = "<group>"; };
+		39F6F0E914D0510300DBA262 /* HistoryLogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogController.h; sourceTree = "<group>"; };
+		39F6F0EA14D0510300DBA262 /* HistoryLogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +200,8 @@
 				3969111214C9BCF0006E8272 /* FolderViewController.m */,
 				3969111314C9BCF0006E8272 /* LastTimeAppDelegate.h */,
 				3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */,
+				39F6F0E914D0510300DBA262 /* HistoryLogController.h */,
+				39F6F0EA14D0510300DBA262 /* HistoryLogController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -217,6 +224,7 @@
 			children = (
 				3969112314C9BD04006E8272 /* EventDetailController.xib */,
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
+				39F6F0E614D050E500DBA262 /* HistoryLogController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -445,6 +453,7 @@
 				39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */,
 				3969112514C9BD04006E8272 /* EventDetailController.xib in Resources */,
 				3969112614C9BD04006E8272 /* MainWindow.xib in Resources */,
+				39F6F0E714D050E500DBA262 /* HistoryLogController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +519,7 @@
 				3969111F14C9BCF8006E8272 /* Event.m in Sources */,
 				3969112014C9BCF8006E8272 /* EventFolder.m in Sources */,
 				3969112114C9BCF8006E8272 /* LogEntry.m in Sources */,
+				39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
