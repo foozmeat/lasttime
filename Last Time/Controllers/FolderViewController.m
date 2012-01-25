@@ -22,12 +22,8 @@
 																																				 target:self 
 																																				 action:@selector(addNewItem:)];
 
-		if (!rootFolder) {			
-			rootFolder = [[EventFolder alloc] initWithRandomDataAsRoot:YES];
-		}
 
 		[[self navigationItem] setRightBarButtonItem:bbi];		
-		[[self navigationItem] setTitle:[rootFolder folderName]];
 		 
 	}
 		
@@ -64,6 +60,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+	if (!rootFolder) {			
+		rootFolder = [[EventFolder alloc] initWithRandomDataAsRoot:YES];
+	}
+	[[self navigationItem] setTitle:[rootFolder folderName]];
 	[[self tableView] reloadData];
 }
 
@@ -71,9 +71,7 @@
 {
 	
 	id item = [[rootFolder allItems] objectAtIndex:[indexPath row]];
-	
-	NSLog(@"%@ %@", item, [item class]);
-	
+		
 	if ([item isMemberOfClass:[Event class]]) {
 		EventDetailController *edc = [[EventDetailController alloc] init];
 		

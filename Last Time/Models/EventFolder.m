@@ -9,7 +9,7 @@
 #import "EventFolder.h"
 
 @implementation EventFolder
-@synthesize isRoot;
+@synthesize isRoot, folderName;
 
 - (id)init
 {
@@ -39,6 +39,7 @@
 				}
 
 				if (isRoot) {
+					folderName = @"Home";
 					
 					for (int i = 0; i < 1; i++) {
 						EventFolder *f = [[EventFolder alloc] initWithRandomDataAsRoot:NO];
@@ -72,20 +73,6 @@
 - (void)removeItem:(id)item
 {
 	[allItems removeObjectIdenticalTo:item];
-}
-
-- (NSString *)folderName
-{
-	if (isRoot) {
-		return @"Home";
-	} else {
-		return folderName;
-	}
-}
-
-- (void)setFolderName:(NSString *)f
-{
-	folderName = f;
 }
 
 - (NSString *)subtitle
