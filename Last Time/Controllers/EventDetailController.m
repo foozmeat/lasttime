@@ -135,8 +135,6 @@
 {
 	[super viewWillAppear:animated];
 
-	[nameField setText:[event eventName]];
-
 	[[self navigationItem] setTitle:[event eventName]];
 	[[self tableView] reloadData];
 
@@ -150,7 +148,6 @@
 
 - (void)viewDidUnload
 {
-    nameField = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -19,7 +19,6 @@
 		3969111F14C9BCF8006E8272 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111A14C9BCF8006E8272 /* Event.m */; };
 		3969112014C9BCF8006E8272 /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111C14C9BCF8006E8272 /* EventFolder.m */; };
 		3969112114C9BCF8006E8272 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
-		3969112514C9BD04006E8272 /* EventDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3969112314C9BD04006E8272 /* EventDetailController.xib */; };
 		3969112614C9BD04006E8272 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3969112414C9BD04006E8272 /* MainWindow.xib */; };
 		39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39861AAA14BD526D006F30A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39861AA914BD526D006F30A0 /* main.m */; };
@@ -35,8 +34,8 @@
 		39D70CD314BD3515009C3615 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39D70CDB14BD3515009C3615 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39D70CD914BD3515009C3615 /* InfoPlist.strings */; };
 		39D70CDE14BD3516009C3615 /* Last_TimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D70CDD14BD3516009C3615 /* Last_TimeTests.m */; };
-		39F6F0E714D050E500DBA262 /* HistoryLogController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39F6F0E614D050E500DBA262 /* HistoryLogController.xib */; };
 		39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F0EA14D0510300DBA262 /* HistoryLogController.m */; };
+		39F6F10614D063BB00DBA262 /* HistoryLogDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F10514D063BB00DBA262 /* HistoryLogDetailController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +95,6 @@
 		3969111C14C9BCF8006E8272 /* EventFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventFolder.m; sourceTree = "<group>"; };
 		3969111D14C9BCF8006E8272 /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEntry.h; sourceTree = "<group>"; };
 		3969111E14C9BCF8006E8272 /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogEntry.m; sourceTree = "<group>"; };
-		3969112314C9BD04006E8272 /* EventDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailController.xib; sourceTree = "<group>"; };
 		3969112414C9BD04006E8272 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		39861AA514BD526D006F30A0 /* RandomLogEntry */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomLogEntry; sourceTree = BUILT_PRODUCTS_DIR; };
 		39861AA914BD526D006F30A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/RandomLogEntry/main.m"; sourceTree = SOURCE_ROOT; };
@@ -116,9 +114,10 @@
 		39D70CDA14BD3515009C3615 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39D70CDC14BD3515009C3615 /* Last_TimeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Last_TimeTests.h; sourceTree = "<group>"; };
 		39D70CDD14BD3516009C3615 /* Last_TimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Last_TimeTests.m; sourceTree = "<group>"; };
-		39F6F0E614D050E500DBA262 /* HistoryLogController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryLogController.xib; sourceTree = "<group>"; };
 		39F6F0E914D0510300DBA262 /* HistoryLogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogController.h; sourceTree = "<group>"; };
 		39F6F0EA14D0510300DBA262 /* HistoryLogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogController.m; sourceTree = "<group>"; };
+		39F6F10414D063BB00DBA262 /* HistoryLogDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogDetailController.h; sourceTree = "<group>"; };
+		39F6F10514D063BB00DBA262 /* HistoryLogDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogDetailController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +201,8 @@
 				3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */,
 				39F6F0E914D0510300DBA262 /* HistoryLogController.h */,
 				39F6F0EA14D0510300DBA262 /* HistoryLogController.m */,
+				39F6F10414D063BB00DBA262 /* HistoryLogDetailController.h */,
+				39F6F10514D063BB00DBA262 /* HistoryLogDetailController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -222,9 +223,7 @@
 		3969112214C9BD04006E8272 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3969112314C9BD04006E8272 /* EventDetailController.xib */,
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
-				39F6F0E614D050E500DBA262 /* HistoryLogController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,9 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */,
-				3969112514C9BD04006E8272 /* EventDetailController.xib in Resources */,
 				3969112614C9BD04006E8272 /* MainWindow.xib in Resources */,
-				39F6F0E714D050E500DBA262 /* HistoryLogController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +517,7 @@
 				3969112014C9BCF8006E8272 /* EventFolder.m in Sources */,
 				3969112114C9BCF8006E8272 /* LogEntry.m in Sources */,
 				39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */,
+				39F6F10614D063BB00DBA262 /* HistoryLogDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

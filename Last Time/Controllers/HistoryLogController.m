@@ -7,6 +7,7 @@
 //
 
 #import "HistoryLogController.h"
+#import "HistoryLogDetailController.h"
 
 @implementation HistoryLogController
 @synthesize event;
@@ -31,6 +32,17 @@
 - (void)addNewItem:(id)sender
 {
 	
+}
+
+#pragma mark TableView Delegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] initForNewItem:NO];
+	
+	[hldc setLogEntry:[[event logEntryCollection] objectAtIndex:[indexPath row]]];
+	
+	[[self navigationController] pushViewController:hldc animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

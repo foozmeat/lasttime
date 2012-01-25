@@ -12,9 +12,7 @@
 
 @interface EventDetailController : UITableViewController
 {
-	
-	IBOutlet UITextField *nameField;
-	
+		
 	Event *event;
 }
 
