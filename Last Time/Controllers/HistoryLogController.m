@@ -38,7 +38,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] initForNewItem:NO];
+	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 	
 	[hldc setLogEntry:[[event logEntryCollection] objectAtIndex:[indexPath row]]];
 	

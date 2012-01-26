@@ -35,7 +35,6 @@
 		39D70CDB14BD3515009C3615 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39D70CD914BD3515009C3615 /* InfoPlist.strings */; };
 		39D70CDE14BD3516009C3615 /* Last_TimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D70CDD14BD3516009C3615 /* Last_TimeTests.m */; };
 		39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F0EA14D0510300DBA262 /* HistoryLogController.m */; };
-		39F6F10614D063BB00DBA262 /* HistoryLogDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F10514D063BB00DBA262 /* HistoryLogDetailController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,8 +115,6 @@
 		39D70CDD14BD3516009C3615 /* Last_TimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Last_TimeTests.m; sourceTree = "<group>"; };
 		39F6F0E914D0510300DBA262 /* HistoryLogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogController.h; sourceTree = "<group>"; };
 		39F6F0EA14D0510300DBA262 /* HistoryLogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogController.m; sourceTree = "<group>"; };
-		39F6F10414D063BB00DBA262 /* HistoryLogDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogDetailController.h; sourceTree = "<group>"; };
-		39F6F10514D063BB00DBA262 /* HistoryLogDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogDetailController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,8 +198,6 @@
 				3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */,
 				39F6F0E914D0510300DBA262 /* HistoryLogController.h */,
 				39F6F0EA14D0510300DBA262 /* HistoryLogController.m */,
-				39F6F10414D063BB00DBA262 /* HistoryLogDetailController.h */,
-				39F6F10514D063BB00DBA262 /* HistoryLogDetailController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -517,7 +512,6 @@
 				3969112014C9BCF8006E8272 /* EventFolder.m in Sources */,
 				3969112114C9BCF8006E8272 /* LogEntry.m in Sources */,
 				39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */,
-				39F6F10614D063BB00DBA262 /* HistoryLogDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
