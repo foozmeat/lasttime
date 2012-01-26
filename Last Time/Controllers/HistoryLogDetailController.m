@@ -38,7 +38,18 @@
 	// Set the date in the picker's dateChanged: action
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[noteField resignFirstResponder];
+	return YES;
+}
+
 #pragma mark IBActions
+
+- (IBAction)backgroundTapped:(id)sender {
+	[[self view] endEditing:YES];
+	[datePicker setHidden:YES];
+}
 
 - (IBAction)dateButtonPressed:(id)sender
 {

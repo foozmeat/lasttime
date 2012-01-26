@@ -10,7 +10,7 @@
 
 @class LogEntry;
 
-@interface HistoryLogDetailController : UIViewController
+@interface HistoryLogDetailController : UIViewController <UITextFieldDelegate>
 {
 	NSDateFormatter *df;
 	IBOutlet UITextField *noteField;
@@ -20,6 +20,7 @@
 
 @property (nonatomic, assign) LogEntry *logEntry;
 
+- (IBAction)backgroundTapped:(id)sender;
 - (IBAction)dateButtonPressed:(id)sender;
 - (IBAction)dateChanged:(id)sender;
 @end
