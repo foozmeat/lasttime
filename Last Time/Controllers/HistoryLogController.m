@@ -29,6 +29,12 @@
 	return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[[self tableView] reloadData];
+}
+
 - (void)addNewItem:(id)sender
 {
 	

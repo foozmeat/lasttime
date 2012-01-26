@@ -35,6 +35,8 @@
 		39D70CDB14BD3515009C3615 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39D70CD914BD3515009C3615 /* InfoPlist.strings */; };
 		39D70CDE14BD3516009C3615 /* Last_TimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D70CDD14BD3516009C3615 /* Last_TimeTests.m */; };
 		39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F0EA14D0510300DBA262 /* HistoryLogController.m */; };
+		39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */; };
+		39F6F10F14D1A2B800DBA262 /* HistoryLogDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39F6F10D14D1A2B800DBA262 /* HistoryLogDetailController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,9 @@
 		39D70CDD14BD3516009C3615 /* Last_TimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Last_TimeTests.m; sourceTree = "<group>"; };
 		39F6F0E914D0510300DBA262 /* HistoryLogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogController.h; sourceTree = "<group>"; };
 		39F6F0EA14D0510300DBA262 /* HistoryLogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogController.m; sourceTree = "<group>"; };
+		39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogDetailController.h; sourceTree = "<group>"; };
+		39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogDetailController.m; sourceTree = "<group>"; };
+		39F6F10D14D1A2B800DBA262 /* HistoryLogDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryLogDetailController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +203,8 @@
 				3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */,
 				39F6F0E914D0510300DBA262 /* HistoryLogController.h */,
 				39F6F0EA14D0510300DBA262 /* HistoryLogController.m */,
+				39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */,
+				39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -218,6 +225,7 @@
 		3969112214C9BD04006E8272 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				39F6F10D14D1A2B800DBA262 /* HistoryLogDetailController.xib */,
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
 			);
 			path = Views;
@@ -283,6 +291,7 @@
 				3969110E14C9BCF0006E8272 /* Controllers */,
 				3969111814C9BCF8006E8272 /* Models */,
 				3969112214C9BD04006E8272 /* Views */,
+				39F6F11414D1B79B00DBA262 /* Supporting Classes */,
 				39D70CBD14BD3515009C3615 /* Supporting Files */,
 				39861A9D14BD518C006F30A0 /* Tools */,
 			);
@@ -317,6 +326,13 @@
 				39D70CD914BD3515009C3615 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39F6F11414D1B79B00DBA262 /* Supporting Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Supporting Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,6 +462,7 @@
 			files = (
 				39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */,
 				3969112614C9BD04006E8272 /* MainWindow.xib in Resources */,
+				39F6F10F14D1A2B800DBA262 /* HistoryLogDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +529,7 @@
 				3969112014C9BCF8006E8272 /* EventFolder.m in Sources */,
 				3969112114C9BCF8006E8272 /* LogEntry.m in Sources */,
 				39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */,
+				39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
