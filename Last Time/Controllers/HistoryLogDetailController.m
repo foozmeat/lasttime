@@ -15,7 +15,7 @@
 {
 	df = [[NSDateFormatter alloc] init];
 	[df setDateStyle:NSDateFormatterMediumStyle];
-	[df setTimeStyle:NSDateFormatterMediumStyle];
+	[df setTimeStyle:NSDateFormatterShortStyle];
 	
 }
 
@@ -25,6 +25,7 @@
 	
 	noteField.text = [logEntry logEntryNote];	
 	[dateButton setTitle:[df stringFromDate:[logEntry logEntryDateOccured]] forState:UIControlStateNormal];
+	[datePicker setDate:[logEntry logEntryDateOccured]];
 
 }
 
