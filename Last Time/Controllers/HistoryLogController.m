@@ -37,7 +37,16 @@
 
 - (void)addNewItem:(id)sender
 {
+	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
+
+	LogEntry *le = [[LogEntry alloc] init];
+	[[event logEntryCollection] addObject:le];
+	[event setNeedsSorting:YES];
+	 
+	[hldc setLogEntry:le];
 	
+	[[self navigationController] pushViewController:hldc animated:YES];
+
 }
 
 #pragma mark TableView Delegate methods

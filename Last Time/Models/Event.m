@@ -9,7 +9,7 @@
 #import "Event.h"
 
 @implementation Event
-@synthesize eventName, logEntryCollection;
+@synthesize eventName, logEntryCollection, needsSorting;
 
 
 - (id)init
@@ -18,6 +18,7 @@
 	
 	if (self) {
 		logEntryCollection = [[NSMutableArray alloc] init];
+		needsSorting = YES;
 	}
 	return self;
 }
@@ -29,7 +30,8 @@
 
 	[self setEventName:name];
 	[self setLogEntryCollection:entries];
-	
+	needsSorting = YES;
+
 	return self;
 }
 

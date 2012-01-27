@@ -8,6 +8,7 @@
 
 #import "EventDetailController.h"
 #import "HistoryLogController.h"
+#import "HistoryLogDetailController.h"
 
 @implementation EventDetailController
 @synthesize event;
@@ -35,8 +36,17 @@
 }
 
 #pragma mark Model methods
-- (IBAction)addNewItem:(id)sender;
+- (void)addNewItem:(id)sender
 {
+	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
+	
+	LogEntry *le = [[LogEntry alloc] init];
+	[[event logEntryCollection] addObject:le];
+	[event setNeedsSorting:YES];
+
+	[hldc setLogEntry:le];
+	
+	[[self navigationController] pushViewController:hldc animated:YES];
 	
 }
 

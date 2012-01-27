@@ -12,6 +12,18 @@
 @synthesize logEntryDateOccured, logEntryNote, logEntryLocation;
 
 
+- (id)init
+{
+	if (!(self = [super init]))
+		return nil;
+	
+	[self setLogEntryNote:@""];
+	[self setLogEntryDateOccured:[[NSDate alloc] init]];
+	
+	return self;
+
+}
+
 - (id)initWithNote:(NSString *)note
 	 dateOccured:(NSDate *)dateOccured
 			location:(CLLocationCoordinate2D)location

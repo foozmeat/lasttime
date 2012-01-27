@@ -19,6 +19,8 @@
 @property (nonatomic, strong) NSString *eventName;
 @property (nonatomic, strong) NSMutableArray *logEntryCollection;
 
+@property (nonatomic) BOOL needsSorting;
+
 - (id)initWithEventName:(NSString *)name
 						 logEntries:(NSMutableArray *)entries;
 
