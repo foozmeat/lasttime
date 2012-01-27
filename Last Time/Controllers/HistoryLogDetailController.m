@@ -54,6 +54,7 @@
 
 - (IBAction)dateButtonPressed:(id)sender
 {
+	[[self view] endEditing:YES];
 	[datePicker setHidden:NO];
 }
 
