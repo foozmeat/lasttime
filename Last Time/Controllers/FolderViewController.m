@@ -8,6 +8,7 @@
 
 #import "FolderViewController.h"
 #import "EventController.h"
+#import "EventDetailController.h"
 
 @implementation FolderViewController
 @synthesize rootFolder;
@@ -51,8 +52,14 @@
 
 - (void)addNewItem:(id)sender
 {
-	[rootFolder createEvent];
-	[[self tableView] reloadData];
+	
+	EventDetailController *edc = [[EventDetailController alloc] init];
+	
+	Event *e = [rootFolder createEvent];
+	[edc setEvent:e];
+		
+	[[self navigationController] pushViewController:edc animated:YES];
+
 	
 }
 #pragma mark TableView Delegate methods

@@ -62,13 +62,15 @@
 
 - (Event *)createEvent
 {
-	Event *e = [Event randomEvent];
-	
+//	Event *e = [Event randomEvent];
+
+	Event *e = [[Event alloc] init];
 	[allItems addObject:e];
 	needsSorting = YES;
 	
 	return e;
 }
+
 
 - (void)removeItem:(id)item
 {

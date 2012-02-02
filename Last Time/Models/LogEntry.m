@@ -14,27 +14,17 @@
 
 - (id)init
 {
-	if (!(self = [super init]))
-		return nil;
-	
-	[self setLogEntryNote:@""];
-	[self setLogEntryDateOccured:[[NSDate alloc] init]];
-	
-	return self;
-
+	return [self initWithNote:@"" dateOccured:[[NSDate alloc] init]];
 }
 
 - (id)initWithNote:(NSString *)note
 	 dateOccured:(NSDate *)dateOccured
-			location:(CLLocationCoordinate2D)location
 {
 	if (!(self = [super init]))
 		return nil;
 
 	[self setLogEntryNote:note];
 	[self setLogEntryDateOccured:dateOccured];
-
-	logEntryLocation = location;
 	
 	return self;
 
@@ -173,12 +163,12 @@
 	
 	NSDate *randomDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-randomDuration];
 
-	double latitude = 37.33168900 + (float) ((random() % 100) +1) / 1000000.0;
-	double longitude = -122.03073100 + (float) ((random() % 100) +1) / 1000000.0;
-	
-	CLLocationCoordinate2D randomLocation = CLLocationCoordinate2DMake(latitude,longitude);
+//	double latitude = 37.33168900 + (float) ((random() % 100) +1) / 1000000.0;
+//	double longitude = -122.03073100 + (float) ((random() % 100) +1) / 1000000.0;
+//	
+//	CLLocationCoordinate2D randomLocation = CLLocationCoordinate2DMake(latitude,longitude);
 
-	LogEntry *le = [[self alloc] initWithNote:randomNote dateOccured:randomDate location:randomLocation];
+	LogEntry *le = [[self alloc] initWithNote:randomNote dateOccured:randomDate];
 
 	return le;
 }

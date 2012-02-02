@@ -10,8 +10,6 @@
 
 @interface HistoryLogController : UITableViewController
 {
-	Event *event;
-
 }
 
 @property (nonatomic, strong) Event *event;

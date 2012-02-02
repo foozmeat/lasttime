@@ -21,8 +21,7 @@
 @property (nonatomic, readonly) CLLocationCoordinate2D logEntryLocation;
 
 - (id)initWithNote:(NSString *)logEntryNote
-	 dateOccured:(NSDate *)logEntryDateOccured
-			location:(CLLocationCoordinate2D)logEntryLocation;
+			 dateOccured:(NSDate *)logEntryDateOccured;
 
 - (NSTimeInterval)secondsSinceNow;
 - (NSString *)stringFromLogEntryInterval;

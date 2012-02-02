@@ -14,13 +14,7 @@
 
 - (id)init
 {
-	self = [super init];
-	
-	if (self) {
-		logEntryCollection = [[NSMutableArray alloc] init];
-		needsSorting = YES;
-	}
-	return self;
+	return [self initWithEventName:@"" logEntries:[[NSMutableArray alloc] init]];
 }
 
 - (id)initWithEventName:(NSString *)name logEntries:(NSMutableArray *)entries
@@ -34,7 +28,6 @@
 
 	return self;
 }
-
 
 + (Event *)randomEvent
 {
