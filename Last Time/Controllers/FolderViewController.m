@@ -7,7 +7,7 @@
 //
 
 #import "FolderViewController.h"
-#import "EventDetailController.h"
+#import "EventController.h"
 
 @implementation FolderViewController
 @synthesize rootFolder;
@@ -73,11 +73,11 @@
 	id item = [[rootFolder allItems] objectAtIndex:[indexPath row]];
 		
 	if ([item isMemberOfClass:[Event class]]) {
-		EventDetailController *edc = [[EventDetailController alloc] init];
+		EventController *ec = [[EventController alloc] init];
 		
-		[edc setEvent:item];
+		[ec setEvent:item];
 		
-		[[self navigationController] pushViewController:edc animated:YES];
+		[[self navigationController] pushViewController:ec animated:YES];
 		
 	} else if ([item isMemberOfClass:[EventFolder class]]) {
 		

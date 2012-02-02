@@ -1,5 +1,5 @@
 //
-//  EventDetailController.h
+//  EventController.h
 //  Last Time
 //
 //  Created by James Moore on 1/18/12.
@@ -10,7 +10,7 @@
 
 @class Event;
 
-@interface EventDetailController : UITableViewController
+@interface EventController : UITableViewController
 {
 		
 	Event *event;

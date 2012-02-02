@@ -1,16 +1,16 @@
 //
-//  EventDetailController.m
+//  EventController.m
 //  Last Time
 //
 //  Created by James Moore on 1/18/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
-#import "EventDetailController.h"
+#import "EventController.h"
 #import "HistoryLogController.h"
 #import "HistoryLogDetailController.h"
 
-@implementation EventDetailController
+@implementation EventController
 @synthesize event;
 
 - (id) init
