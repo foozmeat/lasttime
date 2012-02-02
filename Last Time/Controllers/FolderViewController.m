@@ -53,15 +53,29 @@
 - (void)addNewItem:(id)sender
 {
 	
-	EventDetailController *edc = [[EventDetailController alloc] init];
-	
-	Event *e = [rootFolder createEvent];
-	[edc setEvent:e];
-		
-	[[self navigationController] pushViewController:edc animated:YES];
-
+	UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"What would you like create?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New Event", @"New Folder", nil];
+	as.actionSheetStyle = UIActionSheetStyleDefault;
+	[as showInView:self.view];
 	
 }
+
+// Action sheet delegate method.
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	// the user clicked one of the OK/Cancel buttons
+	if (buttonIndex == 0)
+	{
+		EventDetailController *edc = [[EventDetailController alloc] init];
+		
+		Event *e = [rootFolder createEvent];
+		[edc setEvent:e];
+			
+		[[self navigationController] pushViewController:edc animated:YES];
+	} else if (buttonIndex == 1) {
+		// Make new folder
+	}
+}
+
 #pragma mark TableView Delegate methods
 
 - (void)viewWillAppear:(BOOL)animated

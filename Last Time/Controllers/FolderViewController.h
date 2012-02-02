@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FolderViewController : UITableViewController {
+@interface FolderViewController : UITableViewController <UIActionSheetDelegate>
+{
 	EventFolder *rootFolder;
 }
 
