@@ -9,6 +9,8 @@
 #import "FolderViewController.h"
 #import "EventController.h"
 #import "EventDetailController.h"
+#import "FolderDetailController.h"
+#import "EventFolder.h"
 
 @implementation FolderViewController
 @synthesize rootFolder;
@@ -50,13 +52,38 @@
 	}
 }
 
+- (void)addNewEvent
+{
+	EventDetailController *edc = [[EventDetailController alloc] init];
+	
+	Event *e = [rootFolder createEvent];
+	[edc setEvent:e];
+	
+	[[self navigationController] pushViewController:edc animated:YES];
+	
+}
+
+- (void)addNewFolder
+{
+	// Make new folder
+	FolderDetailController *fdc = [[FolderDetailController alloc] init];
+	[fdc setFolder:[[EventFolder alloc] init]];
+	[fdc setRootFolder:rootFolder];
+	
+	[[self navigationController] pushViewController:fdc animated:YES];
+	
+}
+
 - (void)addNewItem:(id)sender
 {
-	
-	UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"What would you like create?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New Event", @"New Folder", nil];
-	as.actionSheetStyle = UIActionSheetStyleDefault;
-	[as showInView:self.view];
-	
+
+	if ([rootFolder isRoot] == NO) {
+		[self addNewEvent];
+	} else {
+		UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"What would you like create?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New Event", @"New Folder", nil];
+		as.actionSheetStyle = UIActionSheetStyleDefault;
+		[as showInView:self.view];		
+	}	
 }
 
 // Action sheet delegate method.
@@ -65,14 +92,9 @@
 	// the user clicked one of the OK/Cancel buttons
 	if (buttonIndex == 0)
 	{
-		EventDetailController *edc = [[EventDetailController alloc] init];
-		
-		Event *e = [rootFolder createEvent];
-		[edc setEvent:e];
-			
-		[[self navigationController] pushViewController:edc animated:YES];
+		[self addNewEvent];
 	} else if (buttonIndex == 1) {
-		// Make new folder
+		[self addNewFolder];
 	}
 }
 
@@ -82,7 +104,7 @@
 {
 	[super viewWillAppear:animated];
 	if (!rootFolder) {			
-		rootFolder = [[EventFolder alloc] initWithRandomDataAsRoot:YES];
+		rootFolder = [[EventFolder alloc] initWithRoot:YES];
 	}
 	[[self navigationItem] setTitle:[rootFolder folderName]];
 	[[self tableView] reloadData];

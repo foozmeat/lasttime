@@ -13,12 +13,19 @@
 
 - (id)init
 {
+	return [self initWithRoot:NO];
+}
+
+- (id)initWithRoot:(BOOL)root
+{
 	self = [super init];
 	
 	if (self) {
 		allItems = [[NSMutableArray alloc] init];
+		isRoot = root;
 	}
 	return self;
+
 }
 
 - (id)initWithRandomDataAsRoot:(BOOL)root
@@ -60,6 +67,12 @@
 	return self;
 }
 
+- (void)addItem:(id)item;
+{
+	[allItems addObject:item];
+	needsSorting = YES;
+}
+
 - (Event *)createEvent
 {
 //	Event *e = [Event randomEvent];
@@ -75,11 +88,12 @@
 - (void)removeItem:(id)item
 {
 	[allItems removeObjectIdenticalTo:item];
+	needsSorting = YES;
 }
 
 - (NSString *)subtitle
 {
-	if (isRoot) {
+	if (isRoot || [allItems count] == 0) {
 		return @"";
 	}
 	
@@ -117,6 +131,10 @@
 
 - (id)latestItem
 {
+	if ([allItems count] == 0) {
+		return nil;
+	}
+	
 	[self sortItems];
 	return [allItems objectAtIndex:0];
 }

@@ -25,6 +25,8 @@
 		39861AB514BD5548006F30A0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
 		39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA477F14DAD8B300580EB9 /* EventDetailController.m */; };
 		39AA478214DAD8B300580EB9 /* EventDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39AA478014DAD8B300580EB9 /* EventDetailController.xib */; };
+		39AA478B14DC252400580EB9 /* FolderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA478914DC252400580EB9 /* FolderDetailController.m */; };
+		39AA478C14DC252400580EB9 /* FolderDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39AA478A14DC252400580EB9 /* FolderDetailController.xib */; };
 		39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AED56614BD3B6600AE6625 /* CoreLocation.framework */; };
 		39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB614BD3515009C3615 /* UIKit.framework */; };
 		39D70CB914BD3515009C3615 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
@@ -105,6 +107,9 @@
 		39AA477E14DAD8B300580EB9 /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailController.h; sourceTree = "<group>"; };
 		39AA477F14DAD8B300580EB9 /* EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailController.m; sourceTree = "<group>"; };
 		39AA478014DAD8B300580EB9 /* EventDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailController.xib; sourceTree = "<group>"; };
+		39AA478814DC252300580EB9 /* FolderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderDetailController.h; sourceTree = "<group>"; };
+		39AA478914DC252400580EB9 /* FolderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderDetailController.m; sourceTree = "<group>"; };
+		39AA478A14DC252400580EB9 /* FolderDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderDetailController.xib; sourceTree = "<group>"; };
 		39AED56614BD3B6600AE6625 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		39D70CB214BD3515009C3615 /* Last Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Last Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D70CB614BD3515009C3615 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -212,6 +217,8 @@
 				39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */,
 				39AA477E14DAD8B300580EB9 /* EventDetailController.h */,
 				39AA477F14DAD8B300580EB9 /* EventDetailController.m */,
+				39AA478814DC252300580EB9 /* FolderDetailController.h */,
+				39AA478914DC252400580EB9 /* FolderDetailController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -232,6 +239,7 @@
 		3969112214C9BD04006E8272 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				39AA478A14DC252400580EB9 /* FolderDetailController.xib */,
 				39AA478014DAD8B300580EB9 /* EventDetailController.xib */,
 				39F6F10D14D1A2B800DBA262 /* HistoryLogDetailController.xib */,
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
@@ -472,6 +480,7 @@
 				3969112614C9BD04006E8272 /* MainWindow.xib in Resources */,
 				39F6F10F14D1A2B800DBA262 /* HistoryLogDetailController.xib in Resources */,
 				39AA478214DAD8B300580EB9 /* EventDetailController.xib in Resources */,
+				39AA478C14DC252400580EB9 /* FolderDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +549,7 @@
 				39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */,
 				39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */,
 				39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */,
+				39AA478B14DC252400580EB9 /* FolderDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

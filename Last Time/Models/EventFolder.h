@@ -21,6 +21,7 @@
 @property (nonatomic) BOOL isRoot;
 
 - (id)initWithRandomDataAsRoot:(BOOL)root;
+- (id)initWithRoot:(BOOL)root;
 
 - (NSString *)subtitle;
 - (NSString *)objectName;
@@ -32,5 +33,6 @@
 
 - (Event *)createEvent;
 - (void)removeItem:(id)item;
+- (void)addItem:(id)item;
 
 @end
