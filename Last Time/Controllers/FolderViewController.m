@@ -10,7 +10,6 @@
 #import "EventController.h"
 #import "EventDetailController.h"
 #import "FolderDetailController.h"
-#import "EventFolder.h"
 
 @implementation FolderViewController
 @synthesize rootFolder;
