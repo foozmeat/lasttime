@@ -209,20 +209,20 @@
 		3969110E14C9BCF0006E8272 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3969110F14C9BCF0006E8272 /* EventController.h */,
-				3969111014C9BCF0006E8272 /* EventController.m */,
-				3969111114C9BCF0006E8272 /* FolderViewController.h */,
-				3969111214C9BCF0006E8272 /* FolderViewController.m */,
 				3969111314C9BCF0006E8272 /* LastTimeAppDelegate.h */,
 				3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */,
+				3969110F14C9BCF0006E8272 /* EventController.h */,
+				3969111014C9BCF0006E8272 /* EventController.m */,
+				39AA477E14DAD8B300580EB9 /* EventDetailController.h */,
+				39AA477F14DAD8B300580EB9 /* EventDetailController.m */,
+				3969111114C9BCF0006E8272 /* FolderViewController.h */,
+				3969111214C9BCF0006E8272 /* FolderViewController.m */,
+				39AA478814DC252300580EB9 /* FolderDetailController.h */,
+				39AA478914DC252400580EB9 /* FolderDetailController.m */,
 				39F6F0E914D0510300DBA262 /* HistoryLogController.h */,
 				39F6F0EA14D0510300DBA262 /* HistoryLogController.m */,
 				39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */,
 				39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */,
-				39AA477E14DAD8B300580EB9 /* EventDetailController.h */,
-				39AA477F14DAD8B300580EB9 /* EventDetailController.m */,
-				39AA478814DC252300580EB9 /* FolderDetailController.h */,
-				39AA478914DC252400580EB9 /* FolderDetailController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

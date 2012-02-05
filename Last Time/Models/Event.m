@@ -67,6 +67,15 @@
 	return eventName;
 }
 
+- (BOOL)showAverage
+{
+	if ([logEntryCollection count] < 2) {
+		return NO;
+	} else {
+		return YES;
+	}
+}
+
 #pragma mark Average
 #pragma mark -
 - (NSTimeInterval)averageInterval

@@ -84,16 +84,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 3;
+	if ([event showAverage]) {
+		return 3;
+	} else {
+		return 2;
+	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == 0) {
 		return 1;
-	} else if (section == 1) {
+	} else if (section == 1 && [event showAverage]) {
 		return 2;
-	} else if (section == 2) {
+	} else if (section == 2 || ![event showAverage]) {
 		return 1;
 	} else {
 		return 0;
@@ -111,7 +115,7 @@
 	if ([indexPath section] == 0) {
 		cell.textLabel.text = [event subtitle];
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
-	} else if ([indexPath section] == 1) {
+	} else if ([indexPath section] == 1 && [event showAverage]) {
 		
 		if ([indexPath row] == 0) {
 			cell.textLabel.text = @"Average";
@@ -129,7 +133,7 @@
 			cell.detailTextLabel.text = [df stringFromDate:[event nextTime]];
 			
 		}
-	} else if ([indexPath section] == 2) {
+	} else if ([indexPath section] == 2 || ![event showAverage]) {
 		cell.textLabel.text = @"History Log";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}

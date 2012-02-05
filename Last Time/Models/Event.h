@@ -35,6 +35,7 @@
 - (NSDate *)nextTime;
 - (NSString *)lastStringInterval;
 - (NSString *)objectName;
+- (BOOL)showAverage;
 
 + (Event *)randomEvent;
 
