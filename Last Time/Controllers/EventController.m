@@ -134,7 +134,7 @@
 			
 		}
 	} else if ([indexPath section] == 2 || ![event showAverage]) {
-		cell.textLabel.text = @"History Log";
+		cell.textLabel.text = [[NSString alloc] initWithFormat:@"History Log (%i)", [[event logEntryCollection] count]];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
