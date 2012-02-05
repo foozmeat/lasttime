@@ -55,7 +55,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	if ([indexPath section] == 2) {
+	if (([indexPath section] == 2 && [event showAverage]) || ([indexPath section] == 1 && ![event showAverage]) ) {
 		
 		HistoryLogController *hlc = [[HistoryLogController alloc] init];
 		[hlc setEvent:event];
