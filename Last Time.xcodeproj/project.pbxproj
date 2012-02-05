@@ -704,7 +704,7 @@
 			};
 			name = Release;
 		};
-		3988B96414DC32690010062E /* TestFlight */ = {
+		3988B96414DC32690010062E /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -712,6 +712,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 20120204210446;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -737,15 +738,16 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = TestFlight;
+			name = Distribution;
 		};
-		3988B96514DC32690010062E /* TestFlight */ = {
+		3988B96514DC32690010062E /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: James Moore";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
@@ -754,15 +756,15 @@
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2A34AC71-F043-4647-912B-D885276CD89A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2A34AC71-F043-4647-912B-D885276CD89A";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
-			name = TestFlight;
+			name = Distribution;
 		};
-		3988B96614DC32690010062E /* TestFlight */ = {
+		3988B96614DC32690010062E /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Last Time.app/Last Time";
@@ -778,9 +780,9 @@
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
-			name = TestFlight;
+			name = Distribution;
 		};
-		3988B96714DC32690010062E /* TestFlight */ = {
+		3988B96714DC32690010062E /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -795,9 +797,9 @@
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 			};
-			name = TestFlight;
+			name = Distribution;
 		};
-		3988B96814DC32690010062E /* TestFlight */ = {
+		3988B96814DC32690010062E /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -809,9 +811,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
-			name = TestFlight;
+			name = Distribution;
 		};
-		3988B96914DC32690010062E /* TestFlight */ = {
+		3988B96914DC32690010062E /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -823,7 +825,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
-			name = TestFlight;
+			name = Distribution;
 		};
 		39D70CDF14BD3516009C3615 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -833,6 +835,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 20120204210446;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -858,6 +861,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -869,6 +873,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 20120204210446;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -890,6 +895,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -898,7 +904,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: James Moore (HGZS2NAYVG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Moore (HGZS2NAYVG)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
@@ -920,7 +926,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: James Moore (HGZS2NAYVG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Moore (HGZS2NAYVG)";
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
@@ -981,7 +987,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3904CFAA14C078E200B7396A /* Debug */,
-				3988B96914DC32690010062E /* TestFlight */,
+				3988B96914DC32690010062E /* Distribution */,
 				3904CFAB14C078E200B7396A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -991,7 +997,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3950E87014BFE0AB009C6F6F /* Debug */,
-				3988B96814DC32690010062E /* TestFlight */,
+				3988B96814DC32690010062E /* Distribution */,
 				3950E87114BFE0AB009C6F6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1001,7 +1007,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39861AB014BD526D006F30A0 /* Debug */,
-				3988B96714DC32690010062E /* TestFlight */,
+				3988B96714DC32690010062E /* Distribution */,
 				39861AB114BD526D006F30A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1011,7 +1017,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39D70CDF14BD3516009C3615 /* Debug */,
-				3988B96414DC32690010062E /* TestFlight */,
+				3988B96414DC32690010062E /* Distribution */,
 				39D70CE014BD3516009C3615 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1021,7 +1027,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39D70CE214BD3516009C3615 /* Debug */,
-				3988B96514DC32690010062E /* TestFlight */,
+				3988B96514DC32690010062E /* Distribution */,
 				39D70CE314BD3516009C3615 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1031,7 +1037,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39D70CE514BD3516009C3615 /* Debug */,
-				3988B96614DC32690010062E /* TestFlight */,
+				3988B96614DC32690010062E /* Distribution */,
 				39D70CE614BD3516009C3615 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
