@@ -147,9 +147,18 @@
 
 -(NSString*)subtitle
 {
-	return [[NSString alloc] initWithFormat:@"%@ - %@", 
-					[[self latestEntry] logEntryNote], 
-					[self lastStringInterval]];
+	
+	NSString *output = nil;
+	
+	if ([[[self latestEntry] logEntryNote] isEqualToString:@""]) {
+		output = [[NSString alloc] initWithFormat:@"%@", [self lastStringInterval]];
+	} else {
+		output =  [[NSString alloc] initWithFormat:@"%@ - %@", 
+						[[self latestEntry] logEntryNote], 
+						[self lastStringInterval]];
+	}
+	
+	return output;
 }
 
 -(NSString *)description
