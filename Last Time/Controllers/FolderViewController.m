@@ -65,11 +65,15 @@
 - (void)addNewFolder
 {
 	// Make new folder
-	FolderDetailController *fdc = [[FolderDetailController alloc] init];
+	FolderDetailController *fdc = [[FolderDetailController alloc] initWithStyle:UITableViewStyleGrouped];
 	[fdc setFolder:[[EventFolder alloc] init]];
 	[fdc setRootFolder:rootFolder];
 	
-	[[self navigationController] pushViewController:fdc animated:YES];
+	UINavigationController *newNavController = [[UINavigationController alloc]
+																							initWithRootViewController:fdc];
+	
+	[[self navigationController] presentModalViewController:newNavController
+																								 animated:YES];
 	
 }
 

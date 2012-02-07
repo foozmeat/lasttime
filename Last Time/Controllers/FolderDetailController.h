@@ -8,15 +8,29 @@
 
 #import <UIKit/UIKit.h>
 
+@class EditableTableCell;
 @class EventFolder;
 
-@interface FolderDetailController : UIViewController <UITextFieldDelegate>
+enum {
+	FolderName
+};
+
+@interface FolderDetailController : UITableViewController <UITextFieldDelegate>
 {
 	
 }
 
 @property (strong, nonatomic) EventFolder *folder;
 @property (strong, nonatomic) EventFolder *rootFolder;
-@property (strong, nonatomic) IBOutlet UITextField *nameField;
-- (IBAction)backgroundTapped:(id)sender;
+@property (nonatomic, retain) EditableTableCell *nameCell;
+
+- (BOOL)isModal;
+
+- (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag;
+
+//  Action Methods
+//
+- (void)save;
+- (void)cancel;
+
 @end
