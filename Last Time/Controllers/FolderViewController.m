@@ -130,12 +130,21 @@
 		
 	} else if ([item isMemberOfClass:[EventFolder class]]) {
 		
-		FolderViewController *fdc = [[FolderViewController alloc] init];
-		[fdc setRootFolder:item];
-		[[self navigationController] pushViewController:fdc animated:YES];
-
+		if ([folderTableView isEditing]) {
+			FolderDetailController *fdc = [[FolderDetailController alloc] initWithStyle:UITableViewStyleGrouped];
+			[fdc setFolder:item];
+			[fdc setRootFolder:rootFolder];
+			[[self navigationController] pushViewController:fdc animated:YES];
+			
+			[folderTableView setEditing:NO animated:NO];
+			
+		} else {
+			FolderViewController *fdc = [[FolderViewController alloc] init];
+			[fdc setRootFolder:item];
+			[[self navigationController] pushViewController:fdc animated:YES];
+			
+		}
 	}
-	
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -171,6 +180,7 @@
 	if ([item isMemberOfClass:[EventFolder class]]) {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
+	cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	[[cell textLabel] setText:[item objectName]];
 	[[cell detailTextLabel] setText:[item subtitle]];
