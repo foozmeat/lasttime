@@ -28,43 +28,32 @@
 
 }
 
-- (id)initWithRandomDataAsRoot:(BOOL)root
++ (EventFolder *)randomFolderWithRoot:(BOOL)root
 {
-	self = [super init];
-	isRoot = root;
+	EventFolder *folder = [[EventFolder alloc] initWithRoot:root];
 	
 	@autoreleasepool {
-    
-		if (self) {
-			allItems = [[NSMutableArray alloc] init];
-			needsSorting = YES;
+		for (int i = 0; i < 2; i++) {
+			[folder addItem:[Event randomEvent]];
+		}
 
-			@autoreleasepool {
-				for (int i = 0; i < 1; i++) {
-					Event *e = [Event randomEvent];
-					[allItems addObject:e];
-				}
-
-				if (isRoot) {
-					folderName = @"Home";
-					
-					for (int i = 0; i < 1; i++) {
-						EventFolder *f = [[EventFolder alloc] initWithRandomDataAsRoot:NO];
-						[allItems addObject:f];
-					}
-				}
-
-				if (!isRoot) {
-					NSArray *randomFolderList = [NSArray arrayWithObjects:@"Health", @"Pet", @"Car", @"Vacation", @"Diet", nil];
-					
-					long folderIndex = arc4random() % [randomFolderList count];
-					folderName = [randomFolderList objectAtIndex:folderIndex];
-				}						
+		if ([folder isRoot]) {
+			folder.folderName = @"Home";
+			
+			for (int i = 0; i < 1; i++) {
+				[folder addItem:[self randomFolderWithRoot:NO]];
 			}
 		}
-		
+
+		if (![folder isRoot]) {
+			NSArray *randomFolderList = [NSArray arrayWithObjects:@"Health", @"Pet", @"Car", @"Vacation", @"Diet", nil];
+			
+			long folderIndex = arc4random() % [randomFolderList count];
+			folder.folderName = [randomFolderList objectAtIndex:folderIndex];
+		}						
 	}
-	return self;
+
+	return folder;
 }
 
 - (void)addItem:(id)item;

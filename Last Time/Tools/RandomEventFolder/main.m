@@ -12,14 +12,9 @@
 int main (int argc, const char * argv[])
 {
 
-	// Avoid warnings
-	argc = argc;
-	argv = argv;
-	
-
 	@autoreleasepool {
 	    
-		EventFolder *ef = [[EventFolder alloc] initWithRandomDataAsRoot:YES];
+		EventFolder *ef = [EventFolder randomFolderWithRoot:YES];
 		NSLog(@"%@", ef);
 	    
 	}

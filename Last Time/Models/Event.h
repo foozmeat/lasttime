@@ -38,6 +38,6 @@
 - (BOOL)showAverage;
 
 + (Event *)randomEvent;
-
+- (void)addLogEntry:(LogEntry *)entry;
 @end
 

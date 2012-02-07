@@ -20,7 +20,7 @@
 @property (nonatomic, strong) NSString *folderName;
 @property (nonatomic) BOOL isRoot;
 
-- (id)initWithRandomDataAsRoot:(BOOL)root;
++ (EventFolder *)randomFolderWithRoot:(BOOL)root;
 - (id)initWithRoot:(BOOL)root;
 
 - (NSString *)subtitle;

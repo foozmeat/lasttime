@@ -49,6 +49,12 @@
 
 }
 
+- (void)addLogEntry:(LogEntry *)entry
+{
+	[[self logEntryCollection] addObject:entry];
+	self.needsSorting = YES;
+}
+
 - (void)sortEntries
 {
 	if (needsSorting) {
