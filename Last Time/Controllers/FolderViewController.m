@@ -57,16 +57,9 @@
 #pragma mark -
 #pragma mark IBActions
 
-- (void)toggleEditingMode:(id)sender
+- (void)setEditing:(BOOL)editing animated:(BOOL)animate
 {
-	if ([self isEditing]) {
-		[sender setTitle:@"Edit" forState:UIControlStateNormal];
-		[self setEditing:NO animated:YES];
-	} else {
-		[sender setTitle:@"Done" forState:UIControlStateNormal];
-		[self setEditing:YES animated:YES];
-		
-	}
+	[folderTableView setEditing:editing animated:animate];
 }
 
 - (void)addNewEvent
@@ -152,6 +145,11 @@
 		[rootFolder removeItem:item];
 		
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+
+		if ([[rootFolder allItems] count] == 0) {
+			[[self navigationItem] setRightBarButtonItem:nil];
+		}
+
 	}
 }
 
