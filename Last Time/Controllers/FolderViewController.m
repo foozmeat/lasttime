@@ -13,39 +13,57 @@
 
 @implementation FolderViewController
 @synthesize rootFolder;
+@synthesize folderTableView;
 
 
-- (id) init
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-	self = [super initWithStyle:UITableViewStyleGrouped];
-	
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
-		UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
-																																				 target:self 
-																																				 action:@selector(addNewItem:)];
-
-
-		[[self navigationItem] setRightBarButtonItem:bbi];		
-		 
-	}
 		
+	}
 	return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
+#pragma mark - View lifecycle
+
+- (void)viewDidUnload
 {
-	return [self init];
+	[self setFolderTableView:nil];
+	[super viewDidUnload];
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	if (!rootFolder) {			
+		rootFolder = [[EventFolder alloc] initWithRoot:YES];
+	}
+	if ([rootFolder isRoot]) {
+		self.title = NSLocalizedString(@"Home", @"Home");
+	} else {
+		self.title = [rootFolder folderName];
+	}
+	
+	if ([[rootFolder allItems] count] > 0) {
+		[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
+	}
+
+	[[self folderTableView] reloadData];
+}
+
+#pragma mark -
 #pragma mark IBActions
 
 - (void)toggleEditingMode:(id)sender
 {
 	if ([self isEditing]) {
-//		[sender setTitle:@"Edit" forState:UIControlStateNormal];
+		[sender setTitle:@"Edit" forState:UIControlStateNormal];
 		[self setEditing:NO animated:YES];
 	} else {
-//		[sender setTitle:@"Done" forState:UIControlStateNormal];
+		[sender setTitle:@"Done" forState:UIControlStateNormal];
 		[self setEditing:YES animated:YES];
 		
 	}
@@ -101,17 +119,9 @@
 	}
 }
 
+#pragma mark -
 #pragma mark TableView Delegate methods
 
-- (void)viewWillAppear:(BOOL)animated
-{
-	[super viewWillAppear:animated];
-	if (!rootFolder) {			
-		rootFolder = [[EventFolder alloc] initWithRoot:YES];
-	}
-	[[self navigationItem] setTitle:[rootFolder folderName]];
-	[[self tableView] reloadData];
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

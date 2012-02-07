@@ -1,5 +1,5 @@
 //
-//  LogEntryViewController.h
+//  FolderViewController.h
 //  Last Time
 //
 //  Created by James Moore on 1/12/12.
@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FolderViewController : UITableViewController <UIActionSheetDelegate>
+@interface FolderViewController : UIViewController <UIActionSheetDelegate, UITableViewDelegate>
 {
 	EventFolder *rootFolder;
 }
 
 @property (nonatomic, strong) EventFolder *rootFolder;
+@property (strong, nonatomic) IBOutlet UITableView *folderTableView;
+
 
 - (IBAction)addNewItem:(id)sender;
 

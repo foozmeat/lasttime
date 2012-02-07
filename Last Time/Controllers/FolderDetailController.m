@@ -77,6 +77,8 @@
 																		 action:@selector(cancel)];
 		
 		[[self navigationItem] setLeftBarButtonItem:cancelButton];
+		[self setTitle:@"New Folder"];
+
 	}
 	
 	[self setNameCell:[self newDetailCellWithTag:FolderName]];
