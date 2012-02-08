@@ -10,21 +10,35 @@
 
 @class Event;
 @class LogEntry;
+@class EditableTableCell;
 
-@interface EventDetailController : UIViewController <UITextFieldDelegate>
+enum {
+	EventName = 0,
+	EventNote,
+	EventDate
+};
+
+@interface EventDetailController : UITableViewController <UITextFieldDelegate>
 {
 	NSDateFormatter *df;
 	IBOutlet UIDatePicker *datePicker;
 }
 
 @property (strong, nonatomic) Event *event;
-@property (strong, nonatomic) IBOutlet UIButton *dateButton;
 
-@property (strong, nonatomic) IBOutlet UITextField *nameField;
-@property (strong, nonatomic) IBOutlet UITextField *noteField;
+@property (nonatomic, strong) EditableTableCell *nameCell;
+@property (nonatomic, strong) EditableTableCell *noteCell;
+@property (nonatomic, strong) EditableTableCell *dateCell;
 
-- (IBAction)backgroundTapped:(id)sender;
-- (IBAction)dateButtonTapped:(id)sender;
 - (IBAction)dateChanged:(id)sender;
+- (BOOL)isModal;
+
+- (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag;
+
+//  Action Methods
+//
+- (void)save;
+- (void)cancel;
+
 @end
 

@@ -7,92 +7,282 @@
 //
 
 #import "EventDetailController.h"
+#import "EditableTableCell.h"
 
 @implementation EventDetailController
-@synthesize nameField;
-@synthesize noteField;
+@synthesize nameCell, noteCell, dateCell;
 @synthesize event;
-@synthesize dateButton;
 
-- (IBAction)backgroundTapped:(id)sender {
-	[[self view] endEditing:YES];
-}
 
-- (IBAction)dateButtonTapped:(id)sender {
-	[[self view] endEditing:YES];
-	[datePicker setHidden:NO];
-}
 
-- (IBAction)dateChanged:(id)sender
+- (BOOL)isModal
 {
-	[dateButton setTitle:[df stringFromDate:[datePicker date]] forState:UIControlStateNormal];
+	NSArray *viewControllers = [[self navigationController] viewControllers];
+	UIViewController *rootViewController = [viewControllers objectAtIndex:0];
 	
+	return rootViewController == self;
 }
 
-#pragma mark - View lifecycle
-
-- (void)viewWillAppear:(BOOL)animated
+//  Convenience method that returns a fully configured new instance of 
+//  EditableDetailCell. Note that methods whose names begin with 'alloc' or
+//  'new', or whose names contain 'copy', should return a non-autoreleased
+//  instance with a retain count of one, as we do here.
+//
+- (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag
 {
-	[super viewWillAppear:animated];
-
-	NSDate *now = [[NSDate alloc] init];
-	[dateButton setTitle:[df stringFromDate:now] forState:UIControlStateNormal];
-	[datePicker setDate:now];
-
+	EditableTableCell *cell = [[EditableTableCell alloc] initWithStyle:UITableViewCellStyleDefault 
+																										 reuseIdentifier:nil];
+	[[cell cellTextField] setDelegate:self];
+	[[cell cellTextField] setTag:tag];
+	
+	return cell;
 }
-- (void)viewDidAppear:(BOOL)animated
+
+#pragma mark -
+#pragma mark Action Methods
+
+- (void)save
 {
+//	[rootFolder addItem:folder];
+	
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)cancel
+{
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark UIViewController Methods
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	if (self) {
+		
+	}
+	return self;
 }
 
 - (void)viewDidLoad
 {
-	df = [[NSDateFormatter alloc] init];
-	[df setDateStyle:NSDateFormatterMediumStyle];
-	[df setTimeStyle:NSDateFormatterShortStyle];
+	//  If the user clicked the '+' button in the list view, we're
+	//  creating a new entry rather than modifying an existing one, so 
+	//  we're in a modal nav controller. Modal nav controllers don't add
+	//  a back button to the nav bar; instead we'll add Save and 
+	//  Cancel buttons.
+	//  
+	if ([self isModal])
+	{
+		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] 
+																	 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+																	 target:self
+																	 action:@selector(save)];
+		
+		[[self navigationItem] setRightBarButtonItem:saveButton];
+		
+		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] 
+																		 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+																		 target:self
+																		 action:@selector(cancel)];
+		
+		[[self navigationItem] setLeftBarButtonItem:cancelButton];
+		[self setTitle:@"New Event"];
+		
+	} else {
+		[self setTitle:@"Edit Event"];
+		
+	}
 	
+	[self setNameCell:[self newDetailCellWithTag:EventName]];
+	
+	if ([self isModal]) {
+		[self setNoteCell:[self newDetailCellWithTag:EventNote]];
+		[self setDateCell:[self newDetailCellWithTag:EventDate]];
+		
+		df = [[NSDateFormatter alloc] init];
+		[df setDateStyle:NSDateFormatterMediumStyle];
+		[df setTimeStyle:NSDateFormatterShortStyle];
+		
+		NSDate *now = [[NSDate alloc] init];
+		datePicker = [[UIDatePicker alloc] init];
+		[datePicker setDate:now];
+		
+	}
+	
+
 }
 
+//  Override inherited method to automatically place the insertion point in the
+//  first field.
+//
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	NSUInteger indexes[] = { 0, 0 };
+	NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
+																											length:2];
+	
+	EditableTableCell *cell = (EditableTableCell *)[[self tableView]
+																									cellForRowAtIndexPath:indexPath];
+	
+	[[cell cellTextField] becomeFirstResponder];
+}
+
+//  Force textfields to resign firstResponder so that our implementation of
+//  -textFieldDidEndEditing: will be called. That'll ensure that all current
+//  UI values are flushed to our model object before the detail view disappears.
+//
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 	
-	[[self view] endEditing:YES];
-	
-	if ([[nameField text] isEqualToString:@""]) {
-		[event setEventName:@"New Event"];
-	} else {
-		[event setEventName:[nameField text]];
+	for (NSInteger section = 0; section < [[self tableView] numberOfSections]; section++)
+	{
+		NSUInteger indexes[] = { section, 0 };
+		NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
+																												length:2];
+		
+		EditableTableCell *cell = (EditableTableCell *)[[self tableView]
+																										cellForRowAtIndexPath:indexPath];
+		if ([[cell cellTextField] isFirstResponder])
+		{
+			[[cell cellTextField] resignFirstResponder];
+		}
+	}
+}
+
+
+- (void)viewDidUnload {
+	datePicker = nil;
+	[super viewDidUnload];
+}
+
+#pragma mark -
+#pragma mark UITextFieldDelegate Protocol
+//  Sets the label of the keyboard's return key to 'Done' when the insertion
+//  point moves to the table view's last field.
+//
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+	if ([textField tag] == EventNote)	{
+	} else if ([textField tag] == EventDate) {
+		[textField setReturnKeyType:UIReturnKeyDone];
+		[textField setInputView:datePicker];
+
+//		return NO;
 	}
 	
-	LogEntry *le = [[LogEntry alloc] initWithNote:[noteField text] dateOccured:[datePicker date]];
-	[[event logEntryCollection] addObject:le];
+	return YES;
+}
+
+//  UITextField sends this message to its delegate after resigning
+//  firstResponder status. Use this as a hook to save the text field's
+//  value to the corresponding property of the model object.
+//  
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+	
+	NSString *text = [textField text];
+	NSUInteger tag = [textField tag];
+	
+	switch (tag)
+	{
+		case EventName:     [event setEventName:text];          break;
+	}
+}
+
+//  UITextField sends this message to its delegate when the return key
+//  is pressed. Use this as a hook to navigate back to the list view 
+//  (by 'popping' the current view controller, or dismissing a modal nav
+//  controller, as the case may be).
+//
+//  If the user is adding a new item rather than editing an existing one,
+//  respond to the return key by moving the insertion point to the next cell's
+//  textField, unless we're already at the last cell.
+//
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	if ([textField returnKeyType] == UIReturnKeyNext)
+	{
+		//  The keyboard's return key is currently displaying 'Next' instead of
+		//  'Done', so just move the insertion point to the next field. The
+		//  keyboard will display 'Done' when we're at the last field.
+		//
+		//  (See the implementation of -textFieldShouldBeginEditing:, above.)
+		//
+		NSInteger nextTag = [textField tag] + 1;
+		UIView *nextTextField = [[self tableView] viewWithTag:nextTag];
+		
+		[nextTextField becomeFirstResponder];
+	}
+	else if ([self isModal])
+	{
+		//  We're in a modal navigation controller, which means the user is
+		//  adding a new book rather than editing an existing one.
+		//
+		[self save];
+	}
+	else
+	{
+		[[self navigationController] popViewControllerAnimated:YES];
+	}
+	
+	return YES;
+}
+
+#pragma mark -
+#pragma mark UITableViewDataSource Protocol
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+	//  Determine the text field's value. Each section of the table view
+	//  is mapped to a property of the book object we're displaying.
+	//
+	EditableTableCell *cell = nil;
+
+	switch ([indexPath row]) 
+	{
+		case EventName:
+			cell = [self nameCell];
+			[[cell cellTextField] setText:@""];
+			[[cell cellTextField] setPlaceholder:@"Event Name"];
+			break;
+		case EventNote:
+			cell = [self noteCell];
+			[[cell cellTextField] setText:@""];
+			[[cell cellTextField] setPlaceholder:@"Event Note"];
+			break;
+		case EventDate:
+			cell = [self dateCell];
+			[[cell cellTextField] setText:[df stringFromDate:[datePicker date]]];
+			break;
+		default:
+			cell = [[EditableTableCell alloc] init];
+			[[cell cellTextField] setText:@"Error"];
+			break;
+
+	}
+	
+	return cell;
 	
 }
 
-
-- (void)viewDidUnload
+- (IBAction)dateChanged:(id)sender
 {
-	[self setNameField:nil];
-	[self setNoteField:nil];
-	[self setDateButton:nil];
-	[super viewDidUnload];
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+	[[dateCell cellTextField] setText:[df stringFromDate:[datePicker date]]];
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)didReceiveMemoryWarning
-{
-	// Releases the view if it doesn't have a superview.
-	[super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
 
 @end

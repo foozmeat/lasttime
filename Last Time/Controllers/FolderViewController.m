@@ -64,12 +64,17 @@
 
 - (void)addNewEvent
 {
-	EventDetailController *edc = [[EventDetailController alloc] init];
+	EventDetailController *edc = [[EventDetailController alloc] initWithStyle:UITableViewStyleGrouped];
 	
 	Event *e = [rootFolder createEvent];
 	[edc setEvent:e];
 	
-	[[self navigationController] pushViewController:edc animated:YES];
+	UINavigationController *newNavController = [[UINavigationController alloc]
+																							initWithRootViewController:edc];
+	[[self navigationController] presentModalViewController:newNavController
+																								 animated:YES];
+
+//	[[self navigationController] pushViewController:edc animated:YES];
 	
 }
 

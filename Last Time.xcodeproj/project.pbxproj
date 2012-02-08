@@ -44,6 +44,7 @@
 		39F642CE14E0FD16004B0900 /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111C14C9BCF8006E8272 /* EventFolder.m */; };
 		39F642CF14E0FD16004B0900 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		39F642E714E17095004B0900 /* FolderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39F642E614E17095004B0900 /* FolderViewController.xib */; };
+		39F6435914E2C82A004B0900 /* EventDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39F6435814E2C82A004B0900 /* EventDetailController.xib */; };
 		39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F0EA14D0510300DBA262 /* HistoryLogController.m */; };
 		39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */; };
 		39F6F10F14D1A2B800DBA262 /* HistoryLogDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39F6F10D14D1A2B800DBA262 /* HistoryLogDetailController.xib */; };
@@ -134,6 +135,7 @@
 		39D70CDC14BD3515009C3615 /* Last_TimeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Last_TimeTests.h; sourceTree = "<group>"; };
 		39D70CDD14BD3516009C3615 /* Last_TimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Last_TimeTests.m; sourceTree = "<group>"; };
 		39F642E614E17095004B0900 /* FolderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderViewController.xib; sourceTree = "<group>"; };
+		39F6435814E2C82A004B0900 /* EventDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailController.xib; sourceTree = "<group>"; };
 		39F6F0E914D0510300DBA262 /* HistoryLogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogController.h; sourceTree = "<group>"; };
 		39F6F0EA14D0510300DBA262 /* HistoryLogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogController.m; sourceTree = "<group>"; };
 		39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogDetailController.h; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 		3969112214C9BD04006E8272 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				39F6435814E2C82A004B0900 /* EventDetailController.xib */,
 				39F6F10D14D1A2B800DBA262 /* HistoryLogDetailController.xib */,
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
 				39F642E614E17095004B0900 /* FolderViewController.xib */,
@@ -509,6 +512,7 @@
 				3969112614C9BD04006E8272 /* MainWindow.xib in Resources */,
 				39F6F10F14D1A2B800DBA262 /* HistoryLogDetailController.xib in Resources */,
 				39F642E714E17095004B0900 /* FolderViewController.xib in Resources */,
+				39F6435914E2C82A004B0900 /* EventDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

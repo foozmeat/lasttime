@@ -134,7 +134,7 @@
 //
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-	if ([textField tag] == 3)
+	if ([textField tag] == 1)
 	{
 		[textField setReturnKeyType:UIReturnKeyDone];
 	}
