@@ -23,10 +23,8 @@
 		39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39861AAA14BD526D006F30A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39861AA914BD526D006F30A0 /* main.m */; };
 		39861AB514BD5548006F30A0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
-		3988B96314DC31500010062E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988B96114DC31500010062E /* libTestFlight.a */; };
 		3988B9BC14E0214F0010062E /* EditableTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3988B9BB14E0214F0010062E /* EditableTableCell.m */; };
 		39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA477F14DAD8B300580EB9 /* EventDetailController.m */; };
-		39AA478214DAD8B300580EB9 /* EventDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39AA478014DAD8B300580EB9 /* EventDetailController.xib */; };
 		39AA478B14DC252400580EB9 /* FolderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA478914DC252400580EB9 /* FolderDetailController.m */; };
 		39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AED56614BD3B6600AE6625 /* CoreLocation.framework */; };
 		39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB614BD3515009C3615 /* UIKit.framework */; };
@@ -118,7 +116,6 @@
 		3988B9BB14E0214F0010062E /* EditableTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditableTableCell.m; path = Support/EditableTableCell.m; sourceTree = "<group>"; };
 		39AA477E14DAD8B300580EB9 /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailController.h; sourceTree = "<group>"; };
 		39AA477F14DAD8B300580EB9 /* EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailController.m; sourceTree = "<group>"; };
-		39AA478014DAD8B300580EB9 /* EventDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailController.xib; sourceTree = "<group>"; };
 		39AA478814DC252300580EB9 /* FolderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderDetailController.h; sourceTree = "<group>"; };
 		39AA478914DC252400580EB9 /* FolderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderDetailController.m; sourceTree = "<group>"; };
 		39AED56614BD3B6600AE6625 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -180,7 +177,6 @@
 				39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */,
 				39D70CB914BD3515009C3615 /* Foundation.framework in Frameworks */,
 				39D70CBB14BD3515009C3615 /* CoreGraphics.framework in Frameworks */,
-				3988B96314DC31500010062E /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +248,6 @@
 		3969112214C9BD04006E8272 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				39AA478014DAD8B300580EB9 /* EventDetailController.xib */,
 				39F6F10D14D1A2B800DBA262 /* HistoryLogDetailController.xib */,
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
 				39F642E614E17095004B0900 /* FolderViewController.xib */,
@@ -513,7 +508,6 @@
 				39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */,
 				3969112614C9BD04006E8272 /* MainWindow.xib in Resources */,
 				39F6F10F14D1A2B800DBA262 /* HistoryLogDetailController.xib in Resources */,
-				39AA478214DAD8B300580EB9 /* EventDetailController.xib in Resources */,
 				39F642E714E17095004B0900 /* FolderViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,11 +761,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
 				);
+				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -928,6 +924,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
 				);
+				OTHER_CFLAGS = "-DDEBUG=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "04CECD94-329D-4348-8318-C9C7412FB53F";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "04CECD94-329D-4348-8318-C9C7412FB53F";
