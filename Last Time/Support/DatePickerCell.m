@@ -47,12 +47,12 @@
 	
 	if (self.pickerView.superview == nil)
 	{
-		[self.delegate.view.window addSubview: self.pickerView];
+		[self.delegate.view addSubview: self.pickerView];
 
 		// size up the picker view to our screen and compute the start/end frame origin for our slide up animation
 		//
 		// compute the start frame
-		CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+		CGRect screenRect = self.delegate.view.frame;
 		CGSize pickerSize = [self.pickerView sizeThatFits:CGSizeZero];
 		CGRect startRect = CGRectMake(0.0,
 																	screenRect.origin.y + screenRect.size.height,
@@ -86,8 +86,6 @@
 	[[self textLabel] setText:[df stringFromDate:[pickerView date]]];
 	[delegate pickerDidChange:[pickerView date]];
 }
-
-
 
 + (DatePickerCell *)newDateCellWithTag:(NSInteger)tag withDelegate:(id)delegate
 {
