@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) UITextField *cellTextField;
 
++ (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag withDelegate:(id)delegate;
+
 @end

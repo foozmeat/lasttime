@@ -52,4 +52,18 @@
 	[self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
+//  Convenience method that returns a fully configured new instance of 
+//  EditableDetailCell.
+
++ (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag withDelegate:(id)delegate
+{
+	
+	EditableTableCell *cell = [[EditableTableCell alloc] initWithStyle:UITableViewCellStyleDefault 
+																										 reuseIdentifier:@"EditableTableCell"];
+	[[cell cellTextField] setDelegate:delegate];
+	[[cell cellTextField] setTag:tag];
+	
+	return cell;
+}
+
 @end

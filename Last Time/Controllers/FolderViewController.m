@@ -64,7 +64,7 @@
 
 - (void)addNewEvent
 {
-	EventDetailController *edc = [[EventDetailController alloc] initWithStyle:UITableViewStyleGrouped];
+	EventDetailController *edc = [[EventDetailController alloc] init];
 	
 	Event *e = [rootFolder createEvent];
 	[edc setEvent:e];

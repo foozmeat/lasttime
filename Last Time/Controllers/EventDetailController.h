@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DatePickerCell.h"
 
 @class Event;
 @class LogEntry;
 @class EditableTableCell;
+@class DatePickerCell;
 
 enum {
 	EventName = 0,
@@ -18,22 +20,15 @@ enum {
 	EventDate
 };
 
-@interface EventDetailController : UITableViewController <UITextFieldDelegate>
-{
-	NSDateFormatter *df;
-	IBOutlet UIDatePicker *datePicker;
-}
+@interface EventDetailController : UITableViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, DatePickerCellDelegate>
 
 @property (strong, nonatomic) Event *event;
 
 @property (nonatomic, strong) EditableTableCell *nameCell;
 @property (nonatomic, strong) EditableTableCell *noteCell;
-@property (nonatomic, strong) EditableTableCell *dateCell;
+@property (nonatomic, strong) DatePickerCell *dateCell;
 
-- (IBAction)dateChanged:(id)sender;
 - (BOOL)isModal;
-
-- (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag;
 
 //  Action Methods
 //

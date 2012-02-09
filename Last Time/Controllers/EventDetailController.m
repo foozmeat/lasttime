@@ -8,8 +8,10 @@
 
 #import "EventDetailController.h"
 #import "EditableTableCell.h"
+#import "DatePickerCell.h"
 
 @implementation EventDetailController
+@synthesize tableView;
 @synthesize nameCell, noteCell, dateCell;
 @synthesize event;
 
@@ -21,21 +23,6 @@
 	UIViewController *rootViewController = [viewControllers objectAtIndex:0];
 	
 	return rootViewController == self;
-}
-
-//  Convenience method that returns a fully configured new instance of 
-//  EditableDetailCell. Note that methods whose names begin with 'alloc' or
-//  'new', or whose names contain 'copy', should return a non-autoreleased
-//  instance with a retain count of one, as we do here.
-//
-- (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag
-{
-	EditableTableCell *cell = [[EditableTableCell alloc] initWithStyle:UITableViewCellStyleDefault 
-																										 reuseIdentifier:nil];
-	[[cell cellTextField] setDelegate:self];
-	[[cell cellTextField] setTag:tag];
-	
-	return cell;
 }
 
 #pragma mark -
@@ -56,12 +43,9 @@
 #pragma mark -
 #pragma mark UIViewController Methods
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) init
 {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	if (self) {
-		
-	}
+	self = [super initWithStyle:UITableViewStyleGrouped];
 	return self;
 }
 
@@ -95,19 +79,11 @@
 		
 	}
 	
-	[self setNameCell:[self newDetailCellWithTag:EventName]];
+	[self setNameCell:[EditableTableCell newDetailCellWithTag:EventName withDelegate:self]];
 	
 	if ([self isModal]) {
-		[self setNoteCell:[self newDetailCellWithTag:EventNote]];
-		[self setDateCell:[self newDetailCellWithTag:EventDate]];
-		
-		df = [[NSDateFormatter alloc] init];
-		[df setDateStyle:NSDateFormatterMediumStyle];
-		[df setTimeStyle:NSDateFormatterShortStyle];
-		
-		NSDate *now = [[NSDate alloc] init];
-		datePicker = [[UIDatePicker alloc] init];
-		[datePicker setDate:now];
+		[self setNoteCell:[EditableTableCell newDetailCellWithTag:EventNote withDelegate:self]];
+		[self setDateCell:[DatePickerCell newDateCellWithTag:EventDate withDelegate:self]];
 		
 	}
 	
@@ -155,11 +131,6 @@
 }
 
 
-- (void)viewDidUnload {
-	datePicker = nil;
-	[super viewDidUnload];
-}
-
 #pragma mark -
 #pragma mark UITextFieldDelegate Protocol
 //  Sets the label of the keyboard's return key to 'Done' when the insertion
@@ -167,14 +138,8 @@
 //
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-	if ([textField tag] == EventNote)	{
-	} else if ([textField tag] == EventDate) {
-		[textField setReturnKeyType:UIReturnKeyDone];
-		[textField setInputView:datePicker];
-
-//		return NO;
-	}
-	
+//	if ([textField tag] == EventNote)	{
+//	}
 	return YES;
 }
 
@@ -214,14 +179,20 @@
 		//  (See the implementation of -textFieldShouldBeginEditing:, above.)
 		//
 		NSInteger nextTag = [textField tag] + 1;
-		UIView *nextTextField = [[self tableView] viewWithTag:nextTag];
+		UIView *nextField = [[self tableView] viewWithTag:nextTag];
+
+		if ([nextField isMemberOfClass:[UITextField class]]) {
+			[nextField becomeFirstResponder];
+		} else if ([nextField isMemberOfClass:[UITableViewCell class]]) {
+
+			[self tableView:tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:nextTag inSection:0]];
+		}
 		
-		[nextTextField becomeFirstResponder];
 	}
 	else if ([self isModal])
 	{
 		//  We're in a modal navigation controller, which means the user is
-		//  adding a new book rather than editing an existing one.
+		//  adding a new event rather than editing an existing one.
 		//
 		[self save];
 	}
@@ -249,9 +220,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	//  Determine the text field's value. Each section of the table view
-	//  is mapped to a property of the book object we're displaying.
+	//  is mapped to a property of the event object we're displaying.
 	//
 	EditableTableCell *cell = nil;
+	DatePickerCell *dcell = nil;
 
 	switch ([indexPath row]) 
 	{
@@ -259,30 +231,37 @@
 			cell = [self nameCell];
 			[[cell cellTextField] setText:@""];
 			[[cell cellTextField] setPlaceholder:@"Event Name"];
+			return cell;
 			break;
 		case EventNote:
 			cell = [self noteCell];
 			[[cell cellTextField] setText:@""];
 			[[cell cellTextField] setPlaceholder:@"Event Note"];
+			return cell;
 			break;
 		case EventDate:
-			cell = [self dateCell];
-			[[cell cellTextField] setText:[df stringFromDate:[datePicker date]]];
+			dcell = [self dateCell];
+			return dcell;
 			break;
 		default:
 			cell = [[EditableTableCell alloc] init];
 			[[cell cellTextField] setText:@"Error"];
+			return cell;
 			break;
-
 	}
-	
-	return cell;
-	
 }
 
-- (IBAction)dateChanged:(id)sender
+#pragma mark -
+#pragma mark DatePickerDelegate
+
+- (void)pickerDidChange:(NSDate *)date
 {
-	[[dateCell cellTextField] setText:[df stringFromDate:[datePicker date]]];
+	NSLog(@"Date Change: %@", date);
 }
 
+- (void)endEditing
+{
+
+	[[self view] endEditing:YES];
+}
 @end
