@@ -14,7 +14,8 @@
 
 - (id)init
 {
-	return [self initWithEventName:@"" logEntries:[[NSMutableArray alloc] init]];
+	return [self initWithEventName:@"" 
+											logEntries:[[NSMutableArray alloc] initWithObjects:[[LogEntry alloc] init], nil]];
 }
 
 - (id)initWithEventName:(NSString *)name logEntries:(NSMutableArray *)entries
