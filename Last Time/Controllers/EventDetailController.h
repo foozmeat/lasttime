@@ -23,6 +23,7 @@ enum {
 @interface EventDetailController : UITableViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, DatePickerCellDelegate>
 
 @property (strong, nonatomic) Event *event;
+@property (strong, nonatomic) EventFolder *rootFolder;
 
 @property (nonatomic, strong) EditableTableCell *nameCell;
 @property (nonatomic, strong) EditableTableCell *noteCell;

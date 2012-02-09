@@ -11,9 +11,8 @@
 #import "DatePickerCell.h"
 
 @implementation EventDetailController
-@synthesize tableView;
 @synthesize nameCell, noteCell, dateCell;
-@synthesize event;
+@synthesize event, rootFolder;
 
 
 
@@ -30,8 +29,7 @@
 
 - (void)save
 {
-//	[rootFolder addItem:folder];
-	
+	[rootFolder addItem:event];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
@@ -57,6 +55,10 @@
 	//  a back button to the nav bar; instead we'll add Save and 
 	//  Cancel buttons.
 	//  
+
+	
+	[self setNameCell:[EditableTableCell newDetailCellWithTag:EventName withDelegate:self]];
+
 	if ([self isModal])
 	{
 		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] 
@@ -72,22 +74,16 @@
 																		 action:@selector(cancel)];
 		
 		[[self navigationItem] setLeftBarButtonItem:cancelButton];
+
 		[self setTitle:@"New Event"];
 		
-	} else {
-		[self setTitle:@"Edit Event"];
-		
-	}
-	
-	[self setNameCell:[EditableTableCell newDetailCellWithTag:EventName withDelegate:self]];
-	
-	if ([self isModal]) {
 		[self setNoteCell:[EditableTableCell newDetailCellWithTag:EventNote withDelegate:self]];
 		[self setDateCell:[DatePickerCell newDateCellWithTag:EventDate withDelegate:self]];
-		
+
+	} else {
+		[self setTitle:@"Edit Event"];
 	}
 	
-
 }
 
 //  Override inherited method to automatically place the insertion point in the
@@ -114,20 +110,22 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
+	[[self view] endEditing:YES];
+
 	
-	for (NSInteger section = 0; section < [[self tableView] numberOfSections]; section++)
-	{
-		NSUInteger indexes[] = { section, 0 };
-		NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
-																												length:2];
-		
-		EditableTableCell *cell = (EditableTableCell *)[[self tableView]
-																										cellForRowAtIndexPath:indexPath];
-		if ([[cell cellTextField] isFirstResponder])
-		{
-			[[cell cellTextField] resignFirstResponder];
-		}
-	}
+//	for (NSInteger section = 0; section < [[self tableView] numberOfSections]; section++)
+//	{
+//		NSUInteger indexes[] = { section, 0 };
+//		NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
+//																												length:2];
+//		
+//		EditableTableCell *cell = (EditableTableCell *)[[self tableView]
+//																										cellForRowAtIndexPath:indexPath];
+//		if ([[cell cellTextField] isFirstResponder])
+//		{
+//			[[cell cellTextField] resignFirstResponder];
+//		}
+//	}
 }
 
 
@@ -138,8 +136,9 @@
 //
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-//	if ([textField tag] == EventNote)	{
-//	}
+	if ([textField tag] == EventName && ![self isModal]) {
+		[textField setReturnKeyType:UIReturnKeyDone];
+	}
 	return YES;
 }
 
@@ -155,7 +154,12 @@
 	
 	switch (tag)
 	{
-		case EventName:     [event setEventName:text];          break;
+		case EventName:
+			[event setEventName:text];
+			break;
+		case EventNote:
+			[[[event logEntryCollection] objectAtIndex:0] setLogEntryNote:text];
+			break;
 	}
 }
 
@@ -183,9 +187,9 @@
 
 		if ([nextField isMemberOfClass:[UITextField class]]) {
 			[nextField becomeFirstResponder];
-		} else if ([nextField isMemberOfClass:[UITableViewCell class]]) {
-
-			[self tableView:tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:nextTag inSection:0]];
+		} else {
+//			[nextField becomeFirstResponder];
+//			[self tableView:[self tableView] didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:nextTag inSection:0]];
 		}
 		
 	}
@@ -214,7 +218,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 3;
+	if ([self isModal]) {
+		return 3;
+	} else {
+		return 1;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -229,13 +237,12 @@
 	{
 		case EventName:
 			cell = [self nameCell];
-			[[cell cellTextField] setText:@""];
+			[[cell cellTextField] setText:[event eventName]];
 			[[cell cellTextField] setPlaceholder:@"Event Name"];
 			return cell;
 			break;
 		case EventNote:
 			cell = [self noteCell];
-			[[cell cellTextField] setText:@""];
 			[[cell cellTextField] setPlaceholder:@"Event Note"];
 			return cell;
 			break;
@@ -256,6 +263,8 @@
 
 - (void)pickerDidChange:(NSDate *)date
 {
+	[[[event logEntryCollection] objectAtIndex:0] setLogEntryDateOccured:date];
+
 	NSLog(@"Date Change: %@", date);
 }
 
