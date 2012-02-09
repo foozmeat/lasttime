@@ -47,7 +47,7 @@
 	
 	if (self.pickerView.superview == nil)
 	{
-		[self.delegate.view addSubview: self.pickerView];
+		[self.delegate.view.superview addSubview: self.pickerView];
 
 		// size up the picker view to our screen and compute the start/end frame origin for our slide up animation
 		//
