@@ -21,21 +21,6 @@
 	return rootViewController == self;
 }
 
-//  Convenience method that returns a fully configured new instance of 
-//  EditableDetailCell. Note that methods whose names begin with 'alloc' or
-//  'new', or whose names contain 'copy', should return a non-autoreleased
-//  instance with a retain count of one, as we do here.
-//
-- (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag
-{
-	EditableTableCell *cell = [[EditableTableCell alloc] initWithStyle:UITableViewCellStyleDefault 
-																											 reuseIdentifier:nil];
-	[[cell cellTextField] setDelegate:self];
-	[[cell cellTextField] setTag:tag];
-	
-	return cell;
-}
-
 #pragma mark -
 #pragma mark Action Methods
 
@@ -84,7 +69,7 @@
 		
 	}
 	
-	[self setNameCell:[self newDetailCellWithTag:FolderName]];
+	[self setNameCell:[EditableTableCell newDetailCellWithTag:FolderName withDelegate:self]];
 }
 
 //  Override inherited method to automatically place the insertion point in the

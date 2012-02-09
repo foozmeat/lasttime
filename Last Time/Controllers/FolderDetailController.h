@@ -26,8 +26,6 @@ enum {
 
 - (BOOL)isModal;
 
-- (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag;
-
 //  Action Methods
 //
 - (void)save;
