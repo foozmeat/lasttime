@@ -39,6 +39,12 @@
 #pragma mark -
 #pragma mark UIViewController Methods
 
+- (id) init
+{
+	self = [super initWithStyle:UITableViewStyleGrouped];
+	return self;
+}
+
 - (void)viewDidLoad
 {
 	//  If the user clicked the '+' button in the list view, we're
