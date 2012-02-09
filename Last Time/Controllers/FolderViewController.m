@@ -66,22 +66,20 @@
 {
 	EventDetailController *edc = [[EventDetailController alloc] init];
 	
-	Event *e = [rootFolder createEvent];
-	[edc setEvent:e];
+	[edc setEvent:[[Event alloc] init]];
+	[edc setRootFolder:rootFolder];
 	
 	UINavigationController *newNavController = [[UINavigationController alloc]
 																							initWithRootViewController:edc];
 	[[self navigationController] presentModalViewController:newNavController
 																								 animated:YES];
-
-//	[[self navigationController] pushViewController:edc animated:YES];
 	
 }
 
 - (void)addNewFolder
 {
 	// Make new folder
-	FolderDetailController *fdc = [[FolderDetailController alloc] initWithStyle:UITableViewStyleGrouped];
+	FolderDetailController *fdc = [[FolderDetailController alloc] init];
 	[fdc setFolder:[[EventFolder alloc] init]];
 	[fdc setRootFolder:rootFolder];
 	
@@ -127,16 +125,27 @@
 	id item = [[rootFolder allItems] objectAtIndex:[indexPath row]];
 		
 	if ([item isMemberOfClass:[Event class]]) {
-		EventController *ec = [[EventController alloc] init];
 		
-		[ec setEvent:item];
+		if ([folderTableView isEditing]) {
+			EventDetailController *edc = [[EventDetailController alloc] init];
+			[edc setEvent:item];
+			[edc setRootFolder:rootFolder];
+			[[self navigationController] pushViewController:edc animated:YES];
+			
+			[folderTableView setEditing:NO animated:NO];
+
+		} else {
+			
+			EventController *ec = [[EventController alloc] init];
+			[ec setEvent:item];			
+			[[self navigationController] pushViewController:ec animated:YES];
+		}
 		
-		[[self navigationController] pushViewController:ec animated:YES];
 		
 	} else if ([item isMemberOfClass:[EventFolder class]]) {
 		
 		if ([folderTableView isEditing]) {
-			FolderDetailController *fdc = [[FolderDetailController alloc] initWithStyle:UITableViewStyleGrouped];
+			FolderDetailController *fdc = [[FolderDetailController alloc] init];
 			[fdc setFolder:item];
 			[fdc setRootFolder:rootFolder];
 			[[self navigationController] pushViewController:fdc animated:YES];
@@ -144,9 +153,9 @@
 			[folderTableView setEditing:NO animated:NO];
 			
 		} else {
-			FolderViewController *fdc = [[FolderViewController alloc] init];
-			[fdc setRootFolder:item];
-			[[self navigationController] pushViewController:fdc animated:YES];
+			FolderViewController *fvc = [[FolderViewController alloc] init];
+			[fvc setRootFolder:item];
+			[[self navigationController] pushViewController:fvc animated:YES];
 			
 		}
 	}
