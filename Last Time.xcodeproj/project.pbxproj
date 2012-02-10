@@ -48,7 +48,6 @@
 		39F6436014E40AAE004B0900 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6435F14E40AAE004B0900 /* DatePickerCell.m */; };
 		39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F0EA14D0510300DBA262 /* HistoryLogController.m */; };
 		39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */; };
-		39F6F10F14D1A2B800DBA262 /* HistoryLogDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39F6F10D14D1A2B800DBA262 /* HistoryLogDetailController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,7 +143,6 @@
 		39F6F0EA14D0510300DBA262 /* HistoryLogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogController.m; sourceTree = "<group>"; };
 		39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogDetailController.h; sourceTree = "<group>"; };
 		39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogDetailController.m; sourceTree = "<group>"; };
-		39F6F10D14D1A2B800DBA262 /* HistoryLogDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryLogDetailController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,7 +254,6 @@
 		3969112214C9BD04006E8272 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				39F6F10D14D1A2B800DBA262 /* HistoryLogDetailController.xib */,
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
 				39F642E614E17095004B0900 /* FolderViewController.xib */,
 			);
@@ -517,7 +514,6 @@
 			files = (
 				39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */,
 				3969112614C9BD04006E8272 /* MainWindow.xib in Resources */,
-				39F6F10F14D1A2B800DBA262 /* HistoryLogDetailController.xib in Resources */,
 				39F642E714E17095004B0900 /* FolderViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

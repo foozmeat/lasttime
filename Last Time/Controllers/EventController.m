@@ -40,14 +40,13 @@
 {
 	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 	
-	LogEntry *le = [[LogEntry alloc] init];
-	[[event logEntryCollection] addObject:le];
-	[event setNeedsSorting:YES];
-
-	[hldc setLogEntry:le];
+	[hldc setLogEntry:[[LogEntry alloc] init]];
+	[hldc setEvent:event];
 	
-	[[self navigationController] pushViewController:hldc animated:YES];
-	
+	UINavigationController *newNavController = [[UINavigationController alloc]
+																							initWithRootViewController:hldc];
+	[[self navigationController] presentModalViewController:newNavController
+																								 animated:YES];
 }
 
 #pragma mark TableView Delegate methods

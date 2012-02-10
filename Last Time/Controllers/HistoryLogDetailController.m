@@ -7,68 +7,122 @@
 //
 
 #import "HistoryLogDetailController.h"
+#import "EditableTableCell.h"
+#import "DatePickerCell.h"
 
 @implementation HistoryLogDetailController
-@synthesize logEntry;
+@synthesize logEntry, event;
+@synthesize noteCell, dateCell;
 
-- (void)viewDidLoad
+#pragma mark -
+#pragma mark Action Methods
+
+- (void)save
 {
-	df = [[NSDateFormatter alloc] init];
-	[df setDateStyle:NSDateFormatterMediumStyle];
-	[df setTimeStyle:NSDateFormatterShortStyle];
-	
+	[event addLogEntry:logEntry];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-	[super viewWillAppear:animated];
-	
-	noteField.text = [logEntry logEntryNote];	
-	[dateButton setTitle:[df stringFromDate:[logEntry logEntryDateOccured]] forState:UIControlStateNormal];
-	[datePicker setDate:[logEntry logEntryDateOccured]];
+#pragma mark -
+#pragma mark UIViewController Methods
 
+- (void)viewFinishedLoading
+{
+	[self setNoteCell:[EditableTableCell newDetailCellWithTag:EventNote withDelegate:self]];
+	[self setDateCell:[DatePickerCell newDateCellWithTag:EventDate withDelegate:self]];
+	
+	
+	if ([self isModal]) {
+		[self setTitle:@"New Entry"];		
+	} else {
+		[self setTitle:@"Edit Entry"];
+	}
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+#pragma mark -
+#pragma mark UITextFieldDelegate Protocol
+//  Sets the label of the keyboard's return key to 'Done' when the insertion
+//  point moves to the table view's last field.
+//
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-	[super viewWillDisappear:animated];
-	
-	[[self view] endEditing:YES];
-	
-	[logEntry setLogEntryNote:[noteField text]];
-	// Set the date in the picker's dateChanged: action
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-	[noteField resignFirstResponder];
+//	if ([textField tag] == EventName && ![self isModal]) {
+//		[textField setReturnKeyType:UIReturnKeyDone];
+//	}
 	return YES;
 }
 
-#pragma mark IBActions
-
-- (IBAction)backgroundTapped:(id)sender {
-	[[self view] endEditing:YES];
-	[datePicker setHidden:YES];
-}
-
-- (IBAction)dateButtonPressed:(id)sender
+//  UITextField sends this message to its delegate after resigning
+//  firstResponder status. Use this as a hook to save the text field's
+//  value to the corresponding property of the model object.
+//  
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
-	[[self view] endEditing:YES];
-	[datePicker setHidden:NO];
+	
+	NSString *text = [textField text];
+	NSUInteger tag = [textField tag];
+	
+	switch (tag)
+	{
+		case EventNote:
+			[logEntry setLogEntryNote:text];
+			break;
+	}
 }
 
-- (IBAction)dateChanged:(id)sender
+#pragma mark -
+#pragma mark UITableViewDataSource Protocol
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	[dateButton setTitle:[df stringFromDate:[datePicker date]] forState:UIControlStateNormal];
-	[logEntry setLogEntryDateOccured:[datePicker date]];
-
+	return 1;
 }
 
-- (void)viewDidUnload {
-	noteField = nil;
-	dateButton = nil;
-	datePicker = nil;
-	[super viewDidUnload];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return 2;
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+	//  Determine the text field's value. Each section of the table view
+	//  is mapped to a property of the event object we're displaying.
+	//
+	EditableTableCell *cell = nil;
+	DatePickerCell *dcell = nil;
+	
+	switch ([indexPath row]) 
+	{
+		case EventNote:
+			cell = [self noteCell];
+			[[cell cellTextField] setText:[logEntry logEntryNote]];
+			[[cell cellTextField] setPlaceholder:@"Happy!"];
+			[[cell textLabel] setText:@"Note"];
+			return cell;
+			break;
+		case EventDate:
+			dcell = [self dateCell];
+			[[dcell pickerView] setDate:[logEntry logEntryDateOccured]];
+			[dcell dateChanged:self];
+			[[dcell textLabel] setText:@"Date"];
+			return dcell;
+			break;
+		default:
+			cell = [[EditableTableCell alloc] init];
+			[[cell cellTextField] setText:@"Error"];
+			return cell;
+			break;
+	}
+}
+
+#pragma mark -
+#pragma mark DatePickerDelegate
+
+- (void)pickerDidChange:(NSDate *)date
+{
+	[logEntry setLogEntryDateOccured:date];
+
+	NSLog(@"Date Change: %@", date);
+}
+
 @end

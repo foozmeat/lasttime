@@ -11,8 +11,6 @@
 
 @class Event;
 @class LogEntry;
-@class EditableTableCell;
-@class DatePickerCell;
 
 enum {
 	EventName = 0,

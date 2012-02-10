@@ -7,20 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomTableViewController.h"
 
 @class LogEntry;
 
-@interface HistoryLogDetailController : UIViewController <UITextFieldDelegate>
-{
-	NSDateFormatter *df;
-	IBOutlet UITextField *noteField;
-	IBOutlet UIButton *dateButton;
-	IBOutlet UIDatePicker *datePicker;
-}
+enum {
+	EventNote = 0,
+	EventDate
+};
 
-@property (nonatomic, assign) LogEntry *logEntry;
+@interface HistoryLogDetailController : CustomTableViewController
 
-- (IBAction)backgroundTapped:(id)sender;
-- (IBAction)dateButtonPressed:(id)sender;
-- (IBAction)dateChanged:(id)sender;
+@property (nonatomic, strong) LogEntry *logEntry;
+@property (nonatomic, strong) Event *event;
+@property (nonatomic, strong) EditableTableCell *noteCell;
+@property (nonatomic, strong) DatePickerCell *dateCell;
+
 @end
