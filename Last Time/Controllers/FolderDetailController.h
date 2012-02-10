@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomTableViewController.h"
 
 @class EditableTableCell;
 @class EventFolder;
@@ -15,20 +16,10 @@ enum {
 	FolderName
 };
 
-@interface FolderDetailController : UITableViewController <UITextFieldDelegate>
-{
-	
-}
+@interface FolderDetailController : CustomTableViewController
 
 @property (strong, nonatomic) EventFolder *folder;
 @property (strong, nonatomic) EventFolder *rootFolder;
 @property (nonatomic, retain) EditableTableCell *nameCell;
-
-- (BOOL)isModal;
-
-//  Action Methods
-//
-- (void)save;
-- (void)cancel;
 
 @end
