@@ -14,6 +14,8 @@
 
 - (BOOL)isModal;
 
+- (void)viewFinishedLoading;
+
 //  Action Methods
 //
 - (void)save;

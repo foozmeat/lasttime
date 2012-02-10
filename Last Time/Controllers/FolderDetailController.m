@@ -26,36 +26,14 @@
 #pragma mark -
 #pragma mark UIViewController Methods
 
-- (void)viewDidLoad
+- (void)viewFinishedLoading
 {
-	//  If the user clicked the '+' button in the list view, we're
-	//  creating a new entry rather than modifying an existing one, so 
-	//  we're in a modal nav controller. Modal nav controllers don't add
-	//  a back button to the nav bar; instead we'll add Save and 
-	//  Cancel buttons.
-	//  
-	if ([self isModal])
-	{
-		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] 
-																	 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-																	 target:self
-																	 action:@selector(save)];
-		
-		[[self navigationItem] setRightBarButtonItem:saveButton];
-		
-		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] 
-																		 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-																		 target:self
-																		 action:@selector(cancel)];
-		
-		[[self navigationItem] setLeftBarButtonItem:cancelButton];
+	
+	if ([self isModal]) {
 		[self setTitle:@"New Folder"];
-
 	} else {
 		[self setTitle:@"Edit Folder"];
-		
 	}
-	
 	[self setNameCell:[EditableTableCell newDetailCellWithTag:FolderName withDelegate:self]];
 }
 
@@ -110,22 +88,21 @@
 	//
 	EditableTableCell *cell = nil;
 	NSString *text = nil;
-	NSString *placeholder = nil;
+	NSString *label = nil;
 	
-	NSUInteger section = [indexPath section];
-	switch (section) 
+	switch ([indexPath row]) 
 	{
 		case FolderName:
 			cell = [self nameCell];
+			[[cell cellTextField] setPlaceholder:@"Health, Social, Pets"];
 			text = [folder folderName];
-			placeholder = @"Folder Name";
+			label = @"Name";
 			break;
 	}
 	
 	UITextField *textField = [cell cellTextField];
 	[textField setText:text];
-	[textField setPlaceholder:placeholder];
-		
+	[[cell textLabel] setText:label];
 	return cell;
 
 }

@@ -26,43 +26,19 @@
 #pragma mark -
 #pragma mark UIViewController Methods
 
-- (void)viewDidLoad
+- (void)viewFinishedLoading
 {
-	//  If the user clicked the '+' button in the list view, we're
-	//  creating a new entry rather than modifying an existing one, so 
-	//  we're in a modal nav controller. Modal nav controllers don't add
-	//  a back button to the nav bar; instead we'll add Save and 
-	//  Cancel buttons.
-	//  
-
-	
 	[self setNameCell:[EditableTableCell newDetailCellWithTag:EventName withDelegate:self]];
 
-	if ([self isModal])
-	{
-		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] 
-																	 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-																	 target:self
-																	 action:@selector(save)];
-		
-		[[self navigationItem] setRightBarButtonItem:saveButton];
-		
-		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] 
-																		 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-																		 target:self
-																		 action:@selector(cancel)];
-		
-		[[self navigationItem] setLeftBarButtonItem:cancelButton];
-
+	if ([self isModal]) {
 		[self setTitle:@"New Event"];
 		
 		[self setNoteCell:[EditableTableCell newDetailCellWithTag:EventNote withDelegate:self]];
 		[self setDateCell:[DatePickerCell newDateCellWithTag:EventDate withDelegate:self]];
-
+		
 	} else {
 		[self setTitle:@"Edit Event"];
 	}
-	
 }
 
 #pragma mark -
@@ -129,16 +105,19 @@
 		case EventName:
 			cell = [self nameCell];
 			[[cell cellTextField] setText:[event eventName]];
-			[[cell cellTextField] setPlaceholder:@"Event Name"];
+			[[cell cellTextField] setPlaceholder:@"Got a haircut"];
+			[[cell textLabel] setText:@"Name"];
 			return cell;
 			break;
 		case EventNote:
 			cell = [self noteCell];
-			[[cell cellTextField] setPlaceholder:@"Event Note"];
+			[[cell cellTextField] setPlaceholder:@"Happy!"];
+			[[cell textLabel] setText:@"Note"];
 			return cell;
 			break;
 		case EventDate:
 			dcell = [self dateCell];
+			[[dcell textLabel] setText:@"Date"];
 			return dcell;
 			break;
 		default:

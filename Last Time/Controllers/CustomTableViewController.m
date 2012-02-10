@@ -21,6 +21,43 @@
 }
 
 #pragma mark -
+#pragma mark UIViewController Methods
+
+- (void)viewDidLoad
+{
+	//  If the user clicked the '+' button in the list view, we're
+	//  creating a new entry rather than modifying an existing one, so 
+	//  we're in a modal nav controller. Modal nav controllers don't add
+	//  a back button to the nav bar; instead we'll add Save and 
+	//  Cancel buttons.
+	//  
+	
+	if ([self isModal]) {
+		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] 
+																	 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+																	 target:self
+																	 action:@selector(save)];
+		[saveButton setEnabled:NO];
+		[[self navigationItem] setRightBarButtonItem:saveButton];
+		
+		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] 
+																		 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+																		 target:self
+																		 action:@selector(cancel)];
+		
+		[[self navigationItem] setLeftBarButtonItem:cancelButton];
+		
+	}
+	
+	[self viewFinishedLoading];
+}
+
+- (void)viewFinishedLoading
+{
+	
+}
+
+#pragma mark -
 #pragma mark Action Methods
 
 - (void)save
@@ -68,24 +105,30 @@
 	[super viewWillDisappear:animated];
 	[[self view] endEditing:YES];
 	
-//	
-//	for (NSInteger section = 0; section < [[self tableView] numberOfSections]; section++)
-//	{
-//		NSUInteger indexes[] = { section, 0 };
-//		NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
-//																												length:2];
-//		
-//		EditableTableCell *cell = (EditableTableCell *)[[self tableView]
-//																											cellForRowAtIndexPath:indexPath];
-//		if ([[cell cellTextField] isFirstResponder])
-//		{
-//			[[cell cellTextField] resignFirstResponder];
-//		}
-//	}
 }
 
 #pragma mark -
 #pragma mark UITextFieldDelegate Protocol
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+	
+	if ([self isModal] && [textField tag] == 0) {
+		NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+		BOOL isFieldEmpty = [newText isEqualToString:@""];
+		self.navigationItem.rightBarButtonItem.enabled = !isFieldEmpty;
+	}
+	
+	return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+	if ([self isModal] && [textField tag] == 0) {
+		self.navigationItem.rightBarButtonItem.enabled = NO;
+	}
+	return YES;
+}
 
 
 //  UITextField sends this message to its delegate when the return key
