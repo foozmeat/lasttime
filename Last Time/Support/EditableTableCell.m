@@ -23,14 +23,13 @@
 		return nil;
 	}
 	
-	CGRect bounds = [[self contentView] bounds];
-	CGRect rect = CGRectInset(bounds, 20.0, 10.0);
+	CGRect rect = CGRectMake(83, 10, self.contentView.bounds.size.width-113, 20);
 	UITextField *textField = [[UITextField alloc] initWithFrame:rect];
 	
 	//  Set the keyboard's return key label to 'Next'.
 	//
 	[textField setReturnKeyType:UIReturnKeyNext];
-	
+	[textField setTextAlignment:UITextAlignmentRight];
 	//  Make the clear button appear automatically.
 	[textField setClearButtonMode:UITextFieldViewModeWhileEditing];
 	[textField setBackgroundColor:[UIColor clearColor]];
@@ -58,7 +57,7 @@
 + (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag withDelegate:(id)delegate
 {
 	
-	EditableTableCell *cell = [[EditableTableCell alloc] initWithStyle:UITableViewCellStyleDefault 
+	EditableTableCell *cell = [[EditableTableCell alloc] initWithStyle:UITableViewCellStyleValue1 
 																										 reuseIdentifier:@"EditableTableCell"];
 	[[cell cellTextField] setDelegate:delegate];
 	[[cell cellTextField] setTag:tag];

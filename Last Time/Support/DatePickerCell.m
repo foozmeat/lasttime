@@ -21,12 +21,12 @@
 			
 			pickerView = [[UIDatePicker alloc] init];
 			
-			
 			NSDate *now = [[NSDate alloc] init];
 			[pickerView setDate:now];
 			[pickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
 			
-			[[self textLabel] setText:[df stringFromDate:[pickerView date]]];
+			[[self detailTextLabel] setText:[df stringFromDate:[pickerView date]]];
+			[[self detailTextLabel] setTextColor:[UIColor blackColor]];
 
     }
     return self;
@@ -83,13 +83,13 @@
 
 - (void)dateChanged:(id)sender
 {
-	[[self textLabel] setText:[df stringFromDate:[pickerView date]]];
+	[[self detailTextLabel] setText:[df stringFromDate:[pickerView date]]];
 	[delegate pickerDidChange:[pickerView date]];
 }
 
 + (DatePickerCell *)newDateCellWithTag:(NSInteger)tag withDelegate:(id)delegate
 {
-	DatePickerCell *cell = [[DatePickerCell alloc] initWithStyle:UITableViewCellStyleDefault 
+	DatePickerCell *cell = [[DatePickerCell alloc] initWithStyle:UITableViewCellStyleValue1 
 																							 reuseIdentifier:@"DatePickerCell"];
 	
 	[cell setDelegate:delegate];
