@@ -10,11 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface LogEntry : NSObject
-{
-	NSDate *logEntryDateOccured;
-	NSString *logEntryNote;
-	CLLocationCoordinate2D logEntryLocation;
-}
 
 @property (nonatomic, strong) NSDate *logEntryDateOccured;
 @property (nonatomic, strong) NSString *logEntryNote;

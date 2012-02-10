@@ -10,11 +10,7 @@
 #import "LogEntry.h"
 
 @interface Event : NSObject
-{
-	NSString *eventName;
-	NSMutableArray *logEntryCollection;
-	BOOL needsSorting;
-}
+
 
 @property (nonatomic, strong) NSString *eventName;
 @property (nonatomic, strong) NSMutableArray *logEntryCollection;

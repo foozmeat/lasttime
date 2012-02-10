@@ -11,9 +11,7 @@
 
 @interface EventFolder : NSObject
 {
-	NSString *folderName;
 	NSMutableArray *allItems;
-	BOOL isRoot;
 	BOOL needsSorting;
 }
 
