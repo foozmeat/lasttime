@@ -171,6 +171,7 @@
 
 		if ([[rootFolder allItems] count] == 0) {
 			[[self navigationItem] setRightBarButtonItem:nil];
+			[self setEditing:NO animated:YES];
 		}
 
 	}
