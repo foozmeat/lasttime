@@ -54,8 +54,7 @@
 	[[self folderTableView] reloadData];
 }
 
-#pragma mark -
-#pragma mark IBActions
+#pragma mark - IBActions
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate
 {

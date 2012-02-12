@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EventController : UITableViewController
+@interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) Event *event;
 
 - (void)addNewItem:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UITableView *eventTableView;
+- (IBAction)addNewItem:(id)sender;
 @end

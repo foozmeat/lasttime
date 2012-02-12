@@ -10,22 +10,14 @@
 #import "HistoryLogDetailController.h"
 
 @implementation EventController
+@synthesize eventTableView;
 @synthesize event;
 
-- (id) init
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-	self = [super initWithStyle:UITableViewStyleGrouped];
-	
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
-		UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
-																																				 target:self 
-																																				 action:@selector(addNewItem:)];
-		
-		[[self navigationItem] setRightBarButtonItem:bbi];		
-		[[self navigationItem] setTitle:[event eventName]];
-		
 	}
-	
 	return self;
 }
 
@@ -34,8 +26,8 @@
 	return [self init];
 }
 
-#pragma mark Model methods
-- (void)addNewItem:(id)sender
+#pragma mark - Model methods
+- (IBAction)addNewItem:(id)sender
 {
 	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 	
@@ -48,7 +40,7 @@
 																								 animated:YES];
 }
 
-#pragma mark TableView Delegate methods
+#pragma mark - TableView Delegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -171,21 +163,23 @@
 	[super viewWillAppear:animated];
 
 	[[self navigationItem] setTitle:[event eventName]];
-	[[self tableView] reloadData];
+	[[self eventTableView] reloadData];
 
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	[self setEventTableView:nil];
+	[super viewDidLoad];
+	// Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+	[self setEventTableView:nil];
+	[super viewDidUnload];
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
