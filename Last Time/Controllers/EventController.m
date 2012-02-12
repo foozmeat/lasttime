@@ -7,7 +7,6 @@
 //
 
 #import "EventController.h"
-#import "HistoryLogController.h"
 #import "HistoryLogDetailController.h"
 
 @implementation EventController
@@ -54,11 +53,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	if (([indexPath section] == 2 && [event showAverage]) || ([indexPath section] == 1 && ![event showAverage]) ) {
+	if (([indexPath section] == 2 && [event showAverage]) || 
+			([indexPath section] == 1 && ![event showAverage]) ||
+			[indexPath section] == 0) {
 		
-		HistoryLogController *hlc = [[HistoryLogController alloc] init];
-		[hlc setEvent:event];
-		[[self navigationController] pushViewController:hlc animated:YES];
+		HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
+		
+		[hldc setLogEntry:[[event logEntryCollection] objectAtIndex:[indexPath row]]];
+		
+		[[self navigationController] pushViewController:hldc animated:YES];
 
 	}
 	
@@ -66,16 +69,25 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		id item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
+		[event removeItem:item];
+		
+		[tableView reloadData];
+//		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+				
+	}
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
 	if (section == 0) {
 		return @"Previously";
-	} else if (section == 1) {
+	} else if (section == 1 && [event showAverage]) {
 		return @"";
-	} else if (section == 2) {
-		return @"";
+	} else if ((section == 1 && ![event showAverage]) || 
+						 (section == 2 && [event showAverage])) {
+		return @"History";
 	} else {
 		return @"";
 	}
@@ -83,6 +95,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+	
 	if ([event showAverage]) {
 		return 3;
 	} else {
@@ -96,8 +109,9 @@
 		return 1;
 	} else if (section == 1 && [event showAverage]) {
 		return 2;
-	} else if (section == 2 || ![event showAverage]) {
-		return 1;
+	} else if ((section == 1 && ![event showAverage]) || 
+						 (section == 2 && [event showAverage])) {
+		return [[event logEntryCollection] count];
 	} else {
 		return 0;
 	}
@@ -112,8 +126,11 @@
 	}
 	
 	if ([indexPath section] == 0) {
-		cell.textLabel.text = [event subtitle];
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+		if ([[event logEntryCollection] count] == 0) {
+			cell.textLabel.text = @"No Entries";
+		} else {
+			cell.textLabel.text = [event subtitle];
+		}
 	} else if ([indexPath section] == 1 && [event showAverage]) {
 		
 		if ([indexPath row] == 0) {
@@ -132,9 +149,14 @@
 			cell.detailTextLabel.text = [df stringFromDate:[event nextTime]];
 			
 		}
-	} else if ([indexPath section] == 2 || ![event showAverage]) {
-		cell.textLabel.text = [[NSString alloc] initWithFormat:@"History Log (%i)", [[event logEntryCollection] count]];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	} else if (([indexPath section] == 1 && ![event showAverage]) || 
+						 ([indexPath section] == 2 && [event showAverage])) {
+		
+		id item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
+		
+		[[cell textLabel] setText:[item logEntryNote]];
+		[[cell detailTextLabel] setText:[item subtitle]];
+
 	}
 	
 	

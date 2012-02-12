@@ -46,7 +46,6 @@
 		39F642CF14E0FD16004B0900 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		39F642E714E17095004B0900 /* FolderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39F642E614E17095004B0900 /* FolderViewController.xib */; };
 		39F6436014E40AAE004B0900 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6435F14E40AAE004B0900 /* DatePickerCell.m */; };
-		39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F0EA14D0510300DBA262 /* HistoryLogController.m */; };
 		39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */; };
 /* End PBXBuildFile section */
 
@@ -139,8 +138,6 @@
 		39F642E614E17095004B0900 /* FolderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderViewController.xib; sourceTree = "<group>"; };
 		39F6435E14E40AAE004B0900 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerCell.h; path = Support/DatePickerCell.h; sourceTree = "<group>"; };
 		39F6435F14E40AAE004B0900 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerCell.m; path = Support/DatePickerCell.m; sourceTree = "<group>"; };
-		39F6F0E914D0510300DBA262 /* HistoryLogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogController.h; sourceTree = "<group>"; };
-		39F6F0EA14D0510300DBA262 /* HistoryLogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogController.m; sourceTree = "<group>"; };
 		39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogDetailController.h; sourceTree = "<group>"; };
 		39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogDetailController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,8 +227,6 @@
 				3969111214C9BCF0006E8272 /* FolderViewController.m */,
 				39AA478814DC252300580EB9 /* FolderDetailController.h */,
 				39AA478914DC252400580EB9 /* FolderDetailController.m */,
-				39F6F0E914D0510300DBA262 /* HistoryLogController.h */,
-				39F6F0EA14D0510300DBA262 /* HistoryLogController.m */,
 				39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */,
 				39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */,
 			);
@@ -586,7 +581,6 @@
 				3969111F14C9BCF8006E8272 /* Event.m in Sources */,
 				3969112014C9BCF8006E8272 /* EventFolder.m in Sources */,
 				3969112114C9BCF8006E8272 /* LogEntry.m in Sources */,
-				39F6F0EB14D0510300DBA262 /* HistoryLogController.m in Sources */,
 				39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */,
 				39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */,
 				39AA478B14DC252400580EB9 /* FolderDetailController.m in Sources */,
