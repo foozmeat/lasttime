@@ -183,13 +183,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-	
-	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
-	}
+	NSString *reuseString = nil;
 	
 	id item = [[rootFolder allItems] objectAtIndex:[indexPath row]];
+
+	if ([item isMemberOfClass:[EventFolder class]]) {
+		reuseString = @"FolderCell";
+	} else {
+		reuseString = @"EventCell";
+	}
+	
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
+
+	if (!cell) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseString];
+	}
 	
 	if ([item isMemberOfClass:[EventFolder class]]) {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
