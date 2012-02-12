@@ -58,6 +58,8 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate
 {
+	[super setEditing:editing animated:animate];
+
 	[folderTableView setEditing:editing animated:animate];
 }
 
@@ -116,7 +118,6 @@
 
 #pragma mark -
 #pragma mark TableView Delegate methods
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
