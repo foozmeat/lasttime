@@ -45,14 +45,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	if (([indexPath section] == 2 && [event showAverage]) || 
-			([indexPath section] == 1 && ![event showAverage]) ||
-			[indexPath section] == 0) {
+	if (([indexPath section] == 1 && [event showAverage]) || 
+			([indexPath section] == 0 && ![event showAverage])) {
 		
 		HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 		
 		[hldc setLogEntry:[[event logEntryCollection] objectAtIndex:[indexPath row]]];
 		
+		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 		[[self navigationController] pushViewController:hldc animated:YES];
 
 	}
@@ -73,12 +74,10 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	if (section == 0) {
-		return @"Previously";
-	} else if (section == 1 && [event showAverage]) {
+	if (section == 0 && [event showAverage]) {
 		return @"";
-	} else if ((section == 1 && ![event showAverage]) || 
-						 (section == 2 && [event showAverage])) {
+	} else if ((section == 0 && ![event showAverage]) || 
+						 (section == 1 && [event showAverage])) {
 		return @"History";
 	} else {
 		return @"";
@@ -89,20 +88,18 @@
 {
 	
 	if ([event showAverage]) {
-		return 3;
-	} else {
 		return 2;
+	} else {
+		return 1;
 	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (section == 0) {
-		return 1;
-	} else if (section == 1 && [event showAverage]) {
+	if (section == 0 && [event showAverage]) {
 		return 2;
-	} else if ((section == 1 && ![event showAverage]) || 
-						 (section == 2 && [event showAverage])) {
+	} else if ((section == 0 && ![event showAverage]) || 
+						 (section == 1 && [event showAverage])) {
 		return [[event logEntryCollection] count];
 	} else {
 		return 0;
@@ -117,13 +114,7 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"UITableViewCell"];
 	}
 	
-	if ([indexPath section] == 0) {
-		if ([[event logEntryCollection] count] == 0) {
-			cell.textLabel.text = @"No Entries";
-		} else {
-			cell.textLabel.text = [event subtitle];
-		}
-	} else if ([indexPath section] == 1 && [event showAverage]) {
+	if ([indexPath section] == 0 && [event showAverage]) {
 		
 		if ([indexPath row] == 0) {
 			cell.textLabel.text = @"Average";
@@ -141,8 +132,8 @@
 			cell.detailTextLabel.text = [df stringFromDate:[event nextTime]];
 			
 		}
-	} else if (([indexPath section] == 1 && ![event showAverage]) || 
-						 ([indexPath section] == 2 && [event showAverage])) {
+	} else if (([indexPath section] == 0 && ![event showAverage]) || 
+						 ([indexPath section] == 1 && [event showAverage])) {
 		
 		id item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
 		
