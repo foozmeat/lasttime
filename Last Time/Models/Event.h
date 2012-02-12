@@ -35,5 +35,7 @@
 
 + (Event *)randomEvent;
 - (void)addLogEntry:(LogEntry *)entry;
+- (void)removeItem:(id)item;
+
 @end
 

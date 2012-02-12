@@ -30,6 +30,13 @@
 	return self;
 }
 
+- (void)removeItem:(id)item
+{
+	[logEntryCollection removeObjectIdenticalTo:item];
+	needsSorting = YES;
+}
+
+
 + (Event *)randomEvent
 {
 	NSMutableArray *lec = [[NSMutableArray alloc] init];
@@ -154,6 +161,10 @@
 
 -(NSString*)subtitle
 {
+	
+	if ([[self logEntryCollection] count] == 0) {
+		return @"";
+	}
 	
 	NSString *output = nil;
 	
