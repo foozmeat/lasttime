@@ -23,7 +23,7 @@
 		return nil;
 	}
 	
-	CGRect rect = CGRectMake(83, 10, self.contentView.bounds.size.width-113, 20);
+	CGRect rect = CGRectMake(83, 11, self.contentView.bounds.size.width-113, 23);
 	UITextField *textField = [[UITextField alloc] initWithFrame:rect];
 	
 	//  Set the keyboard's return key label to 'Next'.
