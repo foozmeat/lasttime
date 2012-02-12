@@ -173,4 +173,23 @@
 	return le;
 }
 
+#pragma mark - NSCoder
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject:logEntryNote forKey:@"logEntryNote"];
+	[aCoder encodeObject:logEntryDateOccured forKey:@"logEntryDateOccured"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super init];
+	
+	if (self) {
+		[self setLogEntryNote:[aDecoder decodeObjectForKey:@"logEntryNote"]];
+		[self setLogEntryDateOccured:[aDecoder decodeObjectForKey:@"logEntryDateOccured"]];
+	}
+	
+	return self;
+}
+
 @end

@@ -194,4 +194,23 @@
 	return output;
 }
 
+#pragma mark - NSCoder
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject:eventName forKey:@"eventName"];
+	[aCoder encodeObject:logEntryCollection forKey:@"logEntryCollection"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super init];
+	
+	if (self) {
+		[self setLogEntryCollection:[aDecoder decodeObjectForKey:@"logEntryCollection"]];
+		[self setEventName:[aDecoder decodeObjectForKey:@"eventName"]];
+	}
+	
+	return self;
+}
+
 @end

@@ -22,6 +22,7 @@
 		3969112014C9BCF8006E8272 /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111C14C9BCF8006E8272 /* EventFolder.m */; };
 		3969112114C9BCF8006E8272 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		3969112614C9BD04006E8272 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3969112414C9BD04006E8272 /* MainWindow.xib */; };
+		39825C9014E8757200C4D684 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 39825C8F14E8757200C4D684 /* FileHelpers.m */; };
 		39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39861AAA14BD526D006F30A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39861AA914BD526D006F30A0 /* main.m */; };
 		39861AB514BD5548006F30A0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
@@ -111,6 +112,8 @@
 		3969111D14C9BCF8006E8272 /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEntry.h; sourceTree = "<group>"; };
 		3969111E14C9BCF8006E8272 /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogEntry.m; sourceTree = "<group>"; };
 		3969112414C9BD04006E8272 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		39825C8E14E8757200C4D684 /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHelpers.h; path = Support/FileHelpers.h; sourceTree = "<group>"; };
+		39825C8F14E8757200C4D684 /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileHelpers.m; path = Support/FileHelpers.m; sourceTree = "<group>"; };
 		39861AA514BD526D006F30A0 /* RandomLogEntry */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomLogEntry; sourceTree = BUILT_PRODUCTS_DIR; };
 		39861AA914BD526D006F30A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/RandomLogEntry/main.m"; sourceTree = SOURCE_ROOT; };
 		39861AB414BD5548006F30A0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
@@ -381,6 +384,8 @@
 				3988B9BB14E0214F0010062E /* EditableTableCell.m */,
 				39F6435E14E40AAE004B0900 /* DatePickerCell.h */,
 				39F6435F14E40AAE004B0900 /* DatePickerCell.m */,
+				39825C8E14E8757200C4D684 /* FileHelpers.h */,
+				39825C8F14E8757200C4D684 /* FileHelpers.m */,
 			);
 			name = "Supporting Classes";
 			sourceTree = "<group>";
@@ -591,6 +596,7 @@
 				3988B9BC14E0214F0010062E /* EditableTableCell.m in Sources */,
 				39F6436014E40AAE004B0900 /* DatePickerCell.m in Sources */,
 				392009FF14E4B88D006B6A79 /* CustomTableViewController.m in Sources */,
+				39825C9014E8757200C4D684 /* FileHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,5 +14,11 @@
 	#import "EventFolder.h"
 	#import "LogEntry.h"
 	#import "Event.h"
+	#import "FileHelpers.h"
+
+
+#ifndef DEBUG
 	#import "TestFlight.h"
+#endif
+
 #endif

@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import	"Event.h"
 
-@interface EventFolder : NSObject
+@interface EventFolder : NSObject <NSCoding>
 {
-	NSMutableArray *allItems;
 	BOOL needsSorting;
 }
 
+@property (nonatomic, strong) NSMutableArray *allItems;;
 @property (nonatomic, strong) NSString *folderName;
 @property (nonatomic) BOOL isRoot;
 
@@ -32,5 +32,9 @@
 - (Event *)createEvent;
 - (void)removeItem:(id)item;
 - (void)addItem:(id)item;
+
+- (NSString *)eventDataAchivePath;
+- (void)fetchItemsIfNecessary;
+- (BOOL)saveChanges;
 
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LogEntry.h"
 
-@interface Event : NSObject
+@interface Event : NSObject <NSCoding>
 
 
 @property (nonatomic, strong) NSString *eventName;

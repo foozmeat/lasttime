@@ -9,7 +9,7 @@
 #import "EventFolder.h"
 
 @implementation EventFolder
-@synthesize isRoot, folderName;
+@synthesize isRoot, folderName, allItems;
 
 - (id)init
 {
@@ -21,8 +21,13 @@
 	self = [super init];
 	
 	if (self) {
-		allItems = [[NSMutableArray alloc] init];
-		isRoot = root;
+		if (root) {
+			isRoot = root;
+			[self fetchItemsIfNecessary];
+
+		} else {
+			allItems = [[NSMutableArray alloc] init];
+		}
 	}
 	return self;
 
@@ -99,6 +104,7 @@
 
 - (NSArray *)allItems
 {
+	[self fetchItemsIfNecessary];
 	[self sortItems];
 	return allItems;
 }
@@ -162,4 +168,51 @@
 	
 	return output;
 }
+
+#pragma mark - loading/saving
+- (NSString *)eventDataAchivePath
+{
+	return pathInDocumentDirectory(@"events.data");
+}
+
+- (BOOL)saveChanges
+{
+	return [NSKeyedArchiver archiveRootObject:self
+																		 toFile:[self eventDataAchivePath]];
+}
+
+- (void)fetchItemsIfNecessary
+{
+	if (!allItems) {
+		NSString *path = [self eventDataAchivePath];
+		allItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+	}
+
+	if (!allItems) {
+		allItems = [[NSMutableArray alloc] init];
+		
+	}
+}
+
+#pragma mark - NSCoder
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject:folderName forKey:@"folderName"];
+	[aCoder encodeObject:allItems forKey:@"allItems"];
+	[aCoder encodeInt:isRoot forKey:@"isRoot"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super init];
+	
+	if (self) {
+		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
+		[self setFolderName:[aDecoder decodeObjectForKey:@"folderName"]];
+		[self setIsRoot:[aDecoder decodeIntForKey:@"isRoot"]];
+	}
+	
+	return self;
+}
+
 @end

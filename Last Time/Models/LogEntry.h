@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface LogEntry : NSObject
+@interface LogEntry : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSDate *logEntryDateOccured;
 @property (nonatomic, strong) NSString *logEntryNote;
