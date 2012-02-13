@@ -121,8 +121,6 @@
 - (void)pickerDidChange:(NSDate *)date
 {
 	[logEntry setLogEntryDateOccured:date];
-
-	NSLog(@"Date Change: %@", date);
 }
 
 @end
