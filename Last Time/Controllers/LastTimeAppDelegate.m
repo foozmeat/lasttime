@@ -12,6 +12,7 @@
 @implementation LastTimeAppDelegate
 
 @synthesize window = _window;
+@synthesize rootFolderViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -20,8 +21,8 @@
 	[TestFlight takeOff:@"7dc090a5932acba7bcf3c281394f4a6a_NTAwNTgyMDExLTEyLTI3IDE2OjM1OjAyLjE4Mzg5MA"];
 #endif
 	
-	FolderViewController *folderViewController = [[FolderViewController alloc] init];
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:folderViewController];
+	rootFolderViewController = [[FolderViewController alloc] init];
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootFolderViewController];
 	
 	[[self window] setRootViewController:navController];
 		
@@ -29,5 +30,14 @@
 	return YES;
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+	[[rootFolderViewController rootFolder] saveChanges];
+}
 
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+	[[rootFolderViewController rootFolder] saveChanges];
+
+}
 @end

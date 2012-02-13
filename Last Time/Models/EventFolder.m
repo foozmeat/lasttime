@@ -104,7 +104,6 @@
 
 - (NSArray *)allItems
 {
-	[self fetchItemsIfNecessary];
 	[self sortItems];
 	return allItems;
 }
@@ -172,7 +171,7 @@
 #pragma mark - loading/saving
 - (NSString *)eventDataAchivePath
 {
-	return pathInDocumentDirectory(@"events.data");
+	return pathInDocumentDirectory(@"events.plist");
 }
 
 - (BOOL)saveChanges
@@ -185,7 +184,8 @@
 {
 	if (!allItems) {
 		NSString *path = [self eventDataAchivePath];
-		allItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+		EventFolder *archivedRootFolder = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+		[self setAllItems:[[NSMutableArray alloc] initWithArray:[archivedRootFolder allItems]]];
 	}
 
 	if (!allItems) {
