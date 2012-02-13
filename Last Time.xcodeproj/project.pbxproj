@@ -40,6 +40,7 @@
 		39D70CD314BD3515009C3615 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39D70CDB14BD3515009C3615 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39D70CD914BD3515009C3615 /* InfoPlist.strings */; };
 		39D70CDE14BD3516009C3615 /* Last_TimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D70CDD14BD3516009C3615 /* Last_TimeTests.m */; };
+		39DB081614E95640006E4E08 /* FolderPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DB081514E95640006E4E08 /* FolderPickerCell.m */; };
 		39F642CA14E0FB8E004B0900 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		39F642CB14E0FBBC004B0900 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111A14C9BCF8006E8272 /* Event.m */; };
 		39F642CC14E0FBCB004B0900 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
@@ -140,6 +141,8 @@
 		39D70CDA14BD3515009C3615 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39D70CDC14BD3515009C3615 /* Last_TimeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Last_TimeTests.h; sourceTree = "<group>"; };
 		39D70CDD14BD3516009C3615 /* Last_TimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Last_TimeTests.m; sourceTree = "<group>"; };
+		39DB081414E95640006E4E08 /* FolderPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderPickerCell.h; path = Support/FolderPickerCell.h; sourceTree = "<group>"; };
+		39DB081514E95640006E4E08 /* FolderPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderPickerCell.m; path = Support/FolderPickerCell.m; sourceTree = "<group>"; };
 		39F642E614E17095004B0900 /* FolderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderViewController.xib; sourceTree = "<group>"; };
 		39F6435E14E40AAE004B0900 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerCell.h; path = Support/DatePickerCell.h; sourceTree = "<group>"; };
 		39F6435F14E40AAE004B0900 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerCell.m; path = Support/DatePickerCell.m; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 				39F6435F14E40AAE004B0900 /* DatePickerCell.m */,
 				39825C8E14E8757200C4D684 /* FileHelpers.h */,
 				39825C8F14E8757200C4D684 /* FileHelpers.m */,
+				39DB081414E95640006E4E08 /* FolderPickerCell.h */,
+				39DB081514E95640006E4E08 /* FolderPickerCell.m */,
 			);
 			name = "Supporting Classes";
 			sourceTree = "<group>";
@@ -597,6 +602,7 @@
 				39F6436014E40AAE004B0900 /* DatePickerCell.m in Sources */,
 				392009FF14E4B88D006B6A79 /* CustomTableViewController.m in Sources */,
 				39825C9014E8757200C4D684 /* FileHelpers.m in Sources */,
+				39DB081614E95640006E4E08 /* FolderPickerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,7 +741,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120204210446;
+				CURRENT_PROJECT_VERSION = 20120212164932;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -769,8 +775,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: James Moore";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -781,8 +787,8 @@
 				);
 				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "2C9E7624-194F-4A93-BA8B-56D7788931F9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C9E7624-194F-4A93-BA8B-56D7788931F9";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -860,7 +866,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120204210446;
+				CURRENT_PROJECT_VERSION = 20120212164932;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -897,7 +903,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20120204210446;
+				CURRENT_PROJECT_VERSION = 20120212164932;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -951,8 +957,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Moore (HGZS2NAYVG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Moore (HGZS2NAYVG)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: James Moore";
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
@@ -962,8 +968,8 @@
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "04CECD94-329D-4348-8318-C9C7412FB53F";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "04CECD94-329D-4348-8318-C9C7412FB53F";
+				PROVISIONING_PROFILE = "4A20681E-C3D8-460C-9E3C-135A78E03705";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4A20681E-C3D8-460C-9E3C-135A78E03705";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -11,14 +11,14 @@
 
 @implementation FolderDetailController
 @synthesize nameCell;
-@synthesize folder, rootFolder;
+@synthesize theNewFolder;
 
 #pragma mark -
 #pragma mark Action Methods
 
 - (void)save
 {
-	[rootFolder addItem:folder];
+	[[self rootFolder] addItem:theNewFolder];
 	
 	[self dismissModalViewControllerAnimated:YES];
 }
@@ -64,12 +64,13 @@
 	
 	switch (tag)
 	{
-		case FolderName:     [folder setFolderName:text];          break;
+		case FolderName:
+			[theNewFolder setFolderName:text];
+			break;
 	}
 }
 
-#pragma mark -
-#pragma mark UITableViewDataSource Protocol
+#pragma mark - UITableViewDataSource Protocol
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -95,7 +96,7 @@
 		case FolderName:
 			cell = [self nameCell];
 			[[cell cellTextField] setPlaceholder:@"Health, Social, Pets"];
-			text = [folder folderName];
+			text = [theNewFolder folderName];
 			label = @"Name";
 			break;
 	}

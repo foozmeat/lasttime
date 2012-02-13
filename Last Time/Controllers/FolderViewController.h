@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface FolderViewController : UIViewController <UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource>
-{
-	EventFolder *rootFolder;
-}
 
 @property (nonatomic, strong) EventFolder *rootFolder;
+@property (nonatomic, strong) EventFolder *folder;
 @property (strong, nonatomic) IBOutlet UITableView *folderTableView;
 
 

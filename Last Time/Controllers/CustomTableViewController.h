@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "EditableTableCell.h"
 #import "DatePickerCell.h"
+#import "FolderPickerCell.h"
 
-@interface CustomTableViewController : UITableViewController <UITextFieldDelegate, DatePickerCellDelegate>
+@interface CustomTableViewController : UITableViewController <UITextFieldDelegate, DatePickerCellDelegate, FolderPickerCellDelegate>
+
+@property (strong, nonatomic) EventFolder *rootFolder;
 
 - (BOOL)isModal;
 

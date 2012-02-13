@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "LogEntry.h"
 
-@interface Event : NSObject <NSCoding>
+@class EventFolder;
 
+@interface Event : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *eventName;
 @property (nonatomic, strong) NSMutableArray *logEntryCollection;
+@property (nonatomic, strong) EventFolder *parentFolder;
 
 @property (nonatomic) BOOL needsSorting;
 

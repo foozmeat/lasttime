@@ -12,7 +12,7 @@
 #import "FolderDetailController.h"
 
 @implementation FolderViewController
-@synthesize rootFolder;
+@synthesize rootFolder, folder;
 @synthesize folderTableView;
 
 
@@ -38,23 +38,24 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	if (!rootFolder) {			
-		rootFolder = [[EventFolder alloc] initWithRoot:YES];
+	if (!folder) {		
+		[self setFolder:[[EventFolder alloc] initWithRoot:YES]];
 	}
-	if ([rootFolder isRoot]) {
-		self.title = NSLocalizedString(@"Home", @"Home");
-	} else {
-		self.title = [rootFolder folderName];
+
+	if ([[self folder] isRoot]) {
+		rootFolder = folder;
 	}
 	
-	if ([[rootFolder allItems] count] > 0) {
+	self.title = [folder folderName];
+	
+	if ([[folder allItems] count] > 0) {
 		[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 	}
 
 	[[self folderTableView] reloadData];
 }
 
-#pragma mark - IBActions
+#pragma mark - Add Actions
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate
 {
@@ -69,6 +70,7 @@
 	
 	[edc setEvent:[[Event alloc] init]];
 	[edc setRootFolder:rootFolder];
+	[edc setFolder:folder];
 	
 	UINavigationController *newNavController = [[UINavigationController alloc]
 																							initWithRootViewController:edc];
@@ -81,7 +83,7 @@
 {
 	// Make new folder
 	FolderDetailController *fdc = [[FolderDetailController alloc] init];
-	[fdc setFolder:[[EventFolder alloc] init]];
+	[fdc setTheNewFolder:[[EventFolder alloc] init]];
 	[fdc setRootFolder:rootFolder];
 	
 	UINavigationController *newNavController = [[UINavigationController alloc]
@@ -95,7 +97,7 @@
 - (void)addNewItem:(id)sender
 {
 
-	if ([rootFolder isRoot] == NO) {
+	if ([folder isRoot] == NO) {
 		[self addNewEvent];
 	} else {
 		UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"What would you like create?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New Event", @"New Folder", nil];
@@ -107,7 +109,6 @@
 // Action sheet delegate method.
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	// the user clicked one of the OK/Cancel buttons
 	if (buttonIndex == 0)
 	{
 		[self addNewEvent];
@@ -116,13 +117,12 @@
 	}
 }
 
-#pragma mark -
-#pragma mark TableView Delegate methods
+#pragma mark - TableView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	id item = [[rootFolder allItems] objectAtIndex:[indexPath row]];
+	id item = [[folder allItems] objectAtIndex:[indexPath row]];
 		
 	if ([item isMemberOfClass:[Event class]]) {
 		
@@ -130,6 +130,7 @@
 			EventDetailController *edc = [[EventDetailController alloc] init];
 			[edc setEvent:item];
 			[edc setRootFolder:rootFolder];
+			[edc setFolder:folder];
 			[[self navigationController] pushViewController:edc animated:YES];
 			
 			[folderTableView setEditing:NO animated:NO];
@@ -146,7 +147,7 @@
 		
 		if ([folderTableView isEditing]) {
 			FolderDetailController *fdc = [[FolderDetailController alloc] init];
-			[fdc setFolder:item];
+			[fdc setTheNewFolder:item];
 			[fdc setRootFolder:rootFolder];
 			[[self navigationController] pushViewController:fdc animated:YES];
 			
@@ -154,7 +155,8 @@
 			
 		} else {
 			FolderViewController *fvc = [[FolderViewController alloc] init];
-			[fvc setRootFolder:item];
+			[fvc setRootFolder:rootFolder];
+			[fvc setFolder:item];
 			[[self navigationController] pushViewController:fvc animated:YES];
 			
 		}
@@ -164,12 +166,12 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		id item = [[rootFolder allItems] objectAtIndex:[indexPath row]];
-		[rootFolder removeItem:item];
+		id item = [[folder allItems] objectAtIndex:[indexPath row]];
+		[folder removeItem:item];
 		
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 
-		if ([[rootFolder allItems] count] == 0) {
+		if ([[folder allItems] count] == 0) {
 			[[self navigationItem] setRightBarButtonItem:nil];
 			[self setEditing:NO animated:YES];
 		}
@@ -179,14 +181,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [[rootFolder allItems] count];
+	return [[folder allItems] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	NSString *reuseString = nil;
 	
-	id item = [[rootFolder allItems] objectAtIndex:[indexPath row]];
+	id item = [[folder allItems] objectAtIndex:[indexPath row]];
 
 	if ([item isMemberOfClass:[EventFolder class]]) {
 		reuseString = @"FolderCell";

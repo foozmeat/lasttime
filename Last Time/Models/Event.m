@@ -10,6 +10,7 @@
 
 @implementation Event
 @synthesize eventName, logEntryCollection, needsSorting;
+@synthesize parentFolder;
 
 
 - (id)init

@@ -9,7 +9,7 @@
 #import "EventFolder.h"
 
 @implementation EventFolder
-@synthesize isRoot, folderName, allItems;
+@synthesize isRoot, folderName, allItems, parentFolder;
 
 - (id)init
 {
@@ -23,7 +23,9 @@
 	if (self) {
 		if (root) {
 			isRoot = root;
+			[self setFolderName:NSLocalizedString(@"Home", @"Home")];
 			[self fetchItemsIfNecessary];
+			[self setParentFolder:nil];
 
 		} else {
 			allItems = [[NSMutableArray alloc] init];
@@ -63,6 +65,7 @@
 
 - (void)addItem:(id)item;
 {
+	[item setParentFolder:self];
 	[allItems addObject:item];
 	needsSorting = YES;
 }
@@ -106,6 +109,24 @@
 {
 	[self sortItems];
 	return allItems;
+}
+
+- (NSArray *)allFolders
+{
+	
+	if (![self isRoot]) {
+		return [[NSArray alloc] init];
+	}
+	
+	NSMutableArray *folders = [[NSMutableArray alloc] initWithObjects:self, nil];
+	
+	for (id item in [self allItems]) {
+		if ([item isMemberOfClass:[EventFolder class]]) {
+			[folders addObject:item];
+		}
+	}
+	
+	return folders;
 }
 
 - (void) sortItems
@@ -200,6 +221,7 @@
 	[aCoder encodeObject:folderName forKey:@"folderName"];
 	[aCoder encodeObject:allItems forKey:@"allItems"];
 	[aCoder encodeInt:isRoot forKey:@"isRoot"];
+	[aCoder encodeObject:parentFolder forKey:@"parentFolder"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -210,6 +232,7 @@
 		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
 		[self setFolderName:[aDecoder decodeObjectForKey:@"folderName"]];
 		[self setIsRoot:[aDecoder decodeIntForKey:@"isRoot"]];
+		[self setParentFolder:[aDecoder decodeObjectForKey:@"parentFolder"]];
 	}
 	
 	return self;

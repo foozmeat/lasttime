@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *allItems;;
 @property (nonatomic, strong) NSString *folderName;
 @property (nonatomic) BOOL isRoot;
+@property (nonatomic, strong) EventFolder *parentFolder;
 
 + (EventFolder *)randomFolderWithRoot:(BOOL)root;
 - (id)initWithRoot:(BOOL)root;
@@ -28,6 +29,7 @@
 - (id)latestItem;
 - (NSDate *)latestDate;
 - (NSArray *)allItems;
+- (NSArray *)allFolders;
 
 - (Event *)createEvent;
 - (void)removeItem:(id)item;

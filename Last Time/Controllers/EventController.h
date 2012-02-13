@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class EventFolder;
+
 @interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) Event *event;
+@property (nonatomic, strong) EventFolder *folder;
+@property (nonatomic, strong) EventFolder *rootFolder;
 
 - (void)addNewItem:(id)sender;
 

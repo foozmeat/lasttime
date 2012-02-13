@@ -13,19 +13,21 @@
 @class LogEntry;
 
 enum {
-	EventName = 0,
-	EventNote,
-	EventDate
+	kEventName = 0,
+	kEventNote,
+	kEventDate,
+	kEventFolder
 };
 
 @interface EventDetailController : CustomTableViewController
 
 @property (strong, nonatomic) Event *event;
-@property (strong, nonatomic) EventFolder *rootFolder;
+@property (strong, nonatomic) EventFolder *folder;
 
 @property (nonatomic, strong) EditableTableCell *nameCell;
 @property (nonatomic, strong) EditableTableCell *noteCell;
 @property (nonatomic, strong) DatePickerCell *dateCell;
+@property (nonatomic, strong) FolderPickerCell *folderCell;
 
 @end
 

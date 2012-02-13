@@ -11,15 +11,15 @@
 #import "DatePickerCell.h"
 
 @implementation EventDetailController
-@synthesize nameCell, noteCell, dateCell;
-@synthesize event, rootFolder;
+@synthesize nameCell, noteCell, dateCell, folderCell;
+@synthesize event, folder;
 
 #pragma mark -
 #pragma mark Action Methods
 
 - (void)save
 {
-	[rootFolder addItem:event];
+	[folder addItem:event];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
@@ -28,13 +28,15 @@
 
 - (void)viewFinishedLoading
 {
-	[self setNameCell:[EditableTableCell newDetailCellWithTag:EventName withDelegate:self]];
+	[self setNameCell:[EditableTableCell newDetailCellWithTag:kEventName withDelegate:self]];
+	[self setFolderCell:[FolderPickerCell newFolderCellWithTag:kEventFolder 
+																								withDelegate:self]];
 
 	if ([self isModal]) {
 		[self setTitle:@"New Event"];
 		
-		[self setNoteCell:[EditableTableCell newDetailCellWithTag:EventNote withDelegate:self]];
-		[self setDateCell:[DatePickerCell newDateCellWithTag:EventDate withDelegate:self]];
+		[self setNoteCell:[EditableTableCell newDetailCellWithTag:kEventNote withDelegate:self]];
+		[self setDateCell:[DatePickerCell newDateCellWithTag:kEventDate withDelegate:self]];
 		
 	} else {
 		[self setTitle:@"Edit Event"];
@@ -48,7 +50,7 @@
 //
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-	if ([textField tag] == EventName && ![self isModal]) {
+	if ([textField tag] == kEventName && ![self isModal]) {
 		[textField setReturnKeyType:UIReturnKeyDone];
 	}
 	return YES;
@@ -66,10 +68,10 @@
 	
 	switch (tag)
 	{
-		case EventName:
+		case kEventName:
 			[event setEventName:text];
 			break;
-		case EventNote:
+		case kEventNote:
 			[[[event logEntryCollection] objectAtIndex:0] setLogEntryNote:text];
 			break;
 	}
@@ -86,9 +88,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if ([self isModal]) {
-		return 3;
+		return 4;
 	} else {
-		return 1;
+		return 2;
 	}
 }
 
@@ -99,26 +101,33 @@
 	//
 	EditableTableCell *cell = nil;
 	DatePickerCell *dcell = nil;
+	FolderPickerCell *fcell = nil;
 
 	switch ([indexPath row]) 
 	{
-		case EventName:
+		case kEventName:
 			cell = [self nameCell];
 			[[cell cellTextField] setText:[event eventName]];
 			[[cell cellTextField] setPlaceholder:@"Got a haircut"];
 			[[cell textLabel] setText:@"Name"];
 			return cell;
 			break;
-		case EventNote:
+		case kEventNote:
 			cell = [self noteCell];
 			[[cell cellTextField] setPlaceholder:@"Happy!"];
 			[[cell textLabel] setText:@"Note"];
 			return cell;
 			break;
-		case EventDate:
+		case kEventDate:
 			dcell = [self dateCell];
 			[[dcell textLabel] setText:@"Date"];
 			return dcell;
+			break;
+		case kEventFolder:
+			fcell = [self folderCell];
+			[[fcell textLabel] setText:@"Folder"];
+			[[fcell detailTextLabel] setText:[folder folderName]];
+			return fcell;
 			break;
 		default:
 			cell = [[EditableTableCell alloc] init];
@@ -128,11 +137,23 @@
 	}
 }
 
-#pragma mark -
-#pragma mark DatePickerDelegate
+#pragma mark - DatePickerDelegate
 
 - (void)pickerDidChange:(NSDate *)date
 {
 	[[[event logEntryCollection] objectAtIndex:0] setLogEntryDateOccured:date];
+}
+
+#pragma mark - FolderPickerDelegate
+
+- (void)folderPickerDidChange:(EventFolder *)newFolder
+{
+	[self setFolder:newFolder];
+	[[self tableView] reloadData];
+}
+
+- (EventFolder *)folderPickerCurrentFolder;
+{
+	return [self folder];
 }
 @end

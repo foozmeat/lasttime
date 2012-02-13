@@ -11,7 +11,7 @@
 
 @implementation EventController
 @synthesize eventTableView;
-@synthesize event;
+@synthesize event, folder, rootFolder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

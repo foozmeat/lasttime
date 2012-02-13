@@ -10,7 +10,7 @@
 #import "EditableTableCell.h"
 
 @implementation CustomTableViewController
-
+@synthesize rootFolder;
 
 - (BOOL)isModal
 {
@@ -170,11 +170,26 @@
 	return YES;
 }
 
-#pragma mark -
-#pragma mark DatePickerDelegate
+#pragma mark - DatePickerDelegate
 
 - (void)pickerDidChange:(NSDate *)date
 {
+}
+
+#pragma mark - FolderPickerDelegate
+- (void)folderPickerDidChange:(EventFolder *)folder
+{
+}
+
+- (EventFolder *)folderPickerCurrentFolder
+{
+	@throw [NSException exceptionWithName:@"Called Delegate method in super class" reason:@"Override in subclass" userInfo:nil];
+	return nil;
+}
+
+- (EventFolder *)folderPickerRootFolder
+{
+	return rootFolder;
 }
 
 - (void)endEditing
