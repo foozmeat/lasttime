@@ -133,7 +133,7 @@
 			[edc setFolder:folder];
 			[[self navigationController] pushViewController:edc animated:YES];
 			
-			[folderTableView setEditing:NO animated:NO];
+			[self setEditing:NO animated:NO];
 
 		} else {
 			
@@ -152,7 +152,7 @@
 			[fdc setRootFolder:rootFolder];
 			[[self navigationController] pushViewController:fdc animated:YES];
 			
-			[folderTableView setEditing:NO animated:NO];
+			[self setEditing:NO animated:NO];
 			
 		} else {
 			FolderViewController *fvc = [[FolderViewController alloc] init];

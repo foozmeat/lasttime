@@ -44,7 +44,7 @@
 //
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-	if ([textField tag] == 1)
+	if ([textField tag] == FolderName)
 	{
 		[textField setReturnKeyType:UIReturnKeyDone];
 	}

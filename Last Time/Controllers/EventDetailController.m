@@ -52,6 +52,8 @@
 {
 	if ([textField tag] == kEventName && ![self isModal]) {
 		[textField setReturnKeyType:UIReturnKeyDone];
+	} else if ([textField tag] == kEventNote && [self isModal]) {
+		[textField setReturnKeyType:UIReturnKeyDone];
 	}
 	return YES;
 }

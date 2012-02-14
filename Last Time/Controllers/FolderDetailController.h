@@ -13,7 +13,7 @@
 @class EventFolder;
 
 enum {
-	FolderName
+	FolderName = 0
 };
 
 @interface FolderDetailController : CustomTableViewController

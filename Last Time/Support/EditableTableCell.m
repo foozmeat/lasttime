@@ -24,6 +24,7 @@
 	self.cellTextField.font = [UIFont systemFontOfSize:17.0f];
 	self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
 	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	self.cellTextField.returnKeyType = UIReturnKeyNext;
 	[self addSubview:self.cellTextField];
 	
 	self.accessoryType = UITableViewCellAccessoryNone;
