@@ -50,6 +50,7 @@
 		39F642E714E17095004B0900 /* FolderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39F642E614E17095004B0900 /* FolderViewController.xib */; };
 		39F6436014E40AAE004B0900 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6435F14E40AAE004B0900 /* DatePickerCell.m */; };
 		39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */; };
+		39FEDFA914EAC2C2009672A5 /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FEDFA814EAC2C2009672A5 /* UIColor+Custom.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,8 @@
 		39F6435F14E40AAE004B0900 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerCell.m; path = Support/DatePickerCell.m; sourceTree = "<group>"; };
 		39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogDetailController.h; sourceTree = "<group>"; };
 		39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogDetailController.m; sourceTree = "<group>"; };
+		39FEDFA714EAC2C2009672A5 /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Custom.h"; path = "Support/UIColor+Custom.h"; sourceTree = "<group>"; };
+		39FEDFA814EAC2C2009672A5 /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Custom.m"; path = "Support/UIColor+Custom.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,16 +386,26 @@
 		39F6F11414D1B79B00DBA262 /* Supporting Classes */ = {
 			isa = PBXGroup;
 			children = (
+				39FEDFAB14EAC350009672A5 /* Custom Cells */,
+				39FEDFA714EAC2C2009672A5 /* UIColor+Custom.h */,
+				39FEDFA814EAC2C2009672A5 /* UIColor+Custom.m */,
+				39825C8E14E8757200C4D684 /* FileHelpers.h */,
+				39825C8F14E8757200C4D684 /* FileHelpers.m */,
+			);
+			name = "Supporting Classes";
+			sourceTree = "<group>";
+		};
+		39FEDFAB14EAC350009672A5 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
 				3988B9BA14E0214F0010062E /* EditableTableCell.h */,
 				3988B9BB14E0214F0010062E /* EditableTableCell.m */,
 				39F6435E14E40AAE004B0900 /* DatePickerCell.h */,
 				39F6435F14E40AAE004B0900 /* DatePickerCell.m */,
-				39825C8E14E8757200C4D684 /* FileHelpers.h */,
-				39825C8F14E8757200C4D684 /* FileHelpers.m */,
 				39DB081414E95640006E4E08 /* FolderPickerCell.h */,
 				39DB081514E95640006E4E08 /* FolderPickerCell.m */,
 			);
-			name = "Supporting Classes";
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -603,6 +616,7 @@
 				392009FF14E4B88D006B6A79 /* CustomTableViewController.m in Sources */,
 				39825C9014E8757200C4D684 /* FileHelpers.m in Sources */,
 				39DB081614E95640006E4E08 /* FolderPickerCell.m in Sources */,
+				39FEDFA914EAC2C2009672A5 /* UIColor+Custom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

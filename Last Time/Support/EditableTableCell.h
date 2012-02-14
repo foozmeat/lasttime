@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditableTableCell : UITableViewCell
+@interface EditableTableCell : UITableViewCell <UITextFieldDelegate>
 
+@property (nonatomic, strong) NSString *stringValue;
 @property (nonatomic, strong) UITextField *cellTextField;
 
 + (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag withDelegate:(id)delegate;

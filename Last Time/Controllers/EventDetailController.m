@@ -156,6 +156,11 @@
 	}
 }
 
+#pragma mark - EditableTableCellDelegate
+- (void)stringDidChange:(NSString *)value {
+//	[event setEventName:<#(NSString *)#>
+}
+
 #pragma mark - DatePickerDelegate
 
 - (void)pickerDidChange:(NSDate *)date

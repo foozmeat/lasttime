@@ -90,10 +90,7 @@
 	NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
 																											length:2];
 	
-	EditableTableCell *cell = (EditableTableCell *)[[self tableView]
-																										cellForRowAtIndexPath:indexPath];
-	
-	[[cell cellTextField] becomeFirstResponder];
+	[[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:0];
 }
 
 //  Force textfields to resign firstResponder so that our implementation of
@@ -170,15 +167,23 @@
 	return YES;
 }
 
+#pragma mark - EditableTableCellDelegate
+- (void)stringDidChange:(NSString *)value {
+	@throw [NSException exceptionWithName:@"Called Delegate method in super class" reason:@"Override in subclass" userInfo:nil];
+}
+
+
 #pragma mark - DatePickerDelegate
 
 - (void)pickerDidChange:(NSDate *)date
 {
+	@throw [NSException exceptionWithName:@"Called Delegate method in super class" reason:@"Override in subclass" userInfo:nil];
 }
 
 #pragma mark - FolderPickerDelegate
 - (void)folderPickerDidChange:(EventFolder *)folder
 {
+	@throw [NSException exceptionWithName:@"Called Delegate method in super class" reason:@"Override in subclass" userInfo:nil];
 }
 
 - (EventFolder *)folderPickerCurrentFolder

@@ -23,7 +23,6 @@
 	[pickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
 	
 	[[self detailTextLabel] setText:[df stringFromDate:[pickerView date]]];
-	[[self detailTextLabel] setTextColor:[UIColor blackColor]];
 
 	CGRect frame = self.inputView.frame;
 	frame.size = [self.pickerView sizeThatFits:CGSizeZero];
