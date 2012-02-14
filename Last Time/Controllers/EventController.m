@@ -45,8 +45,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	if (([indexPath section] == 1 && [event showAverage]) || 
-			([indexPath section] == 0 && ![event showAverage])) {
+	if ([indexPath section] == kHistorySection) {
 		
 		HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 		
@@ -56,8 +55,9 @@
 
 		[[self navigationController] pushViewController:hldc animated:YES];
 
+	} else if ([indexPath section] == kAverageSection && ![event showAverage]) {
+		[self addNewItem:self];
 	}
-	
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -74,10 +74,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	if (section == 0 && [event showAverage]) {
+	if (section == kAverageSection) {
 		return @"";
-	} else if ((section == 0 && ![event showAverage]) || 
-						 (section == 1 && [event showAverage])) {
+	} else if (section == kHistorySection) {
 		return @"History";
 	} else {
 		return @"";
@@ -86,20 +85,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	
-	if ([event showAverage]) {
-		return 2;
-	} else {
-		return 1;
-	}
+	return NUM_EVENT_SECTIONS;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (section == 0 && [event showAverage]) {
+	if (section == kAverageSection && [event showAverage]) {
 		return 2;
-	} else if ((section == 0 && ![event showAverage]) || 
-						 (section == 1 && [event showAverage])) {
+	} else if (section == kAverageSection && ![event showAverage]) {
+		return 1;
+	} else if (section == kHistorySection) {
 		return [[event logEntryCollection] count];
 	} else {
 		return 0;
@@ -111,18 +106,20 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
 	
 	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"UITableViewCell"];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
+																	reuseIdentifier:@"UITableViewCell"];
 	}
 	
-	if ([indexPath section] == 0 && [event showAverage]) {
+	if ([indexPath section] == kAverageSection && [event showAverage]) {
 		
-		if ([indexPath row] == 0) {
+		if ([indexPath row] == kAverageTime) {
 			cell.textLabel.text = @"Average";
 			cell.detailTextLabel.text = [event averageStringInterval];
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 		} else {
 			cell.textLabel.text = @"Next Time";
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 			NSDateFormatter *df = [[NSDateFormatter alloc] init];
 			
@@ -132,8 +129,17 @@
 			cell.detailTextLabel.text = [df stringFromDate:[event nextTime]];
 			
 		}
-	} else if (([indexPath section] == 0 && ![event showAverage]) || 
-						 ([indexPath section] == 1 && [event showAverage])) {
+	} else if ([indexPath section] == kAverageSection && ![event showAverage]) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+																	reuseIdentifier:@"UIDefaultTableViewCell"];
+		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+
+		cell.textLabel.textAlignment = UITextAlignmentCenter;
+		cell.textLabel.text = @"Add another occurence to see the average";
+		cell.textLabel.numberOfLines = 0;
+		cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
+		
+	} else if ([indexPath section] == kHistorySection) {
 		
 		id item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
 		
@@ -145,7 +151,6 @@
 	
 	return cell;
 }
-
 
 #pragma mark - View lifecycle
 

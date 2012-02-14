@@ -10,6 +10,17 @@
 
 @class EventFolder;
 
+enum EventSections {
+	kAverageSection = 0,
+	kHistorySection,
+	NUM_EVENT_SECTIONS
+};
+
+enum AverageSection {
+	kAverageTime = 0,
+	kNextTime,
+};
+
 @interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) Event *event;
