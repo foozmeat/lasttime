@@ -9,77 +9,102 @@
 #import "DatePickerCell.h"
 
 @implementation DatePickerCell
-@synthesize pickerView, df, delegate;
+@synthesize pickerView, df, delegate, inputAccessoryView;
+
+- (void)initalizeInputView {
+	df = [[NSDateFormatter alloc] init];
+	[df setDateStyle:NSDateFormatterMediumStyle];
+	[df setTimeStyle:NSDateFormatterShortStyle];
+	
+	pickerView = [[UIDatePicker alloc] init];
+	
+	NSDate *now = [[NSDate alloc] init];
+	[pickerView setDate:now];
+	[pickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
+	
+	[[self detailTextLabel] setText:[df stringFromDate:[pickerView date]]];
+	[[self detailTextLabel] setTextColor:[UIColor blackColor]];
+
+	CGRect frame = self.inputView.frame;
+	frame.size = [self.pickerView sizeThatFits:CGSizeZero];
+	self.inputView.frame = frame;
+	self.pickerView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-			df = [[NSDateFormatter alloc] init];
-			[df setDateStyle:NSDateFormatterMediumStyle];
-			[df setTimeStyle:NSDateFormatterShortStyle];
-			
-			pickerView = [[UIDatePicker alloc] init];
-			
-			NSDate *now = [[NSDate alloc] init];
-			[pickerView setDate:now];
-			[pickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
-			
-			[[self detailTextLabel] setText:[df stringFromDate:[pickerView date]]];
-			[[self detailTextLabel] setTextColor:[UIColor blackColor]];
-
+			[self initalizeInputView];
     }
     return self;
 }
 
+- (UIView *)inputAccessoryView {
+	if (!inputAccessoryView) {
+		inputAccessoryView = [[UIToolbar alloc] init];
+		inputAccessoryView.barStyle = UIBarStyleBlackTranslucent;
+		inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+		[inputAccessoryView sizeToFit];
+		CGRect frame = inputAccessoryView.frame;
+		frame.size.height = 44.0f;
+		inputAccessoryView.frame = frame;
+		
+		UIBarButtonItem *doneBtn =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+		UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+		
+		NSArray *array = [NSArray arrayWithObjects:flexibleSpaceLeft, doneBtn, nil];
+		[inputAccessoryView setItems:array];
+	}
+	return inputAccessoryView;
+}
+
+- (void)done:(id)sender {
+	[self resignFirstResponder];
+}
+
+
+#pragma mark - KeyInput
+- (UIView *)inputView {
+	return self.pickerView;
+}
+
+- (BOOL)hasText {
+	return YES;
+}
+
+- (void)insertText:(NSString *)theText {
+}
+
+- (void)deleteBackward {
+}
+
+- (BOOL)becomeFirstResponder {
+	[self.pickerView setNeedsLayout];
+	return [super becomeFirstResponder];
+}
+
+- (BOOL)resignFirstResponder {
+	UITableView *tableView = (UITableView *)self.superview;
+	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
+	return [super resignFirstResponder];
+}
+
+- (BOOL)canBecomeFirstResponder {
+	return YES;
+}
+
+#pragma mark - TableView
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-	
-	if (selected == NO) {
-		return;
-	}
-	
-	[delegate endEditing];
-	
 	[super setSelected:selected animated:animated];
-	
-	[self setSelectionStyle:UITableViewCellSelectionStyleNone];
-	
-	if (self.pickerView.superview == nil)
-	{
-		[self.delegate.view.superview addSubview: self.pickerView];
-
-		// size up the picker view to our screen and compute the start/end frame origin for our slide up animation
-		//
-		// compute the start frame
-		CGRect screenRect = self.delegate.view.frame;
-		CGSize pickerSize = [self.pickerView sizeThatFits:CGSizeZero];
-		CGRect startRect = CGRectMake(0.0,
-																	screenRect.origin.y + screenRect.size.height,
-																	pickerSize.width, pickerSize.height);
-		self.pickerView.frame = startRect;
-		
-		// compute the end frame
-		CGRect pickerRect = CGRectMake(0.0,
-																	 screenRect.origin.y + screenRect.size.height - pickerSize.height,
-																	 pickerSize.width,
-																	 pickerSize.height);
-		// start the slide up animation
-		[UIView beginAnimations:nil context:NULL];
-		[UIView setAnimationDuration:0.3];
-		
-		// we need to perform some post operations after the animation is complete
-		[UIView setAnimationDelegate:self];
-		
-		self.pickerView.frame = pickerRect;
-		
-		// shrink the table vertical size to make room for the date picker
-		CGRect newFrame = delegate.tableView.frame;
-		newFrame.size.height -= self.pickerView.frame.size.height;
-		delegate.tableView.frame = newFrame;
-		[UIView commitAnimations];
+	if (selected) {
+		[self becomeFirstResponder];
 	}
 }
+
+#pragma mark - UIDatePicker
 
 - (void)dateChanged:(id)sender
 {

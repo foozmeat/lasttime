@@ -17,6 +17,7 @@
 
 @interface DatePickerCell : UITableViewCell
 
+@property (nonatomic, strong) UIToolbar *inputAccessoryView;
 @property (nonatomic, strong) UIDatePicker *pickerView;
 @property (nonatomic, strong) NSDateFormatter *df;
 @property (nonatomic, assign) UITableViewController <DatePickerCellDelegate> *delegate;
@@ -24,5 +25,6 @@
 + (DatePickerCell *)newDateCellWithTag:(NSInteger)tag withDelegate:(id) delegate;
 
 - (void)dateChanged:(id)sender;
+- (void)done:(id)sender;
 
 @end
