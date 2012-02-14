@@ -113,7 +113,7 @@
 		}
 	}
 	
-	double average = ABS(runningTotal / count);
+	double average = ABS(runningTotal / (count - 1));
 	return average;
 	
 }
