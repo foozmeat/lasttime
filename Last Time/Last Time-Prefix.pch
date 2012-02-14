@@ -15,7 +15,7 @@
 	#import "LogEntry.h"
 	#import "Event.h"
 	#import "FileHelpers.h"
-
+	#import "UIColor+Custom.h"
 
 #ifndef DEBUG
 	#import "TestFlight.h"
