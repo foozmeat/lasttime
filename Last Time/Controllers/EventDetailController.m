@@ -82,15 +82,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 1;
+	return NUM_SECTIONS;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if ([self isModal]) {
-		return 4;
+	if (section == 0) {
+		if ([self isModal]) {
+			return 3;
+		} else {
+			return 1;
+		}
+		
 	} else {
-		return 2;
+		return 1;
 	}
 }
 
@@ -103,37 +108,51 @@
 	DatePickerCell *dcell = nil;
 	FolderPickerCell *fcell = nil;
 
-	switch ([indexPath row]) 
-	{
-		case kEventName:
-			cell = [self nameCell];
-			[[cell cellTextField] setText:[event eventName]];
-			[[cell cellTextField] setPlaceholder:@"Got a haircut"];
-			[[cell textLabel] setText:@"Name"];
-			return cell;
-			break;
-		case kEventNote:
-			cell = [self noteCell];
-			[[cell cellTextField] setPlaceholder:@"Happy!"];
-			[[cell textLabel] setText:@"Note"];
-			return cell;
-			break;
-		case kEventDate:
-			dcell = [self dateCell];
-			[[dcell textLabel] setText:@"Date"];
-			return dcell;
-			break;
-		case kEventFolder:
-			fcell = [self folderCell];
-			[[fcell textLabel] setText:@"Folder"];
-			[[fcell detailTextLabel] setText:[folder folderName]];
-			return fcell;
-			break;
-		default:
-			cell = [[EditableTableCell alloc] init];
-			[[cell cellTextField] setText:@"Error"];
-			return cell;
-			break;
+	if ([indexPath section] == 0) {
+		
+		switch ([indexPath row]) {
+			case kEventName:
+				cell = [self nameCell];
+				[[cell cellTextField] setText:[event eventName]];
+				[[cell cellTextField] setPlaceholder:@"Got a haircut"];
+				[[cell textLabel] setText:@"Name"];
+				return cell;
+				break;
+			case kEventNote:
+				cell = [self noteCell];
+				[[cell cellTextField] setPlaceholder:@"Happy!"];
+				[[cell textLabel] setText:@"Note"];
+				return cell;
+				break;
+			case kEventDate:
+				dcell = [self dateCell];
+				[[dcell textLabel] setText:@"Date"];
+				return dcell;
+				break;
+			default:
+				cell = [[EditableTableCell alloc] init];
+				[[cell cellTextField] setText:@"Error"];
+				return cell;
+				break;
+		}
+	} if ([indexPath section] == 1) {
+		switch ([indexPath row]) {
+			case kEventFolder:
+				fcell = [self folderCell];
+				[[fcell textLabel] setText:@"Folder"];
+				[[fcell detailTextLabel] setText:[folder folderName]];
+				return fcell;
+				break;
+			default:
+				cell = [[EditableTableCell alloc] init];
+				[[cell cellTextField] setText:@"Error"];
+				return cell;
+				break;
+		}
+	} else {
+		cell = [[EditableTableCell alloc] init];
+		[[cell cellTextField] setText:@"Error"];
+		return cell;
 	}
 }
 
@@ -148,7 +167,13 @@
 
 - (void)folderPickerDidChange:(EventFolder *)newFolder
 {
-	[self setFolder:newFolder];
+	if ([self isModal]) {
+		[self setFolder:newFolder];
+	} else {
+		[newFolder addItem:event];
+		[folder removeItem:event];
+		[self setFolder:newFolder];
+	}
 	[[self tableView] reloadData];
 }
 

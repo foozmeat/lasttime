@@ -139,6 +139,7 @@
 			
 			EventController *ec = [[EventController alloc] init];
 			[ec setEvent:item];			
+			[ec setFolder:folder];
 			[[self navigationController] pushViewController:ec animated:YES];
 		}
 		

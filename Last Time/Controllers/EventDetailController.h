@@ -12,11 +12,20 @@
 @class Event;
 @class LogEntry;
 
-enum {
+enum Sections {
+	kMainSection = 0,
+	kFolderSection,
+	NUM_SECTIONS
+};
+
+enum MainSection {
 	kEventName = 0,
 	kEventNote,
-	kEventDate,
-	kEventFolder
+	kEventDate
+};
+
+enum FolderSection {
+  kEventFolder = 0
 };
 
 @interface EventDetailController : CustomTableViewController
