@@ -10,7 +10,7 @@
 #import "EditableTableCell.h"
 
 @implementation CustomTableViewController
-@synthesize rootFolder;
+@synthesize rootFolder, requiredField;
 
 - (BOOL)isModal
 {
@@ -37,7 +37,9 @@
 																	 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
 																	 target:self
 																	 action:@selector(save)];
-		[saveButton setEnabled:NO];
+		if ([self requiredField] != -1) {
+			[saveButton setEnabled:NO];
+		}
 		[[self navigationItem] setRightBarButtonItem:saveButton];
 		
 		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] 
@@ -76,6 +78,7 @@
 - (id) init
 {
 	self = [super initWithStyle:UITableViewStyleGrouped];
+	[self setRequiredField:-1];
 	return self;
 }
 
@@ -110,7 +113,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
 	
-	if ([self isModal] && [textField tag] == 0) {
+	if ([self isModal] && [textField tag] == [self requiredField]) {
 		NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
 		BOOL isFieldEmpty = [newText isEqualToString:@""];
 		self.navigationItem.rightBarButtonItem.enabled = !isFieldEmpty;
@@ -121,7 +124,7 @@
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
 {
-	if ([self isModal] && [textField tag] == 0) {
+	if ([self isModal] && [textField tag] == [self requiredField]) {
 		self.navigationItem.rightBarButtonItem.enabled = NO;
 	}
 	return YES;

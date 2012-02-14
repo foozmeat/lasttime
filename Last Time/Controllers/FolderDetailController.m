@@ -25,6 +25,12 @@
 
 #pragma mark -
 #pragma mark UIViewController Methods
+- (void)viewDidLoad
+{
+	[self setRequiredField:FolderName];
+	[super viewDidLoad];
+}
+
 
 - (void)viewFinishedLoading
 {

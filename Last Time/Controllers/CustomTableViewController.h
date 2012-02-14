@@ -14,6 +14,7 @@
 @interface CustomTableViewController : UITableViewController <UITextFieldDelegate, DatePickerCellDelegate, FolderPickerCellDelegate>
 
 @property (strong, nonatomic) EventFolder *rootFolder;
+@property (nonatomic) NSInteger requiredField;
 
 - (BOOL)isModal;
 

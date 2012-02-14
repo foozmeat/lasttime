@@ -25,7 +25,11 @@
 
 #pragma mark -
 #pragma mark UIViewController Methods
-
+- (void)viewDidLoad
+{
+	[self setRequiredField:kEventName];
+	[super viewDidLoad];
+}
 - (void)viewFinishedLoading
 {
 	[self setNameCell:[EditableTableCell newDetailCellWithTag:kEventName withDelegate:self]];
