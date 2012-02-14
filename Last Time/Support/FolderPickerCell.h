@@ -17,8 +17,9 @@
 
 @end
 
-@interface FolderPickerCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface FolderPickerCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate, UIKeyInput>
 
+@property (nonatomic, strong) UIToolbar *inputAccessoryView;
 @property (nonatomic, strong) EventFolder *rootFolder;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, assign) UITableViewController <FolderPickerCellDelegate> *delegate;
@@ -27,5 +28,6 @@
 															withDelegate:(id) delegate;
 
 - (void)setFolder;
+- (void)done:(id)sender;
 
 @end
