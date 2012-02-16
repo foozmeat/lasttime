@@ -17,6 +17,7 @@
 	[df setTimeStyle:NSDateFormatterShortStyle];
 	
 	pickerView = [[UIDatePicker alloc] init];
+	[pickerView setMinuteInterval:15];
 	
 	NSDate *now = [[NSDate alloc] init];
 	[pickerView setDate:now];
