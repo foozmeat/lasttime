@@ -72,8 +72,6 @@
 
 - (Event *)createEvent
 {
-//	Event *e = [Event randomEvent];
-
 	Event *e = [[Event alloc] init];
 	[allItems addObject:e];
 	needsSorting = YES;
@@ -132,10 +130,11 @@
 - (void) sortItems
 {
 	if (needsSorting) {
-		
 		[allItems sortUsingComparator:^(id a, id b) {
 			NSDate *first = [(id)a latestDate];
 			NSDate *second = [(id)b latestDate];
+//			NSLog(@"%@: %@ %@: %@", [a objectName], first, [b objectName], second);
+			
 			return [second compare:first];
 		}];
 		
@@ -157,7 +156,11 @@
 - (NSDate *)latestDate
 {
 	id item = [self latestItem];
-	return [item latestDate];
+	if (!item) {
+		return [[NSDate alloc] initWithTimeIntervalSince1970:0];
+	} else {
+		return [item latestDate];
+	}
 }
 
 
@@ -207,6 +210,8 @@
 		NSString *path = [self eventDataAchivePath];
 		EventFolder *archivedRootFolder = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
 		[self setAllItems:[[NSMutableArray alloc] initWithArray:[archivedRootFolder allItems]]];
+		needsSorting = YES;
+
 	}
 
 	if (!allItems) {
