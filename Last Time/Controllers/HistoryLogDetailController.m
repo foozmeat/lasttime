@@ -12,7 +12,7 @@
 
 @implementation HistoryLogDetailController
 @synthesize logEntry, event;
-@synthesize noteCell, dateCell;
+@synthesize noteCell, dateCell, locationCell;
 
 #pragma mark -
 #pragma mark Action Methods
@@ -21,16 +21,27 @@
 {
 	[event addLogEntry:logEntry];
 	[self dismissModalViewControllerAnimated:YES];
+	NSLog(@"%@", event);
 }
 
 #pragma mark -
 #pragma mark UIViewController Methods
 
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+
+	if ([self isModal] && [self shouldStoreLocation]) {
+		[self startUpdatingLocation:@"Get location for controller"];
+	}
+
+}
+
 - (void)viewFinishedLoading
 {
 	[self setNoteCell:[EditableTableCell newDetailCellWithTag:EventNote withDelegate:self]];
 	[self setDateCell:[DatePickerCell newDateCellWithTag:EventDate withDelegate:self]];
-	
+	[self setLocationCell:[LocationSwitchCell newLocationCellWithTag:EventLocation withDelegate:self]];
 	
 	if ([self isModal]) {
 		[self setTitle:@"New Entry"];		
@@ -80,7 +91,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 2;
+	if ([self isModal]) {
+		return 3;
+	} else {
+		return 2;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -90,6 +105,7 @@
 	//
 	EditableTableCell *cell = nil;
 	DatePickerCell *dcell = nil;
+	LocationSwitchCell *lcell = nil;
 	
 	switch ([indexPath row]) 
 	{
@@ -107,12 +123,29 @@
 			[[dcell textLabel] setText:@"Date"];
 			return dcell;
 			break;
+		case EventLocation:
+			lcell = [self locationCell];
+			return lcell;
+			break;
 		default:
 			cell = [[EditableTableCell alloc] init];
 			[[cell cellTextField] setText:@"Error"];
 			return cell;
 			break;
 	}
+}
+
+#pragma mark - Location methods
+-(void)updateObjectLocation
+{
+	CLLocationCoordinate2D loc;
+	if ([self shouldStoreLocation]) {
+		loc = [[self bestLocation] coordinate];
+	} else {
+		loc = CLLocationCoordinate2DMake(0.0, 0.0);
+	}
+	[logEntry setLogEntryLocation:loc];
+	
 }
 
 #pragma mark -
