@@ -11,7 +11,7 @@
 #import "DatePickerCell.h"
 
 @implementation EventDetailController
-@synthesize nameCell, noteCell, dateCell, folderCell;
+@synthesize nameCell, noteCell, dateCell, folderCell, locationCell;
 @synthesize event, folder;
 
 #pragma mark -
@@ -21,6 +21,7 @@
 {
 	[folder addItem:event];
 	[self dismissModalViewControllerAnimated:YES];
+	NSLog(@"%@", event);
 }
 
 #pragma mark -
@@ -29,6 +30,10 @@
 {
 	[self setRequiredField:kEventName];
 	[super viewDidLoad];
+	
+	if ([self isModal] && [self shouldStoreLocation]) {
+		[self startUpdatingLocation:@"Get location for controller"];
+	}
 }
 - (void)viewFinishedLoading
 {
@@ -41,6 +46,7 @@
 		
 		[self setNoteCell:[EditableTableCell newDetailCellWithTag:kEventNote withDelegate:self]];
 		[self setDateCell:[DatePickerCell newDateCellWithTag:kEventDate withDelegate:self]];
+		[self setLocationCell:[LocationSwitchCell newLocationCellWithTag:kEventLocation withDelegate:self]];
 		
 	} else {
 		[self setTitle:@"Edit Event"];
@@ -95,7 +101,7 @@
 {
 	if (section == 0) {
 		if ([self isModal]) {
-			return 3;
+			return 4;
 		} else {
 			return 1;
 		}
@@ -113,6 +119,7 @@
 	EditableTableCell *cell = nil;
 	DatePickerCell *dcell = nil;
 	FolderPickerCell *fcell = nil;
+	LocationSwitchCell *lcell = nil;
 
 	if ([indexPath section] == 0) {
 		
@@ -134,6 +141,10 @@
 				dcell = [self dateCell];
 				[[dcell textLabel] setText:@"Date"];
 				return dcell;
+				break;
+			case kEventLocation:
+				lcell = [self locationCell];
+				return lcell;
 				break;
 			default:
 				cell = [[EditableTableCell alloc] init];
@@ -160,6 +171,19 @@
 		[[cell cellTextField] setText:@"Error"];
 		return cell;
 	}
+}
+
+#pragma mark - Location methods
+-(void)updateObjectLocation
+{
+	CLLocationCoordinate2D loc;
+	if ([self shouldStoreLocation]) {
+		loc = [[self bestLocation] coordinate];
+	} else {
+		loc = CLLocationCoordinate2DMake(0.0, 0.0);
+	}
+	[[[event logEntryCollection] objectAtIndex:0] setLogEntryLocation:loc];
+	
 }
 
 #pragma mark - EditableTableCellDelegate

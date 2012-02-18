@@ -21,7 +21,8 @@ enum Sections {
 enum MainSection {
 	kEventName = 0,
 	kEventNote,
-	kEventDate
+	kEventDate,
+	kEventLocation
 };
 
 enum FolderSection {
@@ -37,6 +38,7 @@ enum FolderSection {
 @property (nonatomic, strong) EditableTableCell *noteCell;
 @property (nonatomic, strong) DatePickerCell *dateCell;
 @property (nonatomic, strong) FolderPickerCell *folderCell;
+@property (nonatomic, strong) LocationSwitchCell *locationCell;
 
 @end
 

@@ -10,6 +10,7 @@
 		3904CFA114C078E200B7396A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		3904CFA414C078E200B7396A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3904CFA314C078E200B7396A /* main.m */; };
 		3904CFAC14C0793700B7396A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
+		3913EADC14EEB5DC0013A86A /* LocationSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */; };
 		392009FF14E4B88D006B6A79 /* CustomTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392009FE14E4B88D006B6A79 /* CustomTableViewController.m */; };
 		39200A1414E76C18006B6A79 /* EventController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39200A1314E76C17006B6A79 /* EventController.xib */; };
 		3950E86714BFE0AB009C6F6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
@@ -96,6 +97,8 @@
 /* Begin PBXFileReference section */
 		3904CF9F14C078E200B7396A /* RandomEventFolder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomEventFolder; sourceTree = BUILT_PRODUCTS_DIR; };
 		3904CFA314C078E200B7396A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3913EADA14EEB5DC0013A86A /* LocationSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationSwitchCell.h; path = Support/LocationSwitchCell.h; sourceTree = "<group>"; };
+		3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationSwitchCell.m; path = Support/LocationSwitchCell.m; sourceTree = "<group>"; };
 		392009FD14E4B88D006B6A79 /* CustomTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewController.h; sourceTree = "<group>"; };
 		392009FE14E4B88D006B6A79 /* CustomTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewController.m; sourceTree = "<group>"; };
 		39200A1314E76C17006B6A79 /* EventController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventController.xib; sourceTree = "<group>"; };
@@ -404,6 +407,8 @@
 				39F6435F14E40AAE004B0900 /* DatePickerCell.m */,
 				39DB081414E95640006E4E08 /* FolderPickerCell.h */,
 				39DB081514E95640006E4E08 /* FolderPickerCell.m */,
+				3913EADA14EEB5DC0013A86A /* LocationSwitchCell.h */,
+				3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -504,7 +509,7 @@
 		39D70CA914BD3515009C3615 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = Self;
 			};
 			buildConfigurationList = 39D70CAC14BD3515009C3615 /* Build configuration list for PBXProject "Last Time" */;
@@ -617,6 +622,7 @@
 				39825C9014E8757200C4D684 /* FileHelpers.m in Sources */,
 				39DB081614E95640006E4E08 /* FolderPickerCell.m in Sources */,
 				39FEDFA914EAC2C2009672A5 /* UIColor+Custom.m in Sources */,
+				3913EADC14EEB5DC0013A86A /* LocationSwitchCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

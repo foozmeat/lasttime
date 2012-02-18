@@ -11,6 +11,8 @@
 
 @implementation CustomTableViewController
 @synthesize rootFolder, requiredField;
+@synthesize bestLocation;
+@synthesize shouldStoreLocation = _shouldStoreLocation;
 
 - (BOOL)isModal
 {
@@ -20,18 +22,30 @@
 	return rootViewController == self;
 }
 
-#pragma mark -
-#pragma mark UIViewController Methods
+#pragma mark - UIViewController Methods
+
+- (void)viewFinishedLoading
+{
+}
 
 - (void)viewDidLoad
 {
-	//  If the user clicked the '+' button in the list view, we're
-	//  creating a new entry rather than modifying an existing one, so 
-	//  we're in a modal nav controller. Modal nav controllers don't add
-	//  a back button to the nav bar; instead we'll add Save and 
-	//  Cancel buttons.
-	//  
 	
+	if (locationManager == nil) {
+		locationManager = [[CLLocationManager alloc] init];
+	}
+	
+	_shouldStoreLocation = YES;
+	// Subclasses need to call [locationManager startUpdatingLocation] in
+	// their on viewDidLoad methods
+	
+	if ([self shouldStoreLocation]) {
+		[locationManager setDelegate:self];	
+		[locationManager setDistanceFilter:50];
+		[locationManager setDesiredAccuracy:5];
+    [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
+	}
+
 	if ([self isModal]) {
 		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] 
 																	 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
@@ -54,13 +68,73 @@
 	[self viewFinishedLoading];
 }
 
-- (void)viewFinishedLoading
-{
-	
+#pragma mark - CLLocation Methods
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+	// The location "unknown" error simply means the manager is currently unable to get the location.
+	// We can ignore this error for the scenario of getting a single location fix, because we already have a 
+	// timeout that will stop the location manager to save power.
+	if ([error code] != kCLErrorLocationUnknown) {
+		[self stopUpdatingLocation:NSLocalizedString(@"Error", @"Error")];
+	}
 }
 
-#pragma mark -
-#pragma mark Action Methods
+- (void)stopUpdatingLocation:(NSString *)state {
+//	[self.tableView reloadData];
+	if (locationManager.delegate) {
+		NSLog(@"%@", state);
+		[locationManager stopUpdatingLocation];
+//		locationManager.delegate = nil;
+	}
+}
+
+- (void)startUpdatingLocation:(NSString *)state {
+	//	[self.tableView reloadData];
+	if (locationManager.delegate && [self shouldStoreLocation]) {
+		NSLog(@"%@", state);
+		[locationManager startUpdatingLocation];
+	}
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+
+	// test the age of the location measurement to determine if the measurement is cached
+	// in most cases you will not want to rely on cached measurements
+	NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
+	if (locationAge > 20.0) return;
+	// test that the horizontal accuracy does not indicate an invalid measurement
+	if (newLocation.horizontalAccuracy < 0) return;
+	// test the measurement to see if it is more accurate than the previous measurement
+	if (bestLocation == nil || bestLocation.horizontalAccuracy >= newLocation.horizontalAccuracy) {
+		// store the location as the "best effort"
+		self.bestLocation = newLocation;
+		NSLog(@"%f, %f", bestLocation.horizontalAccuracy, newLocation.horizontalAccuracy);
+		[self updateObjectLocation];
+		// test the measurement to see if it meets the desired accuracy
+		//
+		// IMPORTANT!!! kCLLocationAccuracyBest should not be used for comparison with location coordinate or altitidue 
+		// accuracy because it is a negative value. Instead, compare against some predetermined "real" measure of 
+		// acceptable accuracy, or depend on the timeout to stop updating. This sample depends on the timeout.
+		//
+		if (newLocation.horizontalAccuracy <= locationManager.desiredAccuracy) {
+			// we have a measurement that meets our requirements, so we can stop updating the location
+			// 
+			// IMPORTANT!!! Minimize power usage by stopping the location manager as soon as possible.
+			//
+			[self stopUpdatingLocation:NSLocalizedString(@"Acquired Location", @"Acquired Location")];
+			// we can also cancel our previous performSelector:withObject:afterDelay: - it's no longer necessary
+			[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:@"Timed Out"];
+		}
+	}
+	// update the display with the new location data
+//	[self.tableView reloadData];    
+}
+
+- (void)updateObjectLocation
+{
+	@throw [NSException exceptionWithName:@"Called Delegate method in super class" reason:@"Override in subclass" userInfo:nil];
+}
+
+#pragma mark - Action Methods
 
 - (void)save
 {
@@ -72,8 +146,7 @@
 	[self dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark -
-#pragma mark UIViewController Methods
+#pragma mark - UIViewController Methods
 
 - (id) init
 {
@@ -170,28 +243,52 @@
 	return YES;
 }
 
-#pragma mark - EditableTableCellDelegate
-- (void)stringDidChange:(NSString *)value {
+- (void)throwException {
 	@throw [NSException exceptionWithName:@"Called Delegate method in super class" reason:@"Override in subclass" userInfo:nil];
 }
+#pragma mark - EditableTableCellDelegate
+- (void)stringDidChange:(NSString *)value {
+	[self throwException];
+}
 
+#pragma mark - LocationCell
+
+- (BOOL) shouldStoreLocation
+{
+	return _shouldStoreLocation && [CLLocationManager locationServicesEnabled];
+}
+
+- (void) locationSwitchChanged:(UISwitch *)sender
+{
+	_shouldStoreLocation = sender.on;
+
+	if (sender.on == NO) {
+		[self stopUpdatingLocation:NSLocalizedString(@"Switched Off", @"Switched Off")];
+		[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:@"Timed Out"];
+	} else {
+		[self startUpdatingLocation:@"Switched on"];
+    [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
+	}
+	[self updateObjectLocation];
+
+}
 
 #pragma mark - DatePickerDelegate
 
 - (void)pickerDidChange:(NSDate *)date
 {
-	@throw [NSException exceptionWithName:@"Called Delegate method in super class" reason:@"Override in subclass" userInfo:nil];
+	[self throwException];
 }
 
 #pragma mark - FolderPickerDelegate
 - (void)folderPickerDidChange:(EventFolder *)folder
 {
-	@throw [NSException exceptionWithName:@"Called Delegate method in super class" reason:@"Override in subclass" userInfo:nil];
+	[self throwException];
 }
 
 - (EventFolder *)folderPickerCurrentFolder
 {
-	@throw [NSException exceptionWithName:@"Called Delegate method in super class" reason:@"Override in subclass" userInfo:nil];
+	[self throwException];
 	return nil;
 }
 
