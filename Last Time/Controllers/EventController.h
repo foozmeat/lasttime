@@ -27,8 +27,6 @@ enum AverageSection {
 @property (nonatomic, strong) EventFolder *folder;
 @property (nonatomic, strong) EventFolder *rootFolder;
 
-- (void)addNewItem:(id)sender;
-
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;
 - (IBAction)addNewItem:(id)sender;
 @end
