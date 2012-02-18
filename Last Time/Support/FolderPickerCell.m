@@ -133,6 +133,7 @@
 	
 	[cell setDelegate:delegate];
 	[cell setRootFolder:[delegate folderPickerRootFolder]];
+	[cell setTag:tag];
 	
 	return cell;
 

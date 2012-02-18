@@ -118,6 +118,7 @@
 																							 reuseIdentifier:@"DatePickerCell"];
 	
 	[cell setDelegate:delegate];
+	[[cell pickerView] setTag:tag];
 	
 	return cell;
 
