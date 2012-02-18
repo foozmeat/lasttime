@@ -178,6 +178,8 @@
 {
 	[aCoder encodeObject:logEntryNote forKey:@"logEntryNote"];
 	[aCoder encodeObject:logEntryDateOccured forKey:@"logEntryDateOccured"];
+	[aCoder encodeDouble:logEntryLocation.longitude forKey:@"logEntryLongitude"];
+	[aCoder encodeDouble:logEntryLocation.latitude forKey:@"logEntryLatitude"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -187,6 +189,15 @@
 	if (self) {
 		[self setLogEntryNote:[aDecoder decodeObjectForKey:@"logEntryNote"]];
 		[self setLogEntryDateOccured:[aDecoder decodeObjectForKey:@"logEntryDateOccured"]];
+		
+		float longitude, latitude;
+		longitude = [aDecoder decodeDoubleForKey:@"logEntryLongitude"];
+		latitude = [aDecoder decodeDoubleForKey:@"logEntryLatitude"];
+		
+		CLLocationCoordinate2D new_coordinate = { latitude, longitude };
+		
+		[self setLogEntryLocation:new_coordinate];
+
 	}
 	
 	return self;
