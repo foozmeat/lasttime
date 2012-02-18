@@ -95,7 +95,7 @@
 #pragma mark -
 - (NSTimeInterval)averageInterval
 {
-	if ([logEntryCollection count] == 0.0) {
+	if ([logEntryCollection count] < 2) {
 		return 0;
 	}
 	
@@ -151,6 +151,9 @@
 
 - (NSDate *)nextTime
 {
+	if ([logEntryCollection count] < 2) {
+		return nil;
+	}
 	NSTimeInterval interval = [self averageInterval];
 	NSDate *lastDate = [[self latestEntry] logEntryDateOccured];
 	
