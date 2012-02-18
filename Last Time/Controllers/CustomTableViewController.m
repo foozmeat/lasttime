@@ -43,7 +43,6 @@
 		[locationManager setDelegate:self];	
 		[locationManager setDistanceFilter:50];
 		[locationManager setDesiredAccuracy:5];
-    [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
 	}
 
 	if ([self isModal]) {
@@ -92,6 +91,7 @@
 	if (locationManager.delegate && [self shouldStoreLocation]) {
 		NSLog(@"%@", state);
 		[locationManager startUpdatingLocation];
+    [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
 	}
 }
 
