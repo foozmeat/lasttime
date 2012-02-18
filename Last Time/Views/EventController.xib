@@ -136,7 +136,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="216542408"/>
-								<int key="IBUISystemItemIdentifier">4</int>
+								<int key="IBUISystemItemIdentifier">13</int>
 							</object>
 						</array>
 					</object>
