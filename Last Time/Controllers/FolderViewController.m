@@ -176,6 +176,8 @@
 			[[self navigationItem] setRightBarButtonItem:nil];
 			[self setEditing:NO animated:YES];
 		}
+		
+		[rootFolder saveChanges];
 
 	}
 }

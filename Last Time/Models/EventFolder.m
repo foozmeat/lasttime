@@ -200,8 +200,13 @@
 
 - (BOOL)saveChanges
 {
-	return [NSKeyedArchiver archiveRootObject:self
-																		 toFile:[self eventDataAchivePath]];
+	if (isRoot) {
+		NSLog(@"Saving data...");
+		return [NSKeyedArchiver archiveRootObject:self
+																			 toFile:[self eventDataAchivePath]];
+	} else {
+		return NO;
+	}
 }
 
 - (void)fetchItemsIfNecessary
