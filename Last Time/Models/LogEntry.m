@@ -77,24 +77,11 @@
 	
 	now = [sysCalendar dateFromComponents:nowComps];
 	then = [sysCalendar dateFromComponents:thenComps];
-//	NSLog(@"\nNow:  %@\nThen: %@", now, then);
-	
+
 	int differenceInDays = abs(
 														 [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
 														 [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
 //	NSLog(@"Difference in days: %i", differenceInDays);
-	
-	int differenceInWeeks = abs( [sysCalendar ordinalityOfUnit:NSWeekCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
-															[sysCalendar ordinalityOfUnit:NSWeekCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
-//	NSLog(@"Difference in weeks: %i", differenceInWeeks);
-	
-	int differenceInMonths = abs(	[sysCalendar ordinalityOfUnit:NSMonthCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
-															 [sysCalendar ordinalityOfUnit:NSMonthCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
-//	NSLog(@"Difference in months: %i", differenceInMonths);
-	
-//	int differenceInYears = abs(	[sysCalendar ordinalityOfUnit:NSYearCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
-//															[sysCalendar ordinalityOfUnit:NSYearCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
-//	NSLog(@"Difference in years: %i", differenceInYears);
 	
 	NSDateComponents *diffComps = [sysCalendar components:unitFlags fromDate:now  toDate:then  options:0];
 	NSInteger year = ABS([diffComps year]);
@@ -142,16 +129,16 @@
 		[result appendFormat:@"Last %@", [[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
 		suffix = NO;
 		
-	} else if (differenceInWeeks <= 4 && day == 0) {
+	} else if (year < 1 && month < 1 && week <= 4 && day == 0) {
 		[result appendFormat:@"%d %@", week, nbweek];
-	} else if (differenceInWeeks <= 4) {
+	} else if (year < 1 && month < 1 && week <= 4 && day != 0) {
 		[result appendFormat:@"%d %@, %d %@", week, nbweek, day, nbday];
 		
-	} else if (differenceInMonths < 12 && week == 0 && day == 0) {
+	} else if (year < 1 && month < 12 && week == 0 && day == 0) {
 		[result appendFormat:@"%d %@", month, nbmonth];
-	} else if (differenceInMonths < 12 && week == 0 && day != 0) {
+	} else if (year < 1 && month < 12 && week == 0 && day != 0) {
 		[result appendFormat:@"%d %@, %d %@", month, nbmonth, day, nbday];
-	} else if (differenceInMonths < 12 && week != 0) {
+	} else if (year < 1 && month < 12 && week != 0) {
 		[result appendFormat:@"%d %@, %d %@", month, nbmonth, week, nbweek];
 		
 	} else if (year > 0 && month == 0 && week == 0) {
