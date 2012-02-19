@@ -8,6 +8,7 @@
 
 #import "EventController.h"
 #import "HistoryLogDetailController.h"
+#import "HistoryLogCell.h"
 
 @implementation EventController
 @synthesize eventTableView;
@@ -104,11 +105,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+	HistoryLogCell *historyLogCell = [tableView dequeueReusableCellWithIdentifier:@"HistoryLogCell"];
 	
+	numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+	numberFormatter.roundingIncrement = [NSNumber numberWithDouble:0.001];
+
 	if (!cell) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
 																	reuseIdentifier:@"UITableViewCell"];
 	}
+
+	if (historyLogCell == nil) {
+		UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"HistoryLogCell" bundle:nil];
+		historyLogCell = (HistoryLogCell *)temporaryController.view;
+	}
+	
 	
 	if ([indexPath section] == kAverageSection && [event showAverage]) {
 		
@@ -129,6 +140,8 @@
 			cell.detailTextLabel.text = [df stringFromDate:[event nextTime]];
 			
 		}
+		return cell;
+
 	} else if ([indexPath section] == kAverageSection && ![event showAverage]) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
 																	reuseIdentifier:@"UIDefaultTableViewCell"];
@@ -138,18 +151,26 @@
 		cell.textLabel.text = @"Add another occurence to see the average";
 		cell.textLabel.numberOfLines = 0;
 		cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
-		
+		return cell;
+	
 	} else if ([indexPath section] == kHistorySection) {
 		
-		id item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
+		LogEntry *item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
 		
-		[[cell textLabel] setText:[item logEntryNote]];
-		[[cell detailTextLabel] setText:[item subtitle]];
-
+		historyLogCell.logEntryNoteCell.text = item.logEntryNote;
+		historyLogCell.logEntryDateCell.text = [item stringFromLogEntryInterval];
+		NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[item logEntryValue]]];
+		historyLogCell.logEntryValueCell.text = value;
+		historyLogCell.locationMarker.hidden = ![item hasLocation];
+		
+		return historyLogCell;
+		
+	} else {
+		cell.textLabel.text = @"Error";
+		return cell;
 	}
 	
 	
-	return cell;
 }
 
 #pragma mark - View lifecycle
@@ -157,6 +178,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+	numberFormatter = [[NSNumberFormatter alloc] init];
 
 	[[self navigationItem] setTitle:[event eventName]];
 	[[self eventTableView] reloadData];

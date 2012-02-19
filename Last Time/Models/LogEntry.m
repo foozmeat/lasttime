@@ -30,6 +30,11 @@
 
 }
 
+- (BOOL)hasLocation
+{
+	return logEntryLocation.longitude != 0.0 && logEntryLocation.latitude != 0.0;
+}
+
 - (NSTimeInterval)secondsSinceNow
 {
 	return [logEntryDateOccured timeIntervalSinceNow];

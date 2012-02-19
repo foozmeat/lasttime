@@ -21,7 +21,16 @@ enum AverageSection {
 	kNextTime,
 };
 
+enum historyViewCellTags {
+  logEntryNoteLabel = 0,
+  logEntryNoteDate,
+	logEntryNoteValue
+};
+
 @interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+{
+	NSNumberFormatter *numberFormatter;
+}
 
 @property (nonatomic, strong) Event *event;
 @property (nonatomic, strong) EventFolder *folder;

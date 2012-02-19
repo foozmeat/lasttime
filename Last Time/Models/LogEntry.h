@@ -22,6 +22,7 @@
 - (NSTimeInterval)secondsSinceNow;
 - (NSString *)stringFromLogEntryInterval;
 - (NSString *)subtitle;
+- (BOOL)hasLocation;
 
 + (id)randomLogEntry;
 + (NSString *)stringFromInterval:(NSTimeInterval)interval

@@ -98,9 +98,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if ([self isModal]) {
-		return 3;
+		return 4;
 	} else {
-		return 2;
+		return 3;
 	}
 }
 
