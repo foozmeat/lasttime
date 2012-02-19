@@ -47,6 +47,7 @@
 		[self setNoteCell:[EditableTableCell newDetailCellWithTag:kEventNote withDelegate:self]];
 		[self setDateCell:[DatePickerCell newDateCellWithTag:kEventDate withDelegate:self]];
 		[self setLocationCell:[LocationSwitchCell newLocationCellWithTag:kEventLocation withDelegate:self]];
+		[self setNumberCell:[NumberCell newNumberCellWithTag:kEventNumber withDelegate:self]];
 		
 	} else {
 		[self setTitle:@"Edit Event"];
@@ -60,11 +61,11 @@
 //
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-	if ([textField tag] == kEventName && ![self isModal]) {
-		[textField setReturnKeyType:UIReturnKeyDone];
-	} else if ([textField tag] == kEventNote && [self isModal]) {
-		[textField setReturnKeyType:UIReturnKeyDone];
-	}
+//	if ([textField tag] == kEventName && ![self isModal]) {
+//		[textField setReturnKeyType:UIReturnKeyDone];
+//	} else if ([textField tag] == kEventNumber && [self isModal]) {
+//		[textField setReturnKeyType:UIReturnKeyDone];
+//	}
 	return YES;
 }
 
@@ -77,6 +78,7 @@
 	
 	NSString *text = [textField text];
 	NSUInteger tag = [textField tag];
+	float value = 0.0;
 	
 	switch (tag)
 	{
@@ -85,6 +87,10 @@
 			break;
 		case kEventNote:
 			[[[event logEntryCollection] objectAtIndex:0] setLogEntryNote:text];
+			break;
+		case kEventNumber:
+			value = [text floatValue];
+			[[[event logEntryCollection] objectAtIndex:0] setLogEntryValue:value];
 			break;
 	}
 }
@@ -101,7 +107,7 @@
 {
 	if (section == 0) {
 		if ([self isModal]) {
-			return 4;
+			return 5;
 		} else {
 			return 1;
 		}
@@ -120,6 +126,7 @@
 	DatePickerCell *dcell = nil;
 	FolderPickerCell *fcell = nil;
 	LocationSwitchCell *lcell = nil;
+	NumberCell *ncell = nil;
 
 	if ([indexPath section] == 0) {
 		
@@ -136,6 +143,12 @@
 				[[cell cellTextField] setPlaceholder:@"Happy!"];
 				[[cell textLabel] setText:@"Note"];
 				return cell;
+				break;
+			case kEventNumber:
+				ncell = [self numberCell];
+				[[ncell cellTextField] setPlaceholder:@"rating, mileage, weight"];
+				[[ncell textLabel] setText:@"Number"];
+				return ncell;
 				break;
 			case kEventDate:
 				dcell = [self dateCell];

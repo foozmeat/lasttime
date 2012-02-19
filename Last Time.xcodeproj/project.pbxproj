@@ -11,6 +11,7 @@
 		3904CFA414C078E200B7396A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3904CFA314C078E200B7396A /* main.m */; };
 		3904CFAC14C0793700B7396A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
 		3913EADC14EEB5DC0013A86A /* LocationSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */; };
+		391AF43C14F0C03F00DCA3F0 /* NumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 391AF43B14F0C03F00DCA3F0 /* NumberCell.m */; };
 		392009FF14E4B88D006B6A79 /* CustomTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392009FE14E4B88D006B6A79 /* CustomTableViewController.m */; };
 		39200A1414E76C18006B6A79 /* EventController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39200A1314E76C17006B6A79 /* EventController.xib */; };
 		3950E86714BFE0AB009C6F6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
@@ -111,6 +112,8 @@
 		3904CFA314C078E200B7396A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3913EADA14EEB5DC0013A86A /* LocationSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationSwitchCell.h; path = Support/LocationSwitchCell.h; sourceTree = "<group>"; };
 		3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationSwitchCell.m; path = Support/LocationSwitchCell.m; sourceTree = "<group>"; };
+		391AF43A14F0C03F00DCA3F0 /* NumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumberCell.h; path = Support/NumberCell.h; sourceTree = "<group>"; };
+		391AF43B14F0C03F00DCA3F0 /* NumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumberCell.m; path = Support/NumberCell.m; sourceTree = "<group>"; };
 		392009FD14E4B88D006B6A79 /* CustomTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewController.h; sourceTree = "<group>"; };
 		392009FE14E4B88D006B6A79 /* CustomTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewController.m; sourceTree = "<group>"; };
 		39200A1314E76C17006B6A79 /* EventController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventController.xib; sourceTree = "<group>"; };
@@ -139,7 +142,7 @@
 		3988B9BA14E0214F0010062E /* EditableTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditableTableCell.h; path = Support/EditableTableCell.h; sourceTree = "<group>"; };
 		3988B9BB14E0214F0010062E /* EditableTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditableTableCell.m; path = Support/EditableTableCell.m; sourceTree = "<group>"; };
 		39A0F9F514F0B9AF00BA0AFA /* DurationTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DurationTest; sourceTree = BUILT_PRODUCTS_DIR; };
-		39A0F9F914F0B9AF00BA0AFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "../Last Time/Tools/DurationTest/main.m"; sourceTree = "<group>"; };
+		39A0F9F914F0B9AF00BA0AFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/DurationTest/main.m"; sourceTree = "<group>"; };
 		39AA477E14DAD8B300580EB9 /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailController.h; sourceTree = "<group>"; };
 		39AA477F14DAD8B300580EB9 /* EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailController.m; sourceTree = "<group>"; };
 		39AA478814DC252300580EB9 /* FolderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderDetailController.h; sourceTree = "<group>"; };
@@ -442,6 +445,8 @@
 				39DB081514E95640006E4E08 /* FolderPickerCell.m */,
 				3913EADA14EEB5DC0013A86A /* LocationSwitchCell.h */,
 				3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */,
+				391AF43A14F0C03F00DCA3F0 /* NumberCell.h */,
+				391AF43B14F0C03F00DCA3F0 /* NumberCell.m */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -683,6 +688,7 @@
 				39DB081614E95640006E4E08 /* FolderPickerCell.m in Sources */,
 				39FEDFA914EAC2C2009672A5 /* UIColor+Custom.m in Sources */,
 				3913EADC14EEB5DC0013A86A /* LocationSwitchCell.m in Sources */,
+				391AF43C14F0C03F00DCA3F0 /* NumberCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

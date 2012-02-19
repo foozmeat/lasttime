@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSDate *logEntryDateOccured;
 @property (nonatomic, strong) NSString *logEntryNote;
 @property (nonatomic) CLLocationCoordinate2D logEntryLocation;
+@property (nonatomic) float logEntryValue;
 
 - (id)initWithNote:(NSString *)logEntryNote
 			 dateOccured:(NSDate *)logEntryDateOccured;

@@ -21,6 +21,7 @@ enum Sections {
 enum MainSection {
 	kEventName = 0,
 	kEventNote,
+	kEventNumber,
 	kEventDate,
 	kEventLocation
 };

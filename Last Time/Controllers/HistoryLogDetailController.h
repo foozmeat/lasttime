@@ -12,9 +12,10 @@
 @class LogEntry;
 
 enum {
-	EventNote = 0,
-	EventDate,
-	EventLocation
+	kEventNote = 0,
+	kEventNumber,
+	kEventDate,
+	kEventLocation
 };
 
 @interface HistoryLogDetailController : CustomTableViewController

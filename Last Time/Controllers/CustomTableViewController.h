@@ -11,17 +11,21 @@
 #import "DatePickerCell.h"
 #import "FolderPickerCell.h"
 #import "LocationSwitchCell.h"
+#import "NumberCell.h"
 
 @interface CustomTableViewController : UITableViewController <UITextFieldDelegate, DatePickerCellDelegate, LocationSwitchCellDelegate, FolderPickerCellDelegate,CLLocationManagerDelegate>
 {
 	CLLocationManager *locationManager;
 	BOOL _shouldStoreLocation;
+	NSNumberFormatter *numberFormatter;
 }
-
+	
 @property (strong, nonatomic) EventFolder *rootFolder;
 @property (nonatomic) NSInteger requiredField;
 @property (nonatomic) BOOL shouldStoreLocation;
 @property (nonatomic, strong) CLLocation *bestLocation;
+
+@property (nonatomic, strong) NumberCell *numberCell;
 
 - (BOOL)isModal;
 

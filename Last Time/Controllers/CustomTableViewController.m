@@ -13,6 +13,7 @@
 @synthesize rootFolder, requiredField;
 @synthesize bestLocation;
 @synthesize shouldStoreLocation = _shouldStoreLocation;
+@synthesize numberCell;
 
 - (BOOL)isModal
 {
@@ -35,6 +36,8 @@
 		locationManager = [[CLLocationManager alloc] init];
 	}
 	
+	numberFormatter = [[NSNumberFormatter alloc] init];
+
 	_shouldStoreLocation = YES;
 	// Subclasses need to call [locationManager startUpdatingLocation] in
 	// their on viewDidLoad methods

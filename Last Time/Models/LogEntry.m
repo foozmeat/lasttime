@@ -9,7 +9,7 @@
 #import "LogEntry.h"
 
 @implementation LogEntry
-@synthesize logEntryDateOccured, logEntryNote, logEntryLocation;
+@synthesize logEntryDateOccured, logEntryNote, logEntryLocation, logEntryValue;
 
 
 - (id)init
@@ -179,11 +179,12 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@: at %f,%f, recorded on %@, %@", 
+	return [NSString stringWithFormat:@"%@: at %f,%f, recorded on %@, %@, value: %f", 
 					logEntryNote, 
 					logEntryLocation.longitude, logEntryLocation.latitude, 
 					[logEntryDateOccured descriptionWithLocale:[NSLocale currentLocale]], 
-					[self stringFromLogEntryInterval]];
+					[self stringFromLogEntryInterval],
+					logEntryValue];
 }
 
 + (id)randomLogEntry
@@ -221,6 +222,7 @@
 	[aCoder encodeObject:logEntryDateOccured forKey:@"logEntryDateOccured"];
 	[aCoder encodeDouble:logEntryLocation.longitude forKey:@"logEntryLongitude"];
 	[aCoder encodeDouble:logEntryLocation.latitude forKey:@"logEntryLatitude"];
+	[aCoder encodeDouble:logEntryValue forKey:@"logEntryValue"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -238,6 +240,8 @@
 		CLLocationCoordinate2D new_coordinate = { latitude, longitude };
 		
 		[self setLogEntryLocation:new_coordinate];
+
+		[self setLogEntryValue:[aDecoder decodeDoubleForKey:@"logEntryValue"]];
 
 	}
 	

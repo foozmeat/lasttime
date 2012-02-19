@@ -39,10 +39,11 @@
 
 - (void)viewFinishedLoading
 {
-	[self setNoteCell:[EditableTableCell newDetailCellWithTag:EventNote withDelegate:self]];
-	[self setDateCell:[DatePickerCell newDateCellWithTag:EventDate withDelegate:self]];
-	[self setLocationCell:[LocationSwitchCell newLocationCellWithTag:EventLocation withDelegate:self]];
-	
+	[self setNoteCell:[EditableTableCell newDetailCellWithTag:kEventNote withDelegate:self]];
+	[self setDateCell:[DatePickerCell newDateCellWithTag:kEventDate withDelegate:self]];
+	[self setLocationCell:[LocationSwitchCell newLocationCellWithTag:kEventLocation withDelegate:self]];
+	[self setNumberCell:[NumberCell newNumberCellWithTag:kEventNumber withDelegate:self]];
+
 	if ([self isModal]) {
 		[self setTitle:@"New Entry"];		
 	} else {
@@ -72,11 +73,16 @@
 	
 	NSString *text = [textField text];
 	NSUInteger tag = [textField tag];
+	float value = 0.0;
 	
 	switch (tag)
 	{
-		case EventNote:
+		case kEventNote:
 			[logEntry setLogEntryNote:text];
+			break;
+		case kEventNumber:
+			value = [text floatValue];
+			[logEntry setLogEntryValue:value];
 			break;
 	}
 }
@@ -106,24 +112,37 @@
 	EditableTableCell *cell = nil;
 	DatePickerCell *dcell = nil;
 	LocationSwitchCell *lcell = nil;
-	
+	NumberCell *ncell = nil;
+
+	numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+	numberFormatter.roundingIncrement = [NSNumber numberWithDouble:0.001];
+
 	switch ([indexPath row]) 
 	{
-		case EventNote:
+		case kEventNote:
 			cell = [self noteCell];
 			[[cell cellTextField] setText:[logEntry logEntryNote]];
 			[[cell cellTextField] setPlaceholder:@"Happy!"];
 			[[cell textLabel] setText:@"Note"];
 			return cell;
 			break;
-		case EventDate:
+		case kEventDate:
 			dcell = [self dateCell];
 			[[dcell pickerView] setDate:[logEntry logEntryDateOccured]];
 			[dcell dateChanged:self];
 			[[dcell textLabel] setText:@"Date"];
 			return dcell;
 			break;
-		case EventLocation:
+		case kEventNumber:
+			
+			
+			ncell = [self numberCell];
+			[[ncell cellTextField] setText:[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[logEntry logEntryValue]]]];
+			[[ncell cellTextField] setPlaceholder:@"rating, mileage, weight"];
+			[[ncell textLabel] setText:@"Number"];
+			return ncell;
+			break;
+		case kEventLocation:
 			lcell = [self locationCell];
 			return lcell;
 			break;
