@@ -52,83 +52,122 @@
 
 + (NSString *)stringFromInterval:(NSTimeInterval)interval withSuffix:(BOOL)suffix
 {
-		
+	NSMutableString *result = [[NSMutableString alloc] init];
+
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];  
+	[dateFormatter setLocale: [NSLocale currentLocale]];
+	
 	// Get the system calendar
 	NSCalendar *sysCalendar = [NSCalendar currentCalendar];
+	unsigned int unitFlags = NSDayCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSWeekCalendarUnit | NSYearCalendarUnit | NSTimeZoneCalendarUnit;
 	
-	// Create the NSDates
 	NSDate *now = [[NSDate alloc] init];
-	NSDate *date2 = [[NSDate alloc] initWithTimeInterval:interval sinceDate:now]; 
+	NSDateComponents *nowComps = [sysCalendar components:unitFlags fromDate:now];
+
+	NSDate *then = [[NSDate alloc] initWithTimeIntervalSinceNow:interval];	
+	NSDateComponents *thenComps = [sysCalendar components:unitFlags fromDate:then];
 	
-	// Get conversion to months, days, hours, minutes
-	unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit;
+	// Discard hours, minutes, and seconds
+	nowComps.hour = 12;
+	thenComps.hour = 12;
+	nowComps.minute = 0;
+	thenComps.minute = 0;
+	nowComps.second = 0;
+	thenComps.second = 0;
 	
-	NSDateComponents *conversionInfo = [sysCalendar components:unitFlags fromDate:now  toDate:date2  options:0];
-	NSInteger month = ABS([conversionInfo month]);
-	NSInteger day = ABS([conversionInfo day]);
-	NSInteger hour = ABS([conversionInfo hour]);
-	NSInteger minute = ABS([conversionInfo minute]);
+	now = [sysCalendar dateFromComponents:nowComps];
+	then = [sysCalendar dateFromComponents:thenComps];
+//	NSLog(@"\nNow:  %@\nThen: %@", now, then);
 	
-	NSArray *datePieces = [[NSArray alloc] initWithObjects:
-												 [NSNumber numberWithUnsignedInteger:month],
-												 [NSNumber numberWithUnsignedInteger:day],
-												 [NSNumber numberWithUnsignedInteger:hour],
-												 [NSNumber numberWithUnsignedInteger:minute],
-												 nil];
+	int differenceInDays = abs(
+														 [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
+														 [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
+//	NSLog(@"Difference in days: %i", differenceInDays);
+	
+	int differenceInWeeks = abs( [sysCalendar ordinalityOfUnit:NSWeekCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
+															[sysCalendar ordinalityOfUnit:NSWeekCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
+//	NSLog(@"Difference in weeks: %i", differenceInWeeks);
+	
+	int differenceInMonths = abs(	[sysCalendar ordinalityOfUnit:NSMonthCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
+															 [sysCalendar ordinalityOfUnit:NSMonthCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
+//	NSLog(@"Difference in months: %i", differenceInMonths);
+	
+	int differenceInYears = abs(	[sysCalendar ordinalityOfUnit:NSYearCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
+															[sysCalendar ordinalityOfUnit:NSYearCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
+//	NSLog(@"Difference in years: %i", differenceInYears);
+	
+	NSDateComponents *diffComps = [sysCalendar components:unitFlags fromDate:now  toDate:then  options:0];
+	NSInteger year = ABS([diffComps year]);
+	NSInteger month = ABS([diffComps month]);
+	NSInteger week = ABS([diffComps week]);
+	NSInteger day = ABS([diffComps day]);
 	
 	// Figure date string pieces
+	NSString *nbyear = nil;
+	if(year > 1)
+		nbyear = @"years";
+	else
+		nbyear = @"year";
+	
 	NSString *nbmonth = nil;
 	if(month > 1)
 		nbmonth = @"months";
 	else
 		nbmonth = @"month";
-
+	
+	NSString *nbweek = nil;
+	if(week > 1)
+		nbweek = @"weeks";
+	else
+		nbweek = @"week";
+	
 	NSString *nbday = nil;
 	if(day > 1)
 		nbday = @"days";
 	else
 		nbday = @"day";
-
-	NSString *nbhour = nil;
-	if(hour > 1)
-		nbhour = @"hours";
-	else
-		nbhour = @"hour";
-
-	NSString *nbmin = nil;
-	if(minute > 1)
-		nbmin = @"minutes";
-	else
-		nbmin = @"minute";
 	
-	NSMutableString *output = [[NSMutableString alloc] init];
-
-	NSArray *dateStringPieces = [[NSArray alloc] initWithObjects:nbmonth, nbday, nbhour, nbmin, nil];
+//	NSLog(@"\nDifference: %@", diffComps);
 	
-	BOOL foundFirstPiece = NO;
-	int piecesFound = 0;
-	unsigned long i = 0;
-//	NSLog(@"%@", conversionInfo);
-	
-	while (piecesFound < 2 && i < [datePieces count]) {
-
-		if (![[datePieces objectAtIndex:i] isEqualToNumber:[NSNumber numberWithInt:0]]) {
-			foundFirstPiece = YES;
-			piecesFound++;
-			[output appendFormat:@"%@ %@ ", [datePieces objectAtIndex:i], [dateStringPieces objectAtIndex:i]];
-		} else if (foundFirstPiece) {
-			piecesFound++;
-		}
-		i++;
-//		NSLog(@"%lu", i);
-	}
-	if (piecesFound == 0) {
-		[output appendString:@"Now"];
-	} else if (suffix) {
-		[output appendFormat:@"%@",[self suffixString:interval]];
-	}
+	if (differenceInDays == 0) {
+		[result appendString:@"Today"];
+		suffix = NO;
+	} else if (differenceInDays == 1) {
+		[result appendString:@"Yesterday"];
+		suffix = NO;
+	} else if (differenceInDays < 7) {
+		[result appendString:[[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
+		suffix = NO;
+	} else if (differenceInDays < 14) {
+		[result appendFormat:@"Last %@", [[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
+		suffix = NO;
 		
-	return output;
+	} else if (differenceInWeeks <= 4 && month == 0) {
+		[result appendFormat:@"%d %@", differenceInWeeks, nbweek];
+		
+	} else if (differenceInMonths < 12 && week == 0 && day == 0) {
+		[result appendFormat:@"%d %@", month, nbmonth];
+	} else if (differenceInMonths < 12 && week == 0 && day != 0) {
+		[result appendFormat:@"%d %@, %d %@", month, nbmonth, day, nbday];
+	} else if (differenceInMonths < 12 && week != 0) {
+		[result appendFormat:@"%d %@, %d %@", month, nbmonth, week, nbweek];
+		
+	} else if (year > 0 && month == 0 && week == 0) {
+		[result appendFormat:@"%d %@", year, nbyear];
+	} else if (year > 0 && month == 0 && week != 0) {
+		[result appendFormat:@"%d %@, %d %@", year, nbyear, week, nbweek];
+	} else if (year > 0 && month != 0) {
+		[result appendFormat:@"%d %@, %d %@", year, nbyear, month, nbmonth];
+		
+	} else {
+		[result appendString:@"Date Error"];
+	}
+	
+//	NSLog(@"Result: %@", result);
+	if (suffix) {
+		[result appendFormat:@"%@",[self suffixString:interval]];
+	}
+	return result;
 }
 
 - (NSString *)subtitle
