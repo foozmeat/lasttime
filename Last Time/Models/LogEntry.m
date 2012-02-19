@@ -92,8 +92,8 @@
 															 [sysCalendar ordinalityOfUnit:NSMonthCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
 //	NSLog(@"Difference in months: %i", differenceInMonths);
 	
-	int differenceInYears = abs(	[sysCalendar ordinalityOfUnit:NSYearCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
-															[sysCalendar ordinalityOfUnit:NSYearCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
+//	int differenceInYears = abs(	[sysCalendar ordinalityOfUnit:NSYearCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
+//															[sysCalendar ordinalityOfUnit:NSYearCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
 //	NSLog(@"Difference in years: %i", differenceInYears);
 	
 	NSDateComponents *diffComps = [sysCalendar components:unitFlags fromDate:now  toDate:then  options:0];
@@ -138,12 +138,14 @@
 	} else if (differenceInDays < 7) {
 		[result appendString:[[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
 		suffix = NO;
-	} else if (differenceInDays < 14) {
+	} else if (differenceInDays < 13) {
 		[result appendFormat:@"Last %@", [[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
 		suffix = NO;
 		
-	} else if (differenceInWeeks <= 4 && month == 0) {
-		[result appendFormat:@"%d %@", differenceInWeeks, nbweek];
+	} else if (differenceInWeeks <= 4 && day == 0) {
+		[result appendFormat:@"%d %@", week, nbweek];
+	} else if (differenceInWeeks <= 4) {
+		[result appendFormat:@"%d %@, %d %@", week, nbweek, day, nbday];
 		
 	} else if (differenceInMonths < 12 && week == 0 && day == 0) {
 		[result appendFormat:@"%d %@", month, nbmonth];
@@ -165,7 +167,7 @@
 	
 //	NSLog(@"Result: %@", result);
 	if (suffix) {
-		[result appendFormat:@"%@",[self suffixString:interval]];
+		[result appendFormat:@" %@",[self suffixString:interval]];
 	}
 	return result;
 }
