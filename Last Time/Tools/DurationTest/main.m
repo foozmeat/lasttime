@@ -16,15 +16,15 @@ int main(int argc, const char * argv[])
 		
 		LogEntry *le = nil;
 		
-		for (int i=0; i < 20; i++) {
+		for (int i=0; i < 400; i++) {
 			le = [[LogEntry alloc] initWithNote:@"" dateOccured:[[NSDate alloc] initWithTimeIntervalSinceNow:-60*60*24*i]];
 			NSLog(@"%@ -> %f -> %@", [le logEntryDateOccured], [le secondsSinceNow], [le stringFromLogEntryInterval]);
 		}
 
-		for (int i=0; i < 20; i++) {
-			le = [[LogEntry alloc] initWithNote:@"" dateOccured:[[NSDate alloc] initWithTimeIntervalSinceNow:60*60*24*i]];
-			NSLog(@"%@ -> %f -> %@", [le logEntryDateOccured], [le secondsSinceNow], [le stringFromLogEntryInterval]);
-		}
+//		for (int i=0; i < 20; i++) {
+//			le = [[LogEntry alloc] initWithNote:@"" dateOccured:[[NSDate alloc] initWithTimeIntervalSinceNow:60*60*24*i]];
+//			NSLog(@"%@ -> %f -> %@", [le logEntryDateOccured], [le secondsSinceNow], [le stringFromLogEntryInterval]);
+//		}
 }
     return 1;
 }
