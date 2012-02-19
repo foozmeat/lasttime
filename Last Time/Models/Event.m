@@ -166,6 +166,10 @@
 -(NSString*)subtitle
 {
 	
+	NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+	nf.numberStyle = NSNumberFormatterDecimalStyle;
+	nf.roundingIncrement = [NSNumber numberWithDouble:0.001];
+
 	if ([[self logEntryCollection] count] == 0) {
 		return @"";
 	}
@@ -173,7 +177,13 @@
 	NSString *output = nil;
 	
 	if ([[[self latestEntry] logEntryNote] isEqualToString:@""]) {
-		output = [[NSString alloc] initWithFormat:@"%@", [self lastStringInterval]];
+		if ([[self latestEntry] logEntryValue] != 0) {
+			NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[[self latestEntry] logEntryValue]]];
+			output = [[NSString alloc] initWithFormat:@"%@ - %@", value, [self lastStringInterval]];
+		} else {
+			output = [[NSString alloc] initWithFormat:@"%@", [self lastStringInterval]];
+			
+		}
 	} else {
 		output =  [[NSString alloc] initWithFormat:@"%@ - %@", 
 						[[self latestEntry] logEntryNote], 
