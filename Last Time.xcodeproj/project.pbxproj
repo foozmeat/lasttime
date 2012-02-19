@@ -28,6 +28,9 @@
 		39861AAA14BD526D006F30A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39861AA914BD526D006F30A0 /* main.m */; };
 		39861AB514BD5548006F30A0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39861AB414BD5548006F30A0 /* CoreLocation.framework */; };
 		3988B9BC14E0214F0010062E /* EditableTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3988B9BB14E0214F0010062E /* EditableTableCell.m */; };
+		39A0F9F714F0B9AF00BA0AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
+		39A0F9FA14F0B9AF00BA0AFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A0F9F914F0B9AF00BA0AFA /* main.m */; };
+		39A0FA0314F0B9B900BA0AFA /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA477F14DAD8B300580EB9 /* EventDetailController.m */; };
 		39AA478B14DC252400580EB9 /* FolderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA478914DC252400580EB9 /* FolderDetailController.m */; };
 		39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AED56614BD3B6600AE6625 /* CoreLocation.framework */; };
@@ -92,6 +95,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		39A0F9F314F0B9AF00BA0AFA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +138,8 @@
 		3988B96214DC31500010062E /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		3988B9BA14E0214F0010062E /* EditableTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditableTableCell.h; path = Support/EditableTableCell.h; sourceTree = "<group>"; };
 		3988B9BB14E0214F0010062E /* EditableTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditableTableCell.m; path = Support/EditableTableCell.m; sourceTree = "<group>"; };
+		39A0F9F514F0B9AF00BA0AFA /* DurationTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DurationTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		39A0F9F914F0B9AF00BA0AFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "../Last Time/Tools/DurationTest/main.m"; sourceTree = "<group>"; };
 		39AA477E14DAD8B300580EB9 /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailController.h; sourceTree = "<group>"; };
 		39AA477F14DAD8B300580EB9 /* EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailController.m; sourceTree = "<group>"; };
 		39AA478814DC252300580EB9 /* FolderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderDetailController.h; sourceTree = "<group>"; };
@@ -181,6 +195,14 @@
 			files = (
 				39861AB514BD5548006F30A0 /* CoreLocation.framework in Frameworks */,
 				39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39A0F9F214F0B9AF00BA0AFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39A0F9F714F0B9AF00BA0AFA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +295,7 @@
 		39861A9D14BD518C006F30A0 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				39A0F9F814F0B9AF00BA0AFA /* DurationTest */,
 				3904CFA214C078E200B7396A /* RandomEventFolder */,
 				3950E86814BFE0AB009C6F6F /* RandomEvent */,
 				39861AA814BD526D006F30A0 /* RandomLogEntry */,
@@ -307,6 +330,15 @@
 			path = Resources/TestFlight;
 			sourceTree = "<group>";
 		};
+		39A0F9F814F0B9AF00BA0AFA /* DurationTest */ = {
+			isa = PBXGroup;
+			children = (
+				39A0F9F914F0B9AF00BA0AFA /* main.m */,
+			);
+			name = DurationTest;
+			path = ../DurationTest;
+			sourceTree = "<group>";
+		};
 		39D70CA714BD3515009C3615 = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +357,7 @@
 				39861AA514BD526D006F30A0 /* RandomLogEntry */,
 				3950E86514BFE0AB009C6F6F /* RandomEvent */,
 				3904CF9F14C078E200B7396A /* RandomEventFolder */,
+				39A0F9F514F0B9AF00BA0AFA /* DurationTest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -467,6 +500,23 @@
 			productReference = 39861AA514BD526D006F30A0 /* RandomLogEntry */;
 			productType = "com.apple.product-type.tool";
 		};
+		39A0F9F414F0B9AF00BA0AFA /* DurationTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39A0F9FF14F0B9AF00BA0AFA /* Build configuration list for PBXNativeTarget "DurationTest" */;
+			buildPhases = (
+				39A0F9F114F0B9AF00BA0AFA /* Sources */,
+				39A0F9F214F0B9AF00BA0AFA /* Frameworks */,
+				39A0F9F314F0B9AF00BA0AFA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DurationTest;
+			productName = DurationTest;
+			productReference = 39A0F9F514F0B9AF00BA0AFA /* DurationTest */;
+			productType = "com.apple.product-type.tool";
+		};
 		39D70CB114BD3515009C3615 /* Last Time */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 39D70CE114BD3516009C3615 /* Build configuration list for PBXNativeTarget "Last Time" */;
@@ -529,6 +579,7 @@
 				39861AA414BD526D006F30A0 /* RandomLogEntry */,
 				3950E86414BFE0AB009C6F6F /* RandomEvent */,
 				3904CF9E14C078E200B7396A /* RandomEventFolder */,
+				39A0F9F414F0B9AF00BA0AFA /* DurationTest */,
 			);
 		};
 /* End PBXProject section */
@@ -599,6 +650,15 @@
 			files = (
 				39861AAA14BD526D006F30A0 /* main.m in Sources */,
 				39F642CA14E0FB8E004B0900 /* LogEntry.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39A0F9F114F0B9AF00BA0AFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39A0F9FA14F0B9AF00BA0AFA /* main.m in Sources */,
+				39A0FA0314F0B9B900BA0AFA /* LogEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,7 +821,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120214094822;
+				CURRENT_PROJECT_VERSION = 20120218204702;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -879,6 +939,51 @@
 			};
 			name = Distribution;
 		};
+		39A0FA0014F0B9AF00BA0AFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		39A0FA0114F0B9AF00BA0AFA /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Distribution;
+		};
+		39A0FA0214F0B9AF00BA0AFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		39D70CDF14BD3516009C3615 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -886,7 +991,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120214094822;
+				CURRENT_PROJECT_VERSION = 20120218204702;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -923,7 +1028,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20120214094822;
+				CURRENT_PROJECT_VERSION = 20120218204702;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1062,6 +1167,16 @@
 				39861AB014BD526D006F30A0 /* Debug */,
 				3988B96714DC32690010062E /* Distribution */,
 				39861AB114BD526D006F30A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39A0F9FF14F0B9AF00BA0AFA /* Build configuration list for PBXNativeTarget "DurationTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39A0FA0014F0B9AF00BA0AFA /* Debug */,
+				39A0FA0114F0B9AF00BA0AFA /* Distribution */,
+				39A0FA0214F0B9AF00BA0AFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
