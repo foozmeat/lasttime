@@ -18,7 +18,8 @@
 	
 	pickerView = [[UIDatePicker alloc] init];
 	[pickerView setMinuteInterval:15];
-	
+	[pickerView setMaximumDate:[NSDate date]];
+	 
 	NSDate *now = [[NSDate alloc] init];
 	[pickerView setDate:now];
 	[pickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
