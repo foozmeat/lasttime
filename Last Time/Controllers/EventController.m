@@ -9,10 +9,12 @@
 #import "EventController.h"
 #import "HistoryLogDetailController.h"
 #import "HistoryLogCell.h"
+#import "WEPopoverController.h"
 
 @implementation EventController
 @synthesize eventTableView;
 @synthesize event, folder, rootFolder;
+@synthesize averagePopover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,6 +27,54 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
 	return [self init];
+}
+
+-(void)showAveragePopup
+{
+
+	if (!self.averagePopover) {
+
+		//		Create a label with custom text 
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
+		[label setText:@"Add another entry to see averages"];
+		[label setBackgroundColor:[UIColor clearColor]];
+		[label setTextColor:[UIColor whiteColor]];
+		[label setTextAlignment:UITextAlignmentCenter];
+		
+		UIFont *font = [UIFont boldSystemFontOfSize:11];
+		[label setFont:font];
+		CGSize size = [label.text sizeWithFont:font];
+		CGRect frame = CGRectMake(0, 0, size.width + 10, size.height + 10); // add a bit of a border around the text
+		label.frame = frame;
+		
+		//  place inside a temporary view controller and add to popover
+		UIViewController *viewCon = [[UIViewController alloc] init];
+		viewCon.view = label;
+		viewCon.contentSizeForViewInPopover = frame.size;       // Set the content size
+
+		averagePopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
+		[averagePopover presentPopoverFromRect:CGRectMake(298, 381, 1, 1)
+																inView:self.view
+							permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
+															animated:YES];
+		
+	} else {
+		[averagePopover dismissPopoverAnimated:YES];
+		averagePopover = nil;
+	}
+}
+
+#pragma mark -
+#pragma mark WEPopoverControllerDelegate implementation
+
+- (void)popoverControllerDidDismissPopover:(WEPopoverController *)thePopoverController {
+	//Safe to release the popover here
+	averagePopover = nil;
+}
+
+- (BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)thePopoverController {
+	//The popover is automatically dismissed if you click outside it, unless you return NO here
+	return YES;
 }
 
 #pragma mark - Model methods
@@ -75,8 +125,10 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	if (section == kAverageSection) {
+	if (section == kAverageSection && [event showAverage]) {
 		return @"";
+	} else if (section == kAverageSection && ![event showAverage]) {
+		return @"History";
 	} else if (section == kHistorySection) {
 		return @"History";
 	} else {
@@ -86,7 +138,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return NUM_EVENT_SECTIONS;
+	if ([event showAverage]) {
+		return NUM_EVENT_SECTIONS;
+	} else {
+		return NUM_EVENT_SECTIONS - 1;
+	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -94,7 +150,7 @@
 	if (section == kAverageSection && [event showAverage]) {
 		return NUM_AVERAGE_SECTIONS;
 	} else if (section == kAverageSection && ![event showAverage]) {
-		return 1;
+		return [[event logEntryCollection] count];
 	} else if (section == kHistorySection) {
 		return [[event logEntryCollection] count];
 	} else {
@@ -154,19 +210,7 @@
 		}
 		return cell;
 
-	} else if ([indexPath section] == kAverageSection && ![event showAverage]) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-																	reuseIdentifier:@"UIDefaultTableViewCell"];
-		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-
-		cell.textLabel.textAlignment = UITextAlignmentCenter;
-		cell.textLabel.text = @"Add another occurence to see the average";
-		cell.textLabel.numberOfLines = 0;
-		cell.textLabel.font = [UIFont systemFontOfSize:14.0f];
-		return cell;
-	
-	} else if ([indexPath section] == kHistorySection) {
-		
+	} else if (([indexPath section] == kAverageSection && ![event showAverage]) || [indexPath section] == kHistorySection) {
 		LogEntry *item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
 		
 		historyLogCell.logEntryNoteCell.text = item.logEntryNote;
@@ -176,7 +220,7 @@
 		historyLogCell.locationMarker.hidden = ![item hasLocation];
 		
 		return historyLogCell;
-		
+
 	} else {
 		cell.textLabel.text = @"Error";
 		return cell;
@@ -195,6 +239,9 @@
 	[[self navigationItem] setTitle:[event eventName]];
 	[[self eventTableView] reloadData];
 
+	if (![event showAverage]) {
+		[self showAveragePopup];
+	}
 }
 
 - (void)viewDidLoad
