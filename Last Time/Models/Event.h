@@ -12,7 +12,9 @@
 @class EventFolder;
 
 @interface Event : NSObject <NSCoding>
-
+{
+	NSNumberFormatter *nf;
+}
 @property (nonatomic, strong) NSString *eventName;
 @property (nonatomic, strong) NSMutableArray *logEntryCollection;
 @property (nonatomic, strong) EventFolder *parentFolder;
@@ -34,6 +36,9 @@
 - (NSString *)lastStringInterval;
 - (NSString *)objectName;
 - (BOOL)showAverage;
+
+- (float)averageValue;
+- (NSString *)averageStringValue;
 
 + (Event *)randomEvent;
 - (void)addLogEntry:(LogEntry *)entry;

@@ -123,6 +123,45 @@
 	return [LogEntry stringFromInterval:[self averageInterval] withSuffix:NO];
 }
 
+- (float)averageValue
+{
+	if ([logEntryCollection count] < 2) {
+		return 0.0;
+	}
+	
+	float runningTotal = 0.0;
+	double count = 0;
+	
+	@autoreleasepool {
+		for(LogEntry *entry in logEntryCollection)
+		{
+			runningTotal += [entry logEntryValue];
+			if ([entry logEntryValue] != 0.0) {
+				count++;
+			}
+		}
+	}
+	
+	if (count == 0.0) {
+		return 0.0;
+	}
+	
+	float average = runningTotal / count;
+	return average;
+	
+}
+
+- (NSString *)averageStringValue
+{
+	nf = [[NSNumberFormatter alloc] init];
+	nf.numberStyle = NSNumberFormatterDecimalStyle;
+	nf.roundingIncrement = [NSNumber numberWithDouble:0.1];
+	NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[self averageValue]]];
+	
+	return value;
+
+}
+
 #pragma mark Last
 #pragma mark -
 
@@ -166,7 +205,7 @@
 -(NSString*)subtitle
 {
 	
-	NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+	nf = [[NSNumberFormatter alloc] init];
 	nf.numberStyle = NSNumberFormatterDecimalStyle;
 	nf.roundingIncrement = [NSNumber numberWithDouble:0.001];
 

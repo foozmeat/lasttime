@@ -92,7 +92,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == kAverageSection && [event showAverage]) {
-		return 2;
+		return NUM_AVERAGE_SECTIONS;
 	} else if (section == kAverageSection && ![event showAverage]) {
 		return 1;
 	} else if (section == kHistorySection) {
@@ -123,22 +123,34 @@
 	
 	if ([indexPath section] == kAverageSection && [event showAverage]) {
 		
-		if ([indexPath row] == kAverageTime) {
-			cell.textLabel.text = @"Average";
-			cell.detailTextLabel.text = [event averageStringInterval];
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-		} else {
-			cell.textLabel.text = @"Next Time";
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-			NSDateFormatter *df = [[NSDateFormatter alloc] init];
-			
-			[df setDateStyle:NSDateFormatterMediumStyle];
-			[df setTimeStyle:NSDateFormatterNoStyle];
-			
-			cell.detailTextLabel.text = [df stringFromDate:[event nextTime]];
-			
+		switch ([indexPath row]) {
+			case kAverageTime:
+			{
+				cell.textLabel.text = @"Average Duration";
+				cell.detailTextLabel.text = [event averageStringInterval];
+				cell.selectionStyle = UITableViewCellSelectionStyleNone;
+				break;
+			}
+			case kNextTime:
+			{
+				cell.textLabel.text = @"Next Time";
+				cell.selectionStyle = UITableViewCellSelectionStyleNone;
+				
+				NSDateFormatter *df = [[NSDateFormatter alloc] init];
+				
+				[df setDateStyle:NSDateFormatterMediumStyle];
+				[df setTimeStyle:NSDateFormatterNoStyle];
+				
+				cell.detailTextLabel.text = [df stringFromDate:[event nextTime]];
+				break;
+			}
+			case kAverageValue:
+			{
+				cell.textLabel.text = @"Average Value";
+				cell.detailTextLabel.text = [event averageStringValue];
+				cell.selectionStyle = UITableViewCellSelectionStyleNone;
+				break;
+			}
 		}
 		return cell;
 

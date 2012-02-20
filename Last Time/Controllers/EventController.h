@@ -19,6 +19,8 @@ enum EventSections {
 enum AverageSection {
 	kAverageTime = 0,
 	kNextTime,
+	kAverageValue,
+	NUM_AVERAGE_SECTIONS
 };
 
 enum historyViewCellTags {
