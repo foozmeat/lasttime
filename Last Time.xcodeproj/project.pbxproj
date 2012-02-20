@@ -636,6 +636,7 @@
 				39D70CAE14BD3515009C3615 /* Sources */,
 				39D70CAF14BD3515009C3615 /* Frameworks */,
 				39D70CB014BD3515009C3615 /* Resources */,
+				39BF451714F2A2000059C8B9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -737,6 +738,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		39BF451714F2A2000059C8B9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ $CONFIGURATION == \"Distribution\" ]]; then\n    BUILD_NUMBER=`date +\"%Y%m%d%H%M%S\"`\n    GIT_TAG=`git describe --tags --abbrev=0`\n\n    agvtool new-marketing-version $GIT_TAG\n    agvtool new-version -all $BUILD_NUMBER\nfi";
+			showEnvVarsInLog = 0;
+		};
 		39D70CCD14BD3515009C3615 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -957,7 +972,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120218204702;
+				CURRENT_PROJECT_VERSION = 20120220081126;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -996,11 +1011,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2C9E7624-194F-4A93-BA8B-56D7788931F9";
@@ -1127,7 +1144,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120218204702;
+				CURRENT_PROJECT_VERSION = 20120220081126;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1165,7 +1182,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20120218204702;
+				CURRENT_PROJECT_VERSION = 20120220081126;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1204,6 +1221,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DDEBUG=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "04CECD94-329D-4348-8318-C9C7412FB53F";
@@ -1229,6 +1247,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4A20681E-C3D8-460C-9E3C-135A78E03705";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4A20681E-C3D8-460C-9E3C-135A78E03705";
