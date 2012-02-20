@@ -36,7 +36,7 @@
 
 		//		Create a label with custom text 
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
-		[label setText:@"Add another entry to see averages"];
+		[label setText:@"Add another entry to this event."];
 		[label setBackgroundColor:[UIColor clearColor]];
 		[label setTextColor:[UIColor whiteColor]];
 		[label setTextAlignment:UITextAlignmentCenter];
@@ -213,7 +213,18 @@
 	} else if (([indexPath section] == kAverageSection && ![event showAverage]) || [indexPath section] == kHistorySection) {
 		LogEntry *item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
 		
-		historyLogCell.logEntryNoteCell.text = item.logEntryNote;
+		if ([[item logEntryNote] isEqualToString:@""]){
+			UIFont *font = [UIFont italicSystemFontOfSize:14];
+			[historyLogCell.logEntryNoteCell setFont:font];
+			[historyLogCell.logEntryNoteCell setTextColor:[UIColor grayColor]];
+
+			historyLogCell.logEntryNoteCell.text = @"No Note";
+		} else {
+			historyLogCell.logEntryNoteCell.text = item.logEntryNote;
+		}
+		
+
+		
 		historyLogCell.logEntryDateCell.text = [item stringFromLogEntryInterval];
 		NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[item logEntryValue]]];
 		historyLogCell.logEntryValueCell.text = value;
