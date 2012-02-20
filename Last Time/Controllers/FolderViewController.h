@@ -19,5 +19,6 @@
 
 
 - (IBAction)addNewItem:(id)sender;
+- (void)showAddPopup;
 
 @end
