@@ -402,7 +402,6 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
 					theOffset = CGPointMake(anchorPoint.x - xArrowOffset, anchorPoint.y - yArrowOffset - leftArrowImage.size.height / 2);
 					theBgRect = CGRectMake(0, 0, theSize.width, theSize.height);
 					
-#warning These tests are not correct - see the drawing tests above.					
 					if (theOffset.y < 0) {
 						yArrowOffset += theOffset.y;
 						theOffset.y = 0;
@@ -427,7 +426,6 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
 					
 					theOffset = CGPointMake(anchorPoint.x - xArrowOffset - rightArrowImage.size.width, anchorPoint.y - yArrowOffset - rightArrowImage.size.height / 2);
 					theBgRect = CGRectMake(0, 0, theSize.width, theSize.height);
-#warning These tests are not correct - see the drawing tests above.					
 					if (theOffset.y < 0) {
 						yArrowOffset += theOffset.y;
 						theOffset.y = 0;
@@ -452,7 +450,6 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
 			CGFloat minMarginTop = CGRectGetMinY(bgFrame) - CGRectGetMinY(displayArea); 
 			CGFloat minMarginBottom = CGRectGetMaxY(displayArea) - CGRectGetMaxY(bgFrame); 
 			
-#warning Changes to content size pretty unsafe (IMHO).					
 			if (minMarginLeft < 0) {
 			    // Popover is too wide and clipped on the left; decrease width
 			    // and move it to the right
