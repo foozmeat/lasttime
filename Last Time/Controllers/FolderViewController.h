@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WEPopoverController.h"
 
-@interface FolderViewController : UIViewController <UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface FolderViewController : UIViewController 
+<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate>
 
 @property (nonatomic, strong) EventFolder *rootFolder;
 @property (nonatomic, strong) EventFolder *folder;
 @property (strong, nonatomic) IBOutlet UITableView *folderTableView;
+@property (nonatomic, strong) WEPopoverController *addPopover;
 
 
 - (IBAction)addNewItem:(id)sender;
