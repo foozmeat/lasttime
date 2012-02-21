@@ -781,7 +781,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ $CONFIGURATION == \"Distribution\" ]]; then\n    BUILD_NUMBER=`date +\"%Y%m%d%H%M%S\"`\n    GIT_TAG=`git describe --tags --abbrev=0`\n\n    agvtool new-marketing-version $GIT_TAG\n    agvtool new-version -all $BUILD_NUMBER\nfi";
+			shellScript = "#if [[ $CONFIGURATION == \"Distribution\" ]]; then\n#    BUILD_NUMBER=`date +\"%Y%m%d%H%M%S\"`\n#    GIT_TAG=`git describe --tags --abbrev=0`\n\n#    agvtool new-marketing-version $GIT_TAG\n#    agvtool new-version -all $BUILD_NUMBER\n#fi";
 			showEnvVarsInLog = 0;
 		};
 		39D70CCD14BD3515009C3615 /* ShellScript */ = {
@@ -1004,7 +1004,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120220184301;
+				CURRENT_PROJECT_VERSION = 20120221070155;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1176,7 +1176,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120220184301;
+				CURRENT_PROJECT_VERSION = 20120221070155;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1214,7 +1214,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20120220184301;
+				CURRENT_PROJECT_VERSION = 20120221070155;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
