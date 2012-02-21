@@ -76,6 +76,8 @@
 	
 	if (!self.addPopover) {
 		
+		[TestFlight passCheckpoint:@"Saw First Run Popup"];
+
 		//		Create a label with custom text 
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
 		[label setText:@"To get started, tap here and add an event."];

@@ -32,6 +32,7 @@
 -(void)showAveragePopup
 {
 
+	[TestFlight passCheckpoint:@"Saw Average Popup"];
 	if (!self.averagePopover) {
 
 		//		Create a label with custom text 
