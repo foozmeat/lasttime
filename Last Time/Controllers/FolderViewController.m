@@ -78,7 +78,7 @@
 		
 		//		Create a label with custom text 
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
-		[label setText:@"To get started tap here and add an event."];
+		[label setText:@"To get started, tap here and add an event."];
 		[label setBackgroundColor:[UIColor clearColor]];
 		[label setTextColor:[UIColor whiteColor]];
 		[label setTextAlignment:UITextAlignmentCenter];
@@ -95,14 +95,18 @@
 		viewCon.contentSizeForViewInPopover = frame.size;       // Set the content size
 		
 		addPopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
-		[addPopover presentPopoverFromRect:CGRectMake(298, 381, 1, 1)
-																		inView:self.view
+		[addPopover setDelegate:self];
+	}
+	
+	if([addPopover isPopoverVisible]) {
+		[addPopover dismissPopoverAnimated:YES];
+		[addPopover setDelegate:nil];
+		addPopover = nil;
+	} else {		
+		[addPopover presentPopoverFromRect:CGRectMake(298, 445, 1, 1)
+																		inView:self.navigationController.view
 									permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
 																	animated:YES];
-		
-	} else {
-		[addPopover dismissPopoverAnimated:YES];
-		addPopover = nil;
 	}
 }
 

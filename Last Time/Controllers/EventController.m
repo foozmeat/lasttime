@@ -40,7 +40,7 @@
 		[label setBackgroundColor:[UIColor clearColor]];
 		[label setTextColor:[UIColor whiteColor]];
 		[label setTextAlignment:UITextAlignmentCenter];
-		
+
 		UIFont *font = [UIFont boldSystemFontOfSize:11];
 		[label setFont:font];
 		CGSize size = [label.text sizeWithFont:font];
@@ -53,14 +53,19 @@
 		viewCon.contentSizeForViewInPopover = frame.size;       // Set the content size
 
 		averagePopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
-		[averagePopover presentPopoverFromRect:CGRectMake(298, 381, 1, 1)
-																inView:self.view
-							permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
-															animated:YES];
-		
-	} else {
+		[averagePopover setDelegate:self];
+	}
+	
+	if([averagePopover isPopoverVisible]) {
 		[averagePopover dismissPopoverAnimated:YES];
+		[averagePopover setDelegate:nil];
 		averagePopover = nil;
+	} else {
+		
+		[averagePopover presentPopoverFromRect:CGRectMake(298, 445, 1, 1)
+																		inView:self.navigationController.view
+									permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
+																	animated:YES];
 	}
 }
 
