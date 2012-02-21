@@ -21,7 +21,7 @@
 {
 	[folder addItem:event];
 	[self dismissModalViewControllerAnimated:YES];
-	NSLog(@"%@", event);
+//	NSLog(@"%@", event);
 }
 
 #pragma mark -

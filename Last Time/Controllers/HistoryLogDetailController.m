@@ -21,7 +21,7 @@
 {
 	[event addLogEntry:logEntry];
 	[self dismissModalViewControllerAnimated:YES];
-	NSLog(@"%@", event);
+//	NSLog(@"%@", event);
 }
 
 #pragma mark -
