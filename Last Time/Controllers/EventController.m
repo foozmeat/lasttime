@@ -154,7 +154,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == kAverageSection && [event showAverage]) {
-		return NUM_AVERAGE_SECTIONS;
+		if ([event averageValue] != 0.0) {
+			return NUM_AVERAGE_SECTIONS;
+		} else {
+			return NUM_AVERAGE_SECTIONS - 1;
+		}
 	} else if (section == kAverageSection && ![event showAverage]) {
 		return [[event logEntryCollection] count];
 	} else if (section == kHistorySection) {
