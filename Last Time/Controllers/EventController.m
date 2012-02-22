@@ -229,11 +229,13 @@
 			historyLogCell.logEntryNoteCell.text = item.logEntryNote;
 		}
 		
-
-		
+		if ([item logEntryValue] != 0.0) {
+			NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[item logEntryValue]]];
+			historyLogCell.logEntryValueCell.text = value;
+		} else {
+			historyLogCell.logEntryValueCell.text = @"";
+		}
 		historyLogCell.logEntryDateCell.text = [item stringFromLogEntryInterval];
-		NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[item logEntryValue]]];
-		historyLogCell.logEntryValueCell.text = value;
 		historyLogCell.locationMarker.hidden = ![item hasLocation];
 		
 		return historyLogCell;
