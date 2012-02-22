@@ -31,8 +31,9 @@
 
 -(void)showAveragePopup
 {
-
+#if TESTFLIGHT
 	[TestFlight passCheckpoint:@"Saw Average Popup"];
+#endif
 	if (!self.averagePopover) {
 
 		//		Create a label with custom text 
@@ -102,7 +103,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	if ([indexPath section] == kHistorySection) {
+	if (([event showAverage] && [indexPath section] == kHistorySection) ||
+			(![event showAverage] && [indexPath section] == kAverageSection)) {
 		
 		HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 		
@@ -112,8 +114,6 @@
 
 		[[self navigationController] pushViewController:hldc animated:YES];
 
-	} else if ([indexPath section] == kAverageSection && ![event showAverage]) {
-		[self addNewItem:self];
 	}
 }
 
