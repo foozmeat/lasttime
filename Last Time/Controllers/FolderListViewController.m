@@ -156,12 +156,16 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	if( indexPath.row == (int)[[folder allItems] count] ) {
-		return UITableViewCellEditingStyleInsert;
-		
+	if ([tableView isEditing]) {
+		if( indexPath.row == (int)[[folder allItems] count] ) {
+			return UITableViewCellEditingStyleInsert;
+			
+		} else {
+			return UITableViewCellEditingStyleDelete;
+			
+		}
 	} else {
-		return UITableViewCellEditingStyleDelete;
-		
+		return UITableViewCellEditingStyleNone;
 	}
 	
 }
