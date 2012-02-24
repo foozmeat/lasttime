@@ -18,7 +18,7 @@
 @property (nonatomic, strong) WEPopoverController *addPopover;
 
 
-- (IBAction)addNewItem:(id)sender;
+- (void)addNewItem:(id)sender;
 - (void)showAddPopup;
 
 @end

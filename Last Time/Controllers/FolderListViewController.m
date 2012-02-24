@@ -41,6 +41,7 @@
 	
 	self.title = [folder folderName];
 	
+	
 	if ([[folder allItems] count] > 0) {
 		[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 	} else {
@@ -48,6 +49,12 @@
 	}
 
 	[[self folderTableView] reloadData];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+	[self setEditing:NO animated:YES];
+
 }
 
 #pragma mark -
@@ -112,6 +119,17 @@
 	[super setEditing:editing animated:animate];
 
 	[folderTableView setEditing:editing animated:animate];
+	
+	NSArray *paths = [NSArray arrayWithObject:	[NSIndexPath indexPathForRow:[[folder allItems] count] inSection:0]];
+	if (editing)
+	{
+		[[self folderTableView] insertRowsAtIndexPaths:paths 
+														withRowAnimation:UITableViewRowAnimationAutomatic];
+	}
+	else {
+		[[self folderTableView] deleteRowsAtIndexPaths:paths 
+														withRowAnimation:UITableViewRowAnimationAutomatic];
+	}
 }
 
 - (void)addNewItem:(id)sender
@@ -134,27 +152,54 @@
 
 #pragma mark - TableView Delegate
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	if( indexPath.row == (int)[[folder allItems] count] ) {
+		return UITableViewCellEditingStyleInsert;
+		
+	} else {
+		return UITableViewCellEditingStyleDelete;
+		
+	}
+	
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	EventFolder *item = nil;
 	
-	id item = [[folder allItems] objectAtIndex:[indexPath row]];
+	if( indexPath.row == (int)[[folder allItems] count] ) {
+		item = [[EventFolder alloc] init];
+	} else {
+		
+		item = [[folder allItems] objectAtIndex:[indexPath row]];
+	}
 
 	if ([tableView isEditing]) {
-			FolderDetailController *fdc = [[FolderDetailController alloc] init];
-			[fdc setTheNewFolder:item];
-			[fdc setRootFolder:rootFolder];
+		FolderDetailController *fdc = [[FolderDetailController alloc] init];
+		[fdc setTheNewFolder:item];
+		[fdc setRootFolder:rootFolder];
+		
+		if( indexPath.row == (int)[[folder allItems] count] ) {
+			UINavigationController *newNavController = [[UINavigationController alloc]
+																									initWithRootViewController:fdc];
+			
+			[[self navigationController] presentModalViewController:newNavController
+																										 animated:YES];
+		} else {
 			[[self navigationController] pushViewController:fdc animated:YES];
 			
-			[self setEditing:NO animated:NO];
-			
-		} else {
-			EventListViewController *elvc = [[EventListViewController alloc] init];
-			[elvc setRootFolder:rootFolder];
-			[elvc setFolder:item];
-			[[self navigationController] pushViewController:elvc animated:YES];
-			
 		}
-//	}
+	
+	
+	} else {
+		EventListViewController *elvc = [[EventListViewController alloc] init];
+		[elvc setRootFolder:rootFolder];
+		[elvc setFolder:item];
+		[[self navigationController] pushViewController:elvc animated:YES];
+		
+	}
+
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,33 +223,49 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [[folder allItems] count];
+	if ([tableView isEditing]) {
+		return [[folder allItems] count] + 1;
+	} else {
+		return [[folder allItems] count];
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	NSString *reuseString = nil;
+	UITableViewCell *cell = nil;
 	
-	id item = [[folder allItems] objectAtIndex:[indexPath row]];
+	if ([indexPath row] == (int)[[folder allItems] count]) {
+		reuseString = @"addFolderCell";
+		
+		cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
+		
+		if (!cell) {
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
+		}
 
-	if ([item isMemberOfClass:[EventFolder class]]) {
-		reuseString = @"FolderCell";
+		[[cell textLabel] setText:@"Add a Folder..."];
+
 	} else {
-		reuseString = @"EventCell";
+		
+		id item = [[folder allItems] objectAtIndex:[indexPath row]];
+		
+		reuseString = @"FolderCell";
+		
+		cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
+		
+		if (!cell) {
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
+		}
+		
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:13.0]];
+		
+		[[cell textLabel] setText:[item objectName]];
+		[[cell detailTextLabel] setText:[item subtitle]];
 	}
 	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
-
-	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
-	}
-	
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:13.0]];
-	
-	[[cell textLabel] setText:[item objectName]];
-	[[cell detailTextLabel] setText:[item subtitle]];
 	
 	return cell;
 }
