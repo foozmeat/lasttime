@@ -30,15 +30,21 @@
 	
 	self.title = [folder folderName];
 	
+	[[self eventTableView] reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	
 	if ([[folder allItems] count] > 0) {
 		[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 	} else {
 		[self showAddPopup];
 	}
 	
-	[[self eventTableView] reloadData];
 }
-
 #pragma mark -
 #pragma mark WEPopoverControllerDelegate implementation
 
