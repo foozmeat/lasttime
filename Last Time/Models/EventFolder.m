@@ -116,7 +116,7 @@
 		return [[NSArray alloc] init];
 	}
 	
-	NSMutableArray *folders = [[NSMutableArray alloc] initWithObjects:self, nil];
+	NSMutableArray *folders = [[NSMutableArray alloc] init];
 	
 	for (id item in [self allItems]) {
 		if ([item isMemberOfClass:[EventFolder class]]) {
