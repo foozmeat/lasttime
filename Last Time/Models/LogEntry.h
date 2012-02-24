@@ -26,6 +26,7 @@
 
 + (id)randomLogEntry;
 + (NSString *)stringFromInterval:(NSTimeInterval)interval
-											withSuffix:(BOOL)suffix;
+											withSuffix:(BOOL)suffix
+												withDays:(BOOL)withDays;
 
 @end

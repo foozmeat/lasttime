@@ -120,7 +120,7 @@
 
 - (NSString *)averageStringInterval;
 {
-	return [LogEntry stringFromInterval:[self averageInterval] withSuffix:NO];
+	return [LogEntry stringFromInterval:[self averageInterval] withSuffix:NO withDays:NO];
 }
 
 - (float)averageValue

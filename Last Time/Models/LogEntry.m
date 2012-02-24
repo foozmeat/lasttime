@@ -52,10 +52,12 @@
 
 - (NSString *)stringFromLogEntryInterval
 {
-	return [LogEntry stringFromInterval:[self secondsSinceNow] withSuffix:YES];
+	return [LogEntry stringFromInterval:[self secondsSinceNow] withSuffix:YES withDays:YES];
 }
 
-+ (NSString *)stringFromInterval:(NSTimeInterval)interval withSuffix:(BOOL)suffix
++ (NSString *)stringFromInterval:(NSTimeInterval)interval 
+											withSuffix:(BOOL)suffix
+												withDays:(BOOL)withDays
 {
 	NSMutableString *result = [[NSMutableString alloc] init];
 
@@ -121,19 +123,23 @@
 	
 //	NSLog(@"\nDifference: %@", diffComps);
 	
-	if (differenceInDays == 0) {
+	if (differenceInDays == 0 && withDays) {
 		[result appendString:@"Today"];
 		suffix = NO;
-	} else if (differenceInDays == 1) {
+	} else if (differenceInDays == 1 && withDays) {
 		[result appendString:@"Yesterday"];
 		suffix = NO;
-	} else if (differenceInDays < 7) {
+	} else if (differenceInDays < 7 && withDays) {
 		[result appendString:[[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
 		suffix = NO;
-	} else if (differenceInDays < 13) {
+	} else if (differenceInDays < 13 && withDays) {
 		[result appendFormat:@"Last %@", [[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
 		suffix = NO;
 		
+	} else if (year < 1 && month < 1 && week == 0 && day == 0) {
+		[result appendFormat:@"0 days"];
+	} else if (year < 1 && month < 1 && week == 0 && day != 0) {
+		[result appendFormat:@"%d %@", day, nbday];
 	} else if (year < 1 && month < 1 && week <= 4 && day == 0) {
 		[result appendFormat:@"%d %@", week, nbweek];
 	} else if (year < 1 && month < 1 && week <= 4 && day != 0) {
