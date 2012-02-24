@@ -92,9 +92,8 @@
 		return @"";
 	}
 	
-	return [[NSString alloc] initWithFormat:@"%@ - %@", 
-					[[self latestItem] eventName], 
-					[[self latestItem] lastStringInterval]];
+	return [[NSString alloc] initWithFormat:@"%@", 
+					[[self latestItem] eventName]];
 	
 }
 
