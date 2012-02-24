@@ -80,7 +80,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="1067372363"/>
-								<int key="IBUISystemItemIdentifier">7</int>
+								<int key="IBUISystemItemIdentifier">4</int>
 							</object>
 						</array>
 					</object>
