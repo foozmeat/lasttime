@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "WEPopoverController.h"
 
-@interface FolderViewController : UIViewController 
+@interface FolderListViewController : UIViewController 
 <UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate>
 
 @property (nonatomic, strong) EventFolder *rootFolder;

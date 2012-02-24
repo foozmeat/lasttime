@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class FolderViewController;
+@class FolderListViewController;
 
 @interface LastTimeAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWindow *window;
-@property (strong, nonatomic) FolderViewController *rootFolderViewController;
+@property (strong, nonatomic) FolderListViewController *rootFolderViewController;
 @end
 

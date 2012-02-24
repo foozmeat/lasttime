@@ -7,7 +7,7 @@
 //
 
 #import "LastTimeAppDelegate.h"
-#import "FolderViewController.h"
+#import "FolderListViewController.h"
 
 @implementation LastTimeAppDelegate
 
@@ -23,7 +23,7 @@
 	
 	[self versionCheck];
 
-	rootFolderViewController = [[FolderViewController alloc] init];
+	rootFolderViewController = [[FolderListViewController alloc] init];
 	
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootFolderViewController];
 	
