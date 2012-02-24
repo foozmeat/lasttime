@@ -23,7 +23,7 @@
 	if (self) {
 		if (root) {
 			isRoot = root;
-			[self setFolderName:NSLocalizedString(@"Home", @"Home")];
+			[self setFolderName:NSLocalizedString(@"Folders", @"Folders")];
 			[self fetchItemsIfNecessary];
 			[self setParentFolder:nil];
 
@@ -45,7 +45,7 @@
 		}
 
 		if ([folder isRoot]) {
-			folder.folderName = @"Home";
+			folder.folderName = @"Folders";
 			
 			for (int i = 0; i < 1; i++) {
 				[folder addItem:[self randomFolderWithRoot:NO]];
