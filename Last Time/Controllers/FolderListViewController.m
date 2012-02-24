@@ -53,7 +53,9 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-	[self setEditing:NO animated:YES];
+	if ([folderTableView isEditing]) {
+		[self setEditing:NO animated:YES];
+	}
 
 }
 
