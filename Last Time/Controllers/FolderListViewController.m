@@ -114,21 +114,6 @@
 	[folderTableView setEditing:editing animated:animate];
 }
 
-//- (void)addNewEvent
-//{
-//	EventDetailController *edc = [[EventDetailController alloc] init];
-//	
-//	[edc setEvent:[[Event alloc] init]];
-//	[edc setRootFolder:rootFolder];
-//	[edc setFolder:folder];
-//	
-//	UINavigationController *newNavController = [[UINavigationController alloc]
-//																							initWithRootViewController:edc];
-//	[[self navigationController] presentModalViewController:newNavController
-//																								 animated:YES];
-//	
-//}
-
 - (void)addNewItem:(id)sender
 
 //- (void)addNewFolder
@@ -146,29 +131,6 @@
 	
 }
 
-//- (void)addNewItem:(id)sender
-//{
-//
-//	if ([folder isRoot] == NO) {
-//		[self addNewEvent];
-//	} else {
-//		[self addNewFolder];
-//		UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:@"What would you like create?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"New Event", @"New Folder", nil];
-//		as.actionSheetStyle = UIActionSheetStyleDefault;
-//		[as showInView:self.view];		
-//	}	
-//}
-//
-// Action sheet delegate method.
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//	if (buttonIndex == 0)
-//	{
-//		[self addNewEvent];
-//	} else if (buttonIndex == 1) {
-//		[self addNewFolder];
-//	}
-//}
 
 #pragma mark - TableView Delegate
 
@@ -176,30 +138,8 @@
 {
 	
 	id item = [[folder allItems] objectAtIndex:[indexPath row]];
-		
-//	if ([item isMemberOfClass:[Event class]]) {
-//		
-//		if ([folderTableView isEditing]) {
-//			EventDetailController *edc = [[EventDetailController alloc] init];
-//			[edc setEvent:item];
-//			[edc setRootFolder:rootFolder];
-//			[edc setFolder:folder];
-//			[[self navigationController] pushViewController:edc animated:YES];
-//			
-//			[self setEditing:NO animated:NO];
-//
-//		} else {
-//			
-//			EventController *ec = [[EventController alloc] init];
-//			[ec setEvent:item];			
-//			[ec setFolder:folder];
-//			[[self navigationController] pushViewController:ec animated:YES];
-//		}
-//		
-//		
-//	} else if ([item isMemberOfClass:[EventFolder class]]) {
-//		
-		if ([tableView isEditing]) {
+
+	if ([tableView isEditing]) {
 			FolderDetailController *fdc = [[FolderDetailController alloc] init];
 			[fdc setTheNewFolder:item];
 			[fdc setRootFolder:rootFolder];
@@ -256,13 +196,12 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
 
 	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseString];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 	}
 	
-	if ([item isMemberOfClass:[EventFolder class]]) {
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:13.0]];
 	
 	[[cell textLabel] setText:[item objectName]];
 	[[cell detailTextLabel] setText:[item subtitle]];
