@@ -13,7 +13,6 @@
 @implementation LastTimeAppDelegate
 
 @synthesize window = _window;
-@synthesize rootFolderViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -24,7 +23,7 @@
 	
 	[self versionCheck];
 
-	rootFolderViewController = [[FolderListViewController alloc] init];
+	FolderListViewController *rootFolderViewController = [[FolderListViewController alloc] init];
 	
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootFolderViewController];
 	
@@ -49,25 +48,25 @@
 		newVersion *= 10;
 	}
 	
-	NSLog(@"%i", lastVersionRun);
-	NSLog(@"%i", newVersion);
+//	NSLog(@"%i", lastVersionRun);
+//	NSLog(@"%i", newVersion);
 	
 	[[EventStore defaultStore] migrateDataFromVersion:lastVersionRun];
 		
-	[[NSUserDefaults standardUserDefaults] setInteger:newVersion forKey:@"PrefKeyLastVersionRun"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+	if (newVersion != lastVersionRun) {
+		[[NSUserDefaults standardUserDefaults] setInteger:newVersion forKey:@"PrefKeyLastVersionRun"];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
 
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-//	[[rootFolderViewController rootFolder] saveChanges];
 	[[EventStore defaultStore] saveChanges];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-//	[[rootFolderViewController rootFolder] saveChanges];
 	[[EventStore defaultStore] saveChanges];
 
 }

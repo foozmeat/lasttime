@@ -110,14 +110,13 @@ static EventStore *defaultStore = nil;
 
 - (void)removeRootEvents
 {
+	NSLog(@"Migrating root events");
 	@autoreleasepool {
-		
-		EventFolder *root = [[EventFolder alloc] initWithRoot:YES];
-		
+				
 		// Gather up all the root events
 		NSMutableArray *unfiledEvents = [[NSMutableArray alloc] init];
 		
-		for (id item in [root allItems]) {
+		for (id item in [self allItems]) {
 			if ([item isMemberOfClass:[Event class]]) {
 				[unfiledEvents addObject:item];
 				
@@ -139,8 +138,6 @@ static EventStore *defaultStore = nil;
 			for (id item in unfiledEvents) {
 				[[self allItems] removeObjectIdenticalTo:item];
 			}
-			
-			[[EventStore defaultStore] saveChanges];
 		}
 	}
 }

@@ -10,7 +10,7 @@
 #import "EditableTableCell.h"
 
 @implementation CustomTableViewController
-@synthesize rootFolder, requiredField;
+@synthesize requiredField;
 @synthesize bestLocation;
 @synthesize shouldStoreLocation = _shouldStoreLocation;
 @synthesize numberCell;
@@ -293,11 +293,6 @@
 {
 	[self throwException];
 	return nil;
-}
-
-- (EventFolder *)folderPickerRootFolder
-{
-	return rootFolder;
 }
 
 - (void)endEditing

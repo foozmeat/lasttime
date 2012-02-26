@@ -11,7 +11,6 @@
 
 @implementation FolderPickerCell
 @synthesize pickerView, delegate, inputAccessoryView;
-@synthesize rootFolder;
 
 - (void)initalizeInputView {
 	self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
@@ -34,7 +33,7 @@
 - (void)setFolder
 {
 	EventFolder *currentFolder = [[self delegate] folderPickerCurrentFolder];
-	NSInteger folderIndex = [[rootFolder allFolders] indexOfObject:currentFolder];
+	NSInteger folderIndex = [[[EventStore defaultStore] allFolders] indexOfObject:currentFolder];
 	
 	[pickerView selectRow:folderIndex inComponent:0 animated:NO];
 		
@@ -109,16 +108,16 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-	return [[rootFolder allFolders] count];
+	return [[[EventStore defaultStore] allFolders] count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-	return [[[rootFolder allFolders] objectAtIndex:row] folderName];
+	return [[[[EventStore defaultStore] allFolders] objectAtIndex:row] folderName];
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
 	
-	EventFolder *folder = [[rootFolder allFolders] objectAtIndex:row];
+	EventFolder *folder = [[[EventStore defaultStore] allFolders] objectAtIndex:row];
 	[[self delegate] folderPickerDidChange:folder];
 	
 	NSLog(@"Selected Folder: %@. Index of selected folder: %i", [folder folderName], row);
@@ -133,7 +132,6 @@
 																							 reuseIdentifier:@"FolderPickerCell"];
 	
 	[cell setDelegate:delegate];
-	[cell setRootFolder:[delegate folderPickerRootFolder]];
 	[cell setTag:tag];
 	
 	return cell;

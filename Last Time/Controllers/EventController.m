@@ -15,7 +15,7 @@
 
 @implementation EventController
 @synthesize eventTableView;
-@synthesize event, folder, rootFolder;
+@synthesize event, folder;
 @synthesize averagePopover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

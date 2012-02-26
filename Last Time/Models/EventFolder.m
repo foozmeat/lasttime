@@ -10,56 +10,37 @@
 #import "EventStore.h"
 
 @implementation EventFolder
-@synthesize isRoot, folderName, allItems;
+@synthesize folderName, allItems;
 
 - (id)init
 {
-	return [self initWithRoot:NO];
+	return [self initWithName:@""];
 }
 
-- (id)initWithRoot:(BOOL)root
+- (id)initWithName:(NSString *)name
 {
 	self = [super init];
 	
 	if (self) {
-		if (root) {
-			isRoot = root;
-			[self setFolderName:NSLocalizedString(@"Folders", @"Folders")];
-			[[EventStore defaultStore] fetchItemsIfNecessary];
-
-//			[self fetchItemsIfNecessary];
-
-		} else {
-			allItems = [[NSMutableArray alloc] init];
-		}
+		[self setFolderName:name];
+		allItems = [[NSMutableArray alloc] init];
 	}
 	return self;
 
 }
 
-+ (EventFolder *)randomFolderWithRoot:(BOOL)root
++ (EventFolder *)randomFolder
 {
-	EventFolder *folder = [[EventFolder alloc] initWithRoot:root];
-	
+
+	NSArray *randomFolderList = [NSArray arrayWithObjects:@"Health", @"Pet", @"Car", @"Vacation", @"Diet", nil];
+	long folderIndex = arc4random() % [randomFolderList count];
+	EventFolder *folder = [[EventFolder alloc] initWithName:[randomFolderList objectAtIndex:folderIndex]];
+
 	@autoreleasepool {
 		for (int i = 0; i < 2; i++) {
 			[folder addItem:[Event randomEvent]];
 		}
 
-		if ([folder isRoot]) {
-			folder.folderName = @"Folders";
-			
-			for (int i = 0; i < 1; i++) {
-				[folder addItem:[self randomFolderWithRoot:NO]];
-			}
-		}
-
-		if (![folder isRoot]) {
-			NSArray *randomFolderList = [NSArray arrayWithObjects:@"Health", @"Pet", @"Car", @"Vacation", @"Diet", nil];
-			
-			long folderIndex = arc4random() % [randomFolderList count];
-			folder.folderName = [randomFolderList objectAtIndex:folderIndex];
-		}						
 	}
 
 	return folder;
@@ -71,16 +52,6 @@
 	needsSorting = YES;
 }
 
-//- (Event *)createEvent
-//{
-//	Event *e = [[Event alloc] init];
-//	[allItems addObject:e];
-//	needsSorting = YES;
-//	
-//	return e;
-//}
-
-
 - (void)removeItem:(id)item
 {
 	[allItems removeObjectIdenticalTo:item];
@@ -89,7 +60,7 @@
 
 - (NSString *)subtitle
 {
-	if (isRoot || [allItems count] == 0) {
+	if ([allItems count] == 0) {
 		return @"";
 	}
 	
@@ -107,24 +78,6 @@
 {
 	[self sortItems];
 	return allItems;
-}
-
-- (NSArray *)allFolders
-{
-	
-	if (![self isRoot]) {
-		return [[NSArray alloc] init];
-	}
-	
-	NSMutableArray *folders = [[NSMutableArray alloc] init];
-	
-	for (id item in [self allItems]) {
-		if ([item isMemberOfClass:[EventFolder class]]) {
-			[folders addObject:item];
-		}
-	}
-	
-	return folders;
 }
 
 - (void) sortItems
@@ -180,57 +133,17 @@
 {
 	NSMutableString *output = [[NSMutableString alloc] init];
 	
-	if (!isRoot) {
-		[output appendFormat:@"\n%@\n", folderName];
-		[output appendFormat:@"-> %@\n", [self subtitle]];
-	}
 	[output appendFormat:@"\n%@", [self itemDescriptions]];
-//	if (rootFolder) {
-//		[output appendFormat:@"\n%@", [self folderDescriptions]];
-//	}
 	
 	return output;
 }
 
-//#pragma mark - loading/saving
-//- (NSString *)eventDataAchivePath
-//{
-//	return pathInDocumentDirectory(@"events.plist");
-//}
-//
-//- (BOOL)saveChanges
-//{
-//	if (isRoot) {
-//		NSLog(@"Saving data...");
-//		return [NSKeyedArchiver archiveRootObject:self
-//																			 toFile:[self eventDataAchivePath]];
-//	} else {
-//		return NO;
-//	}
-//}
-//
-//- (void)fetchItemsIfNecessary
-//{
-//	if (!allItems) {
-//		NSString *path = [self eventDataAchivePath];
-//		EventFolder *archivedRootFolder = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-//		[self setAllItems:[[NSMutableArray alloc] initWithArray:[archivedRootFolder allItems]]];
-//		needsSorting = YES;
-//
-//	}
-//
-//	if (!allItems) {
-//		allItems = [[NSMutableArray alloc] init];
-//		
-//	}
-//}
 
 #pragma mark - NSCoder
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 	[aCoder encodeObject:folderName forKey:@"folderName"];
 	[aCoder encodeObject:allItems forKey:@"allItems"];
-	[aCoder encodeInt:isRoot forKey:@"isRoot"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -240,7 +153,6 @@
 	if (self) {
 		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
 		[self setFolderName:[aDecoder decodeObjectForKey:@"folderName"]];
-		[self setIsRoot:[aDecoder decodeIntForKey:@"isRoot"]];
 	}
 	
 	return self;

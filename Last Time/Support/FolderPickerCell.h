@@ -12,7 +12,6 @@
 
 - (void)folderPickerDidChange:(EventFolder *)folder;
 - (void)endEditing;
-- (EventFolder *)folderPickerRootFolder;
 - (EventFolder *)folderPickerCurrentFolder;
 
 @end
@@ -20,7 +19,6 @@
 @interface FolderPickerCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate, UIKeyInput>
 
 @property (nonatomic, strong) UIToolbar *inputAccessoryView;
-@property (nonatomic, strong) EventFolder *rootFolder;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, assign) UITableViewController <FolderPickerCellDelegate> *delegate;
 

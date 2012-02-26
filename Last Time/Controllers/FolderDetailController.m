@@ -15,23 +15,20 @@
 @synthesize nameCell;
 @synthesize theNewFolder;
 
-#pragma mark -
-#pragma mark Action Methods
+#pragma mark - Action Methods
 
 - (void)save
 {
-	[[EventStore defaultStore] addFolder:theNewFolder];
+	NSLog(@"%@", theNewFolder);
 	[self dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark -
-#pragma mark UIViewController Methods
+#pragma mark - View Lifecycle
 - (void)viewDidLoad
 {
 	[self setRequiredField:FolderName];
 	[super viewDidLoad];
 }
-
 
 - (void)viewFinishedLoading
 {
@@ -44,8 +41,7 @@
 	[self setNameCell:[EditableTableCell newDetailCellWithTag:FolderName withDelegate:self]];
 }
 
-#pragma mark -
-#pragma mark UITextFieldDelegate Protocol
+#pragma mark - UITextFieldDelegate Protocol
 //  Sets the label of the keyboard's return key to 'Done' when the insertion
 //  point moves to the table view's last field.
 //

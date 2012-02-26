@@ -22,7 +22,6 @@
 	NSNumberFormatter *numberFormatter;
 }
 	
-@property (strong, nonatomic) EventFolder *rootFolder;
 @property (nonatomic) NSInteger requiredField;
 @property (nonatomic) BOOL shouldStoreLocation;
 @property (nonatomic, strong) CLLocation *bestLocation;

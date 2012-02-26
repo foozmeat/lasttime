@@ -13,6 +13,5 @@
 @interface LastTimeAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWindow *window;
-@property (strong, nonatomic) FolderListViewController *rootFolderViewController;
 @end
 
