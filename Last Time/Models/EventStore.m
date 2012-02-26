@@ -97,6 +97,17 @@ static EventStore *defaultStore = nil;
 
 
 #pragma mark - Migrations
+
+- (void)migrateDataFromVersion:(int)version
+{
+
+	if (version == 0) {
+		[[EventStore defaultStore] removeRootEvents];
+		
+	}
+
+}
+
 - (void)removeRootEvents
 {
 	@autoreleasepool {
@@ -122,16 +133,14 @@ static EventStore *defaultStore = nil;
 			unfiled.allItems = unfiledEvents;
 			
 			// add the new folder to the root
-			[root addItem:unfiled];
+			[self addFolder:unfiled];
 			
 			//Remove them from the root
 			for (id item in unfiledEvents) {
-				[root removeItem:item];
+				[[self allItems] removeObjectIdenticalTo:item];
 			}
 			
 			[[EventStore defaultStore] saveChanges];
-			//			[root saveChanges];
-			
 		}
 	}
 }

@@ -37,19 +37,23 @@
 - (void)versionCheck
 {
 	int lastVersionRun = [[NSUserDefaults standardUserDefaults] integerForKey:@"PrefKeyLastVersionRun"];
-	
+	if (lastVersionRun >= 10 && lastVersionRun <= 99) {
+		lastVersionRun *= 10;
+	}
+			
 	NSString *versionString = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 	NSString *intVersionString = [versionString	stringByReplacingOccurrencesOfString:@"." withString:@""];
 	int newVersion = [intVersionString intValue];
+
+	if (newVersion >= 10 && newVersion <= 99) {
+		newVersion *= 10;
+	}
 	
 	NSLog(@"%i", lastVersionRun);
 	NSLog(@"%i", newVersion);
 	
-	if (lastVersionRun == 0) {
-		[[EventStore defaultStore] removeRootEvents];
+	[[EventStore defaultStore] migrateDataFromVersion:lastVersionRun];
 		
-	}
-	
 	[[NSUserDefaults standardUserDefaults] setInteger:newVersion forKey:@"PrefKeyLastVersionRun"];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 

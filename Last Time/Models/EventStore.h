@@ -28,5 +28,5 @@
 
 - (void)removeRootEvents;
 
-
+- (void)migrateDataFromVersion:(int)version;
 @end
