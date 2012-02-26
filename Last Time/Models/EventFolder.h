@@ -31,12 +31,12 @@
 - (NSArray *)allItems;
 - (NSArray *)allFolders;
 
-- (Event *)createEvent;
+//- (Event *)createEvent;
 - (void)removeItem:(id)item;
 - (void)addItem:(id)item;
 
-- (NSString *)eventDataAchivePath;
-- (void)fetchItemsIfNecessary;
-- (BOOL)saveChanges;
+//- (NSString *)eventDataAchivePath;
+//- (void)fetchItemsIfNecessary;
+//- (BOOL)saveChanges;
 
 @end

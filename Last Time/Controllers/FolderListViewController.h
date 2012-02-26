@@ -12,8 +12,6 @@
 @interface FolderListViewController : UIViewController 
 <UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate>
 
-@property (nonatomic, strong) EventFolder *rootFolder;
-@property (nonatomic, strong) EventFolder *folder;
 @property (strong, nonatomic) IBOutlet UITableView *folderTableView;
 @property (nonatomic, strong) WEPopoverController *addPopover;
 

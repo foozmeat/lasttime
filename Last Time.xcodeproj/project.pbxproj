@@ -54,6 +54,7 @@
 		39918C1A14F606A200D8D4EE /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39918C1914F606A200D8D4EE /* EventListViewController.xib */; };
 		39918C1D14F609D400D8D4EE /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 39918C1B14F609D400D8D4EE /* clock.png */; };
 		39918C1E14F609D400D8D4EE /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39918C1C14F609D400D8D4EE /* clock@2x.png */; };
+		39918C2514F7F99700D8D4EE /* EventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 39918C2414F7F99700D8D4EE /* EventStore.m */; };
 		39A0F9F714F0B9AF00BA0AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39A0F9FA14F0B9AF00BA0AFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A0F9F914F0B9AF00BA0AFA /* main.m */; };
 		39A0FA0314F0B9B900BA0AFA /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
@@ -207,6 +208,8 @@
 		39918C1914F606A200D8D4EE /* EventListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventListViewController.xib; sourceTree = "<group>"; };
 		39918C1B14F609D400D8D4EE /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = "Last Time/Resources/Images/clock.png"; sourceTree = SOURCE_ROOT; };
 		39918C1C14F609D400D8D4EE /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock@2x.png"; path = "Last Time/Resources/Images/clock@2x.png"; sourceTree = SOURCE_ROOT; };
+		39918C2314F7F99700D8D4EE /* EventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventStore.h; sourceTree = "<group>"; };
+		39918C2414F7F99700D8D4EE /* EventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventStore.m; sourceTree = "<group>"; };
 		39A0F9F514F0B9AF00BA0AFA /* DurationTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DurationTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A0F9F914F0B9AF00BA0AFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/DurationTest/main.m"; sourceTree = SOURCE_ROOT; };
 		39AA477E14DAD8B300580EB9 /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailController.h; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 				3969111C14C9BCF8006E8272 /* EventFolder.m */,
 				3969111D14C9BCF8006E8272 /* LogEntry.h */,
 				3969111E14C9BCF8006E8272 /* LogEntry.m */,
+				39918C2314F7F99700D8D4EE /* EventStore.h */,
+				39918C2414F7F99700D8D4EE /* EventStore.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -908,6 +913,7 @@
 				39339BFB14F1C59F0068CC29 /* WEPopoverController.m in Sources */,
 				39339BFC14F1C59F0068CC29 /* WETouchableView.m in Sources */,
 				39918C1714F6062000D8D4EE /* EventListViewController.m in Sources */,
+				39918C2514F7F99700D8D4EE /* EventStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

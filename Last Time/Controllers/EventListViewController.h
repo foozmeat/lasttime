@@ -12,7 +12,6 @@
 @interface EventListViewController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate>
 
-@property (nonatomic, strong) EventFolder *rootFolder;
 @property (nonatomic, strong) EventFolder *folder;
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;
 @property (nonatomic, strong) WEPopoverController *addPopover;

@@ -10,6 +10,7 @@
 #import "CustomTableViewController.h"
 
 @class LogEntry;
+@class Event;
 
 enum {
 	kEventNote = 0,

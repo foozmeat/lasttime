@@ -10,6 +10,7 @@
 #import "WEPopoverController.h"
 
 @class EventFolder;
+@class Event;
 
 enum EventSections {
 	kAverageSection = 0,

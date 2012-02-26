@@ -10,6 +10,8 @@
 #import "HistoryLogDetailController.h"
 #import "HistoryLogCell.h"
 #import "WEPopoverController.h"
+#import "LogEntry.h"
+#import "Event.h"
 
 @implementation EventController
 @synthesize eventTableView;

@@ -7,6 +7,7 @@
 //
 
 #import "FolderPickerCell.h"
+#import "EventFolder.h"
 
 @implementation FolderPickerCell
 @synthesize pickerView, delegate, inputAccessoryView;

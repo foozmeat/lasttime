@@ -11,11 +11,9 @@
 #ifdef __OBJC__
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
-	#import "EventFolder.h"
-	#import "LogEntry.h"
-	#import "Event.h"
 	#import "FileHelpers.h"
 	#import "UIColor+Custom.h"
+	#import "EventStore.h"
 
 #ifndef DEBUG
 	#import "TestFlight.h"

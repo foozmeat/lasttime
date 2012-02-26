@@ -10,9 +10,11 @@
 #import "EventController.h"
 #import "EventDetailController.h"
 #import "WEPopoverController.h"
+#import "EventStore.h"
+#import "EventFolder.h"
 
 @implementation EventListViewController
-@synthesize rootFolder, folder;
+@synthesize folder;
 @synthesize eventTableView;
 @synthesize addPopover;
 
@@ -20,8 +22,6 @@
 {
 	[self setEventTableView:nil];
 	[super viewDidUnload];
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -36,7 +36,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	
 	
 	if ([[folder allItems] count] > 0) {
 		[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
@@ -114,7 +113,6 @@
 	EventDetailController *edc = [[EventDetailController alloc] init];
 	
 	[edc setEvent:[[Event alloc] init]];
-	[edc setRootFolder:rootFolder];
 	[edc setFolder:folder];
 	
 	UINavigationController *newNavController = [[UINavigationController alloc]
@@ -134,7 +132,6 @@
 	if ([tableView isEditing]) {
 		EventDetailController *edc = [[EventDetailController alloc] init];
 		[edc setEvent:item];
-		[edc setRootFolder:rootFolder];
 		[edc setFolder:folder];
 		[[self navigationController] pushViewController:edc animated:YES];
 		
@@ -166,8 +163,7 @@
 			[self showAddPopup];
 		}
 		
-		[rootFolder saveChanges];
-		
+		[[EventStore defaultStore] saveChanges];
 	}
 }
 

@@ -8,6 +8,7 @@
 
 #import "LastTimeAppDelegate.h"
 #import "FolderListViewController.h"
+#import "EventStore.h"
 
 @implementation LastTimeAppDelegate
 
@@ -45,7 +46,7 @@
 	NSLog(@"%i", newVersion);
 	
 	if (lastVersionRun == 0) {
-		[self removeRootEvents];
+		[[EventStore defaultStore] removeRootEvents];
 		
 	}
 	
@@ -54,52 +55,16 @@
 
 }
 
-- (void)removeRootEvents
-{
-	@autoreleasepool {
-		
-		EventFolder *root = [[EventFolder alloc] initWithRoot:YES];
-		
-		// Gather up all the root events
-		NSMutableArray *unfiledEvents = [[NSMutableArray alloc] init];
-		
-		for (id item in [root allItems]) {
-			if ([item isMemberOfClass:[Event class]]) {
-				[unfiledEvents addObject:item];
-				
-			}
-		}
-		
-		// If there are any then make a new folder
-		if ([unfiledEvents count] > 0) {
-			EventFolder *unfiled = [[EventFolder alloc] init];
-			unfiled.folderName = @"Unfiled";
-			
-			//Put the events in the folder
-			unfiled.allItems = unfiledEvents;
-
-			// add the new folder to the root
-			[root addItem:unfiled];
-
-			//Remove them from the root
-			for (id item in unfiledEvents) {
-				[root removeItem:item];
-			}
-			
-			[root saveChanges];
-			
-		}
-	}
-}
-
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-	[[rootFolderViewController rootFolder] saveChanges];
+//	[[rootFolderViewController rootFolder] saveChanges];
+	[[EventStore defaultStore] saveChanges];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-	[[rootFolderViewController rootFolder] saveChanges];
+//	[[rootFolderViewController rootFolder] saveChanges];
+	[[EventStore defaultStore] saveChanges];
 
 }
 @end

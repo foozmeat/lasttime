@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+
 #import "EditableTableCell.h"
 #import "DatePickerCell.h"
 #import "FolderPickerCell.h"

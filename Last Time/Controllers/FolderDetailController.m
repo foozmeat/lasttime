@@ -8,6 +8,8 @@
 
 #import "FolderDetailController.h"
 #import "EditableTableCell.h"
+#import "EventStore.h"
+#import "EventFolder.h"
 
 @implementation FolderDetailController
 @synthesize nameCell;
@@ -18,8 +20,7 @@
 
 - (void)save
 {
-	[[self rootFolder] addItem:theNewFolder];
-	
+	[[EventStore defaultStore] addFolder:theNewFolder];
 	[self dismissModalViewControllerAnimated:YES];
 }
 

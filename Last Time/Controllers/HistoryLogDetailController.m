@@ -9,6 +9,7 @@
 #import "HistoryLogDetailController.h"
 #import "EditableTableCell.h"
 #import "DatePickerCell.h"
+#import "Event.h"
 
 @implementation HistoryLogDetailController
 @synthesize logEntry, event;
@@ -21,6 +22,7 @@
 {
 	[event addLogEntry:logEntry];
 	[self dismissModalViewControllerAnimated:YES];
+	[[EventStore defaultStore] saveChanges];
 //	NSLog(@"%@", event);
 }
 

@@ -9,6 +9,8 @@
 #import "EventDetailController.h"
 #import "EditableTableCell.h"
 #import "DatePickerCell.h"
+#import	"EventFolder.h"
+#import "EventStore.h"
 
 @implementation EventDetailController
 @synthesize nameCell, noteCell, dateCell, folderCell, locationCell;
@@ -21,6 +23,7 @@
 {
 	[folder addItem:event];
 	[self dismissModalViewControllerAnimated:YES];
+	[[EventStore defaultStore] saveChanges];
 //	NSLog(@"%@", event);
 }
 

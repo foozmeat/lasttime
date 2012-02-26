@@ -7,9 +7,10 @@
 //
 
 #import "EventFolder.h"
+#import "EventStore.h"
 
 @implementation EventFolder
-@synthesize isRoot, folderName, allItems, parentFolder;
+@synthesize isRoot, folderName, allItems;
 
 - (id)init
 {
@@ -24,8 +25,9 @@
 		if (root) {
 			isRoot = root;
 			[self setFolderName:NSLocalizedString(@"Folders", @"Folders")];
-			[self fetchItemsIfNecessary];
-			[self setParentFolder:nil];
+			[[EventStore defaultStore] fetchItemsIfNecessary];
+
+//			[self fetchItemsIfNecessary];
 
 		} else {
 			allItems = [[NSMutableArray alloc] init];
@@ -65,19 +67,18 @@
 
 - (void)addItem:(id)item;
 {
-	[item setParentFolder:self];
 	[allItems addObject:item];
 	needsSorting = YES;
 }
 
-- (Event *)createEvent
-{
-	Event *e = [[Event alloc] init];
-	[allItems addObject:e];
-	needsSorting = YES;
-	
-	return e;
-}
+//- (Event *)createEvent
+//{
+//	Event *e = [[Event alloc] init];
+//	[allItems addObject:e];
+//	needsSorting = YES;
+//	
+//	return e;
+//}
 
 
 - (void)removeItem:(id)item
@@ -191,38 +192,38 @@
 	return output;
 }
 
-#pragma mark - loading/saving
-- (NSString *)eventDataAchivePath
-{
-	return pathInDocumentDirectory(@"events.plist");
-}
-
-- (BOOL)saveChanges
-{
-	if (isRoot) {
-		NSLog(@"Saving data...");
-		return [NSKeyedArchiver archiveRootObject:self
-																			 toFile:[self eventDataAchivePath]];
-	} else {
-		return NO;
-	}
-}
-
-- (void)fetchItemsIfNecessary
-{
-	if (!allItems) {
-		NSString *path = [self eventDataAchivePath];
-		EventFolder *archivedRootFolder = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-		[self setAllItems:[[NSMutableArray alloc] initWithArray:[archivedRootFolder allItems]]];
-		needsSorting = YES;
-
-	}
-
-	if (!allItems) {
-		allItems = [[NSMutableArray alloc] init];
-		
-	}
-}
+//#pragma mark - loading/saving
+//- (NSString *)eventDataAchivePath
+//{
+//	return pathInDocumentDirectory(@"events.plist");
+//}
+//
+//- (BOOL)saveChanges
+//{
+//	if (isRoot) {
+//		NSLog(@"Saving data...");
+//		return [NSKeyedArchiver archiveRootObject:self
+//																			 toFile:[self eventDataAchivePath]];
+//	} else {
+//		return NO;
+//	}
+//}
+//
+//- (void)fetchItemsIfNecessary
+//{
+//	if (!allItems) {
+//		NSString *path = [self eventDataAchivePath];
+//		EventFolder *archivedRootFolder = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+//		[self setAllItems:[[NSMutableArray alloc] initWithArray:[archivedRootFolder allItems]]];
+//		needsSorting = YES;
+//
+//	}
+//
+//	if (!allItems) {
+//		allItems = [[NSMutableArray alloc] init];
+//		
+//	}
+//}
 
 #pragma mark - NSCoder
 - (void)encodeWithCoder:(NSCoder *)aCoder
@@ -230,7 +231,6 @@
 	[aCoder encodeObject:folderName forKey:@"folderName"];
 	[aCoder encodeObject:allItems forKey:@"allItems"];
 	[aCoder encodeInt:isRoot forKey:@"isRoot"];
-	[aCoder encodeObject:parentFolder forKey:@"parentFolder"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -241,7 +241,6 @@
 		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
 		[self setFolderName:[aDecoder decodeObjectForKey:@"folderName"]];
 		[self setIsRoot:[aDecoder decodeIntForKey:@"isRoot"]];
-		[self setParentFolder:[aDecoder decodeObjectForKey:@"parentFolder"]];
 	}
 	
 	return self;
