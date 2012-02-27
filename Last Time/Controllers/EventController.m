@@ -118,17 +118,32 @@
 
 	}
 }
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	int section = [indexPath section];
+	if ((section == kAverageSection && ![event showAverage]) || section == kHistorySection){
+		return YES;
+	} else {
+		return NO;
+	}
+}
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		id item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
-		[event removeItem:item];
-		
-		[tableView reloadData];
-//		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-				
+	
+	int section = [indexPath section];
+	
+	if ((section == kAverageSection && ![event showAverage]) || section == kHistorySection){
+		if (editingStyle == UITableViewCellEditingStyleDelete) {
+			id item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
+			[event removeItem:item];
+			
+			[tableView reloadData];
+			//		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+			
+		}
 	}
+	
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -161,10 +176,14 @@
 		} else {
 			return NUM_AVERAGE_SECTIONS - 1;
 		}
-	} else if (section == kAverageSection && ![event showAverage]) {
-		return [[event logEntryCollection] count];
-	} else if (section == kHistorySection) {
-		return [[event logEntryCollection] count];
+	} else if ((section == kAverageSection && ![event showAverage]) || (section == kHistorySection)) {
+
+		int count = [[event logEntryCollection] count];
+		if (count == 0) {
+			return 1;
+		} else {
+			return count;
+		}
 	} else {
 		return 0;
 	}
@@ -223,28 +242,37 @@
 		return cell;
 
 	} else if (([indexPath section] == kAverageSection && ![event showAverage]) || [indexPath section] == kHistorySection) {
-		LogEntry *item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
-		
-		if ([[item logEntryNote] isEqualToString:@""]){
-			UIFont *font = [UIFont italicSystemFontOfSize:14];
-			[historyLogCell.logEntryNoteCell setFont:font];
-			[historyLogCell.logEntryNoteCell setTextColor:[UIColor grayColor]];
 
-			historyLogCell.logEntryNoteCell.text = @"No Note";
+		if ([[event logEntryCollection] count] > 0) {
+			LogEntry *item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
+
+			if ([[item logEntryNote] isEqualToString:@""]){
+				UIFont *font = [UIFont italicSystemFontOfSize:14];
+				[historyLogCell.logEntryNoteCell setFont:font];
+				[historyLogCell.logEntryNoteCell setTextColor:[UIColor grayColor]];
+				
+				historyLogCell.logEntryNoteCell.text = @"No Note";
+			} else {
+				historyLogCell.logEntryNoteCell.text = item.logEntryNote;
+			}
+			
+			if ([item logEntryValue] != 0.0) {
+				NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[item logEntryValue]]];
+				historyLogCell.logEntryValueCell.text = value;
+			} else {
+				historyLogCell.logEntryValueCell.text = @"";
+			}
+			historyLogCell.logEntryDateCell.text = [item stringFromLogEntryInterval];
+			historyLogCell.locationMarker.hidden = ![item hasLocation];
+			
+			return historyLogCell;
+
 		} else {
-			historyLogCell.logEntryNoteCell.text = item.logEntryNote;
+			cell.textLabel.text = @"No History Entries";
+			return cell;
+
 		}
 		
-		if ([item logEntryValue] != 0.0) {
-			NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[item logEntryValue]]];
-			historyLogCell.logEntryValueCell.text = value;
-		} else {
-			historyLogCell.logEntryValueCell.text = @"";
-		}
-		historyLogCell.logEntryDateCell.text = [item stringFromLogEntryInterval];
-		historyLogCell.locationMarker.hidden = ![item hasLocation];
-		
-		return historyLogCell;
 
 	} else {
 		cell.textLabel.text = @"Error";
