@@ -20,8 +20,9 @@
 
 - (NSArray *)allFolders;
 
--(void)removeFolder:(EventFolder *)folder;
--(void)addFolder:(EventFolder *)folder;
+- (void)removeFolder:(EventFolder *)folder;
+- (void)addFolder:(EventFolder *)folder;
+- (void)moveFolderAtIndex:(int)from toIndex:(int)to;
 
 - (BOOL)saveChanges;
 - (void)fetchItemsIfNecessary;

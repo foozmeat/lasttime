@@ -67,6 +67,20 @@ static EventStore *defaultStore = nil;
 	[self saveChanges];
 }
 
+- (void)moveFolderAtIndex:(int)from toIndex:(int)to
+{
+	if (from == to) {
+		return;
+	}
+	
+	EventFolder *e = [_allItems objectAtIndex:from];
+	[_allItems removeObjectAtIndex:from];
+	
+	[_allItems insertObject:e atIndex:to];
+	
+	[self saveChanges];
+
+}
 #pragma mark - Saving/Loading
 
 - (NSString *)eventDataAchivePath

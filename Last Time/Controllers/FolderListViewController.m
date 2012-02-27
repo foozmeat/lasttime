@@ -14,6 +14,7 @@
 #import "EventListViewController.h"
 #import "EventStore.h"
 #import "EventFolder.h"
+#import "FolderListCell.h"
 
 @implementation FolderListViewController
 @synthesize folderTableView;
@@ -136,7 +137,6 @@
 	
 }
 
-
 #pragma mark - TableView Delegate
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -191,6 +191,7 @@
 
 }
 
+#pragma mark - TableView Datasource Delegate methods
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -198,7 +199,7 @@
 		[[EventStore defaultStore] removeFolder:item];
 		
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-
+		
 		if ([[[EventStore defaultStore] allItems] count] == 0) {
 			[[self navigationItem] setRightBarButtonItem:nil];
 			[self setEditing:NO animated:YES];
@@ -206,9 +207,38 @@
 		}
 		
 		[[EventStore defaultStore] saveChanges];
-
+		
 	}
 }
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if( indexPath.row == (int)[[[EventStore defaultStore] allItems] count] ) {
+		return NO;
+	} else {
+		return YES;
+	}
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+	if (proposedDestinationIndexPath.row == (int)[[[EventStore defaultStore] allItems] count]) {
+		return sourceIndexPath;
+	} else {
+		return proposedDestinationIndexPath;
+	}
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath 
+{
+	if ((sourceIndexPath.row != (int)[[[EventStore defaultStore] allItems] count] ) && 
+			(destinationIndexPath.row != (int)[[[EventStore defaultStore] allItems] count] )) {
+
+		[[EventStore defaultStore] moveFolderAtIndex:[sourceIndexPath row] 
+																				 toIndex:[destinationIndexPath row]];
+	}
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -222,18 +252,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	NSString *reuseString = nil;
-	UITableViewCell *cell = nil;
 	
 	if ([indexPath row] == (int)[[[EventStore defaultStore] allItems] count]) {
 		reuseString = @"addFolderCell";
 		
-		cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
 		
 		if (!cell) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 		}
 
 		[[cell textLabel] setText:@"Add a Folder..."];
+		return cell;
 
 	} else {
 		
@@ -241,22 +271,23 @@
 		
 		reuseString = @"FolderCell";
 		
-		cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
+		FolderListCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
 		
 		if (!cell) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
+			cell = [[FolderListCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 		}
 		
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:15.0]];
 		
 		[[cell textLabel] setText:[item objectName]];
+
+		[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:15.0]];
 		[[cell detailTextLabel] setText:[item subtitle]];
+		
+		return cell;
 	}
 	
-	
-	return cell;
 }
 
 @end
