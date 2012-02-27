@@ -249,7 +249,7 @@
 		
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:13.0]];
+		[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:15.0]];
 		
 		[[cell textLabel] setText:[item objectName]];
 		[[cell detailTextLabel] setText:[item subtitle]];
