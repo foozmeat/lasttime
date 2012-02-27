@@ -20,6 +20,7 @@
 - (void)save
 {
 	NSLog(@"%@", theNewFolder);
+	[[EventStore defaultStore] addFolder:theNewFolder];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
