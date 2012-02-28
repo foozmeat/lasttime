@@ -13,7 +13,7 @@
 
 @implementation HistoryLogDetailController
 @synthesize logEntry, event;
-@synthesize noteCell, dateCell, locationCell;
+@synthesize noteCell, dateCell, locationSwitchCell;
 
 #pragma mark -
 #pragma mark Action Methods
@@ -43,7 +43,7 @@
 {
 	[self setNoteCell:[EditableTableCell newDetailCellWithTag:kEventNote withDelegate:self]];
 	[self setDateCell:[DatePickerCell newDateCellWithTag:kEventDate withDelegate:self]];
-	[self setLocationCell:[LocationSwitchCell newLocationCellWithTag:kEventLocation withDelegate:self]];
+	[self setLocationSwitchCell:[LocationSwitchCell newLocationCellWithTag:kEventLocationSwitch withDelegate:self]];
 	[self setNumberCell:[NumberCell newNumberCellWithTag:kEventNumber withDelegate:self]];
 
 	if ([self isModal]) {
@@ -102,12 +102,13 @@
 	if ([self isModal]) {
 		return 4;
 	} else {
-		return 3;
+		return 4;
 	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+	int row = [indexPath row];
 	//  Determine the text field's value. Each section of the table view
 	//  is mapped to a property of the event object we're displaying.
 	//
@@ -115,11 +116,12 @@
 	DatePickerCell *dcell = nil;
 	LocationSwitchCell *lcell = nil;
 	NumberCell *ncell = nil;
+	UITableViewCell *geoCell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
 
 	numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
 	numberFormatter.roundingIncrement = [NSNumber numberWithDouble:0.001];
 
-	switch ([indexPath row]) 
+	switch (row) 
 	{
 		case kEventNote:
 			cell = [self noteCell];
@@ -144,9 +146,21 @@
 			[[ncell textLabel] setText:@"Number"];
 			return ncell;
 			break;
-		case kEventLocation:
-			lcell = [self locationCell];
-			return lcell;
+		case kEventLocationSwitch:
+			if ([self isModal]) {
+
+				lcell = [self locationSwitchCell];
+				return lcell;
+			} else {
+				if (!geoCell) {
+					geoCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
+																					 reuseIdentifier:@"UITableViewCell"];
+				}
+				[[geoCell detailTextLabel] setText:[logEntry logEntryLocationString]];
+				[[geoCell textLabel] setText:@"Location"];
+				return geoCell;
+
+			}
 			break;
 		default:
 			cell = [[EditableTableCell alloc] init];

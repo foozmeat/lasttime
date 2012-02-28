@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *logEntryNote;
 @property (nonatomic) CLLocationCoordinate2D logEntryLocation;
 @property (nonatomic) float logEntryValue;
+@property (nonatomic, strong) NSString *logEntryLocationString;
 
 - (id)initWithNote:(NSString *)logEntryNote
 			 dateOccured:(NSDate *)logEntryDateOccured;
@@ -23,6 +24,7 @@
 - (NSString *)stringFromLogEntryInterval;
 - (NSString *)subtitle;
 - (BOOL)hasLocation;
+- (void)reverseLookupLocation;
 
 + (id)randomLogEntry;
 + (NSString *)stringFromInterval:(NSTimeInterval)interval

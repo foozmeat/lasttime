@@ -14,4 +14,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *logEntryValueCell;
 @property (strong, nonatomic) IBOutlet UILabel *logEntryDateCell;
 @property (strong, nonatomic) IBOutlet UIImageView *locationMarker;
+@property (strong, nonatomic) IBOutlet UILabel *logEntryLocationCell;
 @end

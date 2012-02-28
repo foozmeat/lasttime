@@ -13,6 +13,7 @@
 @synthesize logEntryValueCell;
 @synthesize logEntryDateCell;
 @synthesize locationMarker;
+@synthesize logEntryLocationCell;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

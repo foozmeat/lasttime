@@ -16,7 +16,7 @@ enum {
 	kEventNote = 0,
 	kEventNumber,
 	kEventDate,
-	kEventLocation
+	kEventLocationSwitch,
 };
 
 @interface HistoryLogDetailController : CustomTableViewController
@@ -25,6 +25,5 @@ enum {
 @property (nonatomic, strong) Event *event;
 @property (nonatomic, strong) EditableTableCell *noteCell;
 @property (nonatomic, strong) DatePickerCell *dateCell;
-@property (nonatomic, strong) LocationSwitchCell *locationCell;
-
+@property (nonatomic, strong) LocationSwitchCell *locationSwitchCell;
 @end

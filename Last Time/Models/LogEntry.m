@@ -9,7 +9,7 @@
 #import "LogEntry.h"
 
 @implementation LogEntry
-@synthesize logEntryDateOccured, logEntryNote, logEntryLocation, logEntryValue;
+@synthesize logEntryDateOccured, logEntryNote, logEntryLocation, logEntryValue, logEntryLocationString;
 
 
 - (id)init
@@ -30,10 +30,53 @@
 
 }
 
+#pragma mark - Location
+
 - (BOOL)hasLocation
 {
 	return logEntryLocation.longitude != 0.0 && logEntryLocation.latitude != 0.0;
 }
+
+- (void)reverseLookupLocation
+{
+	CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+
+	if ([self hasLocation]) {
+		NSLog(@"Fetching location for: %@", [self logEntryNote]);
+
+		CLLocation *tempLoc = [[CLLocation alloc] initWithLatitude:logEntryLocation.latitude longitude:logEntryLocation.longitude];
+		[geocoder reverseGeocodeLocation:tempLoc completionHandler:
+		 ^(NSArray* placemarks, NSError* error){
+			 NSLog(@"reverseGeocodeLocation returned");
+			 for (CLPlacemark * placemark in placemarks) {
+				 NSLog(@"Found location: %@", placemark);
+			 }
+			 if ([placemarks count] > 0)	 {
+				 NSString *name = [[placemarks objectAtIndex:0] name];
+				 NSLog(@"Found location: %@", name);
+				 [self setLogEntryLocationString:name];
+			 } else {
+				 NSLog(@"location not found");
+			 }
+		 }];
+	}
+
+}
+
+- (NSString *)logEntryLocationString
+{
+	if (!logEntryLocationString && [self hasLocation]) {
+		// look it up
+		[self reverseLookupLocation];
+		return @"Fetching...";
+	} else if (![self hasLocation]) {
+		return @"";
+	} else {
+		return logEntryLocationString;
+	}
+}
+
+#pragma mark - Durations
 
 - (NSTimeInterval)secondsSinceNow
 {
@@ -177,8 +220,9 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@: at %f,%f, recorded on %@, %@, value: %f", 
+	return [NSString stringWithFormat:@"%@: at %@ (%f,%f), recorded on %@, %@, value: %f", 
 					logEntryNote, 
+					logEntryLocationString,
 					logEntryLocation.longitude, logEntryLocation.latitude, 
 					[logEntryDateOccured descriptionWithLocale:[NSLocale currentLocale]], 
 					[self stringFromLogEntryInterval],
@@ -218,6 +262,7 @@
 {
 	[aCoder encodeObject:logEntryNote forKey:@"logEntryNote"];
 	[aCoder encodeObject:logEntryDateOccured forKey:@"logEntryDateOccured"];
+	[aCoder encodeObject:logEntryLocationString forKey:@"logEntryLocationString"];
 	[aCoder encodeDouble:logEntryLocation.longitude forKey:@"logEntryLongitude"];
 	[aCoder encodeDouble:logEntryLocation.latitude forKey:@"logEntryLatitude"];
 	[aCoder encodeDouble:logEntryValue forKey:@"logEntryValue"];
@@ -230,6 +275,7 @@
 	if (self) {
 		[self setLogEntryNote:[aDecoder decodeObjectForKey:@"logEntryNote"]];
 		[self setLogEntryDateOccured:[aDecoder decodeObjectForKey:@"logEntryDateOccured"]];
+		[self setLogEntryLocationString:[aDecoder decodeObjectForKey:@"logEntryLocationString"]];
 		
 		float longitude, latitude;
 		longitude = [aDecoder decodeDoubleForKey:@"logEntryLongitude"];
