@@ -191,8 +191,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-	HistoryLogCell *historyLogCell = [tableView dequeueReusableCellWithIdentifier:@"HistoryLogCell"];
+	UITableViewCell *cell = nil;
 	
 	numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
 	numberFormatter.roundingIncrement = [NSNumber numberWithDouble:0.001];
@@ -201,15 +200,15 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
 																	reuseIdentifier:@"UITableViewCell"];
 	}
-
-	if (historyLogCell == nil) {
-		UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"HistoryLogCell" bundle:nil];
-		historyLogCell = (HistoryLogCell *)temporaryController.view;
-	}
-	
 	
 	if ([indexPath section] == kAverageSection && [event showAverage]) {
 		
+		cell = [tableView dequeueReusableCellWithIdentifier:@"AverageCell"];
+		
+		if (!cell) {
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
+																		reuseIdentifier:@"AverageCell"];
+		}
 		switch ([indexPath row]) {
 			case kAverageTime:
 			{
@@ -244,6 +243,14 @@
 	} else if (([indexPath section] == kAverageSection && ![event showAverage]) || [indexPath section] == kHistorySection) {
 
 		if ([[event logEntryCollection] count] > 0) {
+			
+			HistoryLogCell *historyLogCell = [tableView dequeueReusableCellWithIdentifier:@"HistoryLogCell"];
+			
+			if (historyLogCell == nil) {
+				UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"HistoryLogCell" bundle:nil];
+				historyLogCell = (HistoryLogCell *)temporaryController.view;
+			}
+
 			LogEntry *item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
 
 			if ([[item logEntryNote] isEqualToString:@""]){
@@ -264,10 +271,16 @@
 			}
 			historyLogCell.logEntryDateCell.text = [item stringFromLogEntryInterval];
 			historyLogCell.locationMarker.hidden = ![item hasLocation];
-			
+			historyLogCell.logEntryLocationCell.text = [item logEntryLocationString];
 			return historyLogCell;
 
 		} else {
+			cell = [tableView dequeueReusableCellWithIdentifier:@"NoHistoryCell"];
+			
+			if (!cell) {
+				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
+																			reuseIdentifier:@"NoHistoryCell"];
+			}
 			cell.textLabel.text = @"No History Entries";
 			return cell;
 
