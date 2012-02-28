@@ -10,13 +10,11 @@
 #import "WEPopoverController.h"
 
 @interface FolderListViewController : UIViewController 
-<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate>
+<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *folderTableView;
-@property (nonatomic, strong) WEPopoverController *addPopover;
 
 
 - (void)addNewItem:(id)sender;
-- (void)showAddPopup;
 
 @end
