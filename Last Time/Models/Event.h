@@ -17,7 +17,6 @@
 }
 @property (nonatomic, strong) NSString *eventName;
 @property (nonatomic, strong) NSMutableArray *logEntryCollection;
-@property (nonatomic, strong) EventFolder *parentFolder;
 
 @property (nonatomic) BOOL needsSorting;
 

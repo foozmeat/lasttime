@@ -16,7 +16,6 @@
 
 @property (nonatomic, strong) NSMutableArray *allItems;;
 @property (nonatomic, strong) NSString *folderName;
-@property (nonatomic, strong) EventFolder *parentFolder;
 
 + (EventFolder *)randomFolder;
 - (id)initWithName:(NSString *)name;
