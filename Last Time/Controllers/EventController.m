@@ -305,11 +305,16 @@
 	[[self navigationItem] setTitle:[event eventName]];
 	[[self eventTableView] reloadData];
 
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
 	if (![event showAverage]) {
 		[self showAveragePopup];
 	}
+	
 }
-
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
