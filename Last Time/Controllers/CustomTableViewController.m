@@ -81,7 +81,7 @@
 }
 
 - (void)stopUpdatingLocation:(NSString *)state {
-//	[self.tableView reloadData];
+
 	if (locationManager.delegate) {
 		NSLog(@"%@", state);
 		[locationManager stopUpdatingLocation];
@@ -90,7 +90,7 @@
 }
 
 - (void)startUpdatingLocation:(NSString *)state {
-	//	[self.tableView reloadData];
+
 	if (locationManager.delegate && [self shouldStoreLocation]) {
 		NSLog(@"%@", state);
 		[locationManager startUpdatingLocation];
@@ -110,7 +110,7 @@
 	if (bestLocation == nil || bestLocation.horizontalAccuracy >= newLocation.horizontalAccuracy) {
 		// store the location as the "best effort"
 		self.bestLocation = newLocation;
-		NSLog(@"%f, %f", bestLocation.horizontalAccuracy, newLocation.horizontalAccuracy);
+		NSLog(@"%f, %f, %f", bestLocation.horizontalAccuracy, newLocation.horizontalAccuracy, locationManager.desiredAccuracy);
 		[self updateObjectLocation];
 		// test the measurement to see if it meets the desired accuracy
 		//

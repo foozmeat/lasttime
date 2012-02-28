@@ -162,6 +162,16 @@
 
 			}
 			break;
+		case kEventLocation:
+			if (!geoCell) {
+				geoCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
+																				 reuseIdentifier:@"UITableViewCell"];
+			}
+			[[geoCell detailTextLabel] setText:@"Locating..."];
+			[[geoCell textLabel] setText:@"Location"];
+			
+			return geoCell;
+			break;
 		default:
 			cell = [[EditableTableCell alloc] init];
 			[[cell cellTextField] setText:@"Error"];
@@ -171,6 +181,7 @@
 }
 
 #pragma mark - Location methods
+
 -(void)updateObjectLocation
 {
 	CLLocationCoordinate2D loc;
@@ -180,7 +191,27 @@
 		loc = CLLocationCoordinate2DMake(0.0, 0.0);
 	}
 	[logEntry setLogEntryLocation:loc];
+}
+
+-(void)updateLocationCell
+{
 	
+	NSUInteger indexes[] = { 0, kEventLocation };
+	NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
+																											length:2];
+	
+	UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:indexPath];
+	
+	[[cell detailTextLabel] setText:[logEntry logEntryLocationString]];
+	[cell setNeedsLayout];
+	
+}
+- (void)stopUpdatingLocation:(NSString *)state 
+{
+	[super stopUpdatingLocation:state];
+	[logEntry reverseLookupLocation];
+//	[self updateLocationCell];
+//	[self performSelector:@selector(updateLocationCell) withObject:@"Reload Cell" afterDelay:3];
 }
 
 #pragma mark -

@@ -17,6 +17,7 @@ enum {
 	kEventNumber,
 	kEventDate,
 	kEventLocationSwitch,
+	kEventLocation
 };
 
 @interface HistoryLogDetailController : CustomTableViewController

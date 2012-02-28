@@ -47,10 +47,10 @@
 		CLLocation *tempLoc = [[CLLocation alloc] initWithLatitude:logEntryLocation.latitude longitude:logEntryLocation.longitude];
 		[geocoder reverseGeocodeLocation:tempLoc completionHandler:
 		 ^(NSArray* placemarks, NSError* error){
-			 NSLog(@"reverseGeocodeLocation returned");
-			 for (CLPlacemark * placemark in placemarks) {
-				 NSLog(@"Found location: %@", placemark);
-			 }
+
+//			 for (CLPlacemark * placemark in placemarks) {
+//				 NSLog(@"Found location: %@", placemark);
+//			 }
 			 if ([placemarks count] > 0)	 {
 				 NSString *name = [[placemarks objectAtIndex:0] name];
 				 NSLog(@"Found location: %@", name);
@@ -66,14 +66,14 @@
 - (NSString *)logEntryLocationString
 {
 	if (!logEntryLocationString && [self hasLocation]) {
-		// look it up
 		[self reverseLookupLocation];
-		return @"Fetching...";
 	} else if (![self hasLocation]) {
 		return @"";
 	} else {
 		return logEntryLocationString;
 	}
+	
+	return @"";
 }
 
 #pragma mark - Durations
