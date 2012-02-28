@@ -54,6 +54,7 @@
 		39918C1A14F606A200D8D4EE /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39918C1914F606A200D8D4EE /* EventListViewController.xib */; };
 		39918C2514F7F99700D8D4EE /* EventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 39918C2414F7F99700D8D4EE /* EventStore.m */; };
 		399F70B714FB1FB00012F089 /* FolderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 399F70B614FB1FB00012F089 /* FolderListCell.m */; };
+		399F70BD14FD1B290012F089 /* default_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 399F70BC14FD1B290012F089 /* default_data.plist */; };
 		39A0F9F714F0B9AF00BA0AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39A0F9FA14F0B9AF00BA0AFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A0F9F914F0B9AF00BA0AFA /* main.m */; };
 		39A0FA0314F0B9B900BA0AFA /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
@@ -209,6 +210,7 @@
 		39918C2414F7F99700D8D4EE /* EventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventStore.m; sourceTree = "<group>"; };
 		399F70B514FB1FB00012F089 /* FolderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderListCell.h; path = "Last Time/Support/FolderListCell.h"; sourceTree = SOURCE_ROOT; };
 		399F70B614FB1FB00012F089 /* FolderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderListCell.m; path = "Last Time/Support/FolderListCell.m"; sourceTree = SOURCE_ROOT; };
+		399F70BC14FD1B290012F089 /* default_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = default_data.plist; path = Resources/default_data.plist; sourceTree = "<group>"; };
 		39A0F9F514F0B9AF00BA0AFA /* DurationTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DurationTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A0F9F914F0B9AF00BA0AFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/DurationTest/main.m"; sourceTree = SOURCE_ROOT; };
 		39AA477E14DAD8B300580EB9 /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailController.h; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				39339BEF14F1C59F0068CC29 /* Popover */,
 				39EF4A4A14F1AE1000A8BAB7 /* Images */,
 				3988B96014DC31500010062E /* TestFlight */,
+				399F70BC14FD1B290012F089 /* default_data.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -799,6 +802,7 @@
 				39BE369214F3E2BD00DBCC43 /* iTunesArtwork.png in Resources */,
 				39918C1014F6048D00D8D4EE /* FolderListViewController.xib in Resources */,
 				39918C1A14F606A200D8D4EE /* EventListViewController.xib in Resources */,
+				399F70BD14FD1B290012F089 /* default_data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
