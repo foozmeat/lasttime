@@ -35,7 +35,7 @@
 
 - (void)versionCheck
 {
-	int lastVersionRun = [[NSUserDefaults standardUserDefaults] integerForKey:@"PrefKeyLastVersionRun"];
+	int lastVersionRun = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastVersionRun"];
 	if (lastVersionRun >= 10 && lastVersionRun <= 99) {
 		lastVersionRun *= 10;
 	}
@@ -54,7 +54,7 @@
 	[[EventStore defaultStore] migrateDataFromVersion:lastVersionRun];
 		
 	if (newVersion != lastVersionRun) {
-		[[NSUserDefaults standardUserDefaults] setInteger:newVersion forKey:@"PrefKeyLastVersionRun"];
+		[[NSUserDefaults standardUserDefaults] setInteger:newVersion forKey:@"LastVersionRun"];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 
