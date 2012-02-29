@@ -118,12 +118,17 @@ static EventStore *defaultStore = nil;
 	if (version == 0) {
 		[[EventStore defaultStore] removeRootEvents];
 		
+		[[EventStore defaultStore] loadDefaultData];
+		
 	}
 
 }
 
 - (void)removeRootEvents
 {
+	if ([_allItems count] == 0) {
+		return;
+	}
 	NSLog(@"Migrating root events");
 	@autoreleasepool {
 				
@@ -154,6 +159,87 @@ static EventStore *defaultStore = nil;
 			}
 		}
 	}
+}
+
+- (void)loadDefaultData
+{
+	
+// Wipe out root
+//#warning Delete this
+//	_allItems = [[NSMutableArray alloc] init];
+	
+	if ([_allItems count] > 0) {
+		return;
+	}
+	
+	NSLog(@"Loading default data");
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"default_data" ofType:@"plist"];
+	NSData *data = [NSData dataWithContentsOfFile:path];
+	NSDictionary *dict = [NSPropertyListSerialization propertyListFromData:data
+																													 mutabilityOption:NSPropertyListImmutable
+																																		 format:NSPropertyListImmutable
+																													 errorDescription:NULL];
+
+	if (dict) {
+		
+		@autoreleasepool {
+			NSArray *root = [dict objectForKey:@"Root"];
+			for (NSDictionary* folder in root) {
+				EventFolder *f = [[EventFolder alloc] initWithName:[folder objectForKey:@"name"]];
+				
+				NSArray *events = [folder objectForKey:@"events"];
+				for (NSDictionary *event in events) {
+					Event *e = [[Event alloc] init];
+					[e setEventName:[event objectForKey:@"name"]];
+					
+					NSArray *logEntries = [event objectForKey:@"logEntries"];
+					NSMutableArray *entryCollection = [[NSMutableArray alloc] init];
+					
+					for (NSDictionary *logEntry in logEntries) {
+						
+						LogEntry *le = [[LogEntry alloc] init];
+						
+						[le setLogEntryNote:[logEntry objectForKey:@"note"]];
+						
+						// Make up a date
+						// Set to 3 for past and future values
+						long randomDuration = arc4random_uniform(60 * 60 * 24 * 100);
+						if (arc4random_uniform(2) > 1) {
+							randomDuration = 0 - randomDuration;
+						}
+						
+						NSDate *randomDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-randomDuration];
+
+						[le setLogEntryDateOccured:randomDate];
+						
+						NSNumber *value = [logEntry objectForKey:@"value"];
+						[le setLogEntryValue:[value floatValue]];
+						
+						NSDictionary *location = [logEntry objectForKey:@"location"];
+						NSNumber *lat = [location objectForKey:@"latitude"];
+						NSNumber *longitude = [location objectForKey:@"longitude"];
+						
+						CLLocationCoordinate2D loc = CLLocationCoordinate2DMake([lat floatValue], [longitude floatValue]);
+					
+						[le setLogEntryLocation:loc];
+						[le reverseLookupLocation];
+						[entryCollection addObject:le];
+						
+					}
+					[e setNeedsSorting:YES];
+					[e setLogEntryCollection:entryCollection];
+					[f addItem:e];
+				}
+				
+				[[EventStore defaultStore] addFolder:f];
+			}
+		}
+		
+	} else {
+		NSLog(@"Unable to load plist");
+	}
+	
+	
 }
 
 
