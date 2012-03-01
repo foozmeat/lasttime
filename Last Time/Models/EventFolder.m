@@ -82,7 +82,7 @@
 
 - (void) sortItems
 {
-	if (needsSorting) {
+	if (needsSorting && [allItems count] > 0) {
 		[allItems sortUsingComparator:^(id a, id b) {
 			NSDate *first = [(id)a latestDate];
 			NSDate *second = [(id)b latestDate];

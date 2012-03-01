@@ -64,7 +64,7 @@
 
 - (void)sortEntries
 {
-	if (needsSorting) {
+	if (needsSorting && [logEntryCollection count] > 0) {
 		[logEntryCollection sortUsingComparator:^(id a, id b) {
 			NSDate *first = [(LogEntry*)a logEntryDateOccured];
 			NSDate *second = [(LogEntry*)b logEntryDateOccured];
@@ -176,6 +176,9 @@
 
 - (LogEntry *)latestEntry
 {
+	if ([logEntryCollection count] == 0) {
+		return nil;
+	}
 	[self sortEntries];
 	return [logEntryCollection objectAtIndex:0];
 }
@@ -183,7 +186,11 @@
 - (NSDate *)latestDate
 {
 	LogEntry *le = [self latestEntry];
-	return [le logEntryDateOccured];
+	if (!le) {
+		return [[NSDate alloc] initWithTimeIntervalSince1970:0];
+	} else {
+		return [le logEntryDateOccured];
+	}
 }
 
 - (NSDate *)nextTime
