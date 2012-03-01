@@ -153,6 +153,7 @@
 	if (self) {
 		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
 		[self setFolderName:[aDecoder decodeObjectForKey:@"folderName"]];
+		needsSorting = YES;
 	}
 	
 	return self;

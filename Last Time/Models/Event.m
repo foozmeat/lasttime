@@ -266,6 +266,7 @@
 	if (self) {
 		[self setLogEntryCollection:[aDecoder decodeObjectForKey:@"logEntryCollection"]];
 		[self setEventName:[aDecoder decodeObjectForKey:@"eventName"]];
+		needsSorting = YES;
 	}
 	
 	return self;
