@@ -19,9 +19,9 @@
 
 - (void)save
 {
-	NSLog(@"%@", theNewFolder);
 	[[EventStore defaultStore] addFolder:theNewFolder];
-	[self dismissModalViewControllerAnimated:YES];
+	[super save];
+//	NSLog(@"new folder %@", theNewFolder);
 }
 
 #pragma mark - View Lifecycle
@@ -110,6 +110,14 @@
 	[[cell textLabel] setText:label];
 	return cell;
 
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
+		return YES;
+	} else {
+		return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+	}
 }
 
 

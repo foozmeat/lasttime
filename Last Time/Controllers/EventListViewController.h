@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "WEPopoverController.h"
+#import "CustomTableViewController.h"
 
 @interface EventListViewController : UIViewController 
-<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate>
+<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, ItemDetailViewControllerDelegate>
 
 @property (nonatomic, strong) EventFolder *folder;
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;

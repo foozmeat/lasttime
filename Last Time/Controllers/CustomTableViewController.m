@@ -14,6 +14,7 @@
 @synthesize bestLocation;
 @synthesize shouldStoreLocation = _shouldStoreLocation;
 @synthesize numberCell;
+@synthesize delegate;
 
 - (BOOL)isModal
 {
@@ -147,11 +148,17 @@
 - (void)save
 {
 	[self dismissModalViewControllerAnimated:YES];
+	if ([delegate respondsToSelector:@selector(itemDetailViewControllerWillDismiss:)]) {
+		[delegate itemDetailViewControllerWillDismiss:self];
+	}
 }
 
 - (void)cancel
 {
 	[self dismissModalViewControllerAnimated:YES];
+	if ([delegate respondsToSelector:@selector(itemDetailViewControllerWillDismiss:)]) {
+		[delegate itemDetailViewControllerWillDismiss:self];
+	}
 }
 
 #pragma mark - UIViewController Methods

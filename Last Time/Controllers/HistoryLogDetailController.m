@@ -21,8 +21,8 @@
 - (void)save
 {
 	[event addLogEntry:logEntry];
-	[self dismissModalViewControllerAnimated:YES];
 	[[EventStore defaultStore] saveChanges];
+	[super save];
 //	NSLog(@"%@", event);
 }
 
@@ -221,5 +221,16 @@
 {
 	[logEntry setLogEntryDateOccured:date];
 }
+
+#pragma mark - Orientation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
+		return YES;
+	} else {
+		return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+	}
+}
+
 
 @end

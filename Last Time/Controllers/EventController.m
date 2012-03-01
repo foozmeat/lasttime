@@ -93,9 +93,15 @@
 	
 	[hldc setLogEntry:[[LogEntry alloc] init]];
 	[hldc setEvent:event];
+	[hldc setDelegate:self];
 	
 	UINavigationController *newNavController = [[UINavigationController alloc]
 																							initWithRootViewController:hldc];
+
+	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
+		[newNavController setModalPresentationStyle:UIModalPresentationFormSheet];
+	}
+	
 	[[self navigationController] presentModalViewController:newNavController
 																								 animated:YES];
 }
@@ -329,12 +335,20 @@
 	// e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+#pragma mark - ItemDetailViewControllerDelegate
+- (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	[[self eventTableView] reloadData];
 }
 
-
+#pragma mark - Orientation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
+		return YES;
+	} else {
+		return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+	}
+}
 
 @end

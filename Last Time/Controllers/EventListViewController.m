@@ -114,9 +114,15 @@
 	
 	[edc setEvent:[[Event alloc] init]];
 	[edc setFolder:folder];
+	[edc setDelegate:self];
 	
 	UINavigationController *newNavController = [[UINavigationController alloc]
 																							initWithRootViewController:edc];
+
+	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
+		[newNavController setModalPresentationStyle:UIModalPresentationFormSheet];
+	}
+
 	[[self navigationController] presentModalViewController:newNavController
 																								 animated:YES];
 	
@@ -189,6 +195,22 @@
 	[[cell detailTextLabel] setText:[item subtitle]];
 	
 	return cell;
+}
+
+#pragma mark - ItemDetailViewControllerDelegate
+- (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
+{
+	[[self eventTableView] reloadData];
+}
+
+#pragma mark - Orientation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
+		return YES;
+	} else {
+		return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+	}
 }
 
 @end

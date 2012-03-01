@@ -8,13 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "WEPopoverController.h"
+#import "CustomTableViewController.h"
 
 @interface FolderListViewController : UIViewController 
-<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource>
+<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *folderTableView;
-
-
-- (void)addNewItem:(id)sender;
 
 @end

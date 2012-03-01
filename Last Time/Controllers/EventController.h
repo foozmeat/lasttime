@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WEPopoverController.h"
+#import "CustomTableViewController.h"
 
 @class EventFolder;
 @class Event;
@@ -31,7 +32,7 @@ enum historyViewCellTags {
 	logEntryNoteValue
 };
 
-@interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate>
+@interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, ItemDetailViewControllerDelegate>
 {
 	NSNumberFormatter *numberFormatter;
 }

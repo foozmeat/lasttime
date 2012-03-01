@@ -15,13 +15,24 @@
 #import "LocationSwitchCell.h"
 #import "NumberCell.h"
 
+@class CustomTableViewController;
+
+@protocol ItemDetailViewControllerDelegate <NSObject>
+
+@optional
+-(void)itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc;
+
+@end
+
 @interface CustomTableViewController : UITableViewController <UITextFieldDelegate, DatePickerCellDelegate, LocationSwitchCellDelegate, FolderPickerCellDelegate,CLLocationManagerDelegate>
 {
 	CLLocationManager *locationManager;
 	BOOL _shouldStoreLocation;
 	NSNumberFormatter *numberFormatter;
 }
-	
+
+@property (nonatomic, assign)id <ItemDetailViewControllerDelegate> delegate;
+
 @property (nonatomic) NSInteger requiredField;
 @property (nonatomic) BOOL shouldStoreLocation;
 @property (nonatomic, strong) CLLocation *bestLocation;

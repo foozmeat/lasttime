@@ -66,20 +66,6 @@
 	}
 }
 
-- (void)addNewItem:(id)sender
-{
-	// Make new folder
-	FolderDetailController *fdc = [[FolderDetailController alloc] init];
-	[fdc setTheNewFolder:[[EventFolder alloc] init]];
-	
-	UINavigationController *newNavController = [[UINavigationController alloc]
-																							initWithRootViewController:fdc];
-	
-	[[self navigationController] presentModalViewController:newNavController
-																								 animated:YES];
-	
-}
-
 #pragma mark - TableView Delegate
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -116,6 +102,11 @@
 		if( indexPath.row == (int)[[[EventStore defaultStore] allItems] count] ) {
 			UINavigationController *newNavController = [[UINavigationController alloc]
 																									initWithRootViewController:fdc];
+			
+			if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
+				[newNavController setModalPresentationStyle:UIModalPresentationFormSheet];
+				[fdc setDelegate:self];
+			}
 			
 			[[self navigationController] presentModalViewController:newNavController
 																										 animated:YES];
@@ -229,6 +220,25 @@
 		return cell;
 	}
 	
+}
+
+#pragma mark - ItemDetailViewControllerDelegate
+- (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
+{
+	[[self folderTableView] reloadData];
+	if ([folderTableView isEditing]) {
+		[self setEditing:NO animated:YES];
+	}
+}
+
+#pragma mark - Orientation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
+		return YES;
+	} else {
+		return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+	}
 }
 
 @end

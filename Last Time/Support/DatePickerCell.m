@@ -29,7 +29,7 @@
 	CGRect frame = self.inputView.frame;
 	frame.size = [self.pickerView sizeThatFits:CGSizeZero];
 	self.inputView.frame = frame;
-	self.pickerView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//	self.pickerView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 
 }
 
