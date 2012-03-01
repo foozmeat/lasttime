@@ -109,12 +109,18 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == 0) {
+		
+		int rowCount = 1; // Name field
+
 		if ([self isModal]) {
-			return 5;
-		} else {
-			return 1;
+			rowCount += 3; // note, number, date;
+			
+			if ([self locationServicesEnabled]) {
+				rowCount++;
+			}
 		}
 		
+		return rowCount;
 	} else {
 		return 1;
 	}

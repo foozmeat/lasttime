@@ -31,11 +31,11 @@
 
 - (void)viewDidLoad
 {
-	
+
 	if (locationManager == nil) {
 		locationManager = [[CLLocationManager alloc] init];
 	}
-	
+
 	numberFormatter = [[NSNumberFormatter alloc] init];
 
 	_shouldStoreLocation = YES;
@@ -71,6 +71,11 @@
 }
 
 #pragma mark - CLLocation Methods
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+	[[self tableView] reloadData];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	// The location "unknown" error simply means the manager is currently unable to get the location.
 	// We can ignore this error for the scenario of getting a single location fix, because we already have a 
@@ -256,9 +261,17 @@
 
 #pragma mark - LocationCell
 
+- (BOOL) locationServicesEnabled
+{
+	return [CLLocationManager locationServicesEnabled] && 
+	([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized ||
+	 [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined);
+
+}
+
 - (BOOL) shouldStoreLocation
 {
-	return _shouldStoreLocation && [CLLocationManager locationServicesEnabled];
+	return _shouldStoreLocation && [self locationServicesEnabled];
 }
 
 - (void) locationSwitchChanged:(UISwitch *)sender

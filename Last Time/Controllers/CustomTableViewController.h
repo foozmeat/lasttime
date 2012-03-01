@@ -35,6 +35,7 @@
 - (void)stopUpdatingLocation:(NSString *)state;
 - (void)startUpdatingLocation:(NSString *)state;
 - (void)updateObjectLocation;
+- (BOOL)locationServicesEnabled;
 
 //  Action Methods
 //
