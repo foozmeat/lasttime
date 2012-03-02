@@ -19,6 +19,5 @@ enum {
 @interface FolderDetailController : CustomTableViewController
 
 @property (strong, nonatomic) EventFolder *theNewFolder;
-@property (nonatomic, retain) EditableTableCell *nameCell;
 
 @end

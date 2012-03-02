@@ -13,7 +13,7 @@
 #import "EventStore.h"
 
 @implementation EventDetailController
-@synthesize nameCell, noteCell, dateCell, folderCell, locationCell;
+@synthesize noteCell, dateCell, folderCell, locationCell;
 @synthesize event, folder;
 
 #pragma mark -
@@ -28,8 +28,14 @@
 //	NSLog(@"%@", event);
 }
 
-#pragma mark -
-#pragma mark UIViewController Methods
+#pragma mark - UIViewController Methods
+- (void)viewWillAppear:(BOOL)animated
+{
+	if ([[event logEntryCollection] count] == 0) {
+		[event addLogEntry:[[LogEntry alloc] init]];
+	}
+}
+
 - (void)viewDidLoad
 {
 	[self setRequiredField:kEventName];
@@ -205,7 +211,7 @@
 	} else {
 		loc = CLLocationCoordinate2DMake(0.0, 0.0);
 	}
-	[[[event logEntryCollection] objectAtIndex:0] setLogEntryLocation:loc];
+	[[event latestEntry] setLogEntryLocation:loc];
 	
 }
 

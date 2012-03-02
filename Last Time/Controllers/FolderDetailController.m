@@ -12,7 +12,6 @@
 #import "EventFolder.h"
 
 @implementation FolderDetailController
-@synthesize nameCell;
 @synthesize theNewFolder;
 
 #pragma mark - Action Methods

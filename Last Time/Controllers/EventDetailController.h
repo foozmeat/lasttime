@@ -35,7 +35,6 @@ enum FolderSection {
 @property (strong, nonatomic) Event *event;
 @property (strong, nonatomic) EventFolder *folder;
 
-@property (nonatomic, strong) EditableTableCell *nameCell;
 @property (nonatomic, strong) EditableTableCell *noteCell;
 @property (nonatomic, strong) DatePickerCell *dateCell;
 @property (nonatomic, strong) FolderPickerCell *folderCell;
