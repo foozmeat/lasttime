@@ -147,8 +147,9 @@
 		
 		[self.detailViewController setFolder:folder];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-			[self.detailViewController setEvent:item];			
-			[[self navigationController] pushViewController:self.detailViewController animated:YES];
+			EventController *ec = [[EventController alloc] init];
+			[ec setEvent:item];			
+			[[self navigationController] pushViewController:ec animated:YES];
 		} else {
 			[self.detailViewController setEvent:item];			
 		}
