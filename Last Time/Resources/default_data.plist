@@ -12,81 +12,10 @@
 				<dict>
 					<key>name</key>
 					<string>Cleaned Gutters</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Checked Air Filter</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string>Dirty</string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string>Clean</string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string>Clean</string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 			</array>
 		</dict>
@@ -98,68 +27,10 @@
 				<dict>
 					<key>name</key>
 					<string>Took Vacation</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string>Hawaii</string>
-							<key>value</key>
-							<integer>10</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<real>-159.367504</real>
-								<key>latitude</key>
-								<real>21.98221</real>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string>Breitenbush</string>
-							<key>value</key>
-							<integer>3</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<real>-121.97083</real>
-								<key>latitude</key>
-								<real>44.78194</real>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Cross-country Skiing</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string>Teacup</string>
-							<key>value</key>
-							<integer>5</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string>Trillium Lake</string>
-							<key>value</key>
-							<integer>8</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 			</array>
 		</dict>
@@ -171,68 +42,10 @@
 				<dict>
 					<key>name</key>
 					<string>Service</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string>new radiator</string>
-							<key>value</key>
-							<integer>450</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<real>-122.658405</real>
-								<key>latitude</key>
-								<real>45.517403</real>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string>oil change</string>
-							<key>value</key>
-							<integer>30</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<real>-122.658405</real>
-								<key>latitude</key>
-								<real>45.517403</real>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Bought Gas</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string>mostly highway</string>
-							<key>value</key>
-							<integer>31</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<real>-122.661624</real>
-								<key>latitude</key>
-								<real>45.577403</real>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<real>27.3</real>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<real>-122.658405</real>
-								<key>latitude</key>
-								<real>45.517403</real>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 			</array>
 		</dict>
@@ -244,68 +57,10 @@
 				<dict>
 					<key>name</key>
 					<string>Called Mom</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Dinner Guests</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string>Mark &amp; Veronica</string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string>Jo &amp; Ryan</string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 			</array>
 		</dict>
@@ -317,68 +72,10 @@
 				<dict>
 					<key>name</key>
 					<string>Changed Toothbrush</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Got Haircut</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>25</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>18</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 			</array>
 		</dict>
@@ -390,68 +87,10 @@
 				<dict>
 					<key>name</key>
 					<string>Flea Medicine</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>0</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<integer>0</integer>
-								<key>latitude</key>
-								<integer>0</integer>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 				<dict>
 					<key>name</key>
 					<string>Bought Food</string>
-					<key>logEntries</key>
-					<array>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>29</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<real>-122.63812</real>
-								<key>latitude</key>
-								<real>45.558999</real>
-							</dict>
-						</dict>
-						<dict>
-							<key>note</key>
-							<string></string>
-							<key>value</key>
-							<integer>30</integer>
-							<key>location</key>
-							<dict>
-								<key>longitude</key>
-								<real>-122.63812</real>
-								<key>latitude</key>
-								<real>45.558999</real>
-							</dict>
-						</dict>
-					</array>
 				</dict>
 			</array>
 		</dict>
