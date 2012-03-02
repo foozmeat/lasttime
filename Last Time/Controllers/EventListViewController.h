@@ -10,12 +10,15 @@
 #import "WEPopoverController.h"
 #import "CustomTableViewController.h"
 
+@class EventController;
+
 @interface EventListViewController : UIViewController 
 <UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, ItemDetailViewControllerDelegate>
 
 @property (nonatomic, strong) EventFolder *folder;
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;
 @property (nonatomic, strong) WEPopoverController *addPopover;
+@property (strong, nonatomic) EventController *detailViewController;
 
 
 - (IBAction)addNewEvent:(id)sender;

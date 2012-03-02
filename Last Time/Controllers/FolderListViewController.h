@@ -10,9 +10,11 @@
 #import "WEPopoverController.h"
 #import "CustomTableViewController.h"
 
+@class EventController;
+
 @interface FolderListViewController : UIViewController 
 <UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *folderTableView;
-
+@property (strong, nonatomic) EventController *detailViewController;
 @end

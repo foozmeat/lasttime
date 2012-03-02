@@ -119,6 +119,7 @@
 	} else {
 		EventListViewController *elvc = [[EventListViewController alloc] init];
 		[elvc setFolder:item];
+		[elvc setDetailViewController:[self detailViewController]];
 		[[self navigationController] pushViewController:elvc animated:YES];
 		
 	}

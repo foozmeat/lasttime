@@ -17,6 +17,7 @@
 @synthesize folder;
 @synthesize eventTableView;
 @synthesize addPopover;
+@synthesize detailViewController;
 
 - (void)viewDidUnload
 {
@@ -40,7 +41,7 @@
 	if ([[folder allItems] count] > 0) {
 		[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 	} else {
-		[self showAddPopup];
+//		[self showAddPopup];
 	}
 	
 }
@@ -134,7 +135,6 @@
 	
 	id item = [[folder allItems] objectAtIndex:[indexPath row]];
 	
-		
 	if ([tableView isEditing]) {
 		EventDetailController *edc = [[EventDetailController alloc] init];
 		[edc setEvent:item];
@@ -145,10 +145,13 @@
 		
 	} else {
 		
-		EventController *ec = [[EventController alloc] init];
-		[ec setEvent:item];			
-		[ec setFolder:folder];
-		[[self navigationController] pushViewController:ec animated:YES];
+		[self.detailViewController setFolder:folder];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+			[self.detailViewController setEvent:item];			
+			[[self navigationController] pushViewController:self.detailViewController animated:YES];
+		} else {
+			[self.detailViewController setEvent:item];			
+		}
 	}
 		
 		

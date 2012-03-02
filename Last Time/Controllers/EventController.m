@@ -15,7 +15,8 @@
 
 @implementation EventController
 @synthesize eventTableView;
-@synthesize event, folder;
+@synthesize event = _event; 
+@synthesize folder;
 @synthesize averagePopover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -74,6 +75,18 @@
 }
 
 #pragma mark -
+- (void)setEvent:(Event *)event
+{
+	if (_event != event) {
+		_event = event;
+		
+		// Update the view.
+		[eventTableView reloadData];
+	}
+
+}
+
+#pragma mark -
 #pragma mark WEPopoverControllerDelegate implementation
 
 - (void)popoverControllerDidDismissPopover:(WEPopoverController *)thePopoverController {
@@ -92,7 +105,7 @@
 	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 	
 	[hldc setLogEntry:[[LogEntry alloc] init]];
-	[hldc setEvent:event];
+	[hldc setEvent:_event];
 	[hldc setDelegate:self];
 	
 	UINavigationController *newNavController = [[UINavigationController alloc]
@@ -111,12 +124,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	if (([event showAverage] && [indexPath section] == kHistorySection) ||
-			(![event showAverage] && [indexPath section] == kAverageSection)) {
+	if (([_event showAverage] && [indexPath section] == kHistorySection) ||
+			(![_event showAverage] && [indexPath section] == kAverageSection)) {
 		
 		HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 		
-		[hldc setLogEntry:[[event logEntryCollection] objectAtIndex:[indexPath row]]];
+		[hldc setLogEntry:[[_event logEntryCollection] objectAtIndex:[indexPath row]]];
 		
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 
@@ -127,7 +140,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	int section = [indexPath section];
-	if ((section == kAverageSection && ![event showAverage]) || section == kHistorySection){
+	if ((section == kAverageSection && ![_event showAverage]) || section == kHistorySection){
 		return YES;
 	} else {
 		return NO;
@@ -139,10 +152,10 @@
 	
 	int section = [indexPath section];
 	
-	if ((section == kAverageSection && ![event showAverage]) || section == kHistorySection){
+	if ((section == kAverageSection && ![_event showAverage]) || section == kHistorySection){
 		if (editingStyle == UITableViewCellEditingStyleDelete) {
-			id item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
-			[event removeItem:item];
+			id item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
+			[_event removeItem:item];
 			
 			[tableView reloadData];
 			//		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
@@ -154,9 +167,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	if (section == kAverageSection && [event showAverage]) {
+	if (section == kAverageSection && [_event showAverage]) {
 		return @"";
-	} else if (section == kAverageSection && ![event showAverage]) {
+	} else if (section == kAverageSection && ![_event showAverage]) {
 		return @"History";
 	} else if (section == kHistorySection) {
 		return @"History";
@@ -167,7 +180,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	if ([event showAverage]) {
+	if ([_event showAverage]) {
 		return NUM_EVENT_SECTIONS;
 	} else {
 		return NUM_EVENT_SECTIONS - 1;
@@ -176,15 +189,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (section == kAverageSection && [event showAverage]) {
-		if ([event averageValue] != 0.0) {
+	if (section == kAverageSection && [_event showAverage]) {
+		if ([_event averageValue] != 0.0) {
 			return NUM_AVERAGE_SECTIONS;
 		} else {
 			return NUM_AVERAGE_SECTIONS - 1;
 		}
-	} else if ((section == kAverageSection && ![event showAverage]) || (section == kHistorySection)) {
+	} else if ((section == kAverageSection && ![_event showAverage]) || (section == kHistorySection)) {
 
-		int count = [[event logEntryCollection] count];
+		int count = [[_event logEntryCollection] count];
 		if (count == 0) {
 			return 1;
 		} else {
@@ -207,7 +220,7 @@
 																	reuseIdentifier:@"UITableViewCell"];
 	}
 	
-	if ([indexPath section] == kAverageSection && [event showAverage]) {
+	if ([indexPath section] == kAverageSection && [_event showAverage]) {
 		
 		cell = [tableView dequeueReusableCellWithIdentifier:@"AverageCell"];
 		
@@ -219,7 +232,7 @@
 			case kAverageTime:
 			{
 				cell.textLabel.text = @"Average Duration";
-				cell.detailTextLabel.text = [event averageStringInterval];
+				cell.detailTextLabel.text = [_event averageStringInterval];
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
 			}
@@ -233,22 +246,22 @@
 				[df setDateStyle:NSDateFormatterMediumStyle];
 				[df setTimeStyle:NSDateFormatterNoStyle];
 				
-				cell.detailTextLabel.text = [df stringFromDate:[event nextTime]];
+				cell.detailTextLabel.text = [df stringFromDate:[_event nextTime]];
 				break;
 			}
 			case kAverageValue:
 			{
 				cell.textLabel.text = @"Average Value";
-				cell.detailTextLabel.text = [event averageStringValue];
+				cell.detailTextLabel.text = [_event averageStringValue];
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
 			}
 		}
 		return cell;
 
-	} else if (([indexPath section] == kAverageSection && ![event showAverage]) || [indexPath section] == kHistorySection) {
+	} else if (([indexPath section] == kAverageSection && ![_event showAverage]) || [indexPath section] == kHistorySection) {
 
-		if ([[event logEntryCollection] count] > 0) {
+		if ([[_event logEntryCollection] count] > 0) {
 			
 			HistoryLogCell *historyLogCell = [tableView dequeueReusableCellWithIdentifier:@"HistoryLogCell"];
 			
@@ -257,7 +270,7 @@
 				historyLogCell = (HistoryLogCell *)temporaryController.view;
 			}
 
-			LogEntry *item = [[event logEntryCollection] objectAtIndex:[indexPath row]];
+			LogEntry *item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
 
 			if ([[item logEntryNote] isEqualToString:@""]){
 				UIFont *font = [UIFont italicSystemFontOfSize:14];
@@ -308,7 +321,7 @@
 	[super viewWillAppear:animated];
 	numberFormatter = [[NSNumberFormatter alloc] init];
 
-	[[self navigationItem] setTitle:[event eventName]];
+	[[self navigationItem] setTitle:[_event eventName]];
 	[[self eventTableView] reloadData];
 
 }
@@ -316,8 +329,8 @@
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	if (![event showAverage]) {
-		[self showAveragePopup];
+	if (![_event showAverage]) {
+//		[self showAveragePopup];
 	}
 	
 }
@@ -334,6 +347,8 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
+
+
 
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc

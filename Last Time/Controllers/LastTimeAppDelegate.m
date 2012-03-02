@@ -8,11 +8,15 @@
 
 #import "LastTimeAppDelegate.h"
 #import "FolderListViewController.h"
+#import "EventController.h"
 #import "EventStore.h"
+#import "MGSplitViewController.h"
 
 @implementation LastTimeAppDelegate
 
 @synthesize window = _window;
+@synthesize navigationController = _navigationController;
+@synthesize splitViewController = _splitViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -23,12 +27,33 @@
 	
 	[self versionCheck];
 
-	FolderListViewController *rootFolderViewController = [[FolderListViewController alloc] init];
-	
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootFolderViewController];
-	
-	[[self window] setRootViewController:navController];
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		FolderListViewController *masterViewController = [[FolderListViewController alloc] init];
 		
+		self.navigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
+		
+		self.window.rootViewController = self.navigationController;
+
+	} else {
+		FolderListViewController *masterViewController = [[FolderListViewController alloc] init];
+		
+		UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
+
+		EventController *detailViewController = [[EventController alloc] init];
+		UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+		
+		masterViewController.detailViewController = detailViewController;
+
+		self.splitViewController = [[MGSplitViewController alloc] init];
+		self.splitViewController.showsMasterInPortrait = YES;
+		
+//		self.splitViewController.delegate = detailViewController;
+		self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];
+		
+		self.window.rootViewController = self.splitViewController;
+
+	}
+	
 	[[self window] makeKeyAndVisible];
 	return YES;
 }
