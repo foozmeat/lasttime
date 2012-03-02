@@ -37,6 +37,7 @@
 @property (nonatomic) BOOL shouldStoreLocation;
 @property (nonatomic, strong) CLLocation *bestLocation;
 
+@property (nonatomic, strong) EditableTableCell *nameCell;
 @property (nonatomic, strong) NumberCell *numberCell;
 
 - (BOOL)isModal;

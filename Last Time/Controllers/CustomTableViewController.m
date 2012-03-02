@@ -13,7 +13,7 @@
 @synthesize requiredField;
 @synthesize bestLocation;
 @synthesize shouldStoreLocation = _shouldStoreLocation;
-@synthesize numberCell;
+@synthesize nameCell, numberCell;
 @synthesize delegate;
 
 - (BOOL)isModal
