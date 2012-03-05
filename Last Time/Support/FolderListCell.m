@@ -40,11 +40,6 @@
 	}
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	[self.cellTextField resignFirstResponder];
-	return YES;
-}
-
 - (void)layoutSubviews {
 	[super layoutSubviews];
 

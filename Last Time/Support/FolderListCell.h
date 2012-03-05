@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FolderListCell : UITableViewCell <UITextFieldDelegate>
+@interface FolderListCell : UITableViewCell
 
 @property (nonatomic, strong) UITextField *cellTextField;
 
