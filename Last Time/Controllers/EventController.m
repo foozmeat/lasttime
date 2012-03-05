@@ -81,6 +81,7 @@
 		_event = event;
 		
 		// Update the view.
+		[[self navigationItem] setTitle:[_event eventName]];
 		[eventTableView reloadData];
 	}
 
@@ -137,6 +138,7 @@
 
 	}
 }
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	int section = [indexPath section];
@@ -279,6 +281,9 @@
 				
 				historyLogCell.logEntryNoteCell.text = @"No Note";
 			} else {
+				UIFont *font = [UIFont systemFontOfSize:14];
+				[historyLogCell.logEntryNoteCell setFont:font];
+				[historyLogCell.logEntryNoteCell setTextColor:[UIColor blackColor]];
 				historyLogCell.logEntryNoteCell.text = item.logEntryNote;
 			}
 			
