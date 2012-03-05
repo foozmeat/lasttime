@@ -118,7 +118,7 @@
 											 withRowAnimation:UITableViewRowAnimationAutomatic];
 		}		
 		FolderListCell *cell = (FolderListCell *)[folderTableView cellForRowAtIndexPath:indexPath];
-		[cell setSelected:YES animated:YES];
+		[[cell cellTextField] becomeFirstResponder];
 	}
 
 }
@@ -226,20 +226,28 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 //  firstResponder status. Use this as a hook to save the text field's
 //  value to the corresponding property of the model object.
 //  
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+	NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+
+	FolderListCell *cell = (FolderListCell *)[textField superview];
+	[[cell textLabel] setText:newText];
+
+	return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
 	
 	NSString *text = [textField text];
 
 	FolderListCell *cell = (FolderListCell *)[textField superview];
-	[[cell textLabel] setText:text];
 	
 	NSIndexPath *path = [folderTableView indexPathForCell:cell];
 	
 	EventFolder *folder = [[[EventStore defaultStore] allFolders] objectAtIndex:path.row];
 	[folder setFolderName:text];
 
-	return YES;
 }
 
 - (void)registerForKeyboardNotifications
