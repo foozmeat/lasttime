@@ -120,7 +120,7 @@
 	EventFolder *folder = [[[EventStore defaultStore] allFolders] objectAtIndex:row];
 	[[self delegate] folderPickerDidChange:folder];
 	
-	NSLog(@"Selected Folder: %@. Index of selected folder: %i", [folder folderName], row);
+//	NSLog(@"Selected Folder: %@. Index of selected folder: %i", [folder folderName], row);
 	[[self detailTextLabel] setText:[folder folderName]];
 
 }
