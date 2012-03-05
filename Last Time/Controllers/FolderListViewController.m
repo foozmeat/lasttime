@@ -91,7 +91,9 @@
 {
 	EventFolder *item = nil;
 	
-	if (indexPath.row == (int)[[[EventStore defaultStore] allItems] count] ) {
+	BOOL addingNewRow = indexPath.row == (int)[[[EventStore defaultStore] allItems] count];
+	
+	if ( addingNewRow ) {
 		item = [[EventFolder alloc] init];
 	} else {
 		item = [[[EventStore defaultStore] allItems] objectAtIndex:[indexPath row]];
@@ -104,21 +106,27 @@
 		[[self navigationController] pushViewController:elvc animated:YES];
 		
 	} else {
-		NSArray *paths = [NSArray arrayWithObject:indexPath];
-		[[EventStore defaultStore] addFolder:item];
-		[tableView insertRowsAtIndexPaths:paths 
-										 withRowAnimation:UITableViewRowAnimationAutomatic];
-		
+		if ( addingNewRow ) {
+			[tableView deselectRowAtIndexPath:indexPath animated:YES];
+			NSArray *paths = [NSArray arrayWithObject:indexPath];
+			[[EventStore defaultStore] addFolder:item];
+			[tableView insertRowsAtIndexPaths:paths 
+											 withRowAnimation:UITableViewRowAnimationAutomatic];
+		}		
 		FolderListCell *cell = (FolderListCell *)[folderTableView cellForRowAtIndexPath:indexPath];
-		[[cell cellTextField] becomeFirstResponder];
+		[cell setSelected:YES animated:YES];
 	}
 
 }
 
 #pragma mark - TableView Datasource Delegate methods
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
+forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		FolderListCell *cell = (FolderListCell *)[tableView cellForRowAtIndexPath:indexPath];
+		[[cell cellTextField] resignFirstResponder];
+		
 		id item = [[[EventStore defaultStore] allItems] objectAtIndex:[indexPath row]];
 		[[EventStore defaultStore] removeFolder:item];
 		
