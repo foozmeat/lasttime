@@ -59,7 +59,6 @@
 		39A0F9FA14F0B9AF00BA0AFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A0F9F914F0B9AF00BA0AFA /* main.m */; };
 		39A0FA0314F0B9B900BA0AFA /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA477F14DAD8B300580EB9 /* EventDetailController.m */; };
-		39AA478B14DC252400580EB9 /* FolderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA478914DC252400580EB9 /* FolderDetailController.m */; };
 		39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AED56614BD3B6600AE6625 /* CoreLocation.framework */; };
 		39B8C8781504684800A55B5C /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8C8771504684800A55B5C /* libprofile_rt.dylib */; };
 		39BE368C14F3E2BD00DBCC43 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BE368514F3E2BD00DBCC43 /* Icon-72.png */; };
@@ -219,8 +218,6 @@
 		39A0F9F914F0B9AF00BA0AFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/DurationTest/main.m"; sourceTree = SOURCE_ROOT; };
 		39AA477E14DAD8B300580EB9 /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailController.h; sourceTree = "<group>"; };
 		39AA477F14DAD8B300580EB9 /* EventDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailController.m; sourceTree = "<group>"; };
-		39AA478814DC252300580EB9 /* FolderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderDetailController.h; sourceTree = "<group>"; };
-		39AA478914DC252400580EB9 /* FolderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderDetailController.m; sourceTree = "<group>"; };
 		39AED56614BD3B6600AE6625 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		39B8C8771504684800A55B5C /* libprofile_rt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprofile_rt.dylib; path = Platforms/iPhoneOS.platform/Developer/usr/lib/libprofile_rt.dylib; sourceTree = DEVELOPER_DIR; };
 		39BE368514F3E2BD00DBCC43 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Resources/Images/Icons/Icon-72.png"; sourceTree = "<group>"; };
@@ -465,8 +462,6 @@
 			children = (
 				3969111114C9BCF0006E8272 /* FolderListViewController.h */,
 				3969111214C9BCF0006E8272 /* FolderListViewController.m */,
-				39AA478814DC252300580EB9 /* FolderDetailController.h */,
-				39AA478914DC252400580EB9 /* FolderDetailController.m */,
 				399F70B514FB1FB00012F089 /* FolderListCell.h */,
 				399F70B614FB1FB00012F089 /* FolderListCell.m */,
 			);
@@ -927,7 +922,6 @@
 				3969112114C9BCF8006E8272 /* LogEntry.m in Sources */,
 				39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */,
 				39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */,
-				39AA478B14DC252400580EB9 /* FolderDetailController.m in Sources */,
 				3988B9BC14E0214F0010062E /* EditableTableCell.m in Sources */,
 				39F6436014E40AAE004B0900 /* DatePickerCell.m in Sources */,
 				392009FF14E4B88D006B6A79 /* CustomTableViewController.m in Sources */,
