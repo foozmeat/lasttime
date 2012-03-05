@@ -261,12 +261,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	// Your application might not need or want this behavior.
 	CGRect aRect = self.view.frame;
 	aRect.size.height -= kbSize.height;
-
-	NSLog(@"%f,%f", activeCell.frame.origin.x, activeCell.frame.origin.y);
 	
 	if (!CGRectContainsPoint(aRect, activeCell.frame.origin) ) {
 
-		CGPoint scrollPoint = CGPointMake(0.0, activeCell.frame.origin.y - 10.0);
+		CGPoint scrollPoint = CGPointMake(0.0, activeCell.frame.origin.y - 30.0);
 		[self.folderTableView setContentOffset:scrollPoint animated:YES];
 	}
 }
