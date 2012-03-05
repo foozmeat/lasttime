@@ -17,6 +17,7 @@
 
 @implementation FolderListViewController
 @synthesize folderTableView;
+@synthesize activeCell;
 
 #pragma mark - View lifecycle
 
@@ -36,6 +37,8 @@
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 
 	[[self folderTableView] reloadData];
+	
+	[self registerForKeyboardNotifications];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -88,40 +91,26 @@
 {
 	EventFolder *item = nil;
 	
-	if( indexPath.row == (int)[[[EventStore defaultStore] allItems] count] ) {
+	if (indexPath.row == (int)[[[EventStore defaultStore] allItems] count] ) {
 		item = [[EventFolder alloc] init];
 	} else {
-		
 		item = [[[EventStore defaultStore] allItems] objectAtIndex:[indexPath row]];
 	}
 
-	if ([tableView isEditing]) {
-		FolderDetailController *fdc = [[FolderDetailController alloc] init];
-		[fdc setTheNewFolder:item];
-		
-		if( indexPath.row == (int)[[[EventStore defaultStore] allItems] count] ) {
-			UINavigationController *newNavController = [[UINavigationController alloc]
-																									initWithRootViewController:fdc];
-			
-			if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
-				[newNavController setModalPresentationStyle:UIModalPresentationFormSheet];
-				[fdc setDelegate:self];
-			}
-			
-			[[self navigationController] presentModalViewController:newNavController
-																										 animated:YES];
-		} else {
-			[[self navigationController] pushViewController:fdc animated:YES];
-			
-		}
-	
-	
-	} else {
+	if (![tableView isEditing]) {
 		EventListViewController *elvc = [[EventListViewController alloc] init];
 		[elvc setFolder:item];
 		[elvc setDetailViewController:[self detailViewController]];
 		[[self navigationController] pushViewController:elvc animated:YES];
 		
+	} else {
+		NSArray *paths = [NSArray arrayWithObject:indexPath];
+		[[EventStore defaultStore] addFolder:item];
+		[tableView insertRowsAtIndexPaths:paths 
+										 withRowAnimation:UITableViewRowAnimationAutomatic];
+		
+		FolderListCell *cell = (FolderListCell *)[folderTableView cellForRowAtIndexPath:indexPath];
+		[[cell cellTextField] becomeFirstResponder];
 	}
 
 }
@@ -209,11 +198,10 @@
 		if (!cell) {
 			cell = [[FolderListCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 		}
-		
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		
+		[[cell cellTextField] setDelegate:self];
 		[[cell textLabel] setText:[item objectName]];
+		[[cell cellTextField] setTag:[indexPath row]];
+		NSLog(@"%i", [[cell cellTextField] tag]);
 
 		[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:15.0]];
 		[[cell detailTextLabel] setText:[item subtitle]];
@@ -221,6 +209,70 @@
 		return cell;
 	}
 	
+}
+
+#pragma mark - TextFieldDelegate
+//  UITextField sends this message to its delegate after resigning
+//  firstResponder status. Use this as a hook to save the text field's
+//  value to the corresponding property of the model object.
+//  
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+	
+	NSString *text = [textField text];
+	NSUInteger tag = [textField tag];
+
+	EventFolder *folder = [[[EventStore defaultStore] allFolders] objectAtIndex:tag];
+	[folder setFolderName:text];
+	
+	NSUInteger indexes[] = { 0, tag };
+	NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
+																											length:2];
+
+	UITableViewCell *cell = [folderTableView cellForRowAtIndexPath:indexPath];
+	[[cell textLabel] setText:text];
+	
+	[[textField superview] setNeedsLayout];
+	
+}
+
+- (void)registerForKeyboardNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self
+																					 selector:@selector(keyboardWasShown:)
+																							 name:UIKeyboardDidShowNotification object:nil];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+	NSDictionary* info = [aNotification userInfo];
+	CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
+	// If active text field is hidden by keyboard, scroll it so it's visible
+	// Your application might not need or want this behavior.
+	CGRect aRect = self.view.frame;
+	aRect.size.height -= kbSize.height;
+
+	NSLog(@"%f,%f", activeCell.frame.origin.x, activeCell.frame.origin.y);
+	
+	if (!CGRectContainsPoint(aRect, activeCell.frame.origin) ) {
+
+		CGPoint scrollPoint = CGPointMake(0.0, activeCell.frame.origin.y - 10.0);
+		[self.folderTableView setContentOffset:scrollPoint animated:YES];
+	}
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+	[self setActiveCell:[textField superview]];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	[self setEditing:NO animated:YES];
+	return YES;
 }
 
 #pragma mark - ItemDetailViewControllerDelegate

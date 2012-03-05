@@ -11,10 +11,12 @@
 #import "CustomTableViewController.h"
 
 @class EventController;
+@class FolderListCell;
 
 @interface FolderListViewController : UIViewController 
-<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate>
+<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *folderTableView;
 @property (strong, nonatomic) EventController *detailViewController;
+@property (strong, nonatomic) UIView *activeCell;
 @end
