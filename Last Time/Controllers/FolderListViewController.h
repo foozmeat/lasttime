@@ -18,5 +18,5 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *folderTableView;
 @property (strong, nonatomic) EventController *detailViewController;
-@property (strong, nonatomic) UIView *activeCell;
+@property (strong, nonatomic) FolderListCell *activeCell;
 @end

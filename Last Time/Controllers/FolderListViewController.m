@@ -9,7 +9,6 @@
 #import "FolderListViewController.h"
 #import "EventController.h"
 #import "EventDetailController.h"
-#import "FolderDetailController.h"
 #import "EventListViewController.h"
 #import "EventStore.h"
 #import "EventFolder.h"
@@ -53,8 +52,13 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate
 {
+	if (!editing) 	{
+		[[activeCell cellTextField] resignFirstResponder];
+	}
+
 	[super setEditing:editing animated:animate];
 
+	
 	[folderTableView setEditing:editing animated:animate];
 	
 	NSArray *paths = [NSArray arrayWithObject:	[NSIndexPath indexPathForRow:[[[EventStore defaultStore] allItems] count] inSection:0]];
@@ -208,8 +212,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		}
 		[[cell cellTextField] setDelegate:self];
 		[[cell textLabel] setText:[item objectName]];
-		[[cell cellTextField] setTag:[indexPath row]];
-		NSLog(@"%i", [[cell cellTextField] tag]);
 
 		[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:15.0]];
 		[[cell detailTextLabel] setText:[item subtitle]];
@@ -224,24 +226,20 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 //  firstResponder status. Use this as a hook to save the text field's
 //  value to the corresponding property of the model object.
 //  
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
 	
 	NSString *text = [textField text];
-	NSUInteger tag = [textField tag];
 
-	EventFolder *folder = [[[EventStore defaultStore] allFolders] objectAtIndex:tag];
-	[folder setFolderName:text];
-	
-	NSUInteger indexes[] = { 0, tag };
-	NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
-																											length:2];
-
-	UITableViewCell *cell = [folderTableView cellForRowAtIndexPath:indexPath];
+	FolderListCell *cell = (FolderListCell *)[textField superview];
 	[[cell textLabel] setText:text];
 	
-	[[textField superview] setNeedsLayout];
+	NSIndexPath *path = [folderTableView indexPathForCell:cell];
 	
+	EventFolder *folder = [[[EventStore defaultStore] allFolders] objectAtIndex:path.row];
+	[folder setFolderName:text];
+
+	return YES;
 }
 
 - (void)registerForKeyboardNotifications
@@ -271,7 +269,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-	[self setActiveCell:[textField superview]];
+	[self setActiveCell:(FolderListCell *)[textField superview]];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
