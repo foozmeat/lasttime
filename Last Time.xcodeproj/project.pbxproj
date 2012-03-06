@@ -49,7 +49,6 @@
 		3988B9BC14E0214F0010062E /* EditableTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3988B9BB14E0214F0010062E /* EditableTableCell.m */; };
 		398F458514F1B6E50095A405 /* map-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 398F458314F1B6E50095A405 /* map-pin.png */; };
 		398F458614F1B6E50095A405 /* map-pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 398F458414F1B6E50095A405 /* map-pin@2x.png */; };
-		39918C1014F6048D00D8D4EE /* FolderListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39918C0F14F6048D00D8D4EE /* FolderListViewController.xib */; };
 		39918C1714F6062000D8D4EE /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39918C1514F6062000D8D4EE /* EventListViewController.m */; };
 		39918C1A14F606A200D8D4EE /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39918C1914F606A200D8D4EE /* EventListViewController.xib */; };
 		39918C2514F7F99700D8D4EE /* EventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 39918C2414F7F99700D8D4EE /* EventStore.m */; };
@@ -205,7 +204,6 @@
 		3988B9BB14E0214F0010062E /* EditableTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditableTableCell.m; path = Support/EditableTableCell.m; sourceTree = "<group>"; };
 		398F458314F1B6E50095A405 /* map-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin.png"; sourceTree = "<group>"; };
 		398F458414F1B6E50095A405 /* map-pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin@2x.png"; sourceTree = "<group>"; };
-		39918C0F14F6048D00D8D4EE /* FolderListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderListViewController.xib; sourceTree = "<group>"; };
 		39918C1414F6062000D8D4EE /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListViewController.h; sourceTree = "<group>"; };
 		39918C1514F6062000D8D4EE /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListViewController.m; sourceTree = "<group>"; };
 		39918C1914F606A200D8D4EE /* EventListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventListViewController.xib; sourceTree = "<group>"; };
@@ -409,7 +407,6 @@
 			children = (
 				39200A1314E76C17006B6A79 /* EventController.xib */,
 				39918C1914F606A200D8D4EE /* EventListViewController.xib */,
-				39918C0F14F6048D00D8D4EE /* FolderListViewController.xib */,
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
 				3940D3EF14F17DE20056D01B /* HistoryLogCell.xib */,
 			);
@@ -823,7 +820,6 @@
 				39BE369014F3E2BD00DBCC43 /* Icon.png in Resources */,
 				39BE369114F3E2BD00DBCC43 /* Icon@2x.png in Resources */,
 				39BE369214F3E2BD00DBCC43 /* iTunesArtwork.png in Resources */,
-				39918C1014F6048D00D8D4EE /* FolderListViewController.xib in Resources */,
 				39918C1A14F606A200D8D4EE /* EventListViewController.xib in Resources */,
 				399F70BD14FD1B290012F089 /* default_data.plist in Resources */,
 			);

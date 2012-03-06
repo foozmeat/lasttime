@@ -15,34 +15,30 @@
 #import "FolderListCell.h"
 
 @implementation FolderListViewController
-@synthesize folderTableView;
 @synthesize activeCell;
 
-#pragma mark - View lifecycle
-
-- (void)viewDidUnload
+- (id) init
 {
-	[self setFolderTableView:nil];
-	[super viewDidUnload];
+	self = [super initWithStyle:UITableViewStyleGrouped];
+	return self;
 }
+
+#pragma mark - View lifecycle
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	
+	self.tableView.allowsSelectionDuringEditing = YES;
 	self.title = NSLocalizedString(@"Folders", @"Folders");
 	
-	
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
-
-	[[self folderTableView] reloadData];
 	
-	[self registerForKeyboardNotifications];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-	if ([folderTableView isEditing]) {
+	if ([self.tableView isEditing]) {
 		[self setEditing:NO animated:YES];
 	}
 
@@ -58,17 +54,14 @@
 
 	[super setEditing:editing animated:animate];
 
-	
-	[folderTableView setEditing:editing animated:animate];
-	
-	NSArray *paths = [NSArray arrayWithObject:	[NSIndexPath indexPathForRow:[[[EventStore defaultStore] allItems] count] inSection:0]];
+	NSArray *paths = [NSArray arrayWithObject:	[NSIndexPath indexPathForRow:[[[EventStore defaultStore] allFolders] count] inSection:0]];
 
 	if (editing) 	{
-		[[self folderTableView] insertRowsAtIndexPaths:paths 
+		[[self tableView] insertRowsAtIndexPaths:paths 
 														withRowAnimation:UITableViewRowAnimationAutomatic];
 	}
 	else {
-		[[self folderTableView] deleteRowsAtIndexPaths:paths 
+		[[self tableView] deleteRowsAtIndexPaths:paths 
 														withRowAnimation:UITableViewRowAnimationAutomatic];
 	}
 }
@@ -78,7 +71,7 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if ([tableView isEditing]) {
-		if( indexPath.row == (int)[[[EventStore defaultStore] allItems] count] ) {
+		if( indexPath.row == (int)[[[EventStore defaultStore] allFolders] count] ) {
 			return UITableViewCellEditingStyleInsert;
 			
 		} else {
@@ -95,12 +88,12 @@
 {
 	EventFolder *item = nil;
 	
-	BOOL addingNewRow = indexPath.row == (int)[[[EventStore defaultStore] allItems] count];
+	BOOL addingNewRow = indexPath.row == (int)[[[EventStore defaultStore] allFolders] count];
 	
 	if ( addingNewRow ) {
 		item = [[EventFolder alloc] init];
 	} else {
-		item = [[[EventStore defaultStore] allItems] objectAtIndex:[indexPath row]];
+		item = [[[EventStore defaultStore] allFolders] objectAtIndex:[indexPath row]];
 	}
 
 	if (![tableView isEditing]) {
@@ -117,7 +110,7 @@
 			[tableView insertRowsAtIndexPaths:paths 
 											 withRowAnimation:UITableViewRowAnimationAutomatic];
 		}		
-		FolderListCell *cell = (FolderListCell *)[folderTableView cellForRowAtIndexPath:indexPath];
+		FolderListCell *cell = (FolderListCell *)[self.tableView cellForRowAtIndexPath:indexPath];
 		[[cell cellTextField] becomeFirstResponder];
 	}
 
@@ -131,12 +124,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		FolderListCell *cell = (FolderListCell *)[tableView cellForRowAtIndexPath:indexPath];
 		[[cell cellTextField] resignFirstResponder];
 		
-		id item = [[[EventStore defaultStore] allItems] objectAtIndex:[indexPath row]];
+		id item = [[[EventStore defaultStore] allFolders] objectAtIndex:[indexPath row]];
 		[[EventStore defaultStore] removeFolder:item];
 		
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 		
-		if ([[[EventStore defaultStore] allItems] count] == 0) {
+		if ([[[EventStore defaultStore] allFolders] count] == 0) {
 			[self setEditing:NO animated:YES];
 		}
 		
@@ -147,7 +140,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if( indexPath.row == (int)[[[EventStore defaultStore] allItems] count] ) {
+	if( indexPath.row == (int)[[[EventStore defaultStore] allFolders] count] ) {
 		return NO;
 	} else {
 		return YES;
@@ -156,7 +149,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 {
-	if (proposedDestinationIndexPath.row == (int)[[[EventStore defaultStore] allItems] count]) {
+	if (proposedDestinationIndexPath.row == (int)[[[EventStore defaultStore] allFolders] count]) {
 		return sourceIndexPath;
 	} else {
 		return proposedDestinationIndexPath;
@@ -165,8 +158,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath 
 {
-	if ((sourceIndexPath.row != (int)[[[EventStore defaultStore] allItems] count] ) && 
-			(destinationIndexPath.row != (int)[[[EventStore defaultStore] allItems] count] )) {
+	if ((sourceIndexPath.row != (int)[[[EventStore defaultStore] allFolders] count] ) && 
+			(destinationIndexPath.row != (int)[[[EventStore defaultStore] allFolders] count] )) {
 
 		[[EventStore defaultStore] moveFolderAtIndex:[sourceIndexPath row] 
 																				 toIndex:[destinationIndexPath row]];
@@ -177,9 +170,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if ([tableView isEditing]) {
-		return [[[EventStore defaultStore] allItems] count] + 1;
+		return [[[EventStore defaultStore] allFolders] count] + 1;
 	} else {
-		return [[[EventStore defaultStore] allItems] count];
+		return [[[EventStore defaultStore] allFolders] count];
 	}
 }
 
@@ -187,7 +180,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSString *reuseString = nil;
 	
-	if ([indexPath row] == (int)[[[EventStore defaultStore] allItems] count]) {
+	if ([indexPath row] == (int)[[[EventStore defaultStore] allFolders] count]) {
 		reuseString = @"addFolderCell";
 		
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
@@ -201,7 +194,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 	} else {
 		
-		id item = [[[EventStore defaultStore] allItems] objectAtIndex:[indexPath row]];
+		id item = [[[EventStore defaultStore] allFolders] objectAtIndex:[indexPath row]];
 		
 		reuseString = @"FolderCell";
 		
@@ -243,36 +236,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 	FolderListCell *cell = (FolderListCell *)[textField superview];
 	
-	NSIndexPath *path = [folderTableView indexPathForCell:cell];
+	NSIndexPath *path = [self.tableView indexPathForCell:cell];
 	
 	EventFolder *folder = [[[EventStore defaultStore] allFolders] objectAtIndex:path.row];
 	[folder setFolderName:text];
 
-}
-
-- (void)registerForKeyboardNotifications
-{
-	[[NSNotificationCenter defaultCenter] addObserver:self
-																					 selector:@selector(keyboardWasShown:)
-																							 name:UIKeyboardDidShowNotification object:nil];
-}
-
-// Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification
-{
-	NSDictionary* info = [aNotification userInfo];
-	CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-
-	// If active text field is hidden by keyboard, scroll it so it's visible
-	// Your application might not need or want this behavior.
-	CGRect aRect = self.view.frame;
-	aRect.size.height -= kbSize.height;
-	
-	if (!CGRectContainsPoint(aRect, activeCell.frame.origin) ) {
-
-		CGPoint scrollPoint = CGPointMake(0.0, activeCell.frame.origin.y - 30.0);
-		[self.folderTableView setContentOffset:scrollPoint animated:YES];
-	}
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
@@ -290,8 +258,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
-	[[self folderTableView] reloadData];
-	if ([folderTableView isEditing]) {
+	[[self tableView] reloadData];
+	if ([self.tableView isEditing]) {
 		[self setEditing:NO animated:YES];
 	}
 }

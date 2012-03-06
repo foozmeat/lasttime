@@ -13,10 +13,9 @@
 @class EventController;
 @class FolderListCell;
 
-@interface FolderListViewController : UIViewController 
+@interface FolderListViewController : UITableViewController 
 <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *folderTableView;
 @property (strong, nonatomic) EventController *detailViewController;
 @property (strong, nonatomic) FolderListCell *activeCell;
 @end
