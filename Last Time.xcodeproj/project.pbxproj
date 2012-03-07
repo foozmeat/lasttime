@@ -76,11 +76,6 @@
 		39D70CBB14BD3515009C3615 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CBA14BD3515009C3615 /* CoreGraphics.framework */; };
 		39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39D70CBF14BD3515009C3615 /* InfoPlist.strings */; };
 		39D70CC314BD3515009C3615 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D70CC214BD3515009C3615 /* main.m */; };
-		39D70CD114BD3515009C3615 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CD014BD3515009C3615 /* SenTestingKit.framework */; };
-		39D70CD214BD3515009C3615 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB614BD3515009C3615 /* UIKit.framework */; };
-		39D70CD314BD3515009C3615 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
-		39D70CDB14BD3515009C3615 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39D70CD914BD3515009C3615 /* InfoPlist.strings */; };
-		39D70CDE14BD3516009C3615 /* Last_TimeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D70CDD14BD3516009C3615 /* Last_TimeTests.m */; };
 		39DB081614E95640006E4E08 /* FolderPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DB081514E95640006E4E08 /* FolderPickerCell.m */; };
 		39F642CA14E0FB8E004B0900 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		39F642CB14E0FBBC004B0900 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111A14C9BCF8006E8272 /* Event.m */; };
@@ -92,16 +87,6 @@
 		39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */; };
 		39FEDFA914EAC2C2009672A5 /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FEDFA814EAC2C2009672A5 /* UIColor+Custom.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		39D70CD414BD3515009C3615 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 39D70CA914BD3515009C3615 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 39D70CB114BD3515009C3615;
-			remoteInfo = "Last Time";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3904CF9D14C078E200B7396A /* CopyFiles */ = {
@@ -240,12 +225,7 @@
 		39D70CC014BD3515009C3615 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39D70CC214BD3515009C3615 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		39D70CC414BD3515009C3615 /* Last Time-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Last Time-Prefix.pch"; sourceTree = "<group>"; };
-		39D70CCF14BD3515009C3615 /* Last TimeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Last TimeTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D70CD014BD3515009C3615 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		39D70CD814BD3515009C3615 /* Last TimeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Last TimeTests-Info.plist"; sourceTree = "<group>"; };
-		39D70CDA14BD3515009C3615 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		39D70CDC14BD3515009C3615 /* Last_TimeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Last_TimeTests.h; sourceTree = "<group>"; };
-		39D70CDD14BD3516009C3615 /* Last_TimeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Last_TimeTests.m; sourceTree = "<group>"; };
 		39DB081414E95640006E4E08 /* FolderPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderPickerCell.h; path = Support/FolderPickerCell.h; sourceTree = "<group>"; };
 		39DB081514E95640006E4E08 /* FolderPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderPickerCell.m; path = Support/FolderPickerCell.m; sourceTree = "<group>"; };
 		39F6435E14E40AAE004B0900 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerCell.h; path = Support/DatePickerCell.h; sourceTree = "<group>"; };
@@ -299,16 +279,6 @@
 				39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */,
 				39D70CB914BD3515009C3615 /* Foundation.framework in Frameworks */,
 				39D70CBB14BD3515009C3615 /* CoreGraphics.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		39D70CCB14BD3515009C3615 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39D70CD114BD3515009C3615 /* SenTestingKit.framework in Frameworks */,
-				39D70CD214BD3515009C3615 /* UIKit.framework in Frameworks */,
-				39D70CD314BD3515009C3615 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +493,6 @@
 			isa = PBXGroup;
 			children = (
 				39D70CBC14BD3515009C3615 /* Last Time */,
-				39D70CD614BD3515009C3615 /* Last TimeTests */,
 				39D70CB514BD3515009C3615 /* Frameworks */,
 				39D70CB314BD3515009C3615 /* Products */,
 			);
@@ -533,7 +502,6 @@
 			isa = PBXGroup;
 			children = (
 				39D70CB214BD3515009C3615 /* Last Time.app */,
-				39D70CCF14BD3515009C3615 /* Last TimeTests.octest */,
 				39861AA514BD526D006F30A0 /* RandomLogEntry */,
 				3950E86514BFE0AB009C6F6F /* RandomEvent */,
 				3904CF9F14C078E200B7396A /* RandomEventFolder */,
@@ -584,25 +552,6 @@
 				39D70CBF14BD3515009C3615 /* InfoPlist.strings */,
 				39D70CC214BD3515009C3615 /* main.m */,
 				39D70CC414BD3515009C3615 /* Last Time-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		39D70CD614BD3515009C3615 /* Last TimeTests */ = {
-			isa = PBXGroup;
-			children = (
-				39D70CDC14BD3515009C3615 /* Last_TimeTests.h */,
-				39D70CDD14BD3516009C3615 /* Last_TimeTests.m */,
-				39D70CD714BD3515009C3615 /* Supporting Files */,
-			);
-			path = "Last TimeTests";
-			sourceTree = "<group>";
-		};
-		39D70CD714BD3515009C3615 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				39D70CD814BD3515009C3615 /* Last TimeTests-Info.plist */,
-				39D70CD914BD3515009C3615 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -737,25 +686,6 @@
 			productReference = 39D70CB214BD3515009C3615 /* Last Time.app */;
 			productType = "com.apple.product-type.application";
 		};
-		39D70CCE14BD3515009C3615 /* Last TimeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 39D70CE414BD3516009C3615 /* Build configuration list for PBXNativeTarget "Last TimeTests" */;
-			buildPhases = (
-				39D70CCA14BD3515009C3615 /* Sources */,
-				39D70CCB14BD3515009C3615 /* Frameworks */,
-				39D70CCC14BD3515009C3615 /* Resources */,
-				39D70CCD14BD3515009C3615 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				39D70CD514BD3515009C3615 /* PBXTargetDependency */,
-			);
-			name = "Last TimeTests";
-			productName = "Last TimeTests";
-			productReference = 39D70CCF14BD3515009C3615 /* Last TimeTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -778,7 +708,6 @@
 			projectRoot = "";
 			targets = (
 				39D70CB114BD3515009C3615 /* Last Time */,
-				39D70CCE14BD3515009C3615 /* Last TimeTests */,
 				39861AA414BD526D006F30A0 /* RandomLogEntry */,
 				3950E86414BFE0AB009C6F6F /* RandomEvent */,
 				3904CF9E14C078E200B7396A /* RandomEventFolder */,
@@ -825,14 +754,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		39D70CCC14BD3515009C3615 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39D70CDB14BD3515009C3615 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -849,19 +770,6 @@
 			shellPath = /bin/sh;
 			shellScript = "#if [[ $CONFIGURATION == \"Distribution\" ]]; then\n#    BUILD_NUMBER=`date +\"%Y%m%d%H%M%S\"`\n#    GIT_TAG=`git describe --tags --abbrev=0`\n\n#    agvtool new-marketing-version $GIT_TAG\n#    agvtool new-version -all $BUILD_NUMBER\n#fi";
 			showEnvVarsInLog = 0;
-		};
-		39D70CCD14BD3515009C3615 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -940,37 +848,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		39D70CCA14BD3515009C3615 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				39D70CDE14BD3516009C3615 /* Last_TimeTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		39D70CD514BD3515009C3615 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 39D70CB114BD3515009C3615 /* Last Time */;
-			targetProxy = 39D70CD414BD3515009C3615 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		39D70CBF14BD3515009C3615 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				39D70CC014BD3515009C3615 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		39D70CD914BD3515009C3615 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				39D70CDA14BD3515009C3615 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1073,18 +957,18 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 20120221070155;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -1094,6 +978,7 @@
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
@@ -1131,24 +1016,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
-			};
-			name = Distribution;
-		};
-		3988B96614DC32690010062E /* Distribution */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Last Time.app/Last Time";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
-				INFOPLIST_FILE = "Last TimeTests/Last TimeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Distribution;
 		};
@@ -1247,7 +1114,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 20120221070155;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1258,7 +1125,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -1268,6 +1135,7 @@
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
@@ -1286,7 +1154,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1304,7 +1171,7 @@
 					"-fprofile-arcs",
 				);
 				OTHER_LDFLAGS = "-lprofile_rt";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Last Time";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -1312,24 +1179,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
-			};
-			name = Coverage;
-		};
-		39B8C8721504661700A55B5C /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Last Time.app/Last Time";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
-				INFOPLIST_FILE = "Last TimeTests/Last TimeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Coverage;
 		};
@@ -1398,7 +1247,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 20120221070155;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1409,7 +1258,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -1419,6 +1268,7 @@
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
@@ -1436,12 +1286,12 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 20120221070155;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -1451,6 +1301,7 @@
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
@@ -1470,7 +1321,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
@@ -1500,6 +1350,7 @@
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "TESTFLIGHT=1";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1507,6 +1358,7 @@
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib\"",
 				);
+				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4A20681E-C3D8-460C-9E3C-135A78E03705";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4A20681E-C3D8-460C-9E3C-135A78E03705";
@@ -1515,42 +1367,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		39D70CE514BD3516009C3615 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Last Time.app/Last Time";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
-				INFOPLIST_FILE = "Last TimeTests/Last TimeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		39D70CE614BD3516009C3615 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Last Time.app/Last Time";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
-				INFOPLIST_FILE = "Last TimeTests/Last TimeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -1619,17 +1435,6 @@
 				39B8C8711504661700A55B5C /* Coverage */,
 				3988B96514DC32690010062E /* Distribution */,
 				39D70CE314BD3516009C3615 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		39D70CE414BD3516009C3615 /* Build configuration list for PBXNativeTarget "Last TimeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				39D70CE514BD3516009C3615 /* Debug */,
-				39B8C8721504661700A55B5C /* Coverage */,
-				3988B96614DC32690010062E /* Distribution */,
-				39D70CE614BD3516009C3615 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
