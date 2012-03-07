@@ -30,7 +30,7 @@
 	[super viewWillAppear:animated];
 	
 	self.tableView.allowsSelectionDuringEditing = YES;
-	self.title = NSLocalizedString(@"Folders", @"Folders");
+	self.title = NSLocalizedString(@"Lists", @"Lists");
 	
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 	
