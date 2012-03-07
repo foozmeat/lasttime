@@ -99,11 +99,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if ([self isModal]) {
-		return 4;
-	} else {
-		return 4;
+		
+	int rowCount = 3; // Name field
+	
+	if ( [self locationServicesEnabled] && [self isModal] ) {
+		rowCount++;
 	}
+	return rowCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
