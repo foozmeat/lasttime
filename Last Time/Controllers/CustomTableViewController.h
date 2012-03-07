@@ -39,6 +39,7 @@
 
 @property (nonatomic, strong) EditableTableCell *nameCell;
 @property (nonatomic, strong) NumberCell *numberCell;
+@property (nonatomic, strong) LocationSwitchCell *locationCell;
 
 - (BOOL)isModal;
 

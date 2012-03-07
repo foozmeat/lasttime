@@ -13,7 +13,7 @@
 
 @implementation HistoryLogDetailController
 @synthesize logEntry, event;
-@synthesize noteCell, dateCell, locationSwitchCell;
+@synthesize noteCell, dateCell;
 
 #pragma mark -
 #pragma mark Action Methods
@@ -43,7 +43,7 @@
 {
 	[self setNoteCell:[EditableTableCell newDetailCellWithTag:kEventNote withDelegate:self]];
 	[self setDateCell:[DatePickerCell newDateCellWithTag:kEventDate withDelegate:self]];
-	[self setLocationSwitchCell:[LocationSwitchCell newLocationCellWithTag:kEventLocationSwitch withDelegate:self]];
+	[self setLocationCell:[LocationSwitchCell newLocationCellWithTag:kEventLocationSwitch withDelegate:self]];
 	[self setNumberCell:[NumberCell newNumberCellWithTag:kEventNumber withDelegate:self]];
 
 	if ([self isModal]) {
@@ -151,7 +151,7 @@
 		case kEventLocationSwitch:
 			if ([self isModal]) {
 
-				lcell = [self locationSwitchCell];
+				lcell = [self locationCell];
 				return lcell;
 			} else {
 				if (!geoCell) {

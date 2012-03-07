@@ -13,7 +13,7 @@
 @synthesize requiredField;
 @synthesize bestLocation;
 @synthesize shouldStoreLocation = _shouldStoreLocation;
-@synthesize nameCell, numberCell;
+@synthesize nameCell, numberCell, locationCell;
 @synthesize delegate;
 
 - (BOOL)isModal
@@ -43,11 +43,9 @@
 	// Subclasses need to call [locationManager startUpdatingLocation] in
 	// their on viewDidLoad methods
 	
-	if ([self shouldStoreLocation]) {
-		[locationManager setDelegate:self];	
-		[locationManager setDistanceFilter:50];
-		[locationManager setDesiredAccuracy:5];
-	}
+	[locationManager setDelegate:self];	
+	[locationManager setDistanceFilter:50];
+	[locationManager setDesiredAccuracy:5];
 
 	if ([self isModal]) {
 		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] 
@@ -278,7 +276,7 @@
 
 - (BOOL) shouldStoreLocation
 {
-	return _shouldStoreLocation && [self locationServicesEnabled];
+	return _shouldStoreLocation && [self locationServicesEnabled] && [[[self locationCell] locationSwitch] isOn];
 }
 
 - (void) locationSwitchChanged:(UISwitch *)sender

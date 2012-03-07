@@ -13,7 +13,7 @@
 #import "EventStore.h"
 
 @implementation EventDetailController
-@synthesize noteCell, dateCell, folderCell, locationCell;
+@synthesize noteCell, dateCell, folderCell;
 @synthesize event, folder;
 
 #pragma mark -

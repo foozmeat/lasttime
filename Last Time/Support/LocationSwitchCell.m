@@ -17,7 +17,7 @@
 
 	self.locationSwitch = [[UISwitch alloc] init];
 	[locationSwitch addTarget:delegate action:@selector(locationSwitchChanged:) forControlEvents:UIControlEventValueChanged];
-	[locationSwitch setOn:YES];
+	[locationSwitch setOn:NO];
 	self.accessoryView = locationSwitch;
 	
 	self.textLabel.text = @"Store Location?";

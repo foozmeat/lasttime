@@ -26,5 +26,4 @@ enum {
 @property (nonatomic, strong) Event *event;
 @property (nonatomic, strong) EditableTableCell *noteCell;
 @property (nonatomic, strong) DatePickerCell *dateCell;
-@property (nonatomic, strong) LocationSwitchCell *locationSwitchCell;
 @end
