@@ -182,6 +182,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+	if (_event == nil) {
+		return 0;
+	}
+	
 	if ([_event showAverage]) {
 		return NUM_EVENT_SECTIONS;
 	} else {
