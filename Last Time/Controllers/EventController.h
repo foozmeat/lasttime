@@ -42,4 +42,5 @@ enum historyViewCellTags {
 @property (nonatomic, strong) WEPopoverController *averagePopover;
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;
 - (IBAction)addNewItem:(id)sender;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @end

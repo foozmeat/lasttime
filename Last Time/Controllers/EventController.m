@@ -14,6 +14,7 @@
 #import "Event.h"
 
 @implementation EventController
+@synthesize addButton;
 @synthesize eventTableView;
 @synthesize event = _event; 
 @synthesize folder;
@@ -83,8 +84,8 @@
 		// Update the view.
 		[[self navigationItem] setTitle:[_event eventName]];
 		[eventTableView reloadData];
+		[[self addButton] setEnabled:YES];
 	}
-
 }
 
 #pragma mark -
@@ -338,6 +339,10 @@
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
+	
+	if (_event == nil) {
+		[[self addButton] setEnabled:NO];
+	} 
 	if (![_event showAverage]) {
 //		[self showAveragePopup];
 	}
@@ -352,6 +357,7 @@
 - (void)viewDidUnload
 {
 	[self setEventTableView:nil];
+	[self setAddButton:nil];
 	[super viewDidUnload];
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
