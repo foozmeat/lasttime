@@ -205,6 +205,14 @@
 		self.navigationItem.rightBarButtonItem.enabled = !isFieldEmpty;
 	}
 	
+	if ([textField keyboardType] == UIKeyboardTypeDecimalPad) {
+		NSCharacterSet *acceptedInput = [NSCharacterSet characterSetWithCharactersInString:@"01234567890."];
+		if ([[string componentsSeparatedByCharactersInSet:acceptedInput] count] > 1) {
+			return YES;
+		} else {
+			return NO;
+		}
+	}
 	return YES;
 }
 
