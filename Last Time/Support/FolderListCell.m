@@ -9,6 +9,7 @@
 #import "FolderListCell.h"
 
 @implementation FolderListCell
+@synthesize cellTextField;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

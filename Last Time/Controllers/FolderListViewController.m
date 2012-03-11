@@ -15,7 +15,7 @@
 #import "FolderListCell.h"
 
 @implementation FolderListViewController
-@synthesize activeCell;
+@synthesize activeCell, detailViewController;
 
 - (id) init
 {
