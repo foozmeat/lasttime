@@ -194,7 +194,9 @@
 	}
 	
 	cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	}	
 	[[cell textLabel] setText:[item objectName]];
 	[[cell detailTextLabel] setText:[item subtitle]];
 	
