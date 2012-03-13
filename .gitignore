@@ -5,5 +5,5 @@ build/*
 !default.xcworkspace
 profile
 *.moved-aside
-
 .DS_Store
+Last Time.xcodeproj/xcuserdata/*.xcuserdatad/
