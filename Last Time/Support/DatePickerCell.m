@@ -14,11 +14,12 @@
 - (void)initalizeInputView {
 	df = [[NSDateFormatter alloc] init];
 	[df setDateStyle:NSDateFormatterMediumStyle];
-	[df setTimeStyle:NSDateFormatterShortStyle];
+	[df setTimeStyle:NSDateFormatterNoStyle];
 	
 	pickerView = [[UIDatePicker alloc] init];
 	[pickerView setMinuteInterval:15];
 	[pickerView setMaximumDate:[NSDate date]];
+	[pickerView setDatePickerMode:UIDatePickerModeDate];
 	 
 	NSDate *now = [[NSDate alloc] init];
 	[pickerView setDate:now];
