@@ -61,7 +61,6 @@
 		39A0FA0314F0B9B900BA0AFA /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA477F14DAD8B300580EB9 /* EventDetailController.m */; };
 		39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AED56614BD3B6600AE6625 /* CoreLocation.framework */; };
-		39B8C8781504684800A55B5C /* libprofile_rt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8C8771504684800A55B5C /* libprofile_rt.dylib */; };
 		39BE368C14F3E2BD00DBCC43 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BE368514F3E2BD00DBCC43 /* Icon-72.png */; };
 		39BF455714F33BC40059C8B9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39BF455614F33BC40059C8B9 /* libz.dylib */; };
 		39C10D3A15005B6A00DF3F70 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C10D3515005B6A00DF3F70 /* MGSplitCornersView.m */; };
@@ -265,7 +264,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39B8C8781504684800A55B5C /* libprofile_rt.dylib in Frameworks */,
 				39BF455714F33BC40059C8B9 /* libz.dylib in Frameworks */,
 				39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */,
 				39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */,
