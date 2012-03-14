@@ -13,14 +13,16 @@
 - (void)folderPickerDidChange:(EventFolder *)folder;
 - (void)endEditing;
 - (EventFolder *)folderPickerCurrentFolder;
+- (void)popoverController:(UIPopoverController *)poc isShowing:(BOOL)isShowing;
 
 @end
 
-@interface FolderPickerCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate, UIKeyInput>
+@interface FolderPickerCell : UITableViewCell <UIPickerViewDataSource, UIPickerViewDelegate, UIKeyInput,UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UIToolbar *inputAccessoryView;
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, assign) UITableViewController <FolderPickerCellDelegate> *delegate;
+@property (nonatomic, strong) UIPopoverController *folderPopover;
 
 + (FolderPickerCell *)newFolderCellWithTag:(NSInteger)tag 
 															withDelegate:(id) delegate;

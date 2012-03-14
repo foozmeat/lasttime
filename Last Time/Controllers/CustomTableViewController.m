@@ -15,6 +15,7 @@
 @synthesize shouldStoreLocation = _shouldStoreLocation;
 @synthesize nameCell, numberCell, locationCell;
 @synthesize delegate;
+@synthesize popover;
 
 - (BOOL)isModal
 {
@@ -324,6 +325,22 @@
 - (void)endEditing
 {
 	[[self view] endEditing:YES];
+}
+
+- (void)popoverController:(UIPopoverController *)poc isShowing:(BOOL)isShowing;
+{
+	if (isShowing) {
+		self.popover = poc;
+	} else {
+		self.popover = nil;
+	}
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration
+{    
+	[[self popover] dismissPopoverAnimated:YES];
+	self.popover = nil;
+	[self endEditing];
 }
 
 @end

@@ -9,11 +9,11 @@
 #import "DatePickerCell.h"
 
 @implementation DatePickerCell
-@synthesize pickerView, df, delegate, inputAccessoryView;
+@synthesize pickerView, df, delegate, inputAccessoryView, datePopover;
 
 - (void)initalizeInputView {
 	df = [[NSDateFormatter alloc] init];
-	[df setDateStyle:NSDateFormatterMediumStyle];
+	[df setDateStyle:NSDateFormatterLongStyle];
 	[df setTimeStyle:NSDateFormatterNoStyle];
 	
 	pickerView = [[UIDatePicker alloc] init];
@@ -27,11 +27,19 @@
 	
 	[[self detailTextLabel] setText:[df stringFromDate:[pickerView date]]];
 
-	CGRect frame = self.inputView.frame;
-	frame.size = [self.pickerView sizeThatFits:CGSizeZero];
-	self.inputView.frame = frame;
-//	self.pickerView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+		UIViewController *datePickerViewController = [[UIViewController alloc] init];
+		
+		[[datePickerViewController view] addSubview:pickerView];
+		datePopover = [[UIPopoverController alloc] initWithContentViewController:datePickerViewController];
+		[datePopover setPopoverContentSize:pickerView.frame.size];
+		[datePopover setDelegate:self];
+		
+	} else {
+		CGRect frame = self.inputView.frame;
+		frame.size = [self.pickerView sizeThatFits:CGSizeZero];
+		self.inputView.frame = frame;
+	}
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -45,19 +53,23 @@
 
 - (UIView *)inputAccessoryView {
 	if (!inputAccessoryView) {
-		inputAccessoryView = [[UIToolbar alloc] init];
-		inputAccessoryView.barStyle = UIBarStyleBlackTranslucent;
-		inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-		[inputAccessoryView sizeToFit];
-		CGRect frame = inputAccessoryView.frame;
-		frame.size.height = 44.0f;
-		inputAccessoryView.frame = frame;
-		
-		UIBarButtonItem *doneBtn =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
-		UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-		
-		NSArray *array = [NSArray arrayWithObjects:flexibleSpaceLeft, doneBtn, nil];
-		[inputAccessoryView setItems:array];
+		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+
+			inputAccessoryView = [[UIToolbar alloc] init];
+			inputAccessoryView.barStyle = UIBarStyleBlackTranslucent;
+			inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+			[inputAccessoryView sizeToFit];
+			CGRect frame = inputAccessoryView.frame;
+			frame.size.height = 44.0f;
+			inputAccessoryView.frame = frame;
+			
+			UIBarButtonItem *doneBtn =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+			UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+			
+			NSArray *array = [NSArray arrayWithObjects:flexibleSpaceLeft, doneBtn, nil];
+			[inputAccessoryView setItems:array];
+			
+		}
 	}
 	return inputAccessoryView;
 }
@@ -69,7 +81,11 @@
 
 #pragma mark - KeyInput
 - (UIView *)inputView {
-	return self.pickerView;
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		return self.pickerView;
+	} else {
+		return nil;
+	}
 }
 
 - (BOOL)hasText {
@@ -83,13 +99,21 @@
 }
 
 - (BOOL)becomeFirstResponder {
-	[self.pickerView setNeedsLayout];
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		[self.pickerView setNeedsLayout];
+	} else {
+		[datePopover presentPopoverFromRect:[self bounds] 
+																 inView:self 
+							 permittedArrowDirections:UIPopoverArrowDirectionLeft 
+															 animated:YES];
+		[delegate popoverController:datePopover isShowing:YES];
+	}
 	return [super becomeFirstResponder];
 }
 
 - (BOOL)resignFirstResponder {
 	UITableView *tableView = (UITableView *)self.superview;
-	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
+	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:NO];
 	return [super resignFirstResponder];
 }
 
@@ -105,6 +129,15 @@
 		[self becomeFirstResponder];
 	}
 }
+
+#pragma mark - Popover Delegate
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+	[self resignFirstResponder];
+	[delegate popoverController:datePopover isShowing:NO];
+}
+
 
 #pragma mark - UIDatePicker
 

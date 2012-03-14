@@ -12,16 +12,17 @@
 
 - (void)pickerDidChange:(NSDate *)date;
 - (void)endEditing;
+- (void)popoverController:(UIPopoverController *)poc isShowing:(BOOL)isShowing;
 
 @end
 
-@interface DatePickerCell : UITableViewCell
+@interface DatePickerCell : UITableViewCell <UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UIToolbar *inputAccessoryView;
 @property (nonatomic, strong) UIDatePicker *pickerView;
 @property (nonatomic, strong) NSDateFormatter *df;
 @property (nonatomic, assign) UITableViewController <DatePickerCellDelegate> *delegate;
-
+@property (nonatomic, strong) UIPopoverController *datePopover;
 + (DatePickerCell *)newDateCellWithTag:(NSInteger)tag withDelegate:(id) delegate;
 
 - (void)dateChanged:(id)sender;

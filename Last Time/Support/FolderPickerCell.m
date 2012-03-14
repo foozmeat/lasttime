@@ -10,15 +10,22 @@
 #import "EventFolder.h"
 
 @implementation FolderPickerCell
-@synthesize pickerView, delegate, inputAccessoryView;
+@synthesize pickerView, delegate, inputAccessoryView,folderPopover;
 
 - (void)initalizeInputView {
 	self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
 	self.pickerView.showsSelectionIndicator = YES;
-	self.pickerView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//	self.pickerView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 	[pickerView setDataSource:self];
 	[pickerView setDelegate:self];
-
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+		UIViewController *folderPickerViewController = [[UIViewController alloc] init];
+		
+		[[folderPickerViewController view] addSubview:pickerView];
+		folderPopover = [[UIPopoverController alloc] initWithContentViewController:folderPickerViewController];
+		[folderPopover setPopoverContentSize:pickerView.frame.size];
+		[folderPopover setDelegate:self];
+	}
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -41,24 +48,30 @@
 
 #pragma mark - KeyInput
 - (UIView *)inputView {
-	return self.pickerView;
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		return self.pickerView;
+	} else {
+		return nil;
+	}
 }
 
 - (UIView *)inputAccessoryView {
 	if (!inputAccessoryView) {
-		inputAccessoryView = [[UIToolbar alloc] init];
-		inputAccessoryView.barStyle = UIBarStyleBlackTranslucent;
-//		inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-		[inputAccessoryView sizeToFit];
-		CGRect frame = inputAccessoryView.frame;
-		frame.size.height = 44.0f;
-		inputAccessoryView.frame = frame;
-		
-		UIBarButtonItem *doneBtn =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
-		UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-		
-		NSArray *array = [NSArray arrayWithObjects:flexibleSpaceLeft, doneBtn, nil];
-		[inputAccessoryView setItems:array];
+		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+			inputAccessoryView = [[UIToolbar alloc] init];
+			inputAccessoryView.barStyle = UIBarStyleBlackTranslucent;
+	//		inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+			[inputAccessoryView sizeToFit];
+			CGRect frame = inputAccessoryView.frame;
+			frame.size.height = 44.0f;
+			inputAccessoryView.frame = frame;
+			
+			UIBarButtonItem *doneBtn =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+			UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+			
+			NSArray *array = [NSArray arrayWithObjects:flexibleSpaceLeft, doneBtn, nil];
+			[inputAccessoryView setItems:array];
+		}
 	}
 	return inputAccessoryView;
 }
@@ -68,7 +81,15 @@
 }
 
 - (BOOL)becomeFirstResponder {
-	[self.pickerView setNeedsLayout];
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		[self.pickerView setNeedsLayout];
+	} else {
+		[folderPopover presentPopoverFromRect:[self bounds] 
+																 inView:self 
+							 permittedArrowDirections:UIPopoverArrowDirectionLeft 
+															 animated:YES];
+		[delegate popoverController:folderPopover isShowing:YES];
+	}
 	return [super becomeFirstResponder];
 }
 
@@ -123,6 +144,14 @@
 //	NSLog(@"Selected Folder: %@. Index of selected folder: %i", [folder folderName], row);
 	[[self detailTextLabel] setText:[folder folderName]];
 
+}
+
+#pragma mark - Popover Delegate
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+	[self resignFirstResponder];
+	[delegate popoverController:folderPopover isShowing:NO];
 }
 
 + (FolderPickerCell *)newFolderCellWithTag:(NSInteger)tag 
