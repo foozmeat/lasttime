@@ -171,7 +171,7 @@
 //  Override inherited method to automatically place the insertion point in the
 //  first field.
 //
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	
