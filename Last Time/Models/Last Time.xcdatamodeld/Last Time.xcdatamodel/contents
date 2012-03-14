@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50d" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Event" representedClassName="Event" syncable="YES">
+        <attribute name="eventName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="folder" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="EventFolder" inverseName="events" inverseEntity="EventFolder" syncable="YES"/>
+        <relationship name="logEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LogEntry" inverseName="event" inverseEntity="LogEntry" syncable="YES"/>
+    </entity>
+    <entity name="EventFolder" representedClassName="EventFolder" syncable="YES">
+        <attribute name="folderName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderingValue" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="folder" inverseEntity="Event" syncable="YES"/>
+    </entity>
+    <entity name="LogEntry" representedClassName="LogEntry" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="logEntryDateOccured" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="logEntryLocationString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logEntryNote" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logEntryValue" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="event" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="logEntries" inverseEntity="Event" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="EventFolder" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="Event" positionX="162" positionY="198" width="128" height="90"/>
+        <element name="LogEntry" positionX="171" positionY="216" width="128" height="150"/>
+    </elements>
+</model>
