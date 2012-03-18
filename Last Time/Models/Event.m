@@ -2,70 +2,79 @@
 //  Event.m
 //  Last Time
 //
-//  Created by James Moore on 1/10/12.
+//  Created by James Moore on 3/15/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
 #import "Event.h"
+#import "EventFolder.h"
+#import "LogEntry.h"
+
 
 @implementation Event
-@synthesize eventName, logEntryCollection, needsSorting;
 
-- (id)init
-{
-	return [self initWithEventName:@"" 
-											logEntries:[[NSMutableArray alloc] init]];
-}
+@dynamic eventName;
+@dynamic folder;
+@dynamic logEntries;
 
-- (id)initWithEventName:(NSString *)name logEntries:(NSMutableArray *)entries
-{
-	if (!(self = [super init]))
-		return nil;
+@synthesize needsSorting,logEntryCollection;
 
-	[self setEventName:name];
-	[self setLogEntryCollection:entries];
-	needsSorting = YES;
+//- (id)init
+//{
+//	return [self initWithEventName:@"" 
+//											logEntries:[[NSMutableArray alloc] init]];
+//}
+//
+//- (id)initWithEventName:(NSString *)name logEntries:(NSMutableArray *)entries
+//{
+//	if (!(self = [super init]))
+//		return nil;
+//	
+//	[self setEventName:name];
+//	[self setLogEntryCollection:entries];
+//	needsSorting = YES;
+//	
+//	return self;
+//}
 
-	return self;
-}
-
-- (void)removeItem:(id)item
-{
-	[logEntryCollection removeObjectIdenticalTo:item];
-	needsSorting = YES;
-}
+//- (void)removeItem:(id)item
+//{
+//	[self.logEntryCollection removeObjectIdenticalTo:item];
+//	needsSorting = YES;
+//}
 
 
-+ (Event *)randomEvent
-{
-	NSMutableArray *lec = [[NSMutableArray alloc] init];
-	
-	for (int i = 0; i < 3; i++) {
-		LogEntry *le = [LogEntry randomLogEntry];
-		[lec insertObject:le atIndex:i];
-	}
-	
-	NSArray *randomEventList = [NSArray arrayWithObjects:@"Got a Massage", @"Took Vacation", @"Watered Plants", @"Bought Cat Food", @"Had Coffee", nil];
-	
-	long eventIndex = arc4random() % [randomEventList count];
-	NSString *name = [randomEventList objectAtIndex:eventIndex];
-			
-	Event *newEvent = [[self alloc] initWithEventName:(NSString *)name
-																				 logEntries:(NSMutableArray *)lec];
-	return newEvent;
-
-}
+//+ (Event *)randomEvent
+//{
+//	NSMutableArray *lec = [[NSMutableArray alloc] init];
+//	
+//	for (int i = 0; i < 3; i++) {
+//		LogEntry *le = [LogEntry randomLogEntry];
+//		[lec insertObject:le atIndex:i];
+//	}
+//	
+//	NSArray *randomEventList = [NSArray arrayWithObjects:@"Got a Massage", @"Took Vacation", @"Watered Plants", @"Bought Cat Food", @"Had Coffee", nil];
+//	
+//	long eventIndex = arc4random() % [randomEventList count];
+//	NSString *name = [randomEventList objectAtIndex:eventIndex];
+//	
+//	Event *newEvent = [[self alloc] initWithEventName:(NSString *)name
+//																				 logEntries:(NSMutableArray *)lec];
+//	return newEvent;
+//	
+//}
 
 - (void)addLogEntry:(LogEntry *)entry
 {
+	[self addLogEntriesObject:entry];
 	[[self logEntryCollection] addObject:entry];
 	self.needsSorting = YES;
 }
 
 - (void)sortEntries
 {
-	if (needsSorting && [logEntryCollection count] > 0) {
-		[logEntryCollection sortUsingComparator:^(id a, id b) {
+	if (needsSorting && [self.logEntryCollection count] > 0) {
+		[self.logEntryCollection sortUsingComparator:^(id a, id b) {
 			NSDate *first = [(LogEntry*)a logEntryDateOccured];
 			NSDate *second = [(LogEntry*)b logEntryDateOccured];
 			return [second compare:first];
@@ -77,7 +86,7 @@
 
 - (NSString *)objectName
 {
-	return eventName;
+	return self.eventName;
 }
 
 - (BOOL)showAverage
@@ -133,8 +142,8 @@
 	@autoreleasepool {
 		for(LogEntry *entry in logEntryCollection)
 		{
-			runningTotal += [entry logEntryValue];
-			if ([entry logEntryValue] != 0.0) {
+			runningTotal += [[entry logEntryValue] floatValue];
+			if ([[entry logEntryValue] floatValue] != 0.0) {
 				count++;
 			}
 		}
@@ -157,7 +166,7 @@
 	NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[self averageValue]]];
 	
 	return value;
-
+	
 }
 
 #pragma mark Last
@@ -213,7 +222,7 @@
 	nf = [[NSNumberFormatter alloc] init];
 	nf.numberStyle = NSNumberFormatterDecimalStyle;
 	nf.roundingIncrement = [NSNumber numberWithDouble:0.001];
-
+	
 	if ([[self logEntryCollection] count] == 0) {
 		return @"";
 	}
@@ -222,7 +231,7 @@
 	
 	if ([[[self latestEntry] logEntryNote] isEqualToString:@""]) {
 		if ([[self latestEntry] logEntryValue] != 0) {
-			NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[[self latestEntry] logEntryValue]]];
+			NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[[[self latestEntry] logEntryValue] floatValue]]];
 			output = [[NSString alloc] initWithFormat:@"%@ - %@", value, [self lastStringInterval]];
 		} else {
 			output = [[NSString alloc] initWithFormat:@"%@", [self lastStringInterval]];
@@ -230,8 +239,8 @@
 		}
 	} else {
 		output =  [[NSString alloc] initWithFormat:@"%@ - %@", 
-						[[self latestEntry] logEntryNote], 
-						[self lastStringInterval]];
+							 [[self latestEntry] logEntryNote], 
+							 [self lastStringInterval]];
 	}
 	
 	return output;
@@ -240,36 +249,16 @@
 -(NSString *)description
 {
 	NSMutableString *output = [[NSMutableString alloc] init];
-
-	[output appendFormat:@"\n%@", eventName];
+	
+	[output appendFormat:@"\n%@", self.eventName];
 	[output appendFormat:@"\n%@", [self subtitle]];
 	[output appendFormat:@"\nLatest Entry: %@\n", [self latestEntry]];
 	[output appendFormat:@"Average Interval: %f - %@\n", [self averageInterval], [self averageStringInterval]];
 	[output appendFormat:@"Next Time: %@\n", [[self nextTime] descriptionWithLocale:[NSLocale currentLocale]]];
 	
-//	[output appendFormat:@"%@", [self logEntryCollection]];
+		//	[output appendFormat:@"%@", [self logEntryCollection]];
 	
 	return output;
-}
-
-#pragma mark - NSCoder
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-	[aCoder encodeObject:eventName forKey:@"eventName"];
-	[aCoder encodeObject:logEntryCollection forKey:@"logEntryCollection"];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-	self = [super init];
-	
-	if (self) {
-		[self setLogEntryCollection:[aDecoder decodeObjectForKey:@"logEntryCollection"]];
-		[self setEventName:[aDecoder decodeObjectForKey:@"eventName"]];
-		needsSorting = YES;
-	}
-	
-	return self;
 }
 
 @end

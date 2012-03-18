@@ -8,6 +8,9 @@
 
 #import "EventStore.h"
 #import "EventFolder.h"
+#import "Event.h"
+#import "LogEntry.h"
+#import <CoreData/CoreData.h>
 
 static EventStore *defaultStore = nil;
 
@@ -37,8 +40,25 @@ static EventStore *defaultStore = nil;
 	
 	self = [super init];
 	
-	if (self) {
+	model = [NSManagedObjectModel mergedModelFromBundles:nil];
+//	NSLog(@"model = %@", model);
+	
+	NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+	
+	NSString *path = pathInDocumentDirectory(@"LastTime.data");
+	NSURL *storeURL = [NSURL fileURLWithPath:path];
+	
+	NSError *error = nil;
+	
+	if (![psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+		[NSException raise:@"Open failed"
+								format:@"Reason: %@", [error localizedDescription]];
 	}
+	
+	context = [[NSManagedObjectContext alloc] init];
+	[context setPersistentStoreCoordinator:psc];
+	
+	[context setUndoManager:nil];
 	return self;
 }
 
@@ -91,22 +111,38 @@ static EventStore *defaultStore = nil;
 - (BOOL)saveChanges
 {
 	NSLog(@"Saving data...");
-	return [NSKeyedArchiver archiveRootObject:self
-																		 toFile:[self eventDataAchivePath]];
+	NSError *err = nil;
+	BOOL successful = [context save:&err];
+	if (!successful) {
+		NSLog(@"Error saving: %@", [err localizedDescription]);
+	}
+	
+	return successful;
 }
 
 - (void)fetchItemsIfNecessary
 {
 	if (!_allItems) {
-		NSString *path = [self eventDataAchivePath];
-		EventStore *archivedStore = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-		[self setAllItems:[[NSMutableArray alloc] initWithArray:[archivedStore allItems]]];
+		NSFetchRequest *request = [[NSFetchRequest alloc] init];
+		
+		NSEntityDescription *e = [[model entitiesByName] objectForKey:@"EventFolder"];
+		[request setEntity:e];
+		
+		NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"orderingValue" ascending:YES];
+		
+		[request setSortDescriptors:[NSArray arrayWithObject:sd]];
+		
+		NSError *error;
+		NSArray *result = [context executeFetchRequest:request error:&error];
+		
+		if (!result) {
+			[NSException raise:@"Fetch failed" 
+									format:@"Reason: %@", [error localizedDescription]];
+		}
+		_allItems = [[NSMutableArray alloc] initWithArray:result];
+
 	}
 	
-	if (!_allItems) {
-		_allItems = [[NSMutableArray alloc] init];
-		
-	}
 }
 
 
@@ -185,8 +221,9 @@ static EventStore *defaultStore = nil;
 		@autoreleasepool {
 			NSArray *root = [dict objectForKey:@"Root"];
 			for (NSDictionary* folder in root) {
-				EventFolder *f = [[EventFolder alloc] initWithName:[folder objectForKey:@"name"]];
-				
+				EventFolder *f = [NSEntityDescription insertNewObjectForEntityForName:@"EventFolder" inManagedObjectContext:context];
+				[f setFolderName:[folder objectForKey:@"name"]];
+													
 				NSArray *events = [folder objectForKey:@"events"];
 				for (NSDictionary *event in events) {
 					Event *e = [[Event alloc] init];
@@ -228,7 +265,7 @@ static EventStore *defaultStore = nil;
 //					}
 //					[e setNeedsSorting:YES];
 //					[e setLogEntryCollection:entryCollection];
-					[f addItem:e];
+					[f addEventsObject:e];
 				}
 				
 				[[EventStore defaultStore] addFolder:f];
@@ -244,20 +281,20 @@ static EventStore *defaultStore = nil;
 
 
 #pragma mark - NSCoding
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-	[aCoder encodeObject:_allItems forKey:@"allItems"];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-	self = [super init];
-	
-	if (self) {
-		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
-	}
-	
-	return self;
-}
+//- (void)encodeWithCoder:(NSCoder *)aCoder
+//{
+//	[aCoder encodeObject:_allItems forKey:@"allItems"];
+//}
+//
+//- (id)initWithCoder:(NSCoder *)aDecoder
+//{
+//	self = [super init];
+//	
+//	if (self) {
+//		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
+//	}
+//	
+//	return self;
+//}
 
 @end

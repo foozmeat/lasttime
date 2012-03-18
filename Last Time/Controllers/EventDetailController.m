@@ -11,6 +11,8 @@
 #import "DatePickerCell.h"
 #import	"EventFolder.h"
 #import "EventStore.h"
+#import "LogEntry.h"
+#import "Event.h"
 
 @implementation EventDetailController
 @synthesize noteCell, dateCell, folderCell;
@@ -21,7 +23,7 @@
 
 - (void)save
 {
-	[folder addItem:event];
+	[folder addEventsObject:event];
 	[[EventStore defaultStore] saveChanges];
 	
 	[super save];
@@ -88,7 +90,7 @@
 	
 	NSString *text = [textField text];
 	NSUInteger tag = [textField tag];
-	float value = 0.0;
+	NSNumber *value = [NSNumber numberWithFloat:[text floatValue]];
 	
 	switch (tag)
 	{
@@ -99,7 +101,6 @@
 			[[[event logEntryCollection] objectAtIndex:0] setLogEntryNote:text];
 			break;
 		case kEventNumber:
-			value = [text floatValue];
 			[[[event logEntryCollection] objectAtIndex:0] setLogEntryValue:value];
 			break;
 	}
@@ -233,8 +234,8 @@
 	if ([self isModal]) {
 		[self setFolder:newFolder];
 	} else {
-		[newFolder addItem:event];
-		[folder removeItem:event];
+		[newFolder addEventsObject:event];
+		[folder removeEventsObject:event];
 		[self setFolder:newFolder];
 	}
 	[[self tableView] reloadData];

@@ -2,24 +2,27 @@
 //  EventFolder.h
 //  Last Time
 //
-//  Created by James Moore on 1/13/12.
+//  Created by James Moore on 3/18/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import	"Event.h"
+#import <CoreData/CoreData.h>
 
-@interface EventFolder : NSObject <NSCoding>
+@class Event;
+
+@interface EventFolder : NSManagedObject
 {
 	BOOL needsSorting;
 }
 
-@property (nonatomic, strong) NSMutableArray *allItems;;
 @property (nonatomic, strong) NSString *folderName;
+@property (nonatomic, strong) NSNumber *orderingValue;
+@property (nonatomic, strong) NSSet *events;
+@property (nonatomic, strong) NSMutableArray *allItems;;
 
-+ (EventFolder *)randomFolder;
-- (id)initWithName:(NSString *)name;
 
+//- (id)initWithName:(NSString *)name;
 - (NSString *)subtitle;
 - (NSString *)objectName;
 
@@ -28,7 +31,15 @@
 - (NSDate *)latestDate;
 - (NSArray *)allItems;
 
-- (void)removeItem:(id)item;
-- (void)addItem:(id)item;
+//- (void)removeItem:(id)item;
+//- (void)addItem:(id)item;
+@end
+
+@interface EventFolder (CoreDataGeneratedAccessors)
+
+- (void)addEventsObject:(Event *)value;
+- (void)removeEventsObject:(Event *)value;
+- (void)addEvents:(NSSet *)values;
+- (void)removeEvents:(NSSet *)values;
 
 @end

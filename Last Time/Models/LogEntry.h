@@ -2,33 +2,35 @@
 //  LogEntry.h
 //  Last Time
 //
-//  Created by James Moore on 1/10/12.
+//  Created by James Moore on 3/14/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface LogEntry : NSObject <NSCoding>
+@class Event;
 
+@interface LogEntry : NSManagedObject
+
+@property (nonatomic, strong) NSNumber *latitude;
 @property (nonatomic, strong) NSDate *logEntryDateOccured;
-@property (nonatomic, strong) NSString *logEntryNote;
-@property (nonatomic) CLLocationCoordinate2D logEntryLocation;
-@property (nonatomic) float logEntryValue;
 @property (nonatomic, strong) NSString *logEntryLocationString;
-
-- (id)initWithNote:(NSString *)logEntryNote
-			 dateOccured:(NSDate *)logEntryDateOccured;
+@property (nonatomic, strong) NSString *logEntryNote;
+@property (nonatomic, strong) NSNumber *logEntryValue;
+@property (nonatomic, strong) NSNumber *longitude;
+@property (nonatomic, strong) Event *event;
 
 - (NSTimeInterval)secondsSinceNow;
 - (NSString *)stringFromLogEntryInterval;
 - (NSString *)subtitle;
 - (BOOL)hasLocation;
 - (void)reverseLookupLocation;
-
-+ (id)randomLogEntry;
+//+ (id)randomLogEntry;
 + (NSString *)stringFromInterval:(NSTimeInterval)interval
 											withSuffix:(BOOL)suffix
 												withDays:(BOOL)withDays;
+- (void)setLogEntryLocation:(CLLocationCoordinate2D)location;
 
 @end

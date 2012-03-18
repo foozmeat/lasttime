@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A53EA0E151308630065DAC1 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A53EA0D151308630065DAC1 /* Event.m */; };
+		1ADD036815165531006EAD7E /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD036715165531006EAD7E /* EventFolder.m */; };
+		1AED06051510EEC700CCDA4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AED06041510EEC700CCDA4F /* CoreData.framework */; };
+		1AED06091510EEF100CCDA4F /* Last Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */; };
+		1AED06241510F9F100CCDA4F /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06231510F9F100CCDA4F /* LogEntry.m */; };
 		3904CFA114C078E200B7396A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		3904CFA414C078E200B7396A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3904CFA314C078E200B7396A /* main.m */; };
 		3913EADC14EEB5DC0013A86A /* LocationSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */; };
@@ -41,9 +46,6 @@
 		3969111514C9BCF0006E8272 /* EventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111014C9BCF0006E8272 /* EventController.m */; };
 		3969111614C9BCF0006E8272 /* FolderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111214C9BCF0006E8272 /* FolderListViewController.m */; };
 		3969111714C9BCF0006E8272 /* LastTimeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */; };
-		3969111F14C9BCF8006E8272 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111A14C9BCF8006E8272 /* Event.m */; };
-		3969112014C9BCF8006E8272 /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111C14C9BCF8006E8272 /* EventFolder.m */; };
-		3969112114C9BCF8006E8272 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		3969112614C9BD04006E8272 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3969112414C9BD04006E8272 /* MainWindow.xib */; };
 		39825C9014E8757200C4D684 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 39825C8F14E8757200C4D684 /* FileHelpers.m */; };
 		39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
@@ -58,7 +60,6 @@
 		399F70BD14FD1B290012F089 /* default_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 399F70BC14FD1B290012F089 /* default_data.plist */; };
 		39A0F9F714F0B9AF00BA0AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39A0F9FA14F0B9AF00BA0AFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A0F9F914F0B9AF00BA0AFA /* main.m */; };
-		39A0FA0314F0B9B900BA0AFA /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA477F14DAD8B300580EB9 /* EventDetailController.m */; };
 		39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AED56614BD3B6600AE6625 /* CoreLocation.framework */; };
 		39BE368C14F3E2BD00DBCC43 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 39BE368514F3E2BD00DBCC43 /* Icon-72.png */; };
@@ -72,12 +73,6 @@
 		39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39D70CBF14BD3515009C3615 /* InfoPlist.strings */; };
 		39D70CC314BD3515009C3615 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D70CC214BD3515009C3615 /* main.m */; };
 		39DB081614E95640006E4E08 /* FolderPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DB081514E95640006E4E08 /* FolderPickerCell.m */; };
-		39F642CA14E0FB8E004B0900 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
-		39F642CB14E0FBBC004B0900 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111A14C9BCF8006E8272 /* Event.m */; };
-		39F642CC14E0FBCB004B0900 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
-		39F642CD14E0FD16004B0900 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111A14C9BCF8006E8272 /* Event.m */; };
-		39F642CE14E0FD16004B0900 /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111C14C9BCF8006E8272 /* EventFolder.m */; };
-		39F642CF14E0FD16004B0900 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111E14C9BCF8006E8272 /* LogEntry.m */; };
 		39F6436014E40AAE004B0900 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6435F14E40AAE004B0900 /* DatePickerCell.m */; };
 		39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */; };
 		39FEDFA914EAC2C2009672A5 /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FEDFA814EAC2C2009672A5 /* UIColor+Custom.m */; };
@@ -123,6 +118,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A53EA001512E25D0065DAC1 /* oldLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oldLogEntry.h; path = ../../../../Documents/LT/oldLogEntry.h; sourceTree = "<group>"; };
+		1A53EA011512E25D0065DAC1 /* oldLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = oldLogEntry.m; path = ../../../../Documents/LT/oldLogEntry.m; sourceTree = "<group>"; };
+		1A53EA041512E73D0065DAC1 /* oldEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = oldEvent.h; path = ../../../../Documents/LT/oldEvent.h; sourceTree = "<group>"; };
+		1A53EA051512E73D0065DAC1 /* oldEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = oldEvent.m; path = ../../../../Documents/LT/oldEvent.m; sourceTree = "<group>"; };
+		1A53EA0C151308630065DAC1 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		1A53EA0D151308630065DAC1 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		1ADD03641516551F006EAD7E /* oldEventFolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = oldEventFolder.h; path = ../../../../Downloads/oldEventFolder.h; sourceTree = "<group>"; };
+		1ADD03651516551F006EAD7E /* oldEventFolder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = oldEventFolder.m; path = ../../../../Downloads/oldEventFolder.m; sourceTree = "<group>"; };
+		1ADD036615165531006EAD7E /* EventFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFolder.h; sourceTree = "<group>"; };
+		1ADD036715165531006EAD7E /* EventFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventFolder.m; sourceTree = "<group>"; };
+		1AED06041510EEC700CCDA4F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1AED06081510EEF100CCDA4F /* Last Time.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time.xcdatamodel"; sourceTree = "<group>"; };
+		1AED06221510F9F100CCDA4F /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEntry.h; sourceTree = "<group>"; };
+		1AED06231510F9F100CCDA4F /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogEntry.m; sourceTree = "<group>"; };
 		3904CF9F14C078E200B7396A /* RandomEventFolder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomEventFolder; sourceTree = BUILT_PRODUCTS_DIR; };
 		3904CFA314C078E200B7396A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3913EADA14EEB5DC0013A86A /* LocationSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationSwitchCell.h; path = Support/LocationSwitchCell.h; sourceTree = "<group>"; };
@@ -169,12 +178,6 @@
 		3969111214C9BCF0006E8272 /* FolderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderListViewController.m; sourceTree = "<group>"; };
 		3969111314C9BCF0006E8272 /* LastTimeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastTimeAppDelegate.h; sourceTree = "<group>"; };
 		3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastTimeAppDelegate.m; sourceTree = "<group>"; };
-		3969111914C9BCF8006E8272 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		3969111A14C9BCF8006E8272 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		3969111B14C9BCF8006E8272 /* EventFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFolder.h; sourceTree = "<group>"; };
-		3969111C14C9BCF8006E8272 /* EventFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventFolder.m; sourceTree = "<group>"; };
-		3969111D14C9BCF8006E8272 /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEntry.h; sourceTree = "<group>"; };
-		3969111E14C9BCF8006E8272 /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogEntry.m; sourceTree = "<group>"; };
 		3969112414C9BD04006E8272 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		39825C8E14E8757200C4D684 /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHelpers.h; path = Support/FileHelpers.h; sourceTree = "<group>"; };
 		39825C8F14E8757200C4D684 /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileHelpers.m; path = Support/FileHelpers.m; sourceTree = "<group>"; };
@@ -264,6 +267,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AED06051510EEC700CCDA4F /* CoreData.framework in Frameworks */,
 				39BF455714F33BC40059C8B9 /* libz.dylib in Frameworks */,
 				39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */,
 				39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */,
@@ -350,14 +354,21 @@
 		3969111814C9BCF8006E8272 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3969111914C9BCF8006E8272 /* Event.h */,
-				3969111A14C9BCF8006E8272 /* Event.m */,
-				3969111B14C9BCF8006E8272 /* EventFolder.h */,
-				3969111C14C9BCF8006E8272 /* EventFolder.m */,
-				3969111D14C9BCF8006E8272 /* LogEntry.h */,
-				3969111E14C9BCF8006E8272 /* LogEntry.m */,
+				1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */,
+				1ADD036615165531006EAD7E /* EventFolder.h */,
+				1ADD036715165531006EAD7E /* EventFolder.m */,
 				39918C2314F7F99700D8D4EE /* EventStore.h */,
 				39918C2414F7F99700D8D4EE /* EventStore.m */,
+				1A53EA0C151308630065DAC1 /* Event.h */,
+				1A53EA0D151308630065DAC1 /* Event.m */,
+				1AED06221510F9F100CCDA4F /* LogEntry.h */,
+				1AED06231510F9F100CCDA4F /* LogEntry.m */,
+				1A53EA001512E25D0065DAC1 /* oldLogEntry.h */,
+				1A53EA011512E25D0065DAC1 /* oldLogEntry.m */,
+				1A53EA041512E73D0065DAC1 /* oldEvent.h */,
+				1A53EA051512E73D0065DAC1 /* oldEvent.m */,
+				1ADD03641516551F006EAD7E /* oldEventFolder.h */,
+				1ADD03651516551F006EAD7E /* oldEventFolder.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -506,6 +517,7 @@
 		39D70CB514BD3515009C3615 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1AED06041510EEC700CCDA4F /* CoreData.framework */,
 				39BF455614F33BC40059C8B9 /* libz.dylib */,
 				39B8C8771504684800A55B5C /* libprofile_rt.dylib */,
 				39AED56614BD3B6600AE6625 /* CoreLocation.framework */,
@@ -761,9 +773,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3904CFA414C078E200B7396A /* main.m in Sources */,
-				39F642CD14E0FD16004B0900 /* Event.m in Sources */,
-				39F642CE14E0FD16004B0900 /* EventFolder.m in Sources */,
-				39F642CF14E0FD16004B0900 /* LogEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,8 +781,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3950E86A14BFE0AB009C6F6F /* main.m in Sources */,
-				39F642CB14E0FBBC004B0900 /* Event.m in Sources */,
-				39F642CC14E0FBCB004B0900 /* LogEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,7 +789,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				39861AAA14BD526D006F30A0 /* main.m in Sources */,
-				39F642CA14E0FB8E004B0900 /* LogEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -791,7 +797,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				39A0F9FA14F0B9AF00BA0AFA /* main.m in Sources */,
-				39A0FA0314F0B9B900BA0AFA /* LogEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,9 +808,6 @@
 				3969111514C9BCF0006E8272 /* EventController.m in Sources */,
 				3969111614C9BCF0006E8272 /* FolderListViewController.m in Sources */,
 				3969111714C9BCF0006E8272 /* LastTimeAppDelegate.m in Sources */,
-				3969111F14C9BCF8006E8272 /* Event.m in Sources */,
-				3969112014C9BCF8006E8272 /* EventFolder.m in Sources */,
-				3969112114C9BCF8006E8272 /* LogEntry.m in Sources */,
 				39F6F10E14D1A2B800DBA262 /* HistoryLogDetailController.m in Sources */,
 				39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */,
 				3988B9BC14E0214F0010062E /* EditableTableCell.m in Sources */,
@@ -827,6 +829,10 @@
 				39C10D3A15005B6A00DF3F70 /* MGSplitCornersView.m in Sources */,
 				39C10D3B15005B6A00DF3F70 /* MGSplitDividerView.m in Sources */,
 				39C10D3C15005B6A00DF3F70 /* MGSplitViewController.m in Sources */,
+				1AED06091510EEF100CCDA4F /* Last Time.xcdatamodeld in Sources */,
+				1AED06241510F9F100CCDA4F /* LogEntry.m in Sources */,
+				1A53EA0E151308630065DAC1 /* Event.m in Sources */,
+				1ADD036815165531006EAD7E /* EventFolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +988,7 @@
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "TESTFLIGHT=1";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1140,6 +1147,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1305,6 +1313,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1333,6 +1342,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "TESTFLIGHT=1";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -1422,6 +1432,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1AED06081510EEF100CCDA4F /* Last Time.xcdatamodel */,
+			);
+			currentVersion = 1AED06081510EEF100CCDA4F /* Last Time.xcdatamodel */;
+			path = "Last Time.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 39D70CA914BD3515009C3615 /* Project object */;
 }

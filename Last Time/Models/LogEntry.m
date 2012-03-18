@@ -2,15 +2,23 @@
 //  LogEntry.m
 //  Last Time
 //
-//  Created by James Moore on 1/10/12.
+//  Created by James Moore on 3/14/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
 #import "LogEntry.h"
+#import "Event.h"
+
 
 @implementation LogEntry
-@synthesize logEntryDateOccured, logEntryNote, logEntryLocation, logEntryValue, logEntryLocationString;
 
+@dynamic latitude;
+@dynamic logEntryDateOccured;
+@dynamic logEntryLocationString;
+@dynamic logEntryNote;
+@dynamic logEntryValue;
+@dynamic longitude;
+@dynamic event;
 
 - (id)init
 {
@@ -18,69 +26,23 @@
 }
 
 - (id)initWithNote:(NSString *)note
-	 dateOccured:(NSDate *)dateOccured
+			 dateOccured:(NSDate *)dateOccured
 {
 	if (!(self = [super init]))
 		return nil;
-
+	
 	[self setLogEntryNote:note];
 	[self setLogEntryDateOccured:dateOccured];
 	
 	return self;
-
-}
-
-#pragma mark - Location
-
-- (BOOL)hasLocation
-{
-	return logEntryLocation.longitude != 0.0 && logEntryLocation.latitude != 0.0;
-}
-
-- (void)reverseLookupLocation
-{
-	CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-
-	if ([self hasLocation]) {
-		NSLog(@"Fetching location for: %@", [self logEntryNote]);
-
-		CLLocation *tempLoc = [[CLLocation alloc] initWithLatitude:logEntryLocation.latitude longitude:logEntryLocation.longitude];
-		[geocoder reverseGeocodeLocation:tempLoc completionHandler:
-		 ^(NSArray* placemarks, NSError* error){
-
-//			 for (CLPlacemark * placemark in placemarks) {
-//				 NSLog(@"Found location: %@", placemark);
-//			 }
-			 if ([placemarks count] > 0)	 {
-				 NSString *name = [[placemarks objectAtIndex:0] name];
-				 NSLog(@"Found location: %@", name);
-				 [self setLogEntryLocationString:name];
-			 } else {
-				 NSLog(@"location not found");
-			 }
-		 }];
-	}
-
-}
-
-- (NSString *)logEntryLocationString
-{
-	if (!logEntryLocationString && [self hasLocation]) {
-		[self reverseLookupLocation];
-	} else if (![self hasLocation]) {
-		return @"";
-	} else {
-		return logEntryLocationString;
-	}
 	
-	return @"";
 }
 
 #pragma mark - Durations
 
 - (NSTimeInterval)secondsSinceNow
 {
-	return [logEntryDateOccured timeIntervalSinceNow];
+	return [self.logEntryDateOccured timeIntervalSinceNow];
 }
 
 + (NSString *)suffixString:(NSTimeInterval) interval
@@ -90,7 +52,7 @@
 	} else {
 		return @"from now";
 	}
-
+	
 }
 
 - (NSString *)stringFromLogEntryInterval
@@ -103,21 +65,21 @@
 												withDays:(BOOL)withDays
 {
 	NSMutableString *result = [[NSMutableString alloc] init];
-
+	
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];  
 	[dateFormatter setLocale: [NSLocale currentLocale]];
 	
-	// Get the system calendar
+		// Get the system calendar
 	NSCalendar *sysCalendar = [NSCalendar currentCalendar];
 	unsigned int unitFlags = NSDayCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSWeekCalendarUnit | NSYearCalendarUnit | NSTimeZoneCalendarUnit;
 	
 	NSDate *now = [[NSDate alloc] init];
 	NSDateComponents *nowComps = [sysCalendar components:unitFlags fromDate:now];
-
+	
 	NSDate *then = [[NSDate alloc] initWithTimeIntervalSinceNow:interval];	
 	NSDateComponents *thenComps = [sysCalendar components:unitFlags fromDate:then];
 	
-	// Discard hours, minutes, and seconds
+		// Discard hours, minutes, and seconds
 	nowComps.hour = 12;
 	thenComps.hour = 12;
 	nowComps.minute = 0;
@@ -127,11 +89,11 @@
 	
 	now = [sysCalendar dateFromComponents:nowComps];
 	then = [sysCalendar dateFromComponents:thenComps];
-
+	
 	int differenceInDays = abs(
 														 [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
 														 [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
-//	NSLog(@"Difference in days: %i", differenceInDays);
+		//	NSLog(@"Difference in days: %i", differenceInDays);
 	
 	NSDateComponents *diffComps = [sysCalendar components:unitFlags fromDate:now  toDate:then  options:0];
 	NSInteger year = ABS([diffComps year]);
@@ -139,7 +101,7 @@
 	NSInteger week = ABS([diffComps week]);
 	NSInteger day = ABS([diffComps day]);
 	
-	// Figure date string pieces
+		// Figure date string pieces
 	NSString *nbyear = nil;
 	if(year > 1)
 		nbyear = @"years";
@@ -164,7 +126,7 @@
 	else
 		nbday = @"day";
 	
-//	NSLog(@"\nDifference: %@", diffComps);
+		//	NSLog(@"\nDifference: %@", diffComps);
 	
 	if (differenceInDays == 0 && withDays) {
 		[result appendString:@"Today"];
@@ -206,7 +168,7 @@
 		[result appendString:@"Date Error"];
 	}
 	
-//	NSLog(@"Result: %@", result);
+		//	NSLog(@"Result: %@", result);
 	if (suffix) {
 		[result appendFormat:@" %@",[self suffixString:interval]];
 	}
@@ -221,75 +183,100 @@
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"%@: at %@ (%f,%f), recorded on %@, %@, value: %f", 
-					logEntryNote, 
-					logEntryLocationString,
-					logEntryLocation.longitude, logEntryLocation.latitude, 
-					[logEntryDateOccured descriptionWithLocale:[NSLocale currentLocale]], 
+					self.logEntryNote, 
+					self.logEntryLocationString,
+					self.logEntryLocation.longitude, self.logEntryLocation.latitude, 
+					[self.logEntryDateOccured descriptionWithLocale:[NSLocale currentLocale]], 
 					[self stringFromLogEntryInterval],
-					logEntryValue];
+					self.logEntryValue];
 }
 
-+ (id)randomLogEntry
-{
-	NSArray *randomAdjectiveList = [NSArray arrayWithObjects:@"Terrible", @"OK", @"Good", @"Great!", @"Fantastic", nil];
-
-	long noteIndex = random() % [randomAdjectiveList count];
-
-	NSString *randomNote = [NSString stringWithFormat:@"%@",
-													[randomAdjectiveList objectAtIndex:noteIndex]];
-	
-	long randomDuration = arc4random_uniform(60 * 60 * 24 * 7);
-	
-	// Set to 3 for past and future values
-	if (arc4random_uniform(2) > 1) {
-		randomDuration = 0 - randomDuration;
-	}
-	
-	NSDate *randomDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-randomDuration];
-
-//	double latitude = 37.33168900 + (float) ((random() % 100) +1) / 1000000.0;
-//	double longitude = -122.03073100 + (float) ((random() % 100) +1) / 1000000.0;
+//+ (id)randomLogEntry
+//{
+//	NSArray *randomAdjectiveList = [NSArray arrayWithObjects:@"Terrible", @"OK", @"Good", @"Great!", @"Fantastic", nil];
 //	
-//	CLLocationCoordinate2D randomLocation = CLLocationCoordinate2DMake(latitude,longitude);
+//	long noteIndex = random() % [randomAdjectiveList count];
+//	
+//	NSString *randomNote = [NSString stringWithFormat:@"%@",
+//													[randomAdjectiveList objectAtIndex:noteIndex]];
+//	
+//	long randomDuration = arc4random_uniform(60 * 60 * 24 * 7);
+//	
+//		// Set to 3 for past and future values
+//	if (arc4random_uniform(2) > 1) {
+//		randomDuration = 0 - randomDuration;
+//	}
+//	
+//	NSDate *randomDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-randomDuration];
+//	
+//		//	double latitude = 37.33168900 + (float) ((random() % 100) +1) / 1000000.0;
+//		//	double longitude = -122.03073100 + (float) ((random() % 100) +1) / 1000000.0;
+//		//	
+//		//	CLLocationCoordinate2D randomLocation = CLLocationCoordinate2DMake(latitude,longitude);
+//	
+//	LogEntry *le = [[self alloc] initWithNote:randomNote dateOccured:randomDate];
+//	
+//	return le;
+//}
 
-	LogEntry *le = [[self alloc] initWithNote:randomNote dateOccured:randomDate];
+#pragma mark - Location
 
-	return le;
+- (BOOL)hasLocation
+{
+	return self.logEntryLocation.longitude != 0.0 && self.logEntryLocation.latitude != 0.0;
 }
 
-#pragma mark - NSCoder
-- (void)encodeWithCoder:(NSCoder *)aCoder
+- (void)reverseLookupLocation
 {
-	[aCoder encodeObject:logEntryNote forKey:@"logEntryNote"];
-	[aCoder encodeObject:logEntryDateOccured forKey:@"logEntryDateOccured"];
-	[aCoder encodeObject:logEntryLocationString forKey:@"logEntryLocationString"];
-	[aCoder encodeDouble:logEntryLocation.longitude forKey:@"logEntryLongitude"];
-	[aCoder encodeDouble:logEntryLocation.latitude forKey:@"logEntryLatitude"];
-	[aCoder encodeDouble:logEntryValue forKey:@"logEntryValue"];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-	self = [super init];
+	CLGeocoder *geocoder = [[CLGeocoder alloc] init];
 	
-	if (self) {
-		[self setLogEntryNote:[aDecoder decodeObjectForKey:@"logEntryNote"]];
-		[self setLogEntryDateOccured:[aDecoder decodeObjectForKey:@"logEntryDateOccured"]];
-		[self setLogEntryLocationString:[aDecoder decodeObjectForKey:@"logEntryLocationString"]];
+	if ([self hasLocation]) {
+		NSLog(@"Fetching location for: %@", [self logEntryNote]);
 		
-		float longitude, latitude;
-		longitude = [aDecoder decodeDoubleForKey:@"logEntryLongitude"];
-		latitude = [aDecoder decodeDoubleForKey:@"logEntryLatitude"];
-		
-		CLLocationCoordinate2D new_coordinate = { latitude, longitude };
-		
-		[self setLogEntryLocation:new_coordinate];
-
-		[self setLogEntryValue:[aDecoder decodeDoubleForKey:@"logEntryValue"]];
-
+		CLLocation *tempLoc = [[CLLocation alloc] initWithLatitude:self.logEntryLocation.latitude longitude:self.logEntryLocation.longitude];
+		[geocoder reverseGeocodeLocation:tempLoc completionHandler:
+		 ^(NSArray* placemarks, NSError* error){
+			 
+				 //			 for (CLPlacemark * placemark in placemarks) {
+				 //				 NSLog(@"Found location: %@", placemark);
+				 //			 }
+			 if ([placemarks count] > 0)	 {
+				 NSString *name = [[placemarks objectAtIndex:0] name];
+				 NSLog(@"Found location: %@", name);
+				 [self setLogEntryLocationString:name];
+			 } else {
+				 NSLog(@"location not found");
+			 }
+		 }];
 	}
 	
-	return self;
 }
 
+- (NSString *)logEntryLocationString
+{
+	if (!self.logEntryLocationString && [self hasLocation]) {
+		[self reverseLookupLocation];
+	} else if (![self hasLocation]) {
+		return @"";
+	} else {
+		return self.logEntryLocationString;
+	}
+	
+	return @"";
+}
+
+- (void)setLogEntryLocation:(CLLocationCoordinate2D)location
+{
+	NSLog(@"Not setting location");
+}
+
+- (CLLocationCoordinate2D)logEntryLocation
+{
+	return CLLocationCoordinate2DMake([[self latitude] floatValue], [[self longitude] floatValue]);
+
+}
+
+- (void)awakeFromFetch
+{
+}
 @end

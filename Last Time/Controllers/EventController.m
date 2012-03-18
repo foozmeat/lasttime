@@ -158,7 +158,7 @@
 	if ((section == kAverageSection && ![_event showAverage]) || section == kHistorySection){
 		if (editingStyle == UITableViewCellEditingStyleDelete) {
 			id item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
-			[_event removeItem:item];
+			[_event removeLogEntriesObject:item];
 			
 			[tableView reloadData];
 			//		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
@@ -292,8 +292,8 @@
 				historyLogCell.logEntryNoteCell.text = item.logEntryNote;
 			}
 			
-			if ([item logEntryValue] != 0.0) {
-				NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[item logEntryValue]]];
+			if ([[item logEntryValue] floatValue] != 0.0) {
+				NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[item logEntryValue] floatValue]]];
 				historyLogCell.logEntryValueCell.text = value;
 			} else {
 				historyLogCell.logEntryValueCell.text = @"";

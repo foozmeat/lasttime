@@ -2,27 +2,29 @@
 //  Event.h
 //  Last Time
 //
-//  Created by James Moore on 1/10/12.
+//  Created by James Moore on 3/15/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "LogEntry.h"
+#import <CoreData/CoreData.h>
 
-@class EventFolder;
+@class EventFolder, LogEntry;
 
-@interface Event : NSObject <NSCoding>
+@interface Event : NSManagedObject
 {
 	NSNumberFormatter *nf;
 }
-@property (nonatomic, strong) NSString *eventName;
-@property (nonatomic, strong) NSMutableArray *logEntryCollection;
 
+@property (nonatomic, strong) NSString * eventName;
+@property (nonatomic, strong) EventFolder *folder;
+@property (nonatomic, strong) NSSet *logEntries;
+
+@property (nonatomic, strong) NSMutableArray *logEntryCollection;
 @property (nonatomic) BOOL needsSorting;
 
-- (id)initWithEventName:(NSString *)name
-						 logEntries:(NSMutableArray *)entries;
-
+//- (id)initWithEventName:(NSString *)name
+//						 logEntries:(NSMutableArray *)entries;
 - (NSString *)subtitle;
 
 - (NSDate *)latestDate;
@@ -39,9 +41,17 @@
 - (float)averageValue;
 - (NSString *)averageStringValue;
 
-+ (Event *)randomEvent;
+//+ (Event *)randomEvent;
 - (void)addLogEntry:(LogEntry *)entry;
-- (void)removeItem:(id)item;
-
+//- (void)removeItem:(id)item;
 @end
 
+
+@interface Event (CoreDataGeneratedAccessors)
+
+- (void)addLogEntriesObject:(LogEntry *)value;
+- (void)removeLogEntriesObject:(LogEntry *)value;
+- (void)addLogEntries:(NSSet *)values;
+- (void)removeLogEntries:(NSSet *)values;
+
+@end

@@ -10,6 +10,7 @@
 #import "EditableTableCell.h"
 #import "DatePickerCell.h"
 #import "Event.h"
+#import	"LogEntry.h"
 
 @implementation HistoryLogDetailController
 @synthesize logEntry, event;
@@ -84,7 +85,7 @@
 			break;
 		case kEventNumber:
 			value = [text floatValue];
-			[logEntry setLogEntryValue:value];
+			[logEntry setLogEntryValue:[NSNumber numberWithFloat:value]];
 			break;
 	}
 }
@@ -143,7 +144,7 @@
 			
 			
 			ncell = [self numberCell];
-			[[ncell cellTextField] setText:[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[logEntry logEntryValue]]]];
+			[[ncell cellTextField] setText:[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[logEntry logEntryValue] floatValue]]]];
 			[[ncell cellTextField] setPlaceholder:@"rating, mileage, weight"];
 			[[ncell textLabel] setText:@"Number"];
 			return ncell;

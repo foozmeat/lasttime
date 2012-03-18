@@ -2,49 +2,20 @@
 //  EventFolder.m
 //  Last Time
 //
-//  Created by James Moore on 1/13/12.
+//  Created by James Moore on 3/18/12.
 //  Copyright (c) 2012 Self. All rights reserved.
 //
 
 #import "EventFolder.h"
-#import "EventStore.h"
+#import "Event.h"
 
 @implementation EventFolder
-@synthesize folderName, allItems;
 
-- (id)init
-{
-	return [self initWithName:@""];
-}
+@dynamic folderName;
+@dynamic orderingValue;
+@dynamic events;
 
-- (id)initWithName:(NSString *)name
-{
-	self = [super init];
-	
-	if (self) {
-		[self setFolderName:name];
-		allItems = [[NSMutableArray alloc] init];
-	}
-	return self;
-
-}
-
-+ (EventFolder *)randomFolder
-{
-
-	NSArray *randomFolderList = [NSArray arrayWithObjects:@"Health", @"Pet", @"Car", @"Vacation", @"Diet", nil];
-	long folderIndex = arc4random() % [randomFolderList count];
-	EventFolder *folder = [[EventFolder alloc] initWithName:[randomFolderList objectAtIndex:folderIndex]];
-
-	@autoreleasepool {
-		for (int i = 0; i < 2; i++) {
-			[folder addItem:[Event randomEvent]];
-		}
-
-	}
-
-	return folder;
-}
+@synthesize allItems;
 
 - (void)addItem:(id)item;
 {
@@ -71,7 +42,7 @@
 
 - (NSString *)objectName
 {
-	return folderName;
+	return self.folderName;
 }
 
 - (NSArray *)allItems
@@ -86,7 +57,7 @@
 		[allItems sortUsingComparator:^(id a, id b) {
 			NSDate *first = [(id)a latestDate];
 			NSDate *second = [(id)b latestDate];
-//			NSLog(@"%@: %@ %@: %@", [a objectName], first, [b objectName], second);
+				//			NSLog(@"%@: %@ %@: %@", [a objectName], first, [b objectName], second);
 			
 			return [second compare:first];
 		}];
@@ -136,27 +107,6 @@
 	[output appendFormat:@"\n%@", [self itemDescriptions]];
 	
 	return output;
-}
-
-
-#pragma mark - NSCoder
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-	[aCoder encodeObject:folderName forKey:@"folderName"];
-	[aCoder encodeObject:allItems forKey:@"allItems"];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-	self = [super init];
-	
-	if (self) {
-		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
-		[self setFolderName:[aDecoder decodeObjectForKey:@"folderName"]];
-		needsSorting = YES;
-	}
-	
-	return self;
 }
 
 @end

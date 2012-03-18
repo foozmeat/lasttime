@@ -7,27 +7,31 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 @class EventFolder;
 
-@interface EventStore : NSObject <NSCoding>
+@interface EventStore : NSObject <NSObject>
 {
 	NSMutableArray *_allItems;
+	NSManagedObjectContext *context;
+	NSManagedObjectModel *model;
 }
+
 @property (nonatomic, strong) NSMutableArray *allItems;
 
 + (EventStore *)defaultStore;
+- (BOOL)saveChanges;
+- (void)fetchItemsIfNecessary;
 
+#pragma mark - Folders
 - (NSArray *)allFolders;
-
 - (void)removeFolder:(EventFolder *)folder;
 - (void)addFolder:(EventFolder *)folder;
 - (void)moveFolderAtIndex:(int)from toIndex:(int)to;
 
-- (BOOL)saveChanges;
-- (void)fetchItemsIfNecessary;
-
+#pragma mark - Migrations
 - (void)removeRootEvents;
-
 - (void)migrateDataFromVersion:(int)version;
+
 @end

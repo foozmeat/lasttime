@@ -12,6 +12,7 @@
 #import "WEPopoverController.h"
 #import "EventStore.h"
 #import "EventFolder.h"
+#import "Event.h"
 
 @implementation EventListViewController
 @synthesize folder;
@@ -163,7 +164,7 @@
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
 		id item = [[folder allItems] objectAtIndex:[indexPath row]];
-		[folder removeItem:item];
+		[folder removeEventsObject:item];
 		
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 		
