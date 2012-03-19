@@ -16,6 +16,7 @@ static EventStore *defaultStore = nil;
 
 @implementation EventStore
 @synthesize allItems = _allItems;
+@synthesize context;
 
 + (EventStore *)defaultStore
 {
@@ -78,13 +79,29 @@ static EventStore *defaultStore = nil;
 
 -(void)removeFolder:(EventFolder *)folder
 {
+	[context deleteObject:folder];
 	[[self allItems] removeObjectIdenticalTo:folder];
 }
 
 -(void)addFolder:(EventFolder *)folder
 {
-	[[self allItems] addObject:folder];
-	[self saveChanges];
+//	[[self allItems] addObject:folder];
+//	[self saveChanges];
+	
+	double order;
+	if ([_allItems count] == 0) {
+		order = 1.0;
+	} else {
+		order = [[[_allItems lastObject] orderingValue] doubleValue] + 1.0;
+	}
+	
+	NSLog(@"Adding after %d items, order = %.2f", [_allItems count], order);
+	
+	EventFolder *ef = [NSEntityDescription insertNewObjectForEntityForName:@"EventFolder" inManagedObjectContext:context];
+	[ef setOrderingValue:[NSNumber numberWithDouble:order]];
+	
+	[_allItems addObject:folder];
+	 
 }
 
 - (void)moveFolderAtIndex:(int)from toIndex:(int)to
@@ -98,15 +115,31 @@ static EventStore *defaultStore = nil;
 	
 	[_allItems insertObject:e atIndex:to];
 	
+	double lowerBound = 0.0;
+	
+	if (to > 0) {
+		lowerBound = [[[_allItems objectAtIndex:to - 1] orderingValue] doubleValue];
+	} else {
+		lowerBound = [[[_allItems objectAtIndex:1] orderingValue] doubleValue] - 2.0;
+	}
+	
+	double upperBound = 0.0;
+	
+	if (to < [_allItems count] - 1.0) {
+		upperBound = [[[_allItems objectAtIndex:to + 1] orderingValue] doubleValue];
+	} else {
+		upperBound = [[[_allItems objectAtIndex:to - 1] orderingValue] doubleValue] + 2.0;
+	}
+	
+	NSNumber *n = [NSNumber numberWithDouble:(lowerBound + upperBound) / 2.0];
+	NSLog(@"moving to order %@", n);
+	
+	[e setOrderingValue:n];
+	
 	[self saveChanges];
 
 }
 #pragma mark - Saving/Loading
-
-- (NSString *)eventDataAchivePath
-{
-	return pathInDocumentDirectory(@"events.plist");
-}
 
 - (BOOL)saveChanges
 {
@@ -158,6 +191,20 @@ static EventStore *defaultStore = nil;
 		
 	}
 
+}
+
+- (void)migrateToCoreData
+{
+	NSString *path = pathInDocumentDirectory(@"events.plist");;
+	EventStore *archivedStore = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+	
+	NSMutableArray *oldFolders = [[NSMutableArray alloc] initWithArray:[archivedStore allItems]];
+	
+	[self fetchItemsIfNecessary];
+	
+	for (EventFolder *ef in oldFolders) {
+    [self addFolder:ef];
+	}
 }
 
 - (void)removeRootEvents

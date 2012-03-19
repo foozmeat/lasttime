@@ -14,11 +14,11 @@
 @interface EventStore : NSObject <NSObject>
 {
 	NSMutableArray *_allItems;
-	NSManagedObjectContext *context;
 	NSManagedObjectModel *model;
 }
 
 @property (nonatomic, strong) NSMutableArray *allItems;
+@property (nonatomic, strong) NSManagedObjectContext *context;
 
 + (EventStore *)defaultStore;
 - (BOOL)saveChanges;
@@ -31,7 +31,6 @@
 - (void)moveFolderAtIndex:(int)from toIndex:(int)to;
 
 #pragma mark - Migrations
-- (void)removeRootEvents;
 - (void)migrateDataFromVersion:(int)version;
 
 @end
