@@ -83,72 +83,17 @@ static EventStore *defaultStore = nil;
 	return _allItems;
 }
 
-- (NSArray *)allFolders
-{
-	[self fetchItemsIfNecessary];
-	return [self allItems];
-}
-
 - (void)removeFolder:(EventFolder *)folder
 {
 	[self.context deleteObject:folder];
-	[[self allItems] removeObjectIdenticalTo:folder];
 }
 
 - (EventFolder *)createFolder
 {
-//	[[self allItems] addObject:folder];
-//	[self saveChanges];
-	
-	double order;
-	if ([_allItems count] == 0) {
-		order = 1.0;
-	} else {
-		order = [[[_allItems lastObject] orderingValue] doubleValue] + 1.0;
-	}
-	
-	NSLog(@"Adding after %d items, order = %.2f", [_allItems count], order);
-	
 	EventFolder *ef = [NSEntityDescription insertNewObjectForEntityForName:@"EventFolder" inManagedObjectContext:self.context];
-	[ef setOrderingValue:[NSNumber numberWithDouble:order]];
 	
-	[_allItems addObject:ef];
 	return ef;
 	 
-}
-
-- (void)moveFolderAtIndex:(int)from toIndex:(int)to
-{
-	if (from == to) {
-		return;
-	}
-	
-	EventFolder *e = [_allItems objectAtIndex:from];
-	[_allItems removeObjectAtIndex:from];
-	
-	[_allItems insertObject:e atIndex:to];
-	
-	double lowerBound = 0.0;
-	
-	if (to > 0) {
-		lowerBound = [[[_allItems objectAtIndex:to - 1] orderingValue] doubleValue];
-	} else {
-		lowerBound = [[[_allItems objectAtIndex:1] orderingValue] doubleValue] - 2.0;
-	}
-	
-	double upperBound = 0.0;
-	
-	if (to < [_allItems count] - 1.0) {
-		upperBound = [[[_allItems objectAtIndex:to + 1] orderingValue] doubleValue];
-	} else {
-		upperBound = [[[_allItems objectAtIndex:to - 1] orderingValue] doubleValue] + 2.0;
-	}
-	
-	NSNumber *n = [NSNumber numberWithDouble:(lowerBound + upperBound) / 2.0];
-	NSLog(@"moving to order %@", n);
-	
-	[e setOrderingValue:n];
-	
 }
 
 #pragma mark - events
@@ -276,13 +221,15 @@ static EventStore *defaultStore = nil;
 																													 errorDescription:NULL];
 
 	if (dict) {
-		
+		int folderIndex = 0;
 		@autoreleasepool {
 			NSArray *root = [dict objectForKey:@"Root"];
 			for (NSDictionary* folder in root) {
 				EventFolder *f = [self createFolder];
 				[f setFolderName:[folder objectForKey:@"name"]];
-													
+				[f setOrderingValue:[NSNumber numberWithInt:folderIndex]];
+				folderIndex++;
+				
 				NSArray *events = [folder objectForKey:@"events"];
 				for (NSDictionary *event in events) {
 					Event *e = [self createEvent];

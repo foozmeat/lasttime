@@ -28,10 +28,8 @@
 - (NSManagedObjectContext *)context;
 
 #pragma mark - Folders
-- (NSArray *)allFolders;
 - (void)removeFolder:(EventFolder *)folder;
 - (EventFolder *)createFolder;
-- (void)moveFolderAtIndex:(int)from toIndex:(int)to;
 
 #pragma mark - Events
 - (Event *)createEvent;

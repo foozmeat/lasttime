@@ -28,12 +28,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	NSError *error;
-	if (![[self fetchedResultsController] performFetch:&error]) {
-			// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
-	}
+	userDrivenDataModelChange = NO;
+	newCell = nil;
 	
 }
 
@@ -66,6 +62,7 @@
 {
 	if (!editing) 	{
 		[[activeCell cellTextField] resignFirstResponder];
+//		[[EventStore defaultStore] saveChanges];
 	}
 
 	[super setEditing:editing animated:animate];
@@ -82,8 +79,7 @@
 	}
 }
 
-#pragma mark - TableView Delegate
-
+#pragma mark - Core Data
 - (NSFetchedResultsController *)fetchedResultsController {
 	
 	if (_fetchedResultsController != nil) {
@@ -105,11 +101,86 @@
 																				sectionNameKeyPath:nil 
 																								 cacheName:@"FolderList"];
 	self.fetchedResultsController = theFetchedResultsController;
-	_fetchedResultsController.delegate = self;
+	self.fetchedResultsController.delegate = self;
+	
+	NSError *error = nil;
+	if (![self.fetchedResultsController performFetch:&error]) {
+			// Update to handle the error appropriately.
+		NSLog(@"Error fetching folders %@, %@", error, [error userInfo]);
+		exit(-1);  // Fail
+	}
 	
 	return _fetchedResultsController;    
 	
 }
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+	if (userDrivenDataModelChange) return;
+	
+	[self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+{
+	if (userDrivenDataModelChange) return;
+	
+	switch(type) {
+		case NSFetchedResultsChangeInsert:
+			[self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+			
+		case NSFetchedResultsChangeDelete:
+			[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+	}
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+	if (userDrivenDataModelChange) return;
+	
+	UITableView *tableView = self.tableView;
+	switch(type) {
+		case NSFetchedResultsChangeInsert:
+			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+			newCell = newIndexPath;
+			break;
+			
+		case NSFetchedResultsChangeDelete:
+			
+			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+			
+		case NSFetchedResultsChangeUpdate:
+			[self configureCell:(FolderListCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+			break;
+			
+		case NSFetchedResultsChangeMove:
+			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
+			break;
+	}
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+	if (userDrivenDataModelChange) return;
+	
+	[self.tableView endUpdates];
+
+	if (newCell) {
+		FolderListCell *cell = (FolderListCell *)[self.tableView cellForRowAtIndexPath:newCell];
+		[[cell cellTextField] becomeFirstResponder];
+		newCell = nil;
+	}
+}
+
+
+#pragma mark - TableView Delegate
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
@@ -148,12 +219,11 @@
 	} else {
 		if ( addingNewRow ) {
 			[tableView deselectRowAtIndexPath:indexPath animated:YES];
-			NSArray *paths = [NSArray arrayWithObject:indexPath];
-			[tableView insertRowsAtIndexPaths:paths 
-											 withRowAnimation:UITableViewRowAnimationAutomatic];
+			NSManagedObject *lastObject = [self.fetchedResultsController.fetchedObjects lastObject];
+			double lastObjectDisplayOrder = [[lastObject valueForKey:@"orderingValue"] doubleValue];
+			[folder setValue:[NSNumber numberWithDouble:lastObjectDisplayOrder + 1.0] forKey:@"orderingValue"];
+
 		}		
-		FolderListCell *cell = (FolderListCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-		[[cell cellTextField] becomeFirstResponder];
 	}
 
 }
@@ -165,17 +235,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
 		FolderListCell *cell = (FolderListCell *)[tableView cellForRowAtIndexPath:indexPath];
 		[[cell cellTextField] resignFirstResponder];
-		
+
 		id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		[[EventStore defaultStore] removeFolder:item];
-		
-		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-		
+				
+		[[EventStore defaultStore] saveChanges];
+
 		if ([[self.fetchedResultsController fetchedObjects] count] == 0) {
 			[self setEditing:NO animated:YES];
 		}
 		
-		[[EventStore defaultStore] saveChanges];
 		
 	}
 }
@@ -203,8 +272,62 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	if ((sourceIndexPath.row != (int)[[self.fetchedResultsController fetchedObjects] count] ) && 
 			(destinationIndexPath.row != (int)[[self.fetchedResultsController fetchedObjects] count] )) {
 
-		[[EventStore defaultStore] moveFolderAtIndex:[sourceIndexPath row] 
-																				 toIndex:[destinationIndexPath row]];
+//		[[EventStore defaultStore] moveFolderAtIndex:[sourceIndexPath row] 
+//																				 toIndex:[destinationIndexPath row]];
+    NSUInteger fromIndex = sourceIndexPath.row;  
+    NSUInteger toIndex = destinationIndexPath.row;
+    NSLog(@"Moving from %u to %u", fromIndex, toIndex);
+		
+    if (fromIndex == toIndex) return;
+    
+    NSUInteger count = [self.fetchedResultsController.fetchedObjects count];
+    
+    NSManagedObject *movingObject = [self.fetchedResultsController.fetchedObjects objectAtIndex:fromIndex];
+    
+    NSManagedObject *toObject  = [self.fetchedResultsController.fetchedObjects objectAtIndex:toIndex];
+    double toObjectDisplayOrder =  [[toObject valueForKey:@"orderingValue"] doubleValue];
+    
+    double newIndex;
+    if ( fromIndex < toIndex ) {
+        // moving up
+			if (toIndex == count-1) {
+					// toObject == last object
+				newIndex = toObjectDisplayOrder + 1.0;
+			} else  {
+				NSManagedObject *object = [self.fetchedResultsController.fetchedObjects objectAtIndex:toIndex+1];
+				double objectDisplayOrder = [[object valueForKey:@"orderingValue"] doubleValue];
+				
+				newIndex = toObjectDisplayOrder + (objectDisplayOrder - toObjectDisplayOrder) / 2.0;
+			}
+			
+    } else {
+        // moving down
+			
+			if ( toIndex == 0) {
+					// toObject == last object
+				newIndex = toObjectDisplayOrder - 1.0;
+				
+			} else {
+				
+				NSManagedObject *object = [self.fetchedResultsController.fetchedObjects objectAtIndex:toIndex-1];
+				double objectDisplayOrder = [[object valueForKey:@"orderingValue"] doubleValue];
+				
+				newIndex = objectDisplayOrder + (toObjectDisplayOrder - objectDisplayOrder) / 2.0;
+				
+			}
+    }
+    
+    [movingObject setValue:[NSNumber numberWithDouble:newIndex] forKey:@"orderingValue"];
+    NSLog(@"Moving to %f", newIndex);
+		
+    userDrivenDataModelChange = YES;
+    
+    [[EventStore defaultStore] saveChanges];
+		
+    userDrivenDataModelChange = NO;
+    
+			// update with a short delay the moved cell
+//    [self performSelector:(@selector(configureCellAtIndexPath:)) withObject:(destinationIndexPath) afterDelay:0.2];
 	}
 }
 
@@ -239,7 +362,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 	} else {
 		
-		id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		
 		reuseString = @"FolderCell";
 		
@@ -248,14 +370,29 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		if (!cell) {
 			cell = [[FolderListCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 		}
-		[[cell cellTextField] setDelegate:self];
-		[[cell textLabel] setText:[item objectName]];
-
-		[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:15.0]];
-		[[cell detailTextLabel] setText:[item subtitle]];
-		
+		[self configureCell:cell atIndexPath:indexPath];
 		return cell;
 	}
+	
+}
+
+
+- (void)configureCellAtIndexPath:(NSIndexPath *)indexPath
+{
+	[self configureCell:(FolderListCell *)[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+}
+
+
+- (void)configureCell:(FolderListCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+	
+	id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	[[cell cellTextField] setDelegate:self];
+	[[cell textLabel] setText:[item objectName]];
+	
+	[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:15.0]];
+	[[cell detailTextLabel] setText:[item subtitle]];
+	
 	
 }
 
