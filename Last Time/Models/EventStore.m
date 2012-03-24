@@ -11,12 +11,13 @@
 #import "Event.h"
 #import "LogEntry.h"
 #import <CoreData/CoreData.h>
+#import "plistStore.h"
 
 static EventStore *defaultStore = nil;
 
 @implementation EventStore
 @synthesize allItems = _allItems;
-@synthesize context;
+@synthesize context = _context;
 
 + (EventStore *)defaultStore
 {
@@ -40,28 +41,39 @@ static EventStore *defaultStore = nil;
 	}
 	
 	self = [super init];
-	
+	return self;
+}
+
+#pragma mark - Core Data
+- (NSManagedObjectContext *)context
+{
+	if (_context != nil)
+	{
+		return _context;
+	}
+
 	model = [NSManagedObjectModel mergedModelFromBundles:nil];
-//	NSLog(@"model = %@", model);
+		//	NSLog(@"model = %@", model);
 	
 	NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
 	
-	NSString *path = pathInDocumentDirectory(@"LastTime.data");
+	NSString *path = pathInDocumentDirectory(@"LastTime.sqllite");
 	NSURL *storeURL = [NSURL fileURLWithPath:path];
 	
 	NSError *error = nil;
-	
 	if (![psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
 		[NSException raise:@"Open failed"
 								format:@"Reason: %@", [error localizedDescription]];
 	}
-	
-	context = [[NSManagedObjectContext alloc] init];
-	[context setPersistentStoreCoordinator:psc];
-	
-	[context setUndoManager:nil];
-	return self;
+
+	if (psc != nil)
+	{
+		_context = [[NSManagedObjectContext alloc] init];
+		[_context setPersistentStoreCoordinator:psc];
+	}
+	return _context;
 }
+
 
 #pragma mark - Folder Management
 
@@ -77,13 +89,13 @@ static EventStore *defaultStore = nil;
 	return [self allItems];
 }
 
--(void)removeFolder:(EventFolder *)folder
+- (void)removeFolder:(EventFolder *)folder
 {
-	[context deleteObject:folder];
+	[self.context deleteObject:folder];
 	[[self allItems] removeObjectIdenticalTo:folder];
 }
 
--(void)addFolder:(EventFolder *)folder
+- (EventFolder *)createFolder
 {
 //	[[self allItems] addObject:folder];
 //	[self saveChanges];
@@ -97,10 +109,11 @@ static EventStore *defaultStore = nil;
 	
 	NSLog(@"Adding after %d items, order = %.2f", [_allItems count], order);
 	
-	EventFolder *ef = [NSEntityDescription insertNewObjectForEntityForName:@"EventFolder" inManagedObjectContext:context];
+	EventFolder *ef = [NSEntityDescription insertNewObjectForEntityForName:@"EventFolder" inManagedObjectContext:self.context];
 	[ef setOrderingValue:[NSNumber numberWithDouble:order]];
 	
-	[_allItems addObject:folder];
+	[_allItems addObject:ef];
+	return ef;
 	 
 }
 
@@ -136,18 +149,50 @@ static EventStore *defaultStore = nil;
 	
 	[e setOrderingValue:n];
 	
-	[self saveChanges];
-
 }
+
+#pragma mark - events
+- (Event *)createEvent
+{
+	Event *e = (Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:self.context];
+	return e;
+}
+
+- (void)removeEvent:(Event *)event
+{
+	[self.context deleteObject:event];
+}
+
+#pragma mark - LogEntry
+- (LogEntry *)createLogEntry
+{
+	LogEntry *le = (LogEntry *)[NSEntityDescription insertNewObjectForEntityForName:@"LogEntry" inManagedObjectContext:self.context];
+	return le;
+	
+}
+
+- (void)removeLogEntry:(LogEntry *)logEntry
+{
+	[self.context deleteObject:logEntry];
+}
+
+
 #pragma mark - Saving/Loading
 
 - (BOOL)saveChanges
 {
-	NSLog(@"Saving data...");
-	NSError *err = nil;
-	BOOL successful = [context save:&err];
-	if (!successful) {
-		NSLog(@"Error saving: %@", [err localizedDescription]);
+	BOOL successful = false;
+	
+	if ([self.context hasChanges]) {
+		NSLog(@"Saving data...");
+		NSError *err = nil;
+		successful = [self.context save:&err];
+		if (!successful) {
+			NSLog(@"Error saving: %@", [err localizedDescription]);
+		}
+		
+	} else {
+		NSLog(@"No changes to save");
 	}
 	
 	return successful;
@@ -166,7 +211,7 @@ static EventStore *defaultStore = nil;
 		[request setSortDescriptors:[NSArray arrayWithObject:sd]];
 		
 		NSError *error;
-		NSArray *result = [context executeFetchRequest:request error:&error];
+		NSArray *result = [self.context executeFetchRequest:request error:&error];
 		
 		if (!result) {
 			[NSException raise:@"Fetch failed" 
@@ -178,17 +223,18 @@ static EventStore *defaultStore = nil;
 	
 }
 
-
 #pragma mark - Migrations
 
 - (void)migrateDataFromVersion:(int)version
 {
 
-	if (version == 0) {
-		[[EventStore defaultStore] removeRootEvents];
-		
+	if (version == 0) {		
 		[[EventStore defaultStore] loadDefaultData];
 		
+	}
+	
+	if (version != 0 && version < 70) {
+//		[self migrateToCoreData];
 	}
 
 }
@@ -196,51 +242,16 @@ static EventStore *defaultStore = nil;
 - (void)migrateToCoreData
 {
 	NSString *path = pathInDocumentDirectory(@"events.plist");;
-	EventStore *archivedStore = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+	plistStore *archivedStore = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
 	
 	NSMutableArray *oldFolders = [[NSMutableArray alloc] initWithArray:[archivedStore allItems]];
 	
 	[self fetchItemsIfNecessary];
 	
 	for (EventFolder *ef in oldFolders) {
-    [self addFolder:ef];
-	}
-}
-
-- (void)removeRootEvents
-{
-	if ([_allItems count] == 0) {
-		return;
-	}
-	NSLog(@"Migrating root events");
-	@autoreleasepool {
-				
-		// Gather up all the root events
-		NSMutableArray *unfiledEvents = [[NSMutableArray alloc] init];
-		
-		for (id item in [self allItems]) {
-			if ([item isMemberOfClass:[Event class]]) {
-				[unfiledEvents addObject:item];
-				
-			}
-		}
-		
-		// If there are any then make a new folder
-		if ([unfiledEvents count] > 0) {
-			EventFolder *unfiled = [[EventFolder alloc] init];
-			unfiled.folderName = @"Unfiled";
-			
-			//Put the events in the folder
-			unfiled.allItems = unfiledEvents;
-			
-			// add the new folder to the root
-			[self addFolder:unfiled];
-			
-			//Remove them from the root
-			for (id item in unfiledEvents) {
-				[[self allItems] removeObjectIdenticalTo:item];
-			}
-		}
+		NSLog(@"%@", ef.folderName);
+    EventFolder *newFolder = [self createFolder];
+		newFolder.folderName = ef.folderName;
 	}
 }
 
@@ -252,6 +263,7 @@ static EventStore *defaultStore = nil;
 //	_allItems = [[NSMutableArray alloc] init];
 	
 	if ([_allItems count] > 0) {
+		NSLog(@"NOT Loading default data");
 		return;
 	}
 	
@@ -268,80 +280,28 @@ static EventStore *defaultStore = nil;
 		@autoreleasepool {
 			NSArray *root = [dict objectForKey:@"Root"];
 			for (NSDictionary* folder in root) {
-				EventFolder *f = [NSEntityDescription insertNewObjectForEntityForName:@"EventFolder" inManagedObjectContext:context];
+				EventFolder *f = [self createFolder];
 				[f setFolderName:[folder objectForKey:@"name"]];
 													
 				NSArray *events = [folder objectForKey:@"events"];
 				for (NSDictionary *event in events) {
-					Event *e = [[Event alloc] init];
+					Event *e = [self createEvent];
+
 					[e setEventName:[event objectForKey:@"name"]];
 					
-//					NSArray *logEntries = [event objectForKey:@"logEntries"];
-//					NSMutableArray *entryCollection = [[NSMutableArray alloc] init];
+					[f addEvent:e];
 					
-//					for (NSDictionary *logEntry in logEntries) {
-//						
-//						LogEntry *le = [[LogEntry alloc] init];
-//						
-//						[le setLogEntryNote:[logEntry objectForKey:@"note"]];
-//						
-//						// Make up a date
-//						// Set to 3 for past and future values
-//						long randomDuration = arc4random_uniform(60 * 60 * 24 * 100);
-//						if (arc4random_uniform(2) > 1) {
-//							randomDuration = 0 - randomDuration;
-//						}
-//						
-//						NSDate *randomDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-randomDuration];
-//
-//						[le setLogEntryDateOccured:randomDate];
-//						
-//						NSNumber *value = [logEntry objectForKey:@"value"];
-//						[le setLogEntryValue:[value floatValue]];
-//						
-//						NSDictionary *location = [logEntry objectForKey:@"location"];
-//						NSNumber *lat = [location objectForKey:@"latitude"];
-//						NSNumber *longitude = [location objectForKey:@"longitude"];
-//						
-//						CLLocationCoordinate2D loc = CLLocationCoordinate2DMake([lat floatValue], [longitude floatValue]);
-//					
-//						[le setLogEntryLocation:loc];
-//						[le reverseLookupLocation];
-//						[entryCollection addObject:le];
-//						
-//					}
-//					[e setNeedsSorting:YES];
-//					[e setLogEntryCollection:entryCollection];
-					[f addEventsObject:e];
+					NSLog(@"Event: %@", e);
 				}
-				
-				[[EventStore defaultStore] addFolder:f];
 			}
 		}
 		
+		[self saveChanges];
 	} else {
 		NSLog(@"Unable to load plist");
 	}
 	
 	
 }
-
-
-#pragma mark - NSCoding
-//- (void)encodeWithCoder:(NSCoder *)aCoder
-//{
-//	[aCoder encodeObject:_allItems forKey:@"allItems"];
-//}
-//
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//	self = [super init];
-//	
-//	if (self) {
-//		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
-//	}
-//	
-//	return self;
-//}
 
 @end

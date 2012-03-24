@@ -16,26 +16,31 @@
 
 @implementation EventDetailController
 @synthesize noteCell, dateCell, folderCell;
-@synthesize event, folder;
+@synthesize event, folder, logEntry;
 
 #pragma mark -
 #pragma mark Action Methods
 
 - (void)save
 {
-	[folder addEventsObject:event];
-	[[EventStore defaultStore] saveChanges];
+	[event addLogEntry:logEntry];
+	[folder addEvent:event];
+//	[[EventStore defaultStore] saveChanges];
 	
 	[super save];
 //	NSLog(@"%@", event);
 }
 
+- (void)cancel
+{
+	[[EventStore defaultStore] removeLogEntry:logEntry];
+	[[EventStore defaultStore] removeEvent:event];
+
+
+}
 #pragma mark - UIViewController Methods
 - (void)viewWillAppear:(BOOL)animated
 {
-	if ([[event logEntryCollection] count] == 0) {
-		[event addLogEntry:[[LogEntry alloc] init]];
-	}
 }
 
 - (void)viewDidLoad
@@ -98,10 +103,10 @@
 			[event setEventName:text];
 			break;
 		case kEventNote:
-			[[[event logEntryCollection] objectAtIndex:0] setLogEntryNote:text];
+			[logEntry setLogEntryNote:text];
 			break;
 		case kEventNumber:
-			[[[event logEntryCollection] objectAtIndex:0] setLogEntryValue:value];
+			[logEntry setLogEntryValue:value];
 			break;
 	}
 }
@@ -212,7 +217,7 @@
 	} else {
 		loc = CLLocationCoordinate2DMake(0.0, 0.0);
 	}
-	[[event latestEntry] setLogEntryLocation:loc];
+	[logEntry setLogEntryLocation:loc];
 	
 }
 
@@ -224,7 +229,7 @@
 
 - (void)pickerDidChange:(NSDate *)date
 {
-	[[[event logEntryCollection] objectAtIndex:0] setLogEntryDateOccured:date];
+	[logEntry setLogEntryDateOccured:date];
 }
 
 #pragma mark - FolderPickerDelegate
@@ -234,8 +239,8 @@
 	if ([self isModal]) {
 		[self setFolder:newFolder];
 	} else {
-		[newFolder addEventsObject:event];
-		[folder removeEventsObject:event];
+		[newFolder addEvent:event];
+		[folder removeEvent:event];
 		[self setFolder:newFolder];
 	}
 	[[self tableView] reloadData];

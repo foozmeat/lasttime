@@ -71,6 +71,7 @@
 	self.needsSorting = YES;
 }
 
+
 - (void)sortEntries
 {
 	if (needsSorting && [self.logEntryCollection count] > 0) {
@@ -82,6 +83,11 @@
 		
 		needsSorting = NO;
 	}
+}
+
+- (NSMutableArray *)logEntryCollection
+{
+	return [[NSMutableArray alloc] initWithArray:[self.logEntries allObjects]];
 }
 
 - (NSString *)objectName
@@ -98,8 +104,8 @@
 	}
 }
 
-#pragma mark Average
-#pragma mark -
+#pragma mark - Average
+
 - (NSTimeInterval)averageInterval
 {
 	if ([logEntryCollection count] < 2) {
@@ -169,8 +175,7 @@
 	
 }
 
-#pragma mark Last
-#pragma mark -
+#pragma mark - Last
 
 - (NSTimeInterval)lastDuration
 {
@@ -259,6 +264,19 @@
 		//	[output appendFormat:@"%@", [self logEntryCollection]];
 	
 	return output;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super init];
+	
+	if (self) {
+		[self setLogEntryCollection:[aDecoder decodeObjectForKey:@"logEntryCollection"]];
+		[self setEventName:[aDecoder decodeObjectForKey:@"eventName"]];
+		needsSorting = YES;
+	}
+	
+	return self;
 }
 
 @end

@@ -13,7 +13,7 @@
 
 @interface EventFolder : NSManagedObject
 {
-	BOOL needsSorting;
+//	BOOL needsSorting;
 }
 
 @property (nonatomic, strong) NSString *folderName;
@@ -26,13 +26,12 @@
 - (NSString *)subtitle;
 - (NSString *)objectName;
 
-- (void) sortItems;
+//- (void) sortItems;
 - (id)latestItem;
 - (NSDate *)latestDate;
-- (NSArray *)allItems;
 
-//- (void)removeItem:(id)item;
-//- (void)addItem:(id)item;
+- (void)removeEvent:(Event *)item;
+- (void)addEvent:(Event *)item;
 @end
 
 @interface EventFolder (CoreDataGeneratedAccessors)

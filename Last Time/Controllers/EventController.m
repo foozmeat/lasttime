@@ -106,7 +106,7 @@
 {
 	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 	
-	[hldc setLogEntry:[[LogEntry alloc] init]];
+	[hldc setLogEntry:[[EventStore defaultStore] createLogEntry]];
 	[hldc setEvent:_event];
 	[hldc setDelegate:self];
 	

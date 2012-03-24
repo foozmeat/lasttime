@@ -16,6 +16,7 @@
 
 @implementation FolderListViewController
 @synthesize activeCell, detailViewController;
+@synthesize fetchedResultsController = _fetchedResultsController;
 
 - (id) init
 {
@@ -24,6 +25,17 @@
 }
 
 #pragma mark - View lifecycle
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	
+	NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+			// Update to handle the error appropriately.
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		exit(-1);  // Fail
+	}
+	
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -44,6 +56,10 @@
 
 }
 
+- (void)viewDidUnload {
+	self.fetchedResultsController = nil;
+}
+
 #pragma mark - Add Actions
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate
@@ -54,7 +70,7 @@
 
 	[super setEditing:editing animated:animate];
 
-	NSArray *paths = [NSArray arrayWithObject:	[NSIndexPath indexPathForRow:[[[EventStore defaultStore] allFolders] count] inSection:0]];
+	NSArray *paths = [NSArray arrayWithObject:	[NSIndexPath indexPathForRow:[[self.fetchedResultsController fetchedObjects] count] inSection:0]];
 
 	if (editing) 	{
 		[[self tableView] insertRowsAtIndexPaths:paths 
@@ -68,10 +84,37 @@
 
 #pragma mark - TableView Delegate
 
+- (NSFetchedResultsController *)fetchedResultsController {
+	
+	if (_fetchedResultsController != nil) {
+		return _fetchedResultsController;
+	}
+	
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription 
+																 entityForName:@"EventFolder" inManagedObjectContext:[[EventStore defaultStore] context]];
+	[fetchRequest setEntity:entity];
+	
+	NSSortDescriptor *sort = [[NSSortDescriptor alloc] 
+														initWithKey:@"orderingValue" ascending:YES];
+	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+	
+	NSFetchedResultsController *theFetchedResultsController = 
+	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
+																			managedObjectContext: [[EventStore defaultStore] context]
+																				sectionNameKeyPath:nil 
+																								 cacheName:@"FolderList"];
+	self.fetchedResultsController = theFetchedResultsController;
+	_fetchedResultsController.delegate = self;
+	
+	return _fetchedResultsController;    
+	
+}
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	if ([tableView isEditing]) {
-		if( indexPath.row == (int)[[[EventStore defaultStore] allFolders] count] ) {
+		if( indexPath.row == (int)[[self.fetchedResultsController fetchedObjects] count] ) {
 			return UITableViewCellEditingStyleInsert;
 			
 		} else {
@@ -86,19 +129,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	EventFolder *item = nil;
+	EventFolder *folder = nil;
 	
-	BOOL addingNewRow = indexPath.row == (int)[[[EventStore defaultStore] allFolders] count];
+	BOOL addingNewRow = indexPath.row == (int)[[self.fetchedResultsController fetchedObjects] count];
 	
 	if ( addingNewRow ) {
-		item = [[EventFolder alloc] init];
+		folder = [[EventStore defaultStore] createFolder];
 	} else {
-		item = [[[EventStore defaultStore] allFolders] objectAtIndex:[indexPath row]];
+		folder = [_fetchedResultsController objectAtIndexPath:indexPath];;
 	}
 
 	if (![tableView isEditing]) {
 		EventListViewController *elvc = [[EventListViewController alloc] init];
-		[elvc setFolder:item];
+		[elvc setFolder:folder];
 		[elvc setDetailViewController:[self detailViewController]];
 		[[self navigationController] pushViewController:elvc animated:YES];
 		
@@ -106,7 +149,6 @@
 		if ( addingNewRow ) {
 			[tableView deselectRowAtIndexPath:indexPath animated:YES];
 			NSArray *paths = [NSArray arrayWithObject:indexPath];
-			[[EventStore defaultStore] addFolder:item];
 			[tableView insertRowsAtIndexPaths:paths 
 											 withRowAnimation:UITableViewRowAnimationAutomatic];
 		}		
@@ -124,12 +166,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		FolderListCell *cell = (FolderListCell *)[tableView cellForRowAtIndexPath:indexPath];
 		[[cell cellTextField] resignFirstResponder];
 		
-		id item = [[[EventStore defaultStore] allFolders] objectAtIndex:[indexPath row]];
+		id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		[[EventStore defaultStore] removeFolder:item];
 		
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 		
-		if ([[[EventStore defaultStore] allFolders] count] == 0) {
+		if ([[self.fetchedResultsController fetchedObjects] count] == 0) {
 			[self setEditing:NO animated:YES];
 		}
 		
@@ -140,7 +182,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if( indexPath.row == (int)[[[EventStore defaultStore] allFolders] count] ) {
+	if( indexPath.row == (int)[[self.fetchedResultsController fetchedObjects] count] ) {
 		return NO;
 	} else {
 		return YES;
@@ -149,7 +191,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 {
-	if (proposedDestinationIndexPath.row == (int)[[[EventStore defaultStore] allFolders] count]) {
+	if (proposedDestinationIndexPath.row == (int)[[self.fetchedResultsController fetchedObjects] count]) {
 		return sourceIndexPath;
 	} else {
 		return proposedDestinationIndexPath;
@@ -158,8 +200,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath 
 {
-	if ((sourceIndexPath.row != (int)[[[EventStore defaultStore] allFolders] count] ) && 
-			(destinationIndexPath.row != (int)[[[EventStore defaultStore] allFolders] count] )) {
+	if ((sourceIndexPath.row != (int)[[self.fetchedResultsController fetchedObjects] count] ) && 
+			(destinationIndexPath.row != (int)[[self.fetchedResultsController fetchedObjects] count] )) {
 
 		[[EventStore defaultStore] moveFolderAtIndex:[sourceIndexPath row] 
 																				 toIndex:[destinationIndexPath row]];
@@ -169,10 +211,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+	
+	id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+
 	if ([tableView isEditing]) {
-		return [[[EventStore defaultStore] allFolders] count] + 1;
+		return [sectionInfo numberOfObjects] + 1;
 	} else {
-		return [[[EventStore defaultStore] allFolders] count];
+		return [sectionInfo numberOfObjects];
 	}
 }
 
@@ -180,7 +225,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSString *reuseString = nil;
 	
-	if ([indexPath row] == (int)[[[EventStore defaultStore] allFolders] count]) {
+	if ([indexPath row] == (int)[[self.fetchedResultsController fetchedObjects] count]) {
 		reuseString = @"addFolderCell";
 		
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseString];
@@ -194,7 +239,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 	} else {
 		
-		id item = [[[EventStore defaultStore] allFolders] objectAtIndex:[indexPath row]];
+		id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		
 		reuseString = @"FolderCell";
 		
@@ -238,7 +283,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	
 	NSIndexPath *path = [self.tableView indexPathForCell:cell];
 	
-	EventFolder *folder = [[[EventStore defaultStore] allFolders] objectAtIndex:path.row];
+	EventFolder *folder = [self.fetchedResultsController objectAtIndexPath:path];
 	[folder setFolderName:text];
 
 }

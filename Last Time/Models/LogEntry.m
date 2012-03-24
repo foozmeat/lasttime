@@ -20,22 +20,27 @@
 @dynamic longitude;
 @dynamic event;
 
-- (id)init
-{
-	return [self initWithNote:@"" dateOccured:[[NSDate alloc] init]];
-}
+//- (id)init
+//{
+//	return [self initWithNote:@"" dateOccured:[[NSDate alloc] init]];
+//}
+//
+//- (id)initWithNote:(NSString *)note
+//			 dateOccured:(NSDate *)dateOccured
+//{
+//	if (!(self = [super init]))
+//		return nil;
+//	
+//	[self setLogEntryNote:note];
+//	[self setLogEntryDateOccured:dateOccured];
+//	
+//	return self;
+//	
+//}
 
-- (id)initWithNote:(NSString *)note
-			 dateOccured:(NSDate *)dateOccured
+- (void)awakeFromInsert
 {
-	if (!(self = [super init]))
-		return nil;
-	
-	[self setLogEntryNote:note];
-	[self setLogEntryDateOccured:dateOccured];
-	
-	return self;
-	
+	self.logEntryDateOccured = [[NSDate alloc] init];
 }
 
 #pragma mark - Durations
@@ -233,7 +238,7 @@
 	if ([self hasLocation]) {
 		NSLog(@"Fetching location for: %@", [self logEntryNote]);
 		
-		CLLocation *tempLoc = [[CLLocation alloc] initWithLatitude:self.logEntryLocation.latitude longitude:self.logEntryLocation.longitude];
+		CLLocation *tempLoc = [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]];
 		[geocoder reverseGeocodeLocation:tempLoc completionHandler:
 		 ^(NSArray* placemarks, NSError* error){
 			 
@@ -276,7 +281,28 @@
 
 }
 
-- (void)awakeFromFetch
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
+	self = [super init];
+	
+	if (self) {
+		[self setLogEntryNote:[aDecoder decodeObjectForKey:@"logEntryNote"]];
+		[self setLogEntryDateOccured:[aDecoder decodeObjectForKey:@"logEntryDateOccured"]];
+		[self setLogEntryLocationString:[aDecoder decodeObjectForKey:@"logEntryLocationString"]];
+		
+		float longitude, latitude;
+		longitude = [aDecoder decodeDoubleForKey:@"logEntryLongitude"];
+		latitude = [aDecoder decodeDoubleForKey:@"logEntryLatitude"];
+		
+		CLLocationCoordinate2D new_coordinate = { latitude, longitude };
+		
+		[self setLogEntryLocation:new_coordinate];
+		
+		[self setLogEntryValue:[aDecoder decodeObjectForKey:@"logEntryValue"]];
+		
+	}
+	
+	return self;
 }
+
 @end

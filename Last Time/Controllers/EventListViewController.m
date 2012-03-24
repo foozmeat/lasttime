@@ -114,8 +114,9 @@
 {
 	EventDetailController *edc = [[EventDetailController alloc] init];
 	
-	[edc setEvent:[[Event alloc] init]];
-	[edc setFolder:folder];
+	[edc setEvent:[[EventStore defaultStore] createEvent]];
+	[edc setLogEntry:[[EventStore defaultStore] createLogEntry]];
+	[edc setFolder:self.folder];
 	[edc setDelegate:self];
 	
 	UINavigationController *newNavController = [[UINavigationController alloc]
@@ -171,7 +172,7 @@
 		if ([[folder allItems] count] == 0) {
 			[[self navigationItem] setRightBarButtonItem:nil];
 			[self setEditing:NO animated:YES];
-			[self showAddPopup];
+//			[self showAddPopup];
 		}
 		
 		[[EventStore defaultStore] saveChanges];

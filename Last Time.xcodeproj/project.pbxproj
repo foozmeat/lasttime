@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A065E351516C4B600CBFBBC /* plistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A065E341516C4B600CBFBBC /* plistStore.m */; };
 		1A53EA0E151308630065DAC1 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A53EA0D151308630065DAC1 /* Event.m */; };
 		1ADD036815165531006EAD7E /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD036715165531006EAD7E /* EventFolder.m */; };
 		1AED06051510EEC700CCDA4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AED06041510EEC700CCDA4F /* CoreData.framework */; };
@@ -118,6 +119,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A065E331516C4B600CBFBBC /* plistStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plistStore.h; sourceTree = "<group>"; };
+		1A065E341516C4B600CBFBBC /* plistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = plistStore.m; sourceTree = "<group>"; };
 		1A53EA001512E25D0065DAC1 /* oldLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oldLogEntry.h; path = ../../../../Documents/LT/oldLogEntry.h; sourceTree = "<group>"; };
 		1A53EA011512E25D0065DAC1 /* oldLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = oldLogEntry.m; path = ../../../../Documents/LT/oldLogEntry.m; sourceTree = "<group>"; };
 		1A53EA041512E73D0065DAC1 /* oldEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = oldEvent.h; path = ../../../../Documents/LT/oldEvent.h; sourceTree = "<group>"; };
@@ -369,6 +372,8 @@
 				1A53EA051512E73D0065DAC1 /* oldEvent.m */,
 				1ADD03641516551F006EAD7E /* oldEventFolder.h */,
 				1ADD03651516551F006EAD7E /* oldEventFolder.m */,
+				1A065E331516C4B600CBFBBC /* plistStore.h */,
+				1A065E341516C4B600CBFBBC /* plistStore.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -833,6 +838,7 @@
 				1AED06241510F9F100CCDA4F /* LogEntry.m in Sources */,
 				1A53EA0E151308630065DAC1 /* Event.m in Sources */,
 				1ADD036815165531006EAD7E /* EventFolder.m in Sources */,
+				1A065E351516C4B600CBFBBC /* plistStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

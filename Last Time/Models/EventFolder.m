@@ -17,16 +17,18 @@
 
 @synthesize allItems;
 
-- (void)addItem:(id)item;
+- (void)addEvent:(Event *)item;
 {
 	[allItems addObject:item];
-	needsSorting = YES;
+	[self addEventsObject:item];
+//	needsSorting = YES;
 }
 
-- (void)removeItem:(id)item
+- (void)removeEvent:(Event *)item
 {
 	[allItems removeObjectIdenticalTo:item];
-	needsSorting = YES;
+	[self removeEventsObject:item];
+//	needsSorting = YES;
 }
 
 - (NSString *)subtitle
@@ -47,25 +49,26 @@
 
 - (NSArray *)allItems
 {
-	[self sortItems];
-	return allItems;
+//	[self sortItems];
+
+	return [[NSArray alloc] initWithArray:[self.events allObjects]];
 }
 
-- (void) sortItems
-{
-	if (needsSorting && [allItems count] > 0) {
-		[allItems sortUsingComparator:^(id a, id b) {
-			NSDate *first = [(id)a latestDate];
-			NSDate *second = [(id)b latestDate];
-				//			NSLog(@"%@: %@ %@: %@", [a objectName], first, [b objectName], second);
-			
-			return [second compare:first];
-		}];
-		
-		needsSorting = NO;
-	}
-	
-}
+//- (void) sortItems
+//{
+//	if (needsSorting && [allItems count] > 0) {
+//		[allItems sortUsingComparator:^(id a, id b) {
+//			NSDate *first = [(id)a latestDate];
+//			NSDate *second = [(id)b latestDate];
+//				//			NSLog(@"%@: %@ %@: %@", [a objectName], first, [b objectName], second);
+//			
+//			return [second compare:first];
+//		}];
+//		
+//		needsSorting = NO;
+//	}
+//	
+//}
 
 - (id)latestItem
 {
@@ -73,7 +76,7 @@
 		return nil;
 	}
 	
-	[self sortItems];
+//	[self sortItems];
 	return [allItems objectAtIndex:0];
 }
 
@@ -91,7 +94,7 @@
 -(NSString *)itemDescriptions
 {
 	
-	[self sortItems];
+//	[self sortItems];
 	NSMutableString *output = [[NSMutableString alloc] init];
 	
 	for (id item in allItems) {
@@ -107,6 +110,19 @@
 	[output appendFormat:@"\n%@", [self itemDescriptions]];
 	
 	return output;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super init];
+	
+	if (self) {
+		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
+		[self setFolderName:[aDecoder decodeObjectForKey:@"folderName"]];
+//		needsSorting = YES;
+	}
+	
+	return self;
 }
 
 @end

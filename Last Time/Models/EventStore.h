@@ -10,6 +10,8 @@
 #import <CoreData/CoreData.h>
 
 @class EventFolder;
+@class Event;
+@class LogEntry;
 
 @interface EventStore : NSObject <NSObject>
 {
@@ -23,12 +25,21 @@
 + (EventStore *)defaultStore;
 - (BOOL)saveChanges;
 - (void)fetchItemsIfNecessary;
+- (NSManagedObjectContext *)context;
 
 #pragma mark - Folders
 - (NSArray *)allFolders;
 - (void)removeFolder:(EventFolder *)folder;
-- (void)addFolder:(EventFolder *)folder;
+- (EventFolder *)createFolder;
 - (void)moveFolderAtIndex:(int)from toIndex:(int)to;
+
+#pragma mark - Events
+- (Event *)createEvent;
+- (void)removeEvent:(Event *)event;
+
+#pragma mark - LogEntry
+- (LogEntry *)createLogEntry;
+- (void)removeLogEntry:(LogEntry *)logEntry;
 
 #pragma mark - Migrations
 - (void)migrateDataFromVersion:(int)version;
