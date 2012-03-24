@@ -19,6 +19,7 @@
 @synthesize eventTableView;
 @synthesize addPopover;
 @synthesize detailViewController;
+@synthesize fetchedResultsController = _fetchedResultsController;
 
 - (void)viewDidUnload
 {
@@ -31,7 +32,8 @@
 	[super viewWillAppear:animated];
 	
 	self.title = [folder folderName];
-	
+	userDrivenDataModelChange = NO;
+
 	[[self eventTableView] reloadData];
 }
 
@@ -39,7 +41,7 @@
 {
 	[super viewDidAppear:animated];
 	
-	if ([[folder allItems] count] > 0) {
+	if ([[self.fetchedResultsController fetchedObjects] count] != 0) {
 		[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 	} else {
 //		[self showAddPopup];
@@ -131,11 +133,109 @@
 	
 }
 
+#pragma mark - Core Data
+- (NSFetchedResultsController *)fetchedResultsController {
+	
+	if (_fetchedResultsController != nil) {
+		return _fetchedResultsController;
+	}
+	
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription 
+																 entityForName:@"Event" inManagedObjectContext:[[EventStore defaultStore] context]];
+	[fetchRequest setEntity:entity];
+	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"folder == %@",
+														folder];
+	[fetchRequest setPredicate:predicate];
+
+	NSSortDescriptor *sort = [[NSSortDescriptor alloc] 
+														initWithKey:@"eventName" ascending:YES];
+	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+	
+	NSFetchedResultsController *theFetchedResultsController = 
+	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
+																			managedObjectContext: [[EventStore defaultStore] context]
+																				sectionNameKeyPath:nil 
+																								 cacheName:[folder folderName]];
+	self.fetchedResultsController = theFetchedResultsController;
+	self.fetchedResultsController.delegate = self;
+
+	NSError *error = nil;
+	if (![self.fetchedResultsController performFetch:&error]) {
+			// Update to handle the error appropriately.
+		NSLog(@"Error fetching folders %@, %@", error, [error userInfo]);
+		exit(-1);  // Fail
+	}
+	
+	return _fetchedResultsController;    
+	
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+	if (userDrivenDataModelChange) return;
+	
+	[self.eventTableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+{
+	if (userDrivenDataModelChange) return;
+	
+	switch(type) {
+		case NSFetchedResultsChangeInsert:
+			[self.eventTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+			
+		case NSFetchedResultsChangeDelete:
+			[self.eventTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+	}
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+	if (userDrivenDataModelChange) return;
+	
+	UITableView *tableView = self.eventTableView;
+	switch(type) {
+		case NSFetchedResultsChangeInsert:
+			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+			break;
+			
+		case NSFetchedResultsChangeDelete:
+			
+			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+			
+		case NSFetchedResultsChangeUpdate:
+			[self configureCell:[eventTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+			break;
+			
+		case NSFetchedResultsChangeMove:
+			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
+			break;
+	}
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+	if (userDrivenDataModelChange) return;
+	
+	[self.eventTableView endUpdates];
+	
+}
+
 #pragma mark - TableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	id item = [[folder allItems] objectAtIndex:[indexPath row]];
+	id item = [_fetchedResultsController objectAtIndexPath:indexPath];
 	
 	if ([tableView isEditing]) {
 		EventDetailController *edc = [[EventDetailController alloc] init];
@@ -164,31 +264,27 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		id item = [[folder allItems] objectAtIndex:[indexPath row]];
-		[folder removeEventsObject:item];
-		
-		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-		
-		if ([[folder allItems] count] == 0) {
+		id item = [_fetchedResultsController objectAtIndexPath:indexPath];
+		[[EventStore defaultStore] removeEvent:item];
+		[[EventStore defaultStore] saveChanges];
+
+		if ([[self.fetchedResultsController fetchedObjects] count] == 0) {
 			[[self navigationItem] setRightBarButtonItem:nil];
 			[self setEditing:NO animated:YES];
-//			[self showAddPopup];
 		}
 		
-		[[EventStore defaultStore] saveChanges];
 	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [[folder allItems] count];
+	id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+	return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	
-	id item = [[folder allItems] objectAtIndex:[indexPath row]];
-		
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell"];
 	
 	if (!cell) {
@@ -199,10 +295,26 @@
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}	
+	[self configureCell:cell atIndexPath:indexPath];
+
+	
+	return cell;
+}
+
+- (void)configureCellAtIndexPath:(NSIndexPath *)indexPath
+{
+	[self configureCell:[self.eventTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+}
+
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+	
+	id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	[[cell textLabel] setText:[item objectName]];
 	[[cell detailTextLabel] setText:[item subtitle]];
 	
-	return cell;
+	
 }
 
 #pragma mark - ItemDetailViewControllerDelegate

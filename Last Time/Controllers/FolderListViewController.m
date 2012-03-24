@@ -207,7 +207,7 @@
 	if ( addingNewRow ) {
 		folder = [[EventStore defaultStore] createFolder];
 	} else {
-		folder = [_fetchedResultsController objectAtIndexPath:indexPath];;
+		folder = [_fetchedResultsController objectAtIndexPath:indexPath];
 	}
 
 	if (![tableView isEditing]) {

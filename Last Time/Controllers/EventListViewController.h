@@ -13,12 +13,16 @@
 @class EventController;
 
 @interface EventListViewController : UIViewController 
-<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, ItemDetailViewControllerDelegate>
+<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, ItemDetailViewControllerDelegate,NSFetchedResultsControllerDelegate>
+{
+	bool userDrivenDataModelChange;
 
+}
 @property (nonatomic, strong) EventFolder *folder;
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;
 @property (nonatomic, strong) WEPopoverController *addPopover;
 @property (strong, nonatomic) EventController *detailViewController;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 
 - (IBAction)addNewEvent:(id)sender;
