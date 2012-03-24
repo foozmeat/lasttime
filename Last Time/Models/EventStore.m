@@ -16,7 +16,7 @@
 static EventStore *defaultStore = nil;
 
 @implementation EventStore
-@synthesize allItems = _allItems;
+@synthesize allFolders = _allFolders;
 @synthesize context = _context;
 
 + (EventStore *)defaultStore
@@ -77,10 +77,28 @@ static EventStore *defaultStore = nil;
 
 #pragma mark - Folder Management
 
-- (NSMutableArray *)allItems
+- (NSMutableArray *)allFolders
 {
-	[self fetchItemsIfNecessary];
-	return _allItems;
+	if (!_allFolders) {
+		NSFetchRequest *request = [[NSFetchRequest alloc] init];
+		
+		NSEntityDescription *e = [[model entitiesByName] objectForKey:@"EventFolder"];
+		[request setEntity:e];
+		
+		NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"orderingValue" ascending:YES];
+		
+		[request setSortDescriptors:[NSArray arrayWithObject:sd]];
+		
+		NSError *error;
+		NSArray *result = [self.context executeFetchRequest:request error:&error];
+		
+		if (!result) {
+			[NSException raise:@"Fetch failed" 
+									format:@"Reason: %@", [error localizedDescription]];
+		}
+		_allFolders = [[NSMutableArray alloc] initWithArray:result];
+	}
+	return _allFolders;
 }
 
 - (void)removeFolder:(EventFolder *)folder
@@ -143,30 +161,30 @@ static EventStore *defaultStore = nil;
 	return successful;
 }
 
-- (void)fetchItemsIfNecessary
-{
-	if (!_allItems) {
-		NSFetchRequest *request = [[NSFetchRequest alloc] init];
-		
-		NSEntityDescription *e = [[model entitiesByName] objectForKey:@"EventFolder"];
-		[request setEntity:e];
-		
-		NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"orderingValue" ascending:YES];
-		
-		[request setSortDescriptors:[NSArray arrayWithObject:sd]];
-		
-		NSError *error;
-		NSArray *result = [self.context executeFetchRequest:request error:&error];
-		
-		if (!result) {
-			[NSException raise:@"Fetch failed" 
-									format:@"Reason: %@", [error localizedDescription]];
-		}
-		_allItems = [[NSMutableArray alloc] initWithArray:result];
-
-	}
-	
-}
+//- (void)fetchItemsIfNecessary
+//{
+//	if (!_allItems) {
+//		NSFetchRequest *request = [[NSFetchRequest alloc] init];
+//		
+//		NSEntityDescription *e = [[model entitiesByName] objectForKey:@"EventFolder"];
+//		[request setEntity:e];
+//		
+//		NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"orderingValue" ascending:YES];
+//		
+//		[request setSortDescriptors:[NSArray arrayWithObject:sd]];
+//		
+//		NSError *error;
+//		NSArray *result = [self.context executeFetchRequest:request error:&error];
+//		
+//		if (!result) {
+//			[NSException raise:@"Fetch failed" 
+//									format:@"Reason: %@", [error localizedDescription]];
+//		}
+//		_allItems = [[NSMutableArray alloc] initWithArray:result];
+//
+//	}
+//	
+//}
 
 #pragma mark - Migrations
 
@@ -191,7 +209,7 @@ static EventStore *defaultStore = nil;
 	
 	NSMutableArray *oldFolders = [[NSMutableArray alloc] initWithArray:[archivedStore allItems]];
 	
-	[self fetchItemsIfNecessary];
+//	[self fetchItemsIfNecessary];
 	
 	for (EventFolder *ef in oldFolders) {
 		NSLog(@"%@", ef.folderName);
@@ -207,7 +225,7 @@ static EventStore *defaultStore = nil;
 //#warning Delete this
 //	_allItems = [[NSMutableArray alloc] init];
 	
-	if ([_allItems count] > 0) {
+	if ([[self allFolders] count] > 0) {
 		NSLog(@"NOT Loading default data");
 		return;
 	}

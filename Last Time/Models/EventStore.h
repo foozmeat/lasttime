@@ -15,19 +15,19 @@
 
 @interface EventStore : NSObject <NSObject>
 {
-	NSMutableArray *_allItems;
 	NSManagedObjectModel *model;
 }
 
-@property (nonatomic, strong) NSMutableArray *allItems;
+@property (nonatomic, strong) NSMutableArray *allFolders;
 @property (nonatomic, strong) NSManagedObjectContext *context;
 
 + (EventStore *)defaultStore;
 - (BOOL)saveChanges;
-- (void)fetchItemsIfNecessary;
+//- (void)fetchItemsIfNecessary;
 - (NSManagedObjectContext *)context;
 
 #pragma mark - Folders
+- (NSMutableArray *)allFolders;
 - (void)removeFolder:(EventFolder *)folder;
 - (EventFolder *)createFolder;
 
