@@ -8,6 +8,7 @@
 
 #import "EventFolder.h"
 #import "Event.h"
+#import "LogEntry.h"
 
 @implementation EventFolder
 
@@ -16,6 +17,8 @@
 @dynamic events;
 
 @synthesize allItems = _allItems;
+@synthesize latestItem = _latestItem;
+@synthesize needsSorting;
 
 -(void)awakeFromFetch
 {
@@ -24,7 +27,7 @@
 
 - (NSString *)subtitle
 {
-	if ([[self allItems] count] == 0) {
+	if (![self latestItem]) {
 		return @"";
 	}
 	
@@ -44,42 +47,43 @@
 	return _allItems;
 }
 
-- (void) sortItems
+- (Event *)latestItem
 {
-	if (needsSorting && [[self allItems] count] > 0) {
-		[_allItems sortUsingComparator:^(id a, id b) {
-			NSDate *first = [(id)a latestDate];
-			NSDate *second = [(id)b latestDate];
-				//			NSLog(@"%@: %@ %@: %@", [a objectName], first, [b objectName], second);
-			
-			return [second compare:first];
-		}];
+	if (!_latestItem || needsSorting == YES) {
 		
+		NSFetchRequest *request = [[NSFetchRequest alloc] init];
+		
+		NSEntityDescription *e = [NSEntityDescription
+																							entityForName:@"LogEntry" inManagedObjectContext:[[EventStore defaultStore] context]];
+		
+		[request setEntity:e];
+		
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"event IN %@",
+															self.events];
+		[request setPredicate:predicate];
+
+		NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"logEntryDateOccured" ascending:NO];
+		
+		[request setSortDescriptors:[NSArray arrayWithObject:sd]];
+		[request setFetchLimit:1];
+		NSError *error;
+		NSArray *result = [[[EventStore defaultStore] context] executeFetchRequest:request error:&error];
+		
+		if (!result) {
+			[NSException raise:@"Fetch failed" 
+									format:@"Reason: %@", [error localizedDescription]];
+		}
+		if ([result count] == 0) {
+			_latestItem = nil;
+		} else {
+			_latestItem = [(LogEntry *)[result objectAtIndex:0] event];
+			
+		}
 		needsSorting = NO;
 	}
+	return _latestItem;
 	
 }
-
-- (id)latestItem
-{
-	if ([[self allItems] count] == 0) {
-		return nil;
-	}
-	
-	[self sortItems];
-	return [[self allItems] objectAtIndex:0];
-}
-
-- (NSDate *)latestDate
-{
-	id item = [self latestItem];
-	if (!item) {
-		return [[NSDate alloc] initWithTimeIntervalSince1970:0];
-	} else {
-		return [item latestDate];
-	}
-}
-
 
 -(NSString *)itemDescriptions
 {

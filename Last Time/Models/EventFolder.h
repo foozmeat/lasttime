@@ -12,15 +12,14 @@
 @class Event;
 
 @interface EventFolder : NSManagedObject
-{
-	BOOL needsSorting;
-}
 
 @property (nonatomic, strong) NSString *folderName;
 @property (nonatomic, strong) NSNumber *orderingValue;
 @property (nonatomic, strong) NSSet *events;
 @property (nonatomic, strong) NSMutableArray *allItems;
 
+@property (nonatomic, strong) Event *latestItem;
+@property (nonatomic) BOOL needsSorting;
 
 //- (id)initWithName:(NSString *)name;
 - (NSString *)subtitle;
@@ -28,7 +27,7 @@
 
 //- (void) sortItems;
 - (id)latestItem;
-- (NSDate *)latestDate;
+//- (NSDate *)latestDate;
 
 //- (void)removeEvent:(Event *)item;
 //- (void)addEvent:(Event *)item;

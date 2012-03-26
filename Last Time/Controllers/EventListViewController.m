@@ -34,7 +34,7 @@
 	self.title = [folder folderName];
 	userDrivenDataModelChange = NO;
 
-	[[self eventTableView] reloadData];
+//	[[self eventTableView] reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -153,16 +153,15 @@
 														initWithKey:@"eventName" ascending:YES];
 	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
 	
-	NSFetchedResultsController *theFetchedResultsController = 
+	_fetchedResultsController = 
 	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
 																			managedObjectContext: [[EventStore defaultStore] context]
 																				sectionNameKeyPath:nil 
 																								 cacheName:[folder folderName]];
-	self.fetchedResultsController = theFetchedResultsController;
-	self.fetchedResultsController.delegate = self;
+	_fetchedResultsController.delegate = self;
 
 	NSError *error = nil;
-	if (![self.fetchedResultsController performFetch:&error]) {
+	if (![_fetchedResultsController performFetch:&error]) {
 			// Update to handle the error appropriately.
 		NSLog(@"Error fetching folders %@, %@", error, [error userInfo]);
 		exit(-1);  // Fail
@@ -235,7 +234,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	id item = [_fetchedResultsController objectAtIndexPath:indexPath];
+	id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	
 	if ([tableView isEditing]) {
 		EventDetailController *edc = [[EventDetailController alloc] init];
@@ -251,6 +250,7 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 			EventController *ec = [[EventController alloc] init];
 			[ec setEvent:item];			
+			[tableView deselectRowAtIndexPath:indexPath animated:YES];
 			[[self navigationController] pushViewController:ec animated:YES];
 		} else {
 			[self.detailViewController setEvent:item];			
@@ -264,7 +264,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		id item = [_fetchedResultsController objectAtIndexPath:indexPath];
+		id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		[[EventStore defaultStore] removeEvent:item];
 		[[EventStore defaultStore] saveChanges];
 
@@ -320,7 +320,7 @@
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
-	[[self eventTableView] reloadData];
+//	[[self eventTableView] reloadData];
 }
 
 #pragma mark - Orientation

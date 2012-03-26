@@ -73,6 +73,7 @@
 - (void)addLogEntry:(LogEntry *)entry
 {
 	self.needsSorting = YES;
+	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
 	_logEntryCollection = nil;
 	[self addLogEntriesObject:entry];
 

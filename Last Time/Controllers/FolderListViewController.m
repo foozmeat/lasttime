@@ -41,6 +41,7 @@
 	self.title = NSLocalizedString(@"Lists", @"Lists");
 	
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
+//	[[self tableView] reloadData];
 	
 }
 
@@ -440,7 +441,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
-	[[self tableView] reloadData];
+//	[[self tableView] reloadData];
 	if ([self.tableView isEditing]) {
 		[self setEditing:NO animated:YES];
 	}
