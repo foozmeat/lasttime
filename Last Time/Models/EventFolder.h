@@ -13,25 +13,25 @@
 
 @interface EventFolder : NSManagedObject
 {
-//	BOOL needsSorting;
+	BOOL needsSorting;
 }
 
 @property (nonatomic, strong) NSString *folderName;
 @property (nonatomic, strong) NSNumber *orderingValue;
 @property (nonatomic, strong) NSSet *events;
-@property (nonatomic, strong) NSMutableArray *allItems;;
+@property (nonatomic, strong) NSMutableArray *allItems;
 
 
 //- (id)initWithName:(NSString *)name;
 - (NSString *)subtitle;
-- (NSString *)objectName;
+//- (NSString *)objectName;
 
 //- (void) sortItems;
 - (id)latestItem;
 - (NSDate *)latestDate;
 
-- (void)removeEvent:(Event *)item;
-- (void)addEvent:(Event *)item;
+//- (void)removeEvent:(Event *)item;
+//- (void)addEvent:(Event *)item;
 @end
 
 @interface EventFolder (CoreDataGeneratedAccessors)

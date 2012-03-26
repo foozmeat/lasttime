@@ -310,8 +310,8 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
 	
-	id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	[[cell textLabel] setText:[item objectName]];
+	Event *item = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+	[[cell textLabel] setText:[item eventName]];
 	[[cell detailTextLabel] setText:[item subtitle]];
 	
 	

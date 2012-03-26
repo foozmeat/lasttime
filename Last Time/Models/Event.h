@@ -35,7 +35,6 @@
 
 - (NSDate *)nextTime;
 - (NSString *)lastStringInterval;
-- (NSString *)objectName;
 - (BOOL)showAverage;
 
 - (float)averageValue;

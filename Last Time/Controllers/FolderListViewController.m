@@ -388,7 +388,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	
 	id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	[[cell cellTextField] setDelegate:self];
-	[[cell textLabel] setText:[item objectName]];
+	[[cell textLabel] setText:[item folderName]];
 	
 	[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:15.0]];
 	[[cell detailTextLabel] setText:[item subtitle]];

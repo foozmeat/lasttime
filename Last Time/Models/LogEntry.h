@@ -13,7 +13,9 @@
 @class Event;
 
 @interface LogEntry : NSManagedObject
+{
 
+}
 @property (nonatomic, strong) NSNumber *latitude;
 @property (nonatomic, strong) NSDate *logEntryDateOccured;
 @property (nonatomic, strong) NSString *logEntryLocationString;
@@ -21,6 +23,7 @@
 @property (nonatomic, strong) NSNumber *logEntryValue;
 @property (nonatomic, strong) NSNumber *longitude;
 @property (nonatomic, strong) Event *event;
+
 
 - (NSTimeInterval)secondsSinceNow;
 - (NSString *)stringFromLogEntryInterval;
@@ -32,5 +35,5 @@
 											withSuffix:(BOOL)suffix
 												withDays:(BOOL)withDays;
 - (void)setLogEntryLocation:(CLLocationCoordinate2D)location;
-
+- (NSString *)locationString;
 @end

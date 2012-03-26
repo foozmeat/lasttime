@@ -16,8 +16,9 @@
 @dynamic eventName;
 @dynamic folder;
 @dynamic logEntries;
+@synthesize logEntryCollection = _logEntryCollection;
 
-@synthesize needsSorting,logEntryCollection;
+@synthesize needsSorting;
 
 //- (id)init
 //{
@@ -64,18 +65,23 @@
 //	
 //}
 
-- (void)addLogEntry:(LogEntry *)entry
+- (void)awakeFromFetch
 {
-	[self addLogEntriesObject:entry];
-	[[self logEntryCollection] addObject:entry];
-	self.needsSorting = YES;
+	needsSorting = YES;
 }
 
+- (void)addLogEntry:(LogEntry *)entry
+{
+	self.needsSorting = YES;
+	_logEntryCollection = nil;
+	[self addLogEntriesObject:entry];
+
+}
 
 - (void)sortEntries
 {
 	if (needsSorting && [self.logEntryCollection count] > 0) {
-		[self.logEntryCollection sortUsingComparator:^(id a, id b) {
+		[_logEntryCollection sortUsingComparator:^(id a, id b) {
 			NSDate *first = [(LogEntry*)a logEntryDateOccured];
 			NSDate *second = [(LogEntry*)b logEntryDateOccured];
 			return [second compare:first];
@@ -87,17 +93,18 @@
 
 - (NSMutableArray *)logEntryCollection
 {
-	return [[NSMutableArray alloc] initWithArray:[self.logEntries allObjects]];
-}
+	
+	if (!_logEntryCollection) {
+		_logEntryCollection = [[NSMutableArray alloc] initWithArray:[self.logEntries allObjects]];
+		needsSorting = YES;
+	}
 
-- (NSString *)objectName
-{
-	return self.eventName;
+	return _logEntryCollection;
 }
 
 - (BOOL)showAverage
 {
-	if ([logEntryCollection count] < 2) {
+	if ([self.logEntryCollection count] < 2) {
 		return NO;
 	} else {
 		return YES;
@@ -108,18 +115,18 @@
 
 - (NSTimeInterval)averageInterval
 {
-	if ([logEntryCollection count] < 2) {
+	if ([self.logEntryCollection count] < 2) {
 		return 0;
 	}
 	
 	[self sortEntries];
 	
 	double runningTotal = 0.0;
-	LogEntry *lastEntry = [logEntryCollection objectAtIndex:0];
-	double count = [logEntryCollection count];
+	LogEntry *lastEntry = [self.logEntryCollection objectAtIndex:0];
+	double count = [self.logEntryCollection count];
 	
 	@autoreleasepool {
-		for(LogEntry *entry in logEntryCollection)
+		for(LogEntry *entry in self.logEntryCollection)
 		{
 			runningTotal += ABS([[entry logEntryDateOccured] timeIntervalSinceDate:[lastEntry logEntryDateOccured]]);
 			lastEntry = entry;
@@ -138,7 +145,7 @@
 
 - (float)averageValue
 {
-	if ([logEntryCollection count] < 2) {
+	if ([self.logEntryCollection count] < 2) {
 		return 0.0;
 	}
 	
@@ -146,7 +153,7 @@
 	double count = 0;
 	
 	@autoreleasepool {
-		for(LogEntry *entry in logEntryCollection)
+		for(LogEntry *entry in self.logEntryCollection)
 		{
 			runningTotal += [[entry logEntryValue] floatValue];
 			if ([[entry logEntryValue] floatValue] != 0.0) {
@@ -190,11 +197,11 @@
 
 - (LogEntry *)latestEntry
 {
-	if ([logEntryCollection count] == 0) {
+	if ([self.logEntryCollection count] == 0) {
 		return nil;
 	}
 	[self sortEntries];
-	return [logEntryCollection objectAtIndex:0];
+	return [self.logEntryCollection objectAtIndex:0];
 }
 
 - (NSDate *)latestDate
@@ -209,7 +216,7 @@
 
 - (NSDate *)nextTime
 {
-	if ([logEntryCollection count] < 2) {
+	if ([self.logEntryCollection count] < 2) {
 		return nil;
 	}
 	NSTimeInterval interval = [self averageInterval];

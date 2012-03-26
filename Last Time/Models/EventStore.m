@@ -139,7 +139,6 @@ static EventStore *defaultStore = nil;
 	[self.context deleteObject:logEntry];
 }
 
-
 #pragma mark - Saving/Loading
 
 - (BOOL)saveChanges
@@ -221,14 +220,10 @@ static EventStore *defaultStore = nil;
 - (void)loadDefaultData
 {
 	
-// Wipe out root
-//#warning Delete this
-//	_allItems = [[NSMutableArray alloc] init];
-	
-	if ([[self allFolders] count] > 0) {
-		NSLog(@"NOT Loading default data");
-		return;
-	}
+//	if ([[self allFolders] count] > 0) {
+//		NSLog(@"NOT Loading default data");
+//		return;
+//	}
 	
 	NSLog(@"Loading default data");
 	NSString *path = [[NSBundle mainBundle] pathForResource:@"default_data" ofType:@"plist"];
@@ -254,7 +249,7 @@ static EventStore *defaultStore = nil;
 
 					[e setEventName:[event objectForKey:@"name"]];
 					
-					[f addEvent:e];
+					[f addEventsObject:e];
 					
 					NSLog(@"Event: %@", e);
 				}

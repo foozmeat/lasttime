@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A065E351516C4B600CBFBBC /* plistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A065E341516C4B600CBFBBC /* plistStore.m */; };
-		1A53EA0E151308630065DAC1 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A53EA0D151308630065DAC1 /* Event.m */; };
+		1A161D6F152018D60062B4A5 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A161D6E152018D60062B4A5 /* Event.m */; };
 		1ADD036815165531006EAD7E /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD036715165531006EAD7E /* EventFolder.m */; };
 		1AED06051510EEC700CCDA4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AED06041510EEC700CCDA4F /* CoreData.framework */; };
 		1AED06091510EEF100CCDA4F /* Last Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */; };
@@ -121,14 +121,8 @@
 /* Begin PBXFileReference section */
 		1A065E331516C4B600CBFBBC /* plistStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plistStore.h; sourceTree = "<group>"; };
 		1A065E341516C4B600CBFBBC /* plistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = plistStore.m; sourceTree = "<group>"; };
-		1A53EA001512E25D0065DAC1 /* oldLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = oldLogEntry.h; path = ../../../../Documents/LT/oldLogEntry.h; sourceTree = "<group>"; };
-		1A53EA011512E25D0065DAC1 /* oldLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = oldLogEntry.m; path = ../../../../Documents/LT/oldLogEntry.m; sourceTree = "<group>"; };
-		1A53EA041512E73D0065DAC1 /* oldEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = oldEvent.h; path = ../../../../Documents/LT/oldEvent.h; sourceTree = "<group>"; };
-		1A53EA051512E73D0065DAC1 /* oldEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = oldEvent.m; path = ../../../../Documents/LT/oldEvent.m; sourceTree = "<group>"; };
-		1A53EA0C151308630065DAC1 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		1A53EA0D151308630065DAC1 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		1ADD03641516551F006EAD7E /* oldEventFolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = oldEventFolder.h; path = ../../../../Downloads/oldEventFolder.h; sourceTree = "<group>"; };
-		1ADD03651516551F006EAD7E /* oldEventFolder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = oldEventFolder.m; path = ../../../../Downloads/oldEventFolder.m; sourceTree = "<group>"; };
+		1A161D6D152018D60062B4A5 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		1A161D6E152018D60062B4A5 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		1ADD036615165531006EAD7E /* EventFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFolder.h; sourceTree = "<group>"; };
 		1ADD036715165531006EAD7E /* EventFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventFolder.m; sourceTree = "<group>"; };
 		1AED06041510EEC700CCDA4F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -358,20 +352,14 @@
 			isa = PBXGroup;
 			children = (
 				1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */,
+				1A161D6D152018D60062B4A5 /* Event.h */,
+				1A161D6E152018D60062B4A5 /* Event.m */,
 				1ADD036615165531006EAD7E /* EventFolder.h */,
 				1ADD036715165531006EAD7E /* EventFolder.m */,
 				39918C2314F7F99700D8D4EE /* EventStore.h */,
 				39918C2414F7F99700D8D4EE /* EventStore.m */,
-				1A53EA0C151308630065DAC1 /* Event.h */,
-				1A53EA0D151308630065DAC1 /* Event.m */,
 				1AED06221510F9F100CCDA4F /* LogEntry.h */,
 				1AED06231510F9F100CCDA4F /* LogEntry.m */,
-				1A53EA001512E25D0065DAC1 /* oldLogEntry.h */,
-				1A53EA011512E25D0065DAC1 /* oldLogEntry.m */,
-				1A53EA041512E73D0065DAC1 /* oldEvent.h */,
-				1A53EA051512E73D0065DAC1 /* oldEvent.m */,
-				1ADD03641516551F006EAD7E /* oldEventFolder.h */,
-				1ADD03651516551F006EAD7E /* oldEventFolder.m */,
 				1A065E331516C4B600CBFBBC /* plistStore.h */,
 				1A065E341516C4B600CBFBBC /* plistStore.m */,
 			);
@@ -836,9 +824,9 @@
 				39C10D3C15005B6A00DF3F70 /* MGSplitViewController.m in Sources */,
 				1AED06091510EEF100CCDA4F /* Last Time.xcdatamodeld in Sources */,
 				1AED06241510F9F100CCDA4F /* LogEntry.m in Sources */,
-				1A53EA0E151308630065DAC1 /* Event.m in Sources */,
 				1ADD036815165531006EAD7E /* EventFolder.m in Sources */,
 				1A065E351516C4B600CBFBBC /* plistStore.m in Sources */,
+				1A161D6F152018D60062B4A5 /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

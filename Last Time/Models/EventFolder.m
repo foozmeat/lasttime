@@ -15,25 +15,16 @@
 @dynamic orderingValue;
 @dynamic events;
 
-@synthesize allItems;
+@synthesize allItems = _allItems;
 
-- (void)addEvent:(Event *)item;
+-(void)awakeFromFetch
 {
-	[allItems addObject:item];
-	[self addEventsObject:item];
-//	needsSorting = YES;
-}
-
-- (void)removeEvent:(Event *)item
-{
-	[allItems removeObjectIdenticalTo:item];
-	[self removeEventsObject:item];
-//	needsSorting = YES;
+	needsSorting = YES;
 }
 
 - (NSString *)subtitle
 {
-	if ([allItems count] == 0) {
+	if ([[self allItems] count] == 0) {
 		return @"";
 	}
 	
@@ -42,42 +33,41 @@
 	
 }
 
-- (NSString *)objectName
+- (NSMutableArray *)allItems
 {
-	return self.folderName;
+	
+	if (!_allItems) {
+		_allItems = [[NSMutableArray alloc] initWithArray:[self.events allObjects]];
+		needsSorting = YES;
+	}
+
+	return _allItems;
 }
 
-- (NSArray *)allItems
+- (void) sortItems
 {
-//	[self sortItems];
-
-	return [[NSArray alloc] initWithArray:[self.events allObjects]];
+	if (needsSorting && [[self allItems] count] > 0) {
+		[_allItems sortUsingComparator:^(id a, id b) {
+			NSDate *first = [(id)a latestDate];
+			NSDate *second = [(id)b latestDate];
+				//			NSLog(@"%@: %@ %@: %@", [a objectName], first, [b objectName], second);
+			
+			return [second compare:first];
+		}];
+		
+		needsSorting = NO;
+	}
+	
 }
-
-//- (void) sortItems
-//{
-//	if (needsSorting && [allItems count] > 0) {
-//		[allItems sortUsingComparator:^(id a, id b) {
-//			NSDate *first = [(id)a latestDate];
-//			NSDate *second = [(id)b latestDate];
-//				//			NSLog(@"%@: %@ %@: %@", [a objectName], first, [b objectName], second);
-//			
-//			return [second compare:first];
-//		}];
-//		
-//		needsSorting = NO;
-//	}
-//	
-//}
 
 - (id)latestItem
 {
-	if ([allItems count] == 0) {
+	if ([[self allItems] count] == 0) {
 		return nil;
 	}
 	
-//	[self sortItems];
-	return [allItems objectAtIndex:0];
+	[self sortItems];
+	return [[self allItems] objectAtIndex:0];
 }
 
 - (NSDate *)latestDate
@@ -97,8 +87,8 @@
 //	[self sortItems];
 	NSMutableString *output = [[NSMutableString alloc] init];
 	
-	for (id item in allItems) {
-		[output appendFormat:@"-> %@\n---> %@\n", [item objectName], [item subtitle]];
+	for (id item in [self allItems]) {
+		[output appendFormat:@"-> %@\n---> %@\n", [item folderName], [item subtitle]];
 	}
 	return output;
 }
@@ -117,7 +107,7 @@
 	self = [super init];
 	
 	if (self) {
-		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
+//		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
 		[self setFolderName:[aDecoder decodeObjectForKey:@"folderName"]];
 //		needsSorting = YES;
 	}

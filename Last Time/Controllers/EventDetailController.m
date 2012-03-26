@@ -24,11 +24,10 @@
 - (void)save
 {
 	[event addLogEntry:logEntry];
-	[folder addEvent:event];
-//	[[EventStore defaultStore] saveChanges];
+	[folder addEventsObject:event];
+	[[EventStore defaultStore] saveChanges];
 	
 	[super save];
-//	NSLog(@"%@", event);
 }
 
 - (void)cancel
@@ -36,7 +35,7 @@
 	[[EventStore defaultStore] removeLogEntry:logEntry];
 	[[EventStore defaultStore] removeEvent:event];
 
-
+	[super cancel];
 }
 #pragma mark - UIViewController Methods
 - (void)viewWillAppear:(BOOL)animated
@@ -218,6 +217,8 @@
 		loc = CLLocationCoordinate2DMake(0.0, 0.0);
 	}
 	[logEntry setLogEntryLocation:loc];
+	[logEntry locationString];
+
 	
 }
 
@@ -239,8 +240,8 @@
 	if ([self isModal]) {
 		[self setFolder:newFolder];
 	} else {
-		[newFolder addEvent:event];
-		[folder removeEvent:event];
+		[newFolder addEventsObject:event];
+		[folder removeEventsObject:event];
 		[self setFolder:newFolder];
 	}
 	[[self tableView] reloadData];
