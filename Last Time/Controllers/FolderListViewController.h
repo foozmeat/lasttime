@@ -14,8 +14,12 @@
 @class FolderListCell;
 
 @interface FolderListViewController : UITableViewController 
-<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate>
-
+<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate, NSFetchedResultsControllerDelegate>
+{
+	bool userDrivenDataModelChange;
+	NSIndexPath *newCell;
+}
 @property (strong, nonatomic) EventController *detailViewController;
 @property (strong, nonatomic) FolderListCell *activeCell;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @end

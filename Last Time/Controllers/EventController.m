@@ -106,7 +106,7 @@
 {
 	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 	
-	[hldc setLogEntry:[[LogEntry alloc] init]];
+	[hldc setLogEntry:[[EventStore defaultStore] createLogEntry]];
 	[hldc setEvent:_event];
 	[hldc setDelegate:self];
 	
@@ -158,10 +158,11 @@
 	if ((section == kAverageSection && ![_event showAverage]) || section == kHistorySection){
 		if (editingStyle == UITableViewCellEditingStyleDelete) {
 			id item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
-			[_event removeLogEntriesObject:item];
+			[_event removeLogEntry:item];
+			[[EventStore defaultStore] saveChanges];
 			
+//			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 			[tableView reloadData];
-			//		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 			
 		}
 	}
@@ -300,7 +301,7 @@
 			}
 			historyLogCell.logEntryDateCell.text = [item stringFromLogEntryInterval];
 			historyLogCell.locationMarker.hidden = ![item hasLocation];
-			historyLogCell.logEntryLocationCell.text = [item logEntryLocationString];
+			historyLogCell.logEntryLocationCell.text = [item locationString];
 			return historyLogCell;
 
 		} else {

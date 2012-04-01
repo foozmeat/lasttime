@@ -223,6 +223,7 @@
 - (void)pickerDidChange:(NSDate *)date
 {
 	[logEntry setLogEntryDateOccured:date];
+	[event setNeedsSorting:YES];
 }
 
 #pragma mark - Orientation

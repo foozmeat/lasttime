@@ -20,22 +20,28 @@
 @dynamic longitude;
 @dynamic event;
 
-- (id)init
-{
-	return [self initWithNote:@"" dateOccured:[[NSDate alloc] init]];
-}
 
-- (id)initWithNote:(NSString *)note
-			 dateOccured:(NSDate *)dateOccured
+//- (id)init
+//{
+//	return [self initWithNote:@"" dateOccured:[[NSDate alloc] init]];
+//}
+//
+//- (id)initWithNote:(NSString *)note
+//			 dateOccured:(NSDate *)dateOccured
+//{
+//	if (!(self = [super init]))
+//		return nil;
+//	
+//	[self setLogEntryNote:note];
+//	[self setLogEntryDateOccured:dateOccured];
+//	
+//	return self;
+//	
+//}
+
+- (void)awakeFromInsert
 {
-	if (!(self = [super init]))
-		return nil;
-	
-	[self setLogEntryNote:note];
-	[self setLogEntryDateOccured:dateOccured];
-	
-	return self;
-	
+	self.logEntryDateOccured = [[NSDate alloc] init];
 }
 
 #pragma mark - Durations
@@ -223,7 +229,7 @@
 
 - (BOOL)hasLocation
 {
-	return self.logEntryLocation.longitude != 0.0 && self.logEntryLocation.latitude != 0.0;
+	return [self.longitude doubleValue] != 0.0 && [self.latitude doubleValue] != 0.0;
 }
 
 - (void)reverseLookupLocation
@@ -233,13 +239,9 @@
 	if ([self hasLocation]) {
 		NSLog(@"Fetching location for: %@", [self logEntryNote]);
 		
-		CLLocation *tempLoc = [[CLLocation alloc] initWithLatitude:self.logEntryLocation.latitude longitude:self.logEntryLocation.longitude];
+		CLLocation *tempLoc = [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue] longitude:[self.longitude doubleValue]];
 		[geocoder reverseGeocodeLocation:tempLoc completionHandler:
 		 ^(NSArray* placemarks, NSError* error){
-			 
-				 //			 for (CLPlacemark * placemark in placemarks) {
-				 //				 NSLog(@"Found location: %@", placemark);
-				 //			 }
 			 if ([placemarks count] > 0)	 {
 				 NSString *name = [[placemarks objectAtIndex:0] name];
 				 NSLog(@"Found location: %@", name);
@@ -252,14 +254,14 @@
 	
 }
 
-- (NSString *)logEntryLocationString
+- (NSString *)locationString
 {
-	if (!self.logEntryLocationString && [self hasLocation]) {
+	if (![self valueForKey:@"logEntryLocationString"] && [self hasLocation]) {
 		[self reverseLookupLocation];
 	} else if (![self hasLocation]) {
 		return @"";
 	} else {
-		return self.logEntryLocationString;
+		return [self valueForKey:@"logEntryLocationString"];
 	}
 	
 	return @"";
@@ -267,7 +269,10 @@
 
 - (void)setLogEntryLocation:(CLLocationCoordinate2D)location
 {
-	NSLog(@"Not setting location");
+	self.latitude = [NSNumber numberWithFloat:location.latitude];
+	self.longitude = [NSNumber numberWithFloat:location.longitude];
+	NSLog(@"Setting location: %f - %f", location.latitude, location.longitude);
+//	NSLog(@"Not setting location");
 }
 
 - (CLLocationCoordinate2D)logEntryLocation
@@ -276,7 +281,4 @@
 
 }
 
-- (void)awakeFromFetch
-{
-}
 @end

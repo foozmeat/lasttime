@@ -10,25 +10,34 @@
 #import <CoreData/CoreData.h>
 
 @class EventFolder;
+@class Event;
+@class LogEntry;
 
 @interface EventStore : NSObject <NSObject>
 {
-	NSMutableArray *_allItems;
 	NSManagedObjectModel *model;
 }
 
-@property (nonatomic, strong) NSMutableArray *allItems;
+@property (nonatomic, strong) NSMutableArray *allFolders;
 @property (nonatomic, strong) NSManagedObjectContext *context;
 
 + (EventStore *)defaultStore;
 - (BOOL)saveChanges;
-- (void)fetchItemsIfNecessary;
+//- (void)fetchItemsIfNecessary;
+- (NSManagedObjectContext *)context;
 
 #pragma mark - Folders
-- (NSArray *)allFolders;
+- (NSMutableArray *)allFolders;
 - (void)removeFolder:(EventFolder *)folder;
-- (void)addFolder:(EventFolder *)folder;
-- (void)moveFolderAtIndex:(int)from toIndex:(int)to;
+- (EventFolder *)createFolder;
+
+#pragma mark - Events
+- (Event *)createEvent;
+- (void)removeEvent:(Event *)event;
+
+#pragma mark - LogEntry
+- (LogEntry *)createLogEntry;
+- (void)removeLogEntry:(LogEntry *)logEntry;
 
 #pragma mark - Migrations
 - (void)migrateDataFromVersion:(int)version;

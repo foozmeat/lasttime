@@ -72,13 +72,10 @@
 	if (newVersion >= 10 && newVersion <= 99) {
 		newVersion *= 10;
 	}
-	
-//	NSLog(@"%i", lastVersionRun);
-//	NSLog(@"%i", newVersion);
-	
-	[[EventStore defaultStore] migrateDataFromVersion:lastVersionRun];
-		
+			
 	if (newVersion != lastVersionRun) {
+		NSLog(@"Last Version: %i, New Version: %i", lastVersionRun, newVersion);
+		[[EventStore defaultStore] migrateDataFromVersion:lastVersionRun];
 		[[NSUserDefaults standardUserDefaults] setInteger:newVersion forKey:@"LastVersionRun"];
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}

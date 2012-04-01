@@ -8,6 +8,7 @@
 
 #import "EventFolder.h"
 #import "Event.h"
+#import "LogEntry.h"
 
 @implementation EventFolder
 
@@ -15,23 +16,18 @@
 @dynamic orderingValue;
 @dynamic events;
 
-@synthesize allItems;
+@synthesize allItems = _allItems;
+@synthesize latestItem = _latestItem;
+@synthesize needsSorting;
 
-- (void)addItem:(id)item;
+-(void)awakeFromFetch
 {
-	[allItems addObject:item];
-	needsSorting = YES;
-}
-
-- (void)removeItem:(id)item
-{
-	[allItems removeObjectIdenticalTo:item];
 	needsSorting = YES;
 }
 
 - (NSString *)subtitle
 {
-	if ([allItems count] == 0) {
+	if (![self latestItem]) {
 		return @"";
 	}
 	
@@ -40,62 +36,63 @@
 	
 }
 
-- (NSString *)objectName
+- (NSMutableArray *)allItems
 {
-	return self.folderName;
+	
+	if (!_allItems) {
+		_allItems = [[NSMutableArray alloc] initWithArray:[self.events allObjects]];
+		needsSorting = YES;
+	}
+
+	return _allItems;
 }
 
-- (NSArray *)allItems
+- (Event *)latestItem
 {
-	[self sortItems];
-	return allItems;
-}
-
-- (void) sortItems
-{
-	if (needsSorting && [allItems count] > 0) {
-		[allItems sortUsingComparator:^(id a, id b) {
-			NSDate *first = [(id)a latestDate];
-			NSDate *second = [(id)b latestDate];
-				//			NSLog(@"%@: %@ %@: %@", [a objectName], first, [b objectName], second);
-			
-			return [second compare:first];
-		}];
+	if (!_latestItem || needsSorting == YES) {
 		
+		NSFetchRequest *request = [[NSFetchRequest alloc] init];
+		
+		NSEntityDescription *e = [NSEntityDescription
+																							entityForName:@"LogEntry" inManagedObjectContext:[[EventStore defaultStore] context]];
+		
+		[request setEntity:e];
+		
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"event IN %@",
+															self.events];
+		[request setPredicate:predicate];
+
+		NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"logEntryDateOccured" ascending:NO];
+		
+		[request setSortDescriptors:[NSArray arrayWithObject:sd]];
+		[request setFetchLimit:1];
+		NSError *error;
+		NSArray *result = [[[EventStore defaultStore] context] executeFetchRequest:request error:&error];
+		
+		if (!result) {
+			[NSException raise:@"Fetch failed" 
+									format:@"Reason: %@", [error localizedDescription]];
+		}
+		if ([result count] == 0) {
+			_latestItem = nil;
+		} else {
+			_latestItem = [(LogEntry *)[result objectAtIndex:0] event];
+			
+		}
 		needsSorting = NO;
 	}
+	return _latestItem;
 	
 }
-
-- (id)latestItem
-{
-	if ([allItems count] == 0) {
-		return nil;
-	}
-	
-	[self sortItems];
-	return [allItems objectAtIndex:0];
-}
-
-- (NSDate *)latestDate
-{
-	id item = [self latestItem];
-	if (!item) {
-		return [[NSDate alloc] initWithTimeIntervalSince1970:0];
-	} else {
-		return [item latestDate];
-	}
-}
-
 
 -(NSString *)itemDescriptions
 {
 	
-	[self sortItems];
+//	[self sortItems];
 	NSMutableString *output = [[NSMutableString alloc] init];
 	
-	for (id item in allItems) {
-		[output appendFormat:@"-> %@\n---> %@\n", [item objectName], [item subtitle]];
+	for (id item in [self allItems]) {
+		[output appendFormat:@"-> %@\n---> %@\n", [item folderName], [item subtitle]];
 	}
 	return output;
 }

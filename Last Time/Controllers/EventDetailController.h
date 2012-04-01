@@ -33,6 +33,7 @@ enum FolderSection {
 @interface EventDetailController : CustomTableViewController
 
 @property (strong, nonatomic) Event *event;
+@property (strong, nonatomic) LogEntry *logEntry;
 @property (strong, nonatomic) EventFolder *folder;
 
 @property (nonatomic, strong) EditableTableCell *noteCell;

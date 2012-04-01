@@ -35,7 +35,6 @@
 
 - (NSDate *)nextTime;
 - (NSString *)lastStringInterval;
-- (NSString *)objectName;
 - (BOOL)showAverage;
 
 - (float)averageValue;
@@ -43,7 +42,7 @@
 
 //+ (Event *)randomEvent;
 - (void)addLogEntry:(LogEntry *)entry;
-//- (void)removeItem:(id)item;
+- (void)removeLogEntry:(LogEntry *)logEntry;
 @end
 
 
