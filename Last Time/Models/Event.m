@@ -251,7 +251,8 @@
 	NSString *output = nil;
 	
 	if ([[[self latestEntry] logEntryNote] isEqualToString:@""]) {
-		if ([[self latestEntry] logEntryValue] != 0) {
+		if ([[self latestEntry] logEntryValue] != nil &&
+				[[[self latestEntry] logEntryValue] floatValue] != 0.0) {
 			NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[[[self latestEntry] logEntryValue] floatValue]]];
 			output = [[NSString alloc] initWithFormat:@"%@ - %@", value, [self lastStringInterval]];
 		} else {
