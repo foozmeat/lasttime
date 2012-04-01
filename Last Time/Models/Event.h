@@ -42,7 +42,7 @@
 
 //+ (Event *)randomEvent;
 - (void)addLogEntry:(LogEntry *)entry;
-//- (void)removeItem:(id)item;
+- (void)removeLogEntry:(LogEntry *)logEntry;
 @end
 
 

@@ -92,12 +92,20 @@
 	}
 }
 
+- (void)removeLogEntry:(LogEntry *)logEntry
+{
+	[_logEntryCollection removeObjectIdenticalTo:logEntry];
+	[[EventStore defaultStore] removeLogEntry:logEntry];
+	self.needsSorting = YES;
+}
+
 - (NSMutableArray *)logEntryCollection
 {
 	
 	if (!_logEntryCollection) {
 		_logEntryCollection = [[NSMutableArray alloc] initWithArray:[self.logEntries allObjects]];
 		needsSorting = YES;
+		[self sortEntries];
 	}
 
 	return _logEntryCollection;
@@ -123,7 +131,7 @@
 	[self sortEntries];
 	
 	double runningTotal = 0.0;
-	LogEntry *lastEntry = [self.logEntryCollection objectAtIndex:0];
+	LogEntry *lastEntry = [self latestEntry];
 	double count = [self.logEntryCollection count];
 	
 	@autoreleasepool {

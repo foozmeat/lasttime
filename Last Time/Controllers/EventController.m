@@ -158,10 +158,11 @@
 	if ((section == kAverageSection && ![_event showAverage]) || section == kHistorySection){
 		if (editingStyle == UITableViewCellEditingStyleDelete) {
 			id item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
-			[_event removeLogEntriesObject:item];
+			[_event removeLogEntry:item];
+			[[EventStore defaultStore] saveChanges];
 			
+//			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 			[tableView reloadData];
-			//		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 			
 		}
 	}
