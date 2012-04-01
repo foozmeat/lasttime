@@ -106,17 +106,4 @@
 	return output;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-	self = [super init];
-	
-	if (self) {
-//		[self setAllItems:[aDecoder decodeObjectForKey:@"allItems"]];
-		[self setFolderName:[aDecoder decodeObjectForKey:@"folderName"]];
-//		needsSorting = YES;
-	}
-	
-	return self;
-}
-
 @end

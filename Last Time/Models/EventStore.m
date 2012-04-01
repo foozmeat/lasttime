@@ -11,7 +11,11 @@
 #import "Event.h"
 #import "LogEntry.h"
 #import <CoreData/CoreData.h>
-#import "plistStore.h"
+#import "PlistStore.h"
+
+#import "oldEvent.h"
+#import "oldEventFolder.h"
+#import "oldLogEntry.h"
 
 static EventStore *defaultStore = nil;
 
@@ -186,35 +190,64 @@ static EventStore *defaultStore = nil;
 //}
 
 #pragma mark - Migrations
+- (void)deleteDatabase
+{
+	NSString *path = pathInDocumentDirectory(@"LastTime.sqllite");
+	NSURL *storeURL = [NSURL fileURLWithPath:path];
+	NSError *error = nil;
+	[[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
+	
+}
 
 - (void)migrateDataFromVersion:(int)version
 {
-
+	
 	if (version == 0) {		
 		[[EventStore defaultStore] loadDefaultData];
-		
 	}
 	
-	if (version != 0 && version < 70) {
-//		[self migrateToCoreData];
+	if (version != 0 && version < 7) {
+		[self migrateToCoreData];
 	}
 
 }
 
 - (void)migrateToCoreData
 {
-	NSString *path = pathInDocumentDirectory(@"events.plist");;
-	plistStore *archivedStore = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+	NSLog(@"Migrating to Core Data");
+	PlistStore *archivedStore = [PlistStore defaultStore];
+		
+	float	index = 0.0;
 	
-	NSMutableArray *oldFolders = [[NSMutableArray alloc] initWithArray:[archivedStore allItems]];
-	
-//	[self fetchItemsIfNecessary];
-	
-	for (EventFolder *ef in oldFolders) {
+	for (OldEventFolder *ef in [archivedStore allItems]) {
 		NSLog(@"%@", ef.folderName);
     EventFolder *newFolder = [self createFolder];
 		newFolder.folderName = ef.folderName;
+		newFolder.orderingValue = [NSNumber numberWithFloat:index];
+
+		index++;
+		for (OldEvent *ev in [ef allItems]) {
+			Event *newEvent = [self createEvent];
+			newEvent.eventName = ev.eventName;
+			newEvent.folder = newFolder;
+			
+			for (OldLogEntry *le in [ev logEntryCollection]) {
+				
+				LogEntry *newLogEntry = [self createLogEntry];
+				newLogEntry.logEntryDateOccured = le.logEntryDateOccured;
+				newLogEntry.logEntryNote = le.logEntryNote;
+				newLogEntry.logEntryValue = [NSNumber numberWithFloat:le.logEntryValue];
+				newLogEntry.logEntryLocationString = le.logEntryLocationString;
+				newLogEntry.latitude = [NSNumber numberWithFloat:le.logEntryLocation.latitude];
+				newLogEntry.longitude = [NSNumber numberWithFloat:le.logEntryLocation.longitude];
+				newLogEntry.event = newEvent;
+			}
+			
+		}
+		
 	}
+	
+	[self saveChanges];
 }
 
 - (void)loadDefaultData

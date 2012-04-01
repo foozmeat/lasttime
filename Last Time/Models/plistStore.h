@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface plistStore : NSCoder
+@interface PlistStore : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSMutableArray *allItems;
+
+
++ (PlistStore *)defaultStore;
+- (void)fetchItemsIfNecessary;
 
 @end

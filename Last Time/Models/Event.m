@@ -274,17 +274,4 @@
 	return output;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-	self = [super init];
-	
-	if (self) {
-		[self setLogEntryCollection:[aDecoder decodeObjectForKey:@"logEntryCollection"]];
-		[self setEventName:[aDecoder decodeObjectForKey:@"eventName"]];
-		needsSorting = YES;
-	}
-	
-	return self;
-}
-
 @end

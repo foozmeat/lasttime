@@ -281,28 +281,4 @@
 
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-	self = [super init];
-	
-	if (self) {
-		[self setLogEntryNote:[aDecoder decodeObjectForKey:@"logEntryNote"]];
-		[self setLogEntryDateOccured:[aDecoder decodeObjectForKey:@"logEntryDateOccured"]];
-		[self setLogEntryLocationString:[aDecoder decodeObjectForKey:@"logEntryLocationString"]];
-		
-		float longitude, latitude;
-		longitude = [aDecoder decodeDoubleForKey:@"logEntryLongitude"];
-		latitude = [aDecoder decodeDoubleForKey:@"logEntryLatitude"];
-		
-		CLLocationCoordinate2D new_coordinate = { latitude, longitude };
-		
-		[self setLogEntryLocation:new_coordinate];
-		
-		[self setLogEntryValue:[aDecoder decodeObjectForKey:@"logEntryValue"]];
-		
-	}
-	
-	return self;
-}
-
 @end
