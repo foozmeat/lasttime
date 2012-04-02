@@ -123,8 +123,21 @@
 
 #pragma mark - TableView Delegate methods
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	if ([[_event logEntryCollection] count] > 0) {
+		return UITableViewCellEditingStyleDelete;
+	} else {
+		return UITableViewCellEditingStyleNone;
+	}
+	
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	
+	if ([[_event logEntryCollection] count] == 0) {
+		return;
+	}
 	
 	if (([_event showAverage] && [indexPath section] == kHistorySection) ||
 			(![_event showAverage] && [indexPath section] == kAverageSection)) {
@@ -160,8 +173,6 @@
 			id item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
 			[_event removeLogEntry:item];
 			[[EventStore defaultStore] saveChanges];
-			
-//			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 			[tableView reloadData];
 			
 		}
@@ -312,6 +323,7 @@
 																			reuseIdentifier:@"NoHistoryCell"];
 			}
 			cell.textLabel.text = @"No History Entries";
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			return cell;
 
 		}
@@ -352,7 +364,6 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
@@ -360,8 +371,6 @@
 	[self setEventTableView:nil];
 	[self setAddButton:nil];
 	[super viewDidUnload];
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
 }
 
 
@@ -370,6 +379,7 @@
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
 	[[self eventTableView] reloadData];
+	[[EventStore defaultStore] saveChanges];
 }
 
 #pragma mark - Orientation

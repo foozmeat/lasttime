@@ -201,6 +201,8 @@
 	if (userDrivenDataModelChange) return;
 	
 	UITableView *tableView = self.eventTableView;
+	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
 	switch(type) {
 		case NSFetchedResultsChangeInsert:
 			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -212,7 +214,8 @@
 			break;
 			
 		case NSFetchedResultsChangeUpdate:
-			[self configureCell:[eventTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+			[self configureCell:cell atIndexPath:indexPath];
+			[cell setNeedsLayout];
 			break;
 			
 		case NSFetchedResultsChangeMove:
@@ -320,7 +323,7 @@
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
-//	[[self eventTableView] reloadData];
+	[[EventStore defaultStore] saveChanges];
 }
 
 #pragma mark - Orientation
