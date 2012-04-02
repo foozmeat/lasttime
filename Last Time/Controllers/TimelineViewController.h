@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class EventController;
+
 @interface TimelineViewController : UITableViewController
 
 @property (nonatomic, strong) UIViewController * managingViewController;
+@property (strong, nonatomic) EventController *detailViewController;
 
-- (id)initWithParentViewController:(UIViewController *)aViewController;
+- (id)initWithParentViewController:(UIViewController *)aViewController detailViewController:dViewController;
 
 @end

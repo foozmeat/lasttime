@@ -32,12 +32,12 @@
 		SegmentManagingViewController *masterViewController = [[SegmentManagingViewController alloc] init];
 		
 		self.navigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
-		[self.window addSubview:self.navigationController.view];
+//		[self.window addSubview:self.navigationController.view];
 
-//		self.window.rootViewController = self.navigationController;
+		self.window.rootViewController = self.navigationController;
 
 	} else {
-		FolderListViewController *masterViewController = [[FolderListViewController alloc] init];
+		SegmentManagingViewController *masterViewController = [[SegmentManagingViewController alloc] init];
 		
 		UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
 

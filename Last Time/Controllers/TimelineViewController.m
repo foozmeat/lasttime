@@ -13,19 +13,24 @@
 @end
 
 @implementation TimelineViewController
-@synthesize managingViewController;
+@synthesize managingViewController, detailViewController;
 
-- (id)initWithParentViewController:(UIViewController *)aViewController {
+- (id)initWithParentViewController:(UIViewController *)aViewController detailViewController:dViewController
+{
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		self.managingViewController = aViewController;
+		self.detailViewController = dViewController;
 	}
 	return self;
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+  [super viewDidLoad];
+	CGRect frame = self.tableView.frame;
+	frame.origin.x = frame.origin.y = 0.0f;
+	self.tableView.frame = frame;
+
 }
 
 - (void)viewDidUnload

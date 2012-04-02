@@ -18,9 +18,10 @@
 @synthesize activeCell, detailViewController, managingViewController;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
-- (id)initWithParentViewController:(UIViewController *)aViewController {
+- (id)initWithParentViewController:(UIViewController *)aViewController detailViewController:dViewController{
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		self.managingViewController = aViewController;
+		self.detailViewController = dViewController;
 	}
 	return self;
 }
@@ -28,7 +29,10 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
+	CGRect frame = self.tableView.frame;
+	frame.origin.x = frame.origin.y = 0.0f;
+	self.tableView.frame = frame;
+
 	userDrivenDataModelChange = NO;
 	newCell = nil;
 	
@@ -39,7 +43,7 @@
 	[super viewWillAppear:animated];
 	
 	self.tableView.allowsSelectionDuringEditing = YES;
-	self.title = NSLocalizedString(@"Lists", @"Lists");
+//	self.title = NSLocalizedString(@"Lists", @"Lists");
 	
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 

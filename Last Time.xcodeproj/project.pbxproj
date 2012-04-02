@@ -469,6 +469,8 @@
 				39AA477F14DAD8B300580EB9 /* EventDetailController.m */,
 				39918C1414F6062000D8D4EE /* EventListViewController.h */,
 				39918C1514F6062000D8D4EE /* EventListViewController.m */,
+				1AC62B9D152950760019362B /* TimelineViewController.h */,
+				1AC62B9E152950760019362B /* TimelineViewController.m */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -476,8 +478,6 @@
 		39918C1314F604D700D8D4EE /* Log Entry */ = {
 			isa = PBXGroup;
 			children = (
-				1AC62B9D152950760019362B /* TimelineViewController.h */,
-				1AC62B9E152950760019362B /* TimelineViewController.m */,
 				39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */,
 				39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */,
 				3940D3F214F17E230056D01B /* HistoryLogCell.h */,

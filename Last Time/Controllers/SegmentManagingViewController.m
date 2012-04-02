@@ -23,7 +23,7 @@
 
 @implementation SegmentManagingViewController
 
-@synthesize segmentedControl, activeViewController, segmentedViewControllers;
+@synthesize segmentedControl, activeViewController, segmentedViewControllers, detailViewController;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -46,10 +46,13 @@
 }
 
 - (NSArray *)segmentedViewControllerContent {
-	UIViewController *controller1 = [[FolderListViewController alloc] initWithParentViewController:self];
-	UIViewController *controller2 = [[TimelineViewController alloc] initWithParentViewController:self];
+	UIViewController *lists = [[FolderListViewController alloc] initWithParentViewController:self 
+																																			detailViewController:detailViewController];
 	
-	NSArray *controllers = [NSArray arrayWithObjects:controller1, controller2, nil];
+	UIViewController *timeline = [[TimelineViewController alloc] initWithParentViewController:self 
+																																			 detailViewController:detailViewController];
+	
+	NSArray *controllers = [NSArray arrayWithObjects:lists, timeline, nil];
 	
 	return controllers;
 }

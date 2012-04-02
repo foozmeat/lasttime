@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class EventController;
+
 @interface SegmentManagingViewController : UIViewController <UINavigationControllerDelegate>
 
 @property (nonatomic, strong, readonly) UISegmentedControl *segmentedControl;
 @property (nonatomic, strong, readonly) UIViewController *activeViewController;
 @property (nonatomic, strong, readonly) NSArray *segmentedViewControllers;
+@property (strong, nonatomic) EventController *detailViewController;
 
 - (void)didChangeSegmentControl:(UISegmentedControl *)control;
 - (NSArray *)segmentedViewControllerContent;

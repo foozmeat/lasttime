@@ -24,5 +24,5 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) UIViewController * managingViewController;
 
-- (id)initWithParentViewController:(UIViewController *)aViewController;
+- (id)initWithParentViewController:(UIViewController *)aViewController detailViewController:dViewController;
 @end
