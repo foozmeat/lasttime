@@ -22,4 +22,7 @@
 @property (strong, nonatomic) EventController *detailViewController;
 @property (strong, nonatomic) FolderListCell *activeCell;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) UIViewController * managingViewController;
+
+- (id)initWithParentViewController:(UIViewController *)aViewController;
 @end

@@ -12,6 +12,8 @@
 		1AC020A4152550200022A07B /* oldEventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC020A0152550200022A07B /* oldEventFolder.m */; };
 		1AC020A5152550200022A07B /* oldLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC020A2152550200022A07B /* oldLogEntry.m */; };
 		1AC09F891520BAB600C483DE /* PlistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC09F881520BAB600C483DE /* PlistStore.m */; };
+		1AC62B9815292C5C0019362B /* SegmentManagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC62B9715292C5B0019362B /* SegmentManagingViewController.m */; };
+		1AC62B9F152950760019362B /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC62B9E152950760019362B /* TimelineViewController.m */; };
 		1ADD036815165531006EAD7E /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD036715165531006EAD7E /* EventFolder.m */; };
 		1AED06051510EEC700CCDA4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AED06041510EEC700CCDA4F /* CoreData.framework */; };
 		1AED06091510EEF100CCDA4F /* Last Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */; };
@@ -132,6 +134,10 @@
 		1AC020A2152550200022A07B /* oldLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oldLogEntry.m; sourceTree = "<group>"; };
 		1AC09F871520BAB600C483DE /* PlistStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistStore.h; sourceTree = "<group>"; };
 		1AC09F881520BAB600C483DE /* PlistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistStore.m; sourceTree = "<group>"; };
+		1AC62B9615292C5B0019362B /* SegmentManagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentManagingViewController.h; sourceTree = "<group>"; };
+		1AC62B9715292C5B0019362B /* SegmentManagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentManagingViewController.m; sourceTree = "<group>"; };
+		1AC62B9D152950760019362B /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
+		1AC62B9E152950760019362B /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		1ADD036615165531006EAD7E /* EventFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFolder.h; sourceTree = "<group>"; };
 		1ADD036715165531006EAD7E /* EventFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventFolder.m; sourceTree = "<group>"; };
 		1AED06041510EEC700CCDA4F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -363,6 +369,8 @@
 				3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */,
 				392009FD14E4B88D006B6A79 /* CustomTableViewController.h */,
 				392009FE14E4B88D006B6A79 /* CustomTableViewController.m */,
+				1AC62B9615292C5B0019362B /* SegmentManagingViewController.h */,
+				1AC62B9715292C5B0019362B /* SegmentManagingViewController.m */,
 				39918C1214F604BC00D8D4EE /* Event */,
 				39918C1114F604AD00D8D4EE /* Folder */,
 				39918C1314F604D700D8D4EE /* Log Entry */,
@@ -468,6 +476,8 @@
 		39918C1314F604D700D8D4EE /* Log Entry */ = {
 			isa = PBXGroup;
 			children = (
+				1AC62B9D152950760019362B /* TimelineViewController.h */,
+				1AC62B9E152950760019362B /* TimelineViewController.m */,
 				39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */,
 				39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */,
 				3940D3F214F17E230056D01B /* HistoryLogCell.h */,
@@ -853,6 +863,8 @@
 				1AC020A3152550200022A07B /* oldEvent.m in Sources */,
 				1AC020A4152550200022A07B /* oldEventFolder.m in Sources */,
 				1AC020A5152550200022A07B /* oldLogEntry.m in Sources */,
+				1AC62B9815292C5C0019362B /* SegmentManagingViewController.m in Sources */,
+				1AC62B9F152950760019362B /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
 #import "EventController.h"
 #import "EventStore.h"
 #import "MGSplitViewController.h"
+#import "SegmentManagingViewController.h"
 
 @implementation LastTimeAppDelegate
 
@@ -28,11 +29,12 @@
 	[self versionCheck];
 
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		FolderListViewController *masterViewController = [[FolderListViewController alloc] init];
+		SegmentManagingViewController *masterViewController = [[SegmentManagingViewController alloc] init];
 		
 		self.navigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
-		
-		self.window.rootViewController = self.navigationController;
+		[self.window addSubview:self.navigationController.view];
+
+//		self.window.rootViewController = self.navigationController;
 
 	} else {
 		FolderListViewController *masterViewController = [[FolderListViewController alloc] init];

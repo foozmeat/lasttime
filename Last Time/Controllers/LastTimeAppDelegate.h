@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class FolderListViewController;
 @class MGSplitViewController;
 
 @interface LastTimeAppDelegate : UIResponder <UIApplicationDelegate>

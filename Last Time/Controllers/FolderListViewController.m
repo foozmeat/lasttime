@@ -15,12 +15,13 @@
 #import "FolderListCell.h"
 
 @implementation FolderListViewController
-@synthesize activeCell, detailViewController;
+@synthesize activeCell, detailViewController, managingViewController;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
-- (id) init
-{
-	self = [super initWithStyle:UITableViewStyleGrouped];
+- (id)initWithParentViewController:(UIViewController *)aViewController {
+	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+		self.managingViewController = aViewController;
+	}
 	return self;
 }
 
@@ -41,8 +42,13 @@
 	self.title = NSLocalizedString(@"Lists", @"Lists");
 	
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
-//	[[self tableView] reloadData];
+
+	NSArray *statusItems = [[NSArray alloc] initWithObjects:@"Lists", @"Timeline", nil];
+	UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:statusItems];
+	[segControl setSegmentedControlStyle:UISegmentedControlStyleBar];
+	self.navigationItem.titleView = segControl;
 	
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -215,7 +221,7 @@
 		EventListViewController *elvc = [[EventListViewController alloc] init];
 		[elvc setFolder:folder];
 		[elvc setDetailViewController:[self detailViewController]];
-		[[self navigationController] pushViewController:elvc animated:YES];
+		[self.managingViewController.navigationController pushViewController:elvc animated:YES];
 		
 	} else {
 		if ( addingNewRow ) {
