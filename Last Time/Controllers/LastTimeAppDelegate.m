@@ -11,13 +11,14 @@
 #import "EventController.h"
 #import "EventStore.h"
 #import "MGSplitViewController.h"
-#import "SegmentManagingViewController.h"
+#import "SegmentsController.h"
+#import "TimelineViewController.h"
 
 @implementation LastTimeAppDelegate
 
-@synthesize window = _window;
-@synthesize navigationController = _navigationController;
-@synthesize splitViewController = _splitViewController;
+@synthesize window;
+@synthesize splitViewController;
+@synthesize segmentsController, segmentedControl;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -28,36 +29,73 @@
 	
 	[self versionCheck];
 
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		SegmentManagingViewController *masterViewController = [[SegmentManagingViewController alloc] init];
-		
-		self.navigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
-//		[self.window addSubview:self.navigationController.view];
+	NSArray *viewControllers = [self segmentViewControllers];
+	NSArray *segmentTitles = [[NSArray alloc] initWithObjects:@"Lists", @"Timeline", nil];
 
-		self.window.rootViewController = self.navigationController;
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+
+    UINavigationController *navigationController = [[UINavigationController alloc] init];
+    self.segmentsController = [[SegmentsController alloc] initWithNavigationController:navigationController viewControllers:viewControllers];
+    
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentTitles];
+    self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    
+    [self.segmentedControl addTarget:self.segmentsController
+                              action:@selector(indexDidChangeForSegmentedControl:)
+                    forControlEvents:UIControlEventValueChanged];
+    
+    [self firstUserExperience];
+    
+    [window addSubview:navigationController.view];
 
 	} else {
-		SegmentManagingViewController *masterViewController = [[SegmentManagingViewController alloc] init];
+		FolderListViewController *masterViewController = [viewControllers objectAtIndex:0];
 		
 		UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
 
-		EventController *detailViewController = [[EventController alloc] init];
+		EventController *detailViewController = masterViewController.detailViewController;
 		UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
 		
-		masterViewController.detailViewController = detailViewController;
-
+		self.segmentsController = [[SegmentsController alloc] initWithNavigationController:masterNavigationController viewControllers:viewControllers];
+    
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentTitles];
+    self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    
+    [self.segmentedControl addTarget:self.segmentsController
+                              action:@selector(indexDidChangeForSegmentedControl:)
+                    forControlEvents:UIControlEventValueChanged];
+    
+    [self firstUserExperience];
+				
 		self.splitViewController = [[MGSplitViewController alloc] init];
 		self.splitViewController.showsMasterInPortrait = YES;
 		
-//		self.splitViewController.delegate = detailViewController;
 		self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];
 		
 		self.window.rootViewController = self.splitViewController;
 
 	}
 	
-	[[self window] makeKeyAndVisible];
+	[window makeKeyAndVisible];
 	return YES;
+}
+
+- (NSArray *)segmentViewControllers {
+	FolderListViewController *lists = [[FolderListViewController alloc] init];
+	TimelineViewController *timeline = [[TimelineViewController alloc] init];
+	EventController *detailViewController = [[EventController alloc] init];
+
+	lists.detailViewController = detailViewController;
+	timeline.detailViewController = detailViewController;
+	
+	NSArray *viewControllers = [NSArray arrayWithObjects:lists, timeline, nil];
+
+	return viewControllers;
+}
+
+- (void)firstUserExperience {
+	self.segmentedControl.selectedSegmentIndex = 0;
+	[self.segmentsController indexDidChangeForSegmentedControl:self.segmentedControl];
 }
 
 - (void)versionCheck

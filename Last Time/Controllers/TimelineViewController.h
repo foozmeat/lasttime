@@ -12,9 +12,6 @@
 
 @interface TimelineViewController : UITableViewController
 
-@property (nonatomic, strong) UIViewController * managingViewController;
 @property (strong, nonatomic) EventController *detailViewController;
-
-- (id)initWithParentViewController:(UIViewController *)aViewController detailViewController:dViewController;
 
 @end

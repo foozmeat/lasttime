@@ -15,23 +15,18 @@
 #import "FolderListCell.h"
 
 @implementation FolderListViewController
-@synthesize activeCell, detailViewController, managingViewController;
+@synthesize activeCell, detailViewController;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
-- (id)initWithParentViewController:(UIViewController *)aViewController detailViewController:dViewController{
-	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
-		self.managingViewController = aViewController;
-		self.detailViewController = dViewController;
-	}
+- (id) init
+{
+	self = [super initWithStyle:UITableViewStyleGrouped];
 	return self;
 }
 
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	CGRect frame = self.tableView.frame;
-	frame.origin.x = frame.origin.y = 0.0f;
-	self.tableView.frame = frame;
 
 	userDrivenDataModelChange = NO;
 	newCell = nil;
@@ -43,15 +38,9 @@
 	[super viewWillAppear:animated];
 	
 	self.tableView.allowsSelectionDuringEditing = YES;
-//	self.title = NSLocalizedString(@"Lists", @"Lists");
+	self.title = NSLocalizedString(@"Lists", @"Lists");
 	
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
-
-	NSArray *statusItems = [[NSArray alloc] initWithObjects:@"Lists", @"Timeline", nil];
-	UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:statusItems];
-	[segControl setSegmentedControlStyle:UISegmentedControlStyleBar];
-	self.navigationItem.titleView = segControl;
-	
 
 }
 
@@ -225,7 +214,7 @@
 		EventListViewController *elvc = [[EventListViewController alloc] init];
 		[elvc setFolder:folder];
 		[elvc setDetailViewController:[self detailViewController]];
-		[self.managingViewController.navigationController pushViewController:elvc animated:YES];
+		[self.navigationController pushViewController:elvc animated:YES];
 		
 	} else {
 		if ( addingNewRow ) {

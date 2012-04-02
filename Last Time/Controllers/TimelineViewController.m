@@ -13,24 +13,23 @@
 @end
 
 @implementation TimelineViewController
-@synthesize managingViewController, detailViewController;
+@synthesize detailViewController;
 
-- (id)initWithParentViewController:(UIViewController *)aViewController detailViewController:dViewController
+- (id) init
 {
-	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
-		self.managingViewController = aViewController;
-		self.detailViewController = dViewController;
-	}
+	self = [super initWithStyle:UITableViewStyleGrouped];
 	return self;
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	self.title = NSLocalizedString(@"Timeline", @"Timeline");
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-	CGRect frame = self.tableView.frame;
-	frame.origin.x = frame.origin.y = 0.0f;
-	self.tableView.frame = frame;
-
 }
 
 - (void)viewDidUnload
