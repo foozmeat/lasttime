@@ -236,7 +236,19 @@
 	return nextDate;
 }
 
+-(BOOL)showLatestValue
+{
+	return ([[self latestEntry] logEntryValue] != nil &&
+					[[self latestEntry] logEntryValue] != NULL &&
+					[[[self latestEntry] logEntryValue] floatValue] != 0.0);
+}
 
+-(BOOL)showLatestNote
+{
+	return (![[[self latestEntry] logEntryNote] isEqualToString:@""] &&
+					[[self latestEntry] logEntryNote] != nil &&
+					[[self latestEntry] logEntryNote] != NULL);
+}
 -(NSString*)subtitle
 {
 	
@@ -250,19 +262,16 @@
 	
 	NSString *output = nil;
 	
-	if ([[[self latestEntry] logEntryNote] isEqualToString:@""]) {
-		if ([[self latestEntry] logEntryValue] != nil &&
-				[[[self latestEntry] logEntryValue] floatValue] != 0.0) {
-			NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[[[self latestEntry] logEntryValue] floatValue]]];
-			output = [[NSString alloc] initWithFormat:@"%@ - %@", value, [self lastStringInterval]];
-		} else {
-			output = [[NSString alloc] initWithFormat:@"%@", [self lastStringInterval]];
-			
-		}
-	} else {
+	if ([self showLatestNote]) {
 		output =  [[NSString alloc] initWithFormat:@"%@ - %@", 
 							 [[self latestEntry] logEntryNote], 
 							 [self lastStringInterval]];
+	
+	} else if ([self showLatestValue]) {
+		NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[[[self latestEntry] logEntryValue] floatValue]]];
+		output = [[NSString alloc] initWithFormat:@"%@ - %@", value, [self lastStringInterval]];
+	} else {
+		output = [[NSString alloc] initWithFormat:@"%@", [self lastStringInterval]];
 	}
 	
 	return output;
