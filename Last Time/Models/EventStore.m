@@ -61,7 +61,7 @@ static EventStore *defaultStore = nil;
 	
 	NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
 	
-	NSString *path = pathInDocumentDirectory(@"LastTime.sqllite");
+	NSString *path = pathInDocumentDirectory(@"LastTime.sqlite");
 	NSURL *storeURL = [NSURL fileURLWithPath:path];
 	
 	NSError *error = nil;
@@ -192,7 +192,7 @@ static EventStore *defaultStore = nil;
 #pragma mark - Migrations
 - (void)deleteDatabase
 {
-	NSString *path = pathInDocumentDirectory(@"LastTime.sqllite");
+	NSString *path = pathInDocumentDirectory(@"LastTime.sqlite");
 	NSURL *storeURL = [NSURL fileURLWithPath:path];
 	NSError *error = nil;
 	[[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
