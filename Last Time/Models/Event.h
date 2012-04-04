@@ -25,7 +25,7 @@
 
 //- (id)initWithEventName:(NSString *)name
 //						 logEntries:(NSMutableArray *)entries;
-- (NSString *)subtitle;
+- (NSString *)subtitleForTimeline:(BOOL)forTimeline;
 
 - (NSDate *)latestDate;
 - (LogEntry *)latestEntry;
