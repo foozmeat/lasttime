@@ -222,9 +222,47 @@
 	return result;
 }
 
+//- (NSString *)subtitle
+//{
+//	return [[NSString alloc] initWithFormat:@"%@", [self stringFromLogEntryInterval]];
+//}
+
+-(BOOL)showValue
+{
+	return ([self logEntryValue] != nil &&
+					[self logEntryValue] != NULL &&
+					[[self logEntryValue] floatValue] != 0.0);
+}
+
+-(BOOL)showNote
+{
+	return (![[self logEntryNote] isEqualToString:@""] &&
+					[self logEntryNote] != nil &&
+					[self logEntryNote] != NULL);
+}
+
 - (NSString *)subtitle
 {
-	return [[NSString alloc] initWithFormat:@"%@", [self stringFromLogEntryInterval]];
+	
+	NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+	nf.numberStyle = NSNumberFormatterDecimalStyle;
+	nf.roundingIncrement = [NSNumber numberWithDouble:0.001];
+	
+	NSString *output = nil;
+	
+	if ([self showNote]) {
+		output = [[NSString alloc] initWithFormat:@"%@", [self logEntryNote]];
+		
+	} else if ([self showValue]) {
+		NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[[self logEntryValue] floatValue]]];
+		
+		output = [[NSString alloc] initWithFormat:@"%@", value];
+		
+	} else {
+		output = @"";
+	}
+	
+	return output;
 }
 
 - (NSString *)description

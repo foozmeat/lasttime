@@ -315,7 +315,7 @@
 	
 	Event *item = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
 	[[cell textLabel] setText:[item eventName]];
-	[[cell detailTextLabel] setText:[item subtitleForTimeline:NO]];
+	[[cell detailTextLabel] setText:[item subtitle]];
 	
 	
 }

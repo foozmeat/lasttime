@@ -236,53 +236,9 @@
 	return nextDate;
 }
 
--(BOOL)showLatestValue
+- (NSString *)subtitle
 {
-	return ([[self latestEntry] logEntryValue] != nil &&
-					[[self latestEntry] logEntryValue] != NULL &&
-					[[[self latestEntry] logEntryValue] floatValue] != 0.0);
-}
-
--(BOOL)showLatestNote
-{
-	return (![[[self latestEntry] logEntryNote] isEqualToString:@""] &&
-					[[self latestEntry] logEntryNote] != nil &&
-					[[self latestEntry] logEntryNote] != NULL);
-}
-
-- (NSString *)subtitleForTimeline:(BOOL)forTimeline
-{
-	
-	nf = [[NSNumberFormatter alloc] init];
-	nf.numberStyle = NSNumberFormatterDecimalStyle;
-	nf.roundingIncrement = [NSNumber numberWithDouble:0.001];
-	
-	if ([[self logEntryCollection] count] == 0) {
-		return @"";
-	}
-	
-	NSString *output = nil;
-	
-	if ([self showLatestNote]) {
-		output =  [[NSString alloc] initWithFormat:@"%@", [[self latestEntry] logEntryNote]];
-		if (!forTimeline) {
-			output = [[NSString alloc] initWithFormat:@"%@ - %@", output, [self lastStringInterval]];
-		}
-	} else if ([self showLatestValue]) {
-		NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[[[self latestEntry] logEntryValue] floatValue]]];
-		output = [[NSString alloc] initWithFormat:@"%@", value];
-
-		if (!forTimeline) {
-			output = [[NSString alloc] initWithFormat:@"%@ - %@", output, [self lastStringInterval]];
-		}
-	
-	} else if (! forTimeline) {
-		output = [[NSString alloc] initWithFormat:@"%@", [self lastStringInterval]];
-	} else {
-		output = @"";
-	}
-	
-	return output;
+	return [[self latestEntry] subtitle];
 }
 
 -(NSString *)description
@@ -290,7 +246,7 @@
 	NSMutableString *output = [[NSMutableString alloc] init];
 	
 	[output appendFormat:@"\n%@", self.eventName];
-	[output appendFormat:@"\n%@", [self subtitleForTimeline:NO]];
+	[output appendFormat:@"\n%@", [self subtitle]];
 	[output appendFormat:@"\nLatest Entry: %@\n", [self latestEntry]];
 	[output appendFormat:@"Average Interval: %f - %@\n", [self averageInterval], [self averageStringInterval]];
 	[output appendFormat:@"Next Time: %@\n", [[self nextTime] descriptionWithLocale:[NSLocale currentLocale]]];

@@ -138,7 +138,7 @@
 	LogEntry *le = (LogEntry *)[self.fetchedResultsController objectAtIndexPath:indexPath];
 	Event *item = le.event;
 	[[cell textLabel] setText:[item eventName]];
-	[[cell detailTextLabel] setText:[item subtitleForTimeline:YES]];
+	[[cell detailTextLabel] setText:[le subtitle]];
 	
 	
 }

@@ -31,6 +31,10 @@
 - (NSTimeInterval)secondsSinceNow;
 - (NSString *)stringFromLogEntryInterval;
 - (NSString *)subtitle;
+
+- (BOOL)showValue;
+- (BOOL)showNote;
+
 - (BOOL)hasLocation;
 - (void)reverseLookupLocation;
 //+ (id)randomLogEntry;
