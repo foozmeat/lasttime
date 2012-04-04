@@ -10,8 +10,9 @@
 
 @class EventController;
 
-@interface TimelineViewController : UITableViewController
+@interface TimelineViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) EventController *detailViewController;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 @end

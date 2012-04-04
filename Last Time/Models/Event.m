@@ -249,7 +249,8 @@
 					[[self latestEntry] logEntryNote] != nil &&
 					[[self latestEntry] logEntryNote] != NULL);
 }
--(NSString*)subtitle
+
+- (NSString *)subtitleForTimeline:(BOOL)forTimeline
 {
 	
 	nf = [[NSNumberFormatter alloc] init];
@@ -263,15 +264,22 @@
 	NSString *output = nil;
 	
 	if ([self showLatestNote]) {
-		output =  [[NSString alloc] initWithFormat:@"%@ - %@", 
-							 [[self latestEntry] logEntryNote], 
-							 [self lastStringInterval]];
-	
+		output =  [[NSString alloc] initWithFormat:@"%@", [[self latestEntry] logEntryNote]];
+		if (!forTimeline) {
+			output = [[NSString alloc] initWithFormat:@"%@ - %@", output, [self lastStringInterval]];
+		}
 	} else if ([self showLatestValue]) {
 		NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[[[self latestEntry] logEntryValue] floatValue]]];
-		output = [[NSString alloc] initWithFormat:@"%@ - %@", value, [self lastStringInterval]];
-	} else {
+		output = [[NSString alloc] initWithFormat:@"%@", value];
+
+		if (!forTimeline) {
+			output = [[NSString alloc] initWithFormat:@"%@ - %@", output, [self lastStringInterval]];
+		}
+	
+	} else if (! forTimeline) {
 		output = [[NSString alloc] initWithFormat:@"%@", [self lastStringInterval]];
+	} else {
+		output = @"";
 	}
 	
 	return output;
@@ -282,7 +290,7 @@
 	NSMutableString *output = [[NSMutableString alloc] init];
 	
 	[output appendFormat:@"\n%@", self.eventName];
-	[output appendFormat:@"\n%@", [self subtitle]];
+	[output appendFormat:@"\n%@", [self subtitleForTimeline:NO]];
 	[output appendFormat:@"\nLatest Entry: %@\n", [self latestEntry]];
 	[output appendFormat:@"Average Interval: %f - %@\n", [self averageInterval], [self averageStringInterval]];
 	[output appendFormat:@"Next Time: %@\n", [[self nextTime] descriptionWithLocale:[NSLocale currentLocale]]];
