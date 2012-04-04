@@ -23,6 +23,9 @@
 @property (nonatomic, strong) NSNumber *logEntryValue;
 @property (nonatomic, strong) NSNumber *longitude;
 @property (nonatomic, strong) Event *event;
+@property (nonatomic, strong) NSString *sectionIdentifier;
+@property (nonatomic, strong) NSString *primitiveSectionIdentifier;
+@property (nonatomic, strong) NSDate *primitiveLogEntryDateOccured;
 
 
 - (NSTimeInterval)secondsSinceNow;

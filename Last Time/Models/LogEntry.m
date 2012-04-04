@@ -13,13 +13,13 @@
 @implementation LogEntry
 
 @dynamic latitude;
-@dynamic logEntryDateOccured;
+@dynamic logEntryDateOccured, primitiveLogEntryDateOccured;
 @dynamic logEntryLocationString;
 @dynamic logEntryNote;
 @dynamic logEntryValue;
 @dynamic longitude;
 @dynamic event;
-
+@dynamic sectionIdentifier, primitiveSectionIdentifier;
 
 //- (id)init
 //{
@@ -42,6 +42,47 @@
 - (void)awakeFromInsert
 {
 	self.logEntryDateOccured = [[NSDate alloc] init];
+}
+
+#pragma mark - Transient properties
+
+- (NSString *)sectionIdentifier {
+	
+    // Create and cache the section identifier on demand.
+	
+	[self willAccessValueForKey:@"sectionIdentifier"];
+	NSString *tmp = [self primitiveSectionIdentifier];
+	[self didAccessValueForKey:@"sectionIdentifier"];
+	
+	if (!tmp) {
+
+		NSDateFormatter *df = [[NSDateFormatter alloc] init];
+		[df setDateStyle:NSDateFormatterFullStyle];
+		tmp = [df stringFromDate:[self logEntryDateOccured]];
+		
+		[self setPrimitiveSectionIdentifier:tmp];
+	}
+	return tmp;
+}
+
+#pragma mark - Time stamp setter
+
+- (void)setTimeStamp:(NSDate *)newDate {
+	
+    // If the time stamp changes, the section identifier become invalid.
+	[self willChangeValueForKey:@"logEntryDateOccured"];
+	[self setPrimitiveLogEntryDateOccured:newDate];
+	[self didChangeValueForKey:@"logEntryDateOccured"];
+	
+	[self setPrimitiveSectionIdentifier:nil];
+}
+
+
+#pragma mark - Key path dependencies
+
++ (NSSet *)keyPathsForValuesAffectingSectionIdentifier {
+    // If the value of timeStamp changes, the section identifier may change as well.
+	return [NSSet setWithObject:@"logEntryDateOccured"];
 }
 
 #pragma mark - Durations
