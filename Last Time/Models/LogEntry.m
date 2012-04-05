@@ -21,24 +21,6 @@
 @dynamic event;
 @dynamic sectionIdentifier, primitiveSectionIdentifier;
 
-//- (id)init
-//{
-//	return [self initWithNote:@"" dateOccured:[[NSDate alloc] init]];
-//}
-//
-//- (id)initWithNote:(NSString *)note
-//			 dateOccured:(NSDate *)dateOccured
-//{
-//	if (!(self = [super init]))
-//		return nil;
-//	
-//	[self setLogEntryNote:note];
-//	[self setLogEntryDateOccured:dateOccured];
-//	
-//	return self;
-//	
-//}
-
 - (void)awakeFromInsert
 {
 	self.logEntryDateOccured = [[NSDate alloc] init];
@@ -105,6 +87,14 @@
 - (NSString *)stringFromLogEntryInterval
 {
 	return [LogEntry stringFromInterval:[self secondsSinceNow] withSuffix:YES withDays:YES];
+}
+
+- (NSString *)dateString
+{
+	NSDateFormatter *df = [[NSDateFormatter alloc] init];
+	[df setDateStyle:NSDateFormatterFullStyle];
+	return [df stringFromDate:[self logEntryDateOccured]];
+	
 }
 
 + (NSString *)stringFromInterval:(NSTimeInterval)interval 
@@ -221,11 +211,6 @@
 	}
 	return result;
 }
-
-//- (NSString *)subtitle
-//{
-//	return [[NSString alloc] initWithFormat:@"%@", [self stringFromLogEntryInterval]];
-//}
 
 -(BOOL)showValue
 {

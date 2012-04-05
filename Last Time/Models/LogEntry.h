@@ -31,6 +31,7 @@
 - (NSTimeInterval)secondsSinceNow;
 - (NSString *)stringFromLogEntryInterval;
 - (NSString *)subtitle;
+- (NSString *)dateString;
 
 - (BOOL)showValue;
 - (BOOL)showNote;

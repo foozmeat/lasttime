@@ -310,7 +310,7 @@
 			} else {
 				historyLogCell.logEntryValueCell.text = @"";
 			}
-			historyLogCell.logEntryDateCell.text = [item stringFromLogEntryInterval];
+			historyLogCell.logEntryDateCell.text = [item dateString];
 			historyLogCell.locationMarker.hidden = ![item hasLocation];
 			historyLogCell.logEntryLocationCell.text = [item locationString];
 			return historyLogCell;
