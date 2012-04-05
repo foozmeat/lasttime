@@ -250,7 +250,7 @@
 		switch ([indexPath row]) {
 			case kAverageTime:
 			{
-				cell.textLabel.text = @"Average Duration";
+				cell.textLabel.text = @"Average Time Span";
 				cell.detailTextLabel.text = [_event averageStringInterval];
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
