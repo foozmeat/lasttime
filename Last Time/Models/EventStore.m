@@ -164,31 +164,6 @@ static EventStore *defaultStore = nil;
 	return successful;
 }
 
-//- (void)fetchItemsIfNecessary
-//{
-//	if (!_allItems) {
-//		NSFetchRequest *request = [[NSFetchRequest alloc] init];
-//		
-//		NSEntityDescription *e = [[model entitiesByName] objectForKey:@"EventFolder"];
-//		[request setEntity:e];
-//		
-//		NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"orderingValue" ascending:YES];
-//		
-//		[request setSortDescriptors:[NSArray arrayWithObject:sd]];
-//		
-//		NSError *error;
-//		NSArray *result = [self.context executeFetchRequest:request error:&error];
-//		
-//		if (!result) {
-//			[NSException raise:@"Fetch failed" 
-//									format:@"Reason: %@", [error localizedDescription]];
-//		}
-//		_allItems = [[NSMutableArray alloc] initWithArray:result];
-//
-//	}
-//	
-//}
-
 #pragma mark - Migrations
 - (void)deleteDatabase
 {
@@ -210,6 +185,36 @@ static EventStore *defaultStore = nil;
 		[self migrateToCoreData];
 	}
 
+}
+
+- (void)pruneOrphanedLogEntries
+{
+	NSLog(@"Pruning orphaned log entries");
+//	NSManagedObjectContext *ctx = [self context];
+	
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	
+	NSEntityDescription *e = [[model entitiesByName] objectForKey:@"LogEntry"];
+	[request setEntity:e];
+	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"event == NULL"];
+	[request setPredicate:predicate];
+	
+	NSError *error;
+	NSArray *result = [self.context executeFetchRequest:request error:&error];
+	
+	if (!result) {
+		[NSException raise:@"Fetch failed" 
+								format:@"Reason: %@", [error localizedDescription]];
+	}
+
+	NSLog(@"Found %i entries to delete", [result count]);
+	
+	for (LogEntry *le in result) {
+		[self removeLogEntry:le];
+	}
+
+	[self saveChanges];
 }
 
 - (void)migrateToCoreData

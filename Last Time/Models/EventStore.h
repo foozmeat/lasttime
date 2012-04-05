@@ -25,6 +25,7 @@
 - (BOOL)saveChanges;
 //- (void)fetchItemsIfNecessary;
 - (NSManagedObjectContext *)context;
+- (void)pruneOrphanedLogEntries;
 
 #pragma mark - Folders
 - (NSMutableArray *)allFolders;
