@@ -22,8 +22,15 @@
 - (void)save
 {
 	[event addLogEntry:logEntry];
+	[[EventStore defaultStore] saveChanges];
 	[super save];
-//	NSLog(@"%@", event);
+}
+
+- (void)cancel
+{
+	[[EventStore defaultStore] removeLogEntry:logEntry];
+	
+	[super cancel];
 }
 
 #pragma mark -
