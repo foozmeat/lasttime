@@ -291,18 +291,7 @@
 
 			LogEntry *item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
 
-			if ([[item logEntryNote] isEqualToString:@""]){
-				UIFont *font = [UIFont italicSystemFontOfSize:14];
-				[historyLogCell.logEntryNoteCell setFont:font];
-				[historyLogCell.logEntryNoteCell setTextColor:[UIColor grayColor]];
-				
-				historyLogCell.logEntryNoteCell.text = @"No Note";
-			} else {
-				UIFont *font = [UIFont systemFontOfSize:14];
-				[historyLogCell.logEntryNoteCell setFont:font];
-				[historyLogCell.logEntryNoteCell setTextColor:[UIColor blackColor]];
-				historyLogCell.logEntryNoteCell.text = item.logEntryNote;
-			}
+			historyLogCell.logEntryNoteCell.text = item.logEntryNote;
 			
 			if ([[item logEntryValue] floatValue] != 0.0) {
 				NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[item logEntryValue] floatValue]]];

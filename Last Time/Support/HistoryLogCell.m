@@ -31,4 +31,43 @@
     // Configure the view for the selected state
 }
 
+-(void) layoutSubviews
+{
+	[super layoutSubviews];
+//	float inset = 5.0;
+	CGRect bounds = [[self contentView] bounds];
+	
+	
+	const float cellWidth = bounds.size.width - 20.0;
+	const float maxNoteWidth = 136;
+	
+	// Size note up to max if need be
+	CGSize newNoteSize = [logEntryNoteCell sizeThatFits:logEntryNoteCell.frame.size];
+	if (newNoteSize.width > maxNoteWidth) {
+		// handle the overflow some way
+		newNoteSize.width = maxNoteWidth;
+	}
+	// resize the label
+	CGRect frame = logEntryNoteCell.frame;
+	frame.size = newNoteSize;
+	logEntryNoteCell.frame = frame;
+	
+		// Resize the date
+	CGSize newDateSize = [logEntryDateCell sizeThatFits:logEntryDateCell.frame.size];
+	CGSize dateSize = logEntryDateCell.frame.size;
+	
+	const float maxDateSize = cellWidth - newNoteSize.width - 10.0;
+	if (newDateSize.width > maxDateSize) {
+		newDateSize.width = maxDateSize;
+	}
+
+	float sizeDifference = dateSize.width - newDateSize.width;
+	
+		// resize the label
+	CGRect dateFrame = logEntryDateCell.frame;
+	dateFrame.size = newDateSize;
+	dateFrame.origin.x = dateFrame.origin.x + sizeDifference;
+	logEntryDateCell.frame = dateFrame;
+	
+}
 @end
