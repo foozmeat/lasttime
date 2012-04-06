@@ -150,13 +150,13 @@
 	[fetchRequest setPredicate:predicate];
 
 	NSSortDescriptor *sort = [[NSSortDescriptor alloc] 
-														initWithKey:@"eventName" ascending:YES];
+														initWithKey:@"latestDate" ascending:NO];
 	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
 	
 	_fetchedResultsController = 
 	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
 																			managedObjectContext: [[EventStore defaultStore] context]
-																				sectionNameKeyPath:nil 
+																				sectionNameKeyPath:@"sectionIdentifier" 
 																								 cacheName:[folder folderName]];
 	_fetchedResultsController.delegate = self;
 
@@ -277,6 +277,19 @@
 		}
 		
 	}
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	
+	NSInteger count = [[self.fetchedResultsController sections] count];
+	return count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	
+	id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
+	
+	return theSection.name;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -20,30 +20,8 @@
 
 @synthesize needsSorting;
 
-//- (id)init
-//{
-//	return [self initWithEventName:@"" 
-//											logEntries:[[NSMutableArray alloc] init]];
-//}
-//
-//- (id)initWithEventName:(NSString *)name logEntries:(NSMutableArray *)entries
-//{
-//	if (!(self = [super init]))
-//		return nil;
-//	
-//	[self setEventName:name];
-//	[self setLogEntryCollection:entries];
-//	needsSorting = YES;
-//	
-//	return self;
-//}
-
-//- (void)removeItem:(id)item
-//{
-//	[self.logEntryCollection removeObjectIdenticalTo:item];
-//	needsSorting = YES;
-//}
-
+@dynamic sectionIdentifier, primitiveSectionIdentifier;
+@dynamic latestDate, primitiveLatestDate;
 
 //+ (Event *)randomEvent
 //{
@@ -65,6 +43,55 @@
 //	
 //}
 
+#pragma mark - Transient properties
+
+- (NSString *)sectionIdentifier {
+	
+    // Create and cache the section identifier on demand.
+	
+	[self willAccessValueForKey:@"sectionIdentifier"];
+	NSString *tmp = [self primitiveSectionIdentifier];
+	[self didAccessValueForKey:@"sectionIdentifier"];
+	
+	if (!tmp) {
+		
+		NSDateFormatter *df = [[NSDateFormatter alloc] init];
+		[df setDateStyle:NSDateFormatterFullStyle];
+		tmp = [df stringFromDate:self.latestDate];
+		
+		[self setPrimitiveSectionIdentifier:tmp];
+	}
+	return tmp;
+}
+
+- (void)updateLatestDate
+{
+	LogEntry *le = [self latestEntry];
+	if (!le) {
+		self.latestDate = [[NSDate alloc] initWithTimeIntervalSince1970:0];
+	} else {
+		self.latestDate = [le logEntryDateOccured];
+	}
+}
+
+
+- (void)setLatestDate:(NSDate *)newDate {
+	
+    // If the time stamp changes, the section identifier become invalid.
+	[self willChangeValueForKey:@"latestDate"];
+	[self setPrimitiveLatestDate:newDate];
+	[self didChangeValueForKey:@"latestDate"];
+	
+	[self setPrimitiveSectionIdentifier:nil];
+}
+
+#pragma mark - Key path dependencies
+
++ (NSSet *)keyPathsForValuesAffectingSectionIdentifier {
+    // If the value of timeStamp changes, the section identifier may change as well.
+	return [NSSet setWithObject:@"latestDate"];
+}
+
 - (void)awakeFromFetch
 {
 	needsSorting = YES;
@@ -74,8 +101,19 @@
 {
 	self.needsSorting = YES;
 	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
-	_logEntryCollection = nil;
+	[_logEntryCollection addObject:entry];
 	[self addLogEntriesObject:entry];
+	[self updateLatestDate];
+
+}
+
+- (void)removeLogEntry:(LogEntry *)logEntry
+{
+	self.needsSorting = YES;
+	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
+	[_logEntryCollection removeObjectIdenticalTo:logEntry];
+	[[EventStore defaultStore] removeLogEntry:logEntry];
+	[self updateLatestDate];
 
 }
 
@@ -90,13 +128,6 @@
 		
 		needsSorting = NO;
 	}
-}
-
-- (void)removeLogEntry:(LogEntry *)logEntry
-{
-	[_logEntryCollection removeObjectIdenticalTo:logEntry];
-	[[EventStore defaultStore] removeLogEntry:logEntry];
-	self.needsSorting = YES;
 }
 
 - (NSMutableArray *)logEntryCollection
@@ -211,16 +242,6 @@
 	}
 	[self sortEntries];
 	return [self.logEntryCollection objectAtIndex:0];
-}
-
-- (NSDate *)latestDate
-{
-	LogEntry *le = [self latestEntry];
-	if (!le) {
-		return [[NSDate alloc] initWithTimeIntervalSince1970:0];
-	} else {
-		return [le logEntryDateOccured];
-	}
 }
 
 - (NSDate *)nextTime

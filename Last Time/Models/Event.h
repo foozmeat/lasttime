@@ -23,12 +23,19 @@
 @property (nonatomic, strong) NSMutableArray *logEntryCollection;
 @property (nonatomic) BOOL needsSorting;
 
+@property (nonatomic, strong) NSString *sectionIdentifier;
+@property (nonatomic, strong) NSString *primitiveSectionIdentifier;
+
+@property (nonatomic, strong) NSDate *latestDate;
+@property (nonatomic, strong) NSDate *primitiveLatestDate;
+
 //- (id)initWithEventName:(NSString *)name
 //						 logEntries:(NSMutableArray *)entries;
 - (NSString *)subtitle;
 
-- (NSDate *)latestDate;
+//- (NSDate *)latestDate;
 - (LogEntry *)latestEntry;
+- (void)updateLatestDate;
 
 - (NSTimeInterval)averageInterval;
 - (NSString *)averageStringInterval;
