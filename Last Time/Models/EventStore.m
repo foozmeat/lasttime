@@ -58,16 +58,20 @@ static EventStore *defaultStore = nil;
 
 	model = [NSManagedObjectModel mergedModelFromBundles:nil];
 		//	NSLog(@"model = %@", model);
-	
+
+	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+													 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+													 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+
 	NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
 	
 	NSString *path = pathInDocumentDirectory(@"LastTime.sqlite");
 	NSURL *storeURL = [NSURL fileURLWithPath:path];
 	
 	NSError *error = nil;
-	if (![psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+	if (![psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
 		[NSException raise:@"Open failed"
-								format:@"Reason: %@", [error localizedDescription]];
+								format:@"Reason: %@ %@", [error localizedDescription], [error userInfo]];
 	}
 
 	if (psc != nil)

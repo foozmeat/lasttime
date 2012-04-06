@@ -126,6 +126,7 @@
 /* Begin PBXFileReference section */
 		1A161D6D152018D60062B4A5 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		1A161D6E152018D60062B4A5 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
 		1AB4B3E5152961B800D66347 /* SegmentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentsController.h; path = "Last Time/Support/SegmentsController.h"; sourceTree = SOURCE_ROOT; };
 		1AB4B3E6152961B800D66347 /* SegmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentsController.m; path = "Last Time/Support/SegmentsController.m"; sourceTree = SOURCE_ROOT; };
 		1AC0209D152550200022A07B /* oldEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oldEvent.h; sourceTree = "<group>"; };
@@ -1469,9 +1470,10 @@
 		1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */,
 				1AED06081510EEF100CCDA4F /* Last Time.xcdatamodel */,
 			);
-			currentVersion = 1AED06081510EEF100CCDA4F /* Last Time.xcdatamodel */;
+			currentVersion = 1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */;
 			path = "Last Time.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
