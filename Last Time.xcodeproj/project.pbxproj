@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A03C076152F470700249036 /* NSManagedObjectContext+FetchAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A03C075152F470700249036 /* NSManagedObjectContext+FetchAdditions.m */; };
 		1A161D6F152018D60062B4A5 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A161D6E152018D60062B4A5 /* Event.m */; };
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
 		1AC020A3152550200022A07B /* oldEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0209E152550200022A07B /* oldEvent.m */; };
@@ -124,6 +125,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A03C072152F43D500249036 /* Last Time 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 3.xcdatamodel"; sourceTree = "<group>"; };
+		1A03C074152F470700249036 /* NSManagedObjectContext+FetchAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObjectContext+FetchAdditions.h"; path = "../../../Downloads/NSManagedObjectContext+FetchAdditions/NSManagedObjectContext+FetchAdditions.h"; sourceTree = "<group>"; };
+		1A03C075152F470700249036 /* NSManagedObjectContext+FetchAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+FetchAdditions.m"; path = "../../../Downloads/NSManagedObjectContext+FetchAdditions/NSManagedObjectContext+FetchAdditions.m"; sourceTree = "<group>"; };
 		1A161D6D152018D60062B4A5 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		1A161D6E152018D60062B4A5 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -596,6 +600,8 @@
 			isa = PBXGroup;
 			children = (
 				39FEDFAB14EAC350009672A5 /* Custom Cells */,
+				1A03C074152F470700249036 /* NSManagedObjectContext+FetchAdditions.h */,
+				1A03C075152F470700249036 /* NSManagedObjectContext+FetchAdditions.m */,
 				39FEDFA714EAC2C2009672A5 /* UIColor+Custom.h */,
 				39FEDFA814EAC2C2009672A5 /* UIColor+Custom.m */,
 				39825C8E14E8757200C4D684 /* FileHelpers.h */,
@@ -866,6 +872,7 @@
 				1AC020A5152550200022A07B /* oldLogEntry.m in Sources */,
 				1AC62B9F152950760019362B /* TimelineViewController.m in Sources */,
 				1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */,
+				1A03C076152F470700249036 /* NSManagedObjectContext+FetchAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1470,10 +1477,11 @@
 		1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1A03C072152F43D500249036 /* Last Time 3.xcdatamodel */,
 				1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */,
 				1AED06081510EEF100CCDA4F /* Last Time.xcdatamodel */,
 			);
-			currentVersion = 1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */;
+			currentVersion = 1A03C072152F43D500249036 /* Last Time 3.xcdatamodel */;
 			path = "Last Time.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
