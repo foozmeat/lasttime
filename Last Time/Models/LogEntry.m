@@ -49,7 +49,7 @@
 
 #pragma mark - Time stamp setter
 
-- (void)setTimeStamp:(NSDate *)newDate {
+- (void)setLogEntryDateOccured:(NSDate *)newDate {
 	
     // If the time stamp changes, the section identifier become invalid.
 	[self willChangeValueForKey:@"logEntryDateOccured"];
