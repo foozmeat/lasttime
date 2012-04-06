@@ -22,6 +22,7 @@ static EventStore *defaultStore = nil;
 @implementation EventStore
 @synthesize allFolders = _allFolders;
 @synthesize context = _context;
+@synthesize model = _model;
 
 + (EventStore *)defaultStore
 {
@@ -49,6 +50,17 @@ static EventStore *defaultStore = nil;
 }
 
 #pragma mark - Core Data
+- (NSManagedObjectModel *)model
+{
+	if (_model != nil) {
+		return _model;
+	}
+	
+	_model = [NSManagedObjectModel mergedModelFromBundles:nil];
+	
+	return _model;
+}
+
 - (NSManagedObjectContext *)context
 {
 	if (_context != nil)
@@ -56,14 +68,11 @@ static EventStore *defaultStore = nil;
 		return _context;
 	}
 
-	model = [NSManagedObjectModel mergedModelFromBundles:nil];
-		//	NSLog(@"model = %@", model);
-
 	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
 													 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
 													 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
 
-	NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+	NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.model];
 	
 	NSString *path = pathInDocumentDirectory(@"LastTime.sqlite");
 	NSURL *storeURL = [NSURL fileURLWithPath:path];
@@ -90,7 +99,7 @@ static EventStore *defaultStore = nil;
 	if (!_allFolders) {
 		NSFetchRequest *request = [[NSFetchRequest alloc] init];
 		
-		NSEntityDescription *e = [[model entitiesByName] objectForKey:@"EventFolder"];
+		NSEntityDescription *e = [[self.model entitiesByName] objectForKey:@"EventFolder"];
 		[request setEntity:e];
 		
 		NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"orderingValue" ascending:YES];
@@ -191,14 +200,35 @@ static EventStore *defaultStore = nil;
 
 }
 
+- (void)updateEventLatestDates
+{
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	
+	NSEntityDescription *e = [[self.model entitiesByName] objectForKey:@"Event"];
+	[request setEntity:e];
+	
+	NSError *error;
+	NSArray *events = [self.context executeFetchRequest:request error:&error];
+	
+	if (!events) {
+		[NSException raise:@"Fetch failed" 
+								format:@"Reason: %@", [error localizedDescription]];
+	}
+
+	for (Event *event in events) {
+		[event updateLatestDate];
+	}
+	
+	[self saveChanges];
+}
+
 - (void)pruneOrphanedLogEntries
 {
 	NSLog(@"Pruning orphaned log entries");
-//	NSManagedObjectContext *ctx = [self context];
 	
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
 	
-	NSEntityDescription *e = [[model entitiesByName] objectForKey:@"LogEntry"];
+	NSEntityDescription *e = [[self.model entitiesByName] objectForKey:@"LogEntry"];
 	[request setEntity:e];
 	
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"event == NULL"];
@@ -251,12 +281,12 @@ static EventStore *defaultStore = nil;
 				newLogEntry.longitude = [NSNumber numberWithFloat:le.logEntryLocation.longitude];
 				newLogEntry.event = newEvent;
 			}
-			
 		}
 		
 	}
 	
 	[self saveChanges];
+	[self	updateEventLatestDates];
 }
 
 - (void)loadDefaultData

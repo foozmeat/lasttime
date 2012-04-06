@@ -14,18 +14,17 @@
 @class LogEntry;
 
 @interface EventStore : NSObject <NSObject>
-{
-	NSManagedObjectModel *model;
-}
 
 @property (nonatomic, strong) NSMutableArray *allFolders;
 @property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, strong) NSManagedObjectModel *model;
 
 + (EventStore *)defaultStore;
 - (BOOL)saveChanges;
 //- (void)fetchItemsIfNecessary;
 - (NSManagedObjectContext *)context;
 - (void)pruneOrphanedLogEntries;
+- (void)updateEventLatestDates;
 
 #pragma mark - Folders
 - (NSMutableArray *)allFolders;
