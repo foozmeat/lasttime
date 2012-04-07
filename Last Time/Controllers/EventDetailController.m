@@ -99,7 +99,9 @@
 	switch (tag)
 	{
 		case kEventName:
-			[event setEventName:text];
+			if (![text isEqualToString:@""]) {
+				[event setEventName:text];
+			}
 			break;
 		case kEventNote:
 			[logEntry setLogEntryNote:text];

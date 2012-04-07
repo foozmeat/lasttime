@@ -421,8 +421,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	NSIndexPath *path = [self.tableView indexPathForCell:cell];
 	
 	EventFolder *folder = [self.fetchedResultsController objectAtIndexPath:path];
-	[folder setFolderName:text];
-
+	if ([text isEqualToString:@""]) {
+		[[EventStore defaultStore] removeFolder:folder];
+	} else {
+		[folder setFolderName:text];
+	}
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
