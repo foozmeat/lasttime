@@ -33,47 +33,47 @@
 	return [self init];
 }
 
--(void)showAveragePopup
-{
-#if TESTFLIGHT
-	[TestFlight passCheckpoint:@"Saw Average Popup"];
-#endif
-	if (!self.averagePopover) {
-
-		//		Create a label with custom text 
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
-		[label setText:@"Add another entry to this event."];
-		[label setBackgroundColor:[UIColor clearColor]];
-		[label setTextColor:[UIColor whiteColor]];
-		[label setTextAlignment:UITextAlignmentCenter];
-
-		UIFont *font = [UIFont boldSystemFontOfSize:11];
-		[label setFont:font];
-		CGSize size = [label.text sizeWithFont:font];
-		CGRect frame = CGRectMake(0, 0, size.width + 10, size.height + 10); // add a bit of a border around the text
-		label.frame = frame;
-		
-		//  place inside a temporary view controller and add to popover
-		UIViewController *viewCon = [[UIViewController alloc] init];
-		viewCon.view = label;
-		viewCon.contentSizeForViewInPopover = frame.size;       // Set the content size
-
-		averagePopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
-		[averagePopover setDelegate:self];
-	}
-	
-	if([averagePopover isPopoverVisible]) {
-		[averagePopover dismissPopoverAnimated:YES];
-		[averagePopover setDelegate:nil];
-		averagePopover = nil;
-	} else {
-		
-		[averagePopover presentPopoverFromRect:CGRectMake(298, 445, 1, 1)
-																		inView:self.navigationController.view
-									permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
-																	animated:YES];
-	}
-}
+//-(void)showAveragePopup
+//{
+//#if TESTFLIGHT
+//	[TestFlight passCheckpoint:@"Saw Average Popup"];
+//#endif
+//	if (!self.averagePopover) {
+//
+//		//		Create a label with custom text 
+//		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
+//		[label setText:@"Add another entry to this event."];
+//		[label setBackgroundColor:[UIColor clearColor]];
+//		[label setTextColor:[UIColor whiteColor]];
+//		[label setTextAlignment:UITextAlignmentCenter];
+//
+//		UIFont *font = [UIFont boldSystemFontOfSize:11];
+//		[label setFont:font];
+//		CGSize size = [label.text sizeWithFont:font];
+//		CGRect frame = CGRectMake(0, 0, size.width + 10, size.height + 10); // add a bit of a border around the text
+//		label.frame = frame;
+//		
+//		//  place inside a temporary view controller and add to popover
+//		UIViewController *viewCon = [[UIViewController alloc] init];
+//		viewCon.view = label;
+//		viewCon.contentSizeForViewInPopover = frame.size;       // Set the content size
+//
+//		averagePopover = [[WEPopoverController alloc] initWithContentViewController:viewCon];
+//		[averagePopover setDelegate:self];
+//	}
+//	
+//	if([averagePopover isPopoverVisible]) {
+//		[averagePopover dismissPopoverAnimated:YES];
+//		[averagePopover setDelegate:nil];
+//		averagePopover = nil;
+//	} else {
+//		
+//		[averagePopover presentPopoverFromRect:CGRectMake(298, 445, 1, 1)
+//																		inView:self.navigationController.view
+//									permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionDown
+//																	animated:YES];
+//	}
+//}
 
 #pragma mark -
 - (void)setEvent:(Event *)event

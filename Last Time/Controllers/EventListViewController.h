@@ -26,6 +26,6 @@
 
 
 - (IBAction)addNewEvent:(id)sender;
-- (void)showAddPopup;
+//- (void)showAddPopup;
 
 @end
