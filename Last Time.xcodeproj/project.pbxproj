@@ -296,6 +296,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A03C0771530F6C100249036 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				1AB4B3E5152961B800D66347 /* SegmentsController.h */,
+				1AB4B3E6152961B800D66347 /* SegmentsController.m */,
+				392009FD14E4B88D006B6A79 /* CustomTableViewController.h */,
+				392009FE14E4B88D006B6A79 /* CustomTableViewController.m */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
 		1AC0209C152550200022A07B /* old */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,15 +381,12 @@
 		3969110E14C9BCF0006E8272 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1AB4B3E5152961B800D66347 /* SegmentsController.h */,
-				1AB4B3E6152961B800D66347 /* SegmentsController.m */,
 				3969111314C9BCF0006E8272 /* LastTimeAppDelegate.h */,
 				3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */,
-				392009FD14E4B88D006B6A79 /* CustomTableViewController.h */,
-				392009FE14E4B88D006B6A79 /* CustomTableViewController.m */,
 				39918C1214F604BC00D8D4EE /* Event */,
 				39918C1114F604AD00D8D4EE /* Folder */,
 				39918C1314F604D700D8D4EE /* Log Entry */,
+				1A03C0771530F6C100249036 /* Misc */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
