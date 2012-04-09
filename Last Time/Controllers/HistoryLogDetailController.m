@@ -150,7 +150,11 @@
 			
 			
 			ncell = [self numberCell];
-			[[ncell cellTextField] setText:[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[logEntry logEntryValue] floatValue]]]];
+			
+			if ([logEntry showValue]) {
+
+				[[ncell cellTextField] setText:[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[logEntry logEntryValue] floatValue]]]];
+			}
 			[[ncell cellTextField] setPlaceholder:@"rating, mileage, weight"];
 			[[ncell textLabel] setText:@"Number"];
 			return ncell;
