@@ -290,15 +290,20 @@
 			}
 
 			LogEntry *item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
-
-			historyLogCell.logEntryNoteCell.text = item.logEntryNote;
 			
-			if ([[item logEntryValue] floatValue] != 0.0) {
+			if ([item showValue]) {
 				NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[item logEntryValue] floatValue]]];
 				historyLogCell.logEntryValueCell.text = value;
 			} else {
 				historyLogCell.logEntryValueCell.text = @"";
 			}
+			
+			if ([item showNote]) {
+				historyLogCell.logEntryNoteCell.text = item.logEntryNote;				
+			} else {
+				historyLogCell.logEntryNoteCell.text = @"";
+			}
+			
 			historyLogCell.logEntryDateCell.text = [item dateString];
 			historyLogCell.locationMarker.hidden = ![item hasLocation];
 			historyLogCell.logEntryLocationCell.text = [item locationString];
@@ -324,6 +329,36 @@
 	}
 	
 	
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	
+	if ([[_event logEntryCollection] count] > 0) {
+		if (([indexPath section] == kAverageSection && ![_event showAverage]) || [indexPath section] == kHistorySection) {
+			HistoryLogCell *historyLogCell = (HistoryLogCell *)cell;
+
+			if ([historyLogCell.logEntryValueCell.text isEqualToString:@""]) {
+				historyLogCell.logEntryValueCell.textColor = [UIColor grayColor];
+				historyLogCell.logEntryValueCell.font = [UIFont italicSystemFontOfSize:14.0f];
+				historyLogCell.logEntryValueCell.text = NSLocalizedString(@"No Value", @"The value is empty");
+			} else {
+				historyLogCell.logEntryValueCell.textColor = [UIColor blackColor];
+				historyLogCell.logEntryValueCell.font = [UIFont systemFontOfSize:14.0f];
+				
+			}
+			
+			if ([historyLogCell.logEntryNoteCell.text isEqualToString:@""]) {
+				historyLogCell.logEntryNoteCell.textColor = [UIColor grayColor];
+				historyLogCell.logEntryNoteCell.font = [UIFont italicSystemFontOfSize:14.0f];
+				historyLogCell.logEntryNoteCell.text = NSLocalizedString(@"No Note", @"The note is blank");
+			} else {
+				historyLogCell.logEntryNoteCell.textColor = [UIColor blackColor];
+				historyLogCell.logEntryNoteCell.font = [UIFont systemFontOfSize:14.0f];
+				
+			}
+		}
+	}
 }
 
 #pragma mark - View lifecycle

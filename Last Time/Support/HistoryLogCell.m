@@ -70,4 +70,9 @@
 	logEntryDateCell.frame = dateFrame;
 	
 }
+
+-(NSString *)description
+{
+	return [[NSString alloc] initWithFormat:@"Note: %@, Value: %@, Date: %@, Location: %@", logEntryNoteCell.text, logEntryValueCell.text, logEntryDateCell.text, logEntryLocationCell.text];
+}
 @end
