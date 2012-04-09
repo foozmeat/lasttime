@@ -37,9 +37,8 @@
 //	float inset = 5.0;
 	CGRect bounds = [[self contentView] bounds];
 	
-	
 	const float cellWidth = bounds.size.width - 20.0;
-	const float maxNoteWidth = 136;
+	const float maxNoteWidth = cellWidth * 0.6;
 	
 	// Size note up to max if need be
 	CGSize newNoteSize = [logEntryNoteCell sizeThatFits:logEntryNoteCell.frame.size];
