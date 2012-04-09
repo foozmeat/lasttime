@@ -11,10 +11,6 @@
 #import "LogEntry.h"
 #import "Event.h"
 
-@interface TimelineViewController ()
-
-@end
-
 @implementation TimelineViewController
 @synthesize detailViewController;
 @synthesize fetchedResultsController = _fetchedResultsController;
