@@ -141,41 +141,41 @@
 		// Figure date string pieces
 	NSString *nbyear = nil;
 	if(year > 1)
-		nbyear = NSLocalizedString(@"years",@"years");
+		nbyear = NSLocalizedString(@"years",@"more than one year");
 	else
-		nbyear = NSLocalizedString(@"year",@"year");
+		nbyear = NSLocalizedString(@"year",@"one year");
 	
 	NSString *nbmonth = nil;
 	if(month > 1)
-		nbmonth = @"months";
+		nbmonth = NSLocalizedString(@"months",@"more than one month");
 	else
-		nbmonth = @"month";
+		nbmonth = NSLocalizedString(@"month",@"one month");
 	
 	NSString *nbweek = nil;
 	if(week > 1)
-		nbweek = @"weeks";
+		nbweek = NSLocalizedString(@"weeks",@"more than one week");
 	else
-		nbweek = @"week";
+		nbweek = NSLocalizedString(@"week",@"one week");
 	
 	NSString *nbday = nil;
 	if(day > 1)
-		nbday = @"days";
+		nbday = NSLocalizedString(@"days",@"more than one day");
 	else
-		nbday = @"day";
+		nbday = NSLocalizedString(@"day",@"one day");
 	
 		//	NSLog(@"\nDifference: %@", diffComps);
 	
 	if (differenceInDays == 0 && withDays) {
-		[result appendString:@"Today"];
+		[result appendString:NSLocalizedString(@"Today",@"Today")];
 		suffix = NO;
 	} else if (differenceInDays == 1 && withDays) {
-		[result appendString:@"Yesterday"];
+		[result appendString:NSLocalizedString(@"Yesterday",@"Yesterday")];
 		suffix = NO;
 	} else if (differenceInDays < 7 && withDays) {
 		[result appendString:[[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
 		suffix = NO;
 	} else if (differenceInDays < 13 && withDays) {
-		[result appendFormat:@"Last %@", [[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
+		[result appendFormat:NSLocalizedString(@"Last %@",@"This is describing a phrase like 'last thursday'"), [[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
 		suffix = NO;
 		
 	} else if (year < 1 && month < 1 && week == 0 && day == 0) {
