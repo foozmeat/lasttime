@@ -131,6 +131,11 @@
 		1A161D6D152018D60062B4A5 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		1A161D6E152018D60062B4A5 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
+		1AB0127D15348A7E00359153 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1AB0127E15348B2300359153 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1AB0127F15348B2700359153 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1AB0128015348B2B00359153 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1AB0128615348D8E00359153 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1AB4B3E5152961B800D66347 /* SegmentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentsController.h; path = "Last Time/Support/SegmentsController.h"; sourceTree = SOURCE_ROOT; };
 		1AB4B3E6152961B800D66347 /* SegmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentsController.m; path = "Last Time/Support/SegmentsController.m"; sourceTree = SOURCE_ROOT; };
 		1AC0209D152550200022A07B /* oldEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oldEvent.h; sourceTree = "<group>"; };
@@ -740,6 +745,12 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
+				ja,
+				fr,
+				de,
+				"zh-Hant",
+				"zh-Hans",
 			);
 			mainGroup = 39D70CA714BD3515009C3615;
 			productRefGroup = 39D70CB314BD3515009C3615 /* Products */;
@@ -891,6 +902,11 @@
 			isa = PBXVariantGroup;
 			children = (
 				39D70CC014BD3515009C3615 /* en */,
+				1AB0127D15348A7E00359153 /* es */,
+				1AB0127E15348B2300359153 /* ja */,
+				1AB0127F15348B2700359153 /* fr */,
+				1AB0128015348B2B00359153 /* de */,
+				1AB0128615348D8E00359153 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
