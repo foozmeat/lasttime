@@ -70,8 +70,13 @@
 	
 }
 
+- (NSString *)accessibilityLabel
+{
+	return [NSString stringWithFormat:@"%@, %@, %@, %@", logEntryNoteCell.text, logEntryValueCell.text, logEntryDateCell.text, logEntryLocationCell.text];
+}
+
 -(NSString *)description
 {
-	return [[NSString alloc] initWithFormat:@"Note: %@, Value: %@, Date: %@, Location: %@", logEntryNoteCell.text, logEntryValueCell.text, logEntryDateCell.text, logEntryLocationCell.text];
+	return [NSString stringWithFormat:@"Note: %@, Value: %@, Date: %@, Location: %@", logEntryNoteCell.text, logEntryValueCell.text, logEntryDateCell.text, logEntryLocationCell.text];
 }
 @end
