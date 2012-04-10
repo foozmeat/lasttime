@@ -368,8 +368,7 @@
 	[super viewWillAppear:animated];
 	numberFormatter = [[NSNumberFormatter alloc] init];
 
-	[self.addButton setAccessibilityLabel:NSLocalizedString(@"Add Log Entry", @"Add Log Entry")];
-	[self.addButton setAccessibilityHint:NSLocalizedString(@"Add a new Log Entry to this Event", @"Add a new Log Entry to this Event")];
+	[self.addButton setAccessibilityHint:NSLocalizedString(@"Add an entry to this event", @"Add an entry to this event")];
 	
 	[[self navigationItem] setTitle:[_event eventName]];
 	[[self eventTableView] reloadData];
