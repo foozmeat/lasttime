@@ -19,6 +19,7 @@
 		1AED06051510EEC700CCDA4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AED06041510EEC700CCDA4F /* CoreData.framework */; };
 		1AED06091510EEF100CCDA4F /* Last Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */; };
 		1AED06241510F9F100CCDA4F /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06231510F9F100CCDA4F /* LogEntry.m */; };
+		1AEDBCE3153494310098E3A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AEDBCE5153494310098E3A0 /* Localizable.strings */; };
 		3904CFA114C078E200B7396A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		3904CFA414C078E200B7396A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3904CFA314C078E200B7396A /* main.m */; };
 		3913EADC14EEB5DC0013A86A /* LocationSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */; };
@@ -135,7 +136,6 @@
 		1AB0127E15348B2300359153 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AB0127F15348B2700359153 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AB0128015348B2B00359153 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1AB0128615348D8E00359153 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1AB4B3E5152961B800D66347 /* SegmentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentsController.h; path = "Last Time/Support/SegmentsController.h"; sourceTree = SOURCE_ROOT; };
 		1AB4B3E6152961B800D66347 /* SegmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentsController.m; path = "Last Time/Support/SegmentsController.m"; sourceTree = SOURCE_ROOT; };
 		1AC0209D152550200022A07B /* oldEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oldEvent.h; sourceTree = "<group>"; };
@@ -154,6 +154,11 @@
 		1AED06081510EEF100CCDA4F /* Last Time.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time.xcdatamodel"; sourceTree = "<group>"; };
 		1AED06221510F9F100CCDA4F /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEntry.h; sourceTree = "<group>"; };
 		1AED06231510F9F100CCDA4F /* LogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogEntry.m; sourceTree = "<group>"; };
+		1AEDBCE4153494310098E3A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AEDBCE6153494360098E3A0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AEDBCE7153494360098E3A0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AEDBCE8153494360098E3A0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AEDBCE9153494360098E3A0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3904CF9F14C078E200B7396A /* RandomEventFolder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomEventFolder; sourceTree = BUILT_PRODUCTS_DIR; };
 		3904CFA314C078E200B7396A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3913EADA14EEB5DC0013A86A /* LocationSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationSwitchCell.h; path = Support/LocationSwitchCell.h; sourceTree = "<group>"; };
@@ -594,6 +599,7 @@
 				39D70CBF14BD3515009C3615 /* InfoPlist.strings */,
 				39D70CC214BD3515009C3615 /* main.m */,
 				39D70CC414BD3515009C3615 /* Last Time-Prefix.pch */,
+				1AEDBCE5153494310098E3A0 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -749,8 +755,6 @@
 				ja,
 				fr,
 				de,
-				"zh-Hant",
-				"zh-Hans",
 			);
 			mainGroup = 39D70CA714BD3515009C3615;
 			productRefGroup = 39D70CB314BD3515009C3615 /* Products */;
@@ -797,6 +801,7 @@
 				399F70BD14FD1B290012F089 /* default_data.plist in Resources */,
 				39458C4F1509C4470001903F /* icon-57.png in Resources */,
 				39458C511509C44A0001903F /* icon-114.png in Resources */,
+				1AEDBCE3153494310098E3A0 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,6 +903,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1AEDBCE5153494310098E3A0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1AEDBCE4153494310098E3A0 /* en */,
+				1AEDBCE6153494360098E3A0 /* es */,
+				1AEDBCE7153494360098E3A0 /* ja */,
+				1AEDBCE8153494360098E3A0 /* fr */,
+				1AEDBCE9153494360098E3A0 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		39D70CBF14BD3515009C3615 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -906,7 +923,6 @@
 				1AB0127E15348B2300359153 /* ja */,
 				1AB0127F15348B2700359153 /* fr */,
 				1AB0128015348B2B00359153 /* de */,
-				1AB0128615348D8E00359153 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
