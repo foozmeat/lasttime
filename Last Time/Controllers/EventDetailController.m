@@ -58,7 +58,7 @@
 																								withDelegate:self]];
 
 	if ([self isModal]) {
-		[self setTitle:@"New Event"];
+		[self setTitle:NSLocalizedString(@"New Event",@"New Event")];
 		
 		[self setNoteCell:[EditableTableCell newDetailCellWithTag:kEventNote withDelegate:self]];
 		[self setDateCell:[DatePickerCell newDateCellWithTag:kEventDate withDelegate:self]];
@@ -66,7 +66,7 @@
 		[self setNumberCell:[NumberCell newNumberCellWithTag:kEventNumber withDelegate:self]];
 		
 	} else {
-		[self setTitle:@"Edit Event"];
+		[self setTitle:NSLocalizedString(@"Edit Event",@"Edit Event")];
 	}
 }
 
@@ -157,25 +157,25 @@
 			case kEventName:
 				cell = [self nameCell];
 				[[cell cellTextField] setText:[event eventName]];
-				[[cell cellTextField] setPlaceholder:@"Got a haircut"];
-				[[cell textLabel] setText:@"Name"];
+				[[cell cellTextField] setPlaceholder:NSLocalizedString(@"Got a haircut",@"Got a haircut")];
+				[[cell textLabel] setText:NSLocalizedString(@"Name",@"Name")];
 				return cell;
 				break;
 			case kEventNote:
 				cell = [self noteCell];
-				[[cell cellTextField] setPlaceholder:@"Happy!"];
-				[[cell textLabel] setText:@"Note"];
+				[[cell cellTextField] setPlaceholder:NSLocalizedString(@"Happy!",@"Happy!")];
+				[[cell textLabel] setText:NSLocalizedString(@"Note",@"Note")];
 				return cell;
 				break;
 			case kEventNumber:
 				ncell = [self numberCell];
-				[[ncell cellTextField] setPlaceholder:@"rating, mileage, weight"];
-				[[ncell textLabel] setText:@"Number"];
+				[[ncell cellTextField] setPlaceholder:NSLocalizedString(@"rating, mileage, weight",@"rating, mileage, weight")];
+				[[ncell textLabel] setText:NSLocalizedString(@"Number",@"Number")];
 				return ncell;
 				break;
 			case kEventDate:
 				dcell = [self dateCell];
-				[[dcell textLabel] setText:@"Date"];
+				[[dcell textLabel] setText:NSLocalizedString(@"Date",@"Date")];
 				return dcell;
 				break;
 			case kEventLocation:
@@ -184,7 +184,7 @@
 				break;
 			default:
 				cell = [[EditableTableCell alloc] init];
-				[[cell cellTextField] setText:@"Error"];
+				[[cell cellTextField] setText:NSLocalizedString(@"Error",@"Error")];
 				return cell;
 				break;
 		}
@@ -192,19 +192,19 @@
 		switch ([indexPath row]) {
 			case kEventFolder:
 				fcell = [self folderCell];
-				[[fcell textLabel] setText:@"Folder"];
+				[[fcell textLabel] setText:NSLocalizedString(@"List",@"List")];
 				[[fcell detailTextLabel] setText:[folder folderName]];
 				return fcell;
 				break;
 			default:
 				cell = [[EditableTableCell alloc] init];
-				[[cell cellTextField] setText:@"Error"];
+				[[cell cellTextField] setText:NSLocalizedString(@"Error",@"Error")];
 				return cell;
 				break;
 		}
 	} else {
 		cell = [[EditableTableCell alloc] init];
-		[[cell cellTextField] setText:@"Error"];
+		[[cell cellTextField] setText:NSLocalizedString(@"Error",@"Error")];
 		return cell;
 	}
 }

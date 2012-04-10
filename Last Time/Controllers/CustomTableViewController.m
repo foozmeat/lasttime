@@ -296,7 +296,7 @@
 		[self stopUpdatingLocation:NSLocalizedString(@"Switched Off", @"Switched Off")];
 		[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:@"Timed Out"];
 	} else {
-		[self startUpdatingLocation:@"Switched on"];
+		[self startUpdatingLocation:NSLocalizedString(@"Switched on", @"Switched on")];
     [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
 	}
 	[self updateObjectLocation];

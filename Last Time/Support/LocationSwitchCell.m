@@ -20,7 +20,7 @@
 	[locationSwitch setOn:NO];
 	self.accessoryView = locationSwitch;
 	
-	self.textLabel.text = @"Store Location?";
+	self.textLabel.text = NSLocalizedString(@"Store Location?",@"Store Location?");
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

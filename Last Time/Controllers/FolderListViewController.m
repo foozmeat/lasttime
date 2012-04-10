@@ -357,7 +357,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 		}
 
-		[[cell textLabel] setText:@"Add a Folder..."];
+		[[cell textLabel] setText:NSLocalizedString(@"Add a List...",@"Add a List...")];
 		return cell;
 
 	} else {

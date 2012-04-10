@@ -185,9 +185,9 @@
 	if (section == kAverageSection && [_event showAverage]) {
 		return @"";
 	} else if (section == kAverageSection && ![_event showAverage]) {
-		return @"History";
+		return NSLocalizedString(@"History", @"History");
 	} else if (section == kHistorySection) {
-		return @"History";
+		return NSLocalizedString(@"History", @"History");
 	} else {
 		return @"";
 	}
@@ -250,14 +250,14 @@
 		switch ([indexPath row]) {
 			case kAverageTime:
 			{
-				cell.textLabel.text = @"Average Time Span";
+				cell.textLabel.text = NSLocalizedString(@"Average Time Span",@"Average Time Span");
 				cell.detailTextLabel.text = [_event averageStringInterval];
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
 			}
 			case kNextTime:
 			{
-				cell.textLabel.text = @"Next Time";
+				cell.textLabel.text = NSLocalizedString(@"Next Time",@"Next Time");
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				
 				NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -270,7 +270,7 @@
 			}
 			case kAverageValue:
 			{
-				cell.textLabel.text = @"Average Value";
+				cell.textLabel.text = NSLocalizedString(@"Average Value",@"Average Value");
 				cell.detailTextLabel.text = [_event averageStringValue];
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
@@ -316,7 +316,7 @@
 				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
 																			reuseIdentifier:@"NoHistoryCell"];
 			}
-			cell.textLabel.text = @"No History Entries";
+			cell.textLabel.text = NSLocalizedString(@"No History Entries",@"No History Entries");
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			return cell;
 
@@ -324,7 +324,7 @@
 		
 
 	} else {
-		cell.textLabel.text = @"Error";
+		cell.textLabel.text = NSLocalizedString(@"Error",@"Error");
 		return cell;
 	}
 	
@@ -368,6 +368,9 @@
 	[super viewWillAppear:animated];
 	numberFormatter = [[NSNumberFormatter alloc] init];
 
+	[self.addButton setAccessibilityLabel:NSLocalizedString(@"Add Log Entry", @"Add Log Entry")];
+	[self.addButton setAccessibilityHint:NSLocalizedString(@"Add a new Log Entry to this Event", @"Add a new Log Entry to this Event")];
+	
 	[[self navigationItem] setTitle:[_event eventName]];
 	[[self eventTableView] reloadData];
 

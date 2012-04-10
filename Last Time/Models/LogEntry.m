@@ -77,9 +77,9 @@
 + (NSString *)suffixString:(NSTimeInterval) interval
 {
 	if (interval < 0) {
-		return @"ago";
+		return NSLocalizedString(@"ago", @"ago");
 	} else {
-		return @"from now";
+		return NSLocalizedString(@"from now",@"from now");
 	}
 	
 }
@@ -141,9 +141,9 @@
 		// Figure date string pieces
 	NSString *nbyear = nil;
 	if(year > 1)
-		nbyear = @"years";
+		nbyear = NSLocalizedString(@"years",@"years");
 	else
-		nbyear = @"year";
+		nbyear = NSLocalizedString(@"year",@"year");
 	
 	NSString *nbmonth = nil;
 	if(month > 1)

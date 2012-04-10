@@ -54,9 +54,9 @@
 	[self setNumberCell:[NumberCell newNumberCellWithTag:kEventNumber withDelegate:self]];
 
 	if ([self isModal]) {
-		[self setTitle:@"New Entry"];		
+		[self setTitle:NSLocalizedString(@"New Entry",@"New Entry")];		
 	} else {
-		[self setTitle:@"Edit Entry"];
+		[self setTitle:NSLocalizedString(@"Edit Entry",@"Edit Entry")];
 	}
 }
 
@@ -135,15 +135,15 @@
 		case kEventNote:
 			cell = [self noteCell];
 			[[cell cellTextField] setText:[logEntry logEntryNote]];
-			[[cell cellTextField] setPlaceholder:@"Happy!"];
-			[[cell textLabel] setText:@"Note"];
+			[[cell cellTextField] setPlaceholder:NSLocalizedString(@"Happy!",@"Happy!")];
+			[[cell textLabel] setText:NSLocalizedString(@"Note",@"Note")];
 			return cell;
 			break;
 		case kEventDate:
 			dcell = [self dateCell];
 			[[dcell pickerView] setDate:[logEntry logEntryDateOccured]];
 			[dcell dateChanged:self];
-			[[dcell textLabel] setText:@"Date"];
+			[[dcell textLabel] setText:NSLocalizedString(@"Date",@"Date")];
 			return dcell;
 			break;
 		case kEventNumber:
@@ -155,8 +155,8 @@
 
 				[[ncell cellTextField] setText:[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[logEntry logEntryValue] floatValue]]]];
 			}
-			[[ncell cellTextField] setPlaceholder:@"rating, mileage, weight"];
-			[[ncell textLabel] setText:@"Number"];
+			[[ncell cellTextField] setPlaceholder:NSLocalizedString(@"rating, mileage, weight",@"rating, mileage, weight")];
+			[[ncell textLabel] setText:NSLocalizedString(@"Number",@"Number")];
 			return ncell;
 			break;
 		case kEventLocationSwitch:
@@ -170,7 +170,7 @@
 																					 reuseIdentifier:@"UITableViewCell"];
 				}
 				[[geoCell detailTextLabel] setText:[logEntry logEntryLocationString]];
-				[[geoCell textLabel] setText:@"Location"];
+				[[geoCell textLabel] setText:NSLocalizedString(@"Location",@"Location")];
 				return geoCell;
 
 			}
