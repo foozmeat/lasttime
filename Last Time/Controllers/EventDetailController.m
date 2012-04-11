@@ -157,19 +157,19 @@
 			case kEventName:
 				cell = [self nameCell];
 				[[cell cellTextField] setText:[event eventName]];
-				[[cell cellTextField] setPlaceholder:NSLocalizedString(@"Got a haircut",@"Got a haircut")];
+				[[cell cellTextField] setPlaceholder:NSLocalizedString(@"nameCellPlaceholder",@"An example for the event name field")];
 				[[cell textLabel] setText:NSLocalizedString(@"Name",@"Name")];
 				return cell;
 				break;
 			case kEventNote:
 				cell = [self noteCell];
-				[[cell cellTextField] setPlaceholder:NSLocalizedString(@"Happy!",@"Happy!")];
+				[[cell cellTextField] setPlaceholder:NSLocalizedString(@"noteCellPlaceholder",@"An example movie for the note field")];
 				[[cell textLabel] setText:NSLocalizedString(@"Note",@"Note")];
 				return cell;
 				break;
 			case kEventNumber:
 				ncell = [self numberCell];
-				[[ncell cellTextField] setPlaceholder:NSLocalizedString(@"rating, mileage, weight",@"rating, mileage, weight")];
+				[[ncell cellTextField] setPlaceholder:NSLocalizedString(@"valueCellPlaceholder",@"examples of ways to use this field")];
 				[[ncell textLabel] setText:NSLocalizedString(@"Number",@"Number")];
 				return ncell;
 				break;
@@ -184,7 +184,7 @@
 				break;
 			default:
 				cell = [[EditableTableCell alloc] init];
-				[[cell cellTextField] setText:NSLocalizedString(@"Error",@"Error")];
+				[[cell cellTextField] setText:@"Error"];
 				return cell;
 				break;
 		}
@@ -198,13 +198,13 @@
 				break;
 			default:
 				cell = [[EditableTableCell alloc] init];
-				[[cell cellTextField] setText:NSLocalizedString(@"Error",@"Error")];
+				[[cell cellTextField] setText:@"Error"];
 				return cell;
 				break;
 		}
 	} else {
 		cell = [[EditableTableCell alloc] init];
-		[[cell cellTextField] setText:NSLocalizedString(@"Error",@"Error")];
+		[[cell cellTextField] setText:@"Error"];
 		return cell;
 	}
 }

@@ -135,7 +135,7 @@
 		case kEventNote:
 			cell = [self noteCell];
 			[[cell cellTextField] setText:[logEntry logEntryNote]];
-			[[cell cellTextField] setPlaceholder:NSLocalizedString(@"Happy!",@"Happy!")];
+			[[cell cellTextField] setPlaceholder:NSLocalizedString(@"noteCellPlaceholder",@"")];
 			[[cell textLabel] setText:NSLocalizedString(@"Note",@"Note")];
 			return cell;
 			break;
@@ -155,7 +155,7 @@
 
 				[[ncell cellTextField] setText:[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[logEntry logEntryValue] floatValue]]]];
 			}
-			[[ncell cellTextField] setPlaceholder:NSLocalizedString(@"rating, mileage, weight",@"rating, mileage, weight")];
+			[[ncell cellTextField] setPlaceholder:NSLocalizedString(@"valueCellPlaceholder",@"")];
 			[[ncell textLabel] setText:NSLocalizedString(@"Number",@"Number")];
 			return ncell;
 			break;

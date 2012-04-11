@@ -24,7 +24,6 @@
 {
 	[super viewWillAppear:animated];
 	
-	self.title = NSLocalizedString(@"Timeline", @"Timeline");
 }
 
 #pragma mark - Core Data

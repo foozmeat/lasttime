@@ -77,9 +77,9 @@
 + (NSString *)suffixString:(NSTimeInterval) interval
 {
 	if (interval < 0) {
-		return NSLocalizedString(@"ago", @"ago");
+		return NSLocalizedString(@"ago", @"like saying 3 days ago");
 	} else {
-		return NSLocalizedString(@"from now",@"from now");
+		return NSLocalizedString(@"from now",@"like saying 3 days from now");
 	}
 	
 }

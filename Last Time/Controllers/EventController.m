@@ -324,7 +324,7 @@
 		
 
 	} else {
-		cell.textLabel.text = NSLocalizedString(@"Error",@"Error");
+		cell.textLabel.text = @"Error";
 		return cell;
 	}
 	

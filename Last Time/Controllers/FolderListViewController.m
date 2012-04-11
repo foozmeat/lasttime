@@ -357,7 +357,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 		}
 
-		[[cell textLabel] setText:NSLocalizedString(@"Add a List...",@"Add a List...")];
+		[[cell textLabel] setText:NSLocalizedString(@"Create New List…",@"Create a new list")];
 		return cell;
 
 	} else {

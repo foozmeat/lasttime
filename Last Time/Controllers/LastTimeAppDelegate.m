@@ -33,7 +33,7 @@
 	[self versionCheck];
 
 	NSArray *viewControllers = [self segmentViewControllers];
-	NSArray *segmentTitles = [[NSArray alloc] initWithObjects:@"Lists", @"Timeline", nil];
+	NSArray *segmentTitles = [[NSArray alloc] initWithObjects:NSLocalizedString(@"Lists",@"Lists"), NSLocalizedString(@"Timeline",@"Timeline"), nil];
 
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 

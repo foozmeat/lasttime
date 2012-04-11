@@ -81,14 +81,14 @@
 	// We can ignore this error for the scenario of getting a single location fix, because we already have a 
 	// timeout that will stop the location manager to save power.
 	if ([error code] != kCLErrorLocationUnknown) {
-		[self stopUpdatingLocation:NSLocalizedString(@"Error", @"Error")];
+		[self stopUpdatingLocation:@"Error"];
 	}
 }
 
 - (void)stopUpdatingLocation:(NSString *)state {
 
 	if (locationManager.delegate) {
-		NSLog(@"%@", state);
+//		NSLog(@"%@", state);
 		[locationManager stopUpdatingLocation];
 //		locationManager.delegate = nil;
 	}
@@ -97,7 +97,7 @@
 - (void)startUpdatingLocation:(NSString *)state {
 
 	if (locationManager.delegate && [self shouldStoreLocation]) {
-		NSLog(@"%@", state);
+//		NSLog(@"%@", state);
 		[locationManager startUpdatingLocation];
     [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
 	}
@@ -128,7 +128,7 @@
 			// 
 			// IMPORTANT!!! Minimize power usage by stopping the location manager as soon as possible.
 			//
-			[self stopUpdatingLocation:NSLocalizedString(@"Acquired Location", @"Acquired Location")];
+			[self stopUpdatingLocation:@"Acquired Location"];
 			// we can also cancel our previous performSelector:withObject:afterDelay: - it's no longer necessary
 			[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:@"Timed Out"];
 		}
@@ -293,10 +293,10 @@
 	_shouldStoreLocation = sender.on;
 
 	if (sender.on == NO) {
-		[self stopUpdatingLocation:NSLocalizedString(@"Switched Off", @"Switched Off")];
+		[self stopUpdatingLocation:@"Switched Off"];
 		[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:@"Timed Out"];
 	} else {
-		[self startUpdatingLocation:NSLocalizedString(@"Switched on", @"Switched on")];
+		[self startUpdatingLocation:@"Switched on"];
     [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
 	}
 	[self updateObjectLocation];
