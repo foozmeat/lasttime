@@ -367,8 +367,6 @@
 {
 	[super viewWillAppear:animated];
 	numberFormatter = [[NSNumberFormatter alloc] init];
-
-	[self.addButton setAccessibilityHint:NSLocalizedString(@"Add an entry to this event", @"Add an entry to this event")];
 	
 	[[self navigationItem] setTitle:[_event eventName]];
 	[[self eventTableView] reloadData];
