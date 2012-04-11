@@ -250,7 +250,7 @@
 		switch ([indexPath row]) {
 			case kAverageTime:
 			{
-				cell.textLabel.text = NSLocalizedString(@"Average Time Span",@"Average Time Span");
+				cell.textLabel.text = NSLocalizedString(@"Time Span",@"Time Span");
 				cell.detailTextLabel.text = [_event averageStringInterval];
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
