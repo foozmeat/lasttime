@@ -323,7 +323,7 @@ static EventStore *defaultStore = nil;
 					
 					[f addEventsObject:e];
 					
-					NSLog(@"Event: %@", e);
+//					NSLog(@"Event: %@", e);
 				}
 			}
 		}
