@@ -179,7 +179,7 @@
 		suffix = NO;
 		
 	} else if (year < 1 && month < 1 && week == 0 && day == 0) {
-		[result appendFormat:@"0 days"];
+		[result appendFormat:@"0 %@", nbday];
 	} else if (year < 1 && month < 1 && week == 0 && day != 0) {
 		[result appendFormat:@"%d %@", day, nbday];
 	} else if (year < 1 && month < 1 && week <= 4 && day == 0) {
