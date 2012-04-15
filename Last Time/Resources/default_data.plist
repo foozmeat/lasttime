@@ -26,6 +26,10 @@
 			<array>
 				<dict>
 					<key>name</key>
+					<string>Bicycle Ride</string>
+				</dict>
+				<dict>
+					<key>name</key>
 					<string>Took Vacation</string>
 				</dict>
 				<dict>
@@ -39,6 +43,10 @@
 			<string>Car</string>
 			<key>events</key>
 			<array>
+				<dict>
+					<key>name</key>
+					<string>Checked Oil</string>
+				</dict>
 				<dict>
 					<key>name</key>
 					<string>Service</string>
