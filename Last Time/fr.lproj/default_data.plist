@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Root</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Home</string>
+			<key>events</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Cleaned Gutters</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Checked Air Filter</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Recreation</string>
+			<key>events</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Bicycle Ride</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Took Vacation</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Cross-country Skiing</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Car</string>
+			<key>events</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Checked Oil</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Service</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Bought Gas</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Social</string>
+			<key>events</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Called Mom</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Dinner Guests</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Health</string>
+			<key>events</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Changed Toothbrush</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Got Haircut</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Pet</string>
+			<key>events</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Flea Medicine</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Bought Food</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
