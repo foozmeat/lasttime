@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A03C076152F470700249036 /* NSManagedObjectContext+FetchAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A03C075152F470700249036 /* NSManagedObjectContext+FetchAdditions.m */; };
 		1A161D6F152018D60062B4A5 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A161D6E152018D60062B4A5 /* Event.m */; };
+		1A823B6B153B959D00B997C8 /* default_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A823B6D153B959D00B997C8 /* default_data.plist */; };
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
 		1AC020A3152550200022A07B /* oldEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0209E152550200022A07B /* oldEvent.m */; };
 		1AC020A4152550200022A07B /* oldEventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC020A0152550200022A07B /* oldEventFolder.m */; };
@@ -65,7 +66,6 @@
 		39918C1A14F606A200D8D4EE /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39918C1914F606A200D8D4EE /* EventListViewController.xib */; };
 		39918C2514F7F99700D8D4EE /* EventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 39918C2414F7F99700D8D4EE /* EventStore.m */; };
 		399F70B714FB1FB00012F089 /* FolderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 399F70B614FB1FB00012F089 /* FolderListCell.m */; };
-		399F70BD14FD1B290012F089 /* default_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 399F70BC14FD1B290012F089 /* default_data.plist */; };
 		39A0F9F714F0B9AF00BA0AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39A0F9FA14F0B9AF00BA0AFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A0F9F914F0B9AF00BA0AFA /* main.m */; };
 		39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA477F14DAD8B300580EB9 /* EventDetailController.m */; };
@@ -131,6 +131,11 @@
 		1A03C075152F470700249036 /* NSManagedObjectContext+FetchAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+FetchAdditions.m"; path = "../../../Downloads/NSManagedObjectContext+FetchAdditions/NSManagedObjectContext+FetchAdditions.m"; sourceTree = "<group>"; };
 		1A161D6D152018D60062B4A5 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		1A161D6E152018D60062B4A5 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		1A823B6C153B959D00B997C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/default_data.plist; sourceTree = "<group>"; };
+		1A823B6E153B95A300B997C8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/default_data.plist; sourceTree = "<group>"; };
+		1A823B6F153B95A300B997C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/default_data.plist; sourceTree = "<group>"; };
+		1A823B70153B95A300B997C8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/default_data.plist; sourceTree = "<group>"; };
+		1A823B71153B95A300B997C8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = de; path = de.lproj/default_data.plist; sourceTree = "<group>"; };
 		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
 		1AB0127D15348A7E00359153 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AB0127E15348B2300359153 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -223,7 +228,6 @@
 		39918C2414F7F99700D8D4EE /* EventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventStore.m; sourceTree = "<group>"; };
 		399F70B514FB1FB00012F089 /* FolderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderListCell.h; path = "Last Time/Support/FolderListCell.h"; sourceTree = SOURCE_ROOT; };
 		399F70B614FB1FB00012F089 /* FolderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderListCell.m; path = "Last Time/Support/FolderListCell.m"; sourceTree = SOURCE_ROOT; };
-		399F70BC14FD1B290012F089 /* default_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = default_data.plist; path = Resources/default_data.plist; sourceTree = "<group>"; };
 		39A0F9F514F0B9AF00BA0AFA /* DurationTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DurationTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A0F9F914F0B9AF00BA0AFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/DurationTest/main.m"; sourceTree = SOURCE_ROOT; };
 		39AA477E14DAD8B300580EB9 /* EventDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailController.h; sourceTree = "<group>"; };
@@ -457,7 +461,6 @@
 				39339BEF14F1C59F0068CC29 /* Popover */,
 				39EF4A4A14F1AE1000A8BAB7 /* Images */,
 				3988B96014DC31500010062E /* TestFlight */,
-				399F70BC14FD1B290012F089 /* default_data.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				39D70CC214BD3515009C3615 /* main.m */,
 				39D70CC414BD3515009C3615 /* Last Time-Prefix.pch */,
 				1AEDBCE5153494310098E3A0 /* Localizable.strings */,
+				1A823B6D153B959D00B997C8 /* default_data.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -798,7 +802,7 @@
 				39339C2114F1CEBA0068CC29 /* popoverBgSimple.png in Resources */,
 				39BE368C14F3E2BD00DBCC43 /* Icon-72.png in Resources */,
 				39918C1A14F606A200D8D4EE /* EventListViewController.xib in Resources */,
-				399F70BD14FD1B290012F089 /* default_data.plist in Resources */,
+				1A823B6B153B959D00B997C8 /* default_data.plist in Resources */,
 				39458C4F1509C4470001903F /* icon-57.png in Resources */,
 				39458C511509C44A0001903F /* icon-114.png in Resources */,
 				1AEDBCE3153494310098E3A0 /* Localizable.strings in Resources */,
@@ -903,6 +907,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1A823B6D153B959D00B997C8 /* default_data.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A823B6C153B959D00B997C8 /* en */,
+				1A823B6E153B95A300B997C8 /* es */,
+				1A823B6F153B95A300B997C8 /* ja */,
+				1A823B70153B95A300B997C8 /* fr */,
+				1A823B71153B95A300B997C8 /* de */,
+			);
+			name = default_data.plist;
+			sourceTree = "<group>";
+		};
 		1AEDBCE5153494310098E3A0 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
