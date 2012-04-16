@@ -6,46 +6,46 @@
 	<array>
 		<dict>
 			<key>name</key>
-			<string>Home</string>
+			<string>Domicile</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Cleaned Gutters</string>
+					<string>Gouttières nettoyées</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Checked Air Filter</string>
+					<string>Vérifié Filtre à air</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Recreation</string>
+			<string>Récréation</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Bicycle Ride</string>
+					<string>promenade à vélo</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Took Vacation</string>
+					<string>pris de vacances</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Cross-country Skiing</string>
+					<string>Ski de fond</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Car</string>
+			<string>Voiture</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Checked Oil</string>
+					<string>huile vérifié</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -53,7 +53,7 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Bought Gas</string>
+					<string>Gaz Acheté</string>
 				</dict>
 			</array>
 		</dict>
@@ -64,22 +64,22 @@
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Called Mom</string>
+					<string>Appelé maman</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Dinner Guests</string>
+					<string>Convives</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Health</string>
+			<string>Santé</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Changed Toothbrush</string>
+					<string>brosse à dents changé</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -89,16 +89,16 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Pet</string>
+			<string>animal de compagnie</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Flea Medicine</string>
+					<string>Flea médecine</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Bought Food</string>
+					<string>acheté de la nourriture</string>
 				</dict>
 			</array>
 		</dict>

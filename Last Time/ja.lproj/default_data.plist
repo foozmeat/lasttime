@@ -6,99 +6,99 @@
 	<array>
 		<dict>
 			<key>name</key>
-			<string>Home</string>
+			<string>ホーム</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Cleaned Gutters</string>
+					<string>きれいにとい</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Checked Air Filter</string>
+					<string>チェックエアフィルター</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Recreation</string>
+			<string>レクリエーション</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Bicycle Ride</string>
+					<string>サイクリング</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Took Vacation</string>
+					<string>休暇を取った</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Cross-country Skiing</string>
+					<string>クロスカントリー</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Car</string>
+			<string>車</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Checked Oil</string>
+					<string>チェックオイル</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Service</string>
+					<string>サービス</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Bought Gas</string>
+					<string>買ったガス</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Social</string>
+			<string>社会的な</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Called Mom</string>
+					<string>ママと呼ばれる</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Dinner Guests</string>
+					<string>夕食のゲスト</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Health</string>
+			<string>健康</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Changed Toothbrush</string>
+					<string>変更歯ブラシ</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Got Haircut</string>
+					<string>散髪しました</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Pet</string>
+			<string>ペット</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Flea Medicine</string>
+					<string>ノミ薬</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Bought Food</string>
+					<string>買った食品</string>
 				</dict>
 			</array>
 		</dict>

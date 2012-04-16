@@ -6,54 +6,54 @@
 	<array>
 		<dict>
 			<key>name</key>
-			<string>Home</string>
+			<string>Casa</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Cleaned Gutters</string>
+					<string>Canales limpios</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Checked Air Filter</string>
+					<string>Chequeado filtro de aire</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Recreation</string>
+			<string>Recreación</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Bicycle Ride</string>
+					<string>Paseo en bicicleta</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Took Vacation</string>
+					<string>Tomó Vacaciones</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Cross-country Skiing</string>
+					<string>Esquí de fondo</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Car</string>
+			<string>Coche</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Checked Oil</string>
+					<string>Petróleo Chequeado</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Service</string>
+					<string>Servicio</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Bought Gas</string>
+					<string>Gas comprado</string>
 				</dict>
 			</array>
 		</dict>
@@ -64,41 +64,41 @@
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Called Mom</string>
+					<string>Llamado mamá</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Dinner Guests</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string>Health</string>
-			<key>events</key>
-			<array>
-				<dict>
-					<key>name</key>
-					<string>Changed Toothbrush</string>
-				</dict>
-				<dict>
-					<key>name</key>
-					<string>Got Haircut</string>
+					<string>invitados a la cena</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Pet</string>
+			<string>Salud</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Flea Medicine</string>
+					<string>Cepillo de dientes cambiado</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Bought Food</string>
+					<string>tiene corte de pelo</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Mascotas</string>
+			<key>events</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>Flea Medicina</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>Alimentos Comprados</string>
 				</dict>
 			</array>
 		</dict>

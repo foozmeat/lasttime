@@ -6,46 +6,46 @@
 	<array>
 		<dict>
 			<key>name</key>
-			<string>Home</string>
+			<string>nach Hause</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Cleaned Gutters</string>
+					<string>Dachrinnen gereinigt</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Checked Air Filter</string>
+					<string>Geprüft Luftfilter</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Recreation</string>
+			<string>Erholung</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Bicycle Ride</string>
+					<string>Fahrt mit dem Fahrrad</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Took Vacation</string>
+					<string>nahm Urlaub</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Cross-country Skiing</string>
+					<string>Langlauf</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Car</string>
+			<string>Auto</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Checked Oil</string>
+					<string>geprüft Oil</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -53,33 +53,33 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Bought Gas</string>
+					<string>gekauft Gas</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Social</string>
+			<string>Soziale</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Called Mom</string>
+					<string>Mom angerufen</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Dinner Guests</string>
+					<string>Gäste zum Abendessen</string>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Health</string>
+			<string>Gesundheit</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Changed Toothbrush</string>
+					<string>geändert Zahnbürste</string>
 				</dict>
 				<dict>
 					<key>name</key>
@@ -89,16 +89,16 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Pet</string>
+			<string>Haustier</string>
 			<key>events</key>
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Flea Medicine</string>
+					<string>Flohmedizin</string>
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>Bought Food</string>
+					<string>Lebensmittel gekauft haben</string>
 				</dict>
 			</array>
 		</dict>
