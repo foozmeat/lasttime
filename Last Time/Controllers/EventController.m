@@ -299,10 +299,13 @@
 				
 				NSDateFormatter *df = [[NSDateFormatter alloc] init];
 				
-				[df setDateStyle:NSDateFormatterMediumStyle];
+				[df setDateStyle:NSDateFormatterFullStyle];
 				[df setTimeStyle:NSDateFormatterNoStyle];
 				
 				cell.detailTextLabel.text = [df stringFromDate:[_event nextTime]];
+				cell.detailTextLabel.numberOfLines = 2;
+				cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+
 				break;
 			}
 			case kAverageValue:
