@@ -13,7 +13,7 @@
 
 - (void)initalizeInputView {
 	df = [[NSDateFormatter alloc] init];
-	[df setDateStyle:NSDateFormatterLongStyle];
+	[df setDateStyle:NSDateFormatterFullStyle];
 	[df setTimeStyle:NSDateFormatterNoStyle];
 	
 	pickerView = [[UIDatePicker alloc] init];
@@ -26,7 +26,8 @@
 	[pickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
 	
 	[[self detailTextLabel] setText:[df stringFromDate:[pickerView date]]];
-
+	self.detailTextLabel.textColor = [UIColor brownColor];
+	
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		UIViewController *datePickerViewController = [[UIViewController alloc] init];
 		

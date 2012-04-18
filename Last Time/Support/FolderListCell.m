@@ -28,6 +28,8 @@
 			self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 			self.cellTextField.returnKeyType = UIReturnKeyDone;
 			self.cellTextField.hidden = YES;
+
+			self.detailTextLabel.textColor = [UIColor brownColor];
 			[self addSubview:self.cellTextField];
     }
     return self;
@@ -35,7 +37,8 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-	[super setSelected:selected animated:animated];
+	
+//	[super setSelected:selected animated:animated];
 	if (selected && self.editing == YES) {
 		[self.cellTextField becomeFirstResponder];
 	}
@@ -64,7 +67,7 @@
 		self.textLabel.hidden = NO;
 		self.detailTextLabel.hidden = NO;
 		self.cellTextField.hidden = YES;
-		self.selectionStyle = UITableViewCellSelectionStyleBlue;
+		self.selectionStyle = UITableViewCellSelectionStyleGray;
 		[[self cellTextField] resignFirstResponder];
 	}
 }

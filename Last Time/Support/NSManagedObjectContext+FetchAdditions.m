@@ -33,7 +33,7 @@
 
 - (NSFetchRequest *)fetchRequestForEntity:(NSEntityDescription *)entity
 {
-	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
 	[request setEntity:entity];
 	
 	return request;
@@ -159,7 +159,7 @@
 		NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:attributeName];
 		NSExpression *functionExpression = [NSExpression expressionForFunction:function arguments:[NSArray arrayWithObject:keyPathExpression]];
 
-		NSExpressionDescription *expressionDescription = [[[NSExpressionDescription alloc] init] autorelease];
+		NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
 		[expressionDescription setName:attributeName];
 		[expressionDescription setExpression:functionExpression];
 		[expressionDescription setExpressionResultType:[attribute attributeType]];

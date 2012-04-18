@@ -10,6 +10,8 @@
 #import "EventController.h"
 #import "LogEntry.h"
 #import "Event.h"
+#import <QuartzCore/QuartzCore.h>
+#import "HeaderView.h"
 
 @implementation TimelineViewController
 @synthesize detailViewController;
@@ -24,6 +26,9 @@
 {
 	[super viewWillAppear:animated];
 	
+//	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"leather-background.png"]];
+//	[self.view setBackgroundColor:background];
+
 }
 
 #pragma mark - Core Data
@@ -128,6 +133,8 @@
 }
 
 #pragma mark - TableView Delegate
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
@@ -171,7 +178,8 @@
 	if (!cell) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"EventCell"];
 	}
-	
+	cell.detailTextLabel.textColor = [UIColor brownColor];
+
 	cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -195,20 +203,20 @@
 	Event *item = le.event;
 	[[cell textLabel] setText:[item eventName]];
 	[[cell detailTextLabel] setText:[le subtitle]];
-	
-	
+
 }
 
-
-- (void)viewDidLoad
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-  [super viewDidLoad];
+	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width 
+																									 label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
+	
+	return header;
 }
 
-- (void)viewDidUnload
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+	return [HeaderView height];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

@@ -180,6 +180,40 @@
 	
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+
+	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+	[v setBackgroundColor:[UIColor clearColor]];
+	
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, tableView.bounds.size.width,30)];
+	label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+	label.textAlignment = UITextAlignmentCenter;
+	label.backgroundColor = [UIColor clearColor];
+	label.font = [UIFont boldSystemFontOfSize:16.0f];
+
+	label.textColor = [UIColor brownColor];
+	label.shadowColor = [UIColor colorWithRed:83 green:52 blue:24 alpha:1.0];
+	label.shadowOffset = CGSizeMake(0, 1);
+	
+	[v addSubview:label];
+	
+	return v;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
+{
+	if (section == kAverageSection && [_event showAverage]) {
+		return 0;
+	} else if (section == kAverageSection && ![_event showAverage]) {
+		return 30;
+	} else if (section == kHistorySection) {
+		return 30;
+	} else {
+		return 0;
+	}
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
 	if (section == kAverageSection && [_event showAverage]) {
@@ -247,11 +281,14 @@
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
 																		reuseIdentifier:@"AverageCell"];
 		}
+		cell.detailTextLabel.textColor = [UIColor brownColor];
+	
 		switch ([indexPath row]) {
 			case kAverageTime:
 			{
 				cell.textLabel.text = NSLocalizedString(@"Time Span",@"Time Span");
 				cell.detailTextLabel.text = [_event averageStringInterval];
+				
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
 			}
@@ -368,6 +405,9 @@
 	[super viewWillAppear:animated];
 	numberFormatter = [[NSNumberFormatter alloc] init];
 	
+	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+	[self.eventTableView setBackgroundColor:background];
+
 	[[self navigationItem] setTitle:[_event eventName]];
 	[[self eventTableView] reloadData];
 

@@ -13,6 +13,7 @@
 #import "EventStore.h"
 #import "EventFolder.h"
 #import "Event.h"
+#import "HeaderView.h"
 
 @implementation EventListViewController
 @synthesize folder;
@@ -304,9 +305,10 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell"];
 	
 	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"EventCell"];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"EventCell"];
 	}
-	
+
+	cell.detailTextLabel.textColor = [UIColor brownColor];
 	cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -329,8 +331,22 @@
 	Event *item = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
 	[[cell textLabel] setText:[item eventName]];
 	[[cell detailTextLabel] setText:[item subtitle]];
+	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+
 	
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width 
+																									 label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
 	
+	return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
+{
+	return [HeaderView height];
 }
 
 #pragma mark - ItemDetailViewControllerDelegate
