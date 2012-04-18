@@ -59,6 +59,10 @@
 		[df setDateStyle:NSDateFormatterFullStyle];
 		tmp = [df stringFromDate:self.latestDate];
 		
+		if (!tmp) {
+			tmp = @"";
+		}
+		
 		[self setPrimitiveSectionIdentifier:tmp];
 	}
 	return tmp;
