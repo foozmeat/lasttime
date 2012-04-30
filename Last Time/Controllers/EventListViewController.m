@@ -35,6 +35,9 @@
 	self.title = [folder folderName];
 	userDrivenDataModelChange = NO;
 
+	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+	[eventTableView setBackgroundColor:background];
+
 //	[[self eventTableView] reloadData];
 }
 
@@ -157,7 +160,7 @@
 	_fetchedResultsController = 
 	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
 																			managedObjectContext: [[EventStore defaultStore] context]
-																				sectionNameKeyPath:@"sectionIdentifier" 
+																				sectionNameKeyPath:nil
 																								 cacheName:[folder folderName]];
 	_fetchedResultsController.delegate = self;
 
@@ -280,18 +283,18 @@
 	}
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	
-	NSInteger count = [[self.fetchedResultsController sections] count];
-	return count;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	
-	id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
-	
-	return theSection.name;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//	return 0;
+//	NSInteger count = [[self.fetchedResultsController sections] count];
+//	return count;
+//}
+//
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//	
+//	id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
+//	
+//	return theSection.name;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -336,18 +339,18 @@
 	
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width 
-																									 label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
-	
-	return header;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
-{
-	return [HeaderView height];
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width 
+//																									 label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
+//	
+//	return header;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
+//{
+//	return [HeaderView height];
+//}
 
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
