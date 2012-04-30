@@ -243,7 +243,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == kAverageSection && [_event showAverage]) {
-		if ([_event averageValue] != 0.0) {
+		if ([[_event averageValue] floatValue] != 0.0) {
 			return NUM_AVERAGE_SECTIONS;
 		} else {
 			return NUM_AVERAGE_SECTIONS - 1;

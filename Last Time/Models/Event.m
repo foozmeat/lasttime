@@ -106,6 +106,9 @@
 - (void)addLogEntry:(LogEntry *)entry
 {
 	self.needsSorting = YES;
+	_averageValue = nil;
+	_averageInterval = nil;
+	
 	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
 	[_logEntryCollection addObject:entry];
 	[self addLogEntriesObject:entry];
@@ -116,6 +119,8 @@
 - (void)removeLogEntry:(LogEntry *)logEntry
 {
 	self.needsSorting = YES;
+	_averageValue = nil;
+	_averageInterval = nil;
 	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
 	[_logEntryCollection removeObjectIdenticalTo:logEntry];
 	[[EventStore defaultStore] removeLogEntry:logEntry];
@@ -159,11 +164,11 @@
 
 #pragma mark - Average
 
-- (NSTimeInterval)averageInterval
+- (NSNumber *)averageInterval
 {
 	
 	if (![self showAverage]) {
-		return 0;
+		return [NSNumber numberWithFloat:0.0];
 	}
 
 	if (_averageInterval) {
@@ -190,21 +195,22 @@
 		}
 	}
 	
-	_averageInterval = ABS(runningTotal / (count - 1));
+	float average = ABS(runningTotal / (count - 1));
+	_averageInterval = [NSNumber numberWithFloat:average];
 	return _averageInterval;
 	
 }
 
 - (NSString *)averageStringInterval;
 {
-	return [LogEntry stringFromInterval:[self averageInterval] withSuffix:NO withDays:NO];
+	return [LogEntry stringFromInterval:[[self averageInterval] doubleValue] withSuffix:NO withDays:NO];
 }
 
-- (float)averageValue
+- (NSNumber *)averageValue
 {
 	
 	if (![self showAverage]) {
-		return 0.0;
+		return [NSNumber numberWithFloat:0.0];
 	}
 	
 	if (_averageValue) {
@@ -235,10 +241,11 @@
 	}
 	
 	if (totalCount == 0.0) {
-		return 0.0;
+		return [NSNumber numberWithFloat:0.0];
 	}
 	
-	_averageValue = runningTotal / totalCount;
+	float average = runningTotal / totalCount;
+	_averageValue = [NSNumber numberWithFloat:average];
 	return _averageValue;
 	
 }
@@ -248,7 +255,7 @@
 	nf = [[NSNumberFormatter alloc] init];
 	nf.numberStyle = NSNumberFormatterDecimalStyle;
 	nf.roundingIncrement = [NSNumber numberWithDouble:0.1];
-	NSString *value = [nf stringFromNumber:[NSNumber numberWithFloat:[self averageValue]]];
+	NSString *value = [nf stringFromNumber:[self averageValue]];
 	
 	return value;
 	
@@ -281,7 +288,7 @@
 	if (![self showAverage]) {
 		return nil;
 	}
-	NSTimeInterval interval = [self averageInterval];
+	NSTimeInterval interval = [[self averageInterval] doubleValue];
 	NSDate *lastDate = [[self latestEntry] logEntryDateOccured];
 	
 	NSDate *nextDate = [[NSDate alloc] initWithTimeInterval:interval 
