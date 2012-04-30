@@ -17,6 +17,8 @@
 @dynamic folder;
 @dynamic logEntries;
 @synthesize logEntryCollection = _logEntryCollection;
+@synthesize averageValue = _averageValue;
+@synthesize averageInterval = _averageInterval;
 
 @synthesize needsSorting;
 
@@ -159,26 +161,37 @@
 
 - (NSTimeInterval)averageInterval
 {
-	if ([self.logEntryCollection count] < 2) {
+	
+	if (![self showAverage]) {
 		return 0;
 	}
+
+	if (_averageInterval) {
+		return _averageInterval;
+	}
+	
+	double collectionCount = [self.logEntryCollection count];
 	
 	[self sortEntries];
 	
 	double runningTotal = 0.0;
 	LogEntry *lastEntry = [self latestEntry];
-	double count = [self.logEntryCollection count];
+	double count = 0;
+	int limit = collectionCount - 1;
+	if (limit > 4) {
+		limit = 4;
+	}
 	
 	@autoreleasepool {
-		for(LogEntry *entry in self.logEntryCollection)
-		{
+		for (count = 0; count <= limit; count++) {
+			LogEntry *entry = [self.logEntryCollection objectAtIndex:count];
 			runningTotal += ABS([[entry logEntryDateOccured] timeIntervalSinceDate:[lastEntry logEntryDateOccured]]);
 			lastEntry = entry;
 		}
 	}
 	
-	double average = ABS(runningTotal / (count - 1));
-	return average;
+	_averageInterval = ABS(runningTotal / (count - 1));
+	return _averageInterval;
 	
 }
 
@@ -189,29 +202,44 @@
 
 - (float)averageValue
 {
-	if ([self.logEntryCollection count] < 2) {
+	
+	if (![self showAverage]) {
 		return 0.0;
 	}
 	
-	float runningTotal = 0.0;
-	double count = 0;
+	if (_averageValue) {
+		return _averageValue;
+	}
 	
+	double collectionCount = [self.logEntryCollection count];
+
+	[self sortEntries];
+
+	float runningTotal = 0.0;
+	double totalCount = 0;
+	
+	int limit = collectionCount - 1;
+	if (limit > 4) {
+		limit = 4;
+	}
+
 	@autoreleasepool {
-		for(LogEntry *entry in self.logEntryCollection)
-		{
-			runningTotal += [[entry logEntryValue] floatValue];
-			if ([[entry logEntryValue] floatValue] != 0.0) {
-				count++;
+		for (int count = 0; count <= limit; count++) {
+			LogEntry *entry = [self.logEntryCollection objectAtIndex:count];
+			if ([entry logEntryValue] != nil) {
+				runningTotal += [[entry logEntryValue] floatValue];
+				totalCount++;
 			}
 		}
+		
 	}
 	
-	if (count == 0.0) {
+	if (totalCount == 0.0) {
 		return 0.0;
 	}
 	
-	float average = runningTotal / count;
-	return average;
+	_averageValue = runningTotal / totalCount;
+	return _averageValue;
 	
 }
 
@@ -250,7 +278,7 @@
 
 - (NSDate *)nextTime
 {
-	if ([self.logEntryCollection count] < 2) {
+	if (![self showAverage]) {
 		return nil;
 	}
 	NSTimeInterval interval = [self averageInterval];
