@@ -18,6 +18,8 @@
 	self.locationSwitch = [[UISwitch alloc] init];
 	[locationSwitch addTarget:delegate action:@selector(locationSwitchChanged:) forControlEvents:UIControlEventValueChanged];
 	[locationSwitch setOn:NO];
+	[locationSwitch setOnTintColor:[UIColor brownColor]];
+	
 	self.accessoryView = locationSwitch;
 	
 	self.textLabel.text = NSLocalizedString(@"Store Location?",@"Store Location?");

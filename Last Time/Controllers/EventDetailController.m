@@ -38,9 +38,6 @@
 	[super cancel];
 }
 #pragma mark - UIViewController Methods
-- (void)viewWillAppear:(BOOL)animated
-{
-}
 
 - (void)viewDidLoad
 {

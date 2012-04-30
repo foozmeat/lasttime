@@ -194,6 +194,13 @@
 	
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"leather-background.png"]];
+	[self.tableView setBackgroundColor:background];
+
+}
 #pragma mark -
 #pragma mark UITextFieldDelegate Protocol
 

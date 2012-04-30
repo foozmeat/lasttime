@@ -13,6 +13,7 @@
 #import "EventStore.h"
 #import "EventFolder.h"
 #import "Event.h"
+#import "HeaderView.h"
 
 @implementation EventListViewController
 @synthesize folder;
@@ -33,6 +34,9 @@
 	
 	self.title = [folder folderName];
 	userDrivenDataModelChange = NO;
+
+	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+	[eventTableView setBackgroundColor:background];
 
 //	[[self eventTableView] reloadData];
 }
@@ -156,7 +160,7 @@
 	_fetchedResultsController = 
 	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
 																			managedObjectContext: [[EventStore defaultStore] context]
-																				sectionNameKeyPath:@"sectionIdentifier" 
+																				sectionNameKeyPath:nil
 																								 cacheName:[folder folderName]];
 	_fetchedResultsController.delegate = self;
 
@@ -279,18 +283,18 @@
 	}
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	
-	NSInteger count = [[self.fetchedResultsController sections] count];
-	return count;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	
-	id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
-	
-	return theSection.name;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//	return 0;
+//	NSInteger count = [[self.fetchedResultsController sections] count];
+//	return count;
+//}
+//
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//	
+//	id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
+//	
+//	return theSection.name;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -304,9 +308,10 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell"];
 	
 	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"EventCell"];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"EventCell"];
 	}
-	
+
+	cell.detailTextLabel.textColor = [UIColor brownColor];
 	cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -329,9 +334,23 @@
 	Event *item = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
 	[[cell textLabel] setText:[item eventName]];
 	[[cell detailTextLabel] setText:[item subtitle]];
-	
+	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+
 	
 }
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width 
+//																									 label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
+//	
+//	return header;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
+//{
+//	return [HeaderView height];
+//}
 
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc

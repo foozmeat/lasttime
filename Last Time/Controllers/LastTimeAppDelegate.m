@@ -31,6 +31,8 @@
 #endif
 	
 	[self versionCheck];
+	
+	[self customizeAppearance];
 
 	NSArray *viewControllers = [self segmentViewControllers];
 	NSArray *segmentTitles = [[NSArray alloc] initWithObjects:NSLocalizedString(@"Lists",@"Lists"), NSLocalizedString(@"Timeline",@"Timeline"), nil];
@@ -42,7 +44,10 @@
     
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentTitles];
     self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    
+//		[[self segmentedControl] setTintColor:[UIColor brownColor]];
+//		[[self segmentedControl] setBackgroundColor:[UIColor clearColor]];
+		
+
     [self.segmentedControl addTarget:self.segmentsController
                               action:@selector(indexDidChangeForSegmentedControl:)
                     forControlEvents:UIControlEventValueChanged];
@@ -123,6 +128,36 @@
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 
+}
+
+- (void)customizeAppearance
+{
+	UIImage *navBarImage = [UIImage imageNamed:@"navbar.png"];
+	
+	[[UINavigationBar appearance] setBackgroundImage:navBarImage 
+																		 forBarMetrics:UIBarMetricsDefault];
+	
+	
+	UIImage *barButton = [[UIImage imageNamed:@"navbar-icon.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 0, 4)];
+	
+	[[UIBarButtonItem appearance] setBackgroundImage:barButton 
+																					forState:UIControlStateNormal 
+																				barMetrics:UIBarMetricsDefault];
+	
+	UIImage *backButton = [[UIImage imageNamed:@"back-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 14, 0, 4)];
+	
+	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton 
+																										forState:UIControlStateNormal 
+																									barMetrics:UIBarMetricsDefault];
+	
+	UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar.png"];
+	[[UITabBar appearance] setBackgroundImage:tabBarBackground];
+	
+	[[UIToolbar appearance] setBackgroundImage:tabBarBackground 
+													forToolbarPosition:UIToolbarPositionBottom 
+																	barMetrics:UIBarMetricsDefault];
+		
+	[[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar-item.png"]];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

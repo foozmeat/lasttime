@@ -42,6 +42,9 @@
 	
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 
+	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+	[self.view setBackgroundColor:background];
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -389,8 +392,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	[[cell cellTextField] setDelegate:self];
 	[[cell textLabel] setText:[item folderName]];
-	
-	[[cell detailTextLabel] setFont:[UIFont systemFontOfSize:15.0]];
 	[[cell detailTextLabel] setText:[item subtitle]];
 	
 	

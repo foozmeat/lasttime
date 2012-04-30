@@ -29,22 +29,22 @@
 @property (nonatomic, strong) NSDate *latestDate;
 @property (nonatomic, strong) NSDate *primitiveLatestDate;
 
+@property (nonatomic, strong) NSNumber *averageValue;
+@property (nonatomic, strong) NSNumber *averageInterval;
+
 //- (id)initWithEventName:(NSString *)name
 //						 logEntries:(NSMutableArray *)entries;
 - (NSString *)subtitle;
 
-//- (NSDate *)latestDate;
 - (LogEntry *)latestEntry;
 - (void)updateLatestDate;
 
-- (NSTimeInterval)averageInterval;
 - (NSString *)averageStringInterval;
 
 - (NSDate *)nextTime;
 - (NSString *)lastStringInterval;
 - (BOOL)showAverage;
 
-- (float)averageValue;
 - (NSString *)averageStringValue;
 
 //+ (Event *)randomEvent;
