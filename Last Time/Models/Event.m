@@ -109,8 +109,8 @@
 	_averageValue = nil;
 	_averageInterval = nil;
 	
-	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
-	[_logEntryCollection addObject:entry];
+	[[EventStore defaultStore] saveChanges];
+	[[self logEntryCollection] addObject:entry];
 	[self addLogEntriesObject:entry];
 	[self updateLatestDate];
 
@@ -121,8 +121,8 @@
 	self.needsSorting = YES;
 	_averageValue = nil;
 	_averageInterval = nil;
-	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
-	[_logEntryCollection removeObjectIdenticalTo:logEntry];
+	[[EventStore defaultStore] saveChanges];
+	[[self logEntryCollection] removeObjectIdenticalTo:logEntry];
 	[[EventStore defaultStore] removeLogEntry:logEntry];
 	[self updateLatestDate];
 
@@ -305,9 +305,9 @@
 {
 	NSMutableString *output = [[NSMutableString alloc] init];
 	
-	[output appendFormat:@"\n%@", self.eventName];
-	[output appendFormat:@"\n%@", [self subtitle]];
-	[output appendFormat:@"\nLatest Entry: %@\n", [self latestEntry]];
+	[output appendFormat:@"Event Name: %@\n", self.eventName];
+	[output appendFormat:@"Subtitle: %@\n", [self subtitle]];
+	[output appendFormat:@"Latest Entry: %@\n", [self latestEntry]];
 	[output appendFormat:@"Average Interval: %f - %@\n", [self averageInterval], [self averageStringInterval]];
 	[output appendFormat:@"Next Time: %@\n", [[self nextTime] descriptionWithLocale:[NSLocale currentLocale]]];
 	
