@@ -138,17 +138,19 @@
 																		 forBarMetrics:UIBarMetricsDefault];
 	
 	
-	UIImage *barButton = [[UIImage imageNamed:@"navbar-icon.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+	[[UIBarButtonItem appearance] setTintColor:[UIColor brownColor]];
+
+//	UIImage *barButton = [[UIImage imageNamed:@"navbar-icon.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+//	
+//	[[UIBarButtonItem appearance] setBackgroundImage:barButton 
+//																					forState:UIControlStateNormal 
+//																				barMetrics:UIBarMetricsDefault];
 	
-	[[UIBarButtonItem appearance] setBackgroundImage:barButton 
-																					forState:UIControlStateNormal 
-																				barMetrics:UIBarMetricsDefault];
-	
-	UIImage *backButton = [[UIImage imageNamed:@"back-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
-	
-	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton 
-																										forState:UIControlStateNormal 
-																									barMetrics:UIBarMetricsDefault];
+//	UIImage *backButton = [[UIImage imageNamed:@"back-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
+//	
+//	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton 
+//																										forState:UIControlStateNormal 
+//																									barMetrics:UIBarMetricsDefault];
 	
 	UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar.png"];
 	[[UITabBar appearance] setBackgroundImage:tabBarBackground];
@@ -157,7 +159,12 @@
 													forToolbarPosition:UIToolbarPositionBottom 
 																	barMetrics:UIBarMetricsDefault];
 		
-	[[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar-item.png"]];
+	[[UITabBar appearance] setTintColor:[UIColor brownColor]];
+
+//	[[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar-item.png"]];
+	
+	[[UISegmentedControl appearance] setTintColor:[UIColor brownColor]];
+	
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
