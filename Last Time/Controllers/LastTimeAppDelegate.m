@@ -138,13 +138,13 @@
 																		 forBarMetrics:UIBarMetricsDefault];
 	
 	
-	UIImage *barButton = [[UIImage imageNamed:@"navbar-icon.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 4, 0, 4)];
+	UIImage *barButton = [[UIImage imageNamed:@"navbar-icon.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
 	
 	[[UIBarButtonItem appearance] setBackgroundImage:barButton 
 																					forState:UIControlStateNormal 
 																				barMetrics:UIBarMetricsDefault];
 	
-	UIImage *backButton = [[UIImage imageNamed:@"back-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(3, 14, 0, 4)];
+	UIImage *backButton = [[UIImage imageNamed:@"back-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
 	
 	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton 
 																										forState:UIControlStateNormal 
