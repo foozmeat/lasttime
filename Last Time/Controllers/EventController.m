@@ -279,8 +279,10 @@
 		if (!cell) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
 																		reuseIdentifier:@"AverageCell"];
+			cell.detailTextLabel.textColor = [UIColor brownColor];
+			cell.selectionStyle = UITableViewCellSelectionStyleGray;
+			cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
 		}
-		cell.detailTextLabel.textColor = [UIColor brownColor];
 	
 		switch ([indexPath row]) {
 			case kAverageTime:
@@ -326,6 +328,8 @@
 			if (historyLogCell == nil) {
 				UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"HistoryLogCell" bundle:nil];
 				historyLogCell = (HistoryLogCell *)temporaryController.view;
+				historyLogCell.selectionStyle = UITableViewCellSelectionStyleGray;
+				historyLogCell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
 			}
 
 			LogEntry *item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];

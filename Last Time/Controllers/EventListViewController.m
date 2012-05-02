@@ -334,6 +334,7 @@
 	[[cell textLabel] setText:[item eventName]];
 	[[cell detailTextLabel] setText:[item subtitle]];
 	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
 
 	
 }

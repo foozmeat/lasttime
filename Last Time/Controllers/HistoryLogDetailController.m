@@ -192,6 +192,13 @@
 	}
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+	
+}
+
 #pragma mark - Location methods
 
 -(void)updateObjectLocation

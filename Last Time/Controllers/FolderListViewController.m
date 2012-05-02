@@ -356,6 +356,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		if (!cell) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 		}
+		cell.selectionStyle = UITableViewCellSelectionStyleGray;
+		cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+		cell.selectionStyle = UITableViewCellSelectionStyleGray;
 
 		[[cell textLabel] setText:NSLocalizedString(@"Create New List…",@"Create a new list")];
 		return cell;
@@ -390,6 +393,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	[[cell cellTextField] setDelegate:self];
 	[[cell textLabel] setText:[folder folderName]];
 	[[cell detailTextLabel] setText:[folder subtitle]];
+	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
 		
 }
 

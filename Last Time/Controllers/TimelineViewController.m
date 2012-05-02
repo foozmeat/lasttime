@@ -184,10 +184,18 @@
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}	
+
 	[self configureCell:cell atIndexPath:indexPath];
 	
 	
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+	
 }
 
 - (void)configureCellAtIndexPath:(NSIndexPath *)indexPath
