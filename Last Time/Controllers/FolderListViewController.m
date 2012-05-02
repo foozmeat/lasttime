@@ -65,7 +65,6 @@
 {
 	if (!editing) 	{
 		[[activeCell cellTextField] resignFirstResponder];
-//		[[EventStore defaultStore] saveChanges];
 	}
 
 	[super setEditing:editing animated:animate];
@@ -241,8 +240,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 		id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		[[EventStore defaultStore] removeFolder:item];
-				
-		[[EventStore defaultStore] saveChanges];
 
 		if ([[self.fetchedResultsController fetchedObjects] count] == 0) {
 			[self setEditing:NO animated:YES];
@@ -279,7 +276,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 //																				 toIndex:[destinationIndexPath row]];
     NSUInteger fromIndex = sourceIndexPath.row;  
     NSUInteger toIndex = destinationIndexPath.row;
-    NSLog(@"Moving from %u to %u", fromIndex, toIndex);
+//    NSLog(@"Moving from %u to %u", fromIndex, toIndex);
 		
     if (fromIndex == toIndex) return;
     
@@ -321,7 +318,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     [movingObject setValue:[NSNumber numberWithDouble:newIndex] forKey:@"orderingValue"];
-    NSLog(@"Moving to %f", newIndex);
+//    NSLog(@"Moving to %f", newIndex);
 		
     userDrivenDataModelChange = YES;
     

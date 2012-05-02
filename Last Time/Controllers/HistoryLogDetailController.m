@@ -22,7 +22,6 @@
 - (void)save
 {
 	[event addLogEntry:logEntry];
-	[[EventStore defaultStore] saveChanges];
 	[super save];
 }
 

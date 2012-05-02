@@ -271,9 +271,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-		[[EventStore defaultStore] removeEvent:item];
-		[[EventStore defaultStore] saveChanges];
+		Event *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+		[folder removeEvent:item];
 
 		if ([[self.fetchedResultsController fetchedObjects] count] == 0) {
 			[[self navigationItem] setRightBarButtonItem:nil];

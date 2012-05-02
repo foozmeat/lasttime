@@ -172,7 +172,6 @@
 		if (editingStyle == UITableViewCellEditingStyleDelete) {
 			id item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
 			[_event removeLogEntry:item];
-			[[EventStore defaultStore] saveChanges];
 			[tableView reloadData];
 			
 		}
@@ -446,7 +445,6 @@
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
 	[[self eventTableView] reloadData];
-	[[EventStore defaultStore] saveChanges];
 }
 
 #pragma mark - Orientation
