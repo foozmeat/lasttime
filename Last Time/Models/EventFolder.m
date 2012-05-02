@@ -20,9 +20,19 @@
 @synthesize latestItem = _latestItem;
 @synthesize needsSorting;
 
--(void)awakeFromFetch
+//-(void)awakeFromFetch
+//{
+//	needsSorting = YES;
+//}
+
+- (void)addEvent:(Event *)event
 {
-	needsSorting = YES;
+	_latestItem = nil;
+	_allItems = nil;
+	
+	[self addEventsObject:event];
+	[[EventStore defaultStore] saveChanges];
+	
 }
 
 - (NSString *)subtitle
@@ -31,8 +41,7 @@
 		return @"";
 	}
 	
-	return [[NSString alloc] initWithFormat:@"%@", 
-					[[self latestItem] eventName]];
+	return [[NSString alloc] initWithFormat:@"%@", [[self latestItem] eventName]];
 	
 }
 
@@ -41,7 +50,7 @@
 	
 	if (!_allItems) {
 		_allItems = [[NSMutableArray alloc] initWithArray:[self.events allObjects]];
-		needsSorting = YES;
+//		needsSorting = YES;
 	}
 
 	return _allItems;
@@ -49,12 +58,11 @@
 
 - (Event *)latestItem
 {
-	if (!_latestItem || needsSorting == YES) {
+	if (!_latestItem) {
 		
 		NSFetchRequest *request = [[NSFetchRequest alloc] init];
 		
-		NSEntityDescription *e = [NSEntityDescription
-																							entityForName:@"LogEntry" inManagedObjectContext:[[EventStore defaultStore] context]];
+		NSEntityDescription *e = [NSEntityDescription	entityForName:@"LogEntry" inManagedObjectContext:[[EventStore defaultStore] context]];
 		
 		[request setEntity:e];
 		
@@ -79,29 +87,18 @@
 			_latestItem = [(LogEntry *)[result objectAtIndex:0] event];
 			
 		}
-		needsSorting = NO;
 	}
 	return _latestItem;
 	
 }
 
--(NSString *)itemDescriptions
-{
-	
-//	[self sortItems];
-	NSMutableString *output = [[NSMutableString alloc] init];
-	
-	for (id item in [self allItems]) {
-		[output appendFormat:@"-> %@\n---> %@\n", [item folderName], [item subtitle]];
-	}
-	return output;
-}
-
 -(NSString *)description
 {
 	NSMutableString *output = [[NSMutableString alloc] init];
-	
-	[output appendFormat:@"\n%@", [self itemDescriptions]];
+	[output appendFormat:@"Folder: %@\n", [self folderName]];
+	 for (Event *item in [self allItems]) {
+		 [output appendFormat:@"-> %@ ---> %@\n", [item eventName], [item subtitle]];
+	 }
 	
 	return output;
 }

@@ -21,16 +21,9 @@
 @property (nonatomic, strong) Event *latestItem;
 @property (nonatomic) BOOL needsSorting;
 
-//- (id)initWithName:(NSString *)name;
 - (NSString *)subtitle;
-//- (NSString *)objectName;
-
-//- (void) sortItems;
-- (id)latestItem;
-//- (NSDate *)latestDate;
-
-//- (void)removeEvent:(Event *)item;
-//- (void)addEvent:(Event *)item;
+- (Event *)latestItem;
+- (void)addEvent:(Event *)event;
 @end
 
 @interface EventFolder (CoreDataGeneratedAccessors)
