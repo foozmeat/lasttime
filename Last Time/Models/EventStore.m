@@ -163,7 +163,7 @@ static EventStore *defaultStore = nil;
 	BOOL successful = false;
 	
 	if ([self.context hasChanges]) {
-		NSLog(@"Saving data...");
+//		NSLog(@"Saving data...");
 		NSError *err = nil;
 		successful = [self.context save:&err];
 		if (!successful) {
@@ -171,7 +171,7 @@ static EventStore *defaultStore = nil;
 		}
 		
 	} else {
-		NSLog(@"No changes to save");
+//		NSLog(@"No changes to save");
 	}
 	
 	return successful;
