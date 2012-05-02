@@ -23,9 +23,9 @@
 
 - (void)save
 {
+	[self endEditing];
 	[event addLogEntry:logEntry];
-	[folder addEventsObject:event];
-	[[EventStore defaultStore] saveChanges];
+	[folder addEvent:event];
 	
 	[super save];
 }
