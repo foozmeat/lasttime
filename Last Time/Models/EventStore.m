@@ -121,6 +121,7 @@ static EventStore *defaultStore = nil;
 - (void)removeFolder:(EventFolder *)folder
 {
 	[self.context deleteObject:folder];
+	[self saveChanges];
 }
 
 - (EventFolder *)createFolder

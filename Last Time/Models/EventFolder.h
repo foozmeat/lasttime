@@ -24,6 +24,7 @@
 - (NSString *)subtitle;
 - (Event *)latestItem;
 - (void)addEvent:(Event *)event;
+- (void)removeEvent:(Event *)event;
 @end
 
 @interface EventFolder (CoreDataGeneratedAccessors)

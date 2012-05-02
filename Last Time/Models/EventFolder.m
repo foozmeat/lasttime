@@ -34,6 +34,14 @@
 	[[EventStore defaultStore] saveChanges];
 	
 }
+- (void)removeEvent:(Event *)event
+{
+	_latestItem = nil;
+	_allItems = nil;
+	[[EventStore defaultStore] removeEvent:event];
+	[[EventStore defaultStore] saveChanges];
+
+}
 
 - (NSString *)subtitle
 {
