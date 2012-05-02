@@ -102,7 +102,7 @@
 	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
 																			managedObjectContext: [[EventStore defaultStore] context]
 																				sectionNameKeyPath:nil 
-																								 cacheName:@"FolderList"];
+																								 cacheName:nil];
 	self.fetchedResultsController = theFetchedResultsController;
 	self.fetchedResultsController.delegate = self;
 	
@@ -389,12 +389,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)configureCell:(FolderListCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
 	
-	id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	EventFolder *folder = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	[[cell cellTextField] setDelegate:self];
-	[[cell textLabel] setText:[item folderName]];
-	[[cell detailTextLabel] setText:[item subtitle]];
-	
-	
+	[[cell textLabel] setText:[folder folderName]];
+	[[cell detailTextLabel] setText:[folder subtitle]];
+		
 }
 
 #pragma mark - TextFieldDelegate

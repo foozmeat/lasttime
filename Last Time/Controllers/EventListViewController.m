@@ -161,7 +161,7 @@
 	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
 																			managedObjectContext: [[EventStore defaultStore] context]
 																				sectionNameKeyPath:nil
-																								 cacheName:[folder folderName]];
+																								 cacheName:nil];
 	_fetchedResultsController.delegate = self;
 
 	NSError *error = nil;
@@ -355,7 +355,6 @@
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
-	[[EventStore defaultStore] saveChanges];
 }
 
 #pragma mark - Orientation
