@@ -42,8 +42,7 @@
 	
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 
-	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-	[self.view setBackgroundColor:background];
+	self.tableView.backgroundColor = [UIColor clearColor];
 
 }
 

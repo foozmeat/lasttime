@@ -239,7 +239,6 @@
 																		reuseIdentifier:@"AverageCell"];
 			cell.detailTextLabel.textColor = [UIColor brownColor];
 			cell.selectionStyle = UITableViewCellSelectionStyleGray;
-			cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
 		}
 	
 		switch ([indexPath row]) {
@@ -287,7 +286,6 @@
 				UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"HistoryLogCell" bundle:nil];
 				historyLogCell = (HistoryLogCell *)temporaryController.view;
 				historyLogCell.selectionStyle = UITableViewCellSelectionStyleGray;
-				historyLogCell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
 			}
 
 			LogEntry *item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
@@ -335,6 +333,8 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
+	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+
 	if ([[_event logEntryCollection] count] > 0) {
 		if (([indexPath section] == kAverageSection && ![_event showAverage]) || [indexPath section] == kHistorySection) {
 			HistoryLogCell *historyLogCell = (HistoryLogCell *)cell;
@@ -369,8 +369,8 @@
 	[super viewWillAppear:animated];
 	numberFormatter = [[NSNumberFormatter alloc] init];
 	
-	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-	[self.eventTableView setBackgroundColor:background];
+	eventTableView.backgroundColor = [UIColor clearColor];
+	self.view.backgroundColor = [UIColor clearColor];
 
 	[[self navigationItem] setTitle:[_event eventName]];
 	[[self eventTableView] reloadData];

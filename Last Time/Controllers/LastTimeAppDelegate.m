@@ -32,11 +32,14 @@
 	
 	[self versionCheck];
 	
-	[self customizeAppearance];
 
 	NSArray *viewControllers = [self segmentViewControllers];
 	NSArray *segmentTitles = [[NSArray alloc] initWithObjects:NSLocalizedString(@"Lists",@"Lists"), NSLocalizedString(@"Timeline",@"Timeline"), nil];
 
+	UIView *backgroundView = [[UIView alloc] initWithFrame: window.frame];
+	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+	[window addSubview:backgroundView];
+	
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 
     UINavigationController *navigationController = [[UINavigationController alloc] init];
@@ -44,9 +47,6 @@
     
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentTitles];
     self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-//		[[self segmentedControl] setTintColor:[UIColor brownColor]];
-//		[[self segmentedControl] setBackgroundColor:[UIColor clearColor]];
-		
 
     [self.segmentedControl addTarget:self.segmentsController
                               action:@selector(indexDidChangeForSegmentedControl:)
@@ -77,13 +77,14 @@
 				
 		self.splitViewController = [[MGSplitViewController alloc] init];
 		self.splitViewController.showsMasterInPortrait = YES;
-		
+
 		self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];
 		
 		self.window.rootViewController = self.splitViewController;
 
 	}
-	
+	[self customizeAppearance];
+
 	[window makeKeyAndVisible];
 	return YES;
 }
@@ -132,36 +133,48 @@
 
 - (void)customizeAppearance
 {
-	UIImage *navBarImage = [UIImage imageNamed:@"navbar.png"];
-	
-	[[UINavigationBar appearance] setBackgroundImage:navBarImage 
-																		 forBarMetrics:UIBarMetricsDefault];
-	
-	
-	[[UIBarButtonItem appearance] setTintColor:[UIColor brownColor]];
+	UIUserInterfaceIdiom idiom = [[UIDevice currentDevice] userInterfaceIdiom];
 
-//	UIImage *barButton = [[UIImage imageNamed:@"navbar-icon.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
-//	
-//	[[UIBarButtonItem appearance] setBackgroundImage:barButton 
-//																					forState:UIControlStateNormal 
-//																				barMetrics:UIBarMetricsDefault];
+	[[UIBarButtonItem appearance] setTintColor:[UIColor brownColor]];
 	
-//	UIImage *backButton = [[UIImage imageNamed:@"back-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
-//	
-//	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton 
-//																										forState:UIControlStateNormal 
-//																									barMetrics:UIBarMetricsDefault];
-	
-	UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar.png"];
-	[[UITabBar appearance] setBackgroundImage:tabBarBackground];
-	
-	[[UIToolbar appearance] setBackgroundImage:tabBarBackground 
-													forToolbarPosition:UIToolbarPositionBottom 
-																	barMetrics:UIBarMetricsDefault];
+	if (idiom == UIUserInterfaceIdiomPad) 	{
+
+		NSArray *viewControllers = [self segmentViewControllers];
+		FolderListViewController *masterViewController = [viewControllers objectAtIndex:0];
+		EventController *detailViewController = masterViewController.detailViewController;
+
+		UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+
+		masterViewController.view.backgroundColor = background;
+		detailViewController.view.backgroundColor = background;
+		self.window.rootViewController.view.backgroundColor = background;
+
+		UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.png"];
+		
+		[[UINavigationBar appearance] setBackgroundImage:navBarImage 
+																			 forBarMetrics:UIBarMetricsDefault];
+
+		UIImage* toolbarBgBottom = [UIImage imageNamed:@"ipad-tabbar-right.png"];
+		[[UIToolbar appearance] setBackgroundImage:toolbarBgBottom 
+														forToolbarPosition:UIToolbarPositionBottom 
+																		barMetrics:UIBarMetricsDefault];
+	} else {
+		// iPhone
+		UIImage *navBarImage = [UIImage imageNamed:@"navbar.png"];
+		
+		[[UINavigationBar appearance] setBackgroundImage:navBarImage 
+																			 forBarMetrics:UIBarMetricsDefault];
+
+		UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar.png"];
+			//	[[UITabBar appearance] setBackgroundImage:tabBarBackground];
+		
+		[[UIToolbar appearance] setBackgroundImage:tabBarBackground 
+														forToolbarPosition:UIToolbarPositionBottom 
+																		barMetrics:UIBarMetricsDefault];
+		
+	}
 		
 	[[UITabBar appearance] setTintColor:[UIColor brownColor]];
-
-//	[[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar-item.png"]];
 	
 	[[UISegmentedControl appearance] setTintColor:[UIColor brownColor]];
 	
