@@ -113,7 +113,7 @@
 	[self addLogEntriesObject:entry];
 	[self updateLatestDate];
 	[[EventStore defaultStore] saveChanges];
-
+	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
 }
 
 - (void)removeLogEntry:(LogEntry *)logEntry
@@ -125,6 +125,7 @@
 	[[EventStore defaultStore] removeLogEntry:logEntry];
 	[self updateLatestDate];
 	[[EventStore defaultStore] saveChanges];
+	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
 
 }
 
