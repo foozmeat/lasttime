@@ -25,9 +25,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	
-//	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"leather-background.png"]];
-//	[self.view setBackgroundColor:background];
+
+	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+	self.tableView.backgroundColor = background;
 
 }
 
