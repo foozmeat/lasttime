@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WEPopoverController.h"
 #import "CustomTableViewController.h"
 
 @class EventController;

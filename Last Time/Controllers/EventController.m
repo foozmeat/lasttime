@@ -9,7 +9,6 @@
 #import "EventController.h"
 #import "HistoryLogDetailController.h"
 #import "HistoryLogCell.h"
-#import "WEPopoverController.h"
 #import "LogEntry.h"
 #import "Event.h"
 
@@ -18,7 +17,6 @@
 @synthesize eventTableView;
 @synthesize event = _event; 
 @synthesize folder;
-@synthesize averagePopover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,19 +42,6 @@
 		[eventTableView reloadData];
 		[[self addButton] setEnabled:YES];
 	}
-}
-
-#pragma mark -
-#pragma mark WEPopoverControllerDelegate implementation
-
-- (void)popoverControllerDidDismissPopover:(WEPopoverController *)thePopoverController {
-	//Safe to release the popover here
-	averagePopover = nil;
-}
-
-- (BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)thePopoverController {
-	//The popover is automatically dismissed if you click outside it, unless you return NO here
-	return YES;
 }
 
 #pragma mark - Model methods

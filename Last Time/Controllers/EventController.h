@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WEPopoverController.h"
 #import "CustomTableViewController.h"
 
 @class EventFolder;
@@ -32,14 +31,13 @@ enum historyViewCellTags {
 	logEntryNoteValue
 };
 
-@interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, ItemDetailViewControllerDelegate>
+@interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate>
 {
 	NSNumberFormatter *numberFormatter;
 }
 
 @property (nonatomic, strong) Event *event;
 @property (nonatomic, strong) EventFolder *folder;
-@property (nonatomic, strong) WEPopoverController *averagePopover;
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;
 - (IBAction)addNewItem:(id)sender;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addButton;

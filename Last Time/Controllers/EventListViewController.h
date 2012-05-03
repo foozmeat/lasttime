@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WEPopoverController.h"
 #import "CustomTableViewController.h"
 
 @class EventController;
@@ -20,7 +19,6 @@
 }
 @property (nonatomic, strong) EventFolder *folder;
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;
-@property (nonatomic, strong) WEPopoverController *addPopover;
 @property (strong, nonatomic) EventController *detailViewController;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 

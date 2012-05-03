@@ -9,7 +9,6 @@
 #import "EventListViewController.h"
 #import "EventController.h"
 #import "EventDetailController.h"
-#import "WEPopoverController.h"
 #import "EventStore.h"
 #import "EventFolder.h"
 #import "Event.h"
@@ -18,7 +17,6 @@
 @implementation EventListViewController
 @synthesize folder;
 @synthesize eventTableView;
-@synthesize addPopover;
 @synthesize detailViewController;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
