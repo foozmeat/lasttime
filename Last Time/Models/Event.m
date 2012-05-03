@@ -109,10 +109,10 @@
 	_averageValue = nil;
 	_averageInterval = nil;
 	
-	[[EventStore defaultStore] saveChanges];
 	[[self logEntryCollection] addObject:entry];
 	[self addLogEntriesObject:entry];
 	[self updateLatestDate];
+	[[EventStore defaultStore] saveChanges];
 
 }
 
@@ -121,10 +121,10 @@
 	self.needsSorting = YES;
 	_averageValue = nil;
 	_averageInterval = nil;
-	[[EventStore defaultStore] saveChanges];
 	[[self logEntryCollection] removeObjectIdenticalTo:logEntry];
 	[[EventStore defaultStore] removeLogEntry:logEntry];
 	[self updateLatestDate];
+	[[EventStore defaultStore] saveChanges];
 
 }
 
