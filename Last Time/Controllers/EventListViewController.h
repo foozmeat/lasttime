@@ -13,7 +13,7 @@
 @class EventController;
 
 @interface EventListViewController : UIViewController 
-<UITableViewDelegate, UITableViewDataSource, WEPopoverControllerDelegate, ItemDetailViewControllerDelegate,NSFetchedResultsControllerDelegate>
+<UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate,NSFetchedResultsControllerDelegate>
 {
 	bool userDrivenDataModelChange;
 

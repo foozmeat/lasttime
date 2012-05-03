@@ -12,7 +12,6 @@
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
 	#import "FileHelpers.h"
-	#import "UIColor+Custom.h"
 	#import "EventStore.h"
 	#import "NSManagedObjectContext+FetchAdditions.h"
 
