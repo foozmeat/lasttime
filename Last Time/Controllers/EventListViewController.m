@@ -279,19 +279,6 @@
 	
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width 
-//																									 label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
-//	
-//	return header;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
-//{
-//	return [HeaderView height];
-//}
-
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
