@@ -133,6 +133,9 @@
 
 - (void)customizeAppearance
 {
+	
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];		
+
 	UIUserInterfaceIdiom idiom = [[UIDevice currentDevice] userInterfaceIdiom];
 
 	[[UIBarButtonItem appearance] setTintColor:[UIColor brownColor]];
