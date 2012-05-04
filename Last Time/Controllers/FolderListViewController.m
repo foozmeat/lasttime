@@ -139,7 +139,8 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+       atIndexPath:(NSIndexPath *)indexPath 
+		 forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
 	if (userDrivenDataModelChange) return;
@@ -444,7 +445,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
-//	[[self tableView] reloadData];
 	if ([self.tableView isEditing]) {
 		[self setEditing:NO animated:YES];
 	}

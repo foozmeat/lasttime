@@ -25,6 +25,7 @@
 - (Event *)latestItem;
 - (void)addEvent:(Event *)event;
 - (void)removeEvent:(Event *)event;
+- (void)refreshItems;
 @end
 
 @interface EventFolder (CoreDataGeneratedAccessors)

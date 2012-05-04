@@ -43,6 +43,13 @@
 
 }
 
+- (void)refreshItems
+{
+	_latestItem = nil;
+	_allItems = nil;
+	[[[EventStore defaultStore] context] refreshObject:self mergeChanges:NO];
+}
+
 - (NSString *)subtitle
 {
 	if (![self latestItem]) {

@@ -108,12 +108,13 @@
 	self.needsSorting = YES;
 	_averageValue = nil;
 	_averageInterval = nil;
-	
-	[[self logEntryCollection] addObject:entry];
+	_logEntryCollection = nil;
+
 	[self addLogEntriesObject:entry];
 	[self updateLatestDate];
+	
 	[[EventStore defaultStore] saveChanges];
-	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
+	[[self folder] refreshItems];
 }
 
 - (void)removeLogEntry:(LogEntry *)logEntry
@@ -121,11 +122,13 @@
 	self.needsSorting = YES;
 	_averageValue = nil;
 	_averageInterval = nil;
-	[[self logEntryCollection] removeObjectIdenticalTo:logEntry];
-	[[EventStore defaultStore] removeLogEntry:logEntry];
+	_logEntryCollection = nil;
+	
+	[self removeLogEntriesObject:logEntry];
 	[self updateLatestDate];
+
 	[[EventStore defaultStore] saveChanges];
-	[[[EventStore defaultStore] context] refreshObject:self.folder mergeChanges:NO];
+	[[self folder] refreshItems];
 
 }
 
