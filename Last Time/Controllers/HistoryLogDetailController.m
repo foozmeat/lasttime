@@ -21,6 +21,7 @@
 
 - (void)save
 {
+	[self endEditing];
 	[event addLogEntry:logEntry];
 	[super save];
 }
