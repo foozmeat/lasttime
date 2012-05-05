@@ -158,12 +158,14 @@
 			break;
 			
 		case NSFetchedResultsChangeUpdate:
-			[self configureCell:(FolderListCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+			[self configureCellAtIndexPath:indexPath];
 			break;
 			
 		case NSFetchedResultsChangeMove:
 			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
+			[self configureCellAtIndexPath:indexPath];
+			[self configureCellAtIndexPath:newIndexPath];
 			break;
 	}
 }

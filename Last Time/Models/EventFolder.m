@@ -27,20 +27,18 @@
 
 - (void)addEvent:(Event *)event
 {
-	_latestItem = nil;
-	_allItems = nil;
-	
 	[self addEventsObject:event];
 	[[EventStore defaultStore] saveChanges];
 	
+	[self refreshItems];
+
 }
 - (void)removeEvent:(Event *)event
 {
-	_latestItem = nil;
-	_allItems = nil;
-	[[EventStore defaultStore] removeEvent:event];
+	[self removeEventsObject:event];
 	[[EventStore defaultStore] saveChanges];
 
+	[self refreshItems];
 }
 
 - (void)refreshItems
