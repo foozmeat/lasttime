@@ -122,6 +122,7 @@
 {
 	
 	[self removeLogEntriesObject:logEntry];
+	[[EventStore defaultStore] removeLogEntry:logEntry];
 	[[EventStore defaultStore] saveChanges];
 	[self refreshItems];
 
