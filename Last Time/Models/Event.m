@@ -105,29 +105,29 @@
 
 - (void)addLogEntry:(LogEntry *)entry
 {
-	self.needsSorting = YES;
-	_averageValue = nil;
-	_averageInterval = nil;
-	_logEntryCollection = nil;
-
 	[self addLogEntriesObject:entry];
-	[self updateLatestDate];
-	
 	[[EventStore defaultStore] saveChanges];
-	[[self folder] refreshItems];
+	[self refreshItems];
 }
 
 - (void)removeLogEntry:(LogEntry *)logEntry
+{
+	
+	[self removeLogEntriesObject:logEntry];
+	[[EventStore defaultStore] saveChanges];
+	[self refreshItems];
+
+}
+
+- (void)refreshItems
 {
 	self.needsSorting = YES;
 	_averageValue = nil;
 	_averageInterval = nil;
 	_logEntryCollection = nil;
-	
-	[self removeLogEntriesObject:logEntry];
+
 	[self updateLatestDate];
 
-	[[EventStore defaultStore] saveChanges];
 	[[self folder] refreshItems];
 
 }
