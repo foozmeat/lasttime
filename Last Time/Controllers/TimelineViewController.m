@@ -31,6 +31,13 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+		// we need to do this in case any events were renamed
+	[[self tableView] reloadData];
+	
+	[super viewDidAppear:animated];
+}
 #pragma mark - Core Data
 - (NSFetchedResultsController *)fetchedResultsController {
 	
