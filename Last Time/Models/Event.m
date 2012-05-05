@@ -80,6 +80,14 @@
 	}
 }
 
+- (void)setEventName:(NSString *)newEventName
+{
+	[self willChangeValueForKey:@"eventName"];
+	[self setPrimitiveValue:newEventName forKey:@"eventName"];
+	[[self folder] refreshItems];
+	[self didChangeValueForKey:@"eventName"];
+
+}
 
 - (void)setLatestDate:(NSDate *)newDate {
 	
