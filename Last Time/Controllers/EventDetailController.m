@@ -246,8 +246,8 @@
 	if ([self isModal]) {
 		[self setFolder:newFolder];
 	} else {
-		[newFolder addEventsObject:event];
-		[folder removeEventsObject:event];
+		[newFolder addEvent:event];
+		[folder removeEvent:event];
 		[self setFolder:newFolder];
 	}
 	[[self tableView] reloadData];
