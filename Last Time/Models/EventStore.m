@@ -170,7 +170,7 @@ static EventStore *defaultStore = nil;
 
 	[[NSFileManager defaultManager] createFileAtPath:[tmpFile path] contents:nil attributes:nil];
 	
-	NSLog(@"%@", tmpFile);
+//	NSLog(@"%@", tmpFile);
 	
 	NSFileHandle *handle = [NSFileHandle fileHandleForWritingAtPath:[tmpFile path]];
 	FPOCsvWriter *writer = [[FPOCsvWriter alloc] initWithFileHandle:handle];
