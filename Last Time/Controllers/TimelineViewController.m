@@ -39,6 +39,8 @@
 - (IBAction)exportTimeline:(id)sender
 {
 	
+	[[EventStore defaultStore] exportToFile];
+	
 }
 
 #pragma mark - Core Data

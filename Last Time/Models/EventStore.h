@@ -42,4 +42,6 @@
 #pragma mark - Migrations
 - (void)migrateDataFromVersion:(int)version;
 
+#pragma mark - Exporting
+- (NSURL *)exportToFile;
 @end

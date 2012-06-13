@@ -17,6 +17,8 @@
 #import "oldEventFolder.h"
 #import "oldLogEntry.h"
 
+#import "FPOCsvWriter.h"
+
 static EventStore *defaultStore = nil;
 
 @implementation EventStore
@@ -156,6 +158,56 @@ static EventStore *defaultStore = nil;
 {
 	[self.context deleteObject:logEntry];
 }
+
+#pragma mark - Exporting
+- (NSURL *)exportToFile
+{
+	NSDateFormatter *df = [NSDateFormatter new];
+	[df setDateStyle:NSDateFormatterMediumStyle];
+	[df setTimeStyle:NSDateFormatterShortStyle];
+	
+	NSURL *tmpFile = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat: @"Last Time Export %@.%@", [df stringFromDate:[NSDate new]], @"csv"]]];
+
+	[[NSFileManager defaultManager] createFileAtPath:[tmpFile path] contents:nil attributes:nil];
+	
+	NSLog(@"%@", tmpFile);
+	
+	NSFileHandle *handle = [NSFileHandle fileHandleForWritingAtPath:[tmpFile path]];
+	FPOCsvWriter *writer = [[FPOCsvWriter alloc] initWithFileHandle:handle];
+
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	
+	NSEntityDescription *e = [[self.model entitiesByName] objectForKey:@"LogEntry"];
+	[request setEntity:e];
+	
+	NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"logEntryDateOccured" ascending:YES];
+	
+	[request setSortDescriptors:[NSArray arrayWithObject:sd]];
+	
+	NSError *error;
+	NSArray *result = [self.context executeFetchRequest:request error:&error];
+	
+	if (!result) {
+		[NSException raise:@"Fetch failed" 
+								format:@"Reason: %@", [error localizedDescription]];
+	}
+	
+	[writer writeRow:[NSArray arrayWithObjects:@"Date", @"List", @"Event", @"Note", @"Value", @"Location", nil]];
+
+	[df setDateStyle:NSDateFormatterMediumStyle];
+	[df setTimeStyle:NSDateFormatterNoStyle];
+
+	@autoreleasepool {
+		for (LogEntry *l in result) {
+			[writer writeRow:[NSArray arrayWithObjects:[df stringFromDate:l.logEntryDateOccured], l.event.folder.folderName, l.event.eventName, l.logEntryNote, [l.logEntryValue stringValue], l.logEntryLocationString, nil]];
+
+		}
+	}	
+	
+	[handle closeFile];
+	return tmpFile;
+}
+
 
 #pragma mark - Saving/Loading
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A03C076152F470700249036 /* NSManagedObjectContext+FetchAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A03C075152F470700249036 /* NSManagedObjectContext+FetchAdditions.m */; };
 		1A161D6F152018D60062B4A5 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A161D6E152018D60062B4A5 /* Event.m */; };
+		1A17C1F0158936F300FED786 /* FPOCsvWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A17C1EF158936F300FED786 /* FPOCsvWriter.m */; };
 		1A4688FB15518CB500C64F49 /* white_paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4688F915518CB500C64F49 /* white_paper.jpg */; };
 		1A4688FC15518CB500C64F49 /* white_paper@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */; };
 		1A468906155194F300C64F49 /* ipad-menubar-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A468902155194F300C64F49 /* ipad-menubar-left.png */; };
@@ -136,6 +137,9 @@
 		1A03C075152F470700249036 /* NSManagedObjectContext+FetchAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext+FetchAdditions.m"; path = "Support/NSManagedObjectContext+FetchAdditions.m"; sourceTree = "<group>"; };
 		1A161D6D152018D60062B4A5 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		1A161D6E152018D60062B4A5 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		1A17C1EE158936F300FED786 /* FPOCsvWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPOCsvWriter.h; path = Resources/fourcsv/FPOCsvWriter.h; sourceTree = "<group>"; };
+		1A17C1EF158936F300FED786 /* FPOCsvWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPOCsvWriter.m; path = Resources/fourcsv/FPOCsvWriter.m; sourceTree = "<group>"; };
+		1A17C1F51589445500FED786 /* FPOICsvWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPOICsvWriter.h; path = Resources/fourcsv/FPOICsvWriter.h; sourceTree = "<group>"; };
 		1A4688F915518CB500C64F49 /* white_paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_paper.jpg; sourceTree = "<group>"; };
 		1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "white_paper@2x.jpg"; sourceTree = "<group>"; };
 		1A468902155194F300C64F49 /* ipad-menubar-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-menubar-left.png"; path = "foody/ipad-menubar-left.png"; sourceTree = "<group>"; };
@@ -325,6 +329,16 @@
 				392009FE14E4B88D006B6A79 /* CustomTableViewController.m */,
 			);
 			name = Misc;
+			sourceTree = "<group>";
+		};
+		1A17C1EC158936DE00FED786 /* FourCSV */ = {
+			isa = PBXGroup;
+			children = (
+				1A17C1EE158936F300FED786 /* FPOCsvWriter.h */,
+				1A17C1EF158936F300FED786 /* FPOCsvWriter.m */,
+				1A17C1F51589445500FED786 /* FPOICsvWriter.h */,
+			);
+			name = FourCSV;
 			sourceTree = "<group>";
 		};
 		1A823C2C153BB07000B997C8 /* Appearance */ = {
@@ -627,6 +641,7 @@
 				1A628502153F0FD7003C57F9 /* HeaderView.h */,
 				1A628503153F0FD7003C57F9 /* HeaderView.m */,
 				39C10D3315005B6A00DF3F70 /* MGSplitView */,
+				1A17C1EC158936DE00FED786 /* FourCSV */,
 			);
 			name = "Supporting Classes";
 			sourceTree = "<group>";
@@ -902,6 +917,7 @@
 				1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */,
 				1A03C076152F470700249036 /* NSManagedObjectContext+FetchAdditions.m in Sources */,
 				1A628504153F0FD7003C57F9 /* HeaderView.m in Sources */,
+				1A17C1F0158936F300FED786 /* FPOCsvWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
