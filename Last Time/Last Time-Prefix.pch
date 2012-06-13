@@ -15,7 +15,7 @@
 	#import "EventStore.h"
 	#import "NSManagedObjectContext+FetchAdditions.h"
 
-#ifndef DEBUG
+#ifdef TESTFLIGHT
 	#import "TestFlight.h"
 #endif
 
