@@ -10,9 +10,14 @@
 
 @class EventController;
 
-@interface TimelineViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface TimelineViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) EventController *detailViewController;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+
+@property (strong, nonatomic) IBOutlet UITableView *timelineTableView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *exportButton;
+
+- (IBAction)exportTimeline:(id)sender;
 
 @end

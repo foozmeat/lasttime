@@ -34,6 +34,7 @@
 		1A628504153F0FD7003C57F9 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A628503153F0FD7003C57F9 /* HeaderView.m */; };
 		1A823B6B153B959D00B997C8 /* default_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A823B6D153B959D00B997C8 /* default_data.plist */; };
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
+		1ABC9B0B1589284F00E12E31 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */; };
 		1AC020A3152550200022A07B /* oldEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0209E152550200022A07B /* oldEvent.m */; };
 		1AC020A4152550200022A07B /* oldEventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC020A0152550200022A07B /* oldEventFolder.m */; };
 		1AC020A5152550200022A07B /* oldLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC020A2152550200022A07B /* oldLogEntry.m */; };
@@ -175,6 +176,7 @@
 		1AB0128015348B2B00359153 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AB4B3E5152961B800D66347 /* SegmentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentsController.h; path = "Last Time/Support/SegmentsController.h"; sourceTree = SOURCE_ROOT; };
 		1AB4B3E6152961B800D66347 /* SegmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentsController.m; path = "Last Time/Support/SegmentsController.m"; sourceTree = SOURCE_ROOT; };
+		1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
 		1AC0209D152550200022A07B /* oldEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oldEvent.h; sourceTree = "<group>"; };
 		1AC0209E152550200022A07B /* oldEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oldEvent.m; sourceTree = "<group>"; };
 		1AC0209F152550200022A07B /* oldEventFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oldEventFolder.h; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 				39918C1914F606A200D8D4EE /* EventListViewController.xib */,
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
 				3940D3EF14F17DE20056D01B /* HistoryLogCell.xib */,
+				1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -807,6 +810,7 @@
 				1A5C249D1552DFF300F8F04A /* icon-72.png in Resources */,
 				1A5C249E1552DFF300F8F04A /* icon-72@2x.png in Resources */,
 				1A5C249F1552DFF300F8F04A /* icon-512.png in Resources */,
+				1ABC9B0B1589284F00E12E31 /* TimelineViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
