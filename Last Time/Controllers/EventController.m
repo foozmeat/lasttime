@@ -185,7 +185,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == kAverageSection && [_event showAverage]) {
-		if ([[_event averageValue] floatValue] != 0.0) {
+		if ([_event showAverageValue]) {
 			return NUM_AVERAGE_SECTIONS;
 		} else {
 			return NUM_AVERAGE_SECTIONS - 1;
@@ -358,6 +358,7 @@
 	self.view.backgroundColor = [UIColor clearColor];
 
 	[[self navigationItem] setTitle:[_event eventName]];
+	[[self event] refreshItems];
 	[[self eventTableView] reloadData];
 
 }

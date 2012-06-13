@@ -91,8 +91,12 @@
 			[logEntry setLogEntryNote:text];
 			break;
 		case kEventNumber:
-			value = [text floatValue];
-			[logEntry setLogEntryValue:[NSNumber numberWithFloat:value]];
+			if ([text isEqualToString:@""]) {
+				[logEntry setLogEntryValue:nil];
+			} else {
+				value = [text floatValue];
+				[logEntry setLogEntryValue:[NSNumber numberWithFloat:value]];
+			}
 			break;
 	}
 }

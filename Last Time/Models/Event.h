@@ -44,12 +44,15 @@
 - (NSDate *)nextTime;
 - (NSString *)lastStringInterval;
 - (BOOL)showAverage;
+- (BOOL)showAverageValue;
 
 - (NSString *)averageStringValue;
 
 //+ (Event *)randomEvent;
 - (void)addLogEntry:(LogEntry *)entry;
 - (void)removeLogEntry:(LogEntry *)logEntry;
+
+- (void)refreshItems;
 @end
 
 

@@ -214,9 +214,7 @@
 
 -(BOOL)showValue
 {
-	return ([self logEntryValue] != nil &&
-					[self logEntryValue] != NULL &&
-					[[self logEntryValue] floatValue] != 0.0);
+	return ([self logEntryValue] != nil && [self logEntryValue] != NULL);
 }
 
 -(BOOL)showNote

@@ -175,15 +175,20 @@
 	}
 }
 
+- (BOOL)showAverageValue
+{
+	if ([self averageValue] == nil) {
+		return NO;
+	} else {
+		return YES;
+	}
+}
+
 #pragma mark - Average
 
 - (NSNumber *)averageInterval
 {
 	
-	if (![self showAverage]) {
-		return [NSNumber numberWithFloat:0.0];
-	}
-
 	if (_averageInterval) {
 		return _averageInterval;
 	}
@@ -254,7 +259,7 @@
 	}
 	
 	if (totalCount == 0.0) {
-		return [NSNumber numberWithFloat:0.0];
+		return nil;
 	}
 	
 	float average = runningTotal / totalCount;
