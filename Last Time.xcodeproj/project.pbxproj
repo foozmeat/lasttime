@@ -10,6 +10,7 @@
 		1A03C076152F470700249036 /* NSManagedObjectContext+FetchAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A03C075152F470700249036 /* NSManagedObjectContext+FetchAdditions.m */; };
 		1A161D6F152018D60062B4A5 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A161D6E152018D60062B4A5 /* Event.m */; };
 		1A17C1F0158936F300FED786 /* FPOCsvWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A17C1EF158936F300FED786 /* FPOCsvWriter.m */; };
+		1A17C1FB1589488200FED786 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A17C1FA1589488200FED786 /* MessageUI.framework */; };
 		1A4688FB15518CB500C64F49 /* white_paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4688F915518CB500C64F49 /* white_paper.jpg */; };
 		1A4688FC15518CB500C64F49 /* white_paper@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */; };
 		1A468906155194F300C64F49 /* ipad-menubar-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A468902155194F300C64F49 /* ipad-menubar-left.png */; };
@@ -140,6 +141,7 @@
 		1A17C1EE158936F300FED786 /* FPOCsvWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPOCsvWriter.h; path = Resources/fourcsv/FPOCsvWriter.h; sourceTree = "<group>"; };
 		1A17C1EF158936F300FED786 /* FPOCsvWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPOCsvWriter.m; path = Resources/fourcsv/FPOCsvWriter.m; sourceTree = "<group>"; };
 		1A17C1F51589445500FED786 /* FPOICsvWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPOICsvWriter.h; path = Resources/fourcsv/FPOICsvWriter.h; sourceTree = "<group>"; };
+		1A17C1FA1589488200FED786 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1A4688F915518CB500C64F49 /* white_paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_paper.jpg; sourceTree = "<group>"; };
 		1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "white_paper@2x.jpg"; sourceTree = "<group>"; };
 		1A468902155194F300C64F49 /* ipad-menubar-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-menubar-left.png"; path = "foody/ipad-menubar-left.png"; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A17C1FB1589488200FED786 /* MessageUI.framework in Frameworks */,
 				1A6284FC153EFECE003C57F9 /* QuartzCore.framework in Frameworks */,
 				1AED06051510EEC700CCDA4F /* CoreData.framework in Frameworks */,
 				39BF455714F33BC40059C8B9 /* libz.dylib in Frameworks */,
@@ -578,6 +581,7 @@
 		39D70CB514BD3515009C3615 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A17C1FA1589488200FED786 /* MessageUI.framework */,
 				1A6284FB153EFECE003C57F9 /* QuartzCore.framework */,
 				1AED06041510EEC700CCDA4F /* CoreData.framework */,
 				39BF455614F33BC40059C8B9 /* libz.dylib */,
@@ -1096,7 +1100,6 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: James Moore";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1114,7 +1117,6 @@
 				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "BD29D1C4-4E2B-4548-8B26-B2E4E1A2A266";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BD29D1C4-4E2B-4548-8B26-B2E4E1A2A266";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos5.1;
 				STRIP_STYLE = debugging;
@@ -1258,7 +1260,6 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1278,7 +1279,7 @@
 				OTHER_LDFLAGS = "-lprofile_rt";
 				PRODUCT_NAME = "Last Time";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos5.1;
 				STRIP_STYLE = debugging;
@@ -1426,7 +1427,6 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
@@ -1438,7 +1438,6 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos5.1;
 				STRIP_STYLE = debugging;
@@ -1453,7 +1452,6 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: James Moore";
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1469,7 +1467,6 @@
 				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4A20681E-C3D8-460C-9E3C-135A78E03705";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4A20681E-C3D8-460C-9E3C-135A78E03705";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos5.1;
 				STRIP_INSTALLED_PRODUCT = NO;

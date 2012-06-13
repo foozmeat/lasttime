@@ -160,13 +160,13 @@ static EventStore *defaultStore = nil;
 }
 
 #pragma mark - Exporting
-- (NSURL *)exportToFile
+- (NSString *)exportToFile
 {
 	NSDateFormatter *df = [NSDateFormatter new];
 	[df setDateStyle:NSDateFormatterMediumStyle];
 	[df setTimeStyle:NSDateFormatterShortStyle];
 	
-	NSURL *tmpFile = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat: @"Last Time Export %@.%@", [df stringFromDate:[NSDate new]], @"csv"]]];
+	NSURL *tmpFile = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat: @"%@ %@.%@",NSLocalizedString(@"Last Time Export", @"The prefix for the exported file's name"), [df stringFromDate:[NSDate new]], @"csv"]]];
 
 	[[NSFileManager defaultManager] createFileAtPath:[tmpFile path] contents:nil attributes:nil];
 	
@@ -205,7 +205,7 @@ static EventStore *defaultStore = nil;
 	}	
 	
 	[handle closeFile];
-	return tmpFile;
+	return [tmpFile path];
 }
 
 

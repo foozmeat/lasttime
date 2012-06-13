@@ -39,8 +39,42 @@
 - (IBAction)exportTimeline:(id)sender
 {
 	
-	[[EventStore defaultStore] exportToFile];
+	NSString *tmpFile = [[EventStore defaultStore] exportToFile];
+	NSData *exportedData = [NSData dataWithContentsOfFile:tmpFile];
+	MFMailComposeViewController *picker = [MFMailComposeViewController new];
+	picker.mailComposeDelegate = self;
+
+	if (tmpFile != nil) {
+		if ([MFMailComposeViewController canSendMail])
+		{
+			[picker setSubject:[tmpFile lastPathComponent]];
+			[picker addAttachmentData:exportedData mimeType:@"text/csv" fileName:[tmpFile lastPathComponent]];
+			[picker setToRecipients:[NSArray array]];
+			[picker setMessageBody:@"" isHTML:NO];
+			[picker setMailComposeDelegate:self];
+			[self presentModalViewController:picker animated:YES];                    
+		}
+		else {
+			[self launchMailAppOnDevice];
+		}
+	}
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
+{	
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+	// Launches the Mail application on the device.
+-(void)launchMailAppOnDevice
+{
+	NSString *recipients = @"mailto:first@example.com?subject=Please set up your email!";
+	NSString *body = @"&body=Please set up your email!";
 	
+	NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
+	email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
 }
 
 #pragma mark - Core Data

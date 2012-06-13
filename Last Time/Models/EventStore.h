@@ -43,5 +43,5 @@
 - (void)migrateDataFromVersion:(int)version;
 
 #pragma mark - Exporting
-- (NSURL *)exportToFile;
+- (NSString *)exportToFile;
 @end
