@@ -142,6 +142,7 @@
 		1A17C1EF158936F300FED786 /* FPOCsvWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPOCsvWriter.m; path = Resources/fourcsv/FPOCsvWriter.m; sourceTree = "<group>"; };
 		1A17C1F51589445500FED786 /* FPOICsvWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPOICsvWriter.h; path = Resources/fourcsv/FPOICsvWriter.h; sourceTree = "<group>"; };
 		1A17C1FA1589488200FED786 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		1A17C225158954DB00FED786 /* Last Time 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 4.xcdatamodel"; sourceTree = "<group>"; };
 		1A4688F915518CB500C64F49 /* white_paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_paper.jpg; sourceTree = "<group>"; };
 		1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "white_paper@2x.jpg"; sourceTree = "<group>"; };
 		1A468902155194F300C64F49 /* ipad-menubar-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-menubar-left.png"; path = "foody/ipad-menubar-left.png"; sourceTree = "<group>"; };
@@ -1538,11 +1539,12 @@
 		1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1A17C225158954DB00FED786 /* Last Time 4.xcdatamodel */,
 				1A03C072152F43D500249036 /* Last Time 3.xcdatamodel */,
 				1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */,
 				1AED06081510EEF100CCDA4F /* Last Time.xcdatamodel */,
 			);
-			currentVersion = 1A03C072152F43D500249036 /* Last Time 3.xcdatamodel */;
+			currentVersion = 1A17C225158954DB00FED786 /* Last Time 4.xcdatamodel */;
 			path = "Last Time.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
