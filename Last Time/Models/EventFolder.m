@@ -35,7 +35,7 @@
 }
 - (void)removeEvent:(Event *)event
 {
-	[self removeEventsObject:event];
+	[[EventStore defaultStore] removeEvent:event];
 	[[EventStore defaultStore] saveChanges];
 
 	[self refreshItems];
