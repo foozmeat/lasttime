@@ -184,7 +184,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (section == kAverageSection && [_event showAverage]) {
+
+	if (section == kLastTimeSection) {
+		if ([[_event logEntryCollection] count] > 0) {
+			return NUM_LASTTIME_SECTIONS;
+		} else {
+			return 0;
+		}
+		
+		
+	} else if (section == kAverageSection && [_event showAverage]) {
 		if ([_event showAverageValue]) {
 			return NUM_AVERAGE_SECTIONS;
 		} else {
@@ -210,21 +219,26 @@
 	numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
 	numberFormatter.roundingIncrement = [NSNumber numberWithDouble:0.001];
 
+	cell = [tableView dequeueReusableCellWithIdentifier:@"AverageCell"];
+	
 	if (!cell) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
-																	reuseIdentifier:@"UITableViewCell"];
+																	reuseIdentifier:@"AverageCell"];
+		cell.detailTextLabel.textColor = [UIColor brownColor];
+		cell.selectionStyle = UITableViewCellSelectionStyleGray;
 	}
-	
-	if ([indexPath section] == kAverageSection && [_event showAverage]) {
+
+	if ([indexPath section] == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
+
+		cell.textLabel.text = NSLocalizedString(@"Last Time",@"Last Time");
+		cell.detailTextLabel.text = [[_event latestEntry] stringFromLogEntryInterval];
 		
-		cell = [tableView dequeueReusableCellWithIdentifier:@"AverageCell"];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+		return cell;
 		
-		if (!cell) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
-																		reuseIdentifier:@"AverageCell"];
-			cell.detailTextLabel.textColor = [UIColor brownColor];
-			cell.selectionStyle = UITableViewCellSelectionStyleGray;
-		}
+	} else if ([indexPath section] == kAverageSection && [_event showAverage]) {
+		
 	
 		switch ([indexPath row]) {
 			case kAverageTime:
@@ -311,8 +325,7 @@
 		cell.textLabel.text = @"Error";
 		return cell;
 	}
-	
-	
+		
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

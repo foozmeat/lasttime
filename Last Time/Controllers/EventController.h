@@ -13,9 +13,15 @@
 @class Event;
 
 enum EventSections {
-	kAverageSection = 0,
+	kLastTimeSection = 0,
+	kAverageSection,
 	kHistorySection,
 	NUM_EVENT_SECTIONS
+};
+
+enum LastTimeSection {
+	kLastTime = 0,	
+	NUM_LASTTIME_SECTIONS
 };
 
 enum AverageSection {
