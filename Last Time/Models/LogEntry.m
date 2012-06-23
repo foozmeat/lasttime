@@ -296,6 +296,7 @@
 
 - (void)reverseLookupLocation
 {
+#if TARGET_OS_IPHONE
 	CLGeocoder *geocoder = [[CLGeocoder alloc] init];
 	
 	if ([self hasLocation]) {
@@ -313,7 +314,7 @@
 			 }
 		 }];
 	}
-	
+#endif	
 }
 
 - (NSString *)locationString

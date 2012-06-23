@@ -11,6 +11,10 @@
 		1A161D6F152018D60062B4A5 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A161D6E152018D60062B4A5 /* Event.m */; };
 		1A17C1F0158936F300FED786 /* FPOCsvWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A17C1EF158936F300FED786 /* FPOCsvWriter.m */; };
 		1A17C1FB1589488200FED786 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A17C1FA1589488200FED786 /* MessageUI.framework */; };
+		1A212A4415957255001B6293 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06231510F9F100CCDA4F /* LogEntry.m */; };
+		1A212A461595728B001B6293 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A212A451595728A001B6293 /* CoreLocation.framework */; };
+		1A212A55159573E5001B6293 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A212A54159573E5001B6293 /* CoreData.framework */; };
+		1A212A56159576D1001B6293 /* Last Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */; };
 		1A4688FB15518CB500C64F49 /* white_paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4688F915518CB500C64F49 /* white_paper.jpg */; };
 		1A4688FC15518CB500C64F49 /* white_paper@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */; };
 		1A468906155194F300C64F49 /* ipad-menubar-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A468902155194F300C64F49 /* ipad-menubar-left.png */; };
@@ -143,6 +147,8 @@
 		1A17C1F51589445500FED786 /* FPOICsvWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPOICsvWriter.h; path = Resources/fourcsv/FPOICsvWriter.h; sourceTree = "<group>"; };
 		1A17C1FA1589488200FED786 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1A17C225158954DB00FED786 /* Last Time 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 4.xcdatamodel"; sourceTree = "<group>"; };
+		1A212A451595728A001B6293 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		1A212A54159573E5001B6293 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		1A4688F915518CB500C64F49 /* white_paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_paper.jpg; sourceTree = "<group>"; };
 		1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "white_paper@2x.jpg"; sourceTree = "<group>"; };
 		1A468902155194F300C64F49 /* ipad-menubar-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-menubar-left.png"; path = "foody/ipad-menubar-left.png"; sourceTree = "<group>"; };
@@ -302,6 +308,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A212A55159573E5001B6293 /* CoreData.framework in Frameworks */,
+				1A212A461595728B001B6293 /* CoreLocation.framework in Frameworks */,
 				39A0F9F714F0B9AF00BA0AFA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +590,8 @@
 		39D70CB514BD3515009C3615 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A212A54159573E5001B6293 /* CoreData.framework */,
+				1A212A451595728A001B6293 /* CoreLocation.framework */,
 				1A17C1FA1589488200FED786 /* MessageUI.framework */,
 				1A6284FB153EFECE003C57F9 /* QuartzCore.framework */,
 				1AED06041510EEC700CCDA4F /* CoreData.framework */,
@@ -883,6 +893,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				39A0F9FA14F0B9AF00BA0AFA /* main.m in Sources */,
+				1A212A4415957255001B6293 /* LogEntry.m in Sources */,
+				1A212A56159576D1001B6293 /* Last Time.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1176,7 +1188,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1192,7 +1204,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1207,7 +1219,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -1334,7 +1346,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
