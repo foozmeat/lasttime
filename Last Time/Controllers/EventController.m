@@ -150,29 +150,36 @@
 	return v;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section  
+{
+	return 0;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
 {
-	if (section == kAverageSection && [_event showAverage]) {
-		return 0;
-	} else if (section == kAverageSection && ![_event showAverage]) {
-		return 30;
+	int count = [[_event logEntryCollection] count];
+
+	if (section == kLastTimeSection && count > 0) {
+		return 10.0;
+	} else if (section == kAverageSection && count > 1) {
+		return 10.0;
 	} else if (section == kHistorySection) {
 		return 30;
 	} else {
-		return 0;
+		return 0.00001f;
 	}
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	if (section == kAverageSection && [_event showAverage]) {
-		return @"";
-	} else if (section == kAverageSection && ![_event showAverage]) {
-		return NSLocalizedString(@"History", @"History");
+	if (section == kLastTimeSection) {
+		return nil;
+	} else if (section == kAverageSection) {
+		return nil;
 	} else if (section == kHistorySection) {
 		return NSLocalizedString(@"History", @"History");
 	} else {
-		return @"";
+		return nil;
 	}
 }
 
@@ -182,33 +189,34 @@
 		return 0;
 	}
 	
-	if ([_event showAverage]) {
-		return NUM_EVENT_SECTIONS;
-	} else {
-		return NUM_EVENT_SECTIONS - 1;
-	}
+	return NUM_EVENT_SECTIONS;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+	int count = [[_event logEntryCollection] count];
 
 	if (section == kLastTimeSection) {
-		if ([[_event logEntryCollection] count] > 0) {
+		if (count > 0) {
 			return NUM_LASTTIME_SECTIONS;
 		} else {
 			return 0;
 		}
 		
 		
-	} else if (section == kAverageSection && [_event showAverage]) {
-		if ([_event showAverageValue]) {
-			return NUM_AVERAGE_SECTIONS;
+	} else if (section == kAverageSection) {
+		if (count > 1) {
+			if ([_event showAverageValue]) {
+				return NUM_AVERAGE_SECTIONS;
+			} else {
+				return NUM_AVERAGE_SECTIONS - 1;
+			}
 		} else {
-			return NUM_AVERAGE_SECTIONS - 1;
+			return 0;
 		}
-	} else if ((section == kAverageSection && ![_event showAverage]) || (section == kHistorySection)) {
+		
+	} else if (section == kHistorySection) {
 
-		int count = [[_event logEntryCollection] count];
 		if (count == 0) {
 			return 1;
 		} else {
@@ -280,7 +288,7 @@
 		}
 		return cell;
 
-	} else if (([indexPath section] == kAverageSection && ![_event showAverage]) || [indexPath section] == kHistorySection) {
+	} else if ([indexPath section] == kHistorySection) {
 
 		if ([[_event logEntryCollection] count] > 0) {
 			
@@ -339,7 +347,7 @@
 	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
 
 	if ([[_event logEntryCollection] count] > 0) {
-		if (([indexPath section] == kAverageSection && ![_event showAverage]) || [indexPath section] == kHistorySection) {
+		if ([indexPath section] == kHistorySection) {
 			HistoryLogCell *historyLogCell = (HistoryLogCell *)cell;
 
 			if ([historyLogCell.logEntryValueCell.text isEqualToString:@""]) {
