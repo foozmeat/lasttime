@@ -43,10 +43,20 @@ int main(int argc, const char * argv[])
 		
 		LogEntry *le = nil;
 		
-		for (int i=0; i < 10; i++) {
+		for (int i=0; i < 160; i++) {
 			le = (LogEntry *)[NSEntityDescription insertNewObjectForEntityForName:@"LogEntry" inManagedObjectContext:context];
 			le.logEntryDateOccured = [[NSDate alloc] initWithTimeIntervalSinceNow:-60*60*24*i];
-			NSLog(@"%@ -> %f -> %@", [le logEntryDateOccured], [le secondsSinceNow], [le stringFromLogEntryInterval]);
+//			NSLog(@"%d -> %@ \t %@ \t %@", 
+//						i,
+//						[le stringFromLogEntryIntervalWithFormat:@"days"],
+//						[le stringFromLogEntryIntervalWithFormat:@"weeks"],
+//						[le stringFromLogEntryIntervalWithFormat:@"months"]
+//						);
+			NSLog(@"%d -> %@", 
+						i,
+						[le stringFromLogEntryIntervalWithFormat:nil]
+						);
+//			[le stringFromLogEntryIntervalWithFormat:@"weeks"];
 		}
 
 	}

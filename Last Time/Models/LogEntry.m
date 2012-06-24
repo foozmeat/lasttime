@@ -84,9 +84,9 @@
 	
 }
 
-- (NSString *)stringFromLogEntryInterval
+- (NSString *)stringFromLogEntryIntervalWithFormat:(NSString *)displayFormat
 {
-	return [LogEntry stringFromInterval:[self secondsSinceNow] withSuffix:YES withDays:YES];
+	return [LogEntry stringFromInterval:[self secondsSinceNow] withSuffix:YES withDays:YES displayFormat:displayFormat];
 }
 
 - (NSString *)dateString
@@ -99,7 +99,9 @@
 
 + (NSString *)stringFromInterval:(NSTimeInterval)interval 
 											withSuffix:(BOOL)suffix
-												withDays:(BOOL)withDays
+												withDays:(BOOL)withDays 
+									 displayFormat:(NSString *)displayFormat
+									
 {
 	NSMutableString *result = [[NSMutableString alloc] init];
 	
@@ -115,7 +117,7 @@
 	
 	NSDate *then = [[NSDate alloc] initWithTimeIntervalSinceNow:interval];	
 	NSDateComponents *thenComps = [sysCalendar components:unitFlags fromDate:then];
-	
+		
 		// Discard hours, minutes, and seconds
 	nowComps.hour = 12;
 	thenComps.hour = 12;
@@ -124,41 +126,48 @@
 	nowComps.second = 0;
 	thenComps.second = 0;
 	
-	now = [sysCalendar dateFromComponents:nowComps];
-	then = [sysCalendar dateFromComponents:thenComps];
+	NSDate *normalizedNow = [sysCalendar dateFromComponents:nowComps];
+	NSDate *normalizedThen = [sysCalendar dateFromComponents:thenComps];
 	
-	int differenceInDays = abs(
-														 [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:then] -
-														 [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:now]);
-		//	NSLog(@"Difference in days: %i", differenceInDays);
+	NSUInteger nowOrdinal = [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:normalizedNow];
+	NSUInteger thenOrdinal = [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:normalizedThen];	
+	NSUInteger differenceInDays = abs(nowOrdinal - thenOrdinal);
+
+	nowOrdinal = [sysCalendar ordinalityOfUnit:kCFCalendarUnitWeekOfYear inUnit:NSEraCalendarUnit forDate:normalizedNow];
+	thenOrdinal = [sysCalendar ordinalityOfUnit:kCFCalendarUnitWeekOfYear inUnit:NSEraCalendarUnit forDate:normalizedThen];	
+	NSUInteger differenceInWeeks = abs(nowOrdinal - thenOrdinal);
 	
-	NSDateComponents *diffComps = [sysCalendar components:unitFlags fromDate:now  toDate:then  options:0];
+	//	NSLog(@"Difference in days: %i", differenceInDays);
+	
+	NSDateComponents *diffComps = [sysCalendar components:unitFlags fromDate:normalizedThen  toDate:normalizedNow  options:1];
 	NSInteger year = ABS([diffComps year]);
 	NSInteger month = ABS([diffComps month]);
 	NSInteger week = ABS([diffComps week]);
 	NSInteger day = ABS([diffComps day]);
-	
-		// Figure date string pieces
+
+//	NSLog(@"days: %ld \t month: %ld \t week: %ld \t day: %ld", differenceInDays,month,week,day);
+
+	// Figure date string pieces
 	NSString *nbyear = nil;
-	if(year > 1)
+	if(year != 1)
 		nbyear = NSLocalizedString(@"years",@"more than one year");
 	else
 		nbyear = NSLocalizedString(@"year",@"one year");
 	
 	NSString *nbmonth = nil;
-	if(month > 1)
+	if(month != 1)
 		nbmonth = NSLocalizedString(@"months",@"more than one month");
 	else
 		nbmonth = NSLocalizedString(@"month",@"one month");
 	
 	NSString *nbweek = nil;
-	if(week > 1)
+	if(week != 1 || (displayFormat == @"weeks" && differenceInWeeks != 1))
 		nbweek = NSLocalizedString(@"weeks",@"more than one week");
 	else
 		nbweek = NSLocalizedString(@"week",@"one week");
 	
 	NSString *nbday = nil;
-	if(day > 1)
+	if(day != 1 || (displayFormat == @"days" && differenceInDays != 1))
 		nbday = NSLocalizedString(@"days",@"more than one day");
 	else
 		nbday = NSLocalizedString(@"day",@"one day");
@@ -171,33 +180,54 @@
 	} else if (differenceInDays == 1 && withDays) {
 		[result appendString:NSLocalizedString(@"Yesterday",@"Yesterday")];
 		suffix = NO;
-	} else if (differenceInDays < 7 && withDays) {
-		[result appendString:[[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
-		suffix = NO;
-	} else if (differenceInDays < 13 && withDays) {
-		[result appendFormat:NSLocalizedString(@"Last %@",@"This is describing a phrase like 'last thursday'"), [[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
-		suffix = NO;
+//	} else if (differenceInDays < 7 && withDays) {
+//		[result appendString:[[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
+//		suffix = NO;
+//	} else if (differenceInDays < 13 && withDays) {
+//		[result appendFormat:NSLocalizedString(@"Last %@",@"This is describing a phrase like 'last thursday'"), [[dateFormatter weekdaySymbols] objectAtIndex:(thenComps.weekday - 1)]];
+//		suffix = NO;
+
 		
+// Using display formats
+	} else if (displayFormat == @"days") {
+		[result appendFormat:@"%d %@", differenceInDays, nbday];
+
+	} else if (displayFormat == @"weeks") {
+		day = differenceInDays % 7;
+		if (day != 0) {
+			[result appendFormat:@"%d %@, %d %@", differenceInWeeks, nbweek, day, nbday];
+		}else {
+			[result appendFormat:@"%d %@", differenceInWeeks, nbweek];
+		}
+					
+// Using variable format 	
 	} else if (year < 1 && month < 1 && week == 0 && day == 0) {
 		[result appendFormat:@"0 %@", nbday];
+
 	} else if (year < 1 && month < 1 && week == 0 && day != 0) {
 		[result appendFormat:@"%d %@", day, nbday];
+
 	} else if (year < 1 && month < 1 && week <= 4 && day == 0) {
 		[result appendFormat:@"%d %@", week, nbweek];
+
 	} else if (year < 1 && month < 1 && week <= 4 && day != 0) {
 		[result appendFormat:@"%d %@, %d %@", week, nbweek, day, nbday];
 		
 	} else if (year < 1 && month < 12 && week == 0 && day == 0) {
 		[result appendFormat:@"%d %@", month, nbmonth];
+	
 	} else if (year < 1 && month < 12 && week == 0 && day != 0) {
 		[result appendFormat:@"%d %@, %d %@", month, nbmonth, day, nbday];
+	
 	} else if (year < 1 && month < 12 && week != 0) {
 		[result appendFormat:@"%d %@, %d %@", month, nbmonth, week, nbweek];
 		
 	} else if (year > 0 && month == 0 && week == 0) {
 		[result appendFormat:@"%d %@", year, nbyear];
+	
 	} else if (year > 0 && month == 0 && week != 0) {
 		[result appendFormat:@"%d %@, %d %@", year, nbyear, week, nbweek];
+	
 	} else if (year > 0 && month != 0) {
 		[result appendFormat:@"%d %@, %d %@", year, nbyear, month, nbmonth];
 		
@@ -255,7 +285,7 @@
 					self.logEntryLocationString,
 					self.logEntryLocation.longitude, self.logEntryLocation.latitude, 
 					[self.logEntryDateOccured descriptionWithLocale:[NSLocale currentLocale]], 
-					[self stringFromLogEntryInterval],
+					[self stringFromLogEntryIntervalWithFormat:nil],
 					self.logEntryValue];
 }
 

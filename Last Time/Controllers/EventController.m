@@ -231,7 +231,7 @@
 	if ([indexPath section] == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
 
 		cell.textLabel.text = NSLocalizedString(@"Last Time",@"Last Time");
-		cell.detailTextLabel.text = [[_event latestEntry] stringFromLogEntryInterval];
+		cell.detailTextLabel.text = [[_event latestEntry] stringFromLogEntryIntervalWithFormat:nil];
 		
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 

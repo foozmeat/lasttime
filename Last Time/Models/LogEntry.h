@@ -29,7 +29,7 @@
 
 
 - (NSTimeInterval)secondsSinceNow;
-- (NSString *)stringFromLogEntryInterval;
+- (NSString *)stringFromLogEntryIntervalWithFormat:(NSString *)displayFormat;
 - (NSString *)subtitle;
 - (NSString *)dateString;
 
@@ -41,7 +41,8 @@
 //+ (id)randomLogEntry;
 + (NSString *)stringFromInterval:(NSTimeInterval)interval
 											withSuffix:(BOOL)suffix
-												withDays:(BOOL)withDays;
+												withDays:(BOOL)withDays
+									 displayFormat:(NSString *)displayFormat;
 - (void)setLogEntryLocation:(CLLocationCoordinate2D)location;
 - (NSString *)locationString;
 @end

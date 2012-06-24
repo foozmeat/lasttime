@@ -221,7 +221,7 @@
 
 - (NSString *)averageStringInterval;
 {
-	return [LogEntry stringFromInterval:[[self averageInterval] doubleValue] withSuffix:NO withDays:NO];
+	return [LogEntry stringFromInterval:[[self averageInterval] doubleValue] withSuffix:NO withDays:NO displayFormat:nil];
 }
 
 - (NSNumber *)averageValue
@@ -288,7 +288,7 @@
 
 - (NSString *)lastStringInterval
 {
-	return [[self latestEntry] stringFromLogEntryInterval];
+	return [[self latestEntry] stringFromLogEntryIntervalWithFormat:nil];
 }
 
 
