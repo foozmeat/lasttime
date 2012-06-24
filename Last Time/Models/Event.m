@@ -14,6 +14,7 @@
 @implementation Event
 
 @dynamic eventName;
+@dynamic lastTimeDisplayFormat;
 @dynamic folder;
 @dynamic logEntries;
 @synthesize logEntryCollection = _logEntryCollection;
@@ -281,6 +282,21 @@
 
 #pragma mark - Last
 
+-(void)cycleLastTimeDisplayFormat
+{
+	NSString *oldFormat = self.lastTimeDisplayFormat;
+	if (oldFormat == NULL) {
+		self.lastTimeDisplayFormat = @"days";
+	} else if ([oldFormat isEqualToString:@"days"]) {
+		self.lastTimeDisplayFormat = @"weeks";
+	} else if ([oldFormat isEqualToString:@"weeks"]) {
+		self.lastTimeDisplayFormat = NULL;
+	}
+#ifdef DEBUG
+	NSLog(@"Last Time Display format changed to: %@", self.lastTimeDisplayFormat);
+#endif
+}
+
 - (NSTimeInterval)lastDuration
 {
 	return [[self latestEntry] secondsSinceNow];
@@ -288,7 +304,7 @@
 
 - (NSString *)lastStringInterval
 {
-	return [[self latestEntry] stringFromLogEntryIntervalWithFormat:nil];
+	return [[self latestEntry] stringFromLogEntryIntervalWithFormat:self.lastTimeDisplayFormat];
 }
 
 

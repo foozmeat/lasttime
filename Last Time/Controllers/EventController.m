@@ -82,8 +82,14 @@
 		return;
 	}
 	
-	if (([_event showAverage] && [indexPath section] == kHistorySection) ||
-			(![_event showAverage] && [indexPath section] == kAverageSection)) {
+	NSInteger section = [indexPath section] == kHistorySection;
+	
+	if (section == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
+		[_event cycleLastTimeDisplayFormat];
+		[eventTableView reloadData];
+	
+	} else if (([_event showAverage] && section == kHistorySection) ||
+			(![_event showAverage] && section == kAverageSection)) {
 		
 		HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 		
@@ -231,10 +237,8 @@
 	if ([indexPath section] == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
 
 		cell.textLabel.text = NSLocalizedString(@"Last Time",@"Last Time");
-		cell.detailTextLabel.text = [[_event latestEntry] stringFromLogEntryIntervalWithFormat:nil];
+		cell.detailTextLabel.text = [_event lastStringInterval];
 		
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
 		return cell;
 		
 	} else if ([indexPath section] == kAverageSection && [_event showAverage]) {

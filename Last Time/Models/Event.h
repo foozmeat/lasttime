@@ -16,7 +16,8 @@
 	NSNumberFormatter *nf;
 }
 
-@property (nonatomic, strong) NSString * eventName;
+@property (nonatomic, strong) NSString *eventName;
+@property (nonatomic, strong) NSString *lastTimeDisplayFormat;
 @property (nonatomic, strong) EventFolder *folder;
 @property (nonatomic, strong) NSSet *logEntries;
 
@@ -47,6 +48,8 @@
 - (BOOL)showAverageValue;
 
 - (NSString *)averageStringValue;
+
+- (void)cycleLastTimeDisplayFormat;
 
 //+ (Event *)randomEvent;
 - (void)addLogEntry:(LogEntry *)entry;
