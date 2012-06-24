@@ -82,7 +82,7 @@
 		return;
 	}
 	
-	NSInteger section = [indexPath section] == kHistorySection;
+	NSInteger section = [indexPath section];
 	
 	if (section == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
 
