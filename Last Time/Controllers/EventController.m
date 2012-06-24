@@ -85,9 +85,10 @@
 	NSInteger section = [indexPath section] == kHistorySection;
 	
 	if (section == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
+
 		[_event cycleLastTimeDisplayFormat];
-		[eventTableView reloadData];
-	
+		[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
 	} else if (([_event showAverage] && section == kHistorySection) ||
 			(![_event showAverage] && section == kAverageSection)) {
 		
