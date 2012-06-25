@@ -13,6 +13,7 @@
 #import "DatePickerCell.h"
 #import "FolderPickerCell.h"
 #import "LocationSwitchCell.h"
+#import "ReminderSwitchCell.h"
 #import "NumberCell.h"
 
 @class CustomTableViewController;
@@ -24,7 +25,7 @@
 
 @end
 
-@interface CustomTableViewController : UITableViewController <UITextFieldDelegate, DatePickerCellDelegate, LocationSwitchCellDelegate, FolderPickerCellDelegate,CLLocationManagerDelegate>
+@interface CustomTableViewController : UITableViewController <UITextFieldDelegate, DatePickerCellDelegate, LocationSwitchCellDelegate, FolderPickerCellDelegate,CLLocationManagerDelegate, ReminderSwitchCellDelegate>
 {
 	CLLocationManager *locationManager;
 	BOOL _shouldStoreLocation;
@@ -40,6 +41,7 @@
 @property (nonatomic, strong) EditableTableCell *nameCell;
 @property (nonatomic, strong) NumberCell *numberCell;
 @property (nonatomic, strong) LocationSwitchCell *locationCell;
+@property (nonatomic, strong) ReminderSwitchCell *reminderCell;
 @property (nonatomic, strong) UIPopoverController *popover;
 
 - (BOOL)isModal;

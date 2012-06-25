@@ -14,6 +14,7 @@
 
 enum Sections {
 	kMainSection = 0,
+	kReminderSection,
 	kFolderSection,
 	NUM_SECTIONS
 };
@@ -24,6 +25,12 @@ enum MainSection {
 	kEventNumber,
 	kEventDate,
 	kEventLocation
+};
+
+enum ReminderSection {
+	kEventReminderSwitch = 0,
+	kEventReminderDuration,
+	NUM_REMINDER_ROWS
 };
 
 enum FolderSection {

@@ -15,6 +15,10 @@
 #import "Event.h"
 
 @implementation EventDetailController
+{
+	BOOL _reminderEnabled;
+}
+
 @synthesize noteCell, dateCell, folderCell;
 @synthesize event, folder, logEntry;
 
@@ -54,6 +58,7 @@
 	[self setFolderCell:[FolderPickerCell newFolderCellWithTag:kEventFolder 
 																								withDelegate:self]];
 
+	[self setReminderCell:[ReminderSwitchCell newReminderCellWithTag:kEventReminderSwitch withDelegate:self]];
 	if ([self isModal]) {
 		[self setTitle:NSLocalizedString(@"New Event",@"New Event")];
 		
@@ -119,7 +124,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (section == 0) {
+	if (section == kMainSection) {
 		
 		int rowCount = 1; // Name field
 
@@ -132,6 +137,12 @@
 		}
 		
 		return rowCount;
+	} else if (section == kReminderSection) {
+		if (_reminderEnabled) {
+			return NUM_REMINDER_ROWS;
+		} else {
+			return NUM_REMINDER_ROWS - 1;
+		}
 	} else {
 		return 1;
 	}
@@ -146,9 +157,11 @@
 	DatePickerCell *dcell = nil;
 	FolderPickerCell *fcell = nil;
 	LocationSwitchCell *lcell = nil;
+	ReminderSwitchCell *rcell = nil;
 	NumberCell *ncell = nil;
+	UITableViewCell *mycell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"duration"];
 
-	if ([indexPath section] == 0) {
+	if ([indexPath section] == kMainSection) {
 		
 		switch ([indexPath row]) {
 			case kEventName:
@@ -185,7 +198,24 @@
 				return cell;
 				break;
 		}
-	} if ([indexPath section] == 1) {
+	} else if ([indexPath section] == kReminderSection) {
+		switch ([indexPath row]) {
+			case kEventReminderSwitch:
+				rcell = [self reminderCell];
+				return rcell;
+				break;
+			case kEventReminderDuration:
+				[[mycell detailTextLabel] setText:@"Duration"];
+				[[mycell textLabel] setText:NSLocalizedString(@"Duration",@"Duration")];
+				return mycell;
+				break;
+			default:
+				cell = [[EditableTableCell alloc] init];
+				[[cell cellTextField] setText:@"Error"];
+				return cell;
+				break;
+		}
+	} else if ([indexPath section] == kFolderSection) {
 		switch ([indexPath row]) {
 			case kEventFolder:
 				fcell = [self folderCell];
@@ -226,6 +256,26 @@
 	[logEntry locationString];
 
 	
+}
+
+#pragma mark - Reminder Switch
+-(void)reminderSwitchChanged:(UISwitch *)sender
+{
+	_reminderEnabled = sender.on;
+
+	NSUInteger indexes[] = { kReminderSection, kEventReminderDuration };
+	NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes length:2];
+	NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+	
+	if (_reminderEnabled == YES) {
+		[self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+	} else {
+		[self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+	}
+
+#ifdef DEBUG
+	NSLog(@"Reminder is switched %d", _reminderEnabled);
+#endif
 }
 
 #pragma mark - EditableTableCellDelegate

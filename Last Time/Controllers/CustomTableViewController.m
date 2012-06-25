@@ -13,7 +13,7 @@
 @synthesize requiredField;
 @synthesize bestLocation;
 @synthesize shouldStoreLocation = _shouldStoreLocation;
-@synthesize nameCell, numberCell, locationCell;
+@synthesize nameCell, numberCell, locationCell, reminderCell;
 @synthesize delegate;
 @synthesize popover;
 

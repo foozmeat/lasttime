@@ -39,6 +39,7 @@
 		1A6284FC153EFECE003C57F9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6284FB153EFECE003C57F9 /* QuartzCore.framework */; };
 		1A628504153F0FD7003C57F9 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A628503153F0FD7003C57F9 /* HeaderView.m */; };
 		1A823B6B153B959D00B997C8 /* default_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A823B6D153B959D00B997C8 /* default_data.plist */; };
+		1A8A645D1597D6E3009DD55F /* ReminderSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A645C1597D6E3009DD55F /* ReminderSwitchCell.m */; };
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
 		1ABC9B0B1589284F00E12E31 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */; };
 		1AC020A3152550200022A07B /* oldEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0209E152550200022A07B /* oldEvent.m */; };
@@ -182,6 +183,8 @@
 		1A823B71153B95A300B997C8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = de; path = de.lproj/default_data.plist; sourceTree = "<group>"; };
 		1A823C30153BB0EC00B997C8 /* navbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navbar.png; path = foody/navbar.png; sourceTree = "<group>"; };
 		1A823C31153BB0EC00B997C8 /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navbar@2x.png"; path = "foody/navbar@2x.png"; sourceTree = "<group>"; };
+		1A8A645B1597D6E3009DD55F /* ReminderSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReminderSwitchCell.h; path = Support/ReminderSwitchCell.h; sourceTree = "<group>"; };
+		1A8A645C1597D6E3009DD55F /* ReminderSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReminderSwitchCell.m; path = Support/ReminderSwitchCell.m; sourceTree = "<group>"; };
 		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
 		1AB0127D15348A7E00359153 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AB0127E15348B2300359153 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -675,6 +678,8 @@
 				3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */,
 				391AF43A14F0C03F00DCA3F0 /* NumberCell.h */,
 				391AF43B14F0C03F00DCA3F0 /* NumberCell.m */,
+				1A8A645B1597D6E3009DD55F /* ReminderSwitchCell.h */,
+				1A8A645C1597D6E3009DD55F /* ReminderSwitchCell.m */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -936,6 +941,7 @@
 				1A03C076152F470700249036 /* NSManagedObjectContext+FetchAdditions.m in Sources */,
 				1A628504153F0FD7003C57F9 /* HeaderView.m in Sources */,
 				1A17C1F0158936F300FED786 /* FPOCsvWriter.m in Sources */,
+				1A8A645D1597D6E3009DD55F /* ReminderSwitchCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
