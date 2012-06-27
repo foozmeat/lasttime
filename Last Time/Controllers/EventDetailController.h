@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomTableViewController.h"
+#import "DurationPickerCell.h"
 
 @class Event;
 @class LogEntry;
@@ -37,7 +38,7 @@ enum FolderSection {
   kEventFolder = 0
 };
 
-@interface EventDetailController : CustomTableViewController
+@interface EventDetailController : CustomTableViewController <ReminderSwitchCellDelegate, DurationPickerCellDelegate>
 
 @property (strong, nonatomic) Event *event;
 @property (strong, nonatomic) LogEntry *logEntry;
@@ -45,7 +46,9 @@ enum FolderSection {
 
 @property (nonatomic, strong) EditableTableCell *noteCell;
 @property (nonatomic, strong) DatePickerCell *dateCell;
+@property (nonatomic, strong) DurationPickerCell *durationCell;
 @property (nonatomic, strong) FolderPickerCell *folderCell;
+@property (nonatomic, strong) ReminderSwitchCell *reminderCell;
 
 @end
 

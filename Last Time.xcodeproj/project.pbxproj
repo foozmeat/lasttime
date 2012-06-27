@@ -40,6 +40,8 @@
 		1A628504153F0FD7003C57F9 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A628503153F0FD7003C57F9 /* HeaderView.m */; };
 		1A823B6B153B959D00B997C8 /* default_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A823B6D153B959D00B997C8 /* default_data.plist */; };
 		1A8A645D1597D6E3009DD55F /* ReminderSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A645C1597D6E3009DD55F /* ReminderSwitchCell.m */; };
+		1A8A646115981BDA009DD55F /* BasePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A646015981BDA009DD55F /* BasePickerCell.m */; };
+		1A8A646515982311009DD55F /* DurationPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A646415982311009DD55F /* DurationPickerCell.m */; };
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
 		1ABC9B0B1589284F00E12E31 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */; };
 		1AC020A3152550200022A07B /* oldEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0209E152550200022A07B /* oldEvent.m */; };
@@ -185,6 +187,11 @@
 		1A823C31153BB0EC00B997C8 /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navbar@2x.png"; path = "foody/navbar@2x.png"; sourceTree = "<group>"; };
 		1A8A645B1597D6E3009DD55F /* ReminderSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReminderSwitchCell.h; path = Support/ReminderSwitchCell.h; sourceTree = "<group>"; };
 		1A8A645C1597D6E3009DD55F /* ReminderSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReminderSwitchCell.m; path = Support/ReminderSwitchCell.m; sourceTree = "<group>"; };
+		1A8A645F15981BDA009DD55F /* BasePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasePickerCell.h; path = Support/BasePickerCell.h; sourceTree = "<group>"; };
+		1A8A646015981BDA009DD55F /* BasePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasePickerCell.m; path = Support/BasePickerCell.m; sourceTree = "<group>"; };
+		1A8A646315982311009DD55F /* DurationPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DurationPickerCell.h; path = Support/DurationPickerCell.h; sourceTree = "<group>"; };
+		1A8A646415982311009DD55F /* DurationPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DurationPickerCell.m; path = Support/DurationPickerCell.m; sourceTree = "<group>"; };
+		1A8A6466159A1412009DD55F /* Last Time 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 6.xcdatamodel"; sourceTree = "<group>"; };
 		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
 		1AB0127D15348A7E00359153 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AB0127E15348B2300359153 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -378,6 +385,19 @@
 				1A46890D1551963700C64F49 /* ipad-tabbar-right@2x.png */,
 			);
 			name = Appearance;
+			sourceTree = "<group>";
+		};
+		1A8A646215981BE7009DD55F /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				1A8A645F15981BDA009DD55F /* BasePickerCell.h */,
+				1A8A646015981BDA009DD55F /* BasePickerCell.m */,
+				39F6435E14E40AAE004B0900 /* DatePickerCell.h */,
+				39F6435F14E40AAE004B0900 /* DatePickerCell.m */,
+				1A8A646315982311009DD55F /* DurationPickerCell.h */,
+				1A8A646415982311009DD55F /* DurationPickerCell.m */,
+			);
+			name = Pickers;
 			sourceTree = "<group>";
 		};
 		1AC0209C152550200022A07B /* old */ = {
@@ -668,10 +688,9 @@
 		39FEDFAB14EAC350009672A5 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				1A8A646215981BE7009DD55F /* Pickers */,
 				3988B9BA14E0214F0010062E /* EditableTableCell.h */,
 				3988B9BB14E0214F0010062E /* EditableTableCell.m */,
-				39F6435E14E40AAE004B0900 /* DatePickerCell.h */,
-				39F6435F14E40AAE004B0900 /* DatePickerCell.m */,
 				39DB081414E95640006E4E08 /* FolderPickerCell.h */,
 				39DB081514E95640006E4E08 /* FolderPickerCell.m */,
 				3913EADA14EEB5DC0013A86A /* LocationSwitchCell.h */,
@@ -942,6 +961,8 @@
 				1A628504153F0FD7003C57F9 /* HeaderView.m in Sources */,
 				1A17C1F0158936F300FED786 /* FPOCsvWriter.m in Sources */,
 				1A8A645D1597D6E3009DD55F /* ReminderSwitchCell.m in Sources */,
+				1A8A646115981BDA009DD55F /* BasePickerCell.m in Sources */,
+				1A8A646515982311009DD55F /* DurationPickerCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1559,13 +1580,14 @@
 		1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1A8A6466159A1412009DD55F /* Last Time 6.xcdatamodel */,
 				1A17C225158954DB00FED786 /* Last Time 4.xcdatamodel */,
 				1AB6DEA61597705D00F68A50 /* Last Time 5.xcdatamodel */,
 				1A03C072152F43D500249036 /* Last Time 3.xcdatamodel */,
 				1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */,
 				1AED06081510EEF100CCDA4F /* Last Time.xcdatamodel */,
 			);
-			currentVersion = 1AB6DEA61597705D00F68A50 /* Last Time 5.xcdatamodel */;
+			currentVersion = 1A8A6466159A1412009DD55F /* Last Time 6.xcdatamodel */;
 			path = "Last Time.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BasePickerCell.h"
 
 @protocol DatePickerCellDelegate <NSObject>
 
@@ -16,16 +17,13 @@
 
 @end
 
-@interface DatePickerCell : UITableViewCell <UIPopoverControllerDelegate>
+@interface DatePickerCell : BasePickerCell
 
-@property (nonatomic, strong) UIToolbar *inputAccessoryView;
 @property (nonatomic, strong) UIDatePicker *pickerView;
 @property (nonatomic, strong) NSDateFormatter *df;
 @property (nonatomic, assign) UITableViewController <DatePickerCellDelegate> *delegate;
-@property (nonatomic, strong) UIPopoverController *datePopover;
 + (DatePickerCell *)newDateCellWithTag:(NSInteger)tag withDelegate:(id) delegate;
 
 - (void)dateChanged:(id)sender;
-- (void)done:(id)sender;
 
 @end

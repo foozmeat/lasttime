@@ -33,6 +33,7 @@
 @property (nonatomic, strong) NSNumber *averageValue;
 @property (nonatomic, strong) NSNumber *averageInterval;
 
+@property (nonatomic) NSInteger reminderDuration;
 //- (id)initWithEventName:(NSString *)name
 //						 logEntries:(NSMutableArray *)entries;
 - (NSString *)subtitle;

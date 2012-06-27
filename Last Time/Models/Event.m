@@ -17,6 +17,7 @@
 @dynamic lastTimeDisplayFormat;
 @dynamic folder;
 @dynamic logEntries;
+@dynamic reminderDuration;
 @synthesize logEntryCollection = _logEntryCollection;
 @synthesize averageValue = _averageValue;
 @synthesize averageInterval = _averageInterval;

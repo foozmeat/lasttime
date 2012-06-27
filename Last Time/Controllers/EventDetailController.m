@@ -9,6 +9,7 @@
 #import "EventDetailController.h"
 #import "EditableTableCell.h"
 #import "DatePickerCell.h"
+#import "DurationPickerCell.h"
 #import	"EventFolder.h"
 #import "EventStore.h"
 #import "LogEntry.h"
@@ -19,7 +20,7 @@
 	BOOL _reminderEnabled;
 }
 
-@synthesize noteCell, dateCell, folderCell;
+@synthesize noteCell, dateCell, folderCell, durationCell,reminderCell;
 @synthesize event, folder, logEntry;
 
 #pragma mark -
@@ -43,6 +44,15 @@
 }
 #pragma mark - UIViewController Methods
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	if (event.reminderDuration != 0) {
+		_reminderEnabled = YES;
+	}
+}
+
 - (void)viewDidLoad
 {
 	[self setRequiredField:kEventName];
@@ -59,6 +69,9 @@
 																								withDelegate:self]];
 
 	[self setReminderCell:[ReminderSwitchCell newReminderCellWithTag:kEventReminderSwitch withDelegate:self]];
+
+	[self setDurationCell:[DurationPickerCell newDurationCellWithTag: kEventReminderDuration withDelegate:self]];
+	
 	if ([self isModal]) {
 		[self setTitle:NSLocalizedString(@"New Event",@"New Event")];
 		
@@ -158,8 +171,8 @@
 	FolderPickerCell *fcell = nil;
 	LocationSwitchCell *lcell = nil;
 	ReminderSwitchCell *rcell = nil;
+	DurationPickerCell *durcell = nil;
 	NumberCell *ncell = nil;
-	UITableViewCell *mycell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"duration"];
 
 	if ([indexPath section] == kMainSection) {
 		
@@ -202,12 +215,15 @@
 		switch ([indexPath row]) {
 			case kEventReminderSwitch:
 				rcell = [self reminderCell];
+				rcell.reminderSwitch.on = _reminderEnabled;
 				return rcell;
 				break;
 			case kEventReminderDuration:
-				[[mycell detailTextLabel] setText:@"Duration"];
-				[[mycell textLabel] setText:NSLocalizedString(@"Duration",@"Duration")];
-				return mycell;
+				durcell = self.durationCell;
+				durcell.duration = [event reminderDuration];
+				[durcell setupPickerComponants];
+				
+				return durcell;
 				break;
 			default:
 				cell = [[EditableTableCell alloc] init];
@@ -261,6 +277,10 @@
 #pragma mark - Reminder Switch
 -(void)reminderSwitchChanged:(UISwitch *)sender
 {
+	if (_reminderEnabled == sender.on) {
+		return;
+	}
+	
 	_reminderEnabled = sender.on;
 
 	NSUInteger indexes[] = { kReminderSection, kEventReminderDuration };
@@ -269,8 +289,10 @@
 	
 	if (_reminderEnabled == YES) {
 		[self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+		[self durationPickerDidChangeWithDuration:(60 * 60 *24)];
 	} else {
 		[self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+		[self durationPickerDidChangeWithDuration:0];
 	}
 
 #ifdef DEBUG
@@ -287,6 +309,17 @@
 - (void)pickerDidChange:(NSDate *)date
 {
 	[logEntry setLogEntryDateOccured:date];
+}
+
+#pragma mark - DurationPickerDelegate
+
+- (void)durationPickerDidChangeWithDuration:(NSTimeInterval)duration;
+{
+	[event setReminderDuration:duration];
+#ifdef DEBUG
+	NSLog(@"Duration set to %f", duration);
+#endif
+	
 }
 
 #pragma mark - FolderPickerDelegate
