@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CustomTableViewController.h"
 #import "DurationPickerCell.h"
-#import "ReminderDurationCell.h"
 
 @class Event;
 @class LogEntry;
@@ -32,7 +31,6 @@ enum MainSection {
 enum ReminderSection {
 	kEventReminderSwitch = 0,
 	kEventReminderDuration,
-	kEventReminderScheduledFor,
 	NUM_REMINDER_ROWS
 };
 
@@ -51,7 +49,6 @@ enum FolderSection {
 @property (nonatomic, strong) DurationPickerCell *durationCell;
 @property (nonatomic, strong) FolderPickerCell *folderCell;
 @property (nonatomic, strong) ReminderSwitchCell *reminderCell;
-@property (nonatomic, strong) ReminderDurationCell *reminderDurationCell;
 
 @end
 

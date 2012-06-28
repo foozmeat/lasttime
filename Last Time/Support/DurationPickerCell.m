@@ -75,9 +75,9 @@
 	} else if (component == kUnit) {
 		_durationUnit = [_unitRows objectAtIndex:row];
 	}
-	
-	[[self textLabel] setText:[self durationString]];
-	[[self detailTextLabel] setText:[self durationString]];
+	self.duration = [self durationFromPicker];
+	self.durationStringLabel.text = [self durationString];
+	self.durationDateLabel.text = [self reminderDateString];
 	[delegate durationPickerDidChangeWithDuration:[self durationFromPicker]];
 
 	[[self pickerView] reloadComponent:kUnit];
@@ -174,12 +174,12 @@
 }
 
 
-#pragma mark - UIDatePicker
+#pragma mark - UIPicker
 
-- (NSTimeInterval)durationFromPicker
+- (NSInteger)durationFromPicker
 {
 	
-	double day = 60 * 60 * 24;
+	NSInteger day = 60 * 60 * 24;
 	
 	if ([_durationUnit isEqualToString:@"day"]) {
 		return day * _durationValue;
@@ -225,8 +225,8 @@
 			
 		}
 	}
-	[[self detailTextLabel] setText:[self durationString]];
-	[[self textLabel] setText:[self durationString]];
+	self.durationStringLabel.text = [self durationString];
+	self.durationDateLabel.text = [self reminderDateString];
 	[[self pickerView] selectRow:(_durationValue - 1) inComponent:kNumber animated:NO];
 	[[self pickerView] selectRow:[_unitRows indexOfObject:_durationUnit] inComponent:kUnit animated:NO];
 //	[self.pickerView setNeedsLayout];
@@ -246,11 +246,11 @@
 	}
 			
 	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.duration 
-																										sinceDate:eventDate];
+																										sinceDate:self.eventDate];
 	
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
 	
-	[df setDateStyle:NSDateFormatterMediumStyle];
+	[df setDateStyle:NSDateFormatterFullStyle];
 	[df setTimeStyle:NSDateFormatterNoStyle];
 	
 	NSString *reminderDateString = [df stringFromDate:reminderDate];
@@ -261,8 +261,10 @@
 
 + (DurationPickerCell *)newDurationCellWithTag:(NSInteger)tag withDelegate:(id)delegate
 {
-	DurationPickerCell *cell = [[DurationPickerCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"DurationPickerCell"];
-	
+	UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"DurationPickerCell" bundle:nil];
+	DurationPickerCell *cell = (DurationPickerCell *)temporaryController.view;
+
+	[cell initalizeInputView];
 	[cell setDelegate:delegate];
 	[[cell pickerView] setTag:tag];
 	
