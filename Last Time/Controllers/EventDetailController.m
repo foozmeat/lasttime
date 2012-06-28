@@ -221,7 +221,9 @@
 			case kEventReminderDuration:
 				durcell = self.durationCell;
 				durcell.duration = [event reminderDuration];
-				durcell.eventDate = [event latestDate];
+				if (![self isModal]) {
+					durcell.eventDate = event.latestEntry.logEntryDateOccured;
+				}
 				[durcell setupPickerComponants];
 				
 				return durcell;
@@ -312,6 +314,7 @@
 - (void)pickerDidChange:(NSDate *)date
 {
 	[logEntry setLogEntryDateOccured:date];
+	[durationCell updateEventDate:date];
 }
 
 #pragma mark - DurationPickerDelegate

@@ -86,6 +86,13 @@
 #endif
 }
 
+- (void)updateEventDate:(NSDate *)date
+{
+	self.eventDate = date;
+	self.durationDateLabel.text = [self reminderDateString];
+	
+}
+
 - (NSString *)durationString
 {
 	return [NSString stringWithFormat:@"%d %@", _durationValue, [self durationUnitFromNumber:_durationValue withUnit:_durationUnit]];

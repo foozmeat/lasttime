@@ -42,5 +42,6 @@ enum UnitRows {
 + (DurationPickerCell *)newDurationCellWithTag:(NSInteger)tag withDelegate:(id) delegate;
 
 - (void)setupPickerComponants;
+- (void)updateEventDate:(NSDate *)date;
 
 @end
