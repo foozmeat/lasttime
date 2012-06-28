@@ -14,13 +14,14 @@
 #import "EventStore.h"
 #import "LogEntry.h"
 #import "Event.h"
+#import "ReminderDurationCell.h"
 
 @implementation EventDetailController
 {
 	BOOL _reminderEnabled;
 }
 
-@synthesize noteCell, dateCell, folderCell, durationCell,reminderCell;
+@synthesize noteCell, dateCell, folderCell, durationCell,reminderCell,reminderDurationCell;
 @synthesize event, folder, logEntry;
 
 #pragma mark -
@@ -173,7 +174,7 @@
 	ReminderSwitchCell *rcell = nil;
 	DurationPickerCell *durcell = nil;
 	NumberCell *ncell = nil;
-
+	
 	if ([indexPath section] == kMainSection) {
 		
 		switch ([indexPath row]) {
@@ -225,6 +226,13 @@
 				
 				return durcell;
 				break;
+			case kEventReminderScheduledFor:
+				durcell = self.durationCell;
+				durcell.duration = [event reminderDuration];
+				[durcell setupPickerComponants];
+				
+				return durcell;
+				break;
 			default:
 				cell = [[EditableTableCell alloc] init];
 				[[cell cellTextField] setText:@"Error"];
@@ -259,6 +267,47 @@
 
 }
 
+//- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+//{
+//	if (section == kReminderSection && _reminderEnabled) {
+//		return [[NSString alloc] initWithFormat:@"%@ %@",
+//						NSLocalizedString(@"Scheduled for ", @"This is followed by a date"), 
+//						[event reminderDateString]];
+//	} else {
+//		return nil;
+//	}
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section  
+//{
+//	if (section == kReminderSection && _reminderEnabled) {
+//		return 30;
+//	} else {
+//		return 10.0;
+//	}
+//}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//	
+//	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+//	[v setBackgroundColor:[UIColor clearColor]];
+//	
+//	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, tableView.bounds.size.width,30)];
+//	label.text = [tableView.dataSource tableView:tableView titleForFooterInSection:section];
+//	label.textAlignment = UITextAlignmentCenter;
+//	label.backgroundColor = [UIColor clearColor];
+//	label.font = [UIFont boldSystemFontOfSize:16.0f];
+//	
+//	label.textColor = [UIColor brownColor];
+//	label.shadowColor = [UIColor colorWithRed:83 green:52 blue:24 alpha:1.0];
+//	label.shadowOffset = CGSizeMake(0, 1);
+//	
+//	[v addSubview:label];
+//	
+//	return v;
+//}
+
 #pragma mark - Location methods
 -(void)updateObjectLocation
 {
@@ -288,13 +337,14 @@
 	NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
 	
 	if (_reminderEnabled == YES) {
-		[self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+		[self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
 		[self durationPickerDidChangeWithDuration:(60 * 60 *24)];
 	} else {
-		[self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+		[self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
 		[self durationPickerDidChangeWithDuration:0];
 	}
 
+	[[self tableView] reloadSections:[NSIndexSet indexSetWithIndex:kReminderSection] withRowAnimation:UITableViewRowAnimationNone];
 #ifdef DEBUG
 	NSLog(@"Reminder is switched %d", _reminderEnabled);
 #endif
@@ -316,6 +366,8 @@
 - (void)durationPickerDidChangeWithDuration:(NSTimeInterval)duration;
 {
 	[event setReminderDuration:duration];
+//	[[self tableView] reloadSections:[NSIndexSet indexSetWithIndex:kReminderSection] withRowAnimation:UITableViewRowAnimationNone];
+	 
 #ifdef DEBUG
 	NSLog(@"Duration set to %f", duration);
 #endif
@@ -333,6 +385,7 @@
 		[folder removeEvent:event];
 		[self setFolder:newFolder];
 	}
+
 	[[self tableView] reloadData];
 }
 

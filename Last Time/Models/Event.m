@@ -351,4 +351,27 @@
 	return output;
 }
 
+#pragma mark - Reminders
+- (NSString *)reminderDateString
+{
+	if (self.reminderDuration == 0) {
+		return nil;
+	}
+	
+	NSDate *lastDate = [[self latestEntry] logEntryDateOccured];
+
+	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.reminderDuration 
+																										sinceDate:lastDate];
+
+	NSDateFormatter *df = [[NSDateFormatter alloc] init];
+	
+	[df setDateStyle:NSDateFormatterMediumStyle];
+	[df setTimeStyle:NSDateFormatterNoStyle];
+	
+	NSString *reminderDateString = [df stringFromDate:reminderDate];
+	
+	return reminderDateString;
+
+}
+
 @end

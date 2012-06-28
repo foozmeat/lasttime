@@ -34,7 +34,11 @@ enum UnitRows {
 
 @property (nonatomic, assign) UITableViewController <DurationPickerCellDelegate> *delegate;
 @property	(nonatomic) NSInteger duration;
+@property (nonatomic, strong) NSDate *eventDate;
 
+@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *durationStringLabel;
+@property (weak, nonatomic) IBOutlet UILabel *durationDateLabel;
 + (DurationPickerCell *)newDurationCellWithTag:(NSInteger)tag withDelegate:(id) delegate;
 
 - (void)setupPickerComponants;

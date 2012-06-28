@@ -57,6 +57,9 @@
 - (void)removeLogEntry:(LogEntry *)logEntry;
 
 - (void)refreshItems;
+
+- (NSString *)reminderDateString;
+
 @end
 
 

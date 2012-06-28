@@ -15,8 +15,11 @@
 	NSArray *_unitRows;
 
 }
-@synthesize pickerView, pickerPopover, delegate;
+@synthesize pickerView, pickerPopover, delegate,eventDate;
 @synthesize duration;
+@synthesize durationLabel;
+@synthesize durationStringLabel;
+@synthesize durationDateLabel;
 
 - (void)initalizeInputView {
 
@@ -28,10 +31,11 @@
 	
 	_durationValue = 1;
 	_durationUnit = @"day";
-
-	self.textLabel.text = NSLocalizedString(@"Duration",@"Duration");
-	self.detailTextLabel.textColor = [UIColor brownColor];
-	self.detailTextLabel.text = [self durationString];
+	self.eventDate = [NSDate date];
+	
+	self.durationLabel.text = NSLocalizedString(@"Duration",@"Duration");
+	self.durationStringLabel.text = [self durationString];
+	self.durationDateLabel.text = [self reminderDateString];
 	
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		UIViewController *datePickerViewController = [[UIViewController alloc] init];
@@ -72,6 +76,7 @@
 		_durationUnit = [_unitRows objectAtIndex:row];
 	}
 	
+	[[self textLabel] setText:[self durationString]];
 	[[self detailTextLabel] setText:[self durationString]];
 	[delegate durationPickerDidChangeWithDuration:[self durationFromPicker]];
 
@@ -221,10 +226,11 @@
 		}
 	}
 	[[self detailTextLabel] setText:[self durationString]];
+	[[self textLabel] setText:[self durationString]];
 	[[self pickerView] selectRow:(_durationValue - 1) inComponent:kNumber animated:NO];
 	[[self pickerView] selectRow:[_unitRows indexOfObject:_durationUnit] inComponent:kUnit animated:NO];
+//	[self.pickerView setNeedsLayout];
 
-//	[self pickerView:self.pickerView didSelectRow:(_durationValue - 1) inComponent:[_unitRows indexOfObject:_durationUnit]];
 #ifdef DEBUG
 	NSLog(@"Picker set to %d, %@", _durationValue, _durationUnit);
 #endif
@@ -233,9 +239,29 @@
 	
 }
 
+- (NSString *)reminderDateString
+{
+	if (self.duration == 0) {
+		return nil;
+	}
+			
+	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.duration 
+																										sinceDate:eventDate];
+	
+	NSDateFormatter *df = [[NSDateFormatter alloc] init];
+	
+	[df setDateStyle:NSDateFormatterMediumStyle];
+	[df setTimeStyle:NSDateFormatterNoStyle];
+	
+	NSString *reminderDateString = [df stringFromDate:reminderDate];
+	
+	return reminderDateString;
+	
+}
+
 + (DurationPickerCell *)newDurationCellWithTag:(NSInteger)tag withDelegate:(id)delegate
 {
-	DurationPickerCell *cell = [[DurationPickerCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DurationPickerCell"];
+	DurationPickerCell *cell = [[DurationPickerCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"DurationPickerCell"];
 	
 	[cell setDelegate:delegate];
 	[[cell pickerView] setTag:tag];

@@ -42,6 +42,7 @@
 		1A8A645D1597D6E3009DD55F /* ReminderSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A645C1597D6E3009DD55F /* ReminderSwitchCell.m */; };
 		1A8A646115981BDA009DD55F /* BasePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A646015981BDA009DD55F /* BasePickerCell.m */; };
 		1A8A646515982311009DD55F /* DurationPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A646415982311009DD55F /* DurationPickerCell.m */; };
+		1A8A6468159BFCCB009DD55F /* DurationPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */; };
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
 		1ABC9B0B1589284F00E12E31 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */; };
 		1AC020A3152550200022A07B /* oldEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0209E152550200022A07B /* oldEvent.m */; };
@@ -192,6 +193,7 @@
 		1A8A646315982311009DD55F /* DurationPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DurationPickerCell.h; path = Support/DurationPickerCell.h; sourceTree = "<group>"; };
 		1A8A646415982311009DD55F /* DurationPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DurationPickerCell.m; path = Support/DurationPickerCell.m; sourceTree = "<group>"; };
 		1A8A6466159A1412009DD55F /* Last Time 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 6.xcdatamodel"; sourceTree = "<group>"; };
+		1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DurationPickerCell.xib; sourceTree = "<group>"; };
 		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
 		1AB0127D15348A7E00359153 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1AB0127E15348B2300359153 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
 				3940D3EF14F17DE20056D01B /* HistoryLogCell.xib */,
 				1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */,
+				1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 				1A5C249E1552DFF300F8F04A /* icon-72@2x.png in Resources */,
 				1A5C249F1552DFF300F8F04A /* icon-512.png in Resources */,
 				1ABC9B0B1589284F00E12E31 /* TimelineViewController.xib in Resources */,
+				1A8A6468159BFCCB009DD55F /* DurationPickerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
