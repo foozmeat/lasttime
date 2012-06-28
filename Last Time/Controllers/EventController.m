@@ -351,21 +351,17 @@
 			HistoryLogCell *historyLogCell = (HistoryLogCell *)cell;
 
 			if ([historyLogCell.logEntryValueCell.text isEqualToString:@""]) {
-				historyLogCell.logEntryValueCell.textColor = [UIColor grayColor];
-				historyLogCell.logEntryValueCell.font = [UIFont italicSystemFontOfSize:14.0f];
 				historyLogCell.logEntryValueCell.text = NSLocalizedString(@"No Value", @"The value is empty");
 			} else {
-				historyLogCell.logEntryValueCell.textColor = [UIColor blackColor];
+				historyLogCell.logEntryValueCell.textColor = [UIColor brownColor];
 				historyLogCell.logEntryValueCell.font = [UIFont systemFontOfSize:14.0f];
 				
 			}
 			
 			if ([historyLogCell.logEntryNoteCell.text isEqualToString:@""]) {
-				historyLogCell.logEntryNoteCell.textColor = [UIColor grayColor];
-				historyLogCell.logEntryNoteCell.font = [UIFont italicSystemFontOfSize:14.0f];
 				historyLogCell.logEntryNoteCell.text = NSLocalizedString(@"No Note", @"The note is blank");
 			} else {
-				historyLogCell.logEntryNoteCell.textColor = [UIColor blackColor];
+				historyLogCell.logEntryNoteCell.textColor = [UIColor brownColor];
 				historyLogCell.logEntryNoteCell.font = [UIFont systemFontOfSize:14.0f];
 				
 			}
