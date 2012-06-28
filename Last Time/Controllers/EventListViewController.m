@@ -250,11 +250,6 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"EventCell"];
 	}
 
-	cell.detailTextLabel.textColor = [UIColor brownColor];
-	cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}	
 	[self configureCell:cell atIndexPath:indexPath];
 
 	
@@ -275,7 +270,13 @@
 	[[cell detailTextLabel] setText:[item subtitle]];
 	cell.selectionStyle = UITableViewCellSelectionStyleGray;
 	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+	cell.detailTextLabel.textColor = [UIColor brownColor];
 
+	if ([item reminderExpired]) {
+		cell.accessoryType = UITableViewCellAccessoryCheckmark;
+	}	else {
+		cell.accessoryType = UITableViewCellAccessoryNone;
+	}
 	
 }
 

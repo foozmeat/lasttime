@@ -352,6 +352,26 @@
 }
 
 #pragma mark - Reminders
+
+- (BOOL)reminderExpired
+{
+	if (self.reminderDuration == 0) {
+		return NO;
+	}
+	NSDate *lastDate = [[self latestEntry] logEntryDateOccured];
+
+	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.reminderDuration 
+																										sinceDate:lastDate];
+
+	NSInteger interval = [reminderDate timeIntervalSinceNow];
+	
+	if (interval > 0) {
+		return NO;
+	} else {
+		return YES;
+	}
+}
+
 - (NSString *)reminderDateString
 {
 	if (self.reminderDuration == 0) {

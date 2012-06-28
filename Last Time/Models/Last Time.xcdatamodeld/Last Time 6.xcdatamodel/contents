@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E2068" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Event" representedClassName="Event" syncable="YES">
         <attribute name="eventName" optional="YES" attributeType="String" indexed="YES" versionHashModifier="change1" syncable="YES"/>
         <attribute name="lastTimeDisplayFormat" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latestDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="notificationUUID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reminderDuration" attributeType="Integer 32" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sectionIdentifier" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <relationship name="folder" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="EventFolder" inverseName="events" inverseEntity="EventFolder" syncable="YES"/>
@@ -25,7 +26,7 @@
         <relationship name="event" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="logEntries" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="162" positionY="198" width="128" height="150"/>
+        <element name="Event" positionX="162" positionY="198" width="128" height="165"/>
         <element name="EventFolder" positionX="160" positionY="192" width="128" height="90"/>
         <element name="LogEntry" positionX="171" positionY="216" width="128" height="165"/>
     </elements>

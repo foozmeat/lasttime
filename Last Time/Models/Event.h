@@ -59,6 +59,7 @@
 - (void)refreshItems;
 
 - (NSString *)reminderDateString;
+- (BOOL)reminderExpired;
 
 @end
 
