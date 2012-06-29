@@ -143,6 +143,7 @@ static EventStore *defaultStore = nil;
 
 - (void)removeEvent:(Event *)event
 {
+	[event removeNotification];
 	[self.context deleteObject:event];
 }
 

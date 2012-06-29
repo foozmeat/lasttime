@@ -29,14 +29,12 @@
 - (void)save
 {
 	[self endEditing];
-	[event addLogEntry:logEntry];
 	[folder addEvent:event];
 	[super save];
 }
 
 - (void)cancel
 {
-	[[EventStore defaultStore] removeLogEntry:logEntry];
 	[[EventStore defaultStore] removeEvent:event];
 
 	[super cancel];
@@ -49,6 +47,10 @@
 	
 	if (event.reminderDuration != 0) {
 		_reminderEnabled = YES;
+	}
+	
+	if (logEntry) {
+		[event addLogEntry:logEntry];
 	}
 }
 
@@ -313,6 +315,7 @@
 - (void)pickerDidChange:(NSDate *)date
 {
 	[logEntry setLogEntryDateOccured:date];
+	[event updateLatestDate];
 	[durationCell updateEventDate:date];
 }
 

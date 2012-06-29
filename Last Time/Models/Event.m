@@ -17,10 +17,10 @@
 @dynamic lastTimeDisplayFormat;
 @dynamic folder;
 @dynamic logEntries;
-@dynamic reminderDuration;
-@dynamic notificationUUID;
+@dynamic reminderDuration, notificationUUID;
 @dynamic sectionIdentifier, primitiveSectionIdentifier;
 @dynamic latestDate, primitiveLatestDate;
+@dynamic reminderDate;
 
 @synthesize logEntryCollection = _logEntryCollection;
 @synthesize averageValue = _averageValue;
@@ -386,11 +386,11 @@
 			
 		}
 
-		if ([self reminderDate] != nil && ![self reminderExpired]) {
+		if ([self newReminderDate] != nil && ![self newReminderExpired]) {
 				// Schedule the notification
 			UILocalNotification *localNotification = [UILocalNotification new];
 			
-			localNotification.fireDate = [self reminderDate];
+			localNotification.fireDate = [self newReminderDate];
 			localNotification.alertBody = self.eventName;
 			localNotification.alertAction = NSLocalizedString(@"View", @"view this notification");
 			localNotification.soundName = UILocalNotificationDefaultSoundName;
@@ -404,15 +404,16 @@
 			[[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 
 #ifdef DEBUG
-			NSLog(@"Notification scheduled for %@ -- %@", [self reminderDate], uuid);
-			[[EventStore defaultStore] saveChanges];
+			NSLog(@"Notification scheduled for %@ -- %@", [self newReminderDate], uuid);
 #endif
 			
 		} else {
 #ifdef DEBUG
-			NSLog(@"Not scheduling reminder");
+			NSLog(@"Not scheduling reminder for date %@", [self newReminderDate]);
 #endif
 		}
+		self.reminderDate = [self newReminderDate];
+		[[EventStore defaultStore] saveChanges];
 	}
 	
 }
@@ -431,7 +432,7 @@
 	for (UILocalNotification *l in notificationsArray) {
 		
 		NSString *uuid = [[l userInfo] objectForKey:@"UUID"];
-		
+
 		if ([self.notificationUUID isEqualToString:uuid]) {
 #ifdef DEBUG
 			NSLog(@"Canceling notification %@", uuid);
@@ -440,19 +441,15 @@
 		}
 	}
 	self.notificationUUID = nil;
+	self.reminderDate = nil;
 }
 
 - (BOOL)reminderExpired
 {
-	if (self.reminderDuration == 0 || [self latestDate] == nil) {
+	if (self.reminderDate == nil) {
 		return NO;
 	}
-	NSDate *lastDate = [[self latestEntry] logEntryDateOccured];
-
-	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.reminderDuration 
-																										sinceDate:lastDate];
-
-	NSInteger interval = [reminderDate timeIntervalSinceNow];
+	NSInteger interval = [self.reminderDate timeIntervalSinceNow];
 	
 	if (interval > 0) {
 		return NO;
@@ -461,16 +458,30 @@
 	}
 }
 
-- (NSDate *)reminderDate
+- (BOOL)newReminderExpired
+{
+	if ([self newReminderDate] == nil) {
+		return NO;
+	}
+	NSInteger interval = [[self newReminderDate] timeIntervalSinceNow];
+	
+	if (interval > 0) {
+		return NO;
+	} else {
+		return YES;
+	}
+}
+
+- (NSDate *)newReminderDate
 {
 	if (self.reminderDuration == 0 || self.latestDate == nil) {
 		return nil;
 	}
 
 #ifdef DEBUG
-	NSDate *fakeDate = [[NSDate alloc] initWithTimeIntervalSinceNow:10];
-
-	return fakeDate;
+//	NSDate *fakeDate = [[NSDate alloc] initWithTimeIntervalSinceNow:10];
+//
+//	return fakeDate;
 #endif
 	
 	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.reminderDuration 
@@ -494,7 +505,7 @@
 		return nil;
 	}
 	
-	NSDate *reminderDate = [self reminderDate];
+	NSDate *reminderDate = [self newReminderDate];
 
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
 	

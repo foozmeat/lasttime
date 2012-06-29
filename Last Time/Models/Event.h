@@ -36,6 +36,8 @@
 @property (nonatomic) NSInteger reminderDuration;
 @property (nonatomic, strong) NSString *notificationUUID;
 
+@property (nonatomic, strong) NSDate *reminderDate;
+
 //- (id)initWithEventName:(NSString *)name
 //						 logEntries:(NSMutableArray *)entries;
 - (NSString *)subtitle;
