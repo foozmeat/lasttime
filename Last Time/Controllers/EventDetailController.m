@@ -31,7 +31,6 @@
 	[self endEditing];
 	[event addLogEntry:logEntry];
 	[folder addEvent:event];
-	
 	[super save];
 }
 
@@ -222,7 +221,7 @@
 				durcell = self.durationCell;
 				durcell.duration = [event reminderDuration];
 				if (![self isModal]) {
-					durcell.eventDate = event.latestEntry.logEntryDateOccured;
+					durcell.eventDate = [event latestDate];
 				}
 				[durcell setupPickerComponants];
 				
@@ -322,6 +321,7 @@
 - (void)durationPickerDidChangeWithDuration:(NSTimeInterval)duration;
 {
 	[event setReminderDuration:duration];
+	[event updateReminderNotification];
 	 
 #ifdef DEBUG
 	NSLog(@"Duration set to %f", duration);

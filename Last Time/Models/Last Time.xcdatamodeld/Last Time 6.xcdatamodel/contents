@@ -5,6 +5,7 @@
         <attribute name="lastTimeDisplayFormat" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latestDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="notificationUUID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminderDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="reminderDuration" attributeType="Integer 32" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sectionIdentifier" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <relationship name="folder" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="EventFolder" inverseName="events" inverseEntity="EventFolder" syncable="YES"/>

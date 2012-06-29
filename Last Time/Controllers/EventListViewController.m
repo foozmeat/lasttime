@@ -273,9 +273,9 @@
 	cell.detailTextLabel.textColor = [UIColor brownColor];
 
 	if ([item reminderExpired]) {
-		cell.accessoryType = UITableViewCellAccessoryCheckmark;
+		cell.textLabel.textColor = [UIColor redColor];
 	}	else {
-		cell.accessoryType = UITableViewCellAccessoryNone;
+		cell.textLabel.textColor = [UIColor blackColor];
 	}
 	
 }

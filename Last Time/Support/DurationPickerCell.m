@@ -15,11 +15,12 @@
 	NSArray *_unitRows;
 
 }
-@synthesize pickerView, pickerPopover, delegate,eventDate;
+@synthesize pickerView, pickerPopover, delegate;
 @synthesize duration;
 @synthesize durationLabel;
 @synthesize durationStringLabel;
 @synthesize durationDateLabel;
+@synthesize eventDate = _eventDate;
 
 - (void)initalizeInputView {
 
@@ -31,7 +32,7 @@
 	
 	_durationValue = 1;
 	_durationUnit = @"day";
-	self.eventDate = [NSDate date];
+	self.eventDate = nil;
 	
 	self.durationLabel.text = NSLocalizedString(@"Duration",@"Duration");
 	self.durationStringLabel.text = [self durationString];
@@ -50,6 +51,12 @@
 		frame.size = [self.pickerView sizeThatFits:CGSizeZero];
 		self.inputView.frame = frame;
 	}
+}
+
+- (void)setEventDate:(NSDate *)date
+{
+	_eventDate = date;
+	[self updateDateStringColor];
 }
 
 #pragma mark - UIPickerView Delegate
@@ -78,6 +85,9 @@
 	self.duration = [self durationFromPicker];
 	self.durationStringLabel.text = [self durationString];
 	self.durationDateLabel.text = [self reminderDateString];
+	
+	[self updateDateStringColor];
+	
 	[delegate durationPickerDidChangeWithDuration:[self durationFromPicker]];
 
 	[[self pickerView] reloadComponent:kUnit];
@@ -86,11 +96,41 @@
 #endif
 }
 
+
+
+- (void)updateDateStringColor
+{
+	if ([self reminderExpired]) {
+		self.durationDateLabel.textColor = [UIColor redColor];
+	} else {
+		self.durationDateLabel.textColor = [UIColor blackColor];
+	}
+
+}
+
 - (void)updateEventDate:(NSDate *)date
 {
 	self.eventDate = date;
 	self.durationDateLabel.text = [self reminderDateString];
 	
+}
+
+- (BOOL)reminderExpired
+{
+	if (self.eventDate == nil) {
+		return NO;
+	}
+	
+	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.duration 
+																										sinceDate:self.eventDate];
+	
+	NSInteger interval = [reminderDate timeIntervalSinceNow];
+	
+	if (interval > 0) {
+		return NO;
+	} else {
+		return YES;
+	}
 }
 
 - (NSString *)durationString
@@ -236,7 +276,6 @@
 	self.durationDateLabel.text = [self reminderDateString];
 	[[self pickerView] selectRow:(_durationValue - 1) inComponent:kNumber animated:NO];
 	[[self pickerView] selectRow:[_unitRows indexOfObject:_durationUnit] inComponent:kUnit animated:NO];
-//	[self.pickerView setNeedsLayout];
 
 #ifdef DEBUG
 	NSLog(@"Picker set to %d, %@", _durationValue, _durationUnit);
@@ -248,8 +287,8 @@
 
 - (NSString *)reminderDateString
 {
-	if (self.duration == 0) {
-		return nil;
+	if (self.duration == 0 || self.eventDate == nil) {
+		return @"";
 	}
 			
 	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.duration 

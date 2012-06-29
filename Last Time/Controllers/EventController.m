@@ -122,6 +122,7 @@
 		if (editingStyle == UITableViewCellEditingStyleDelete) {
 			id item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
 			[_event removeLogEntry:item];
+			[_event updateLatestDate];
 			[tableView reloadData];
 			
 		}

@@ -34,6 +34,8 @@
 @property (nonatomic, strong) NSNumber *averageInterval;
 
 @property (nonatomic) NSInteger reminderDuration;
+@property (nonatomic, strong) NSString *notificationUUID;
+
 //- (id)initWithEventName:(NSString *)name
 //						 logEntries:(NSMutableArray *)entries;
 - (NSString *)subtitle;
@@ -60,6 +62,8 @@
 
 - (NSString *)reminderDateString;
 - (BOOL)reminderExpired;
+- (void)updateReminderNotification;
+- (void)removeNotification;
 
 @end
 
