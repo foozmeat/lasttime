@@ -43,6 +43,7 @@
 		1A8A646115981BDA009DD55F /* BasePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A646015981BDA009DD55F /* BasePickerCell.m */; };
 		1A8A646515982311009DD55F /* DurationPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A646415982311009DD55F /* DurationPickerCell.m */; };
 		1A8A6468159BFCCB009DD55F /* DurationPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */; };
+		1A90626E159EA33600982649 /* Tapstream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A90626D159EA33600982649 /* Tapstream.framework */; };
 		1A95D751159CB9F2005686C1 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A95D750159CB9F2005686C1 /* NSString+UUID.m */; };
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
 		1ABC9B0B1589284F00E12E31 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */; };
@@ -195,6 +196,7 @@
 		1A8A646415982311009DD55F /* DurationPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DurationPickerCell.m; path = Support/DurationPickerCell.m; sourceTree = "<group>"; };
 		1A8A6466159A1412009DD55F /* Last Time 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 6.xcdatamodel"; sourceTree = "<group>"; };
 		1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DurationPickerCell.xib; sourceTree = "<group>"; };
+		1A90626D159EA33600982649 /* Tapstream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tapstream.framework; path = "Last Time/Resources/Tapstream.framework"; sourceTree = "<group>"; };
 		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
 		1A95D74F159CB9F2005686C1 /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+UUID.h"; path = "Support/NSString+UUID.h"; sourceTree = "<group>"; };
 		1A95D750159CB9F2005686C1 /* NSString+UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+UUID.m"; path = "Support/NSString+UUID.m"; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */,
 				39D70CB914BD3515009C3615 /* Foundation.framework in Frameworks */,
 				39D70CBB14BD3515009C3615 /* CoreGraphics.framework in Frameworks */,
+				1A90626E159EA33600982649 /* Tapstream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +623,7 @@
 		39D70CB514BD3515009C3615 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A90626D159EA33600982649 /* Tapstream.framework */,
 				1A212A54159573E5001B6293 /* CoreData.framework */,
 				1A212A451595728A001B6293 /* CoreLocation.framework */,
 				1A17C1FA1589488200FED786 /* MessageUI.framework */,
@@ -1147,6 +1151,10 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Last Time/Resources\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1303,6 +1311,10 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Last Time/Resources\"",
+				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1465,6 +1477,10 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Last Time/Resources\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
@@ -1493,6 +1509,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore";
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Last Time/Resources\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "TESTFLIGHT=1";

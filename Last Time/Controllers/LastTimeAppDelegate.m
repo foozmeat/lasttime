@@ -28,6 +28,8 @@
 #ifdef SEND_UDID
 	[TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
+	[[Tapstream shared] setAccountName:@"jmoore" developerSecret:@"GeBwRwR6TceJmk2O_u5jAw"];
+	[[Tapstream shared] fireEvent:@"first_launch" oneTimeOnly:YES];
 #endif
 	
 	[self versionCheck];
