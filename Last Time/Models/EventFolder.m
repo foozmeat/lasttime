@@ -69,6 +69,20 @@
 	return _allItems;
 }
 
+- (BOOL)hasExpiredEvent
+{
+	
+	BOOL result = NO;
+	
+	for (Event *e in self.allItems) {
+    if ([e reminderExpired]) {
+			result = YES;
+		}
+	}
+	
+	return result;
+}
+
 - (Event *)latestItem
 {
 	if (!_latestItem) {

@@ -30,6 +30,8 @@
 
 @interface EventFolder (CoreDataGeneratedAccessors)
 
+- (BOOL)hasExpiredEvent;
+
 - (void)addEventsObject:(Event *)value;
 - (void)removeEventsObject:(Event *)value;
 - (void)addEvents:(NSSet *)values;

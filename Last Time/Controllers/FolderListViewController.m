@@ -397,6 +397,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	[[cell detailTextLabel] setText:[folder subtitle]];
 	cell.selectionStyle = UITableViewCellSelectionStyleGray;
 	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+	if ([folder hasExpiredEvent]) {
+		cell.textLabel.textColor = [UIColor redColor];
+	}	else {
+		cell.textLabel.textColor = [UIColor blackColor];
+	}
 		
 }
 
