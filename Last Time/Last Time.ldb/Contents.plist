@@ -1,0 +1,1987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundles</key>
+	<array>
+		<dict>
+			<key>associated Xcode projects</key>
+			<array>
+				<string>../Last Time.xcodeproj</string>
+			</array>
+			<key>change date</key>
+			<date>2001-01-01T00:00:00Z</date>
+			<key>changed values</key>
+			<array/>
+			<key>class</key>
+			<string>BLBundleObject</string>
+			<key>errors</key>
+			<array/>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>attachments</key>
+					<dict>
+						<key>backup</key>
+						<dict>
+							<key>1</key>
+							<dict>
+								<key>class</key>
+								<string>BLWrapperHandle</string>
+								<key>name</key>
+								<string>Last Time/InfoPlist/1/InfoPlist.strings</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>change date</key>
+					<date>2012-06-13T20:39:20Z</date>
+					<key>changed values</key>
+					<array/>
+					<key>class</key>
+					<string>BLStringsFileObject</string>
+					<key>errors</key>
+					<array/>
+					<key>flags</key>
+					<integer>2</integer>
+					<key>hash</key>
+					<string>4fd0104f4a39a5bb3b0006f6ac251eac
+</string>
+					<key>name</key>
+					<string>InfoPlist.strings</string>
+					<key>objects</key>
+					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Localized versions of Info.plist keys</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>CFBundleDisplayName</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Last Time</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+					</array>
+					<key>old objects</key>
+					<array/>
+					<key>plist file</key>
+					<false/>
+					<key>snapshots</key>
+					<dict/>
+					<key>versions</key>
+					<dict>
+						<key>en</key>
+						<string>1</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>attachments</key>
+					<dict>
+						<key>backup</key>
+						<dict>
+							<key>1</key>
+							<dict>
+								<key>class</key>
+								<string>BLWrapperHandle</string>
+								<key>name</key>
+								<string>Last Time/Localizable/1/Localizable.strings</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>change date</key>
+					<date>2012-07-01T04:17:19Z</date>
+					<key>changed values</key>
+					<array/>
+					<key>class</key>
+					<string>BLStringsFileObject</string>
+					<key>errors</key>
+					<array/>
+					<key>flags</key>
+					<integer>0</integer>
+					<key>hash</key>
+					<string>c7c7abb0218e58dfc4e4fd39aa24472c
+</string>
+					<key>name</key>
+					<string>Localizable.strings</string>
+					<key>objects</key>
+					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Create a new list</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Create New List…</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Neue Liste erstellen…</string>
+								<key>en</key>
+								<string>Create New List…</string>
+								<key>es</key>
+								<string>Crear nueva lista...</string>
+								<key>fr</key>
+								<string>Créer une nouvelle liste...</string>
+								<key>ja</key>
+								<string>新リストを作成…</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>like saying 3 days ago</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>ago</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>vorher</string>
+								<key>en</key>
+								<string>ago</string>
+								<key>es</key>
+								<string>hace</string>
+								<key>fr</key>
+								<string>il y a</string>
+								<key>ja</key>
+								<string>前</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Average Value</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Average Value</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Durchschnittswert</string>
+								<key>en</key>
+								<string>Average Value</string>
+								<key>es</key>
+								<string>Valor promedio</string>
+								<key>fr</key>
+								<string>Valeur moyenne</string>
+								<key>ja</key>
+								<string>平均値</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Date</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Date</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Datum</string>
+								<key>en</key>
+								<string>Date</string>
+								<key>es</key>
+								<string>Fecha</string>
+								<key>fr</key>
+								<string>Date</string>
+								<key>ja</key>
+								<string>日付</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>one day</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>day</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Tag</string>
+								<key>en</key>
+								<string>day</string>
+								<key>es</key>
+								<string>día</string>
+								<key>fr</key>
+								<string>jour</string>
+								<key>ja</key>
+								<string>日</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>more than one day</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>days</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Tage</string>
+								<key>en</key>
+								<string>days</string>
+								<key>es</key>
+								<string>días</string>
+								<key>fr</key>
+								<string>jours</string>
+								<key>ja</key>
+								<string>日</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Edit Entry</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Edit Entry</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Eintrag bearbeiten</string>
+								<key>en</key>
+								<string>Edit Entry</string>
+								<key>es</key>
+								<string>Editar entrada</string>
+								<key>fr</key>
+								<string>Modifier l'entrée</string>
+								<key>ja</key>
+								<string>記事を投稿</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Edit Event</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Edit Event</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Termin bearbeiten</string>
+								<key>en</key>
+								<string>Edit Event</string>
+								<key>es</key>
+								<string>Editar evento</string>
+								<key>fr</key>
+								<string>Modifier l'événement</string>
+								<key>ja</key>
+								<string>イベントを編集</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>like saying 3 days from now</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>from now</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>von jetzt an</string>
+								<key>en</key>
+								<string>from now</string>
+								<key>es</key>
+								<string>desde ahora</string>
+								<key>fr</key>
+								<string>dans</string>
+								<key>ja</key>
+								<string>今から</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>History</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>History</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Historie</string>
+								<key>en</key>
+								<string>History</string>
+								<key>es</key>
+								<string>Historial</string>
+								<key>fr</key>
+								<string>Historique</string>
+								<key>ja</key>
+								<string>履歴</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>This is describing a phrase like 'last thursday'</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Last %@</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Letzter %@</string>
+								<key>en</key>
+								<string>Last %@</string>
+								<key>es</key>
+								<string>El %@ pasado</string>
+								<key>fr</key>
+								<string>%@ dernier</string>
+								<key>ja</key>
+								<string>先週の %@</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>List</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>List</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Liste</string>
+								<key>en</key>
+								<string>List</string>
+								<key>es</key>
+								<string>Lista</string>
+								<key>fr</key>
+								<string>Liste</string>
+								<key>ja</key>
+								<string>リスト</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Lists</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Lists</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Listen</string>
+								<key>en</key>
+								<string>Lists</string>
+								<key>es</key>
+								<string>Listas</string>
+								<key>fr</key>
+								<string>Listes</string>
+								<key>ja</key>
+								<string>リスト</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Location</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Location</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Standort</string>
+								<key>en</key>
+								<string>Location</string>
+								<key>es</key>
+								<string>Ubicación</string>
+								<key>fr</key>
+								<string>Emplacement</string>
+								<key>ja</key>
+								<string>記憶場所</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Ignore this string</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>2</integer>
+							<key>key</key>
+							<string>Master</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Master</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>one month</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>month</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Monat</string>
+								<key>en</key>
+								<string>month</string>
+								<key>es</key>
+								<string>mes</string>
+								<key>fr</key>
+								<string>mois</string>
+								<key>ja</key>
+								<string>月</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>more than one month</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>months</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Monate</string>
+								<key>en</key>
+								<string>months</string>
+								<key>es</key>
+								<string>meses</string>
+								<key>fr</key>
+								<string>mois</string>
+								<key>ja</key>
+								<string>月</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Name</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Name</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Name</string>
+								<key>en</key>
+								<string>Name</string>
+								<key>es</key>
+								<string>Nombre</string>
+								<key>fr</key>
+								<string>Nom</string>
+								<key>ja</key>
+								<string>イベント名</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>An example for the event name field</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>nameCellPlaceholder</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Ins Kino gegangen</string>
+								<key>en</key>
+								<string>Went to the Movies</string>
+								<key>es</key>
+								<string>Fui al cine</string>
+								<key>fr</key>
+								<string>Sortie cinéma</string>
+								<key>ja</key>
+								<string>映画に行く</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>New Entry</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>New Entry</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Neuer Eintrag</string>
+								<key>en</key>
+								<string>New Entry</string>
+								<key>es</key>
+								<string>Nueva entrada</string>
+								<key>fr</key>
+								<string>Nouvelle entrée</string>
+								<key>ja</key>
+								<string>新規登録</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>New Event</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>New Event</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Neuer Termin</string>
+								<key>en</key>
+								<string>New Event</string>
+								<key>es</key>
+								<string>Nuevo evento</string>
+								<key>fr</key>
+								<string>Nouvel événement</string>
+								<key>ja</key>
+								<string>新イベント</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Next Time</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Next Time</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Nächstes Mal</string>
+								<key>en</key>
+								<string>Next Time</string>
+								<key>es</key>
+								<string>La próxima vez</string>
+								<key>fr</key>
+								<string>La prochaine fois</string>
+								<key>ja</key>
+								<string>次回</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>No History Entries</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>No History Entries</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Keine Historieneinträge</string>
+								<key>en</key>
+								<string>No History Entries</string>
+								<key>es</key>
+								<string>No hay historial de entradas</string>
+								<key>fr</key>
+								<string>Aucune entrée dans l'historique</string>
+								<key>ja</key>
+								<string>登録履歴無し</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>The note is blank</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>No Note</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Keine Notiz</string>
+								<key>en</key>
+								<string>No Note</string>
+								<key>es</key>
+								<string>No hay notas</string>
+								<key>fr</key>
+								<string>Aucune note</string>
+								<key>ja</key>
+								<string>無記入</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>The value is empty</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>No Value</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Kein Wert</string>
+								<key>en</key>
+								<string>No Value</string>
+								<key>es</key>
+								<string>No hay valores</string>
+								<key>fr</key>
+								<string>Aucune valeur</string>
+								<key>ja</key>
+								<string>無価値</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Note</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Note</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Notiz</string>
+								<key>en</key>
+								<string>Note</string>
+								<key>es</key>
+								<string>Nota</string>
+								<key>fr</key>
+								<string>Note</string>
+								<key>ja</key>
+								<string>メモ</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>An example movie for the note field</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>noteCellPlaceholder</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Top Gun</string>
+								<key>en</key>
+								<string>Top Gun</string>
+								<key>es</key>
+								<string>Top Gun</string>
+								<key>fr</key>
+								<string>Top Gun</string>
+								<key>ja</key>
+								<string>トップガン</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Number</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Number</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Nummer</string>
+								<key>en</key>
+								<string>Number</string>
+								<key>es</key>
+								<string>Número</string>
+								<key>fr</key>
+								<string>Nombre</string>
+								<key>ja</key>
+								<string>数</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Store Location?</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Store Location?</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Standort speichern?</string>
+								<key>en</key>
+								<string>Store Location?</string>
+								<key>es</key>
+								<string>¿Guardar ubicación?</string>
+								<key>fr</key>
+								<string>Enregistrer le lieu ?</string>
+								<key>ja</key>
+								<string>場所を保存しますか</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Time Span</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Time Span</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Zeitspanne</string>
+								<key>en</key>
+								<string>Time Span</string>
+								<key>es</key>
+								<string>Lapso</string>
+								<key>fr</key>
+								<string>Laps de temps</string>
+								<key>ja</key>
+								<string>期間</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Timeline</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Timeline</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Zeitachse</string>
+								<key>en</key>
+								<string>Timeline</string>
+								<key>es</key>
+								<string>Cronología</string>
+								<key>fr</key>
+								<string>Chronologie</string>
+								<key>ja</key>
+								<string>スケジュール</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Today</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Today</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Heute</string>
+								<key>en</key>
+								<string>Today</string>
+								<key>es</key>
+								<string>Hoy</string>
+								<key>fr</key>
+								<string>Aujourd'hui</string>
+								<key>ja</key>
+								<string>今日</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>examples of ways to use this field</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>valueCellPlaceholder</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Bewertung, Gewicht, Entfernung</string>
+								<key>en</key>
+								<string>rating, weight, distance</string>
+								<key>es</key>
+								<string>evaluación, peso, distancia</string>
+								<key>fr</key>
+								<string>classement, poids, distance</string>
+								<key>ja</key>
+								<string>評価、重量、距離</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>one week</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>week</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Woche</string>
+								<key>en</key>
+								<string>week</string>
+								<key>es</key>
+								<string>semana</string>
+								<key>fr</key>
+								<string>semaine</string>
+								<key>ja</key>
+								<string>週</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>more than one week</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>weeks</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Wochen</string>
+								<key>en</key>
+								<string>weeks</string>
+								<key>es</key>
+								<string>semanas</string>
+								<key>fr</key>
+								<string>semaines</string>
+								<key>ja</key>
+								<string>週</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>one year</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>year</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Jahr</string>
+								<key>en</key>
+								<string>year</string>
+								<key>es</key>
+								<string>año</string>
+								<key>fr</key>
+								<string>an</string>
+								<key>ja</key>
+								<string>年</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>more than one year</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>years</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Jahre</string>
+								<key>en</key>
+								<string>years</string>
+								<key>es</key>
+								<string>años</string>
+								<key>fr</key>
+								<string>ans</string>
+								<key>ja</key>
+								<string>年</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Yesterday</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Yesterday</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Gestern</string>
+								<key>en</key>
+								<string>Yesterday</string>
+								<key>es</key>
+								<string>Ayer</string>
+								<key>fr</key>
+								<string>Hier</string>
+								<key>ja</key>
+								<string>昨日</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Duration</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Duration</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Dauer</string>
+								<key>en</key>
+								<string>Duration</string>
+								<key>es</key>
+								<string>Duración</string>
+								<key>fr</key>
+								<string>Durée</string>
+								<key>ja</key>
+								<string>期限</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Last Time</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>2</integer>
+							<key>key</key>
+							<string>Last Time</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Last Time</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>The prefix for the exported file's name</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>2</integer>
+							<key>key</key>
+							<string>Last Time Export</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Last Time Export</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Reminder?</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Reminder?</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Gedächtnisstütze</string>
+								<key>en</key>
+								<string>Reminder?</string>
+								<key>es</key>
+								<string>Notificación</string>
+								<key>fr</key>
+								<string>Rappel</string>
+								<key>ja</key>
+								<string>思い出させる</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>view this notification</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>View</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Sehen</string>
+								<key>en</key>
+								<string>View</string>
+								<key>es</key>
+								<string>Mirar</string>
+								<key>fr</key>
+								<string>Regarder</string>
+								<key>ja</key>
+								<string>表示</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+					</array>
+					<key>old objects</key>
+					<array/>
+					<key>plist file</key>
+					<false/>
+					<key>snapshots</key>
+					<dict/>
+					<key>versions</key>
+					<dict>
+						<key>en</key>
+						<string>1</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>attachments</key>
+					<dict>
+						<key>backup</key>
+						<dict>
+							<key>1</key>
+							<dict>
+								<key>class</key>
+								<string>BLWrapperHandle</string>
+								<key>name</key>
+								<string>Last Time/default_data/1/default_data.plist</string>
+							</dict>
+						</dict>
+					</dict>
+					<key>change date</key>
+					<date>2012-06-13T20:39:20Z</date>
+					<key>changed values</key>
+					<array/>
+					<key>class</key>
+					<string>BLPlistFileObject</string>
+					<key>errors</key>
+					<array/>
+					<key>flags</key>
+					<integer>2</integer>
+					<key>hash</key>
+					<string>712e01223a9546efa3325a303ab3c354
+</string>
+					<key>name</key>
+					<string>default_data.plist</string>
+					<key>objects</key>
+					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Service</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Service</string>
+								<key>en</key>
+								<string>Service</string>
+								<key>fr</key>
+								<string>Service</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Got Haircut</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Got Haircut</string>
+								<key>en</key>
+								<string>Got Haircut</string>
+								<key>fr</key>
+								<string>Got Haircut</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Social</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Social</string>
+								<key>es</key>
+								<string>Social</string>
+								<key>fr</key>
+								<string>Social</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Checked Oil</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Checked Oil</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Recreation</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Recreation</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Bought Gas</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Bought Gas</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Car</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Car</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Cleaned Gutters</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Cleaned Gutters</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Took Vacation</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Took Vacation</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Checked Air Filter</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Checked Air Filter</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Changed Toothbrush</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Changed Toothbrush</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Bicycle Ride</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Bicycle Ride</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Home</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Home</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Cross-country Skiing</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Cross-country Skiing</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Dinner Guests</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Dinner Guests</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Called Mom</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Called Mom</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Pet</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Pet</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Bought Food</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Bought Food</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Flea Medicine</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Flea Medicine</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Health</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Health</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+					</array>
+					<key>old objects</key>
+					<array/>
+					<key>snapshots</key>
+					<dict/>
+					<key>versions</key>
+					<dict>
+						<key>en</key>
+						<string>1</string>
+					</dict>
+				</dict>
+			</array>
+			<key>flags</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>../Developer/Last Time/Last Time</string>
+			<key>naming style</key>
+			<integer>1</integer>
+			<key>referencing style</key>
+			<integer>1</integer>
+			<key>user name</key>
+			<string>Last Time</string>
+		</dict>
+	</array>
+	<key>languages</key>
+	<array>
+		<string>en</string>
+		<string>es</string>
+		<string>fr</string>
+		<string>de</string>
+		<string>ja</string>
+	</array>
+	<key>preferences</key>
+	<dict>
+		<key>XcodeAddMissingFiles</key>
+		<true/>
+		<key>XcodeFileLimit</key>
+		<real>75</real>
+		<key>XcodeHasFileLimit</key>
+		<true/>
+		<key>XcodeHasLanguageLimit</key>
+		<true/>
+		<key>XcodeLanguageLimit</key>
+		<real>90</real>
+		<key>XcodeRemoveNotMatchingFiles</key>
+		<false/>
+		<key>autotranslateNewStrings</key>
+		<true/>
+		<key>compressLocalizationFiles</key>
+		<false/>
+		<key>deactivateEmptyStrings</key>
+		<true/>
+		<key>deactivatePlaceholderStrings</key>
+		<true/>
+		<key>defaultBundleNaming</key>
+		<integer>1</integer>
+		<key>defaultBundleReferencing</key>
+		<integer>1</integer>
+		<key>embedDictionary</key>
+		<false/>
+		<key>embedDictionaryGuesses</key>
+		<false/>
+		<key>importEmptyStrings</key>
+		<true/>
+		<key>includeInterfacePreview</key>
+		<true/>
+		<key>markAutotranslatedAsNotChanged</key>
+		<true/>
+		<key>rescanXcodeProjects</key>
+		<false/>
+		<key>saveCompressed</key>
+		<false/>
+		<key>updateXcodeProjects</key>
+		<false/>
+		<key>valueChangesResetStrings</key>
+		<false/>
+	</dict>
+	<key>reference language</key>
+	<string>en</string>
+	<key>version</key>
+	<integer>5</integer>
+</dict>
+</plist>
