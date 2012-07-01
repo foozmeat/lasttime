@@ -344,7 +344,6 @@
 		[self setFolder:newFolder];
 	}
 
-	[[self tableView] reloadData];
 }
 
 - (EventFolder *)folderPickerCurrentFolder;
