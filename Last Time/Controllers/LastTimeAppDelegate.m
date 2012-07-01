@@ -13,6 +13,7 @@
 #import "MGSplitViewController.h"
 #import "SegmentsController.h"
 #import "TimelineViewController.h"
+#import "Event.h"
 
 @implementation LastTimeAppDelegate
 
@@ -34,7 +35,9 @@
 	
 	[self versionCheck];
 	
-
+	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+	[self handleNotification:localNotif];
+	
 	NSArray *viewControllers = [self segmentViewControllers];
 	NSArray *segmentTitles = [[NSArray alloc] initWithObjects:NSLocalizedString(@"Lists",@"Lists"), NSLocalizedString(@"Timeline",@"Timeline"), nil];
 
@@ -107,6 +110,29 @@
 - (void)firstUserExperience {
 	self.segmentedControl.selectedSegmentIndex = 0;
 	[self.segmentsController indexDidChangeForSegmentedControl:self.segmentedControl];
+}
+
+- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)localNotification {
+	[self handleNotification:localNotification];
+}
+
+- (void)handleNotification:(UILocalNotification *)localNotification
+{
+#ifdef DEBUG
+	NSLog(@"Handling notifications");
+#endif
+	
+	if (localNotification) {
+		NSString *uuid = [localNotification.userInfo objectForKey:@"UUID"];
+#ifdef DEBUG
+		NSLog(@"Found notification %@", uuid);
+#endif
+
+//		Event *event = [[EventStore defaultStore] eventForUUID:uuid];
+//		
+//		[event removeNotification];
+	}
+
 }
 
 - (void)versionCheck
