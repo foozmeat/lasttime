@@ -19,6 +19,8 @@
 
 #import "FPOCsvWriter.h"
 
+#import "NSManagedObjectContext+FetchAdditions.h"
+
 static EventStore *defaultStore = nil;
 
 @implementation EventStore
@@ -145,6 +147,28 @@ static EventStore *defaultStore = nil;
 {
 	[event removeNotification];
 	[self.context deleteObject:event];
+}
+
+- (Event *)eventForUUID:(NSString *)uuid
+{
+#ifdef DEBUG
+	NSLog(@"Fetching event for UUID %@", uuid);
+#endif
+	
+	NSArray *objects = [[self context] fetchObjectArrayForEntityName:@"Event" withPredicateFormat:@"notificationUUID == %@", uuid];
+	
+	if ([objects count] > 0) {
+#ifdef DEBUG
+		NSLog(@"Found event named %@", [[objects objectAtIndex:0] eventName]);
+#endif
+		return [objects objectAtIndex:0];
+	} else {
+#ifdef DEBUG
+		NSLog(@"Found no events with that uuid");
+#endif
+		return nil;
+	}
+
 }
 
 #pragma mark - LogEntry

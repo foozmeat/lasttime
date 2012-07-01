@@ -34,6 +34,7 @@
 #pragma mark - Events
 - (Event *)createEvent;
 - (void)removeEvent:(Event *)event;
+- (Event *)eventForUUID:(NSString *)uuid;
 
 #pragma mark - LogEntry
 - (LogEntry *)createLogEntry;
