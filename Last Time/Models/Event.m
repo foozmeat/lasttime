@@ -424,7 +424,6 @@
 #ifdef DEBUG
 		NSLog(@"no notifications removed");
 #endif
-		return;
 	}
 	
 	NSArray *notificationsArray = [[UIApplication sharedApplication] scheduledLocalNotifications];
@@ -442,6 +441,8 @@
 	}
 	self.notificationUUID = nil;
 	self.reminderDate = nil;
+	
+	[[EventStore defaultStore] saveChanges];
 }
 
 - (BOOL)reminderExpired

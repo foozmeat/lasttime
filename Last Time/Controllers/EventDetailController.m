@@ -285,7 +285,11 @@
 	if (_reminderEnabled == sender.on) {
 		return;
 	}
-	
+
+#ifdef DEBUG
+	NSLog(@"Reminder is switched to %d", _reminderEnabled);
+#endif
+
 	_reminderEnabled = sender.on;
 
 	NSUInteger indexes[] = { kReminderSection, kEventReminderDuration };
@@ -298,12 +302,10 @@
 	} else {
 		[self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
 		[self durationPickerDidChangeWithDuration:0];
+		[event removeNotification];
 	}
 
 	[[self tableView] reloadSections:[NSIndexSet indexSetWithIndex:kReminderSection] withRowAnimation:UITableViewRowAnimationNone];
-#ifdef DEBUG
-	NSLog(@"Reminder is switched %d", _reminderEnabled);
-#endif
 }
 
 #pragma mark - EditableTableCellDelegate
