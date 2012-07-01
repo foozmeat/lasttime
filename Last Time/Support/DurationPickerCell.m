@@ -32,7 +32,7 @@
 	
 	_durationValue = 1;
 	_durationUnit = @"day";
-	self.eventDate = nil;
+	self.eventDate = [NSDate date];
 	
 	self.durationLabel.text = NSLocalizedString(@"Duration",@"Duration");
 	self.durationStringLabel.text = [self durationString];
@@ -126,7 +126,7 @@
 	
 	NSInteger interval = [reminderDate timeIntervalSinceNow];
 	
-	if (interval > 0) {
+	if (interval >= 0) {
 		return NO;
 	} else {
 		return YES;
