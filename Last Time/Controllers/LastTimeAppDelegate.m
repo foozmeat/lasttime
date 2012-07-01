@@ -122,16 +122,14 @@
 	NSLog(@"Handling notifications");
 #endif
 	
+#ifdef DEBUG
 	if (localNotification) {
 		NSString *uuid = [localNotification.userInfo objectForKey:@"UUID"];
-#ifdef DEBUG
 		NSLog(@"Found notification %@", uuid);
-#endif
 
 //		Event *event = [[EventStore defaultStore] eventForUUID:uuid];
-//		
-//		[event removeNotification];
 	}
+#endif
 
 }
 
