@@ -78,19 +78,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	if ([[_event logEntryCollection] count] == 0) {
+	NSInteger count = [[_event logEntryCollection] count];
+
+	if (count == 0) {
 		return;
 	}
 	
 	NSInteger section = [indexPath section];
 	
-	if (section == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
+	if (section == kLastTimeSection) {
 
 		[_event cycleLastTimeDisplayFormat];
 		[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 
-	} else if (([_event showAverage] && section == kHistorySection) ||
-			(![_event showAverage] && section == kAverageSection)) {
+	} else if (section == kHistorySection) {
 		
 		HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
 		
