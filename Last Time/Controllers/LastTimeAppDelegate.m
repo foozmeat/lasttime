@@ -189,7 +189,7 @@
 																		barMetrics:UIBarMetricsDefault];
 	} else {
 		// iPhone
-		UIImage *navBarImage = [UIImage imageNamed:@"navbar.png"];
+		UIImage *navBarImage = [UIImage imageNamed:@"leather_navbar.png"];
 		
 		[[UINavigationBar appearance] setBackgroundImage:navBarImage 
 																			 forBarMetrics:UIBarMetricsDefault];

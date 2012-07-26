@@ -15,7 +15,6 @@
 - (void)initalizeInputView {
 	self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
 	self.pickerView.showsSelectionIndicator = YES;
-//	self.pickerView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 	[pickerView setDataSource:self];
 	[pickerView setDelegate:self];
 	self.detailTextLabel.textColor = [UIColor brownColor];

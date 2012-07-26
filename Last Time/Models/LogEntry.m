@@ -280,7 +280,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@: at %@ (%f,%f), recorded on %@, %@, value: %f", 
+	return [NSString stringWithFormat:@"%@: at %@ (%f,%f), recorded on %@, %@, value: %@", 
 					self.logEntryNote, 
 					self.logEntryLocationString,
 					self.logEntryLocation.longitude, self.logEntryLocation.latitude, 

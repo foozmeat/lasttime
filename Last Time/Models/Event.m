@@ -345,7 +345,7 @@
 	[output appendFormat:@"Event Name: %@\n", self.eventName];
 	[output appendFormat:@"Subtitle: %@\n", [self subtitle]];
 	[output appendFormat:@"Latest Entry: %@\n", [self latestEntry]];
-	[output appendFormat:@"Average Interval: %f - %@\n", [self averageInterval], [self averageStringInterval]];
+	[output appendFormat:@"Average Interval: %@ - %@\n", [self averageInterval], [self averageStringInterval]];
 	[output appendFormat:@"Next Time: %@\n", [[self nextTime] descriptionWithLocale:[NSLocale currentLocale]]];
 	
 		//	[output appendFormat:@"%@", [self logEntryCollection]];
