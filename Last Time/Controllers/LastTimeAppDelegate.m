@@ -164,8 +164,48 @@
 
 	UIUserInterfaceIdiom idiom = [[UIDevice currentDevice] userInterfaceIdiom];
 
-	[[UIBarButtonItem appearance] setTintColor:[UIColor brownColor]];
-	
+//	[[UIBarButtonItem appearance] setTintColor:[UIColor brownColor]];
+
+
+	UIImage *barButton = [[UIImage imageNamed:@"leather_navbar_button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+
+	[[UIBarButtonItem appearance] setBackgroundImage:barButton forState:UIControlStateNormal
+																				barMetrics:UIBarMetricsDefault];
+
+	UIImage *backButton = [[UIImage imageNamed:@"leather_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
+
+	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal
+																									barMetrics:UIBarMetricsDefault];
+
+	[[UISegmentedControl appearance] setTintColor:[UIColor brownColor]];
+
+	UIImage *segmentSelected = [[UIImage imageNamed:@"leather_seg_sel.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+	UIImage *segmentUnselected = [[UIImage imageNamed:@"leather_seg_uns.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+//	UIImage *segmentSelectedUnselected = [UIImage imageNamed:@"leather_seg_sel-uns.png"];
+//	UIImage *segUnselectedSelected = [UIImage imageNamed:@"leather_seg_uns-sel.png"];
+//	UIImage *segmentUnselectedUnselected = [UIImage imageNamed:@"leather_seg_uns-uns.png"];
+
+	[[UISegmentedControl appearance] setBackgroundImage:segmentUnselected
+																						 forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+	[[UISegmentedControl appearance] setBackgroundImage:segmentSelected
+																						 forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+
+//	[[UISegmentedControl appearance] setDividerImage:segmentUnselectedUnselected
+//															 forLeftSegmentState:UIControlStateNormal
+//																 rightSegmentState:UIControlStateNormal
+//																				barMetrics:UIBarMetricsDefault];
+//	[[UISegmentedControl appearance] setDividerImage:segmentSelectedUnselected
+//															 forLeftSegmentState:UIControlStateSelected
+//																 rightSegmentState:UIControlStateNormal
+//																				barMetrics:UIBarMetricsDefault];
+//
+//	[[UISegmentedControl appearance] setDividerImage:segUnselectedSelected
+//															 forLeftSegmentState:UIControlStateNormal
+//																 rightSegmentState:UIControlStateSelected
+//																				barMetrics:UIBarMetricsDefault];
+
+	[[UITabBar appearance] setTintColor:[UIColor brownColor]];
+
 	if (idiom == UIUserInterfaceIdiomPad) 	{
 
 		NSArray *viewControllers = [self segmentViewControllers];
@@ -194,19 +234,14 @@
 		[[UINavigationBar appearance] setBackgroundImage:navBarImage 
 																			 forBarMetrics:UIBarMetricsDefault];
 
-		UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar.png"];
-			//	[[UITabBar appearance] setBackgroundImage:tabBarBackground];
+		UIImage* tabBarBackground = [UIImage imageNamed:@"leather_toolbar.png"];
 		
 		[[UIToolbar appearance] setBackgroundImage:tabBarBackground 
 														forToolbarPosition:UIToolbarPositionBottom 
 																		barMetrics:UIBarMetricsDefault];
 		
 	}
-		
-	[[UITabBar appearance] setTintColor:[UIColor brownColor]];
-	
-	[[UISegmentedControl appearance] setTintColor:[UIColor brownColor]];
-	
+
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
