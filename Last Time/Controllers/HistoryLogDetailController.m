@@ -36,6 +36,16 @@
 #pragma mark -
 #pragma mark UIViewController Methods
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+
+	UIView *backgroundView = [[UIView alloc] init];
+	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+	[self.tableView setBackgroundView:backgroundView];
+
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];

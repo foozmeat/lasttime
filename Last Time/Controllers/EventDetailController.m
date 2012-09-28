@@ -45,6 +45,10 @@
 {
 	[super viewWillAppear:animated];
 	
+	UIView *backgroundView = [[UIView alloc] init];
+	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+	[self.tableView setBackgroundView:backgroundView];
+
 	if (event.reminderDuration != 0) {
 		_reminderEnabled = YES;
 	}

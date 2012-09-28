@@ -33,8 +33,9 @@
 	self.title = [folder folderName];
 	userDrivenDataModelChange = NO;
 
-	eventTableView.backgroundColor = [UIColor clearColor];
-	self.view.backgroundColor = [UIColor clearColor];
+	UIView *backgroundView = [[UIView alloc] init];
+	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+	[eventTableView setBackgroundView:backgroundView];
 
 }
 

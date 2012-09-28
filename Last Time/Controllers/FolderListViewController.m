@@ -39,7 +39,11 @@
 	
 	self.tableView.allowsSelectionDuringEditing = YES;
 	self.title = NSLocalizedString(@"Lists", @"Lists");
-	
+
+	UIView *backgroundView = [[UIView alloc] init];
+	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+	[self.tableView setBackgroundView:backgroundView];
+
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 
 	self.tableView.backgroundColor = [UIColor clearColor];

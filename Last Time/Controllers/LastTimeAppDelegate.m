@@ -58,8 +58,9 @@
                     forControlEvents:UIControlEventValueChanged];
     
     [self firstUserExperience];
-    
-    [window addSubview:navigationController.view];
+
+		window.rootViewController = navigationController;
+//    [window addSubview:navigationController.view];
 
 	} else {
 		FolderListViewController *masterViewController = [viewControllers objectAtIndex:0];
