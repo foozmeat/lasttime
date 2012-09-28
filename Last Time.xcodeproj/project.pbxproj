@@ -15,6 +15,7 @@
 		1A212A461595728B001B6293 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A212A451595728A001B6293 /* CoreLocation.framework */; };
 		1A212A55159573E5001B6293 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A212A54159573E5001B6293 /* CoreData.framework */; };
 		1A212A56159576D1001B6293 /* Last Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */; };
+		1A21320D16156D9E00770280 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A21320C16156D9E00770280 /* Default-568h@2x.png */; };
 		1A4688FB15518CB500C64F49 /* white_paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4688F915518CB500C64F49 /* white_paper.jpg */; };
 		1A4688FC15518CB500C64F49 /* white_paper@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */; };
 		1A468906155194F300C64F49 /* ipad-menubar-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A468902155194F300C64F49 /* ipad-menubar-left.png */; };
@@ -163,6 +164,7 @@
 		1A17C225158954DB00FED786 /* Last Time 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 4.xcdatamodel"; sourceTree = "<group>"; };
 		1A212A451595728A001B6293 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		1A212A54159573E5001B6293 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		1A21320C16156D9E00770280 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1A4688F915518CB500C64F49 /* white_paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_paper.jpg; sourceTree = "<group>"; };
 		1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "white_paper@2x.jpg"; sourceTree = "<group>"; };
 		1A468902155194F300C64F49 /* ipad-menubar-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-menubar-left.png"; path = "foody/ipad-menubar-left.png"; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 		39EF4A4A14F1AE1000A8BAB7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1A21320C16156D9E00770280 /* Default-568h@2x.png */,
 				1A823C2C153BB07000B997C8 /* Appearance */,
 				39BE368414F3E2BD00DBCC43 /* Icons */,
 				398F458314F1B6E50095A405 /* map-pin.png */,
@@ -919,6 +922,7 @@
 				1A508EEB15C187D300FC737C /* leather_seg_uns@2x.png in Resources */,
 				1A508EEE15C1896900FC737C /* leather_seg_sel.png in Resources */,
 				1A508EEF15C1896900FC737C /* leather_seg_sel@2x.png in Resources */,
+				1A21320D16156D9E00770280 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1159,7 +1163,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120630185547;
+				CURRENT_PROJECT_VERSION = 20120726092056;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -1318,7 +1322,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120630185547;
+				CURRENT_PROJECT_VERSION = 20120726092056;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1450,7 +1454,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20120630185547;
+				CURRENT_PROJECT_VERSION = 20120726092056;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1485,7 +1489,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20120630185547;
+				CURRENT_PROJECT_VERSION = 20120726092056;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = "";
