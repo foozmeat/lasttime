@@ -1207,11 +1207,10 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib\"",
 				);
 				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1364,11 +1363,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib\"",
 				);
 				OTHER_CFLAGS = (
 					"-DDEBUG=1",
@@ -1529,11 +1527,10 @@
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1561,11 +1558,10 @@
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "TESTFLIGHT=1";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
-					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib\"",
 				);
 				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
