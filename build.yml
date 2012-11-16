@@ -1,0 +1,18 @@
+:build:
+  :target: "Last Time"
+  :app: true
+  :ios: true
+
+:tests:
+  :simian: true
+
+:hockey:
+  :live_token: "c61b8e0add9aa32e4f729e605e2cdbfa"
+  :beta_token: "6fd490d886e1870a925e731eeb71b1b8"
+
+:code_signing:
+  :ios_dist: "iPhone Distribution: James Moore"
+  
+:testflight:
+  :api_token: "a3e60f758620c870b4c0db40b87b1034_MjYwNTMwMjAxMS0xMi0yNyAxNjozMTowOC4wNTcyNjQ"
+  :team_token: "7dc090a5932acba7bcf3c281394f4a6a_NTAwNTgyMDExLTEyLTI3IDE2OjM1OjAyLjE4Mzg5MA"
