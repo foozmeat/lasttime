@@ -161,13 +161,13 @@
 		nbmonth = NSLocalizedString(@"month",@"one month");
 	
 	NSString *nbweek = nil;
-	if(week != 1 || (displayFormat == @"weeks" && differenceInWeeks != 1))
+	if(week != 1 || ([displayFormat isEqual: @"weeks"] && differenceInWeeks != 1))
 		nbweek = NSLocalizedString(@"weeks",@"more than one week");
 	else
 		nbweek = NSLocalizedString(@"week",@"one week");
 	
 	NSString *nbday = nil;
-	if(day != 1 || (displayFormat == @"days" && differenceInDays != 1))
+	if(day != 1 || ([displayFormat isEqual: @"days"] && differenceInDays != 1))
 		nbday = NSLocalizedString(@"days",@"more than one day");
 	else
 		nbday = NSLocalizedString(@"day",@"one day");
@@ -189,10 +189,10 @@
 
 		
 // Using display formats
-	} else if (displayFormat == @"days") {
+	} else if ([displayFormat isEqual: @"days"]) {
 		[result appendFormat:@"%d %@", differenceInDays, nbday];
 
-	} else if (displayFormat == @"weeks") {
+	} else if ([displayFormat isEqual: @"weeks"]) {
 		day = differenceInDays % 7;
 		if (day != 0) {
 			[result appendFormat:@"%d %@, %d %@", differenceInWeeks, nbweek, day, nbday];
