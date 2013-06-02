@@ -243,6 +243,18 @@
 
 }
 
+- (BOOL)application:(UIApplication *)application
+						openURL:(NSURL *)url
+	sourceApplication:(NSString *)sourceApplication
+				 annotation:(id)annotation {
+//	NSLog(@"url recieved: %@", url);
+//	NSLog(@"scheme: %@", [url scheme]);
+//	NSLog(@"query string: %@", [url query]);
+
+		// handle these things in your app here
+	return YES;
+}
+
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
 	[[EventStore defaultStore] saveChanges];
