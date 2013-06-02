@@ -131,11 +131,11 @@
 	
 	NSUInteger nowOrdinal = [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:normalizedNow];
 	NSUInteger thenOrdinal = [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:normalizedThen];	
-	NSUInteger differenceInDays = abs(nowOrdinal - thenOrdinal);
+	NSUInteger differenceInDays = ABS(nowOrdinal - thenOrdinal);
 
 	nowOrdinal = [sysCalendar ordinalityOfUnit:kCFCalendarUnitWeekOfYear inUnit:NSEraCalendarUnit forDate:normalizedNow];
 	thenOrdinal = [sysCalendar ordinalityOfUnit:kCFCalendarUnitWeekOfYear inUnit:NSEraCalendarUnit forDate:normalizedThen];	
-	NSUInteger differenceInWeeks = abs(nowOrdinal - thenOrdinal);
+	NSUInteger differenceInWeeks = ABS(nowOrdinal - thenOrdinal);
 	
 	//	NSLog(@"Difference in days: %i", differenceInDays);
 	
@@ -190,14 +190,14 @@
 		
 // Using display formats
 	} else if ([displayFormat isEqual: @"days"]) {
-		[result appendFormat:@"%d %@", differenceInDays, nbday];
+		[result appendFormat:@"%ld %@", (unsigned long)differenceInDays, nbday];
 
 	} else if ([displayFormat isEqual: @"weeks"]) {
 		day = differenceInDays % 7;
 		if (day != 0) {
-			[result appendFormat:@"%d %@, %d %@", differenceInWeeks, nbweek, day, nbday];
+			[result appendFormat:@"%ld %@, %ld %@", (unsigned long)differenceInWeeks, nbweek, (long)day, nbday];
 		}else {
-			[result appendFormat:@"%d %@", differenceInWeeks, nbweek];
+			[result appendFormat:@"%ld %@", (unsigned long)differenceInWeeks, nbweek];
 		}
 					
 // Using variable format 	
@@ -205,31 +205,31 @@
 		[result appendFormat:@"0 %@", nbday];
 
 	} else if (year < 1 && month < 1 && week == 0 && day != 0) {
-		[result appendFormat:@"%d %@", day, nbday];
+		[result appendFormat:@"%ld %@", (long)day, nbday];
 
 	} else if (year < 1 && month < 1 && week <= 4 && day == 0) {
-		[result appendFormat:@"%d %@", week, nbweek];
+		[result appendFormat:@"%ld %@", (long)week, nbweek];
 
 	} else if (year < 1 && month < 1 && week <= 4 && day != 0) {
-		[result appendFormat:@"%d %@, %d %@", week, nbweek, day, nbday];
+		[result appendFormat:@"%ld %@, %ld %@", (long)week, nbweek, (long)day, nbday];
 		
 	} else if (year < 1 && month < 12 && week == 0 && day == 0) {
-		[result appendFormat:@"%d %@", month, nbmonth];
+		[result appendFormat:@"%ld %@", (long)month, nbmonth];
 	
 	} else if (year < 1 && month < 12 && week == 0 && day != 0) {
-		[result appendFormat:@"%d %@, %d %@", month, nbmonth, day, nbday];
+		[result appendFormat:@"%ld %@, %ld %@", (long)month, nbmonth, (long)day, nbday];
 	
 	} else if (year < 1 && month < 12 && week != 0) {
-		[result appendFormat:@"%d %@, %d %@", month, nbmonth, week, nbweek];
+		[result appendFormat:@"%ld %@, %ld %@", (long)month, nbmonth, (long)week, nbweek];
 		
 	} else if (year > 0 && month == 0 && week == 0) {
-		[result appendFormat:@"%d %@", year, nbyear];
+		[result appendFormat:@"%ld %@", (long)year, nbyear];
 	
 	} else if (year > 0 && month == 0 && week != 0) {
-		[result appendFormat:@"%d %@, %d %@", year, nbyear, week, nbweek];
+		[result appendFormat:@"%ld %@, %ld %@", (long)year, nbyear, (long)week, nbweek];
 	
 	} else if (year > 0 && month != 0) {
-		[result appendFormat:@"%d %@, %d %@", year, nbyear, month, nbmonth];
+		[result appendFormat:@"%ld %@, %ld %@", (long)year, nbyear, (long)month, nbmonth];
 		
 	} else {
 		[result appendString:@"Date Error"];
