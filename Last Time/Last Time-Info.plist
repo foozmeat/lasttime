@@ -42,6 +42,19 @@
 	<string>1.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>me.jmoore.LastTime</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>jmlasttime</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>20121013145238</string>
 	<key>LSRequiresIPhoneOS</key>
