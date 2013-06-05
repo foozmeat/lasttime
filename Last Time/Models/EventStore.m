@@ -191,7 +191,7 @@ static EventStore *defaultStore = nil;
 	[df setDateStyle:NSDateFormatterMediumStyle];
 	[df setTimeStyle:NSDateFormatterShortStyle];
 	
-	NSURL *tmpFile = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat: @"%@ %@.%@",NSLocalizedString(@"Last Time Export", @"The prefix for the exported file's name"), [df stringFromDate:[NSDate new]], @"csv"]]];
+	NSURL *tmpFile = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat: @"%@.%@",NSLocalizedString(@"Last Time Export", @"The prefix for the exported file's name"), @"csv"]]];
 
 	[[NSFileManager defaultManager] createFileAtPath:[tmpFile path] contents:nil attributes:nil];
 	
