@@ -45,8 +45,7 @@
 	picker.mailComposeDelegate = self;
 
 	if (tmpFile != nil) {
-		if ([MFMailComposeViewController canSendMail])
-		{
+		if ([MFMailComposeViewController canSendMail]) {
 #ifdef TESTFLIGHT			
 			[TestFlight passCheckpoint:@"Exported Data"]; 
 #endif
