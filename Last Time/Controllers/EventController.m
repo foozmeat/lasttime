@@ -12,6 +12,10 @@
 #import "LogEntry.h"
 #import "Event.h"
 
+@interface EventController ()
+@property (weak, nonatomic) IBOutlet UIToolbar *exportButton;
+@end
+
 @implementation EventController
 @synthesize addButton;
 @synthesize eventTableView;
@@ -45,6 +49,85 @@
 }
 
 #pragma mark - Model methods
+- (IBAction)exportEvent:(id)sender {
+
+	NSMutableString *exportedText = [NSMutableString new];
+
+//	[exportedText appendFormat:@"%@\n\n",self.event.eventName];
+
+	if ([[_event logEntryCollection] count] > 0) {
+		[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Last Time",@"Last Time"), [_event lastStringInterval]];
+
+		if ([_event showAverage]) {
+			[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Time Span",@"Time Span"), [_event averageStringInterval]];
+
+			NSDateFormatter *df = [[NSDateFormatter alloc] init];
+
+			[df setDateStyle:NSDateFormatterFullStyle];
+			[df setTimeStyle:NSDateFormatterNoStyle];
+
+			[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Next Time",@"Next Time"), [df stringFromDate:[_event nextTime]]];
+
+			if ([_event showAverageValue]) {
+				[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Average Value","@Average Value"), [_event averageStringValue]];
+			}
+
+			[exportedText appendFormat:@"\n— %@ —\n\n",NSLocalizedString(@"History","@History")];
+			for (LogEntry *le in _event.logEntries) {
+				[exportedText appendFormat:@"%@",le.dateString];
+				if ([le showNote]) {
+					[exportedText appendFormat:@" — %@",le.logEntryNote];
+				}
+				if ([le showValue]) {
+					NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[le logEntryValue] floatValue]]];
+					[exportedText appendFormat:@" — %@",value];
+				}
+
+				[exportedText appendString:@"\n"];
+			}
+		}
+
+	} else {
+		[exportedText appendString:NSLocalizedString(@"No History Entries",@"No History Entries")];
+	}
+
+	MFMailComposeViewController *picker = [MFMailComposeViewController new];
+	picker.mailComposeDelegate = self;
+
+	if ([MFMailComposeViewController canSendMail]) {
+#ifdef TESTFLIGHT
+		[TestFlight passCheckpoint:@"Exported Event Data"];
+#endif
+		[picker setSubject:[NSString stringWithFormat:@"Last Time: %@",self.event.eventName]];
+		[picker setToRecipients:[NSArray array]];
+		[picker setMessageBody:exportedText isHTML:NO];
+		[picker setMailComposeDelegate:self];
+		[self presentModalViewController:picker animated:YES];
+	}
+	else {
+		[self launchMailAppOnDevice];
+	}
+
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+	// Launches the Mail application on the device.
+-(void)launchMailAppOnDevice
+{
+	NSString *recipients = @"mailto:first@example.com?subject=Please set up your email!";
+	NSString *body = @"&body=Please set up your email!";
+
+	NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
+	email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+}
+
+
 - (IBAction)addNewItem:(id)sender
 {
 	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
@@ -405,6 +488,7 @@
 {
 	[self setEventTableView:nil];
 	[self setAddButton:nil];
+	[self setExportButton:nil];
 	[super viewDidUnload];
 }
 

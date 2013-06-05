@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomTableViewController.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 @class EventFolder;
 @class Event;
@@ -37,7 +39,7 @@ enum historyViewCellTags {
 	logEntryNoteValue
 };
 
-@interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate>
+@interface EventController : UIViewController <UITableViewDelegate, UITableViewDataSource, ItemDetailViewControllerDelegate, MFMailComposeViewControllerDelegate>
 {
 	NSNumberFormatter *numberFormatter;
 }
