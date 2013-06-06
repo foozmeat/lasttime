@@ -73,7 +73,7 @@
 			}
 
 			[exportedText appendFormat:@"\n— %@ —\n\n",NSLocalizedString(@"History","@History")];
-			for (LogEntry *le in _event.logEntries) {
+			for (LogEntry *le in _event.logEntryCollection) {
 				[exportedText appendFormat:@"%@",le.dateString];
 				if ([le showNote]) {
 					[exportedText appendFormat:@" — %@",le.logEntryNote];
