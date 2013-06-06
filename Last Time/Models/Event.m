@@ -340,17 +340,46 @@
 
 -(NSString *)description
 {
-	NSMutableString *output = [[NSMutableString alloc] init];
-	
-	[output appendFormat:@"Event Name: %@\n", self.eventName];
-	[output appendFormat:@"Subtitle: %@\n", [self subtitle]];
-	[output appendFormat:@"Latest Entry: %@\n", [self latestEntry]];
-	[output appendFormat:@"Average Interval: %@ - %@\n", [self averageInterval], [self averageStringInterval]];
-	[output appendFormat:@"Next Time: %@\n", [[self nextTime] descriptionWithLocale:[NSLocale currentLocale]]];
-	
-		//	[output appendFormat:@"%@", [self logEntryCollection]];
-	
-	return output;
+	NSMutableString *exportedText = [NSMutableString new];
+
+		//	[exportedText appendFormat:@"%@\n\n",self.event.eventName];
+
+	if ([[self logEntryCollection] count] > 0) {
+		[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Last Time",@"Last Time"), [self lastStringInterval]];
+
+		if ([self showAverage]) {
+			[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Time Span",@"Time Span"), [self averageStringInterval]];
+
+			NSDateFormatter *df = [[NSDateFormatter alloc] init];
+
+			[df setDateStyle:NSDateFormatterFullStyle];
+			[df setTimeStyle:NSDateFormatterNoStyle];
+
+			[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Next Time",@"Next Time"), [df stringFromDate:[self nextTime]]];
+
+			if ([self showAverageValue]) {
+				[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Average Value","@Average Value"), [self averageStringValue]];
+			}
+
+			[exportedText appendFormat:@"\n— %@ —\n\n",NSLocalizedString(@"History","@History")];
+			for (LogEntry *le in self.logEntryCollection) {
+				[exportedText appendFormat:@"%@",le.dateString];
+				if ([le showNote]) {
+					[exportedText appendFormat:@" — %@",le.logEntryNote];
+				}
+				if ([le showValue]) {
+					[exportedText appendFormat:@" — %f", [[le logEntryValue] floatValue]];
+				}
+
+				[exportedText appendString:@"\n"];
+			}
+		}
+
+	} else {
+		[exportedText appendString:NSLocalizedString(@"No History Entries",@"No History Entries")];
+	}
+
+	return exportedText;
 }
 
 #pragma mark - Reminders
