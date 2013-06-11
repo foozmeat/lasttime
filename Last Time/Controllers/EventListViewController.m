@@ -22,7 +22,7 @@
 
 - (void)viewDidUnload
 {
-	[self setEventTableView:nil];
+//	[self setEventTableView:nil];
 	[super viewDidUnload];
 }
 
@@ -33,9 +33,9 @@
 	self.title = [folder folderName];
 	userDrivenDataModelChange = NO;
 
-	UIView *backgroundView = [[UIView alloc] init];
-	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-	[eventTableView setBackgroundView:backgroundView];
+//	UIView *backgroundView = [[UIView alloc] init];
+//	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+//	[eventTableView setBackgroundView:backgroundView];
 
 }
 
@@ -66,15 +66,13 @@
 	[edc setFolder:self.folder];
 	[edc setDelegate:self];
 	
-	UINavigationController *newNavController = [[UINavigationController alloc]
-																							initWithRootViewController:edc];
+	UINavigationController *newNavController = [[UINavigationController alloc] initWithRootViewController:edc];
 
 	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
 		[newNavController setModalPresentationStyle:UIModalPresentationFormSheet];
 	}
 
-	[[self navigationController] presentModalViewController:newNavController
-																								 animated:YES];
+	[[self navigationController] presentModalViewController:newNavController animated:YES];
 	
 }
 

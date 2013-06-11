@@ -20,7 +20,7 @@
 
 - (id) init
 {
-	self = [super initWithStyle:UITableViewStyleGrouped];
+//	self = [super initWithStyle:UITableViewStyleGrouped];
 	return self;
 }
 
@@ -37,16 +37,16 @@
 {
 	[super viewWillAppear:animated];
 	
-	self.tableView.allowsSelectionDuringEditing = YES;
+//	self.tableView.allowsSelectionDuringEditing = YES;
 	self.title = NSLocalizedString(@"Lists", @"Lists");
 
-	UIView *backgroundView = [[UIView alloc] init];
-	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-	[self.tableView setBackgroundView:backgroundView];
+//	UIView *backgroundView = [[UIView alloc] init];
+//	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+//	[self.tableView setBackgroundView:backgroundView];
 
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 
-	self.tableView.backgroundColor = [UIColor clearColor];
+//	self.tableView.backgroundColor = [UIColor clearColor];
 
 }
 
@@ -75,12 +75,12 @@
 	NSArray *paths = [NSArray arrayWithObject:	[NSIndexPath indexPathForRow:[[self.fetchedResultsController fetchedObjects] count] inSection:0]];
 
 	if (editing) 	{
-		[[self tableView] insertRowsAtIndexPaths:paths 
-														withRowAnimation:UITableViewRowAnimationAutomatic];
+		[[self tableView] insertRowsAtIndexPaths:paths
+                                withRowAnimation:UITableViewRowAnimationAutomatic];
 	}
 	else {
 		[[self tableView] deleteRowsAtIndexPaths:paths 
-														withRowAnimation:UITableViewRowAnimationAutomatic];
+                                withRowAnimation:UITableViewRowAnimationAutomatic];
 	}
 }
 
@@ -92,8 +92,7 @@
 	}
 	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	NSEntityDescription *entity = [NSEntityDescription 
-																 entityForName:@"EventFolder" inManagedObjectContext:[[EventStore defaultStore] context]];
+	NSEntityDescription *entity = [NSEntityDescription  entityForName:@"EventFolder" inManagedObjectContext:[[EventStore defaultStore] context]];
 	[fetchRequest setEntity:entity];
 	
 	NSSortDescriptor *sort = [[NSSortDescriptor alloc] 
@@ -101,10 +100,10 @@
 	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
 	
 	NSFetchedResultsController *theFetchedResultsController = 
-	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
-																			managedObjectContext: [[EventStore defaultStore] context]
-																				sectionNameKeyPath:nil 
-																								 cacheName:nil];
+	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext: [[EventStore defaultStore] context]
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
 	self.fetchedResultsController = theFetchedResultsController;
 	self.fetchedResultsController.delegate = self;
 	
@@ -219,11 +218,13 @@
 	}
 
 	if (![tableView isEditing]) {
-		EventListViewController *elvc = [[EventListViewController alloc] init];
-		[elvc setFolder:folder];
-		[elvc setDetailViewController:[self detailViewController]];
-		[self.navigationController pushViewController:elvc animated:YES];
-		
+//        EventListViewController *elvc = [[self storyboard] instantiateViewControllerWithIdentifier:@"EventListViewController"];
+//		[elvc setFolder:folder];
+        [self performSegueWithIdentifier:@"viewFolder" sender:self];
+//		[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//		[elvc setDetailViewController:[self detailViewController]];
+//		[self.navigationController pushViewController:elvc animated:YES];
+
 	} else {
 		if ( addingNewRow ) {
 			[tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -235,6 +236,18 @@
 	}
 
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    EventFolder *folder = [_fetchedResultsController objectAtIndexPath:indexPath];
+    EventListViewController *elvc = [segue destinationViewController];
+    [elvc setFolder:folder];
+	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+
+}
+
 
 #pragma mark - TableView Datasource Delegate methods
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle 
@@ -362,9 +375,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		if (!cell) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 		}
-		cell.selectionStyle = UITableViewCellSelectionStyleGray;
-		cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-		cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//		cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//		cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+//		cell.selectionStyle = UITableViewCellSelectionStyleGray;
 
 		[[cell textLabel] setText:NSLocalizedString(@"Create New List…",@"Create a new list")];
 		return cell;
@@ -399,14 +412,14 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	[[cell cellTextField] setDelegate:self];
 	[[cell textLabel] setText:[folder folderName]];
 	[[cell detailTextLabel] setText:[folder subtitle]];
-	cell.selectionStyle = UITableViewCellSelectionStyleGray;
-	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-	if ([folder hasExpiredEvent]) {
-		cell.textLabel.textColor = [UIColor redColor];
-	}	else {
-		cell.textLabel.textColor = [UIColor blackColor];
-	}
-		
+//	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+//	if ([folder hasExpiredEvent]) {
+//		cell.textLabel.textColor = [UIColor redColor];
+//	}	else {
+//		cell.textLabel.textColor = [UIColor blackColor];
+//	}
+
 }
 
 #pragma mark - TextFieldDelegate

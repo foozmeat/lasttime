@@ -41,6 +41,7 @@
 		1A79C11515BD14C200E2C39F /* leather_navbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A79C11315BD14C200E2C39F /* leather_navbar.png */; };
 		1A79C11615BD14C200E2C39F /* leather_navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A79C11415BD14C200E2C39F /* leather_navbar@2x.png */; };
 		1A823B6B153B959D00B997C8 /* default_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A823B6D153B959D00B997C8 /* default_data.plist */; };
+		1A8295B11767D6AA00CA0161 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A8295B01767D6AA00CA0161 /* Storyboard.storyboard */; };
 		1A8A645D1597D6E3009DD55F /* ReminderSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A645C1597D6E3009DD55F /* ReminderSwitchCell.m */; };
 		1A8A646115981BDA009DD55F /* BasePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A646015981BDA009DD55F /* BasePickerCell.m */; };
 		1A8A646515982311009DD55F /* DurationPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A646415982311009DD55F /* DurationPickerCell.m */; };
@@ -199,6 +200,7 @@
 		1A823B6F153B95A300B997C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/default_data.plist; sourceTree = "<group>"; };
 		1A823B70153B95A300B997C8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/default_data.plist; sourceTree = "<group>"; };
 		1A823B71153B95A300B997C8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = de; path = de.lproj/default_data.plist; sourceTree = "<group>"; };
+		1A8295B01767D6AA00CA0161 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = "Last Time/Storyboard.storyboard"; sourceTree = SOURCE_ROOT; };
 		1A8A645B1597D6E3009DD55F /* ReminderSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReminderSwitchCell.h; path = Support/ReminderSwitchCell.h; sourceTree = "<group>"; };
 		1A8A645C1597D6E3009DD55F /* ReminderSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReminderSwitchCell.m; path = Support/ReminderSwitchCell.m; sourceTree = "<group>"; };
 		1A8A645F15981BDA009DD55F /* BasePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasePickerCell.h; path = Support/BasePickerCell.h; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 		3969112214C9BD04006E8272 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1A8295B01767D6AA00CA0161 /* Storyboard.storyboard */,
 				39200A1314E76C17006B6A79 /* EventController.xib */,
 				39918C1914F606A200D8D4EE /* EventListViewController.xib */,
 				3969112414C9BD04006E8272 /* MainWindow.xib */,
@@ -909,6 +912,7 @@
 				1A4B6AD1162A10740078A7EA /* Icon-Small@2x.png in Resources */,
 				1A4B6AD2162A10740078A7EA /* Icon.png in Resources */,
 				1A4B6AD3162A10740078A7EA /* Icon@2x.png in Resources */,
+				1A8295B11767D6AA00CA0161 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

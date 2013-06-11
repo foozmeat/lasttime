@@ -59,10 +59,10 @@
 	<string>20121013145238</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMainNibFile</key>
-	<string>MainWindow</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+	<key>UIMainStoryboardFile</key>
+	<string>Storyboard</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>

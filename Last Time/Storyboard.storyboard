@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="da0-zA-yel">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="SR4-6l-IzO">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="da0-zA-yel" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iQB-TE-1if">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hny-Pd-rHx" kind="relationship" relationship="rootViewController" id="WHQ-T8-idc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uRI-Vz-XJu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-173" y="46"/>
+        </scene>
+        <!--Folder List View Controller - Folders-->
+        <scene sceneID="6Ta-pE-2vm">
+            <objects>
+                <tableViewController id="hny-Pd-rHx" customClass="FolderListViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="3RH-wN-7Zz">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="m5S-Kp-ZI2">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="House" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bo-FW-NXj">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="139" id="UY1-I7-7yL"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="2bo-FW-NXj" firstAttribute="top" secondItem="m5S-Kp-ZI2" secondAttribute="top" constant="12" id="2UP-rG-8MH"/>
+                                    <constraint firstItem="2bo-FW-NXj" firstAttribute="leading" secondItem="m5S-Kp-ZI2" secondAttribute="leading" constant="30" id="v6b-WJ-9eT"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="UZE-a6-EtP" kind="push" identifier="viewFolder" id="oNd-SK-al1"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hny-Pd-rHx" id="8As-jP-sWy"/>
+                            <outlet property="delegate" destination="hny-Pd-rHx" id="D4a-m6-Dcw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Folders" id="1QO-k1-tPW"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n0S-ho-IG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280" y="46"/>
+        </scene>
+        <!--Event List View Controller - Event List-->
+        <scene sceneID="jwM-gu-mbP">
+            <objects>
+                <viewController id="UZE-a6-EtP" customClass="EventListViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dx8-lb-ssQ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="hfe-2U-zvq">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bVX-hY-KLn">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="UZE-a6-EtP" id="IG8-Rx-1Jo"/>
+                                    <outlet property="delegate" destination="UZE-a6-EtP" id="Zu1-qc-vhc"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wY9-Hp-UaY">
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="iJY-66-lvl"/>
+                                    <barButtonItem systemItem="add" id="p0p-8v-Smc">
+                                        <connections>
+                                            <action selector="addNewEvent:" destination="UZE-a6-EtP" id="r3m-4p-tnc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hfe-2U-zvq" firstAttribute="bottom" secondItem="wY9-Hp-UaY" secondAttribute="top" type="default" id="1ct-7J-IGJ"/>
+                            <constraint firstItem="hfe-2U-zvq" firstAttribute="top" secondItem="dx8-lb-ssQ" secondAttribute="top" type="default" id="63i-hI-7dN"/>
+                            <constraint firstItem="hfe-2U-zvq" firstAttribute="trailing" secondItem="dx8-lb-ssQ" secondAttribute="trailing" type="default" id="MS1-gx-yAb"/>
+                            <constraint firstItem="wY9-Hp-UaY" firstAttribute="leading" secondItem="dx8-lb-ssQ" secondAttribute="leading" type="default" id="Xlj-i5-4iZ"/>
+                            <constraint firstItem="hfe-2U-zvq" firstAttribute="leading" secondItem="dx8-lb-ssQ" secondAttribute="leading" type="default" id="on1-ms-5Ut"/>
+                            <constraint firstItem="wY9-Hp-UaY" firstAttribute="bottom" secondItem="dx8-lb-ssQ" secondAttribute="bottom" type="default" id="wgT-Ki-Brs"/>
+                            <constraint firstItem="wY9-Hp-UaY" firstAttribute="trailing" secondItem="dx8-lb-ssQ" secondAttribute="trailing" type="default" id="wrw-Ts-qCb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Event List" id="4cc-lH-xK9"/>
+                    <connections>
+                        <outlet property="eventTableView" destination="hfe-2U-zvq" id="1Ih-Nm-NQE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G65-Ag-f3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="705" y="46"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="EventListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addNewEvent:"/>
+                <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="FolderListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FolderListViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
