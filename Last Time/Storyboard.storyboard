@@ -148,29 +148,84 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="JnT-bb-6wA">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryLogCell" textLabel="jg7-z8-95b" detailTextLabel="Oax-lb-T8y" style="IBUITableViewCellStyleValue1" id="8Wp-8e-xAz">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryLogCell" id="8Wp-8e-xAz" customClass="HistoryLogCell">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jg7-z8-95b">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No Note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Dvj-4O-RrU">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="58" id="lzy-yK-d7T"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="No Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lav-Ir-26n">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="117" id="gBg-6j-acc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="right" text="Wednesday, September 31, 2012" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="9Wr-Mu-f2t">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="5625 NE 13th Ave" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="NyH-EZ-1l1" userLabel="Label - Location">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="155" id="tG4-Nt-Vc2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="NyH-EZ-1l1" firstAttribute="trailing" secondItem="9Wr-Mu-f2t" secondAttribute="trailing" type="default" id="5JE-er-Wa3"/>
+                                            <constraint firstAttribute="bottom" secondItem="NyH-EZ-1l1" secondAttribute="bottom" constant="2" id="9Gt-Ao-SCQ"/>
+                                            <constraint firstItem="Dvj-4O-RrU" firstAttribute="top" secondItem="8Wp-8e-xAz" secondAttribute="top" constant="3" id="GW7-ia-pN8"/>
+                                            <constraint firstItem="9Wr-Mu-f2t" firstAttribute="leading" secondItem="8Wp-8e-xAz" secondAttribute="leading" constant="88" id="P6h-mU-htL"/>
+                                            <constraint firstItem="9Wr-Mu-f2t" firstAttribute="baseline" secondItem="Dvj-4O-RrU" secondAttribute="baseline" type="default" id="eiP-VS-RIZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="Lav-Ir-26n" secondAttribute="bottom" constant="3" id="mAv-ke-5yt"/>
+                                            <constraint firstItem="9Wr-Mu-f2t" firstAttribute="leading" secondItem="Dvj-4O-RrU" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="meQ-Uk-oAS"/>
+                                            <constraint firstItem="NyH-EZ-1l1" firstAttribute="leading" secondItem="Lav-Ir-26n" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="r7d-jm-hH2"/>
+                                            <constraint firstItem="Lav-Ir-26n" firstAttribute="leading" secondItem="Dvj-4O-RrU" secondAttribute="leading" type="default" id="xEU-Og-Wyg"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="logEntryDateCell" destination="9Wr-Mu-f2t" id="dBS-5u-RAL"/>
+                                            <outlet property="logEntryLocationCell" destination="NyH-EZ-1l1" id="ms6-cU-bg8"/>
+                                            <outlet property="logEntryNoteCell" destination="Dvj-4O-RrU" id="dxI-n1-DZb"/>
+                                            <outlet property="logEntryValueCell" destination="Lav-Ir-26n" id="lxl-DH-cwR"/>
+                                            <segue destination="m2s-0E-uSp" kind="push" identifier="editLogEntry" id="8Wa-8g-hLd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AverageCell" textLabel="iEd-qR-y3b" detailTextLabel="yY0-YK-Zg6" style="IBUITableViewCellStyleValue1" id="WVh-Tv-otd" customClass="HistoryLogCell">
+                                        <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iEd-qR-y3b">
+                                                    <rect key="frame" x="10" y="11" width="35" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oax-lb-T8y">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yY0-YK-Zg6">
+                                                    <rect key="frame" x="226" y="11" width="44" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <connections>
-                                            <segue destination="m2s-0E-uSp" kind="push" identifier="editLogEntry" id="8Wa-8g-hLd"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -216,7 +271,7 @@
             </objects>
             <point key="canvasLocation" x="1194" y="-103"/>
         </scene>
-        <!--History Log Detail Controller-->
+        <!--History Log Detail Controller - Add/Edit Item-->
         <scene sceneID="ivc-o6-1Ks">
             <objects>
                 <tableViewController id="m2s-0E-uSp" customClass="HistoryLogDetailController" sceneMemberID="viewController">
@@ -240,11 +295,11 @@
                             <outlet property="delegate" destination="m2s-0E-uSp" id="lVf-JP-ayU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="aaB-Xl-jWQ"/>
+                    <navigationItem key="navigationItem" title="Add/Edit Item" id="aaB-Xl-jWQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yl4-HD-oKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2244" y="-103"/>
+            <point key="canvasLocation" x="2218" y="-103"/>
         </scene>
         <!--Event Detail Controller - New Event-->
         <scene sceneID="9b8-mF-SIb">
@@ -325,7 +380,6 @@
                 <relationship kind="action" name="exportEvent:"/>
                 <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="exportButton" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="EventDetailController" superclassName="CustomTableViewController">
@@ -340,6 +394,16 @@
         </class>
         <class className="FolderListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FolderListViewController.h"/>
+        </class>
+        <class className="HistoryLogCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryLogCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="locationMarker" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="logEntryDateCell" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logEntryLocationCell" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logEntryNoteCell" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logEntryValueCell" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="HistoryLogDetailController" superclassName="CustomTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryLogDetailController.h"/>

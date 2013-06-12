@@ -13,7 +13,6 @@
 #import "Event.h"
 
 @interface EventController ()
-@property (weak, nonatomic) IBOutlet UIToolbar *exportButton;
 @end
 
 @implementation EventController
@@ -322,8 +321,7 @@
 	cell = [tableView dequeueReusableCellWithIdentifier:@"AverageCell"];
 	
 	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
-																	reuseIdentifier:@"AverageCell"];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AverageCell"];
 //		cell.detailTextLabel.textColor = [UIColor brownColor];
 //		cell.selectionStyle = UITableViewCellSelectionStyleGray;
 	}
@@ -485,7 +483,6 @@
 {
 	[self setEventTableView:nil];
 	[self setAddButton:nil];
-	[self setExportButton:nil];
 	[super viewDidUnload];
 }
 
