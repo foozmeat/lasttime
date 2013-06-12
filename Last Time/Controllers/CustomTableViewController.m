@@ -18,14 +18,6 @@
 @synthesize popover;
 @synthesize isModal;
 
-//- (BOOL)isModal
-//{
-//	NSArray *viewControllers = [[self navigationController] viewControllers];
-//	UIViewController *rootViewController = [viewControllers objectAtIndex:0];
-//
-//	return rootViewController == self;
-//}
-
 #pragma mark - UIViewController Methods
 
 - (void)viewFinishedLoading
@@ -147,7 +139,8 @@
 
 - (void)save
 {
-	[self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+//	[self dismissModalViewControllerAnimated:YES];
 	if ([delegate respondsToSelector:@selector(itemDetailViewControllerWillDismiss:)]) {
 		[delegate itemDetailViewControllerWillDismiss:self];
 	}
@@ -155,7 +148,8 @@
 
 - (void)cancel
 {
-	[self dismissModalViewControllerAnimated:YES];
+//	[self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 	if ([delegate respondsToSelector:@selector(itemDetailViewControllerWillDismiss:)]) {
 		[delegate itemDetailViewControllerWillDismiss:self];
 	}
@@ -165,7 +159,7 @@
 
 - (id) init
 {
-	self = [super initWithStyle:UITableViewStyleGrouped];
+//	self = [super initWithStyle:UITableViewStyleGrouped];
 	[self setRequiredField:-1];
 	return self;
 }

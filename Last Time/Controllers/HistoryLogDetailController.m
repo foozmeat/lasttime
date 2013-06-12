@@ -39,11 +39,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-
-//	UIView *backgroundView = [[UIView alloc] init];
-//	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-//	[self.tableView setBackgroundView:backgroundView];
-
 }
 
 - (void)viewDidLoad
@@ -64,7 +59,6 @@
 	[self setNumberCell:[NumberCell newNumberCellWithTag:kEventNumber withDelegate:self]];
 
 	if ([self isModal]) {
-//		[self setTitle:NSLocalizedString(@"New Entry",@"New Entry")];
 		self.title = self.event.eventName;
 	} else {
 		[self setTitle:NSLocalizedString(@"Edit Entry",@"Edit Entry")];

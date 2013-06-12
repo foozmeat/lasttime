@@ -18,8 +18,8 @@
 @implementation LastTimeAppDelegate
 
 @synthesize window;
-@synthesize splitViewController;
-@synthesize segmentsController, segmentedControl;
+//@synthesize splitViewController;
+//@synthesize segmentsController, segmentedControl;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

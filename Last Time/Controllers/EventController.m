@@ -135,7 +135,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	if ([segue.identifier isEqualToString:@"addLogEntry"]) {
-		HistoryLogDetailController *hldc = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+//		HistoryLogDetailController *hldc = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+		HistoryLogDetailController *hldc = [segue destinationViewController];
 
 		[hldc setLogEntry:[[EventStore defaultStore] createLogEntry]];
 		[hldc setEvent:self.event];
@@ -181,7 +182,6 @@
 		[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 
 	} else if (section == kHistorySection) {
-		[self performSegueWithIdentifier:@"editLogEntry" sender:self];
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	}
 }

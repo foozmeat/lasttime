@@ -68,7 +68,7 @@
 
     if ([segue.identifier isEqualToString:@"addEvent"]) {
         // This vew controller is embedded in a navigation controller so we can have a nav bar to put buttons on
-        EventDetailController *edc = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        EventDetailController *edc = [segue destinationViewController];
         [edc setEvent:[[EventStore defaultStore] createEvent]];
         [edc setLogEntry:[[EventStore defaultStore] createLogEntry]];
         [edc setFolder:self.folder];
