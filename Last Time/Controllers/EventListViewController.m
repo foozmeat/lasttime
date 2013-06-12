@@ -59,21 +59,24 @@
 
 - (void)addNewEvent:(id)sender
 {
-	EventDetailController *edc = [[EventDetailController alloc] init];
-	
-	[edc setEvent:[[EventStore defaultStore] createEvent]];
-	[edc setLogEntry:[[EventStore defaultStore] createLogEntry]];
-	[edc setFolder:self.folder];
-	[edc setDelegate:self];
-	
-	UINavigationController *newNavController = [[UINavigationController alloc] initWithRootViewController:edc];
+    [self performSegueWithIdentifier:@"addEvent" sender:self];
+}
 
-	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
-		[newNavController setModalPresentationStyle:UIModalPresentationFormSheet];
-	}
 
-	[[self navigationController] presentModalViewController:newNavController animated:YES];
-	
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+
+    if ([segue.identifier isEqualToString:@"addEvent"]) {
+        // This vew controller is embedded in a navigation controller so we can have a nav bar to put buttons on
+        EventDetailController *edc = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        [edc setEvent:[[EventStore defaultStore] createEvent]];
+        [edc setLogEntry:[[EventStore defaultStore] createLogEntry]];
+        [edc setFolder:self.folder];
+        [edc setDelegate:self];
+        [edc setIsModal:YES];
+
+    }
+
 }
 
 #pragma mark - Core Data

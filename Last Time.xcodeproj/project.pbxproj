@@ -76,7 +76,6 @@
 		3969111514C9BCF0006E8272 /* EventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111014C9BCF0006E8272 /* EventController.m */; };
 		3969111614C9BCF0006E8272 /* FolderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111214C9BCF0006E8272 /* FolderListViewController.m */; };
 		3969111714C9BCF0006E8272 /* LastTimeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */; };
-		3969112614C9BD04006E8272 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3969112414C9BD04006E8272 /* MainWindow.xib */; };
 		39825C9014E8757200C4D684 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 39825C8F14E8757200C4D684 /* FileHelpers.m */; };
 		39861AA714BD526D006F30A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39861AAA14BD526D006F30A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39861AA914BD526D006F30A0 /* main.m */; };
@@ -84,7 +83,6 @@
 		398F458514F1B6E50095A405 /* map-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 398F458314F1B6E50095A405 /* map-pin.png */; };
 		398F458614F1B6E50095A405 /* map-pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 398F458414F1B6E50095A405 /* map-pin@2x.png */; };
 		39918C1714F6062000D8D4EE /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39918C1514F6062000D8D4EE /* EventListViewController.m */; };
-		39918C1A14F606A200D8D4EE /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39918C1914F606A200D8D4EE /* EventListViewController.xib */; };
 		39918C2514F7F99700D8D4EE /* EventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 39918C2414F7F99700D8D4EE /* EventStore.m */; };
 		399F70B714FB1FB00012F089 /* FolderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 399F70B614FB1FB00012F089 /* FolderListCell.m */; };
 		39A0F9F714F0B9AF00BA0AFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
@@ -262,7 +260,6 @@
 		3969111214C9BCF0006E8272 /* FolderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderListViewController.m; sourceTree = "<group>"; };
 		3969111314C9BCF0006E8272 /* LastTimeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastTimeAppDelegate.h; sourceTree = "<group>"; };
 		3969111414C9BCF0006E8272 /* LastTimeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastTimeAppDelegate.m; sourceTree = "<group>"; };
-		3969112414C9BD04006E8272 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		39825C8E14E8757200C4D684 /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileHelpers.h; path = Support/FileHelpers.h; sourceTree = "<group>"; };
 		39825C8F14E8757200C4D684 /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileHelpers.m; path = Support/FileHelpers.m; sourceTree = "<group>"; };
 		39861AA514BD526D006F30A0 /* RandomLogEntry */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomLogEntry; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,7 +272,6 @@
 		398F458414F1B6E50095A405 /* map-pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin@2x.png"; sourceTree = "<group>"; };
 		39918C1414F6062000D8D4EE /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListViewController.h; sourceTree = "<group>"; };
 		39918C1514F6062000D8D4EE /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListViewController.m; sourceTree = "<group>"; };
-		39918C1914F606A200D8D4EE /* EventListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventListViewController.xib; sourceTree = "<group>"; };
 		39918C2314F7F99700D8D4EE /* EventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventStore.h; sourceTree = "<group>"; };
 		39918C2414F7F99700D8D4EE /* EventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventStore.m; sourceTree = "<group>"; };
 		399F70B514FB1FB00012F089 /* FolderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FolderListCell.h; path = "Last Time/Support/FolderListCell.h"; sourceTree = SOURCE_ROOT; };
@@ -506,8 +502,6 @@
 			children = (
 				1A8295B01767D6AA00CA0161 /* Storyboard.storyboard */,
 				39200A1314E76C17006B6A79 /* EventController.xib */,
-				39918C1914F606A200D8D4EE /* EventListViewController.xib */,
-				3969112414C9BD04006E8272 /* MainWindow.xib */,
 				3940D3EF14F17DE20056D01B /* HistoryLogCell.xib */,
 				1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */,
 				1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */,
@@ -877,12 +871,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */,
-				3969112614C9BD04006E8272 /* MainWindow.xib in Resources */,
 				39200A1414E76C18006B6A79 /* EventController.xib in Resources */,
 				3940D3F014F17DE20056D01B /* HistoryLogCell.xib in Resources */,
 				398F458514F1B6E50095A405 /* map-pin.png in Resources */,
 				398F458614F1B6E50095A405 /* map-pin@2x.png in Resources */,
-				39918C1A14F606A200D8D4EE /* EventListViewController.xib in Resources */,
 				1A823B6B153B959D00B997C8 /* default_data.plist in Resources */,
 				1AEDBCE3153494310098E3A0 /* Localizable.strings in Resources */,
 				1A4688FB15518CB500C64F49 /* white_paper.jpg in Resources */,
