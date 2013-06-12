@@ -22,38 +22,38 @@
 
 - (void)viewDidUnload
 {
-//	[self setEventTableView:nil];
+    //	[self setEventTableView:nil];
 	[super viewDidUnload];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	
+
 	self.title = [folder folderName];
 	userDrivenDataModelChange = NO;
 
-//	UIView *backgroundView = [[UIView alloc] init];
-//	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-//	[eventTableView setBackgroundView:backgroundView];
+    //	UIView *backgroundView = [[UIView alloc] init];
+    //	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+    //	[eventTableView setBackgroundView:backgroundView];
 
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	
+
 	if ([[self.fetchedResultsController fetchedObjects] count] != 0) {
 		[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 	}
-	
+
 }
 #pragma mark - Add Actions
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate
 {
 	[super setEditing:editing animated:animate];
-	
+
 	[eventTableView setEditing:editing animated:animate];
 }
 
@@ -74,53 +74,56 @@
         [edc setFolder:self.folder];
         [edc setDelegate:self];
         [edc setIsModal:YES];
-
+    } else if ([segue.identifier isEqualToString:@"addEvent"]) {
+        EventController *ec = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.eventTableView indexPathForSelectedRow];
+        Event *event = [_fetchedResultsController objectAtIndexPath:indexPath];
+        ec.event = event;
     }
-
 }
 
 #pragma mark - Core Data
 - (NSFetchedResultsController *)fetchedResultsController {
-	
+
 	if (_fetchedResultsController != nil) {
 		return _fetchedResultsController;
 	}
-	
+
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	NSEntityDescription *entity = [NSEntityDescription 
-																 entityForName:@"Event" inManagedObjectContext:[[EventStore defaultStore] context]];
+	NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Event" inManagedObjectContext:[[EventStore defaultStore] context]];
 	[fetchRequest setEntity:entity];
-	
+
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"folder == %@",
-														folder];
+                              folder];
 	[fetchRequest setPredicate:predicate];
 
-	NSSortDescriptor *sort = [[NSSortDescriptor alloc] 
-														initWithKey:@"latestDate" ascending:NO];
+	NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                              initWithKey:@"latestDate" ascending:NO];
 	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
-	
-	_fetchedResultsController = 
-	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
-																			managedObjectContext: [[EventStore defaultStore] context]
-																				sectionNameKeyPath:nil
-																								 cacheName:nil];
+
+	_fetchedResultsController =
+	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext: [[EventStore defaultStore] context]
+                                          sectionNameKeyPath:nil
+                                                   cacheName:nil];
 	_fetchedResultsController.delegate = self;
 
 	NSError *error = nil;
 	if (![_fetchedResultsController performFetch:&error]) {
-			// Update to handle the error appropriately.
+        // Update to handle the error appropriately.
 		NSLog(@"Error fetching folders %@, %@", error, [error userInfo]);
 		exit(-1);  // Fail
 	}
-	
-	return _fetchedResultsController;    
-	
+
+	return _fetchedResultsController;
+
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
 	if (userDrivenDataModelChange) return;
-	
+
 	[self.eventTableView beginUpdates];
 }
 
@@ -128,12 +131,12 @@
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
 {
 	if (userDrivenDataModelChange) return;
-	
+
 	switch(type) {
 		case NSFetchedResultsChangeInsert:
 			[self.eventTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
 			break;
-			
+
 		case NSFetchedResultsChangeDelete:
 			[self.eventTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
 			break;
@@ -145,7 +148,7 @@
       newIndexPath:(NSIndexPath *)newIndexPath
 {
 	if (userDrivenDataModelChange) return;
-	
+
 	UITableView *tableView = self.eventTableView;
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
@@ -153,17 +156,17 @@
 		case NSFetchedResultsChangeInsert:
 			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 			break;
-			
+
 		case NSFetchedResultsChangeDelete:
-			
+
 			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
-			
+
 		case NSFetchedResultsChangeUpdate:
 			[self configureCell:cell atIndexPath:indexPath];
 			[cell setNeedsLayout];
 			break;
-			
+
 		case NSFetchedResultsChangeMove:
 			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
@@ -174,39 +177,36 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
 	if (userDrivenDataModelChange) return;
-	
+
 	[self.eventTableView endUpdates];
-	
+
 }
 
 #pragma mark - TableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
+
 	id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	
+
 	if ([tableView isEditing]) {
 		EventDetailController *edc = [[EventDetailController alloc] init];
 		[edc setEvent:item];
 		[edc setFolder:folder];
 		[[self navigationController] pushViewController:edc animated:YES];
-		
+
 		[self setEditing:NO animated:NO];
-		
+
 	} else {
-		
-		[self.detailViewController setFolder:folder];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-			EventController *ec = [[EventController alloc] init];
-			[ec setEvent:item];			
-			[tableView deselectRowAtIndexPath:indexPath animated:YES];
-			[[self navigationController] pushViewController:ec animated:YES];
-		} else {
-			[self.detailViewController setEvent:item];			
-		}
+
+//		[self.detailViewController setFolder:folder];
+//        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            [self performSegueWithIdentifier:@"viewDetail" sender:self];
+//		} else {
+//			[self.detailViewController setEvent:item];
+//		}
 	}
-		
-		
+
+
 }
 
 
@@ -220,7 +220,7 @@
 			[[self navigationItem] setRightBarButtonItem:nil];
 			[self setEditing:NO animated:YES];
 		}
-		
+
 	}
 }
 
@@ -231,9 +231,9 @@
 //}
 //
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//	
+//
 //	id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
-//	
+//
 //	return theSection.name;
 //}
 
@@ -243,18 +243,18 @@
 	return [sectionInfo numberOfObjects];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
+
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell"];
-	
+
 	if (!cell) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"EventCell"];
 	}
 
 	[self configureCell:cell atIndexPath:indexPath];
 
-	
+
 	return cell;
 }
 
@@ -266,7 +266,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-	
+
 	Event *item = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
 	[[cell textLabel] setText:[item eventName]];
 	[[cell detailTextLabel] setText:[item subtitle]];
@@ -279,7 +279,7 @@
 	}	else {
 		cell.textLabel.textColor = [UIColor blackColor];
 	}
-	
+
 }
 
 #pragma mark - ItemDetailViewControllerDelegate

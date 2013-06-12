@@ -28,28 +28,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="m5S-Kp-ZI2">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="mCx-5K-Ylm" detailTextLabel="6gZ-DU-9We" style="IBUITableViewCellStyleValue1" id="m5S-Kp-ZI2">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="280" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="House" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bo-FW-NXj">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="139" id="UY1-I7-7yL"/>
-                                            </constraints>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCx-5K-Ylm">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Checked Air Filter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gZ-DU-9We">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <constraints>
-                                    <constraint firstItem="2bo-FW-NXj" firstAttribute="top" secondItem="m5S-Kp-ZI2" secondAttribute="top" constant="12" id="2UP-rG-8MH"/>
-                                    <constraint firstItem="2bo-FW-NXj" firstAttribute="leading" secondItem="m5S-Kp-ZI2" secondAttribute="leading" constant="30" id="v6b-WJ-9eT"/>
-                                </constraints>
                                 <connections>
                                     <segue destination="UZE-a6-EtP" kind="push" identifier="viewFolder" id="oNd-SK-al1"/>
                                 </connections>
@@ -77,14 +75,29 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="hfe-2U-zvq">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bVX-hY-KLn">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="eUl-aY-EgJ" detailTextLabel="7Y6-hi-4sJ" style="IBUITableViewCellStyleValue1" id="bVX-hY-KLn">
                                         <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUl-aY-EgJ">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Y6-hi-4sJ">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="OZl-Qr-VX1" kind="push" identifier="viewDetail" id="tCc-4a-Q9S"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -124,6 +137,58 @@
             </objects>
             <point key="canvasLocation" x="705" y="46"/>
         </scene>
+        <!--Event Controller - Event Detail-->
+        <scene sceneID="gdz-8Y-TYA">
+            <objects>
+                <viewController id="OZl-Qr-VX1" customClass="EventController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IeP-b0-Isf">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="JnT-bb-6wA">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OZl-Qr-VX1" id="B5m-FZ-fdm"/>
+                                    <outlet property="delegate" destination="OZl-Qr-VX1" id="mQF-mQ-fY9"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="On1-3m-Adw">
+                                <items>
+                                    <barButtonItem systemItem="action" id="YMC-47-0L3">
+                                        <connections>
+                                            <action selector="exportEvent:" destination="OZl-Qr-VX1" id="vIp-GD-E83"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Gsu-Tr-zfE"/>
+                                    <barButtonItem systemItem="add" id="mVx-Xj-f7Y">
+                                        <connections>
+                                            <action selector="addNewItem:" destination="OZl-Qr-VX1" id="ePW-2X-Ekp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JnT-bb-6wA" firstAttribute="leading" secondItem="IeP-b0-Isf" secondAttribute="leading" type="default" id="2HQ-BB-bHZ"/>
+                            <constraint firstItem="JnT-bb-6wA" firstAttribute="trailing" secondItem="IeP-b0-Isf" secondAttribute="trailing" type="default" id="7Ak-Gd-bR5"/>
+                            <constraint firstItem="On1-3m-Adw" firstAttribute="top" secondItem="JnT-bb-6wA" secondAttribute="bottom" type="default" id="9eb-nd-snK"/>
+                            <constraint firstItem="JnT-bb-6wA" firstAttribute="top" secondItem="IeP-b0-Isf" secondAttribute="top" type="default" id="Edh-NI-CQh"/>
+                            <constraint firstItem="On1-3m-Adw" firstAttribute="trailing" secondItem="IeP-b0-Isf" secondAttribute="trailing" type="default" id="U7i-kq-zJA"/>
+                            <constraint firstItem="On1-3m-Adw" firstAttribute="leading" secondItem="IeP-b0-Isf" secondAttribute="leading" type="default" id="YAc-hh-Xrk"/>
+                            <constraint firstItem="On1-3m-Adw" firstAttribute="bottom" secondItem="IeP-b0-Isf" secondAttribute="bottom" type="default" id="gHf-l6-7ch"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Event Detail" id="pOJ-De-Xxf"/>
+                    <connections>
+                        <outlet property="addButton" destination="mVx-Xj-f7Y" id="uBU-il-T6a"/>
+                        <outlet property="eventTableView" destination="JnT-bb-6wA" id="2a9-l5-Y2c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b5M-bh-gYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1194" y="-103"/>
+        </scene>
         <!--Event Detail Controller - New Event-->
         <scene sceneID="9b8-mF-SIb">
             <objects>
@@ -148,7 +213,7 @@
                             <outlet property="delegate" destination="2N3-2T-jE7" id="W8d-6r-JwG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Loc-jj-Yvk"/>
+                    <navigationItem key="navigationItem" title="New Event" id="Loc-jj-Yvk"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SsT-94-FOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -176,6 +241,16 @@
     <classes>
         <class className="CustomTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomTableViewController.h"/>
+        </class>
+        <class className="EventController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventController.h"/>
+            <relationships>
+                <relationship kind="action" name="addNewItem:"/>
+                <relationship kind="action" name="exportEvent:"/>
+                <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="exportButton" candidateClass="UIToolbar"/>
+            </relationships>
         </class>
         <class className="EventDetailController" superclassName="CustomTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDetailController.h"/>
