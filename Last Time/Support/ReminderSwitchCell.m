@@ -18,8 +18,8 @@
 	self.reminderSwitch = [[UISwitch alloc] init];
 	[reminderSwitch addTarget:delegate action:@selector(reminderSwitchChanged:) forControlEvents:UIControlEventValueChanged];
 	[reminderSwitch setOn:NO];
-	[reminderSwitch setOnTintColor:[UIColor brownColor]];
-	
+//	[reminderSwitch setOnTintColor:[UIColor brownColor]];
+
 	self.accessoryView = reminderSwitch;
 	
 	self.textLabel.text = NSLocalizedString(@"Reminder?",@"Reminder?");

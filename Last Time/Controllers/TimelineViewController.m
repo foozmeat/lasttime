@@ -226,7 +226,7 @@
 	if (!cell) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"EventCell"];
 	}
-	cell.detailTextLabel.textColor = [UIColor brownColor];
+//	cell.detailTextLabel.textColor = [UIColor brownColor];
 
 	cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {

@@ -68,7 +68,6 @@
 		3913EADC14EEB5DC0013A86A /* LocationSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */; };
 		391AF43C14F0C03F00DCA3F0 /* NumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 391AF43B14F0C03F00DCA3F0 /* NumberCell.m */; };
 		392009FF14E4B88D006B6A79 /* CustomTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 392009FE14E4B88D006B6A79 /* CustomTableViewController.m */; };
-		39200A1414E76C18006B6A79 /* EventController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39200A1314E76C17006B6A79 /* EventController.xib */; };
 		3940D3F014F17DE20056D01B /* HistoryLogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3940D3EF14F17DE20056D01B /* HistoryLogCell.xib */; };
 		3940D3F414F17E230056D01B /* HistoryLogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3940D3F314F17E230056D01B /* HistoryLogCell.m */; };
 		3950E86714BFE0AB009C6F6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
@@ -248,7 +247,6 @@
 		391AF43B14F0C03F00DCA3F0 /* NumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumberCell.m; path = Support/NumberCell.m; sourceTree = "<group>"; };
 		392009FD14E4B88D006B6A79 /* CustomTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewController.h; sourceTree = "<group>"; };
 		392009FE14E4B88D006B6A79 /* CustomTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewController.m; sourceTree = "<group>"; };
-		39200A1314E76C17006B6A79 /* EventController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventController.xib; sourceTree = "<group>"; };
 		3940D3EF14F17DE20056D01B /* HistoryLogCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryLogCell.xib; sourceTree = "<group>"; };
 		3940D3F214F17E230056D01B /* HistoryLogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryLogCell.h; path = ../Support/HistoryLogCell.h; sourceTree = "<group>"; };
 		3940D3F314F17E230056D01B /* HistoryLogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryLogCell.m; path = ../Support/HistoryLogCell.m; sourceTree = "<group>"; };
@@ -501,7 +499,6 @@
 			isa = PBXGroup;
 			children = (
 				1A8295B01767D6AA00CA0161 /* Storyboard.storyboard */,
-				39200A1314E76C17006B6A79 /* EventController.xib */,
 				3940D3EF14F17DE20056D01B /* HistoryLogCell.xib */,
 				1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */,
 				1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */,
@@ -871,7 +868,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				39D70CC114BD3515009C3615 /* InfoPlist.strings in Resources */,
-				39200A1414E76C18006B6A79 /* EventController.xib in Resources */,
 				3940D3F014F17DE20056D01B /* HistoryLogCell.xib in Resources */,
 				398F458514F1B6E50095A405 /* map-pin.png in Resources */,
 				398F458614F1B6E50095A405 /* map-pin@2x.png in Resources */,

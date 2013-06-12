@@ -17,7 +17,7 @@
 	self.pickerView.showsSelectionIndicator = YES;
 	[pickerView setDataSource:self];
 	[pickerView setDelegate:self];
-	self.detailTextLabel.textColor = [UIColor brownColor];
+//	self.detailTextLabel.textColor = [UIColor brownColor];
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		UIViewController *folderPickerViewController = [[UIViewController alloc] init];
 		

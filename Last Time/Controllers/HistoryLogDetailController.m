@@ -40,9 +40,9 @@
 {
 	[super viewWillAppear:animated];
 
-	UIView *backgroundView = [[UIView alloc] init];
-	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-	[self.tableView setBackgroundView:backgroundView];
+//	UIView *backgroundView = [[UIView alloc] init];
+//	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+//	[self.tableView setBackgroundView:backgroundView];
 
 }
 

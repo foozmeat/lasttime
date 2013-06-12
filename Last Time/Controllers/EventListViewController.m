@@ -74,7 +74,7 @@
         [edc setFolder:self.folder];
         [edc setDelegate:self];
         [edc setIsModal:YES];
-    } else if ([segue.identifier isEqualToString:@"addEvent"]) {
+    } else if ([segue.identifier isEqualToString:@"viewDetail"]) {
         EventController *ec = [segue destinationViewController];
         NSIndexPath *indexPath = [self.eventTableView indexPathForSelectedRow];
         Event *event = [_fetchedResultsController objectAtIndexPath:indexPath];
@@ -197,13 +197,8 @@
 		[self setEditing:NO animated:NO];
 
 	} else {
-
-//		[self.detailViewController setFolder:folder];
-//        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            [self performSegueWithIdentifier:@"viewDetail" sender:self];
-//		} else {
-//			[self.detailViewController setEvent:item];
-//		}
+		[self performSegueWithIdentifier:@"viewDetail" sender:self];
+		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	}
 
 
@@ -270,15 +265,15 @@
 	Event *item = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
 	[[cell textLabel] setText:[item eventName]];
 	[[cell detailTextLabel] setText:[item subtitle]];
-	cell.selectionStyle = UITableViewCellSelectionStyleGray;
-	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-	cell.detailTextLabel.textColor = [UIColor brownColor];
+//	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+//	cell.detailTextLabel.textColor = [UIColor brownColor];
 
-	if ([item reminderExpired]) {
-		cell.textLabel.textColor = [UIColor redColor];
-	}	else {
-		cell.textLabel.textColor = [UIColor blackColor];
-	}
+//	if ([item reminderExpired]) {
+//		cell.textLabel.textColor = [UIColor redColor];
+//	}	else {
+//		cell.textLabel.textColor = [UIColor blackColor];
+//	}
 
 }
 

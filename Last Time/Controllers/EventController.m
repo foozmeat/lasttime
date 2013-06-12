@@ -22,18 +22,18 @@
 @synthesize event = _event; 
 @synthesize folder;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	if (self) {
-	}
-	return self;
-}
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//	if (self) {
+//	}
+//	return self;
+//}
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-	return [self init];
-}
+//- (id)initWithStyle:(UITableViewStyle)style
+//{
+//	return [self init];
+//}
 
 #pragma mark -
 - (void)setEvent:(Event *)event
@@ -130,22 +130,29 @@
 
 - (IBAction)addNewItem:(id)sender
 {
-	HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
-	
-	[hldc setLogEntry:[[EventStore defaultStore] createLogEntry]];
-	[hldc setEvent:_event];
-	[hldc setDelegate:self];
-	
-	UINavigationController *newNavController = [[UINavigationController alloc]
-																							initWithRootViewController:hldc];
-
-	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
-		[newNavController setModalPresentationStyle:UIModalPresentationFormSheet];
-	}
-	
-	[[self navigationController] presentModalViewController:newNavController
-																								 animated:YES];
+	[self performSegueWithIdentifier:@"addLogEntry" sender:self];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"addLogEntry"]) {
+		HistoryLogDetailController *hldc = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+
+		[hldc setLogEntry:[[EventStore defaultStore] createLogEntry]];
+		[hldc setEvent:self.event];
+		[hldc setDelegate:self];
+		[hldc setIsModal:YES];
+
+	} else if ([segue.identifier isEqualToString:@"editLogEntry"]) {
+		HistoryLogDetailController *hldc = [segue destinationViewController];
+		NSIndexPath *indexPath = [self.eventTableView indexPathForSelectedRow];
+		[hldc setLogEntry:[[_event logEntryCollection] objectAtIndex:[indexPath row]]];
+		[hldc setIsModal:NO];
+
+	}
+}
+
+
 
 #pragma mark - TableView Delegate methods
 
@@ -175,15 +182,8 @@
 		[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 
 	} else if (section == kHistorySection) {
-		
-		HistoryLogDetailController *hldc = [[HistoryLogDetailController alloc] init];
-		
-		[hldc setLogEntry:[[_event logEntryCollection] objectAtIndex:[indexPath row]]];
-		
+		[self performSegueWithIdentifier:@"editLogEntry" sender:self];
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-		[[self navigationController] pushViewController:hldc animated:YES];
-
 	}
 }
 
@@ -226,10 +226,10 @@
 	label.backgroundColor = [UIColor clearColor];
 	label.font = [UIFont boldSystemFontOfSize:16.0f];
 
-	label.textColor = [UIColor brownColor];
-	label.shadowColor = [UIColor colorWithRed:83 green:52 blue:24 alpha:1.0];
-	label.shadowOffset = CGSizeMake(0, 1);
-	
+//	label.textColor = [UIColor brownColor];
+//	label.shadowColor = [UIColor colorWithRed:83 green:52 blue:24 alpha:1.0];
+//	label.shadowOffset = CGSizeMake(0, 1);
+
 	[v addSubview:label];
 	
 	return v;
@@ -324,8 +324,8 @@
 	if (!cell) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
 																	reuseIdentifier:@"AverageCell"];
-		cell.detailTextLabel.textColor = [UIColor brownColor];
-		cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//		cell.detailTextLabel.textColor = [UIColor brownColor];
+//		cell.selectionStyle = UITableViewCellSelectionStyleGray;
 	}
 
 	if ([indexPath section] == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
@@ -429,7 +429,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
 
 	if ([[_event logEntryCollection] count] > 0) {
 		if ([indexPath section] == kHistorySection) {
@@ -438,7 +438,7 @@
 			if ([historyLogCell.logEntryValueCell.text isEqualToString:@""]) {
 				historyLogCell.logEntryValueCell.text = NSLocalizedString(@"No Value", @"The value is empty");
 			} else {
-				historyLogCell.logEntryValueCell.textColor = [UIColor brownColor];
+//				historyLogCell.logEntryValueCell.textColor = [UIColor brownColor];
 				historyLogCell.logEntryValueCell.font = [UIFont systemFontOfSize:14.0f];
 				
 			}
@@ -446,7 +446,7 @@
 			if ([historyLogCell.logEntryNoteCell.text isEqualToString:@""]) {
 				historyLogCell.logEntryNoteCell.text = NSLocalizedString(@"No Note", @"The note is blank");
 			} else {
-				historyLogCell.logEntryNoteCell.textColor = [UIColor brownColor];
+//				historyLogCell.logEntryNoteCell.textColor = [UIColor brownColor];
 				historyLogCell.logEntryNoteCell.font = [UIFont systemFontOfSize:14.0f];
 				
 			}
@@ -461,9 +461,9 @@
 	[super viewWillAppear:animated];
 	numberFormatter = [[NSNumberFormatter alloc] init];
 	
-	UIView *backgroundView = [[UIView alloc] init];
-	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-	[eventTableView setBackgroundView:backgroundView];
+//	UIView *backgroundView = [[UIView alloc] init];
+//	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+//	[eventTableView setBackgroundView:backgroundView];
 
 	[[self navigationItem] setTitle:[_event eventName]];
 	[[self event] refreshItems];
@@ -475,13 +475,10 @@
 {
 	[super viewDidAppear:animated];
 	
-	if (_event == nil) {
+	if (self.event == nil) {
+		NSAssert(self.event != nil, @"Our Event should not be nil");
 		[[self addButton] setEnabled:NO];
 	} 
-}
-- (void)viewDidLoad
-{
-	[super viewDidLoad];
 }
 
 - (void)viewDidUnload
@@ -491,8 +488,6 @@
 	[self setExportButton:nil];
 	[super viewDidUnload];
 }
-
-
 
 #pragma mark - ItemDetailViewControllerDelegate
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc

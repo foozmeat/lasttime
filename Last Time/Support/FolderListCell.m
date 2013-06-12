@@ -29,7 +29,7 @@
 			self.cellTextField.returnKeyType = UIReturnKeyDone;
 			self.cellTextField.hidden = YES;
 
-			self.detailTextLabel.textColor = [UIColor brownColor];
+//			self.detailTextLabel.textColor = [UIColor brownColor];
 			[self addSubview:self.cellTextField];
     }
     return self;
