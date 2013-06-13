@@ -57,7 +57,7 @@
 	[super setEditing:editing animated:animated];
 	
 	if (editing) {
-		self.textLabel.hidden = YES;
+//		self.textLabel.hidden = YES;
 		self.detailTextLabel.hidden = YES;
 		self.cellTextField.hidden = NO;
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
