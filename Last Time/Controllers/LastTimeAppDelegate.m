@@ -10,7 +10,6 @@
 #import "FolderListViewController.h"
 #import "EventController.h"
 #import "EventStore.h"
-#import "MGSplitViewController.h"
 #import "SegmentsController.h"
 #import "TimelineViewController.h"
 #import "Event.h"

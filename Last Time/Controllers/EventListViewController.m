@@ -234,15 +234,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell"];
-
-	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"EventCell"];
-	}
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventListCell"];
 
 	[self configureCell:cell atIndexPath:indexPath];
-
-
 	return cell;
 }
 

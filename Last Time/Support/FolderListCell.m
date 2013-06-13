@@ -15,8 +15,6 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-			self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			self.editingAccessoryType = UITableViewCellAccessoryNone;
 			
 			self.cellTextField = [[UITextField alloc] initWithFrame:CGRectZero];
 			self.cellTextField.autocorrectionType = UITextAutocorrectionTypeDefault;

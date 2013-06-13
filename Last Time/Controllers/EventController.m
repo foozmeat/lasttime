@@ -21,19 +21,6 @@
 @synthesize event = _event; 
 @synthesize folder;
 
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//	if (self) {
-//	}
-//	return self;
-//}
-
-//- (id)initWithStyle:(UITableViewStyle)style
-//{
-//	return [self init];
-//}
-
 #pragma mark -
 - (void)setEvent:(Event *)event
 {
@@ -320,12 +307,6 @@
 
 	cell = [tableView dequeueReusableCellWithIdentifier:@"AverageCell"];
 	
-	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"AverageCell"];
-//		cell.detailTextLabel.textColor = [UIColor brownColor];
-//		cell.selectionStyle = UITableViewCellSelectionStyleGray;
-	}
-
 	if ([indexPath section] == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
 
 		cell.textLabel.text = NSLocalizedString(@"Last Time",@"Last Time");
@@ -376,12 +357,6 @@
 		if ([[_event logEntryCollection] count] > 0) {
 			
 			HistoryLogCell *historyLogCell = [tableView dequeueReusableCellWithIdentifier:@"HistoryLogCell"];
-			
-			if (historyLogCell == nil) {
-				UIViewController *temporaryController = [[UIViewController alloc] initWithNibName:@"HistoryLogCell" bundle:nil];
-				historyLogCell = (HistoryLogCell *)temporaryController.view;
-				historyLogCell.selectionStyle = UITableViewCellSelectionStyleGray;
-			}
 
 			LogEntry *item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
 			
@@ -406,12 +381,7 @@
 		} else {
 			cell = [tableView dequeueReusableCellWithIdentifier:@"NoHistoryCell"];
 			
-			if (!cell) {
-				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 
-																			reuseIdentifier:@"NoHistoryCell"];
-			}
 			cell.textLabel.text = NSLocalizedString(@"No History Entries",@"No History Entries");
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			return cell;
 
 		}

@@ -51,10 +51,6 @@
 		1A9CBA1F175C22C10040D99F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988B96114DC31500010062E /* libTestFlight.a */; };
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
 		1ABC9B0B1589284F00E12E31 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */; };
-		1AC020A3152550200022A07B /* oldEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0209E152550200022A07B /* oldEvent.m */; };
-		1AC020A4152550200022A07B /* oldEventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC020A0152550200022A07B /* oldEventFolder.m */; };
-		1AC020A5152550200022A07B /* oldLogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC020A2152550200022A07B /* oldLogEntry.m */; };
-		1AC09F891520BAB600C483DE /* PlistStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC09F881520BAB600C483DE /* PlistStore.m */; };
 		1AC0E2591552D29D00BD05AB /* paper@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A628507153F1B70003C57F9 /* paper@2x.jpg */; };
 		1AC0E25A1552D2A200BD05AB /* paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A628505153F1A4F003C57F9 /* paper.jpg */; };
 		1AC62B9F152950760019362B /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC62B9E152950760019362B /* TimelineViewController.m */; };
@@ -88,9 +84,6 @@
 		39AA478114DAD8B300580EB9 /* EventDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AA477F14DAD8B300580EB9 /* EventDetailController.m */; };
 		39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AED56614BD3B6600AE6625 /* CoreLocation.framework */; };
 		39BF455714F33BC40059C8B9 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39BF455614F33BC40059C8B9 /* libz.dylib */; };
-		39C10D3A15005B6A00DF3F70 /* MGSplitCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C10D3515005B6A00DF3F70 /* MGSplitCornersView.m */; };
-		39C10D3B15005B6A00DF3F70 /* MGSplitDividerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C10D3715005B6A00DF3F70 /* MGSplitDividerView.m */; };
-		39C10D3C15005B6A00DF3F70 /* MGSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C10D3915005B6A00DF3F70 /* MGSplitViewController.m */; };
 		39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB614BD3515009C3615 /* UIKit.framework */; };
 		39D70CB914BD3515009C3615 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		39D70CBB14BD3515009C3615 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CBA14BD3515009C3615 /* CoreGraphics.framework */; };
@@ -217,14 +210,6 @@
 		1AB4B3E6152961B800D66347 /* SegmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentsController.m; path = "Last Time/Support/SegmentsController.m"; sourceTree = SOURCE_ROOT; };
 		1AB6DEA61597705D00F68A50 /* Last Time 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 5.xcdatamodel"; sourceTree = "<group>"; };
 		1ABC9B0A1589284F00E12E31 /* TimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
-		1AC0209D152550200022A07B /* oldEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oldEvent.h; sourceTree = "<group>"; };
-		1AC0209E152550200022A07B /* oldEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oldEvent.m; sourceTree = "<group>"; };
-		1AC0209F152550200022A07B /* oldEventFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oldEventFolder.h; sourceTree = "<group>"; };
-		1AC020A0152550200022A07B /* oldEventFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oldEventFolder.m; sourceTree = "<group>"; };
-		1AC020A1152550200022A07B /* oldLogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = oldLogEntry.h; sourceTree = "<group>"; };
-		1AC020A2152550200022A07B /* oldLogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = oldLogEntry.m; sourceTree = "<group>"; };
-		1AC09F871520BAB600C483DE /* PlistStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistStore.h; sourceTree = "<group>"; };
-		1AC09F881520BAB600C483DE /* PlistStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistStore.m; sourceTree = "<group>"; };
 		1AC62B9D152950760019362B /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		1AC62B9E152950760019362B /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		1ADD036615165531006EAD7E /* EventFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFolder.h; sourceTree = "<group>"; };
@@ -279,12 +264,6 @@
 		39AED56614BD3B6600AE6625 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		39B8C8771504684800A55B5C /* libprofile_rt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprofile_rt.dylib; path = Platforms/iPhoneOS.platform/Developer/usr/lib/libprofile_rt.dylib; sourceTree = DEVELOPER_DIR; };
 		39BF455614F33BC40059C8B9 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		39C10D3415005B6A00DF3F70 /* MGSplitCornersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitCornersView.h; sourceTree = "<group>"; };
-		39C10D3515005B6A00DF3F70 /* MGSplitCornersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitCornersView.m; sourceTree = "<group>"; };
-		39C10D3615005B6A00DF3F70 /* MGSplitDividerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitDividerView.h; sourceTree = "<group>"; };
-		39C10D3715005B6A00DF3F70 /* MGSplitDividerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitDividerView.m; sourceTree = "<group>"; };
-		39C10D3815005B6A00DF3F70 /* MGSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSplitViewController.h; sourceTree = "<group>"; };
-		39C10D3915005B6A00DF3F70 /* MGSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSplitViewController.m; sourceTree = "<group>"; };
 		39D70CB214BD3515009C3615 /* Last Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Last Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D70CB614BD3515009C3615 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		39D70CB814BD3515009C3615 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -430,19 +409,6 @@
 			name = Pickers;
 			sourceTree = "<group>";
 		};
-		1AC0209C152550200022A07B /* old */ = {
-			isa = PBXGroup;
-			children = (
-				1AC0209D152550200022A07B /* oldEvent.h */,
-				1AC0209E152550200022A07B /* oldEvent.m */,
-				1AC0209F152550200022A07B /* oldEventFolder.h */,
-				1AC020A0152550200022A07B /* oldEventFolder.m */,
-				1AC020A1152550200022A07B /* oldLogEntry.h */,
-				1AC020A2152550200022A07B /* oldLogEntry.m */,
-			);
-			path = old;
-			sourceTree = "<group>";
-		};
 		3904CFA214C078E200B7396A /* RandomEventFolder */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,9 +452,6 @@
 				39918C2414F7F99700D8D4EE /* EventStore.m */,
 				1AED06221510F9F100CCDA4F /* LogEntry.h */,
 				1AED06231510F9F100CCDA4F /* LogEntry.m */,
-				1AC09F871520BAB600C483DE /* PlistStore.h */,
-				1AC09F881520BAB600C483DE /* PlistStore.m */,
-				1AC0209C152550200022A07B /* old */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -605,20 +568,6 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
-		39C10D3315005B6A00DF3F70 /* MGSplitView */ = {
-			isa = PBXGroup;
-			children = (
-				39C10D3415005B6A00DF3F70 /* MGSplitCornersView.h */,
-				39C10D3515005B6A00DF3F70 /* MGSplitCornersView.m */,
-				39C10D3615005B6A00DF3F70 /* MGSplitDividerView.h */,
-				39C10D3715005B6A00DF3F70 /* MGSplitDividerView.m */,
-				39C10D3815005B6A00DF3F70 /* MGSplitViewController.h */,
-				39C10D3915005B6A00DF3F70 /* MGSplitViewController.m */,
-			);
-			name = MGSplitView;
-			path = Resources/MGSplitView;
-			sourceTree = "<group>";
-		};
 		39D70CA714BD3515009C3615 = {
 			isa = PBXGroup;
 			children = (
@@ -710,7 +659,6 @@
 				39825C8F14E8757200C4D684 /* FileHelpers.m */,
 				1A628502153F0FD7003C57F9 /* HeaderView.h */,
 				1A628503153F0FD7003C57F9 /* HeaderView.m */,
-				39C10D3315005B6A00DF3F70 /* MGSplitView */,
 				1A17C1EC158936DE00FED786 /* FourCSV */,
 				1A95D74F159CB9F2005686C1 /* NSString+UUID.h */,
 				1A95D750159CB9F2005686C1 /* NSString+UUID.m */,
@@ -975,17 +923,10 @@
 				39918C1714F6062000D8D4EE /* EventListViewController.m in Sources */,
 				39918C2514F7F99700D8D4EE /* EventStore.m in Sources */,
 				399F70B714FB1FB00012F089 /* FolderListCell.m in Sources */,
-				39C10D3A15005B6A00DF3F70 /* MGSplitCornersView.m in Sources */,
-				39C10D3B15005B6A00DF3F70 /* MGSplitDividerView.m in Sources */,
-				39C10D3C15005B6A00DF3F70 /* MGSplitViewController.m in Sources */,
 				1AED06091510EEF100CCDA4F /* Last Time.xcdatamodeld in Sources */,
 				1AED06241510F9F100CCDA4F /* LogEntry.m in Sources */,
 				1ADD036815165531006EAD7E /* EventFolder.m in Sources */,
 				1A161D6F152018D60062B4A5 /* Event.m in Sources */,
-				1AC09F891520BAB600C483DE /* PlistStore.m in Sources */,
-				1AC020A3152550200022A07B /* oldEvent.m in Sources */,
-				1AC020A4152550200022A07B /* oldEventFolder.m in Sources */,
-				1AC020A5152550200022A07B /* oldLogEntry.m in Sources */,
 				1AC62B9F152950760019362B /* TimelineViewController.m in Sources */,
 				1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */,
 				1A03C076152F470700249036 /* NSManagedObjectContext+FetchAdditions.m in Sources */,
@@ -1337,7 +1278,7 @@
 					"-ftest-coverage",
 					"-fprofile-arcs",
 				);
-				OTHER_LDFLAGS = "-lprofile_rt";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "Last Time";
 				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;

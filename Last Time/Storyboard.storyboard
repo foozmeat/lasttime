@@ -204,7 +204,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AverageCell" textLabel="iEd-qR-y3b" detailTextLabel="yY0-YK-Zg6" style="IBUITableViewCellStyleValue1" id="WVh-Tv-otd" customClass="HistoryLogCell">
-                                        <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -217,6 +217,29 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yY0-YK-Zg6">
+                                                    <rect key="frame" x="246" y="11" width="44" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoHistoryCell" textLabel="DmU-rf-BFO" detailTextLabel="4N6-fd-bFR" style="IBUITableViewCellStyleValue1" id="QN2-u0-Bx6" customClass="HistoryLogCell">
+                                        <rect key="frame" x="0.0" y="135" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="No History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DmU-rf-BFO">
+                                                    <rect key="frame" x="10" y="11" width="86" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4N6-fd-bFR">
                                                     <rect key="frame" x="246" y="11" width="44" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -334,47 +357,6 @@
             <point key="canvasLocation" x="1194" y="565"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CustomTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomTableViewController.h"/>
-        </class>
-        <class className="EventController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventController.h"/>
-            <relationships>
-                <relationship kind="action" name="addNewItem:"/>
-                <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="EventDetailController" superclassName="CustomTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDetailController.h"/>
-        </class>
-        <class className="EventListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="FolderListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FolderListViewController.h"/>
-        </class>
-        <class className="HistoryLogCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryLogCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="locationMarker" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="logEntryDateCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="logEntryLocationCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="logEntryNoteCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="logEntryValueCell" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HistoryLogDetailController" superclassName="CustomTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryLogDetailController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
