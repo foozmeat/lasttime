@@ -81,6 +81,10 @@
 		1A95D751159CB9F2005686C1 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A95D750159CB9F2005686C1 /* NSString+UUID.m */; };
 		1A9CBA1F175C22C10040D99F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988B96114DC31500010062E /* libTestFlight.a */; };
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
+		1AC084FD176A8589004EB084 /* 33-cabinet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC084FB176A8589004EB084 /* 33-cabinet.png */; };
+		1AC084FE176A8589004EB084 /* 33-cabinet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC084FC176A8589004EB084 /* 33-cabinet@2x.png */; };
+		1AC08501176A8782004EB084 /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC084FF176A8782004EB084 /* 11-clock.png */; };
+		1AC08502176A8782004EB084 /* 11-clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC08500176A8782004EB084 /* 11-clock@2x.png */; };
 		1AC0E2591552D29D00BD05AB /* paper@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A628507153F1B70003C57F9 /* paper@2x.jpg */; };
 		1AC0E25A1552D2A200BD05AB /* paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A628505153F1A4F003C57F9 /* paper.jpg */; };
 		1AC62B9F152950760019362B /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC62B9E152950760019362B /* TimelineViewController.m */; };
@@ -282,6 +286,10 @@
 		1AB4B3E5152961B800D66347 /* SegmentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SegmentsController.h; path = "Last Time/Support/SegmentsController.h"; sourceTree = SOURCE_ROOT; };
 		1AB4B3E6152961B800D66347 /* SegmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SegmentsController.m; path = "Last Time/Support/SegmentsController.m"; sourceTree = SOURCE_ROOT; };
 		1AB6DEA61597705D00F68A50 /* Last Time 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 5.xcdatamodel"; sourceTree = "<group>"; };
+		1AC084FB176A8589004EB084 /* 33-cabinet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "33-cabinet.png"; sourceTree = "<group>"; };
+		1AC084FC176A8589004EB084 /* 33-cabinet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "33-cabinet@2x.png"; sourceTree = "<group>"; };
+		1AC084FF176A8782004EB084 /* 11-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock.png"; sourceTree = "<group>"; };
+		1AC08500176A8782004EB084 /* 11-clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock@2x.png"; sourceTree = "<group>"; };
 		1AC62B9D152950760019362B /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		1AC62B9E152950760019362B /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		1ADD036615165531006EAD7E /* EventFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFolder.h; sourceTree = "<group>"; };
@@ -782,6 +790,10 @@
 				39BE368414F3E2BD00DBCC43 /* Icons */,
 				398F458314F1B6E50095A405 /* map-pin.png */,
 				398F458414F1B6E50095A405 /* map-pin@2x.png */,
+				1AC084FF176A8782004EB084 /* 11-clock.png */,
+				1AC08500176A8782004EB084 /* 11-clock@2x.png */,
+				1AC084FB176A8589004EB084 /* 33-cabinet.png */,
+				1AC084FC176A8589004EB084 /* 33-cabinet@2x.png */,
 			);
 			name = Images;
 			path = Resources/Images;
@@ -1004,6 +1016,10 @@
 				1A81EC76176A617800A65CF7 /* rowselected@2x.png in Resources */,
 				1A81EC77176A617800A65CF7 /* rowsquare.png in Resources */,
 				1A81EC78176A617800A65CF7 /* rowsquare@2x.png in Resources */,
+				1AC084FD176A8589004EB084 /* 33-cabinet.png in Resources */,
+				1AC084FE176A8589004EB084 /* 33-cabinet@2x.png in Resources */,
+				1AC08501176A8782004EB084 /* 11-clock.png in Resources */,
+				1AC08502176A8782004EB084 /* 11-clock@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
