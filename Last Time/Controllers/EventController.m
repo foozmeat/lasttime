@@ -16,7 +16,6 @@
 @end
 
 @implementation EventController
-@synthesize addButton;
 @synthesize eventTableView;
 @synthesize event = _event; 
 @synthesize folder;
@@ -114,11 +113,6 @@
 }
 
 
-- (IBAction)addNewItem:(id)sender
-{
-	[self performSegueWithIdentifier:@"addLogEntry" sender:self];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	if ([segue.identifier isEqualToString:@"addLogEntry"]) {
@@ -194,7 +188,10 @@
 			[_event removeLogEntry:item];
 			[_event updateLatestDate];
 			[tableView reloadData];
-			
+
+			if ([[_event logEntryCollection] count] == 0) {
+				self.exportButton.enabled = NO;
+			}
 		}
 	}
 	
@@ -441,12 +438,20 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
-	[super viewDidAppear:animated];
-	
+
 	if (self.event == nil) {
 		NSAssert(self.event != nil, @"Our Event should not be nil");
-		[[self addButton] setEnabled:NO];
-	} 
+		self.addButton.enabled = NO;
+		self.exportButton.enabled = NO;
+	}
+
+	if ([[_event logEntryCollection] count] == 0) {
+		self.exportButton.enabled = NO;
+	} else {
+		self.exportButton.enabled = YES;
+	}
+
+	[super viewDidAppear:animated];
 }
 
 - (void)viewDidUnload

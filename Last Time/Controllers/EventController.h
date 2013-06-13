@@ -48,7 +48,7 @@ enum historyViewCellTags {
 @property (nonatomic, strong) EventFolder *folder;
 @property (strong, nonatomic) IBOutlet UITableView *eventTableView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *exportButton;
 
-- (IBAction)addNewItem:(id)sender;
 
 @end

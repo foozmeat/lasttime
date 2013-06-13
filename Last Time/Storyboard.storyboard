@@ -226,7 +226,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoHistoryCell" textLabel="DmU-rf-BFO" detailTextLabel="4N6-fd-bFR" style="IBUITableViewCellStyleValue1" id="QN2-u0-Bx6" customClass="HistoryLogCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoHistoryCell" textLabel="DmU-rf-BFO" style="IBUITableViewCellStyleDefault" id="QN2-u0-Bx6" customClass="HistoryLogCell">
                                         <rect key="frame" x="0.0" y="135" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -234,15 +234,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="No History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DmU-rf-BFO">
-                                                    <rect key="frame" x="10" y="11" width="86" height="21"/>
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4N6-fd-bFR">
-                                                    <rect key="frame" x="246" y="11" width="44" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -265,7 +259,6 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Gsu-Tr-zfE"/>
                                     <barButtonItem systemItem="add" id="mVx-Xj-f7Y">
                                         <connections>
-                                            <action selector="addNewItem:" destination="OZl-Qr-VX1" id="ePW-2X-Ekp"/>
                                             <segue destination="m2s-0E-uSp" kind="push" identifier="addLogEntry" id="ye4-rJ-VmR"/>
                                         </connections>
                                     </barButtonItem>
@@ -285,8 +278,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Event Detail" id="pOJ-De-Xxf"/>
                     <connections>
-                        <outlet property="addButton" destination="mVx-Xj-f7Y" id="uBU-il-T6a"/>
+                        <outlet property="addButton" destination="mVx-Xj-f7Y" id="Qks-Iy-1gm"/>
                         <outlet property="eventTableView" destination="JnT-bb-6wA" id="2a9-l5-Y2c"/>
+                        <outlet property="exportButton" destination="YMC-47-0L3" id="32U-E0-L4b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b5M-bh-gYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
