@@ -129,7 +129,7 @@
                     <connections>
                         <outlet property="eventTableView" destination="hfe-2U-zvq" id="1Ih-Nm-NQE"/>
                         <segue destination="OZl-Qr-VX1" kind="push" identifier="viewDetail" id="1Og-Yj-wd6"/>
-                        <segue destination="OZl-Qr-VX1" kind="push" identifier="editEvent" id="BLz-qO-8eN"/>
+                        <segue destination="2N3-2T-jE7" kind="push" identifier="editEvent" id="OIM-6G-7cT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G65-Ag-f3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -203,11 +203,11 @@
                                             <segue destination="m2s-0E-uSp" kind="push" identifier="editLogEntry" id="OiC-I1-Gzp"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AverageCell" textLabel="iEd-qR-y3b" detailTextLabel="yY0-YK-Zg6" style="IBUITableViewCellStyleValue1" id="WVh-Tv-otd" customClass="HistoryLogCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AverageCell" textLabel="iEd-qR-y3b" detailTextLabel="yY0-YK-Zg6" style="IBUITableViewCellStyleValue1" id="WVh-Tv-otd" customClass="HistoryLogCell">
                                         <rect key="frame" x="0.0" y="91" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iEd-qR-y3b">
@@ -217,7 +217,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yY0-YK-Zg6">
-                                                    <rect key="frame" x="226" y="11" width="44" height="21"/>
+                                                    <rect key="frame" x="246" y="11" width="44" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -342,7 +342,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventController.h"/>
             <relationships>
                 <relationship kind="action" name="addNewItem:"/>
-                <relationship kind="action" name="exportEvent:"/>
                 <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
             </relationships>
@@ -353,7 +352,6 @@
         <class className="EventListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addNewEvent:"/>
                 <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -383,7 +381,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="OIM-6G-7cT"/>
         <segue reference="ye4-rJ-VmR"/>
-        <segue reference="BLz-qO-8eN"/>
     </inferredMetricsTieBreakers>
 </document>
