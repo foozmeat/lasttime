@@ -79,6 +79,13 @@
         NSIndexPath *indexPath = [self.eventTableView indexPathForSelectedRow];
         Event *event = [_fetchedResultsController objectAtIndexPath:indexPath];
         ec.event = event;
+    } else if ([segue.identifier isEqualToString:@"editEvent"]) {
+        EventDetailController *edc = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.eventTableView indexPathForSelectedRow];
+        edc.event =[_fetchedResultsController objectAtIndexPath:indexPath];
+        [edc setFolder:self.folder];
+        [edc setDelegate:self];
+        [edc setIsModal:NO];
     }
 }
 
@@ -186,16 +193,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-	id item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
 	if ([tableView isEditing]) {
-		EventDetailController *edc = [[EventDetailController alloc] init];
-		[edc setEvent:item];
-		[edc setFolder:folder];
-		[[self navigationController] pushViewController:edc animated:YES];
-
+		[self performSegueWithIdentifier:@"editEvent" sender:self];
 		[self setEditing:NO animated:NO];
-
 	} else {
 		[self performSegueWithIdentifier:@"viewDetail" sender:self];
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];

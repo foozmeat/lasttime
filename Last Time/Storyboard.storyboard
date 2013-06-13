@@ -72,7 +72,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="hfe-2U-zvq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="hfe-2U-zvq">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventListCell" textLabel="eUl-aY-EgJ" detailTextLabel="7Y6-hi-4sJ" style="IBUITableViewCellStyleValue1" id="bVX-hY-KLn">
@@ -95,9 +95,6 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <connections>
-                                            <segue destination="OZl-Qr-VX1" kind="push" identifier="viewDetail" id="tCc-4a-Q9S"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -131,6 +128,8 @@
                     <navigationItem key="navigationItem" title="Event List" id="4cc-lH-xK9"/>
                     <connections>
                         <outlet property="eventTableView" destination="hfe-2U-zvq" id="1Ih-Nm-NQE"/>
+                        <segue destination="OZl-Qr-VX1" kind="push" identifier="viewDetail" id="1Og-Yj-wd6"/>
+                        <segue destination="OZl-Qr-VX1" kind="push" identifier="editEvent" id="BLz-qO-8eN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G65-Ag-f3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,11 +147,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="JnT-bb-6wA">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryLogCell" id="8Wp-8e-xAz" customClass="HistoryLogCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryLogCell" id="8Wp-8e-xAz" customClass="HistoryLogCell">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No Note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Dvj-4O-RrU">
@@ -172,9 +171,6 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="right" text="Wednesday, September 31, 2012" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="9Wr-Mu-f2t">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="214" id="0Tq-bx-t9H"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -190,12 +186,13 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="NyH-EZ-1l1" firstAttribute="trailing" secondItem="9Wr-Mu-f2t" secondAttribute="trailing" type="default" id="5JE-er-Wa3"/>
-                                            <constraint firstItem="9Wr-Mu-f2t" firstAttribute="leading" secondItem="8Wp-8e-xAz" secondAttribute="leading" constant="68" id="8Aj-8A-F9x"/>
                                             <constraint firstAttribute="bottom" secondItem="NyH-EZ-1l1" secondAttribute="bottom" constant="2" id="9Gt-Ao-SCQ"/>
                                             <constraint firstItem="Dvj-4O-RrU" firstAttribute="top" secondItem="8Wp-8e-xAz" secondAttribute="top" constant="3" id="GW7-ia-pN8"/>
+                                            <constraint firstItem="NyH-EZ-1l1" firstAttribute="leading" secondItem="Lav-Ir-26n" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="RWi-Iq-RMr"/>
                                             <constraint firstItem="9Wr-Mu-f2t" firstAttribute="baseline" secondItem="Dvj-4O-RrU" secondAttribute="baseline" type="default" id="eiP-VS-RIZ"/>
                                             <constraint firstAttribute="bottom" secondItem="Lav-Ir-26n" secondAttribute="bottom" constant="3" id="mAv-ke-5yt"/>
                                             <constraint firstItem="Dvj-4O-RrU" firstAttribute="leading" secondItem="8Wp-8e-xAz" secondAttribute="leading" constant="22" id="s6D-bI-UYR"/>
+                                            <constraint firstItem="9Wr-Mu-f2t" firstAttribute="leading" secondItem="Dvj-4O-RrU" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="uyt-qJ-x3A"/>
                                             <constraint firstItem="Lav-Ir-26n" firstAttribute="leading" secondItem="Dvj-4O-RrU" secondAttribute="leading" type="default" id="xEU-Og-Wyg"/>
                                         </constraints>
                                         <connections>
@@ -246,7 +243,7 @@
                                     <barButtonItem systemItem="add" id="mVx-Xj-f7Y">
                                         <connections>
                                             <action selector="addNewItem:" destination="OZl-Qr-VX1" id="ePW-2X-Ekp"/>
-                                            <segue destination="m2s-0E-uSp" kind="custom" identifier="addLogEntry" id="ye4-rJ-VmR"/>
+                                            <segue destination="m2s-0E-uSp" kind="push" identifier="addLogEntry" id="ye4-rJ-VmR"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -387,5 +384,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ye4-rJ-VmR"/>
+        <segue reference="BLz-qO-8eN"/>
     </inferredMetricsTieBreakers>
 </document>
