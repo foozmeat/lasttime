@@ -43,6 +43,7 @@
 
 - (void)viewDidLoad
 {
+	self.requiredField = -1;
 	[super viewDidLoad];
 
 	if ([self isModal] && [self shouldStoreLocation]) {
