@@ -22,7 +22,6 @@
 
 - (void)viewDidUnload
 {
-    //	[self setEventTableView:nil];
 	[super viewDidUnload];
 }
 
@@ -56,12 +55,6 @@
 
 	[eventTableView setEditing:editing animated:animate];
 }
-
-- (void)addNewEvent:(id)sender
-{
-    [self performSegueWithIdentifier:@"addEvent" sender:self];
-}
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

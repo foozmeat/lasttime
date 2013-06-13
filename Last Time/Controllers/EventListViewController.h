@@ -23,7 +23,4 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 
-- (IBAction)addNewEvent:(id)sender;
-//- (void)showAddPopup;
-
 @end
