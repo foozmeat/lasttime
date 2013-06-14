@@ -33,9 +33,8 @@
 	
 	self.title = NSLocalizedString(@"Lists", @"Lists");
 
-//	UIView *backgroundView = [[UIView alloc] init];
-//	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-//	[self.tableView setBackgroundView:backgroundView];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+    [self.tableView setBackgroundView:imageView];
 
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 

@@ -32,9 +32,8 @@
 	self.title = [folder folderName];
 	userDrivenDataModelChange = NO;
 
-    //	UIView *backgroundView = [[UIView alloc] init];
-    //	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-    //	[eventTableView setBackgroundView:backgroundView];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+    [eventTableView setBackgroundView:imageView];
 
 }
 

@@ -31,8 +31,8 @@
 {
 	[super viewWillAppear:animated];
 	
-//	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-//	self.timelineTableView.backgroundColor = background;
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+    [self.timelineTableView setBackgroundView:imageView];
 
 }
 

@@ -44,10 +44,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	
-//	UIView *backgroundView = [[UIView alloc] init];
-//	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-//	[self.tableView setBackgroundView:backgroundView];
+
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+    [self.tableView setBackgroundView:imageView];
 
 	if (event.reminderDuration != 0) {
 		_reminderEnabled = YES;
