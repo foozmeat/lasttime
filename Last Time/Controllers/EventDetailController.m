@@ -45,8 +45,8 @@
 {
 	[super viewWillAppear:animated];
 
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
-    [self.tableView setBackgroundView:imageView];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+//    [self.tableView setBackgroundView:imageView];
 
 	if (event.reminderDuration != 0) {
 		_reminderEnabled = YES;
@@ -259,12 +259,12 @@
 	}
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	cell.selectionStyle = UITableViewCellSelectionStyleGray;
-	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+//
+//}
 
 
 #pragma mark - Location methods

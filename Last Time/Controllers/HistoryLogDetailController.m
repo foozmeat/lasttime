@@ -39,8 +39,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
-    [self.tableView setBackgroundView:imageView];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+//    [self.tableView setBackgroundView:imageView];
 }
 
 - (void)viewDidLoad
@@ -207,9 +207,9 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	cell.selectionStyle = UITableViewCellSelectionStyleGray;
-	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-	
+//	cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+
 }
 
 #pragma mark - Location methods

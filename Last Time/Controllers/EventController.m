@@ -388,8 +388,8 @@
 	[super viewWillAppear:animated];
 	numberFormatter = [[NSNumberFormatter alloc] init];
 	
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
-    [eventTableView setBackgroundView:imageView];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+//    [eventTableView setBackgroundView:imageView];
 
 	[[self navigationItem] setTitle:[_event eventName]];
 	[[self event] refreshItems];

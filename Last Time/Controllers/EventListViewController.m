@@ -32,8 +32,8 @@
 	self.title = [folder folderName];
 	userDrivenDataModelChange = NO;
 
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
-    [eventTableView setBackgroundView:imageView];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+//    [eventTableView setBackgroundView:imageView];
 
 }
 

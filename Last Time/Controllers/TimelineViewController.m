@@ -31,8 +31,8 @@
 {
 	[super viewWillAppear:animated];
 	
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
-    [self.timelineTableView setBackgroundView:imageView];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+//    [self.timelineTableView setBackgroundView:imageView];
 
 }
 

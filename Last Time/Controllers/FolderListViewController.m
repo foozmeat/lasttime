@@ -30,15 +30,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	
-	self.title = NSLocalizedString(@"Lists", @"Lists");
 
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
-    [self.tableView setBackgroundView:imageView];
+    // TableView
+    //	self.tableView.backgroundColor = [UIColor clearColor];
+
+	self.title = NSLocalizedString(@"Lists", @"Lists");
+//    UIImage *paper = [UIImage imageNamed:@"white_paper.jpg"];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:paper];
+//    [self.tableView setBackgroundView:imageView];
 
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
-
-//	self.tableView.backgroundColor = [UIColor clearColor];
 
 }
 

@@ -88,7 +88,7 @@
 //		self.window.rootViewController = self.splitViewController;
 //
 //	}
-//	[self customizeAppearance];
+	[self customizeAppearance];
 
 //	[window makeKeyAndVisible];
 	return YES;
@@ -160,33 +160,50 @@
 - (void)customizeAppearance
 {
 	
-	UIUserInterfaceIdiom idiom = [[UIDevice currentDevice] userInterfaceIdiom];
+//	[[UIBarButtonItem appearance] setTintColor:[UIColor blueColor]];
 
-//	[[UIBarButtonItem appearance] setTintColor:[UIColor brownColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor blackColor], UITextAttributeTextColor,
+      [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0], UITextAttributeTextShadowColor,
+      [NSValue valueWithUIOffset:UIOffsetMake(0, -1)], UITextAttributeTextShadowOffset,
+      [UIFont fontWithName:@"HelveticaNeue-Light" size:0.0], UITextAttributeFont,
+      nil]];
 
+    [[UIBarButtonItem appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor blackColor], UITextAttributeTextColor,
+      [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0], UITextAttributeTextShadowColor,
+      [NSValue valueWithUIOffset:UIOffsetMake(0, -1)], UITextAttributeTextShadowOffset,
+      [UIFont fontWithName:@"HelveticaNeue-Light" size:0.0], UITextAttributeFont,
+      nil]
+     forState:UIControlStateNormal];
+    
+//    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor], UITextAttributeTextColor, nil];
+//    [[UINavigationBar appearance] setTitleTextAttributes: textTitleOptions];
 
-	UIImage *barButton = [[UIImage imageNamed:@"leather_navbar_button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+//	[[UITabBar appearance] setTintColor:[UIColor brownColor]];
 
-	[[UIBarButtonItem appearance] setBackgroundImage:barButton forState:UIControlStateNormal
-																				barMetrics:UIBarMetricsDefault];
+//	UIImage *barButton = [[UIImage imageNamed:@"leather_navbar_button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+//
+//	[[UIBarButtonItem appearance] setBackgroundImage:barButton forState:UIControlStateNormal
+//																				barMetrics:UIBarMetricsDefault];
 
-	UIImage *backButton = [[UIImage imageNamed:@"leather_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
+//	UIImage *backButton = [[UIImage imageNamed:@"leather_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
+//
+//	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal
+//																									barMetrics:UIBarMetricsDefault];
 
-	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal
-																									barMetrics:UIBarMetricsDefault];
+//	[[UISegmentedControl appearance] setTintColor:[UIColor brownColor]];
 
-	[[UISegmentedControl appearance] setTintColor:[UIColor brownColor]];
-
-	UIImage *segmentSelected = [[UIImage imageNamed:@"leather_seg_sel.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
-	UIImage *segmentUnselected = [[UIImage imageNamed:@"leather_seg_uns.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+//	UIImage *segmentSelected = [[UIImage imageNamed:@"leather_seg_sel.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+//	UIImage *segmentUnselected = [[UIImage imageNamed:@"leather_seg_uns.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
 //	UIImage *segmentSelectedUnselected = [UIImage imageNamed:@"leather_seg_sel-uns.png"];
 //	UIImage *segUnselectedSelected = [UIImage imageNamed:@"leather_seg_uns-sel.png"];
 //	UIImage *segmentUnselectedUnselected = [UIImage imageNamed:@"leather_seg_uns-uns.png"];
 
-	[[UISegmentedControl appearance] setBackgroundImage:segmentUnselected
-																						 forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-	[[UISegmentedControl appearance] setBackgroundImage:segmentSelected
-																						 forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+//	[[UISegmentedControl appearance] setBackgroundImage:segmentUnselected forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+//	[[UISegmentedControl appearance] setBackgroundImage:segmentSelected forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
 
 //	[[UISegmentedControl appearance] setDividerImage:segmentUnselectedUnselected
 //															 forLeftSegmentState:UIControlStateNormal
@@ -202,43 +219,15 @@
 //																 rightSegmentState:UIControlStateSelected
 //																				barMetrics:UIBarMetricsDefault];
 
-	[[UITabBar appearance] setTintColor:[UIColor brownColor]];
 
-	if (idiom == UIUserInterfaceIdiomPad) 	{
 
-//		NSArray *viewControllers = [self segmentViewControllers];
-//		FolderListViewController *masterViewController = [viewControllers objectAtIndex:0];
-//		EventController *detailViewController = masterViewController.detailViewController;
+    // iPhone
+//    UIImage *navBarImage = [UIImage imageNamed:@"leather_navbar.png"];
+//    [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
 //
-//		UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-//
-//		masterViewController.view.backgroundColor = background;
-//		detailViewController.view.backgroundColor = background;
-//		self.window.rootViewController.view.backgroundColor = background;
-//
-//		UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.png"];
-//		
-//		[[UINavigationBar appearance] setBackgroundImage:navBarImage 
-//																			 forBarMetrics:UIBarMetricsDefault];
-//
-//		UIImage* toolbarBgBottom = [UIImage imageNamed:@"ipad-tabbar-right.png"];
-//		[[UIToolbar appearance] setBackgroundImage:toolbarBgBottom 
-//														forToolbarPosition:UIToolbarPositionBottom 
-//																		barMetrics:UIBarMetricsDefault];
-	} else {
-		// iPhone
-		UIImage *navBarImage = [UIImage imageNamed:@"leather_navbar.png"];
-		
-		[[UINavigationBar appearance] setBackgroundImage:navBarImage 
-																			 forBarMetrics:UIBarMetricsDefault];
+//    UIImage* tabBarBackground = [UIImage imageNamed:@"leather_toolbar.png"];
+//    [[UIToolbar appearance] setBackgroundImage:tabBarBackground forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
 
-		UIImage* tabBarBackground = [UIImage imageNamed:@"leather_toolbar.png"];
-		
-		[[UIToolbar appearance] setBackgroundImage:tabBarBackground 
-														forToolbarPosition:UIToolbarPositionBottom 
-																		barMetrics:UIBarMetricsDefault];
-		
-	}
 
 }
 
