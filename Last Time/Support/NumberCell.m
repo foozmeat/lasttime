@@ -19,7 +19,7 @@
 	[[cell cellTextField] setDelegate:delegate];
 	[[cell cellTextField] setTag:tag];
 	[[cell cellTextField] setKeyboardType:UIKeyboardTypeDecimalPad];
-	
+	cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
 	return cell;
 }
 

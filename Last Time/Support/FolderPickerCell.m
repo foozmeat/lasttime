@@ -26,6 +26,9 @@
 		[folderPopover setPopoverContentSize:pickerView.frame.size];
 		[folderPopover setDelegate:self];
 	}
+    self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+    self.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+    self.detailTextLabel.textColor = [UIColor colorWithRed:21/255.0 green:126/255.0 blue:252/255.0 alpha:1.0];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -59,7 +62,7 @@
 	if (!inputAccessoryView) {
 		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 			inputAccessoryView = [[UIToolbar alloc] init];
-			inputAccessoryView.barStyle = UIBarStyleBlackTranslucent;
+//			inputAccessoryView.barStyle = UIBarStyleBlackTranslucent;
 	//		inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 			[inputAccessoryView sizeToFit];
 			CGRect frame = inputAccessoryView.frame;

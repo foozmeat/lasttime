@@ -165,34 +165,36 @@
     [[UINavigationBar appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor blackColor], UITextAttributeTextColor,
-      [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0], UITextAttributeTextShadowColor,
-      [NSValue valueWithUIOffset:UIOffsetMake(0, -1)], UITextAttributeTextShadowOffset,
-      [UIFont fontWithName:@"HelveticaNeue-Light" size:0.0], UITextAttributeFont,
+      [UIColor clearColor], UITextAttributeTextShadowColor,
+      [UIFont fontWithName:@"HelveticaNeue-Medium" size:0.0], UITextAttributeFont,
       nil]];
 
     [[UIBarButtonItem appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor blackColor], UITextAttributeTextColor,
-      [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0], UITextAttributeTextShadowColor,
-      [NSValue valueWithUIOffset:UIOffsetMake(0, -1)], UITextAttributeTextShadowOffset,
+      [UIColor colorWithRed:21/255.0 green:126/255.0 blue:252/255.0 alpha:1.0], UITextAttributeTextColor,
+      [UIColor clearColor], UITextAttributeTextShadowColor,
       [UIFont fontWithName:@"HelveticaNeue-Light" size:0.0], UITextAttributeFont,
       nil]
      forState:UIControlStateNormal];
-    
-//    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor grayColor], UITextAttributeTextColor, nil];
-//    [[UINavigationBar appearance] setTitleTextAttributes: textTitleOptions];
+
+    [[UIBarButtonItem appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor colorWithRed:21/255.0 green:126/255.0 blue:252/255.0 alpha:0.5], UITextAttributeTextColor,
+      [UIColor clearColor], UITextAttributeTextShadowColor,
+      [UIFont fontWithName:@"HelveticaNeue-Light" size:0.0], UITextAttributeFont,
+      nil]
+    forState:UIControlStateHighlighted];
+
+	[[UIBarButtonItem appearance] setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+
+	UIImage *backButton = [[UIImage imageNamed:@"clear_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
+	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
 //	[[UITabBar appearance] setTintColor:[UIColor brownColor]];
 
 //	UIImage *barButton = [[UIImage imageNamed:@"leather_navbar_button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
 //
-//	[[UIBarButtonItem appearance] setBackgroundImage:barButton forState:UIControlStateNormal
-//																				barMetrics:UIBarMetricsDefault];
 
-//	UIImage *backButton = [[UIImage imageNamed:@"leather_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
-//
-//	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal
-//																									barMetrics:UIBarMetricsDefault];
 
 //	[[UISegmentedControl appearance] setTintColor:[UIColor brownColor]];
 

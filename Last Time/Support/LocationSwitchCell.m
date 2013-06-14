@@ -23,6 +23,7 @@
 	self.accessoryView = locationSwitch;
 	
 	self.textLabel.text = NSLocalizedString(@"Store Location?",@"Store Location?");
+    self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

@@ -19,7 +19,7 @@
 	self.cellTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
 	self.cellTextField.textAlignment = UITextAlignmentLeft;
 	self.cellTextField.textColor = [UIColor blackColor];
-	self.cellTextField.font = [UIFont boldSystemFontOfSize:17.0];
+	self.cellTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
 	self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
 	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	self.cellTextField.returnKeyType = UIReturnKeyDone;

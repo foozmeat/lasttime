@@ -368,6 +368,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 //		cell.selectionStyle = UITableViewCellSelectionStyleGray;
 
 		[[cell textLabel] setText:NSLocalizedString(@"Create New List…",@"Create a new list")];
+        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+
 		return cell;
 
 	} else {

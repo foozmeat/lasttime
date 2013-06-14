@@ -70,8 +70,8 @@ static CGFloat height = 21;
 	label.text = self.headerLabel;
 	label.textAlignment = UITextAlignmentCenter;
 	label.backgroundColor = [UIColor clearColor];
-	label.font = [UIFont boldSystemFontOfSize:16.0f];
-	
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+
 	label.textColor = [UIColor whiteColor];
 	label.shadowColor = [UIColor darkGrayColor];
 	label.shadowOffset = CGSizeMake(0, 1);

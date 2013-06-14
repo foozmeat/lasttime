@@ -16,6 +16,10 @@
 		1A212A55159573E5001B6293 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A212A54159573E5001B6293 /* CoreData.framework */; };
 		1A212A56159576D1001B6293 /* Last Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */; };
 		1A21320D16156D9E00770280 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A21320C16156D9E00770280 /* Default-568h@2x.png */; };
+		1A2B26B5176BB8DC0006B902 /* ButtonMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B26B3176BB8DC0006B902 /* ButtonMenu.png */; };
+		1A2B26B6176BB8DC0006B902 /* ButtonMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B26B4176BB8DC0006B902 /* ButtonMenu@2x.png */; };
+		1A2B26B9176BCA5F0006B902 /* clear_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B26B7176BCA5F0006B902 /* clear_back.png */; };
+		1A2B26BA176BCA5F0006B902 /* clear_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B26B8176BCA5F0006B902 /* clear_back@2x.png */; };
 		1A4688FB15518CB500C64F49 /* white_paper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4688F915518CB500C64F49 /* white_paper.jpg */; };
 		1A4688FC15518CB500C64F49 /* white_paper@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */; };
 		1A4B6ACC162A10740078A7EA /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4B6AC2162A10740078A7EA /* Icon-72.png */; };
@@ -181,6 +185,10 @@
 		1A212A451595728A001B6293 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		1A212A54159573E5001B6293 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		1A21320C16156D9E00770280 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1A2B26B3176BB8DC0006B902 /* ButtonMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenu.png; sourceTree = "<group>"; };
+		1A2B26B4176BB8DC0006B902 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonMenu@2x.png"; sourceTree = "<group>"; };
+		1A2B26B7176BCA5F0006B902 /* clear_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_back.png; sourceTree = "<group>"; };
+		1A2B26B8176BCA5F0006B902 /* clear_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clear_back@2x.png"; sourceTree = "<group>"; };
 		1A4688F915518CB500C64F49 /* white_paper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_paper.jpg; sourceTree = "<group>"; };
 		1A4688FA15518CB500C64F49 /* white_paper@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "white_paper@2x.jpg"; sourceTree = "<group>"; };
 		1A468902155194F300C64F49 /* ipad-menubar-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-menubar-left.png"; path = "foody/ipad-menubar-left.png"; sourceTree = "<group>"; };
@@ -785,6 +793,8 @@
 		39EF4A4A14F1AE1000A8BAB7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1A2B26B7176BCA5F0006B902 /* clear_back.png */,
+				1A2B26B8176BCA5F0006B902 /* clear_back@2x.png */,
 				1A21320C16156D9E00770280 /* Default-568h@2x.png */,
 				1A823C2C153BB07000B997C8 /* Appearance */,
 				39BE368414F3E2BD00DBCC43 /* Icons */,
@@ -794,6 +804,8 @@
 				1AC08500176A8782004EB084 /* 11-clock@2x.png */,
 				1AC084FB176A8589004EB084 /* 33-cabinet.png */,
 				1AC084FC176A8589004EB084 /* 33-cabinet@2x.png */,
+				1A2B26B3176BB8DC0006B902 /* ButtonMenu.png */,
+				1A2B26B4176BB8DC0006B902 /* ButtonMenu@2x.png */,
 			);
 			name = Images;
 			path = Resources/Images;
@@ -1020,6 +1032,10 @@
 				1AC084FE176A8589004EB084 /* 33-cabinet@2x.png in Resources */,
 				1AC08501176A8782004EB084 /* 11-clock.png in Resources */,
 				1AC08502176A8782004EB084 /* 11-clock@2x.png in Resources */,
+				1A2B26B5176BB8DC0006B902 /* ButtonMenu.png in Resources */,
+				1A2B26B6176BB8DC0006B902 /* ButtonMenu@2x.png in Resources */,
+				1A2B26B9176BCA5F0006B902 /* clear_back.png in Resources */,
+				1A2B26BA176BCA5F0006B902 /* clear_back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,6 +23,7 @@
 	self.accessoryView = reminderSwitch;
 	
 	self.textLabel.text = NSLocalizedString(@"Reminder?",@"Reminder?");
+    self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

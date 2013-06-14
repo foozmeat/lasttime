@@ -162,18 +162,14 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
 
-	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
 	[v setBackgroundColor:[UIColor clearColor]];
 	
-	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, tableView.bounds.size.width,30)];
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, tableView.bounds.size.width,20)];
 	label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
 	label.textAlignment = UITextAlignmentCenter;
-	label.backgroundColor = [UIColor clearColor];
-	label.font = [UIFont boldSystemFontOfSize:16.0f];
-
-//	label.textColor = [UIColor brownColor];
-//	label.shadowColor = [UIColor colorWithRed:83 green:52 blue:24 alpha:1.0];
-//	label.shadowOffset = CGSizeMake(0, 1);
+	label.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0];
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:17.0];
 
 	[v addSubview:label];
 	
@@ -190,11 +186,11 @@
 	int count = [[_event logEntryCollection] count];
 
 	if (section == kLastTimeSection && count > 0) {
-		return 10.0;
+		return 20.0;
 	} else if (section == kAverageSection && count > 1) {
-		return 10.0;
-	} else if (section == kHistorySection) {
-		return 30;
+		return 20.0;
+	} else if (section == kHistorySection && count > 0) {
+		return 20;
 	} else {
 		return 0.00001f;
 	}
@@ -202,12 +198,16 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+	int count = [[_event logEntryCollection] count];
+
 	if (section == kLastTimeSection) {
 		return nil;
 	} else if (section == kAverageSection) {
 		return nil;
-	} else if (section == kHistorySection) {
+	} else if (section == kHistorySection && count > 0) {
 		return NSLocalizedString(@"History", @"History");
+	} else if (section == kHistorySection && count == 0) {
+		return NSLocalizedString(@"No History Entries",@"No History Entries");
 	} else {
 		return nil;
 	}
@@ -248,7 +248,7 @@
 	} else if (section == kHistorySection) {
 
 		if (count == 0) {
-			return 1;
+			return 0;
 		} else {
 			return count;
 		}
@@ -327,7 +327,7 @@
 			}
 			
 			if ([item showNote]) {
-				historyLogCell.logEntryNoteCell.text = item.logEntryNote;				
+				historyLogCell.logEntryNoteCell.text = item.logEntryNote;
 			} else {
 				historyLogCell.logEntryNoteCell.text = @"";
 			}
@@ -365,16 +365,15 @@
 			if ([historyLogCell.logEntryValueCell.text isEqualToString:@""]) {
 				historyLogCell.logEntryValueCell.text = NSLocalizedString(@"No Value", @"The value is empty");
 			} else {
-//				historyLogCell.logEntryValueCell.textColor = [UIColor brownColor];
-				historyLogCell.logEntryValueCell.font = [UIFont systemFontOfSize:14.0f];
-				
+				historyLogCell.logEntryValueCell.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
+                historyLogCell.logEntryNoteCell.textColor = [UIColor blackColor];
 			}
 			
 			if ([historyLogCell.logEntryNoteCell.text isEqualToString:@""]) {
 				historyLogCell.logEntryNoteCell.text = NSLocalizedString(@"No Note", @"The note is blank");
 			} else {
-//				historyLogCell.logEntryNoteCell.textColor = [UIColor brownColor];
-				historyLogCell.logEntryNoteCell.font = [UIFont systemFontOfSize:14.0f];
+				historyLogCell.logEntryNoteCell.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
+                historyLogCell.logEntryNoteCell.textColor = [UIColor blackColor];
 				
 			}
 		}
