@@ -36,45 +36,7 @@
 #pragma mark - Model methods
 - (IBAction)exportEvent:(id)sender {
 
-	NSMutableString *exportedText = [NSMutableString new];
-
-//	[exportedText appendFormat:@"%@\n\n",self.event.eventName];
-
-	if ([[_event logEntryCollection] count] > 0) {
-		[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Last Time",@"Last Time"), [_event lastStringInterval]];
-
-		if ([_event showAverage]) {
-			[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Time Span",@"Time Span"), [_event averageStringInterval]];
-
-			NSDateFormatter *df = [[NSDateFormatter alloc] init];
-
-			[df setDateStyle:NSDateFormatterFullStyle];
-			[df setTimeStyle:NSDateFormatterNoStyle];
-
-			[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Next Time",@"Next Time"), [df stringFromDate:[_event nextTime]]];
-
-			if ([_event showAverageValue]) {
-				[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Average Value","@Average Value"), [_event averageStringValue]];
-			}
-
-			[exportedText appendFormat:@"\n— %@ —\n\n",NSLocalizedString(@"History","@History")];
-			for (LogEntry *le in _event.logEntryCollection) {
-				[exportedText appendFormat:@"%@",le.dateString];
-				if ([le showNote]) {
-					[exportedText appendFormat:@" — %@",le.logEntryNote];
-				}
-				if ([le showValue]) {
-					NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[le logEntryValue] floatValue]]];
-					[exportedText appendFormat:@" — %@",value];
-				}
-
-				[exportedText appendString:@"\n"];
-			}
-		}
-
-	} else {
-		[exportedText appendString:NSLocalizedString(@"No History Entries",@"No History Entries")];
-	}
+	NSString *exportedText = [_event description];
 
 	MFMailComposeViewController *picker = [MFMailComposeViewController new];
 	picker.mailComposeDelegate = self;
