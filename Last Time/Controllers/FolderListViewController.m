@@ -31,13 +31,10 @@
 {
 	[super viewWillAppear:animated];
 
-    // TableView
-    //	self.tableView.backgroundColor = [UIColor clearColor];
-
 	self.title = NSLocalizedString(@"Lists", @"Lists");
-//    UIImage *paper = [UIImage imageNamed:@"white_paper.jpg"];
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:paper];
-//    [self.tableView setBackgroundView:imageView];
+
+//    [[[self navigationController] navigationBar] setTintColor:[UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0]];
+//    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
 
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 
