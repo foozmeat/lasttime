@@ -31,9 +31,9 @@
 {
 	[super viewWillAppear:animated];
 	
-	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-	self.timelineTableView.backgroundColor = background;
-	
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+    [self.timelineTableView setBackgroundView:imageView];
+
 }
 
 - (IBAction)exportTimeline:(id)sender
@@ -121,16 +121,12 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-//	if (userDrivenDataModelChange) return;
-	
 	[self.timelineTableView beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
 {
-//	if (userDrivenDataModelChange) return;
-	
 	switch(type) {
 		case NSFetchedResultsChangeInsert:
 			[self.timelineTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
@@ -146,8 +142,6 @@
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
-//	if (userDrivenDataModelChange) return;
-	
 	UITableViewCell *cell = [self.timelineTableView cellForRowAtIndexPath:indexPath];
 	
 	switch(type) {
@@ -174,10 +168,20 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-//	if (userDrivenDataModelChange) return;
-	
 	[self.timelineTableView endUpdates];
 	
+}
+
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"viewEvent"]) {
+        NSIndexPath *indexPath = [self.timelineTableView indexPathForSelectedRow];
+        LogEntry *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+		EventController *ec = [segue destinationViewController];
+		[ec setEvent:item.event];
+    }
+
 }
 
 #pragma mark - TableView Delegate
@@ -185,18 +189,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
-	LogEntry *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
-//	[self.detailViewController setFolder:folder];
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		EventController *ec = [[EventController alloc] init];
-		[ec setEvent:item.event];			
-		[tableView deselectRowAtIndexPath:indexPath animated:YES];
-		[[self navigationController] pushViewController:ec animated:YES];
-	} else {
-		[self.detailViewController setEvent:item.event];			
-	}
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -221,35 +214,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell"];
-	
-	if (!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"EventCell"];
-	}
-	cell.detailTextLabel.textColor = [UIColor brownColor];
-
-	cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}	
-
-	[self configureCell:cell atIndexPath:indexPath];
-	
-	
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
+    [self configureCell:cell atIndexPath:indexPath];
 	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	cell.selectionStyle = UITableViewCellSelectionStyleGray;
-	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-	
+//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
 }
 
-- (void)configureCellAtIndexPath:(NSIndexPath *)indexPath
-{
-	[self configureCell:[self.timelineTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-}
+//- (void)configureCellAtIndexPath:(NSIndexPath *)indexPath
+//{
+//	[self configureCell:[self.timelineTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+//}
 
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -262,18 +240,17 @@
 
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width 
-																									 label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
-	
-	return header;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
+//	
+//	return header;
+//}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
-{
-	return [HeaderView height];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
+//{
+//	return [HeaderView height];
+//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

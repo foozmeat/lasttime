@@ -20,7 +20,7 @@
 	self.cellTextField.autocorrectionType = UITextAutocorrectionTypeDefault;
 	self.cellTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
 	self.cellTextField.textAlignment = UITextAlignmentRight;
-	self.cellTextField.textColor = [UIColor brownColor];
+//	self.cellTextField.textColor = [UIColor brownColor];
 	self.cellTextField.font = [UIFont systemFontOfSize:17.0f];
 	self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
 	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;

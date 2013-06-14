@@ -16,14 +16,7 @@
 @synthesize nameCell, numberCell, locationCell;
 @synthesize delegate;
 @synthesize popover;
-
-- (BOOL)isModal
-{
-	NSArray *viewControllers = [[self navigationController] viewControllers];
-	UIViewController *rootViewController = [viewControllers objectAtIndex:0];
-	
-	return rootViewController == self;
-}
+@synthesize isModal;
 
 #pragma mark - UIViewController Methods
 
@@ -43,30 +36,30 @@
 	_shouldStoreLocation = YES;
 	// Subclasses need to call [locationManager startUpdatingLocation] in
 	// their on viewDidLoad methods
-	
-	[locationManager setDelegate:self];	
+
+	[locationManager setDelegate:self];
 	[locationManager setDistanceFilter:50];
 	[locationManager setDesiredAccuracy:5];
 
 	if ([self isModal]) {
-		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] 
-																	 initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-																	 target:self
-																	 action:@selector(save)];
+		UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemSave
+                                       target:self
+                                       action:@selector(save)];
 		if ([self requiredField] != -1) {
 			[saveButton setEnabled:NO];
 		}
 		[[self navigationItem] setRightBarButtonItem:saveButton];
-		
-		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] 
-																		 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-																		 target:self
-																		 action:@selector(cancel)];
-		
+
+		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
+                                         initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                         target:self
+                                         action:@selector(cancel)];
+
 		[[self navigationItem] setLeftBarButtonItem:cancelButton];
-		
+
 	}
-	
+
 	[self viewFinishedLoading];
 }
 
@@ -78,7 +71,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	// The location "unknown" error simply means the manager is currently unable to get the location.
-	// We can ignore this error for the scenario of getting a single location fix, because we already have a 
+	// We can ignore this error for the scenario of getting a single location fix, because we already have a
 	// timeout that will stop the location manager to save power.
 	if ([error code] != kCLErrorLocationUnknown) {
 		[self stopUpdatingLocation:@"Error"];
@@ -88,18 +81,18 @@
 - (void)stopUpdatingLocation:(NSString *)state {
 
 	if (locationManager.delegate) {
-//		NSLog(@"%@", state);
+        //		NSLog(@"%@", state);
 		[locationManager stopUpdatingLocation];
-//		locationManager.delegate = nil;
+        //		locationManager.delegate = nil;
 	}
 }
 
 - (void)startUpdatingLocation:(NSString *)state {
 
 	if (locationManager.delegate && [self shouldStoreLocation]) {
-//		NSLog(@"%@", state);
+        //		NSLog(@"%@", state);
 		[locationManager startUpdatingLocation];
-    [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
+        [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
 	}
 }
 
@@ -119,13 +112,13 @@
 		[self updateObjectLocation];
 		// test the measurement to see if it meets the desired accuracy
 		//
-		// IMPORTANT!!! kCLLocationAccuracyBest should not be used for comparison with location coordinate or altitidue 
-		// accuracy because it is a negative value. Instead, compare against some predetermined "real" measure of 
+		// IMPORTANT!!! kCLLocationAccuracyBest should not be used for comparison with location coordinate or altitidue
+		// accuracy because it is a negative value. Instead, compare against some predetermined "real" measure of
 		// acceptable accuracy, or depend on the timeout to stop updating. This sample depends on the timeout.
 		//
 		if (newLocation.horizontalAccuracy <= locationManager.desiredAccuracy) {
 			// we have a measurement that meets our requirements, so we can stop updating the location
-			// 
+			//
 			// IMPORTANT!!! Minimize power usage by stopping the location manager as soon as possible.
 			//
 			[self stopUpdatingLocation:@"Acquired Location"];
@@ -134,7 +127,7 @@
 		}
 	}
 	// update the display with the new location data
-//	[self.tableView reloadData];    
+    //	[self.tableView reloadData];
 }
 
 - (void)updateObjectLocation
@@ -146,7 +139,8 @@
 
 - (void)save
 {
-	[self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+//	[self dismissModalViewControllerAnimated:YES];
 	if ([delegate respondsToSelector:@selector(itemDetailViewControllerWillDismiss:)]) {
 		[delegate itemDetailViewControllerWillDismiss:self];
 	}
@@ -154,7 +148,8 @@
 
 - (void)cancel
 {
-	[self dismissModalViewControllerAnimated:YES];
+//	[self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 	if ([delegate respondsToSelector:@selector(itemDetailViewControllerWillDismiss:)]) {
 		[delegate itemDetailViewControllerWillDismiss:self];
 	}
@@ -164,7 +159,7 @@
 
 - (id) init
 {
-	self = [super initWithStyle:UITableViewStyleGrouped];
+//	self = [super initWithStyle:UITableViewStyleGrouped];
 	[self setRequiredField:-1];
 	return self;
 }
@@ -175,11 +170,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	
+
 	NSUInteger indexes[] = { 0, 0 };
 	NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
-																											length:2];
-	
+                                                        length:2];
+
 	[[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:0];
 }
 
@@ -191,14 +186,14 @@
 {
 	[super viewWillDisappear:animated];
 	[[self view] endEditing:YES];
-	
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-	[self.tableView setBackgroundColor:background];
+//	UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+//	[self.tableView setBackgroundColor:background];
 
 }
 #pragma mark -
@@ -206,13 +201,13 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-	
+
 	if ([self isModal] && [textField tag] == [self requiredField]) {
 		NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
 		BOOL isFieldEmpty = [newText isEqualToString:@""];
 		self.navigationItem.rightBarButtonItem.enabled = !isFieldEmpty;
 	}
-	
+
 	if ([textField keyboardType] == UIKeyboardTypeDecimalPad) {
 		NSCharacterSet *acceptedInput = [NSCharacterSet characterSetWithCharactersInString:@"01234567890."];
 		if ([[string componentsSeparatedByCharactersInSet:acceptedInput] count] > 1 || [string isEqualToString:@""]) {
@@ -234,7 +229,7 @@
 
 
 //  UITextField sends this message to its delegate when the return key
-//  is pressed. Use this as a hook to navigate back to the list view 
+//  is pressed. Use this as a hook to navigate back to the list view
 //  (by 'popping' the current view controller, or dismissing a modal nav
 //  controller, as the case may be).
 //
@@ -254,7 +249,7 @@
 		//
 		NSInteger nextTag = [textField tag] + 1;
 		UIView *nextTextField = [[self tableView] viewWithTag:nextTag];
-		
+
 		[nextTextField becomeFirstResponder];
 	}
 	else if ([self isModal])
@@ -268,7 +263,7 @@
 	{
 		[[self navigationController] popViewControllerAnimated:YES];
 	}
-	
+
 	return YES;
 }
 
@@ -284,7 +279,7 @@
 
 - (BOOL) locationServicesEnabled
 {
-	return [CLLocationManager locationServicesEnabled] && 
+	return [CLLocationManager locationServicesEnabled] &&
 	([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized ||
 	 [CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined);
 
@@ -304,7 +299,7 @@
 		[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:@"Timed Out"];
 	} else {
 		[self startUpdatingLocation:@"Switched on"];
-    [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
+        [self performSelector:@selector(stopUpdatingLocation:) withObject:@"Timed Out" afterDelay:15];
 	}
 	[self updateObjectLocation];
 

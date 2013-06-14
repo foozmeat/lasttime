@@ -39,15 +39,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-
-	UIView *backgroundView = [[UIView alloc] init];
-	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-	[self.tableView setBackgroundView:backgroundView];
-
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
+    [self.tableView setBackgroundView:imageView];
 }
 
 - (void)viewDidLoad
 {
+	self.requiredField = -1;
 	[super viewDidLoad];
 
 	if ([self isModal] && [self shouldStoreLocation]) {
@@ -64,7 +62,6 @@
 	[self setNumberCell:[NumberCell newNumberCellWithTag:kEventNumber withDelegate:self]];
 
 	if ([self isModal]) {
-//		[self setTitle:NSLocalizedString(@"New Entry",@"New Entry")];
 		self.title = self.event.eventName;
 	} else {
 		[self setTitle:NSLocalizedString(@"Edit Entry",@"Edit Entry")];

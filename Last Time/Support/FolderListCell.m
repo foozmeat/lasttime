@@ -10,29 +10,24 @@
 
 @implementation FolderListCell
 @synthesize cellTextField;
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-			self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			self.editingAccessoryType = UITableViewCellAccessoryNone;
-			
-			self.cellTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-			self.cellTextField.autocorrectionType = UITextAutocorrectionTypeDefault;
-			self.cellTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
-			self.cellTextField.textAlignment = UITextAlignmentLeft;
-			self.cellTextField.textColor = [UIColor blackColor];
-			self.cellTextField.font = [UIFont boldSystemFontOfSize:17.0];
-			self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
-			self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-			self.cellTextField.returnKeyType = UIReturnKeyDone;
-			self.cellTextField.hidden = YES;
+	if ( !(self = [super initWithCoder:aDecoder]) ) return nil;
 
-			self.detailTextLabel.textColor = [UIColor brownColor];
-			[self addSubview:self.cellTextField];
-    }
-    return self;
+	self.cellTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+	self.cellTextField.autocorrectionType = UITextAutocorrectionTypeDefault;
+	self.cellTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+	self.cellTextField.textAlignment = UITextAlignmentLeft;
+	self.cellTextField.textColor = [UIColor blackColor];
+	self.cellTextField.font = [UIFont boldSystemFontOfSize:17.0];
+	self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
+	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	self.cellTextField.returnKeyType = UIReturnKeyDone;
+	self.cellTextField.hidden = YES;
+
+//	self.detailTextLabel.textColor = [UIColor brownColor];
+	[self addSubview:self.cellTextField];
+	return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

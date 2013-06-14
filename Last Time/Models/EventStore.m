@@ -11,11 +11,6 @@
 #import "Event.h"
 #import "LogEntry.h"
 #import <CoreData/CoreData.h>
-#import "PlistStore.h"
-
-#import "oldEvent.h"
-#import "oldEventFolder.h"
-#import "oldLogEntry.h"
 
 #import "FPOCsvWriter.h"
 
@@ -272,10 +267,6 @@ static EventStore *defaultStore = nil;
 		[[EventStore defaultStore] loadDefaultData];
 	}
 	
-	if (version != 0 && version < 7) {
-		[self migrateToCoreData];
-	}
-
 }
 
 - (void)updateEventLatestDates
@@ -327,44 +318,6 @@ static EventStore *defaultStore = nil;
 	}
 
 	[self saveChanges];
-}
-
-- (void)migrateToCoreData
-{
-	NSLog(@"Migrating to Core Data");
-	PlistStore *archivedStore = [PlistStore defaultStore];
-		
-	float	index = 0.0;
-	
-	for (OldEventFolder *ef in [archivedStore allItems]) {
-		NSLog(@"%@", ef.folderName);
-    EventFolder *newFolder = [self createFolder];
-		newFolder.folderName = ef.folderName;
-		newFolder.orderingValue = [NSNumber numberWithFloat:index];
-
-		index++;
-		for (OldEvent *ev in [ef allItems]) {
-			Event *newEvent = [self createEvent];
-			newEvent.eventName = ev.eventName;
-			newEvent.folder = newFolder;
-			
-			for (OldLogEntry *le in [ev logEntryCollection]) {
-				
-				LogEntry *newLogEntry = [self createLogEntry];
-				newLogEntry.logEntryDateOccured = le.logEntryDateOccured;
-				newLogEntry.logEntryNote = le.logEntryNote;
-				newLogEntry.logEntryValue = [NSNumber numberWithFloat:le.logEntryValue];
-				newLogEntry.logEntryLocationString = le.logEntryLocationString;
-				newLogEntry.latitude = [NSNumber numberWithFloat:le.logEntryLocation.latitude];
-				newLogEntry.longitude = [NSNumber numberWithFloat:le.logEntryLocation.longitude];
-				newLogEntry.event = newEvent;
-			}
-		}
-		
-	}
-	
-	[self saveChanges];
-	[self	updateEventLatestDates];
 }
 
 - (void)loadDefaultData

@@ -10,7 +10,6 @@
 #import "FolderListViewController.h"
 #import "EventController.h"
 #import "EventStore.h"
-#import "MGSplitViewController.h"
 #import "SegmentsController.h"
 #import "TimelineViewController.h"
 #import "Event.h"
@@ -18,8 +17,8 @@
 @implementation LastTimeAppDelegate
 
 @synthesize window;
-@synthesize splitViewController;
-@synthesize segmentsController, segmentedControl;
+//@synthesize splitViewController;
+//@synthesize segmentsController, segmentedControl;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -38,80 +37,80 @@
 	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
 	[self handleNotification:localNotif];
 	
-	NSArray *viewControllers = [self segmentViewControllers];
-	NSArray *segmentTitles = [[NSArray alloc] initWithObjects:NSLocalizedString(@"Lists",@"Lists"), NSLocalizedString(@"Timeline",@"Timeline"), nil];
+//	NSArray *viewControllers = [self segmentViewControllers];
+//	NSArray *segmentTitles = [[NSArray alloc] initWithObjects:NSLocalizedString(@"Lists",@"Lists"), NSLocalizedString(@"Timeline",@"Timeline"), nil];
+//
+//	UIView *backgroundView = [[UIView alloc] initWithFrame: window.frame];
+//	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+//	[window addSubview:backgroundView];
 
-	UIView *backgroundView = [[UIView alloc] initWithFrame: window.frame];
-	backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-	[window addSubview:backgroundView];
-	
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-
-    UINavigationController *navigationController = [[UINavigationController alloc] init];
-    self.segmentsController = [[SegmentsController alloc] initWithNavigationController:navigationController viewControllers:viewControllers];
-    
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentTitles];
-    self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-
-    [self.segmentedControl addTarget:self.segmentsController
-                              action:@selector(indexDidChangeForSegmentedControl:)
-                    forControlEvents:UIControlEventValueChanged];
-    
-    [self firstUserExperience];
-
-		window.rootViewController = navigationController;
+//	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+//
+//        UINavigationController *navigationController = [[UINavigationController alloc] init];
+//        self.segmentsController = [[SegmentsController alloc] initWithNavigationController:navigationController viewControllers:viewControllers];
+//        
+//        self.segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentTitles];
+//        self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+//
+//        [self.segmentedControl addTarget:self.segmentsController
+//                                  action:@selector(indexDidChangeForSegmentedControl:)
+//                        forControlEvents:UIControlEventValueChanged];
+//        
+//        [self firstUserExperience];
+//
+//        window.rootViewController = navigationController;
 //    [window addSubview:navigationController.view];
 
-	} else {
-		FolderListViewController *masterViewController = [viewControllers objectAtIndex:0];
-		
-		UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
+//	} else {
+//		FolderListViewController *masterViewController = [viewControllers objectAtIndex:0];
+//		
+//		UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
+//
+//		EventController *detailViewController = masterViewController.detailViewController;
+//		UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+//		
+//		self.segmentsController = [[SegmentsController alloc] initWithNavigationController:masterNavigationController viewControllers:viewControllers];
+//    
+//        self.segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentTitles];
+//        self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+//        
+//        [self.segmentedControl addTarget:self.segmentsController
+//                                  action:@selector(indexDidChangeForSegmentedControl:)
+//                        forControlEvents:UIControlEventValueChanged];
+//        
+//        [self firstUserExperience];
+//                    
+//		self.splitViewController = [[MGSplitViewController alloc] init];
+//		self.splitViewController.showsMasterInPortrait = YES;
+//
+//		self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];
+//		
+//		self.window.rootViewController = self.splitViewController;
+//
+//	}
+//	[self customizeAppearance];
 
-		EventController *detailViewController = masterViewController.detailViewController;
-		UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-		
-		self.segmentsController = [[SegmentsController alloc] initWithNavigationController:masterNavigationController viewControllers:viewControllers];
-    
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:segmentTitles];
-    self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    
-    [self.segmentedControl addTarget:self.segmentsController
-                              action:@selector(indexDidChangeForSegmentedControl:)
-                    forControlEvents:UIControlEventValueChanged];
-    
-    [self firstUserExperience];
-				
-		self.splitViewController = [[MGSplitViewController alloc] init];
-		self.splitViewController.showsMasterInPortrait = YES;
-
-		self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];
-		
-		self.window.rootViewController = self.splitViewController;
-
-	}
-	[self customizeAppearance];
-
-	[window makeKeyAndVisible];
+//	[window makeKeyAndVisible];
 	return YES;
 }
 
-- (NSArray *)segmentViewControllers {
-	FolderListViewController *lists = [[FolderListViewController alloc] init];
-	TimelineViewController *timeline = [[TimelineViewController alloc] init];
-	EventController *detailViewController = [[EventController alloc] init];
+//- (NSArray *)segmentViewControllers {
+//	FolderListViewController *lists = [[FolderListViewController alloc] init];
+//	TimelineViewController *timeline = [[TimelineViewController alloc] init];
+//	EventController *detailViewController = [[EventController alloc] init];
+//
+//	lists.detailViewController = detailViewController;
+//	timeline.detailViewController = detailViewController;
+//	
+//	NSArray *viewControllers = [NSArray arrayWithObjects:lists, timeline, nil];
+//
+//	return viewControllers;
+//}
 
-	lists.detailViewController = detailViewController;
-	timeline.detailViewController = detailViewController;
-	
-	NSArray *viewControllers = [NSArray arrayWithObjects:lists, timeline, nil];
-
-	return viewControllers;
-}
-
-- (void)firstUserExperience {
-	self.segmentedControl.selectedSegmentIndex = 0;
-	[self.segmentsController indexDidChangeForSegmentedControl:self.segmentedControl];
-}
+//- (void)firstUserExperience {
+//	self.segmentedControl.selectedSegmentIndex = 0;
+//	[self.segmentsController indexDidChangeForSegmentedControl:self.segmentedControl];
+//}
 
 - (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)localNotification {
 	[self handleNotification:localNotification];
@@ -207,25 +206,25 @@
 
 	if (idiom == UIUserInterfaceIdiomPad) 	{
 
-		NSArray *viewControllers = [self segmentViewControllers];
-		FolderListViewController *masterViewController = [viewControllers objectAtIndex:0];
-		EventController *detailViewController = masterViewController.detailViewController;
-
-		UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
-
-		masterViewController.view.backgroundColor = background;
-		detailViewController.view.backgroundColor = background;
-		self.window.rootViewController.view.backgroundColor = background;
-
-		UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.png"];
-		
-		[[UINavigationBar appearance] setBackgroundImage:navBarImage 
-																			 forBarMetrics:UIBarMetricsDefault];
-
-		UIImage* toolbarBgBottom = [UIImage imageNamed:@"ipad-tabbar-right.png"];
-		[[UIToolbar appearance] setBackgroundImage:toolbarBgBottom 
-														forToolbarPosition:UIToolbarPositionBottom 
-																		barMetrics:UIBarMetricsDefault];
+//		NSArray *viewControllers = [self segmentViewControllers];
+//		FolderListViewController *masterViewController = [viewControllers objectAtIndex:0];
+//		EventController *detailViewController = masterViewController.detailViewController;
+//
+//		UIColor *background = [UIColor colorWithPatternImage:[UIImage imageNamed:@"paper.jpg"]];
+//
+//		masterViewController.view.backgroundColor = background;
+//		detailViewController.view.backgroundColor = background;
+//		self.window.rootViewController.view.backgroundColor = background;
+//
+//		UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.png"];
+//		
+//		[[UINavigationBar appearance] setBackgroundImage:navBarImage 
+//																			 forBarMetrics:UIBarMetricsDefault];
+//
+//		UIImage* toolbarBgBottom = [UIImage imageNamed:@"ipad-tabbar-right.png"];
+//		[[UIToolbar appearance] setBackgroundImage:toolbarBgBottom 
+//														forToolbarPosition:UIToolbarPositionBottom 
+//																		barMetrics:UIBarMetricsDefault];
 	} else {
 		// iPhone
 		UIImage *navBarImage = [UIImage imageNamed:@"leather_navbar.png"];
