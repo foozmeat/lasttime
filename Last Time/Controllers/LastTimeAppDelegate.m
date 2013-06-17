@@ -173,7 +173,7 @@
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor colorWithRed:21/255.0 green:126/255.0 blue:252/255.0 alpha:1.0], UITextAttributeTextColor,
       [UIColor clearColor], UITextAttributeTextShadowColor,
-      [UIFont fontWithName:@"HelveticaNeue-Light" size:0.0], UITextAttributeFont,
+      [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0], UITextAttributeFont,
       nil]
      forState:UIControlStateNormal];
 
