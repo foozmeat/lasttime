@@ -13,6 +13,8 @@
 #import "Event.h"
 
 @interface EventController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *exportButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @end
 
 @implementation EventController
@@ -411,12 +413,15 @@
 		self.exportButton.enabled = YES;
 	}
 
+	self.addButton.title = NSLocalizedString(@"Add", @"Add Item");
+	self.exportButton.title = NSLocalizedString(@"Export", @"Export Items");
 	[super viewDidAppear:animated];
 }
 
 - (void)viewDidUnload
 {
 	[self setEventTableView:nil];
+	[self setExportButton:nil];
 	[self setAddButton:nil];
 	[super viewDidUnload];
 }

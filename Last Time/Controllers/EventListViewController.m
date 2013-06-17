@@ -14,6 +14,11 @@
 #import "Event.h"
 #import "HeaderView.h"
 
+@interface EventListViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+
+@end
+
 @implementation EventListViewController
 @synthesize folder;
 @synthesize eventTableView;
@@ -22,6 +27,7 @@
 
 - (void)viewDidUnload
 {
+	[self setAddButton:nil];
 	[super viewDidUnload];
 }
 
@@ -31,6 +37,7 @@
 
 	self.title = [folder folderName];
 	userDrivenDataModelChange = NO;
+	self.addButton.title = NSLocalizedString(@"Add", @"Add Item");
 
 //    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
 //    [eventTableView setBackgroundView:imageView];

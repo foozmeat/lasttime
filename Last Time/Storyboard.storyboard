@@ -25,7 +25,7 @@
         <scene sceneID="6Ta-pE-2vm">
             <objects>
                 <tableViewController id="hny-Pd-rHx" customClass="FolderListViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3RH-wN-7Zz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3RH-wN-7Zz">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,7 +94,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="POw-4b-3pz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="POw-4b-3pz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -290,7 +290,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hfe-2U-zvq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hfe-2U-zvq">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -328,7 +328,7 @@
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="iJY-66-lvl"/>
-                                    <barButtonItem style="plain" systemItem="add" id="p0p-8v-Smc">
+                                    <barButtonItem title="Add X" style="plain" id="p0p-8v-Smc">
                                         <color key="tintColor" red="0.08235294118" green="0.4941176471" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="addNewEvent:" destination="UZE-a6-EtP" id="r3m-4p-tnc"/>
@@ -343,6 +343,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Event List X" id="4cc-lH-xK9"/>
                     <connections>
+                        <outlet property="addButton" destination="p0p-8v-Smc" id="RNJ-XK-MtB"/>
                         <outlet property="eventTableView" destination="hfe-2U-zvq" id="1Ih-Nm-NQE"/>
                         <segue destination="OZl-Qr-VX1" kind="push" identifier="viewDetail" id="1Og-Yj-wd6"/>
                         <segue destination="2N3-2T-jE7" kind="push" identifier="editEvent" id="OIM-6G-7cT"/>
@@ -360,7 +361,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JnT-bb-6wA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JnT-bb-6wA">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -454,14 +455,14 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="On1-3m-Adw">
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="action" id="YMC-47-0L3">
+                                    <barButtonItem title="Export X" style="plain" id="YMC-47-0L3">
                                         <color key="tintColor" red="0.08235294118" green="0.4941176471" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="exportEvent:" destination="OZl-Qr-VX1" id="vIp-GD-E83"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Gsu-Tr-zfE"/>
-                                    <barButtonItem style="plain" systemItem="add" id="mVx-Xj-f7Y">
+                                    <barButtonItem title="Add X" style="plain" id="mVx-Xj-f7Y">
                                         <color key="tintColor" red="0.08235294118" green="0.4941176471" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="m2s-0E-uSp" kind="push" identifier="addLogEntry" id="ye4-rJ-VmR"/>
@@ -477,7 +478,7 @@
                     <connections>
                         <outlet property="addButton" destination="mVx-Xj-f7Y" id="Qks-Iy-1gm"/>
                         <outlet property="eventTableView" destination="JnT-bb-6wA" id="2a9-l5-Y2c"/>
-                        <outlet property="exportButton" destination="YMC-47-0L3" id="32U-E0-L4b"/>
+                        <outlet property="exportButton" destination="YMC-47-0L3" id="7M1-8u-h18"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b5M-bh-gYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -488,7 +489,7 @@
         <scene sceneID="ivc-o6-1Ks">
             <objects>
                 <tableViewController id="m2s-0E-uSp" customClass="HistoryLogDetailController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9zJ-FK-4Jz">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9zJ-FK-4Jz">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -520,7 +521,7 @@
         <scene sceneID="9b8-mF-SIb">
             <objects>
                 <tableViewController title="New Event" modalTransitionStyle="flipHorizontal" id="2N3-2T-jE7" customClass="EventDetailController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wzw-hq-e1C">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wzw-hq-e1C">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -573,6 +574,7 @@
         <class className="EventListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -605,12 +607,6 @@
                 <relationship kind="outlet" name="itemDescription" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="SASlideMenuRootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuRootViewController.h"/>
-        </class>
-        <class className="SASlideMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuViewController.h"/>
-        </class>
         <class className="TimelineViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TimelineViewController.h"/>
             <relationships>
@@ -626,7 +622,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1Og-Yj-wd6"/>
+        <segue reference="L1V-sQ-VP6"/>
         <segue reference="Hxq-gv-16l"/>
         <segue reference="OiC-I1-Gzp"/>
     </inferredMetricsTieBreakers>
