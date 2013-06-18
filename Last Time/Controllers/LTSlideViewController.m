@@ -93,28 +93,4 @@
 //        lightViewController.menuViewController = self;
 //    }
 }
-#pragma mark -
-#pragma mark SASlideMenuDelegate
-
--(void) slideMenuWillSlideIn{
-    NSLog(@"slideMenuWillSlideIn");
-}
--(void) slideMenuDidSlideIn{
-    NSLog(@"slideMenuDidSlideIn");
-}
--(void) slideMenuWillSlideToSide{
-    NSLog(@"slideMenuWillSlideToSide");
-}
--(void) slideMenuDidSlideToSide{
-    NSLog(@"slideMenuDidSlideToSide");
-
-}
--(void) slideMenuWillSlideOut{
-    NSLog(@"slideMenuWillSlideOut");
-
-}
--(void) slideMenuDidSlideOut{
-    NSLog(@"slideMenuDidSlideOut");
-}
-
 @end
