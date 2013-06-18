@@ -14,18 +14,19 @@
 {
 	if ( !(self = [super initWithCoder:aDecoder]) ) return nil;
 
+    LTStyleManager *sm = [LTStyleManager manager];
+
 	self.cellTextField = [[UITextField alloc] initWithFrame:CGRectZero];
 	self.cellTextField.autocorrectionType = UITextAutocorrectionTypeDefault;
 	self.cellTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
 	self.cellTextField.textAlignment = UITextAlignmentLeft;
-	self.cellTextField.textColor = [UIColor blackColor];
-	self.cellTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+	self.cellTextField.textColor = [sm defaultColor];
+	self.cellTextField.font = [sm lightFontWithSize:17.0];
 	self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
 	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	self.cellTextField.returnKeyType = UIReturnKeyDone;
 	self.cellTextField.hidden = YES;
 
-//	self.detailTextLabel.textColor = [UIColor brownColor];
 	[self addSubview:self.cellTextField];
 	return self;
 }
@@ -33,7 +34,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
 	
-//	[super setSelected:selected animated:animated];
 	if (selected && self.editing == YES) {
 		[self.cellTextField becomeFirstResponder];
 	}

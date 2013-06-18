@@ -14,12 +14,14 @@
 + (NumberCell *)newNumberCellWithTag:(NSInteger)tag withDelegate:(id)delegate
 {
 	
-	NumberCell *cell = [[NumberCell alloc] initWithStyle:UITableViewCellStyleValue1 
-																										 reuseIdentifier:@"NumberCell"];
+	NumberCell *cell = [[NumberCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"NumberCell"];
 	[[cell cellTextField] setDelegate:delegate];
 	[[cell cellTextField] setTag:tag];
 	[[cell cellTextField] setKeyboardType:UIKeyboardTypeDecimalPad];
-	cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+
+    LTStyleManager *sm = [LTStyleManager manager];
+
+	cell.textLabel.font = [sm lightFontWithSize:17.0];
 	return cell;
 }
 

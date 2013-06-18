@@ -33,11 +33,18 @@
 	_durationValue = 1;
 	_durationUnit = @"day";
 	self.eventDate = [NSDate date];
-	
-	self.durationLabel.text = NSLocalizedString(@"Duration",@"Duration");
+
+    LTStyleManager *sm = [LTStyleManager manager];
+
+    self.durationStringLabel.font = [sm mediumFontWithSize:17.0];
 	self.durationStringLabel.text = [self durationString];
-	self.durationDateLabel.text = [self reminderDateString];
-	
+
+	self.durationLabel.text = NSLocalizedString(@"Duration",@"Duration");
+    self.durationLabel.font = [sm mediumFontWithSize:14.0];
+
+    self.durationDateLabel.text = [self reminderDateString];
+    self.durationDateLabel.font = [sm lightFontWithSize:12.0];
+
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		UIViewController *datePickerViewController = [[UIViewController alloc] init];
 		
@@ -100,10 +107,11 @@
 
 - (void)updateDateStringColor
 {
+    LTStyleManager *sm = [LTStyleManager manager];
 	if ([self reminderExpired]) {
-		self.durationDateLabel.textColor = [UIColor redColor];
+		self.durationDateLabel.textColor = [sm alarmColor];
 	} else {
-		self.durationDateLabel.textColor = [UIColor blackColor];
+		self.durationDateLabel.textColor = [sm defaultColor];
 	}
 
 }

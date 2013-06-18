@@ -164,14 +164,16 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
 
+    LTStyleManager *sm = [LTStyleManager manager];
+
 	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
 	[v setBackgroundColor:[UIColor clearColor]];
 	
 	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, tableView.bounds.size.width,20)];
 	label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
 	label.textAlignment = UITextAlignmentCenter;
-	label.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1.0];
-    label.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:17.0];
+	label.backgroundColor = [sm tableHeaderColor];
+    label.font = [sm mediumFontWithSize:17.0];
 
 	[v addSubview:label];
 	
@@ -262,7 +264,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	UITableViewCell *cell = nil;
-	
+    LTStyleManager *sm = [LTStyleManager manager];
+
 	numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
 	numberFormatter.roundingIncrement = [NSNumber numberWithDouble:0.001];
 
@@ -272,6 +275,7 @@
 
 		cell.textLabel.text = NSLocalizedString(@"Last Time",@"Last Time");
 		cell.detailTextLabel.text = [_event lastStringInterval];
+        cell.detailTextLabel.textColor = [sm tintColor];
 		
 		return cell;
 		
@@ -283,7 +287,8 @@
 			{
 				cell.textLabel.text = NSLocalizedString(@"Time Span",@"Time Span");
 				cell.detailTextLabel.text = [_event averageStringInterval];
-				
+                cell.detailTextLabel.textColor = [sm tintColor];
+
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
 			}
@@ -300,6 +305,7 @@
 				cell.detailTextLabel.text = [df stringFromDate:[_event nextTime]];
 				cell.detailTextLabel.numberOfLines = 2;
 				cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+                cell.detailTextLabel.textColor = [sm tintColor];
 
 				break;
 			}
@@ -307,6 +313,7 @@
 			{
 				cell.textLabel.text = NSLocalizedString(@"Average Value",@"Average Value");
 				cell.detailTextLabel.text = [_event averageStringValue];
+                cell.detailTextLabel.textColor = [sm tintColor];
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
 			}
@@ -337,6 +344,9 @@
 			historyLogCell.logEntryDateCell.text = [item dateString];
 			historyLogCell.locationMarker.hidden = ![item hasLocation];
 			historyLogCell.logEntryLocationCell.text = [item locationString];
+
+            historyLogCell.logEntryDateCell.textColor = [sm tintColor];
+
 			return historyLogCell;
 
 		} else {
@@ -358,7 +368,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
+    LTStyleManager *sm = [LTStyleManager manager];
 
 	if ([[_event logEntryCollection] count] > 0) {
 		if ([indexPath section] == kHistorySection) {
@@ -367,15 +377,15 @@
 			if ([historyLogCell.logEntryValueCell.text isEqualToString:@""]) {
 				historyLogCell.logEntryValueCell.text = NSLocalizedString(@"No Value", @"The value is empty");
 			} else {
-				historyLogCell.logEntryValueCell.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
-                historyLogCell.logEntryNoteCell.textColor = [UIColor blackColor];
+				historyLogCell.logEntryValueCell.font = [sm lightFontWithSize:14.0];
+                historyLogCell.logEntryNoteCell.textColor = [sm defaultColor];
 			}
 			
 			if ([historyLogCell.logEntryNoteCell.text isEqualToString:@""]) {
 				historyLogCell.logEntryNoteCell.text = NSLocalizedString(@"No Note", @"The note is blank");
 			} else {
-				historyLogCell.logEntryNoteCell.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
-                historyLogCell.logEntryNoteCell.textColor = [UIColor blackColor];
+				historyLogCell.logEntryNoteCell.font = [sm lightFontWithSize:14.0];
+                historyLogCell.logEntryNoteCell.textColor = [sm defaultColor];
 				
 			}
 		}

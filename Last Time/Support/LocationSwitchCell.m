@@ -18,12 +18,15 @@
 	self.locationSwitch = [[UISwitch alloc] init];
 	[locationSwitch addTarget:delegate action:@selector(locationSwitchChanged:) forControlEvents:UIControlEventValueChanged];
 	[locationSwitch setOn:NO];
-//	[locationSwitch setOnTintColor:[UIColor brownColor]];
+
+    LTStyleManager *sm = [LTStyleManager manager];
+
+    [locationSwitch setOnTintColor:[sm tintColor]];
 
 	self.accessoryView = locationSwitch;
 	
 	self.textLabel.text = NSLocalizedString(@"Store Location?",@"Store Location?");
-    self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+    self.textLabel.font = [sm lightFontWithSize:17.0];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -42,8 +45,7 @@
 
 + (LocationSwitchCell *)newLocationCellWithTag:(NSInteger)tag withDelegate:(id) delegate
 {
-	LocationSwitchCell *cell = [[LocationSwitchCell alloc] initWithStyle:UITableViewCellStyleValue1 
-																											 reuseIdentifier:@"LocationSwitchCell"];
+	LocationSwitchCell *cell = [[LocationSwitchCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"LocationSwitchCell"];
 	[cell setDelegate:delegate];
 	[cell setTag:tag];
 	

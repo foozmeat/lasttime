@@ -15,18 +15,20 @@
 
 - (void)initalizeInputView {
 	// Initialization code
+    LTStyleManager *sm = [LTStyleManager manager];
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	self.cellTextField = [[UITextField alloc] initWithFrame:CGRectZero];
 	self.cellTextField.autocorrectionType = UITextAutocorrectionTypeDefault;
 	self.cellTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
 	self.cellTextField.textAlignment = UITextAlignmentRight;
-//	self.cellTextField.textColor = [UIColor brownColor];
-	self.cellTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+	self.cellTextField.font = [sm lightFontWithSize:17.0];
 	self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
 	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	self.cellTextField.returnKeyType = UIReturnKeyNext;
 
-    self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+    self.textLabel.font = [sm lightFontWithSize:17.0];
+    self.detailTextLabel.textColor = [sm tintColor];
+
 	[self addSubview:self.cellTextField];
 	
 	self.accessoryType = UITableViewCellAccessoryNone;
@@ -91,8 +93,7 @@
 + (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag withDelegate:(id)delegate
 {
 	
-	EditableTableCell *cell = [[EditableTableCell alloc] initWithStyle:UITableViewCellStyleValue1 
-																										 reuseIdentifier:@"EditableTableCell"];
+	EditableTableCell *cell = [[EditableTableCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"EditableTableCell"];
 	[[cell cellTextField] setDelegate:delegate];
 	[[cell cellTextField] setTag:tag];
 	

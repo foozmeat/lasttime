@@ -26,7 +26,6 @@
 	[pickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
 	
 	[[self detailTextLabel] setText:[df stringFromDate:[pickerView date]]];
-//	self.detailTextLabel.textColor = [UIColor brownColor];
 
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		UIViewController *datePickerViewController = [[UIViewController alloc] init];
@@ -41,9 +40,11 @@
 		frame.size = [self.pickerView sizeThatFits:CGSizeZero];
 		self.inputView.frame = frame;
 	}
-    self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
-    self.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
-    self.detailTextLabel.textColor = [UIColor colorWithRed:21/255.0 green:126/255.0 blue:252/255.0 alpha:1.0];
+
+    LTStyleManager *sm = [LTStyleManager manager];
+    self.textLabel.font = [sm lightFontWithSize:17.0];
+    self.detailTextLabel.font = [sm lightFontWithSize:17.0];
+    self.detailTextLabel.textColor = [sm defaultColor];
 
 }
 
@@ -53,10 +54,10 @@
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 		[self.pickerView setNeedsLayout];
 	} else {
-		[pickerPopover presentPopoverFromRect:[self bounds] 
-																 inView:self 
-							 permittedArrowDirections:UIPopoverArrowDirectionLeft 
-															 animated:YES];
+		[pickerPopover presentPopoverFromRect:[self bounds]
+                                       inView:self
+                     permittedArrowDirections:UIPopoverArrowDirectionLeft
+                                     animated:YES];
 		[delegate popoverController:pickerPopover isShowing:YES];
 	}
 	return [super becomeFirstResponder];
@@ -81,8 +82,7 @@
 
 + (DatePickerCell *)newDateCellWithTag:(NSInteger)tag withDelegate:(id)delegate
 {
-	DatePickerCell *cell = [[DatePickerCell alloc] initWithStyle:UITableViewCellStyleValue1 
-																							 reuseIdentifier:@"DatePickerCell"];
+	DatePickerCell *cell = [[DatePickerCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"DatePickerCell"];
 	
 	[cell setDelegate:delegate];
 	[[cell pickerView] setTag:tag];

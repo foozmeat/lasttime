@@ -255,18 +255,12 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
 
-	Event *item = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-	[[cell textLabel] setText:[item eventName]];
-	[[cell detailTextLabel] setText:[item subtitle]];
-//	cell.selectionStyle = UITableViewCellSelectionStyleGray;
-//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-//	cell.detailTextLabel.textColor = [UIColor brownColor];
+    LTStyleManager *sm = [LTStyleManager manager];
 
-//	if ([item reminderExpired]) {
-//		cell.textLabel.textColor = [UIColor redColor];
-//	}	else {
-//		cell.textLabel.textColor = [UIColor blackColor];
-//	}
+	Event *item = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = item.eventName;
+    cell.detailTextLabel.text = item.subtitle;
+    cell.detailTextLabel.textColor = [sm tintColor];
 
 }
 

@@ -87,36 +87,42 @@
 
 - (void)customizeAppearance
 {
-
+    LTStyleManager *sm = [LTStyleManager manager];
+    
+#ifdef _USE_OS_7_OR_LATER
+    [[UINavigationBar appearance] setBackgroundColor:[sm navBarBackgroundColor]];
+    window.tintColor = [sm tintColor];
+#else
     [[UINavigationBar appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [UIColor blackColor], UITextAttributeTextColor,
       [UIColor clearColor], UITextAttributeTextShadowColor,
-      [UIFont fontWithName:@"HelveticaNeue-Medium" size:0.0], UITextAttributeFont,
+      [sm mediumFontWithSize:0.0], UITextAttributeFont,
       nil]];
 
     [[UIBarButtonItem appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor colorWithRed:21/255.0 green:126/255.0 blue:252/255.0 alpha:1.0], UITextAttributeTextColor,
+      [sm tintColor], UITextAttributeTextColor,
       [UIColor clearColor], UITextAttributeTextShadowColor,
-      [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0], UITextAttributeFont,
+      [sm lightFontWithSize:0.0], UITextAttributeFont,
       nil]
-     forState:UIControlStateNormal];
+                                                forState:UIControlStateNormal];
 
     [[UIBarButtonItem appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor colorWithRed:21/255.0 green:126/255.0 blue:252/255.0 alpha:0.5], UITextAttributeTextColor,
+      [sm tintColor], UITextAttributeTextColor,
       [UIColor clearColor], UITextAttributeTextShadowColor,
-      [UIFont fontWithName:@"HelveticaNeue-Light" size:0.0], UITextAttributeFont,
+      [sm lightFontWithSize:0.0], UITextAttributeFont,
       nil]
-    forState:UIControlStateHighlighted];
+                                                forState:UIControlStateHighlighted];
 
-	[[UIBarButtonItem appearance] setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
-	UIImage *backButton = [[UIImage imageNamed:@"clear_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
-	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    UIImage *backButton = [[UIImage imageNamed:@"clear_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setTintColor:[sm navBarBackgroundColor]];
+#endif
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation

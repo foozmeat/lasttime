@@ -18,12 +18,14 @@
 	self.reminderSwitch = [[UISwitch alloc] init];
 	[reminderSwitch addTarget:delegate action:@selector(reminderSwitchChanged:) forControlEvents:UIControlEventValueChanged];
 	[reminderSwitch setOn:NO];
-//	[reminderSwitch setOnTintColor:[UIColor brownColor]];
 
 	self.accessoryView = reminderSwitch;
-	
+    LTStyleManager *sm = [LTStyleManager manager];
+
+    [reminderSwitch setOnTintColor:[sm tintColor]];
+
 	self.textLabel.text = NSLocalizedString(@"Reminder?",@"Reminder?");
-    self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+    self.textLabel.font = [sm lightFontWithSize:17.0];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

@@ -17,7 +17,6 @@
 	self.pickerView.showsSelectionIndicator = YES;
 	[pickerView setDataSource:self];
 	[pickerView setDelegate:self];
-//	self.detailTextLabel.textColor = [UIColor brownColor];
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		UIViewController *folderPickerViewController = [[UIViewController alloc] init];
 		
@@ -26,9 +25,10 @@
 		[folderPopover setPopoverContentSize:pickerView.frame.size];
 		[folderPopover setDelegate:self];
 	}
-    self.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
-    self.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
-    self.detailTextLabel.textColor = [UIColor colorWithRed:21/255.0 green:126/255.0 blue:252/255.0 alpha:1.0];
+    LTStyleManager *sm = [LTStyleManager manager];
+    self.textLabel.font = [sm lightFontWithSize:17.0];
+    self.detailTextLabel.font = [sm lightFontWithSize:17.0];
+    self.detailTextLabel.textColor = [sm defaultColor];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -62,8 +62,6 @@
 	if (!inputAccessoryView) {
 		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
 			inputAccessoryView = [[UIToolbar alloc] init];
-//			inputAccessoryView.barStyle = UIBarStyleBlackTranslucent;
-	//		inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 			[inputAccessoryView sizeToFit];
 			CGRect frame = inputAccessoryView.frame;
 			frame.size.height = 44.0f;

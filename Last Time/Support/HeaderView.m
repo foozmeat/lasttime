@@ -38,9 +38,9 @@ static CGFloat height = 21;
 	gradient.endPoint = CGPointMake(0.5, 1.0);
 
 	UIColor *color1 = [UIColor brownColor];
-	UIColor *color2 = [UIColor colorWithRed:203.0f/255.0f green:177.0f/255.0f blue:151.0f/255.0f alpha:1.0];
-		//	UIColor *color2 = [UIColor whiteColor];
-	
+//	UIColor *color2 = [UIColor colorWithRed:203.0f/255.0f green:177.0f/255.0f blue:151.0f/255.0f alpha:1.0];
+	UIColor *color2 = [UIColor whiteColor];
+
 	[gradient setColors:[NSArray arrayWithObjects:(id)color1.CGColor, (id)color2.CGColor, nil]];
 	return gradient;
 }
@@ -66,11 +66,13 @@ static CGFloat height = 21;
 	
 	[self.layer addSublayer:border];
 
+    LTStyleManager *sm = [LTStyleManager manager];
+
 	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, rect.size.width,height)];
 	label.text = self.headerLabel;
 	label.textAlignment = UITextAlignmentCenter;
 	label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+    label.font = [sm lightFontWithSize:17.0];
 
 	label.textColor = [UIColor whiteColor];
 	label.shadowColor = [UIColor darkGrayColor];

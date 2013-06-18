@@ -33,9 +33,6 @@
 
 	self.title = NSLocalizedString(@"Lists", @"Lists");
 
-//    [[[self navigationController] navigationBar] setTintColor:[UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0]];
-//    [[[self navigationController] navigationBar] setTintColor:[UIColor redColor]];
-
 	[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 
 }
@@ -351,7 +348,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	NSString *reuseString = nil;
-	
+    LTStyleManager *sm = [LTStyleManager manager];
+
 	if ([indexPath row] == (int)[[self.fetchedResultsController fetchedObjects] count]) {
 		reuseString = @"addFolderCell";
 		
@@ -360,12 +358,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 		if (!cell) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 		}
-//		cell.selectionStyle = UITableViewCellSelectionStyleGray;
-//		cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-//		cell.selectionStyle = UITableViewCellSelectionStyleGray;
-
 		[[cell textLabel] setText:NSLocalizedString(@"Create New List…",@"Create a new list")];
-        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.0];
+        cell.textLabel.font = [sm lightFontWithSize:17.0];
 
 		return cell;
 
@@ -388,18 +382,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)configureCell:(FolderListCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-	
+    LTStyleManager *sm = [LTStyleManager manager];
+
 	EventFolder *folder = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	[[cell cellTextField] setDelegate:self];
 	[[cell textLabel] setText:[folder folderName]];
 	[[cell detailTextLabel] setText:[folder subtitle]];
-//	cell.selectionStyle = UITableViewCellSelectionStyleGray;
-//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
 	if ([folder hasExpiredEvent]) {
-		cell.textLabel.textColor = [UIColor redColor];
+		cell.textLabel.textColor = [sm alarmColor];
 	}	else {
-		cell.textLabel.textColor = [UIColor blackColor];
+		cell.textLabel.textColor = [sm defaultColor];
 	}
+    cell.detailTextLabel.textColor = [sm tintColor];
 
 }
 

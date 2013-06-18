@@ -66,10 +66,6 @@
 -(void) configureMenuButton:(UIButton *)menuButton{
     menuButton.frame = CGRectMake(0, 0, 40, 29);
     [menuButton setImage:[UIImage imageNamed:@"ButtonMenu.png"] forState:UIControlStateNormal];
-//    [menuButton setBackgroundImage:[UIImage imageNamed:@"menu.png"] forState:UIControlStateNormal];
-//    [menuButton setBackgroundImage:[UIImage imageNamed:@"menuhighlighted.png"] forState:UIControlStateHighlighted];
-//    [menuButton setAdjustsImageWhenHighlighted:NO];
-//    [menuButton setAdjustsImageWhenDisabled:NO];
 }
 
 -(void) configureSlideLayer:(CALayer *)layer{
@@ -83,14 +79,5 @@
 
 -(CGFloat) leftMenuVisibleWidth{
     return 280;
-}
--(void) prepareForSwitchToContentViewController:(UINavigationController *)content
-{
-//    UIViewController* controller = [content.viewControllers objectAtIndex:0];
-
-//    if ([controller isKindOfClass:[LightViewController class]]) {
-//        LightViewController* lightViewController = (LightViewController*)controller;
-//        lightViewController.menuViewController = self;
-//    }
 }
 @end

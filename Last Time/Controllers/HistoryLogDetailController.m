@@ -205,13 +205,6 @@
 	}
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//	cell.selectionStyle = UITableViewCellSelectionStyleGray;
-//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-
-}
-
 #pragma mark - Location methods
 
 -(void)updateObjectLocation
@@ -229,8 +222,7 @@
 {
 	
 	NSUInteger indexes[] = { 0, kEventLocation };
-	NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes
-																											length:2];
+	NSIndexPath *indexPath = [NSIndexPath indexPathWithIndexes:indexes length:2];
 	
 	UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:indexPath];
 	
