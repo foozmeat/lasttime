@@ -48,20 +48,21 @@ static LTStyleManager *manager = nil;
     return [UIColor redColor];
 }
 
-
 - (UIColor *) tintColor
 {
-    return [UIColor greenColor];
+    return [UIColor brownColor];
 }
 
 - (UIColor *) navBarBackgroundColor
 {
-    return [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0];
+	return [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:248.0/255.0 alpha:1.0];
+//	return [UIColor whiteColor];
 
 }
 - (UIColor *) tableHeaderColor
 {
-    return [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0];
+	return [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:248.0/255.0 alpha:1.0];
+//    return [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0];
 
 }
 - (UIFont *) mediumFontWithSize:(float) size
