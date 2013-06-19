@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="841" y="736"/>
         </scene>
-        <!--Timeline View Controller-->
+        <!--Timeline View Controller - Timeline X-->
         <scene sceneID="YP2-aH-h52">
             <objects>
                 <viewController id="XIf-v5-Knt" customClass="TimelineViewController" sceneMemberID="viewController">
@@ -133,7 +133,7 @@
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="action" id="9pg-QA-OdU">
+                                    <barButtonItem style="plain" systemItem="action" id="9pg-QA-OdU">
                                         <connections>
                                             <action selector="exportTimeline:" destination="XIf-v5-Knt" id="guT-Rs-xHq"/>
                                         </connections>
@@ -143,7 +143,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Le7-8j-mGd"/>
+                    <navigationItem key="navigationItem" title="Timeline X" id="Le7-8j-mGd"/>
                     <connections>
                         <outlet property="exportButton" destination="9pg-QA-OdU" id="KgS-pJ-3N6"/>
                         <outlet property="timelineTableView" destination="POw-4b-3pz" id="yEo-VZ-nwG"/>
@@ -458,7 +458,6 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
-                                <color key="tintColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -551,7 +550,6 @@
         <class className="EventController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventController.h"/>
             <relationships>
-                <relationship kind="action" name="exportEvent:"/>
                 <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="exportButton" candidateClass="UIBarButtonItem"/>
@@ -617,8 +615,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1Og-Yj-wd6"/>
-        <segue reference="Hxq-gv-16l"/>
+        <segue reference="L1V-sQ-VP6"/>
         <segue reference="OiC-I1-Gzp"/>
+        <segue reference="Hxq-gv-16l"/>
     </inferredMetricsTieBreakers>
 </document>

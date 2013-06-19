@@ -121,7 +121,10 @@
     UIImage *backButton = [[UIImage imageNamed:@"clear_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
-    [[UINavigationBar appearance] setTintColor:[sm navBarBackgroundColor]];
+	[[UINavigationBar appearance] setTintColor:[sm navBarBackgroundColor]];
+	[[UIToolbar appearance] setTintColor:[sm navBarBackgroundColor]];
+	[[UIBarButtonItem appearance] setTintColor:[sm tintColor]];
+
 #endif
 }
 
