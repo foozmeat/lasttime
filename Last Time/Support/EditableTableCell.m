@@ -27,7 +27,7 @@
 	self.cellTextField.returnKeyType = UIReturnKeyNext;
 
     self.textLabel.font = [sm lightFontWithSize:17.0];
-    self.detailTextLabel.textColor = [sm tintColor];
+    self.detailTextLabel.textColor = [sm detailTextColor];
 
 	[self addSubview:self.cellTextField];
 	

@@ -393,7 +393,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	}	else {
 		cell.textLabel.textColor = [sm defaultColor];
 	}
-    cell.detailTextLabel.textColor = [sm tintColor];
+	cell.detailTextLabel.textColor = [sm detailTextColor];
 
 }
 
@@ -446,16 +446,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if ([self.tableView isEditing]) {
 		[self setEditing:NO animated:YES];
-	}
-}
-
-#pragma mark - Orientation
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
-		return YES;
-	} else {
-		return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
 	}
 }
 

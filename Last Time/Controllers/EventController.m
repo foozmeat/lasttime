@@ -166,10 +166,10 @@
 
     LTStyleManager *sm = [LTStyleManager manager];
 
-	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
+	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 22)];
 	[v setBackgroundColor:[UIColor clearColor]];
 	
-	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, tableView.bounds.size.width,20)];
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, tableView.bounds.size.width,22)];
 	label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
 	label.textAlignment = UITextAlignmentCenter;
 	label.backgroundColor = [sm tableHeaderColor];
@@ -190,11 +190,11 @@
 	int count = [[_event logEntryCollection] count];
 
 	if (section == kLastTimeSection && count > 0) {
-		return 20.0;
+		return 22.0;
 	} else if (section == kAverageSection && count > 1) {
-		return 20.0;
+		return 22.0;
 	} else if (section == kHistorySection && count > 0) {
-		return 20;
+		return 22.0;
 	} else {
 		return 0.00001f;
 	}
@@ -275,7 +275,7 @@
 
 		cell.textLabel.text = NSLocalizedString(@"Last Time",@"Last Time");
 		cell.detailTextLabel.text = [_event lastStringInterval];
-        cell.detailTextLabel.textColor = [sm tintColor];
+        cell.detailTextLabel.textColor = [sm detailTextColor];
 		
 		return cell;
 		
@@ -287,7 +287,7 @@
 			{
 				cell.textLabel.text = NSLocalizedString(@"Time Span",@"Time Span");
 				cell.detailTextLabel.text = [_event averageStringInterval];
-                cell.detailTextLabel.textColor = [sm tintColor];
+                cell.detailTextLabel.textColor = [sm detailTextColor];
 
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
@@ -305,7 +305,7 @@
 				cell.detailTextLabel.text = [df stringFromDate:[_event nextTime]];
 				cell.detailTextLabel.numberOfLines = 2;
 				cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-                cell.detailTextLabel.textColor = [sm tintColor];
+                cell.detailTextLabel.textColor = [sm detailTextColor];
 
 				break;
 			}
@@ -313,7 +313,7 @@
 			{
 				cell.textLabel.text = NSLocalizedString(@"Average Value",@"Average Value");
 				cell.detailTextLabel.text = [_event averageStringValue];
-                cell.detailTextLabel.textColor = [sm tintColor];
+                cell.detailTextLabel.textColor = [sm detailTextColor];
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
 			}
@@ -345,7 +345,7 @@
 			historyLogCell.locationMarker.hidden = ![item hasLocation];
 			historyLogCell.logEntryLocationCell.text = [item locationString];
 
-            historyLogCell.logEntryDateCell.textColor = [sm tintColor];
+            historyLogCell.logEntryDateCell.textColor = [sm detailTextColor];
 
 			return historyLogCell;
 
@@ -440,16 +440,6 @@
 - (void) itemDetailViewControllerWillDismiss:(CustomTableViewController *)ctvc
 {
 	[[self eventTableView] reloadData];
-}
-
-#pragma mark - Orientation
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-	if ([[UIDevice currentDevice] userInterfaceIdiom	] == UIUserInterfaceIdiomPad) {
-		return YES;
-	} else {
-		return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
-	}
 }
 
 @end
