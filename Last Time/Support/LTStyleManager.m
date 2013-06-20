@@ -55,7 +55,7 @@ static LTStyleManager *manager = nil;
 
 - (UIColor *) detailTextColor
 {
-	return [UIColor colorWithRed:151.0/255.0 green:151.0/255.0 blue:151.0/255.0 alpha:1.0];
+    return [UIColor brownColor];
 }
 
 - (UIColor *) navBarBackgroundColor
