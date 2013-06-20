@@ -67,16 +67,27 @@ static LTStyleManager *manager = nil;
 - (UIColor *) tableHeaderColor
 {
 	return [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:248.0/255.0 alpha:1.0];
-//    return [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0];
-
 }
+
+- (UIFont *) cellLabelFontWithSize:(float) size
+{
+    return [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
+}
+
+- (UIFont *) cellDetailFontWithSize:(float) size
+{
+    return [UIFont systemFontOfSize:[UIFont labelFontSize]];
+}
+
 - (UIFont *) mediumFontWithSize:(float) size
 {
-    return [UIFont fontWithName:@"HelveticaNeue-Medium" size:size];
+    return [UIFont boldSystemFontOfSize:size];
+//    return [UIFont fontWithName:@"HelveticaNeue-Medium" size:size];
 }
 - (UIFont *) lightFontWithSize:(float) size
 {
-    return [UIFont fontWithName:@"HelveticaNeue-Light" size:size];
+    return [UIFont systemFontOfSize:size];
+//    return [UIFont fontWithName:@"HelveticaNeue-Light" size:size];
 }
 
 

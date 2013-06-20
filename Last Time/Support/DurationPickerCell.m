@@ -36,11 +36,11 @@
 
     LTStyleManager *sm = [LTStyleManager manager];
 
-    self.durationStringLabel.font = [sm mediumFontWithSize:17.0];
+    self.durationStringLabel.font = [sm cellDetailFontWithSize:17.0];
 	self.durationStringLabel.text = [self durationString];
 
 	self.durationLabel.text = NSLocalizedString(@"Duration",@"Duration");
-    self.durationLabel.font = [sm mediumFontWithSize:14.0];
+    self.durationLabel.font = [sm cellLabelFontWithSize:14.0];
 
     self.durationDateLabel.text = [self reminderDateString];
     self.durationDateLabel.font = [sm lightFontWithSize:12.0];

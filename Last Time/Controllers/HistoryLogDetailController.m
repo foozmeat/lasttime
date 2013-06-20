@@ -39,8 +39,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
-//    [self.tableView setBackgroundView:imageView];
 }
 
 - (void)viewDidLoad

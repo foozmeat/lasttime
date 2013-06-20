@@ -27,24 +27,12 @@
 	
 	[[self detailTextLabel] setText:[df stringFromDate:[pickerView date]]];
 
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-		UIViewController *datePickerViewController = [[UIViewController alloc] init];
-		
-		[[datePickerViewController view] addSubview:pickerView];
-		pickerPopover = [[UIPopoverController alloc] initWithContentViewController:datePickerViewController];
-		[pickerPopover setPopoverContentSize:pickerView.frame.size];
-		[pickerPopover setDelegate:self];
-		
-	} else {
-		CGRect frame = self.inputView.frame;
-		frame.size = [self.pickerView sizeThatFits:CGSizeZero];
-		self.inputView.frame = frame;
-	}
+    CGRect frame = self.inputView.frame;
+    frame.size = [self.pickerView sizeThatFits:CGSizeZero];
+    self.inputView.frame = frame;
 
     LTStyleManager *sm = [LTStyleManager manager];
-    self.textLabel.font = [sm lightFontWithSize:17.0];
-    self.detailTextLabel.font = [sm lightFontWithSize:17.0];
-    self.detailTextLabel.textColor = [sm defaultColor];
+    self.detailTextLabel.textColor = [sm tintColor];
 
 }
 

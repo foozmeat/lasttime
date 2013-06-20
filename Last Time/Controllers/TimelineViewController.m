@@ -216,11 +216,6 @@
 	return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"white_paper.jpg"]];
-}
-
 - (void)configureCellAtIndexPath:(NSIndexPath *)indexPath
 {
 	[self configureCell:[self.timelineTableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
@@ -239,26 +234,14 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-
-	LTStyleManager *sm = [LTStyleManager manager];
-
-	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
-	[v setBackgroundColor:[UIColor clearColor]];
-
-	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10,0, tableView.bounds.size.width,30)];
-	label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
-	label.textAlignment = UITextAlignmentLeft;
-	label.backgroundColor = [sm tableHeaderColor];
-	label.font = [sm mediumFontWithSize:17.0];
-
-	[v addSubview:label];
-
-	return v;
+	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
+	
+	return header;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
 {
-	return 30;
+	return [HeaderView height];
 }
 
 @end

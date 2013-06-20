@@ -20,5 +20,7 @@
 - (UIColor *) tableHeaderColor;
 - (UIFont *) mediumFontWithSize:(float) size;
 - (UIFont *) lightFontWithSize:(float) size;
+- (UIFont *) cellLabelFontWithSize:(float) size;
+- (UIFont *) cellDetailFontWithSize:(float) size;
 
 @end

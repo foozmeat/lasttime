@@ -25,7 +25,6 @@
     [reminderSwitch setOnTintColor:[sm tintColor]];
 
 	self.textLabel.text = NSLocalizedString(@"Reminder?",@"Reminder?");
-    self.textLabel.font = [sm lightFontWithSize:17.0];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

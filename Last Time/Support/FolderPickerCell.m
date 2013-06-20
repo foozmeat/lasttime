@@ -26,9 +26,7 @@
 		[folderPopover setDelegate:self];
 	}
     LTStyleManager *sm = [LTStyleManager manager];
-    self.textLabel.font = [sm lightFontWithSize:17.0];
-    self.detailTextLabel.font = [sm lightFontWithSize:17.0];
-    self.detailTextLabel.textColor = [sm defaultColor];
+    self.detailTextLabel.textColor = [sm tintColor];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

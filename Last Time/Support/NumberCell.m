@@ -19,9 +19,6 @@
 	[[cell cellTextField] setTag:tag];
 	[[cell cellTextField] setKeyboardType:UIKeyboardTypeDecimalPad];
 
-    LTStyleManager *sm = [LTStyleManager manager];
-
-	cell.textLabel.font = [sm lightFontWithSize:17.0];
 	return cell;
 }
 

@@ -11,6 +11,7 @@
 #import "HistoryLogCell.h"
 #import "LogEntry.h"
 #import "Event.h"
+#import "HeaderView.h"
 
 @interface EventController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *exportButton;
@@ -163,21 +164,9 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
 
-    LTStyleManager *sm = [LTStyleManager manager];
-
-	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 22)];
-	[v setBackgroundColor:[UIColor clearColor]];
-	
-	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, tableView.bounds.size.width,22)];
-	label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
-	label.textAlignment = UITextAlignmentCenter;
-	label.backgroundColor = [sm tableHeaderColor];
-    label.font = [sm mediumFontWithSize:17.0];
-
-	[v addSubview:label];
-	
-	return v;
+	return header;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section  
@@ -185,19 +174,9 @@
 	return 0;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	int count = [[_event logEntryCollection] count];
-
-	if (section == kLastTimeSection && count > 0) {
-		return 22.0;
-	} else if (section == kAverageSection && count > 1) {
-		return 22.0;
-	} else if (section == kHistorySection && count > 0) {
-		return 22.0;
-	} else {
-		return 0.00001f;
-	}
+	return [HeaderView height];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
