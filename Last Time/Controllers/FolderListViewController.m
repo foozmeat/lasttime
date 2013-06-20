@@ -359,7 +359,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseString];
 		}
 		[[cell textLabel] setText:NSLocalizedString(@"Create New List…",@"Create a new list")];
-        cell.textLabel.font = [sm lightFontWithSize:17.0];
+        cell.textLabel.font = [sm cellLabelFontWithSize:17.0];
 
 		return cell;
 

@@ -94,8 +94,6 @@
     window.tintColor = [sm tintColor];
 #else
     [[UINavigationBar appearance] setTintColor:[sm navBarBackgroundColor]];
-//    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
-    [[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
 
     [[UINavigationBar appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor], UITextAttributeTextColor, [UIColor clearColor], UITextAttributeTextShadowColor, nil]];
@@ -112,7 +110,7 @@
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
 	[[UIToolbar appearance] setTintColor:[sm navBarBackgroundColor]];
-    [[UIBarButtonItem appearance] setTintColor:[sm tintColor]];
+//    [[UIBarButtonItem appearance] setTintColor:[sm tintColor]];
 
 #endif
 }

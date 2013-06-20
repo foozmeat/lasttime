@@ -318,12 +318,14 @@
 			if ([item showValue]) {
 				NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[item logEntryValue] floatValue]]];
 				historyLogCell.logEntryValueCell.text = value;
+                historyLogCell.logEntryValueCell.textColor = [sm defaultColor];
 			} else {
 				historyLogCell.logEntryValueCell.text = @"";
 			}
 			
 			if ([item showNote]) {
 				historyLogCell.logEntryNoteCell.text = item.logEntryNote;
+                historyLogCell.logEntryNoteCell.textColor = [sm defaultColor];
 			} else {
 				historyLogCell.logEntryNoteCell.text = @"";
 			}
@@ -332,7 +334,7 @@
 			historyLogCell.locationMarker.hidden = ![item hasLocation];
 			historyLogCell.logEntryLocationCell.text = [item locationString];
 
-            historyLogCell.logEntryDateCell.textColor = [sm detailTextColor];
+            historyLogCell.logEntryDateCell.textColor = [sm defaultColor];
 
 			return historyLogCell;
 

@@ -21,7 +21,6 @@
 	self.cellTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
 	self.cellTextField.textAlignment = UITextAlignmentLeft;
 	self.cellTextField.textColor = [sm defaultColor];
-	self.cellTextField.font = [sm lightFontWithSize:17.0];
 	self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
 	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	self.cellTextField.returnKeyType = UIReturnKeyDone;
