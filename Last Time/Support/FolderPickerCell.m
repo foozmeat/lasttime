@@ -26,7 +26,7 @@
 		[folderPopover setDelegate:self];
 	}
     LTStyleManager *sm = [LTStyleManager manager];
-    self.detailTextLabel.textColor = [sm tintColor];
+    self.detailTextLabel.textColor = [sm defaultColor];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

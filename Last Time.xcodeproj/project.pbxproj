@@ -623,6 +623,8 @@
 		3969112214C9BD04006E8272 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3940D3F214F17E230056D01B /* HistoryLogCell.h */,
+				3940D3F314F17E230056D01B /* HistoryLogCell.m */,
 				1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */,
 				1A628502153F0FD7003C57F9 /* HeaderView.h */,
 				1A628503153F0FD7003C57F9 /* HeaderView.m */,
@@ -701,8 +703,6 @@
 			children = (
 				39F6F10B14D1A2B700DBA262 /* HistoryLogDetailController.h */,
 				39F6F10C14D1A2B800DBA262 /* HistoryLogDetailController.m */,
-				3940D3F214F17E230056D01B /* HistoryLogCell.h */,
-				3940D3F314F17E230056D01B /* HistoryLogCell.m */,
 			);
 			name = "Log Entry";
 			sourceTree = "<group>";

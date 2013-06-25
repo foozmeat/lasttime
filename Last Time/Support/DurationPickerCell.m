@@ -24,6 +24,7 @@
 
 - (void)initalizeInputView {
 
+    [self initalizeBaseInputView];
 	_unitRows = [[NSArray alloc] initWithObjects:@"day", @"week", @"month", nil];
 	pickerView = [[UIPickerView alloc] init];
 	pickerView.delegate = self;
@@ -36,28 +37,18 @@
 
     LTStyleManager *sm = [LTStyleManager manager];
 
-    self.durationStringLabel.font = [sm cellDetailFontWithSize:17.0];
+    self.durationStringLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 	self.durationStringLabel.text = [self durationString];
 
 	self.durationLabel.text = NSLocalizedString(@"Duration",@"Duration");
-    self.durationLabel.font = [sm cellLabelFontWithSize:14.0];
+    self.durationLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 
     self.durationDateLabel.text = [self reminderDateString];
-    self.durationDateLabel.font = [sm lightFontWithSize:12.0];
+    self.durationDateLabel.font = [sm cellDetailFontWithSize:12.0];
 
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-		UIViewController *datePickerViewController = [[UIViewController alloc] init];
-		
-		[[datePickerViewController view] addSubview:pickerView];
-		pickerPopover = [[UIPopoverController alloc] initWithContentViewController:datePickerViewController];
-		[pickerPopover setPopoverContentSize:pickerView.frame.size];
-		[pickerPopover setDelegate:self];
-		
-	} else {
-		CGRect frame = self.inputView.frame;
-		frame.size = [self.pickerView sizeThatFits:CGSizeZero];
-		self.inputView.frame = frame;
-	}
+    CGRect frame = self.inputView.frame;
+    frame.size = [self.pickerView sizeThatFits:CGSizeZero];
+    self.inputView.frame = frame;
 }
 
 - (void)setEventDate:(NSDate *)date
@@ -208,15 +199,7 @@
 #pragma mark - KeyInput
 
 - (BOOL)becomeFirstResponder {
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		[self.pickerView setNeedsLayout];
-	} else {
-		[pickerPopover presentPopoverFromRect:[self bounds] 
-																	 inView:self 
-								 permittedArrowDirections:UIPopoverArrowDirectionLeft 
-																 animated:YES];
-		[delegate popoverController:pickerPopover isShowing:YES];
-	}
+	[self.pickerView setNeedsLayout];
 	return [super becomeFirstResponder];
 }
 
@@ -299,8 +282,7 @@
 		return @"";
 	}
 			
-	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.duration 
-																										sinceDate:self.eventDate];
+	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.duration sinceDate:self.eventDate];
 	
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
 	

@@ -12,6 +12,7 @@
 @synthesize pickerView, df, delegate, pickerPopover;
 
 - (void)initalizeInputView {
+    [self initalizeBaseInputView];
 	df = [[NSDateFormatter alloc] init];
 	[df setDateStyle:NSDateFormatterFullStyle];
 	[df setTimeStyle:NSDateFormatterNoStyle];
@@ -30,9 +31,6 @@
     CGRect frame = self.inputView.frame;
     frame.size = [self.pickerView sizeThatFits:CGSizeZero];
     self.inputView.frame = frame;
-
-    LTStyleManager *sm = [LTStyleManager manager];
-    self.detailTextLabel.textColor = [sm tintColor];
 
 }
 

@@ -14,6 +14,7 @@
 #import "EventStore.h"
 #import "LogEntry.h"
 #import "Event.h"
+#import "HeaderView.h"
 
 @implementation EventDetailController
 {
@@ -44,9 +45,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
-//    [self.tableView setBackgroundView:imageView];
 
 	if (event.reminderDuration != 0) {
 		_reminderEnabled = YES;
@@ -165,7 +163,23 @@
 	}
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
+
+	return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 0.00001f;
+    } else {
+        return [HeaderView height];
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	//  Determine the text field's value. Each section of the table view
 	//  is mapped to a property of the event object we're displaying.

@@ -19,7 +19,8 @@ static CGFloat height = 28;
 	CGRect frame = CGRectMake(0, 0, width, height);
 	self = [self initWithFrame:frame];
 	self.headerLabel = label;
-    self.backgroundColor = [UIColor clearColor];
+    LTStyleManager *sm = [LTStyleManager new];
+    self.backgroundColor = [sm tableHeaderColor];
 	
 	return self;
 }

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LogEntry.h"
 
 @interface HistoryLogCell : UITableViewCell
 
@@ -15,4 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *logEntryDateCell;
 @property (strong, nonatomic) IBOutlet UIImageView *locationMarker;
 @property (strong, nonatomic) IBOutlet UILabel *logEntryLocationCell;
+
+@property (strong, nonatomic) LogEntry *logEntry;
 @end

@@ -25,6 +25,7 @@
 
 	self.accessoryView = locationSwitch;
 	
+    self.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 	self.textLabel.text = NSLocalizedString(@"Store Location?",@"Store Location?");
 }
 

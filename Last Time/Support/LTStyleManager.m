@@ -56,40 +56,40 @@ static LTStyleManager *manager = nil;
 - (UIColor *) detailTextColor
 {
 //    return [UIColor brownColor];
-	return [UIColor colorWithRed:146.0/255.0 green:146.0/255.0 blue:146.0/255.0 alpha:1.0];
+    return [UIColor colorWithWhite:40.0/100.0 alpha:1.0];
+//	return [UIColor colorWithRed:146.0/255.0 green:146.0/255.0 blue:146.0/255.0 alpha:1.0];
 }
 
 - (UIColor *) navBarBackgroundColor
 {
-	return [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:248.0/255.0 alpha:1.0];
+    return [UIColor colorWithWhite:96.0/100.0 alpha:1.0];
 //	return [UIColor whiteColor];
 
 }
 - (UIColor *) tableHeaderColor
 {
-	return [UIColor colorWithRed:247.0/255.0 green:247.0/255.0 blue:248.0/255.0 alpha:1.0];
+    return [UIColor colorWithWhite:90.0/100.0 alpha:1.0];
 }
 
 - (UIFont *) cellLabelFontWithSize:(float) size
 {
-    return [UIFont boldSystemFontOfSize:[UIFont labelFontSize]];
+    return [self mediumFontWithSize:size];
 }
 
 - (UIFont *) cellDetailFontWithSize:(float) size
 {
-    return [UIFont systemFontOfSize:[UIFont labelFontSize]];
+    return [self lightFontWithSize:size];
 }
 
 - (UIFont *) mediumFontWithSize:(float) size
 {
-    return [UIFont boldSystemFontOfSize:size];
-//    return [UIFont fontWithName:@"HelveticaNeue-Medium" size:size];
+    //    return [UIFont fontWithName:@"Georgia" size:size];
+    return [UIFont fontWithName:@"HelveticaNeue-Medium" size:size];
 }
 - (UIFont *) lightFontWithSize:(float) size
 {
-    return [UIFont systemFontOfSize:size];
-//    return [UIFont fontWithName:@"HelveticaNeue-Light" size:size];
+//    return [UIFont fontWithName:@"Georgia" size:size];
+    return [UIFont fontWithName:@"HelveticaNeue-Light" size:size];
+
 }
-
-
 @end

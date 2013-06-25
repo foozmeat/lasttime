@@ -259,6 +259,9 @@
 
 	Event *item = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = item.eventName;
+    cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+
+    cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
     cell.detailTextLabel.text = item.subtitle;
     cell.detailTextLabel.textColor = [sm detailTextColor];
 

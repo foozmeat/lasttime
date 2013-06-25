@@ -11,9 +11,18 @@
 @implementation BasePickerCell
 @synthesize inputAccessoryView, pickerView, pickerPopover;
 
-- (void)initalizeInputView {
+- (void)initalizeBaseInputView {
 
+    LTStyleManager *sm = [LTStyleManager manager];
+    self.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+    self.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
+    self.detailTextLabel.textColor = [sm defaultColor];
 	return;
+}
+
+- (void) initalizeInputView
+{
+    [self initalizeBaseInputView];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

@@ -395,6 +395,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	}
 	cell.detailTextLabel.textColor = [sm detailTextColor];
 
+    cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+    cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
+
 }
 
 #pragma mark - TextFieldDelegate

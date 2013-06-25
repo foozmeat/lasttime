@@ -21,14 +21,16 @@
 	self.cellTextField.autocorrectionType = UITextAutocorrectionTypeDefault;
 	self.cellTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
 	self.cellTextField.textAlignment = UITextAlignmentRight;
-	self.cellTextField.font = [sm cellDetailFontWithSize:17.0];
 	self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
 	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	self.cellTextField.returnKeyType = UIReturnKeyNext;
-    self.cellTextField.textColor = [sm tintColor];
+    self.cellTextField.textColor = [sm defaultColor];
 
-    self.textLabel.font = [sm cellLabelFontWithSize:17.0];
     self.detailTextLabel.textColor = [sm tintColor];
+
+    self.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+    self.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
+	self.cellTextField.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 
 	[self addSubview:self.cellTextField];
 	

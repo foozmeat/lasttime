@@ -257,7 +257,9 @@
 	numberFormatter.roundingIncrement = [NSNumber numberWithDouble:0.001];
 
 	cell = [tableView dequeueReusableCellWithIdentifier:@"AverageCell"];
-	
+    cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+    cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
+
 	if ([indexPath section] == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
 
 		cell.textLabel.text = NSLocalizedString(@"Last Time",@"Last Time");
@@ -314,27 +316,29 @@
 			HistoryLogCell *historyLogCell = [tableView dequeueReusableCellWithIdentifier:@"HistoryLogCell"];
 
 			LogEntry *item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
-			
-			if ([item showValue]) {
-				NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[item logEntryValue] floatValue]]];
-				historyLogCell.logEntryValueCell.text = value;
-                historyLogCell.logEntryValueCell.textColor = [sm defaultColor];
-			} else {
-				historyLogCell.logEntryValueCell.text = @"";
-			}
-			
-			if ([item showNote]) {
-				historyLogCell.logEntryNoteCell.text = item.logEntryNote;
-                historyLogCell.logEntryNoteCell.textColor = [sm defaultColor];
-			} else {
-				historyLogCell.logEntryNoteCell.text = @"";
-			}
-			
-			historyLogCell.logEntryDateCell.text = [item dateString];
-			historyLogCell.locationMarker.hidden = ![item hasLocation];
-			historyLogCell.logEntryLocationCell.text = [item locationString];
 
-            historyLogCell.logEntryDateCell.textColor = [sm defaultColor];
+            historyLogCell.logEntry = item;
+
+//			if ([item showValue]) {
+//				NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[item logEntryValue] floatValue]]];
+//				historyLogCell.logEntryValueCell.text = value;
+//                historyLogCell.logEntryValueCell.textColor = [sm defaultColor];
+//			} else {
+//				historyLogCell.logEntryValueCell.text = @"";
+//			}
+//			
+//			if ([item showNote]) {
+//				historyLogCell.logEntryNoteCell.text = item.logEntryNote;
+//                historyLogCell.logEntryNoteCell.textColor = [sm defaultColor];
+//			} else {
+//				historyLogCell.logEntryNoteCell.text = @"";
+//			}
+//			
+//			historyLogCell.logEntryDateCell.text = [item dateString];
+//			historyLogCell.locationMarker.hidden = ![item hasLocation];
+//			historyLogCell.logEntryLocationCell.text = [item locationString];
+//
+//            historyLogCell.logEntryDateCell.textColor = [sm defaultColor];
 
 			return historyLogCell;
 
@@ -366,14 +370,14 @@
 			if ([historyLogCell.logEntryValueCell.text isEqualToString:@""]) {
 				historyLogCell.logEntryValueCell.text = NSLocalizedString(@"No Value", @"The value is empty");
 			} else {
-				historyLogCell.logEntryValueCell.font = [sm lightFontWithSize:14.0];
+				historyLogCell.logEntryValueCell.font = [sm cellDetailFontWithSize:14.0];
                 historyLogCell.logEntryNoteCell.textColor = [sm defaultColor];
 			}
 			
 			if ([historyLogCell.logEntryNoteCell.text isEqualToString:@""]) {
 				historyLogCell.logEntryNoteCell.text = NSLocalizedString(@"No Note", @"The note is blank");
 			} else {
-				historyLogCell.logEntryNoteCell.font = [sm lightFontWithSize:14.0];
+				historyLogCell.logEntryNoteCell.font = [sm cellDetailFontWithSize:14.0];
                 historyLogCell.logEntryNoteCell.textColor = [sm defaultColor];
 				
 			}

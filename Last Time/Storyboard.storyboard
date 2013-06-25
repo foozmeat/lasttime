@@ -132,7 +132,7 @@
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="action" id="9pg-QA-OdU">
+                                    <barButtonItem title="Export x" style="plain" id="9pg-QA-OdU">
                                         <connections>
                                             <action selector="exportTimeline:" destination="XIf-v5-Knt" id="guT-Rs-xHq"/>
                                         </connections>
@@ -321,7 +321,7 @@
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="iJY-66-lvl"/>
-                                    <barButtonItem style="plain" systemItem="add" id="p0p-8v-Smc">
+                                    <barButtonItem title="Add x" style="plain" id="p0p-8v-Smc">
                                         <connections>
                                             <action selector="addNewEvent:" destination="UZE-a6-EtP" id="r3m-4p-tnc"/>
                                             <segue destination="2N3-2T-jE7" kind="push" identifier="addEvent" id="Hxq-gv-16l"/>
@@ -445,13 +445,13 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="On1-3m-Adw">
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem style="plain" systemItem="action" id="YMC-47-0L3">
+                                    <barButtonItem title="Export x" style="plain" id="YMC-47-0L3">
                                         <connections>
                                             <action selector="exportEvent:" destination="OZl-Qr-VX1" id="vIp-GD-E83"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Gsu-Tr-zfE"/>
-                                    <barButtonItem style="plain" systemItem="add" id="mVx-Xj-f7Y">
+                                    <barButtonItem title="Add x" style="plain" id="mVx-Xj-f7Y">
                                         <connections>
                                             <segue destination="m2s-0E-uSp" kind="push" identifier="addLogEntry" id="ye4-rJ-VmR"/>
                                         </connections>
@@ -542,73 +542,6 @@
         <image name="row.png" width="1" height="44"/>
         <image name="rowselected.png" width="1" height="44"/>
     </resources>
-    <classes>
-        <class className="CustomTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomTableViewController.h"/>
-        </class>
-        <class className="EventController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventController.h"/>
-            <relationships>
-                <relationship kind="action" name="exportEvent:"/>
-                <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="exportButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="EventDetailController" superclassName="CustomTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDetailController.h"/>
-        </class>
-        <class className="EventListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="FolderListCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FolderListCell.h"/>
-        </class>
-        <class className="FolderListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FolderListViewController.h"/>
-        </class>
-        <class className="HistoryLogCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryLogCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="locationMarker" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="logEntryDateCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="logEntryLocationCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="logEntryNoteCell" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="logEntryValueCell" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HistoryLogDetailController" superclassName="CustomTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryLogDetailController.h"/>
-        </class>
-        <class className="LTSlideViewController" superclassName="SASlideMenuViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LTSlideViewController.h"/>
-        </class>
-        <class className="MenuCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="disclosureImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="itemDescription" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SASlideMenuRootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuRootViewController.h"/>
-        </class>
-        <class className="SASlideMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SASlideMenuViewController.h"/>
-        </class>
-        <class className="TimelineViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimelineViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="exportTimeline:"/>
-                <relationship kind="outlet" name="exportButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="timelineTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -616,7 +549,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="L1V-sQ-VP6"/>
-        <segue reference="Hxq-gv-16l"/>
         <segue reference="OiC-I1-Gzp"/>
+        <segue reference="Hxq-gv-16l"/>
     </inferredMetricsTieBreakers>
 </document>

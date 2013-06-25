@@ -16,5 +16,6 @@
 
 - (void)valueChanged:(id)sender;
 - (void)done:(id)sender;
+- (void)initalizeBaseInputView;
 
 @end
