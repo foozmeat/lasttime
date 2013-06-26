@@ -106,13 +106,16 @@
      [NSDictionary dictionaryWithObjectsAndKeys:
       [sm tintColor], UITextAttributeTextColor,
       [UIColor clearColor], UITextAttributeTextShadowColor,
-      [sm mediumFontWithSize:0.0], UITextAttributeFont,
+      [sm mediumFontWithSize:16.0], UITextAttributeFont,
       nil] forState:UIControlStateNormal];
+
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackButtonTitlePositionAdjustment:UIOffsetMake(0.0,-3.0) forBarMetrics:UIBarMetricsDefault];
 
     [[UIBarButtonItem appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
       [sm tintColor], UITextAttributeTextColor,
       [UIColor clearColor], UITextAttributeTextShadowColor,
+      [sm mediumFontWithSize:16.0], UITextAttributeFont,
       nil] forState:UIControlStateHighlighted];
 
     [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
