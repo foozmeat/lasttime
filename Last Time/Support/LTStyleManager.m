@@ -50,7 +50,8 @@ static LTStyleManager *manager = nil;
 
 - (UIColor *) tintColor
 {
-    return [UIColor brownColor];
+    return [UIColor colorWithRed:21.0/255.0 green:126.0/255.0 blue:252.0/255.0 alpha:1.0];
+//    return [UIColor brownColor];
 }
 
 - (UIColor *) detailTextColor

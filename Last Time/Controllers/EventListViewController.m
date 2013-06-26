@@ -241,6 +241,11 @@
 {
 
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventListCell"];
+#ifndef _USE_OS_7_OR_LATER
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width + 10.0, 1)];
+    lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
+    [cell.contentView addSubview:lineView];
+#endif
 
 	[self configureCell:cell atIndexPath:indexPath];
 	return cell;

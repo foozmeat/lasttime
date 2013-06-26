@@ -80,6 +80,12 @@
 	}
 	
 	self.cellTextField.frame = editFrame;
+
+#ifndef _USE_OS_7_OR_LATER
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, self.contentView.frame.size.height - 1.0, self.contentView.frame.size.width + 10.0, 1)];
+    lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
+    [self.contentView addSubview:lineView];
+#endif
 }
 
 - (void)setStringValue:(NSString *)value {

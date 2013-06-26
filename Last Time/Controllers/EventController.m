@@ -260,6 +260,17 @@
     cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
     cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 
+#ifndef _USE_OS_7_OR_LATER
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width + 10.0, 1)];
+    lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
+
+    NSInteger rowsAmount = [tableView numberOfRowsInSection:[indexPath section]];
+    if ([indexPath row] != rowsAmount - 1) {
+        [cell.contentView addSubview:lineView];
+    }
+
+#endif
+
 	if ([indexPath section] == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
 
 		cell.textLabel.text = NSLocalizedString(@"Last Time",@"Last Time");
@@ -314,31 +325,13 @@
 		if ([[_event logEntryCollection] count] > 0) {
 			
 			HistoryLogCell *historyLogCell = [tableView dequeueReusableCellWithIdentifier:@"HistoryLogCell"];
+#ifndef _USE_OS_7_OR_LATER
+            [historyLogCell.contentView addSubview:lineView];
+#endif
 
 			LogEntry *item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
 
             historyLogCell.logEntry = item;
-
-//			if ([item showValue]) {
-//				NSString *value = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[item logEntryValue] floatValue]]];
-//				historyLogCell.logEntryValueCell.text = value;
-//                historyLogCell.logEntryValueCell.textColor = [sm defaultColor];
-//			} else {
-//				historyLogCell.logEntryValueCell.text = @"";
-//			}
-//			
-//			if ([item showNote]) {
-//				historyLogCell.logEntryNoteCell.text = item.logEntryNote;
-//                historyLogCell.logEntryNoteCell.textColor = [sm defaultColor];
-//			} else {
-//				historyLogCell.logEntryNoteCell.text = @"";
-//			}
-//			
-//			historyLogCell.logEntryDateCell.text = [item dateString];
-//			historyLogCell.locationMarker.hidden = ![item hasLocation];
-//			historyLogCell.logEntryLocationCell.text = [item locationString];
-//
-//            historyLogCell.logEntryDateCell.textColor = [sm defaultColor];
 
 			return historyLogCell;
 
