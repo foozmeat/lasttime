@@ -42,6 +42,11 @@ static LTStyleManager *manager = nil;
     return [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"disclosure arrow.png" ]];
 }
 
+- (UIImage *) backArrowImage
+{
+    return [[UIImage imageNamed:@"back arrow.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 20, 0, 4)];
+}
+
 
 #pragma mark - Colors
 

@@ -23,5 +23,6 @@
 - (UIFont *) cellLabelFontWithSize:(float) size;
 - (UIFont *) cellDetailFontWithSize:(float) size;
 - (UIImageView *) disclosureArrowImageView;
+- (UIImage *) backArrowImage;
 
 @end

@@ -120,8 +120,8 @@
 
     [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
-    UIImage *backButton = [[UIImage imageNamed:@"clear_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
-    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+//    UIImage *backButton = [[UIImage imageNamed:@"clear_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[sm backArrowImage] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
 	[[UIToolbar appearance] setTintColor:[sm navBarBackgroundColor]];
 //    [[UIBarButtonItem appearance] setTintColor:[sm tintColor]];

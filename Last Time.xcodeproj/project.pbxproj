@@ -18,6 +18,7 @@
 		1A21320D16156D9E00770280 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A21320C16156D9E00770280 /* Default-568h@2x.png */; };
 		1A22D765177E2B0D009C7537 /* disclosure arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22D764177E2B0D009C7537 /* disclosure arrow@2x.png */; };
 		1A22D767177E2F95009C7537 /* disclosure arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22D766177E2F95009C7537 /* disclosure arrow.png */; };
+		1A22D769177E332D009C7537 /* back arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A22D768177E332D009C7537 /* back arrow@2x.png */; };
 		1A2B26B5176BB8DC0006B902 /* ButtonMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B26B3176BB8DC0006B902 /* ButtonMenu.png */; };
 		1A2B26B6176BB8DC0006B902 /* ButtonMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B26B4176BB8DC0006B902 /* ButtonMenu@2x.png */; };
 		1A2B26B9176BCA5F0006B902 /* clear_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2B26B7176BCA5F0006B902 /* clear_back.png */; };
@@ -161,6 +162,7 @@
 		1A21320C16156D9E00770280 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1A22D764177E2B0D009C7537 /* disclosure arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure arrow@2x.png"; sourceTree = "<group>"; };
 		1A22D766177E2F95009C7537 /* disclosure arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure arrow.png"; sourceTree = "<group>"; };
+		1A22D768177E332D009C7537 /* back arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back arrow@2x.png"; sourceTree = "<group>"; };
 		1A2B26B3176BB8DC0006B902 /* ButtonMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonMenu.png; sourceTree = "<group>"; };
 		1A2B26B4176BB8DC0006B902 /* ButtonMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ButtonMenu@2x.png"; sourceTree = "<group>"; };
 		1A2B26B7176BCA5F0006B902 /* clear_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_back.png; sourceTree = "<group>"; };
@@ -717,6 +719,7 @@
 				1A2B26B4176BB8DC0006B902 /* ButtonMenu@2x.png */,
 				1A22D766177E2F95009C7537 /* disclosure arrow.png */,
 				1A22D764177E2B0D009C7537 /* disclosure arrow@2x.png */,
+				1A22D768177E332D009C7537 /* back arrow@2x.png */,
 			);
 			name = Images;
 			path = Resources/Images;
@@ -918,6 +921,7 @@
 				1A40602A177112B700E236D4 /* 259-list@2x.png in Resources */,
 				1A22D765177E2B0D009C7537 /* disclosure arrow@2x.png in Resources */,
 				1A22D767177E2F95009C7537 /* disclosure arrow.png in Resources */,
+				1A22D769177E332D009C7537 /* back arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
