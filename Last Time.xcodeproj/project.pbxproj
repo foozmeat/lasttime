@@ -73,6 +73,7 @@
 		1AED06091510EEF100CCDA4F /* Last Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */; };
 		1AED06241510F9F100CCDA4F /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06231510F9F100CCDA4F /* LogEntry.m */; };
 		1AEDBCE3153494310098E3A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1AEDBCE5153494310098E3A0 /* Localizable.strings */; };
+		1AF436B1177E503C00C7B52D /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF436B0177E503C00C7B52D /* HelpViewController.m */; };
 		3904CFA114C078E200B7396A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D70CB814BD3515009C3615 /* Foundation.framework */; };
 		3904CFA414C078E200B7396A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3904CFA314C078E200B7396A /* main.m */; };
 		3913EADC14EEB5DC0013A86A /* LocationSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */; };
@@ -252,6 +253,8 @@
 		1AEDBCE7153494360098E3A0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AEDBCE8153494360098E3A0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1AEDBCE9153494360098E3A0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1AF436AF177E503C00C7B52D /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		1AF436B0177E503C00C7B52D /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		3904CF9F14C078E200B7396A /* RandomEventFolder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomEventFolder; sourceTree = BUILT_PRODUCTS_DIR; };
 		3904CFA314C078E200B7396A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3913EADA14EEB5DC0013A86A /* LocationSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationSwitchCell.h; path = Support/LocationSwitchCell.h; sourceTree = "<group>"; };
@@ -371,6 +374,8 @@
 				1AB4B3E6152961B800D66347 /* SegmentsController.m */,
 				392009FD14E4B88D006B6A79 /* CustomTableViewController.h */,
 				392009FE14E4B88D006B6A79 /* CustomTableViewController.m */,
+				1AF436AF177E503C00C7B52D /* HelpViewController.h */,
+				1AF436B0177E503C00C7B52D /* HelpViewController.m */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -1022,6 +1027,7 @@
 				1A81EC8E176A62F400A65CF7 /* LTSlideViewController.m in Sources */,
 				1A81EC91176A66AB00A65CF7 /* MenuCell.m in Sources */,
 				1A40602D177117F500E236D4 /* LTStyleManager.m in Sources */,
+				1AF436B1177E503C00C7B52D /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

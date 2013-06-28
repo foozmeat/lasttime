@@ -13,6 +13,7 @@
 #import "MenuCell.h"
 #import "FolderListViewController.h"
 #import "TimelineViewController.h"
+#import "HelpViewController.h"
 
 @interface LTSlideViewController () <SASlideMenuDataSource,SASlideMenuDelegate> 
 
@@ -29,7 +30,10 @@
 
     cell = (MenuCell *) [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     cell.itemDescription.text = NSLocalizedString(@"Timeline", @"Timeline");
-    
+
+    cell = (MenuCell *) [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    cell.itemDescription.text = NSLocalizedString(@"Help", @"Help");
+
     [super viewWillAppear:animated];
 }
 #pragma mark -
@@ -42,13 +46,22 @@
 }
 
 -(NSString*) segueIdForIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        return @"folders";
-    }else if (indexPath.row == 1){
-        return @"timeline";
-    } else {
-        return @"error";
+
+    if (indexPath.section == 0) {
+
+        if (indexPath.row == 0) {
+            return @"folders";
+        } else if (indexPath.row == 1){
+            return @"timeline";
+        }
+
+    } else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            return @"help";
+        }
     }
+
+    return @"error";
 }
 
 -(Boolean) allowContentViewControllerCachingForIndexPath:(NSIndexPath *)indexPath{
