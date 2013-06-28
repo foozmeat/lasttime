@@ -27,6 +27,17 @@
 {
     [super viewDidLoad];
 
+    LTStyleManager *sm = [LTStyleManager manager];
+
+    self.emailButton.titleLabel.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
+    self.tweetButton.titleLabel.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
+    self.forumButton.titleLabel.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
+    self.versionString.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
+
+    self.emailButton.titleLabel.textColor = [sm tintColor];
+
+    self.emailButton.tintColor = [sm tintColor];
+
 	NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 	NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 
