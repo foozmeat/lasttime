@@ -31,6 +31,7 @@
 {
 	[super viewWillAppear:animated];
 	self.title = NSLocalizedString(@"Timeline", @"Timeline");
+    self.exportButton.title = NSLocalizedString(@"Export", @"Export");
 }
 
 - (IBAction)exportTimeline:(id)sender
@@ -237,6 +238,7 @@
 	[[cell detailTextLabel] setText:[le subtitle]];
     cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
     cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
+    cell.accessoryView = [sm disclosureArrowImageView];
 
 }
 

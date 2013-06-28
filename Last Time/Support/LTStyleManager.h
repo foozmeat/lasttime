@@ -22,5 +22,6 @@
 - (UIFont *) lightFontWithSize:(float) size;
 - (UIFont *) cellLabelFontWithSize:(float) size;
 - (UIFont *) cellDetailFontWithSize:(float) size;
+- (UIImageView *) disclosureArrowImageView;
 
 @end

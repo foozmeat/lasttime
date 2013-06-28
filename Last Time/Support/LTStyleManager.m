@@ -36,7 +36,14 @@ static LTStyleManager *manager = nil;
 	return self;
 }
 
-#pragma mark -
+#pragma mark - Images
+- (UIImageView *) disclosureArrowImageView
+{
+    return [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"disclosure arrow.png" ]];
+}
+
+
+#pragma mark - Colors
 
 - (UIColor *) defaultColor
 {
@@ -71,6 +78,8 @@ static LTStyleManager *manager = nil;
 {
     return [UIColor colorWithWhite:90.0/100.0 alpha:1.0];
 }
+
+#pragma mark - Fonts
 
 - (UIFont *) cellLabelFontWithSize:(float) size
 {

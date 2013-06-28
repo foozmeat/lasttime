@@ -270,6 +270,7 @@
     cell.detailTextLabel.text = item.subtitle;
     cell.detailTextLabel.textColor = [sm detailTextColor];
 
+    cell.accessoryView = [sm disclosureArrowImageView];
 }
 
 #pragma mark - ItemDetailViewControllerDelegate
