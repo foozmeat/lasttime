@@ -47,6 +47,11 @@ static LTStyleManager *manager = nil;
     return [[UIImage imageNamed:@"back arrow.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 20, 0, 4)];
 }
 
+- (UIImage *) menuButtonImage
+{
+    return [UIImage imageNamed:@"menu button.png"];
+}
+
 
 #pragma mark - Colors
 
@@ -62,14 +67,14 @@ static LTStyleManager *manager = nil;
 
 - (UIColor *) tintColor
 {
-    return [UIColor colorWithRed:21.0/255.0 green:126.0/255.0 blue:252.0/255.0 alpha:1.0];
-//    return [UIColor brownColor];
+//    return [UIColor colorWithRed:21.0/255.0 green:126.0/255.0 blue:252.0/255.0 alpha:1.0];
+    return [UIColor brownColor];
 }
 
 - (UIColor *) detailTextColor
 {
-//    return [UIColor brownColor];
-    return [UIColor colorWithWhite:40.0/100.0 alpha:1.0];
+    return [UIColor brownColor];
+//    return [UIColor colorWithWhite:40.0/100.0 alpha:1.0];
 //	return [UIColor colorWithRed:146.0/255.0 green:146.0/255.0 blue:146.0/255.0 alpha:1.0];
 }
 

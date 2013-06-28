@@ -14,7 +14,7 @@
 	<key>BackgroundGraphic</key>
 	<dict>
 		<key>Bounds</key>
-		<string>{{0, 0}, {110, 60}}</string>
+		<string>{{0, 0}, {44, 34}}</string>
 		<key>Class</key>
 		<string>SolidGraphic</string>
 		<key>ID</key>
@@ -38,7 +38,7 @@
 	<key>CanvasOrigin</key>
 	<string>{0, 0}</string>
 	<key>CanvasSize</key>
-	<string>{110, 60}</string>
+	<string>{44, 34}</string>
 	<key>ColorProfile</key>
 	<dict>
 		<key>cmykDigest</key>
@@ -65,7 +65,7 @@
 	<key>ColumnSpacing</key>
 	<real>36</real>
 	<key>CreationDate</key>
-	<string>2013-06-28 20:56:05 +0000</string>
+	<string>2013-06-28 21:30:41 +0000</string>
 	<key>Creator</key>
 	<string>James Moore</string>
 	<key>DisplayScale</key>
@@ -78,21 +78,19 @@
 			<key>Class</key>
 			<string>LineGraphic</string>
 			<key>ID</key>
-			<integer>4</integer>
+			<integer>6</integer>
 			<key>Layer</key>
 			<integer>0</integer>
 			<key>Points</key>
 			<array>
-				<string>{22, 12}</string>
-				<string>{4, 30}</string>
-				<string>{22, 48}</string>
+				<string>{3, 29}</string>
+				<string>{41, 29}</string>
+				<string>{41, 29}</string>
 			</array>
 			<key>Style</key>
 			<dict>
 				<key>stroke</key>
 				<dict>
-					<key>Cap</key>
-					<integer>0</integer>
 					<key>Color</key>
 					<dict>
 						<key>b</key>
@@ -104,8 +102,80 @@
 					</dict>
 					<key>HeadArrow</key>
 					<string>0</string>
-					<key>Join</key>
-					<integer>0</integer>
+					<key>Legacy</key>
+					<true/>
+					<key>TailArrow</key>
+					<string>0</string>
+					<key>Width</key>
+					<real>6</real>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>ID</key>
+			<integer>5</integer>
+			<key>Layer</key>
+			<integer>0</integer>
+			<key>Points</key>
+			<array>
+				<string>{3, 17}</string>
+				<string>{41, 17}</string>
+				<string>{41, 17}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>Color</key>
+					<dict>
+						<key>b</key>
+						<string>0.2</string>
+						<key>g</key>
+						<string>0.4</string>
+						<key>r</key>
+						<string>0.6</string>
+					</dict>
+					<key>HeadArrow</key>
+					<string>0</string>
+					<key>Legacy</key>
+					<true/>
+					<key>TailArrow</key>
+					<string>0</string>
+					<key>Width</key>
+					<real>6</real>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>ID</key>
+			<integer>4</integer>
+			<key>Layer</key>
+			<integer>0</integer>
+			<key>Points</key>
+			<array>
+				<string>{3, 5}</string>
+				<string>{41, 5}</string>
+				<string>{41, 5}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>Color</key>
+					<dict>
+						<key>b</key>
+						<string>0.2</string>
+						<key>g</key>
+						<string>0.4</string>
+						<key>r</key>
+						<string>0.6</string>
+					</dict>
+					<key>HeadArrow</key>
+					<string>0</string>
 					<key>Legacy</key>
 					<true/>
 					<key>TailArrow</key>
@@ -117,7 +187,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{0, 0}, {102, 60}}</string>
+			<string>{{0, 0}, {44, 34}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -152,8 +222,6 @@
 	<dict>
 		<key>GridSpacing</key>
 		<real>1</real>
-		<key>MajorGridSpacing</key>
-		<integer>10</integer>
 		<key>ShowsGrid</key>
 		<string>YES</string>
 		<key>SnapsToGrid</key>
@@ -222,7 +290,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-06-28 21:40:17 +0000</string>
+	<string>2013-06-28 21:38:09 +0000</string>
 	<key>Modifier</key>
 	<string>James Moore</string>
 	<key>NotesVisible</key>
@@ -303,7 +371,7 @@
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{798, 85}, {1065, 743}}</string>
+		<string>{{817, 92}, {673, 642}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -315,7 +383,7 @@
 		<key>SidebarWidth</key>
 		<integer>116</integer>
 		<key>VisibleRegion</key>
-		<string>{{-3.875, -8.875}, {118.625, 79.125}}</string>
+		<string>{{-11.875, -15.875}, {69.625, 66.5}}</string>
 		<key>Zoom</key>
 		<real>8</real>
 		<key>ZoomValues</key>

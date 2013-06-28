@@ -65,7 +65,9 @@
 // This is used to configure the menu button. The beahviour of the button should not be modified
 -(void) configureMenuButton:(UIButton *)menuButton{
     menuButton.frame = CGRectMake(0, 0, 40, 29);
-    [menuButton setImage:[UIImage imageNamed:@"ButtonMenu.png"] forState:UIControlStateNormal];
+    LTStyleManager *sm = [LTStyleManager manager];
+    
+    [menuButton setImage:[sm menuButtonImage] forState:UIControlStateNormal];
 }
 
 -(void) configureSlideLayer:(CALayer *)layer{

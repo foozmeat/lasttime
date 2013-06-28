@@ -24,5 +24,6 @@
 - (UIFont *) cellDetailFontWithSize:(float) size;
 - (UIImageView *) disclosureArrowImageView;
 - (UIImage *) backArrowImage;
+- (UIImage *) menuButtonImage;
 
 @end
