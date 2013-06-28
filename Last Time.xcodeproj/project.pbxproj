@@ -461,6 +461,8 @@
 				39F6435F14E40AAE004B0900 /* DatePickerCell.m */,
 				1A8A646315982311009DD55F /* DurationPickerCell.h */,
 				1A8A646415982311009DD55F /* DurationPickerCell.m */,
+				39DB081414E95640006E4E08 /* FolderPickerCell.h */,
+				39DB081514E95640006E4E08 /* FolderPickerCell.m */,
 			);
 			name = Pickers;
 			sourceTree = "<group>";
@@ -744,8 +746,6 @@
 				1A8A646215981BE7009DD55F /* Pickers */,
 				3988B9BA14E0214F0010062E /* EditableTableCell.h */,
 				3988B9BB14E0214F0010062E /* EditableTableCell.m */,
-				39DB081414E95640006E4E08 /* FolderPickerCell.h */,
-				39DB081514E95640006E4E08 /* FolderPickerCell.m */,
 				3913EADA14EEB5DC0013A86A /* LocationSwitchCell.h */,
 				3913EADB14EEB5DC0013A86A /* LocationSwitchCell.m */,
 				391AF43A14F0C03F00DCA3F0 /* NumberCell.h */,
