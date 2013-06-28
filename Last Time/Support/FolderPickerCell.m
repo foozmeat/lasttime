@@ -27,6 +27,7 @@
 	}
     LTStyleManager *sm = [LTStyleManager manager];
     self.detailTextLabel.textColor = [sm defaultColor];
+	self.selectionStyle = UITableViewCellSelectionStyleGray;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
