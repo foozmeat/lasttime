@@ -560,7 +560,6 @@
 			isa = PBXGroup;
 			children = (
 				39EF4A4A14F1AE1000A8BAB7 /* Images */,
-				3988B96014DC31500010062E /* TestFlight */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -741,6 +740,7 @@
 				39825C8F14E8757200C4D684 /* FileHelpers.m */,
 				1A95D74F159CB9F2005686C1 /* NSString+UUID.h */,
 				1A95D750159CB9F2005686C1 /* NSString+UUID.m */,
+				3988B96014DC31500010062E /* TestFlight */,
 			);
 			name = "Supporting Classes";
 			sourceTree = "<group>";
