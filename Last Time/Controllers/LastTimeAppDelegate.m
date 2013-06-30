@@ -34,12 +34,12 @@
 	[[Tapstream shared] setAccountName:@"jmoore" developerSecret:@"GeBwRwR6TceJmk2O_u5jAw"];
 	[[Tapstream shared] fireEvent:@"first_launch" oneTimeOnly:YES];
 #endif
-	
+
 	[self versionCheck];
-	
+
 	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
 	[self handleNotification:localNotif];
-	
+
 	[self customizeAppearance];
 
 	return YES;
@@ -54,13 +54,13 @@
 #ifdef DEBUG
 	NSLog(@"Handling notifications");
 #endif
-	
+
 #ifdef DEBUG
 	if (localNotification) {
 		NSString *uuid = [localNotification.userInfo objectForKey:@"UUID"];
 		NSLog(@"Found notification %@", uuid);
 
-//		Event *event = [[EventStore defaultStore] eventForUUID:uuid];
+			//		Event *event = [[EventStore defaultStore] eventForUUID:uuid];
 	}
 #endif
 
@@ -72,7 +72,7 @@
 	if (lastVersionRun >= 10 && lastVersionRun <= 99) {
 		lastVersionRun *= 10;
 	}
-			
+
 	NSString *versionString = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 	NSString *intVersionString = [versionString	stringByReplacingOccurrencesOfString:@"." withString:@""];
 	int newVersion = [intVersionString intValue];
@@ -80,7 +80,7 @@
 	if (newVersion >= 10 && newVersion <= 99) {
 		newVersion *= 10;
 	}
-			
+
 	if (newVersion != lastVersionRun) {
 		NSLog(@"Last Version: %i, New Version: %i", lastVersionRun, newVersion);
 		[[EventStore defaultStore] migrateDataFromVersion:lastVersionRun];
@@ -92,46 +92,39 @@
 
 - (void)customizeAppearance
 {
-    LTStyleManager *sm = [LTStyleManager manager];
-    
-#ifdef _USE_OS_7_OR_LATER
-    [[UINavigationBar appearance] setBackgroundColor:[sm navBarBackgroundColor]];
-    window.tintColor = [sm tintColor];
-#else
-    [[UINavigationBar appearance] setTintColor:[sm navBarBackgroundColor]];
+	LTStyleManager *sm = [LTStyleManager manager];
 
-    [[UINavigationBar appearance] setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor blackColor], UITextAttributeTextColor,
-      [UIColor clearColor], UITextAttributeTextShadowColor,
-      [sm mediumFontWithSize:0.0], UITextAttributeFont,
-      nil]];
+	[[UINavigationBar appearance] setTintColor:[sm navBarBackgroundColor]];
 
-    [[UIBarButtonItem appearance] setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [sm tintColor], UITextAttributeTextColor,
-      [UIColor clearColor], UITextAttributeTextShadowColor,
-      [sm mediumFontWithSize:16.0], UITextAttributeFont,
-      nil] forState:UIControlStateNormal];
+	[[UINavigationBar appearance] setTitleTextAttributes:
+	 [NSDictionary dictionaryWithObjectsAndKeys:
+		[UIColor blackColor], UITextAttributeTextColor,
+		[UIColor clearColor], UITextAttributeTextShadowColor,
+		[sm mediumFontWithSize:0.0], UITextAttributeFont,
+		nil]];
 
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackButtonTitlePositionAdjustment:UIOffsetMake(0.0,-3.0) forBarMetrics:UIBarMetricsDefault];
+	[[UIBarButtonItem appearance] setTitleTextAttributes:
+	 [NSDictionary dictionaryWithObjectsAndKeys:
+		[sm tintColor], UITextAttributeTextColor,
+		[UIColor clearColor], UITextAttributeTextShadowColor,
+		[sm mediumFontWithSize:16.0], UITextAttributeFont,
+		nil] forState:UIControlStateNormal];
 
-    [[UIBarButtonItem appearance] setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [sm tintColor], UITextAttributeTextColor,
-      [UIColor clearColor], UITextAttributeTextShadowColor,
-      [sm mediumFontWithSize:16.0], UITextAttributeFont,
-      nil] forState:UIControlStateHighlighted];
+	[[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackButtonTitlePositionAdjustment:UIOffsetMake(0.0,-3.0) forBarMetrics:UIBarMetricsDefault];
 
-    [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+	[[UIBarButtonItem appearance] setTitleTextAttributes:
+	 [NSDictionary dictionaryWithObjectsAndKeys:
+		[sm tintColor], UITextAttributeTextColor,
+		[UIColor clearColor], UITextAttributeTextShadowColor,
+		[sm mediumFontWithSize:16.0], UITextAttributeFont,
+		nil] forState:UIControlStateHighlighted];
 
-//    UIImage *backButton = [[UIImage imageNamed:@"clear_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 4)];
-    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[sm backArrowImage] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+	[[UIBarButtonItem appearance] setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+
+	[[UIBarButtonItem appearance] setBackButtonBackgroundImage:[sm backArrowImage] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 
 	[[UIToolbar appearance] setTintColor:[sm navBarBackgroundColor]];
-//    [[UIBarButtonItem appearance] setTintColor:[sm tintColor]];
 
-#endif
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
