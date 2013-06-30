@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <Twitter/Twitter.h>
 
-@interface HelpViewController : UIViewController
+@interface HelpViewController : UIViewController <MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *emailButton;
 @property (weak, nonatomic) IBOutlet UIButton *tweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *forumButton;

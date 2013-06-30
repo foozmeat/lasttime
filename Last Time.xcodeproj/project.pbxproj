@@ -61,6 +61,9 @@
 		1A8A646115981BDA009DD55F /* BasePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A646015981BDA009DD55F /* BasePickerCell.m */; };
 		1A8A646515982311009DD55F /* DurationPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A646415982311009DD55F /* DurationPickerCell.m */; };
 		1A8A6468159BFCCB009DD55F /* DurationPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */; };
+		1A8B216C1780ED0200D2AD5B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A8B216B1780ED0200D2AD5B /* Twitter.framework */; };
+		1A8B216F1780F4D100D2AD5B /* 90-lifebuoy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B216D1780F4D100D2AD5B /* 90-lifebuoy.png */; };
+		1A8B21701780F4D100D2AD5B /* 90-lifebuoy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B216E1780F4D100D2AD5B /* 90-lifebuoy@2x.png */; };
 		1A90626E159EA33600982649 /* Tapstream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A90626D159EA33600982649 /* Tapstream.framework */; };
 		1A95D751159CB9F2005686C1 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A95D750159CB9F2005686C1 /* NSString+UUID.m */; };
 		1A9CBA1F175C22C10040D99F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988B96114DC31500010062E /* libTestFlight.a */; };
@@ -231,6 +234,9 @@
 		1A8A646415982311009DD55F /* DurationPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DurationPickerCell.m; path = Support/DurationPickerCell.m; sourceTree = "<group>"; };
 		1A8A6466159A1412009DD55F /* Last Time 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 6.xcdatamodel"; sourceTree = "<group>"; };
 		1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DurationPickerCell.xib; sourceTree = "<group>"; };
+		1A8B216B1780ED0200D2AD5B /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		1A8B216D1780F4D100D2AD5B /* 90-lifebuoy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy.png"; sourceTree = "<group>"; };
+		1A8B216E1780F4D100D2AD5B /* 90-lifebuoy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy@2x.png"; sourceTree = "<group>"; };
 		1A90626D159EA33600982649 /* Tapstream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tapstream.framework; path = "Last Time/Resources/Tapstream.framework"; sourceTree = "<group>"; };
 		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
 		1A95D74F159CB9F2005686C1 /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+UUID.h"; path = "Support/NSString+UUID.h"; sourceTree = "<group>"; };
@@ -351,6 +357,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A8B216C1780ED0200D2AD5B /* Twitter.framework in Frameworks */,
 				1A17C1FB1589488200FED786 /* MessageUI.framework in Frameworks */,
 				1A6284FC153EFECE003C57F9 /* QuartzCore.framework in Frameworks */,
 				1AED06051510EEC700CCDA4F /* CoreData.framework in Frameworks */,
@@ -638,6 +645,7 @@
 		39D70CA714BD3515009C3615 = {
 			isa = PBXGroup;
 			children = (
+				1A8B216B1780ED0200D2AD5B /* Twitter.framework */,
 				39D70CBC14BD3515009C3615 /* Last Time */,
 				39D70CB514BD3515009C3615 /* Frameworks */,
 				39D70CB314BD3515009C3615 /* Products */,
@@ -718,6 +726,8 @@
 				1AC08500176A8782004EB084 /* 11-clock@2x.png */,
 				1A406027177112B700E236D4 /* 259-list.png */,
 				1A406028177112B700E236D4 /* 259-list@2x.png */,
+				1A8B216D1780F4D100D2AD5B /* 90-lifebuoy.png */,
+				1A8B216E1780F4D100D2AD5B /* 90-lifebuoy@2x.png */,
 				1A22D766177E2F95009C7537 /* disclosure arrow.png */,
 				1A22D764177E2B0D009C7537 /* disclosure arrow@2x.png */,
 				1A22D76A177E38E8009C7537 /* back arrow.png */,
@@ -925,6 +935,8 @@
 				1A22D76B177E38E8009C7537 /* back arrow.png in Resources */,
 				1A22D76D177E38EE009C7537 /* menu button@2x.png in Resources */,
 				1A22D76F177E3ABC009C7537 /* menu button.png in Resources */,
+				1A8B216F1780F4D100D2AD5B /* 90-lifebuoy.png in Resources */,
+				1A8B21701780F4D100D2AD5B /* 90-lifebuoy@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
