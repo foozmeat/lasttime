@@ -48,10 +48,12 @@
 
 	}
 
-	self.versionString.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
+	self.helpText.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
+	self.helpText.text = NSLocalizedString(@"Help Text", @"This text asks the user to contact me.");
 	
+	self.versionString.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];	
 	NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-	self.versionString.text = [NSString stringWithFormat:@"Version %@", version];
+	self.versionString.text = [NSString stringWithFormat:@"%@", version];
 }
 
 - (IBAction)openMail:(id)sender
@@ -130,6 +132,7 @@
     [self setTweetButton:nil];
     [self setForumButton:nil];
     [self setVersionString:nil];
+	[self setHelpText:nil];
     [super viewDidUnload];
 }
 @end

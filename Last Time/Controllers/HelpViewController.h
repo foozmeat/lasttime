@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *tweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *forumButton;
 @property (weak, nonatomic) IBOutlet UILabel *versionString;
+@property (weak, nonatomic) IBOutlet UILabel *helpText;
 
 @end
