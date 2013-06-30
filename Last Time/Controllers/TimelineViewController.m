@@ -230,15 +230,17 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    LTStyleManager *sm = [LTStyleManager manager];
+	LTStyleManager *sm = [LTStyleManager manager];
 
 	LogEntry *le = (LogEntry *)[self.fetchedResultsController objectAtIndexPath:indexPath];
 	Event *item = le.event;
 	[[cell textLabel] setText:[item eventName]];
 	[[cell detailTextLabel] setText:[le subtitle]];
-    cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
-    cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
-    cell.accessoryView = [sm disclosureArrowImageView];
+	cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+	cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
+	cell.detailTextLabel.textColor = [sm tintColor];
+	
+	cell.accessoryView = [sm disclosureArrowImageView];
 
 }
 
