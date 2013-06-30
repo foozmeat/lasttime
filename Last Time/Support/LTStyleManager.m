@@ -78,6 +78,11 @@ static LTStyleManager *manager = nil;
 //	return [UIColor colorWithRed:146.0/255.0 green:146.0/255.0 blue:146.0/255.0 alpha:1.0];
 }
 
+- (UIColor *) disabledTextColor
+{
+	return [UIColor grayColor];
+}
+
 - (UIColor *) navBarBackgroundColor
 {
     return [UIColor colorWithWhite:96.0/100.0 alpha:1.0];

@@ -15,6 +15,7 @@
 - (UIColor *) tintColor;
 - (UIColor *) defaultColor;
 - (UIColor *) detailTextColor;
+- (UIColor *) disabledTextColor;
 - (UIColor *) alarmColor;
 - (UIColor *) navBarBackgroundColor;
 - (UIColor *) tableHeaderColor;

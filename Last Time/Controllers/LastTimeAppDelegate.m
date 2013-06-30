@@ -110,6 +110,13 @@
 		[sm mediumFontWithSize:16.0], UITextAttributeFont,
 		nil] forState:UIControlStateNormal];
 
+	[[UIBarButtonItem appearance] setTitleTextAttributes:
+	 [NSDictionary dictionaryWithObjectsAndKeys:
+		[sm disabledTextColor], UITextAttributeTextColor,
+		[UIColor clearColor], UITextAttributeTextShadowColor,
+		[sm mediumFontWithSize:16.0], UITextAttributeFont,
+		nil] forState:UIControlStateDisabled];
+
 	[[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackButtonTitlePositionAdjustment:UIOffsetMake(0.0,-3.0) forBarMetrics:UIBarMetricsDefault];
 
 	[[UIBarButtonItem appearance] setTitleTextAttributes:
