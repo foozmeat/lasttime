@@ -367,7 +367,7 @@
             [exportedText appendFormat:@"%@",le.dateString];
 // Not inlcuding this since it's relative to the day the items are exported.
 //            [exportedText appendFormat:@" (%@)", [le stringFromLogEntryIntervalWithFormat:nil]];
-            if (le.locationString != NULL) {
+            if (![le.locationString isEqualToString:@""]) {
                 [exportedText appendFormat:@" — %@",le.locationString];
             }
             if ([le showNote]) {
