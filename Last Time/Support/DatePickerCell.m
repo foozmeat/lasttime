@@ -25,12 +25,13 @@
 	NSDate *now = [[NSDate alloc] init];
 	[pickerView setDate:now];
 	[pickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
-	
+
 	[[self detailTextLabel] setText:[df stringFromDate:[pickerView date]]];
 
     CGRect frame = self.inputView.frame;
     frame.size = [self.pickerView sizeThatFits:CGSizeZero];
     self.inputView.frame = frame;
+	self.selectionStyle = UITableViewCellSelectionStyleGray;
 
 }
 

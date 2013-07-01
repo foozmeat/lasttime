@@ -143,6 +143,30 @@
 
 }
 
+- (UIView *)pickerView:(UIPickerView *)pickerView
+						viewForRow:(NSInteger)row
+					forComponent:(NSInteger)component
+					 reusingView:(UIView *)view {
+
+  UILabel *pickerLabel = (UILabel *)view;
+
+	LTStyleManager *sm = [LTStyleManager manager];
+	
+  if (pickerLabel == nil) {
+    CGRect frame = CGRectMake(0.0, 0.0, self.superview.frame.size.width - 40, 32);
+    pickerLabel = [[UILabel alloc] initWithFrame:frame];
+		pickerLabel.adjustsFontSizeToFitWidth = NO;
+    [pickerLabel setTextAlignment:UITextAlignmentLeft];
+    [pickerLabel setBackgroundColor:[UIColor clearColor]];
+    [pickerLabel setFont:[sm cellLabelFontWithSize:[UIFont labelFontSize]]];
+  }
+
+  [pickerLabel setText:[self pickerView:self.pickerView titleForRow:row forComponent:component]];
+
+  return pickerLabel;
+	
+}
+
 #pragma mark - Popover Delegate
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController

@@ -50,6 +50,8 @@
 	frame.size = [self.pickerView sizeThatFits:CGSizeZero];
 	self.inputView.frame = frame;
 
+	self.selectionStyle = UITableViewCellSelectionStyleGray;
+
 	self.drawBorder = NO;
 }
 
@@ -73,6 +75,30 @@
 		return @"Error";
 	}
 
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView
+						viewForRow:(NSInteger)row
+					forComponent:(NSInteger)component
+					 reusingView:(UIView *)view {
+
+  UILabel *pickerLabel = (UILabel *)view;
+
+	LTStyleManager *sm = [LTStyleManager manager];
+
+  if (pickerLabel == nil) {
+    CGRect frame = CGRectMake(0.0, 0.0, 100, 32);
+    pickerLabel = [[UILabel alloc] initWithFrame:frame];
+		pickerLabel.adjustsFontSizeToFitWidth = NO;
+    [pickerLabel setTextAlignment:UITextAlignmentLeft];
+    [pickerLabel setBackgroundColor:[UIColor clearColor]];
+    [pickerLabel setFont:[sm cellLabelFontWithSize:[UIFont labelFontSize]]];
+  }
+
+  [pickerLabel setText:[self pickerView:self.pickerView titleForRow:row forComponent:component]];
+
+  return pickerLabel;
+	
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
