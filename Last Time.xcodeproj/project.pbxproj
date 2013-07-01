@@ -645,7 +645,6 @@
 		39D70CA714BD3515009C3615 = {
 			isa = PBXGroup;
 			children = (
-				1A8B216B1780ED0200D2AD5B /* Twitter.framework */,
 				39D70CBC14BD3515009C3615 /* Last Time */,
 				39D70CB514BD3515009C3615 /* Frameworks */,
 				39D70CB314BD3515009C3615 /* Products */,
@@ -667,6 +666,7 @@
 		39D70CB514BD3515009C3615 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A8B216B1780ED0200D2AD5B /* Twitter.framework */,
 				1A90626D159EA33600982649 /* Tapstream.framework */,
 				1A212A54159573E5001B6293 /* CoreData.framework */,
 				1A212A451595728A001B6293 /* CoreLocation.framework */,

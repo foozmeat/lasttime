@@ -39,9 +39,6 @@
 	userDrivenDataModelChange = NO;
 	self.addButton.title = NSLocalizedString(@"Add", @"Add Item");
 
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"white_paper.jpg"]];
-//    [eventTableView setBackgroundView:imageView];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
