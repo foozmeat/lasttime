@@ -39,27 +39,6 @@
 	<string>{0, 0}</string>
 	<key>CanvasSize</key>
 	<string>{44, 34}</string>
-	<key>ColorProfile</key>
-	<dict>
-		<key>cmykDigest</key>
-		<data>
-		JTUvL7/uOf5kyUO2+wyMTg==
-		</data>
-		<key>cmykName</key>
-		<string>Generic CMYK Profile</string>
-		<key>grayDigest</key>
-		<data>
-		OLD1tzwOLrW+yk2N7vnN6Q==
-		</data>
-		<key>grayName</key>
-		<string>Generic Gray Profile</string>
-		<key>rgbDigest</key>
-		<data>
-		DSWLrTa2TOv7nmgmw+1QNw==
-		</data>
-		<key>rgbName</key>
-		<string>Generic RGB Profile</string>
-	</dict>
 	<key>ColumnAlign</key>
 	<integer>1</integer>
 	<key>ColumnSpacing</key>
@@ -94,11 +73,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.2</string>
+						<string>0</string>
 						<key>g</key>
-						<string>0.4</string>
+						<string>0.486275</string>
 						<key>r</key>
-						<string>0.6</string>
+						<string>0.92549</string>
 					</dict>
 					<key>HeadArrow</key>
 					<string>0</string>
@@ -131,11 +110,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.2</string>
+						<string>0</string>
 						<key>g</key>
-						<string>0.4</string>
+						<string>0.486275</string>
 						<key>r</key>
-						<string>0.6</string>
+						<string>0.92549</string>
 					</dict>
 					<key>HeadArrow</key>
 					<string>0</string>
@@ -168,11 +147,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.2</string>
+						<string>0</string>
 						<key>g</key>
-						<string>0.4</string>
+						<string>0.486275</string>
 						<key>r</key>
-						<string>0.6</string>
+						<string>0.92549</string>
 					</dict>
 					<key>HeadArrow</key>
 					<string>0</string>
@@ -290,7 +269,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-06-28 21:38:09 +0000</string>
+	<string>2013-07-01 18:27:44 +0000</string>
 	<key>Modifier</key>
 	<string>James Moore</string>
 	<key>NotesVisible</key>

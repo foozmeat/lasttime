@@ -67,13 +67,14 @@ static LTStyleManager *manager = nil;
 
 - (UIColor *) tintColor
 {
-//    return [UIColor colorWithRed:21.0/255.0 green:126.0/255.0 blue:252.0/255.0 alpha:1.0];
-    return [UIColor brownColor];
+    return [UIColor colorWithRed:236.0/255.0 green:124.0/255.0 blue:0/255.0 alpha:1.0];
+//    return [UIColor brownColor];
 }
 
 - (UIColor *) detailTextColor
 {
-    return [UIColor brownColor];
+    return [self tintColor];
+//    return [UIColor brownColor];
 //    return [UIColor colorWithWhite:40.0/100.0 alpha:1.0];
 //	return [UIColor colorWithRed:146.0/255.0 green:146.0/255.0 blue:146.0/255.0 alpha:1.0];
 }
@@ -91,7 +92,8 @@ static LTStyleManager *manager = nil;
 }
 - (UIColor *) tableHeaderColor
 {
-    return [UIColor colorWithWhite:90.0/100.0 alpha:1.0];
+   return [self navBarBackgroundColor];
+//    return [UIColor colorWithWhite:90.0/100.0 alpha:1.0];
 }
 
 #pragma mark - Fonts
