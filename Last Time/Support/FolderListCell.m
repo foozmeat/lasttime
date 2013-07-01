@@ -25,6 +25,7 @@
 	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	self.cellTextField.returnKeyType = UIReturnKeyDone;
 	self.cellTextField.hidden = YES;
+	self.cellTextField.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 
 	[self addSubview:self.cellTextField];
 	return self;
