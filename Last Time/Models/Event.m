@@ -361,19 +361,19 @@
 				[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Average Value","@Average Value"), [self averageStringValue]];
 			}
 
-			[exportedText appendFormat:@"\n— %@ —\n\n",NSLocalizedString(@"History","@History")];
-			for (LogEntry *le in self.logEntryCollection) {
-				[exportedText appendFormat:@"%@",le.dateString];
-				if ([le showNote]) {
-					[exportedText appendFormat:@" — %@",le.logEntryNote];
-				}
-				if ([le showValue]) {
-					[exportedText appendFormat:@" — %f", [[le logEntryValue] floatValue]];
-				}
-
-				[exportedText appendString:@"\n"];
-			}
 		}
+        [exportedText appendFormat:@"\n— %@ —\n\n",NSLocalizedString(@"History","@History")];
+        for (LogEntry *le in self.logEntryCollection) {
+            [exportedText appendFormat:@"%@",le.dateString];
+            if ([le showNote]) {
+                [exportedText appendFormat:@" — %@",le.logEntryNote];
+            }
+            if ([le showValue]) {
+                [exportedText appendFormat:@" — %f", [[le logEntryValue] floatValue]];
+            }
+            
+            [exportedText appendString:@"\n"];
+        }
 
 	} else {
 		[exportedText appendString:NSLocalizedString(@"No History Entries",@"No History Entries")];
