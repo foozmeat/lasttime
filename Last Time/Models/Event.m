@@ -365,6 +365,11 @@
         [exportedText appendFormat:@"\n— %@ —\n\n",NSLocalizedString(@"History","@History")];
         for (LogEntry *le in self.logEntryCollection) {
             [exportedText appendFormat:@"%@",le.dateString];
+// Not inlcuding this since it's relative to the day the items are exported.
+//            [exportedText appendFormat:@" (%@)", [le stringFromLogEntryIntervalWithFormat:nil]];
+            if (le.locationString != NULL) {
+                [exportedText appendFormat:@" — %@",le.locationString];
+            }
             if ([le showNote]) {
                 [exportedText appendFormat:@" — %@",le.logEntryNote];
             }
