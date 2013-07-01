@@ -263,6 +263,12 @@
     cell.textLabel.text = item.eventName;
     cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 
+    if ([item reminderExpired]) {
+        cell.textLabel.textColor = [sm alarmColor];
+    } else {
+        cell.textLabel.textColor = [sm defaultColor];
+    }
+
     cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
     cell.detailTextLabel.text = item.subtitle;
     cell.detailTextLabel.textColor = [sm detailTextColor];
