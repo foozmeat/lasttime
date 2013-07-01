@@ -191,29 +191,41 @@
 	ReminderSwitchCell *rcell = nil;
 	DurationPickerCell *durcell = nil;
 	NumberCell *ncell = nil;
-	
+
 	if ([indexPath section] == kMainSection) {
 		
 		switch ([indexPath row]) {
 			case kEventName:
+			{
 				cell = [self nameCell];
 				[[cell cellTextField] setText:[event eventName]];
 				[[cell cellTextField] setPlaceholder:NSLocalizedString(@"nameCellPlaceholder",@"An example for the event name field")];
 				[[cell textLabel] setText:NSLocalizedString(@"Name",@"Name")];
+
+				if ([tableView numberOfRowsInSection:[indexPath section]] == 1) {
+					cell.drawBorder = NO;
+				}
+
 				return cell;
 				break;
+			}
 			case kEventNote:
+			{
 				cell = [self noteCell];
 				[[cell cellTextField] setPlaceholder:NSLocalizedString(@"noteCellPlaceholder",@"An example movie for the note field")];
 				[[cell textLabel] setText:NSLocalizedString(@"Note",@"Note")];
 				return cell;
 				break;
+			}
 			case kEventNumber:
+			{
 				ncell = [self numberCell];
 				[[ncell cellTextField] setPlaceholder:NSLocalizedString(@"valueCellPlaceholder",@"examples of ways to use this field")];
 				[[ncell textLabel] setText:NSLocalizedString(@"Number",@"Number")];
+
 				return ncell;
 				break;
+			}
 			case kEventDate:
 				dcell = [self dateCell];
 				[[dcell textLabel] setText:NSLocalizedString(@"Date",@"Date")];
@@ -234,6 +246,11 @@
 			case kEventReminderSwitch:
 				rcell = [self reminderCell];
 				rcell.reminderSwitch.on = _reminderEnabled;
+				if ([tableView numberOfRowsInSection:[indexPath section]] == 1) {
+					rcell.drawBorder = NO;
+				} else {
+					rcell.drawBorder = YES;
+				}
 				return rcell;
 				break;
 			case kEventReminderDuration:

@@ -9,14 +9,15 @@
 #import "BasePickerCell.h"
 
 @implementation BasePickerCell
-@synthesize inputAccessoryView, pickerView, pickerPopover;
+@synthesize inputAccessoryView, pickerView, pickerPopover, drawBorder;
 
 - (void)initalizeBaseInputView {
 
-    LTStyleManager *sm = [LTStyleManager manager];
-    self.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
-    self.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
-    self.detailTextLabel.textColor = [sm defaultColor];
+	LTStyleManager *sm = [LTStyleManager manager];
+	self.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+	self.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
+	self.detailTextLabel.textColor = [sm defaultColor];
+	self.drawBorder = YES;
 	return;
 }
 
@@ -36,12 +37,11 @@
 
 - (void)layoutSubviews {
 	[super layoutSubviews];
-
-#ifndef _USE_OS_7_OR_LATER
+	if (self.drawBorder) {
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, self.contentView.frame.size.height - 1.0, self.contentView.frame.size.width + 10.0, 1)];
     lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
     [self.contentView addSubview:lineView];
-#endif
+	}
 }
 
 - (UIView *)inputAccessoryView {

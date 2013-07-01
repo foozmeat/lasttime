@@ -17,16 +17,13 @@
 	self.pickerView.showsSelectionIndicator = YES;
 	[pickerView setDataSource:self];
 	[pickerView setDelegate:self];
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-		UIViewController *folderPickerViewController = [[UIViewController alloc] init];
-		
-		[[folderPickerViewController view] addSubview:pickerView];
-		folderPopover = [[UIPopoverController alloc] initWithContentViewController:folderPickerViewController];
-		[folderPopover setPopoverContentSize:pickerView.frame.size];
-		[folderPopover setDelegate:self];
-	}
-    LTStyleManager *sm = [LTStyleManager manager];
-    self.detailTextLabel.textColor = [sm defaultColor];
+
+	LTStyleManager *sm = [LTStyleManager manager];
+
+	self.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+	self.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
+
+	self.detailTextLabel.textColor = [sm defaultColor];
 	self.selectionStyle = UITableViewCellSelectionStyleGray;
 }
 

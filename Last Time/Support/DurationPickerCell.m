@@ -24,31 +24,33 @@
 
 - (void)initalizeInputView {
 
-    [self initalizeBaseInputView];
+	[self initalizeBaseInputView];
 	_unitRows = [[NSArray alloc] initWithObjects:@"day", @"week", @"month", nil];
 	pickerView = [[UIPickerView alloc] init];
 	pickerView.delegate = self;
 	pickerView.dataSource = self;
 	pickerView.showsSelectionIndicator = YES;
-	
+
 	_durationValue = 1;
 	_durationUnit = @"day";
 	self.eventDate = [NSDate date];
 
-    LTStyleManager *sm = [LTStyleManager manager];
+	LTStyleManager *sm = [LTStyleManager manager];
 
-    self.durationStringLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
+	self.durationStringLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 	self.durationStringLabel.text = [self durationString];
 
 	self.durationLabel.text = NSLocalizedString(@"Duration",@"Duration");
-    self.durationLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+	self.durationLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 
-    self.durationDateLabel.text = [self reminderDateString];
-    self.durationDateLabel.font = [sm cellDetailFontWithSize:12.0];
+	self.durationDateLabel.text = [self reminderDateString];
+	self.durationDateLabel.font = [sm cellDetailFontWithSize:12.0];
 
-    CGRect frame = self.inputView.frame;
-    frame.size = [self.pickerView sizeThatFits:CGSizeZero];
-    self.inputView.frame = frame;
+	CGRect frame = self.inputView.frame;
+	frame.size = [self.pickerView sizeThatFits:CGSizeZero];
+	self.inputView.frame = frame;
+
+	self.drawBorder = NO;
 }
 
 - (void)setEventDate:(NSDate *)date
@@ -64,7 +66,7 @@
 		return [[NSNumber numberWithInt:(row + 1)] stringValue];
 	} else if (component == kUnit) {
 
-		return [self durationUnitFromNumber:_durationValue 
+		return [self durationUnitFromNumber:_durationValue
 															 withUnit:[_unitRows objectAtIndex:row]];
 
 	} else {
@@ -83,9 +85,9 @@
 	self.duration = [self durationFromPicker];
 	self.durationStringLabel.text = [self durationString];
 	self.durationDateLabel.text = [self reminderDateString];
-	
+
 	[self updateDateStringColor];
-	
+
 	[delegate durationPickerDidChangeWithDuration:[self durationFromPicker]];
 
 	[[self pickerView] reloadComponent:kUnit];
@@ -98,7 +100,7 @@
 
 - (void)updateDateStringColor
 {
-    LTStyleManager *sm = [LTStyleManager manager];
+	LTStyleManager *sm = [LTStyleManager manager];
 	if ([self reminderExpired]) {
 		self.durationDateLabel.textColor = [sm alarmColor];
 	} else {
@@ -111,7 +113,7 @@
 {
 	self.eventDate = date;
 	self.durationDateLabel.text = [self reminderDateString];
-	
+
 }
 
 - (BOOL)reminderExpired
@@ -119,12 +121,12 @@
 	if (self.eventDate == nil) {
 		return NO;
 	}
-	
-	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.duration 
+
+	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.duration
 																										sinceDate:self.eventDate];
-	
+
 	NSInteger interval = [reminderDate timeIntervalSinceNow];
-	
+
 	if (interval >= 0) {
 		return NO;
 	} else {
@@ -145,25 +147,25 @@
 		nbyear = NSLocalizedString(@"years",@"more than one year");
 	else
 		nbyear = NSLocalizedString(@"year",@"one year");
-	
+
 	NSString *nbmonth = nil;
 	if(number != 1)
 		nbmonth = NSLocalizedString(@"months",@"more than one month");
 	else
 		nbmonth = NSLocalizedString(@"month",@"one month");
-	
+
 	NSString *nbweek = nil;
 	if(number != 1)
 		nbweek = NSLocalizedString(@"weeks",@"more than one week");
 	else
 		nbweek = NSLocalizedString(@"week",@"one week");
-	
+
 	NSString *nbday = nil;
 	if(number != 1)
 		nbday = NSLocalizedString(@"days",@"more than one day");
 	else
 		nbday = NSLocalizedString(@"day",@"one day");
-	
+
 	if ([unit isEqualToString:@"day"]) {
 		return nbday;
 	} else if ([unit isEqualToString:@"week"]) {
@@ -193,7 +195,7 @@
 	} else {
 		return 0;
 	}
-	
+
 }
 
 #pragma mark - KeyInput
@@ -216,9 +218,9 @@
 
 - (NSInteger)durationFromPicker
 {
-	
+
 	NSInteger day = 60 * 60 * 24;
-	
+
 	if ([_durationUnit isEqualToString:@"day"]) {
 		return day * _durationValue;
 	} else if ([_durationUnit isEqualToString:@"week"]) {
@@ -228,16 +230,16 @@
 	} else {
 		return 0;
 	}
-	
+
 }
 
 - (void)setupPickerComponants
 {
-	
+
 #ifdef DEBUG
 	NSLog(@"Duration: %d", self.duration);
 #endif
-	
+
 	if (self.duration == 0) {
 		_durationValue = 1;
 		_durationUnit = @"day";
@@ -246,21 +248,21 @@
 		int day = 60 * 60 * 24;
 		int week = 7;
 		int month = 30;
-		
+
 		int days = self.duration / day;
-		
+
 		if (days % month == 0) {
 			_durationValue = days / month;
 			_durationUnit = @"month";
-			
+
 		} else if (days % week == 0) {
 			_durationValue = days / week;
 			_durationUnit = @"week";
-			
+
 		} else {
 			_durationValue = days;
 			_durationUnit = @"day";
-			
+
 		}
 	}
 	self.durationStringLabel.text = [self durationString];
@@ -271,9 +273,9 @@
 #ifdef DEBUG
 	NSLog(@"Picker set to %d, %@", _durationValue, _durationUnit);
 #endif
-	
+
 	return;
-	
+
 }
 
 - (NSString *)reminderDateString
@@ -281,18 +283,18 @@
 	if (self.duration == 0 || self.eventDate == nil) {
 		return @"";
 	}
-			
+
 	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.duration sinceDate:self.eventDate];
-	
+
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
-	
+
 	[df setDateStyle:NSDateFormatterFullStyle];
 	[df setTimeStyle:NSDateFormatterNoStyle];
-	
+
 	NSString *reminderDateString = [df stringFromDate:reminderDate];
-	
+
 	return reminderDateString;
-	
+
 }
 
 + (DurationPickerCell *)newDurationCellWithTag:(NSInteger)tag withDelegate:(id)delegate
@@ -303,10 +305,10 @@
 	[cell initalizeInputView];
 	[cell setDelegate:delegate];
 	[[cell pickerView] setTag:tag];
-	
+
 	return cell;
-	
-	
+
+
 }
 
 @end

@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIToolbar *inputAccessoryView;
 @property (nonatomic, strong) UIView *pickerView;
 @property (nonatomic, strong) UIPopoverController *pickerPopover;
+@property (nonatomic) BOOL drawBorder;
 
 - (void)valueChanged:(id)sender;
 - (void)done:(id)sender;

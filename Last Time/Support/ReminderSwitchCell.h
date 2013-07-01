@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) UISwitch *reminderSwitch;
 @property (nonatomic, assign) UITableViewController <ReminderSwitchCellDelegate> *delegate;
+@property (nonatomic) BOOL drawBorder;
+@property (nonatomic, strong) UIView *lineView;
 
 + (ReminderSwitchCell *)newReminderCellWithTag:(NSInteger)tag withDelegate:(id) delegate;
 
