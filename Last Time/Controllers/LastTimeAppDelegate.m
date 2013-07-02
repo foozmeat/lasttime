@@ -7,12 +7,14 @@
 //
 
 #import "LastTimeAppDelegate.h"
-#import "FolderListViewController.h"
-#import "EventController.h"
 #import "EventStore.h"
-#import "SegmentsController.h"
-#import "TimelineViewController.h"
 #import "Event.h"
+
+#if CREATING_SCREENSHOTS
+#import "LTScreenshotManager.h"
+#import "FolderListViewController.h"
+#import "LTSlideViewController.h"
+#endif
 
 @implementation LastTimeAppDelegate
 
@@ -41,6 +43,17 @@
 	[self handleNotification:localNotif];
 
 	[self customizeAppearance];
+
+#if CREATING_SCREENSHOTS
+    SASlideMenuRootViewController *myStoryBoardInitialViewController = (SASlideMenuRootViewController *) self.window.rootViewController;
+
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        LTScreenshotManager *screenshotManager = [[LTScreenshotManager alloc] init];
+        [screenshotManager setInitialViewController:myStoryBoardInitialViewController];
+        [screenshotManager takeScreenshots];
+    });
+#endif
 
 	return YES;
 }
