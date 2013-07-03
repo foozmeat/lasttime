@@ -29,79 +29,12 @@
 								<key>class</key>
 								<string>BLWrapperHandle</string>
 								<key>name</key>
-								<string>Last Time/InfoPlist/1/InfoPlist.strings</string>
-							</dict>
-						</dict>
-					</dict>
-					<key>change date</key>
-					<date>2012-06-13T20:39:20Z</date>
-					<key>changed values</key>
-					<array/>
-					<key>class</key>
-					<string>BLStringsFileObject</string>
-					<key>errors</key>
-					<array/>
-					<key>flags</key>
-					<integer>2</integer>
-					<key>hash</key>
-					<string>4fd0104f4a39a5bb3b0006f6ac251eac
-</string>
-					<key>name</key>
-					<string>InfoPlist.strings</string>
-					<key>objects</key>
-					<array>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
-							<string>Localized versions of Info.plist keys</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>CFBundleDisplayName</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>Last Time</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-					</array>
-					<key>old objects</key>
-					<array/>
-					<key>plist file</key>
-					<false/>
-					<key>snapshots</key>
-					<dict/>
-					<key>versions</key>
-					<dict>
-						<key>en</key>
-						<string>1</string>
-					</dict>
-				</dict>
-				<dict>
-					<key>attachments</key>
-					<dict>
-						<key>backup</key>
-						<dict>
-							<key>1</key>
-							<dict>
-								<key>class</key>
-								<string>BLWrapperHandle</string>
-								<key>name</key>
 								<string>Last Time/Localizable/1/Localizable.strings</string>
 							</dict>
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2012-07-01T04:17:19Z</date>
+					<date>2013-07-03T03:12:40Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -109,9 +42,9 @@
 					<key>errors</key>
 					<array/>
 					<key>flags</key>
-					<integer>0</integer>
+					<integer>1</integer>
 					<key>hash</key>
-					<string>c7c7abb0218e58dfc4e4fd39aa24472c
+					<string>b6b3c8c5e6e0d1647800021ec8909bf4
 </string>
 					<key>name</key>
 					<string>Localizable.strings</string>
@@ -125,25 +58,17 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Create a new list</string>
+							<string>Add Item</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
 							<integer>0</integer>
 							<key>key</key>
-							<string>Create New List…</string>
+							<string>Add</string>
 							<key>localizations</key>
 							<dict>
-								<key>de</key>
-								<string>Neue Liste erstellen…</string>
 								<key>en</key>
-								<string>Create New List…</string>
-								<key>es</key>
-								<string>Crear nueva lista...</string>
-								<key>fr</key>
-								<string>Créer une nouvelle liste...</string>
-								<key>ja</key>
-								<string>新リストを作成…</string>
+								<string>Add</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -206,6 +131,37 @@
 								<string>Valeur moyenne</string>
 								<key>ja</key>
 								<string>平均値</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Create a new list</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Create New List…</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Neue Liste erstellen…</string>
+								<key>en</key>
+								<string>Create New List…</string>
+								<key>es</key>
+								<string>Crear nueva lista...</string>
+								<key>fr</key>
+								<string>Créer une nouvelle liste...</string>
+								<key>ja</key>
+								<string>新リストを作成…</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -311,6 +267,37 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
+							<string>Duration</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Duration</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Dauer</string>
+								<key>en</key>
+								<string>Duration</string>
+								<key>es</key>
+								<string>Duración</string>
+								<key>fr</key>
+								<string>Durée</string>
+								<key>ja</key>
+								<string>期限</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
 							<string>Edit Entry</string>
 							<key>errors</key>
 							<array/>
@@ -373,6 +360,29 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
+							<string>Export</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Export</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Export</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
 							<string>like saying 3 days from now</string>
 							<key>errors</key>
 							<array/>
@@ -392,6 +402,52 @@
 								<string>dans</string>
 								<key>ja</key>
 								<string>今から</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>Help</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Help</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Help</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>This text asks the user to contact me.</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Help Text</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Please get in touch with me if you have any questions or suggestions for Last Time.</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -454,6 +510,29 @@
 								<string>%@ dernier</string>
 								<key>ja</key>
 								<string>先週の %@</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>The prefix for the exported file's name</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Last Time Export</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Last Time Export</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -547,29 +626,6 @@
 								<string>Emplacement</string>
 								<key>ja</key>
 								<string>記憶場所</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
-							<string>Ignore this string</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>2</integer>
-							<key>key</key>
-							<string>Master</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>Master</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -985,6 +1041,37 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
+							<string>Reminder?</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Reminder?</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Gedächtnisstütze</string>
+								<key>en</key>
+								<string>Reminder?</string>
+								<key>es</key>
+								<string>Notificación</string>
+								<key>fr</key>
+								<string>Rappel</string>
+								<key>ja</key>
+								<string>思い出させる</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
 							<string>Store Location?</string>
 							<key>errors</key>
 							<array/>
@@ -1128,6 +1215,37 @@
 								<string>classement, poids, distance</string>
 								<key>ja</key>
 								<string>評価、重量、距離</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>comment</key>
+							<string>view this notification</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>View</string>
+							<key>localizations</key>
+							<dict>
+								<key>de</key>
+								<string>Sehen</string>
+								<key>en</key>
+								<string>View</string>
+								<key>es</key>
+								<string>Mirar</string>
+								<key>fr</key>
+								<string>Regarder</string>
+								<key>ja</key>
+								<string>表示</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1287,6 +1405,9 @@
 							<key>snapshots</key>
 							<dict/>
 						</dict>
+					</array>
+					<key>old objects</key>
+					<array>
 						<dict>
 							<key>change date</key>
 							<date>2001-01-01T00:00:00Z</date>
@@ -1295,25 +1416,17 @@
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
-							<string>Duration</string>
+							<string>Ignore this string</string>
 							<key>errors</key>
 							<array/>
 							<key>flags</key>
-							<integer>0</integer>
+							<integer>2</integer>
 							<key>key</key>
-							<string>Duration</string>
+							<string>Master</string>
 							<key>localizations</key>
 							<dict>
-								<key>de</key>
-								<string>Dauer</string>
 								<key>en</key>
-								<string>Duration</string>
-								<key>es</key>
-								<string>Duración</string>
-								<key>fr</key>
-								<string>Durée</string>
-								<key>ja</key>
-								<string>期限</string>
+								<string>Master</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1322,7 +1435,9 @@
 							<key>change date</key>
 							<date>2001-01-01T00:00:00Z</date>
 							<key>changed values</key>
-							<array/>
+							<array>
+								<string>&lt;reference&gt;</string>
+							</array>
 							<key>class</key>
 							<string>BLStringKeyObject</string>
 							<key>comment</key>
@@ -1341,94 +1456,7 @@
 							<key>snapshots</key>
 							<dict/>
 						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
-							<string>The prefix for the exported file's name</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>2</integer>
-							<key>key</key>
-							<string>Last Time Export</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>Last Time Export</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
-							<string>Reminder?</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>Reminder?</string>
-							<key>localizations</key>
-							<dict>
-								<key>de</key>
-								<string>Gedächtnisstütze</string>
-								<key>en</key>
-								<string>Reminder?</string>
-								<key>es</key>
-								<string>Notificación</string>
-								<key>fr</key>
-								<string>Rappel</string>
-								<key>ja</key>
-								<string>思い出させる</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>comment</key>
-							<string>view this notification</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>View</string>
-							<key>localizations</key>
-							<dict>
-								<key>de</key>
-								<string>Sehen</string>
-								<key>en</key>
-								<string>View</string>
-								<key>es</key>
-								<string>Mirar</string>
-								<key>fr</key>
-								<string>Regarder</string>
-								<key>ja</key>
-								<string>表示</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
 					</array>
-					<key>old objects</key>
-					<array/>
 					<key>plist file</key>
 					<false/>
 					<key>snapshots</key>
@@ -1454,7 +1482,7 @@
 						</dict>
 					</dict>
 					<key>change date</key>
-					<date>2012-06-13T20:39:20Z</date>
+					<date>2013-06-03T03:23:19Z</date>
 					<key>changed values</key>
 					<array/>
 					<key>class</key>
@@ -1462,7 +1490,7 @@
 					<key>errors</key>
 					<array/>
 					<key>flags</key>
-					<integer>2</integer>
+					<integer>3</integer>
 					<key>hash</key>
 					<string>712e01223a9546efa3325a303ab3c354
 </string>
@@ -1470,6 +1498,48 @@
 					<string>default_data.plist</string>
 					<key>objects</key>
 					<array>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Checked Oil</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Checked Oil</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Recreation</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Recreation</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
 						<dict>
 							<key>change date</key>
 							<date>2001-01-01T00:00:00Z</date>
@@ -1516,73 +1586,6 @@
 								<string>Got Haircut</string>
 								<key>fr</key>
 								<string>Got Haircut</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>Social</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>Social</string>
-								<key>es</key>
-								<string>Social</string>
-								<key>fr</key>
-								<string>Social</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>Checked Oil</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>Checked Oil</string>
-							</dict>
-							<key>snapshots</key>
-							<dict/>
-						</dict>
-						<dict>
-							<key>change date</key>
-							<date>2001-01-01T00:00:00Z</date>
-							<key>changed values</key>
-							<array/>
-							<key>class</key>
-							<string>BLStringKeyObject</string>
-							<key>errors</key>
-							<array/>
-							<key>flags</key>
-							<integer>0</integer>
-							<key>key</key>
-							<string>Recreation</string>
-							<key>localizations</key>
-							<dict>
-								<key>en</key>
-								<string>Recreation</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1646,6 +1649,31 @@
 							<dict>
 								<key>en</key>
 								<string>Cleaned Gutters</string>
+							</dict>
+							<key>snapshots</key>
+							<dict/>
+						</dict>
+						<dict>
+							<key>change date</key>
+							<date>2001-01-01T00:00:00Z</date>
+							<key>changed values</key>
+							<array/>
+							<key>class</key>
+							<string>BLStringKeyObject</string>
+							<key>errors</key>
+							<array/>
+							<key>flags</key>
+							<integer>0</integer>
+							<key>key</key>
+							<string>Social</string>
+							<key>localizations</key>
+							<dict>
+								<key>en</key>
+								<string>Social</string>
+								<key>es</key>
+								<string>Social</string>
+								<key>fr</key>
+								<string>Social</string>
 							</dict>
 							<key>snapshots</key>
 							<dict/>
@@ -1917,7 +1945,7 @@
 			<key>flags</key>
 			<integer>0</integer>
 			<key>name</key>
-			<string>../Developer/Last Time/Last Time</string>
+			<string></string>
 			<key>naming style</key>
 			<integer>1</integer>
 			<key>referencing style</key>
@@ -1971,11 +1999,11 @@
 		<key>markAutotranslatedAsNotChanged</key>
 		<true/>
 		<key>rescanXcodeProjects</key>
-		<false/>
+		<true/>
 		<key>saveCompressed</key>
 		<false/>
 		<key>updateXcodeProjects</key>
-		<false/>
+		<true/>
 		<key>valueChangesResetStrings</key>
 		<false/>
 	</dict>
