@@ -380,7 +380,7 @@
 	}
 
 	self.addButton.title = NSLocalizedString(@"Add", @"Add Item");
-	self.exportButton.title = NSLocalizedString(@"Export", @"Export Items");
+	self.exportButton.title = NSLocalizedString(@"Export", @"Export");
 	[super viewDidAppear:animated];
 }
 

@@ -358,11 +358,11 @@
 			[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Next Time",@"Next Time"), [df stringFromDate:[self nextTime]]];
 
 			if ([self showAverageValue]) {
-				[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Average Value","@Average Value"), [self averageStringValue]];
+				[exportedText appendFormat:@"%@: %@\n",NSLocalizedString(@"Average Value","Average Value"), [self averageStringValue]];
 			}
 
 		}
-        [exportedText appendFormat:@"\n— %@ —\n\n",NSLocalizedString(@"History","@History")];
+        [exportedText appendFormat:@"\n— %@ —\n\n",NSLocalizedString(@"History","History")];
         for (LogEntry *le in self.logEntryCollection) {
             [exportedText appendFormat:@"%@",le.dateString];
 // Not inlcuding this since it's relative to the day the items are exported.
