@@ -351,33 +351,6 @@
 		
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	
-    LTStyleManager *sm = [LTStyleManager manager];
-
-	if ([[_event logEntryCollection] count] > 0) {
-		if ([indexPath section] == kHistorySection) {
-			HistoryLogCell *historyLogCell = (HistoryLogCell *)cell;
-
-			if ([historyLogCell.logEntryValueCell.text isEqualToString:@""]) {
-				historyLogCell.logEntryValueCell.text = NSLocalizedString(@"No Value", @"The value is empty");
-			} else {
-				historyLogCell.logEntryValueCell.font = [sm cellDetailFontWithSize:14.0];
-                historyLogCell.logEntryNoteCell.textColor = [sm defaultColor];
-			}
-			
-			if ([historyLogCell.logEntryNoteCell.text isEqualToString:@""]) {
-				historyLogCell.logEntryNoteCell.text = NSLocalizedString(@"No Note", @"The note is blank");
-			} else {
-				historyLogCell.logEntryNoteCell.font = [sm cellDetailFontWithSize:14.0];
-                historyLogCell.logEntryNoteCell.textColor = [sm defaultColor];
-				
-			}
-		}
-	}
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewWillAppear:(BOOL)animated
