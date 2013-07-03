@@ -3,4 +3,4 @@
 	url = git@github.com:foozmeat/SASlideMenu.git
 [submodule "Last Time/Resources/KSScreenshotManager"]
 	path = Last Time/Resources/KSScreenshotManager
-	url = https://github.com/regularberry/KSScreenshotManager.git
+	url = git@github.com:foozmeat/KSScreenshotManager.git
