@@ -190,6 +190,7 @@
 		1A4B6AC7162A10740078A7EA /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		1A4B6AC8162A10740078A7EA /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		1A4B6AC9162A10740078A7EA /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		1A57B99F17975FFE00FE9709 /* screenshot.config */ = {isa = PBXFileReference; lastKnownFileType = text; path = screenshot.config; sourceTree = SOURCE_ROOT; };
 		1A6284FB153EFECE003C57F9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A628502153F0FD7003C57F9 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeaderView.h; path = ../Support/HeaderView.h; sourceTree = "<group>"; };
 		1A628503153F0FD7003C57F9 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeaderView.m; path = ../Support/HeaderView.m; sourceTree = "<group>"; };
@@ -499,6 +500,7 @@
 				1A93AFFC17823F20005055C5 /* make_screenshots.py */,
 				1A93AFFD17823F9D005055C5 /* LTScreenshotManager.h */,
 				1A93AFFE17823F9D005055C5 /* LTScreenshotManager.m */,
+				1A57B99F17975FFE00FE9709 /* screenshot.config */,
 			);
 			name = KSScreenshotManager;
 			path = Resources/KSScreenshotManager;
@@ -877,6 +879,7 @@
 				39D70CAF14BD3515009C3615 /* Frameworks */,
 				39D70CB014BD3515009C3615 /* Resources */,
 				39BF451714F2A2000059C8B9 /* ShellScript */,
+				1A57B99E17975DE700FE9709 /* Take Screenshots */,
 			);
 			buildRules = (
 			);
@@ -969,6 +972,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1A57B99E17975DE700FE9709 /* Take Screenshots */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Take Screenshots";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ $CONFIGURATION == \"Screenshots\" ]]; then\n    python $SRCROOT/Last\\ Time/Resources/KSScreenshotManager/make_screenshots.py $SRCROOT/screenshot.config\nfi";
+		};
 		39BF451714F2A2000059C8B9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
