@@ -24,11 +24,11 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-	[super viewDidLoad];
-	
-	LTStyleManager *sm = [LTStyleManager manager];
+  [super viewWillAppear:animated];
+
+  LTStyleManager *sm = [LTStyleManager manager];
 
 	NSArray *buttons = @[self.emailButton, self.tweetButton, self.forumButton];
 
@@ -45,16 +45,8 @@
 		b.layer.borderWidth = 1;
 
 		b.tintColor = [sm tintColor];
-
+    
 	}
-
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-  [super viewWillAppear:animated];
-
-  LTStyleManager *sm = [LTStyleManager manager];
 
   self.helpText.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
 	self.helpText.text = NSLocalizedString(@"Help Text", @"This text asks the user to contact me.");
