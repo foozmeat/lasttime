@@ -28,6 +28,8 @@
 {
   [super viewWillAppear:animated];
 
+  self.title = NSLocalizedString(@"Help", @"Help");
+
   LTStyleManager *sm = [LTStyleManager manager];
 
 	NSArray *buttons = @[self.emailButton, self.tweetButton, self.forumButton];
