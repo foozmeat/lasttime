@@ -99,11 +99,13 @@
 	
 	[fetchRequest setFetchBatchSize:20];
 
+
+  NSString *cacheName = [NSString stringWithFormat:@"Timeline-%@",[NSLocale currentLocale]];
 	_fetchedResultsController = 
 	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
 																			managedObjectContext: [[EventStore defaultStore] context]
 																				sectionNameKeyPath:@"sectionIdentifier" 
-																								 cacheName:@"Timeline"];
+																								 cacheName:cacheName];
 	_fetchedResultsController.delegate = self;
 	
 	NSError *error = nil;
