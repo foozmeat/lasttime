@@ -48,12 +48,36 @@
 
 	}
 
-	self.helpText.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+
+  LTStyleManager *sm = [LTStyleManager manager];
+
+  self.helpText.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
 	self.helpText.text = NSLocalizedString(@"Help Text", @"This text asks the user to contact me.");
-	
-	self.versionString.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];	
+
+  int height = self.emailButton.frame.size.height;
+  int center = self.view.frame.size.width / 2;
+
+  [self.emailButton setTitle:NSLocalizedString(@"Send an Email", @"Send an Email") forState:UIControlStateNormal];
+  CGSize size = [self.emailButton sizeThatFits:CGSizeMake(0, height)];
+  self.emailButton.frame = CGRectMake((center - (size.width / 2) - 10), self.emailButton.frame.origin.y, size.width + 20, height );
+
+  [self.tweetButton setTitle:NSLocalizedString(@"Send a Tweet", @"Send a Tweet") forState:UIControlStateNormal];
+  size = [self.tweetButton sizeThatFits:CGSizeMake(0, height)];
+  self.tweetButton.frame = CGRectMake((center - (size.width / 2) - 10), self.tweetButton.frame.origin.y, size.width + 20, height );
+
+  [self.forumButton setTitle:NSLocalizedString(@"Visit the Forum", @"Visit the Forum") forState:UIControlStateNormal];
+  size = [self.forumButton sizeThatFits:CGSizeMake(0, height)];
+  self.forumButton.frame = CGRectMake((center - (size.width / 2) - 10), self.forumButton.frame.origin.y, size.width + 20, height );
+
+	self.versionString.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
 	NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 	self.versionString.text = [NSString stringWithFormat:@"%@", version];
+
 }
 
 - (IBAction)openMail:(id)sender
@@ -118,7 +142,7 @@
 }
 
 - (IBAction) openForum:(id)sender {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://moot.it/jmoore/#!/lasttime"]];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://jmoore.me/forum/#!/last-time"]];
 }
 
 - (void)didReceiveMemoryWarning
