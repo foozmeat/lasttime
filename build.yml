@@ -7,6 +7,8 @@
 :code_signing:
   :ios_dist: "iPhone Distribution: James Moore"
   :ios_release: "iPhone Distribution: James Moore"
+  :ios_debug: "iPhone Developer: James Moore (HGZS2NAYVG)"
+  :keychain_file: "~/Library/Keychains/james.keychain"
   
 :testflight:
   :api_token: "a3e60f758620c870b4c0db40b87b1034_MjYwNTMwMjAxMS0xMi0yNyAxNjozMTowOC4wNTcyNjQ"
