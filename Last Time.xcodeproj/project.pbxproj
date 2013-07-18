@@ -879,7 +879,6 @@
 				39D70CAF14BD3515009C3615 /* Frameworks */,
 				39D70CB014BD3515009C3615 /* Resources */,
 				39BF451714F2A2000059C8B9 /* ShellScript */,
-				1A57B99E17975DE700FE9709 /* Take Screenshots */,
 			);
 			buildRules = (
 			);
@@ -972,20 +971,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A57B99E17975DE700FE9709 /* Take Screenshots */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Take Screenshots";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ $CONFIGURATION == \"Screenshots\" ]]; then\n    python $SRCROOT/Last\\ Time/Resources/KSScreenshotManager/make_screenshots.py $SRCROOT/screenshot.config\nfi";
-		};
 		39BF451714F2A2000059C8B9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
