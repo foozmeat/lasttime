@@ -374,9 +374,9 @@
                 [exportedText appendFormat:@" — %@",le.logEntryNote];
             }
             if ([le showValue]) {
-                [exportedText appendFormat:@" — %f", [[le logEntryValue] floatValue]];
+                [exportedText appendFormat:@" — %@", [[le logEntryValue] stringValue]];
             }
-            
+
             [exportedText appendString:@"\n"];
         }
 
