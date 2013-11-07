@@ -33,8 +33,6 @@
 #else
 	[TestFlight takeOff:@"6bf62164-8b9b-46dc-b894-74ebd8c699d7"];
 #endif
-	[[Tapstream shared] setAccountName:@"jmoore" developerSecret:@"GeBwRwR6TceJmk2O_u5jAw"];
-	[[Tapstream shared] fireEvent:@"first_launch" oneTimeOnly:YES];
 #endif
 
 	[self versionCheck];

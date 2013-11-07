@@ -18,7 +18,6 @@
 
 #ifdef TESTFLIGHT
 	#import "TestFlight.h"
-	#import "Tapstream/Tapstream.h"
 #endif
 
 #endif

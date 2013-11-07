@@ -64,7 +64,6 @@
 		1A8B216C1780ED0200D2AD5B /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A8B216B1780ED0200D2AD5B /* Twitter.framework */; };
 		1A8B216F1780F4D100D2AD5B /* 90-lifebuoy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B216D1780F4D100D2AD5B /* 90-lifebuoy.png */; };
 		1A8B21701780F4D100D2AD5B /* 90-lifebuoy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B216E1780F4D100D2AD5B /* 90-lifebuoy@2x.png */; };
-		1A90626E159EA33600982649 /* Tapstream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A90626D159EA33600982649 /* Tapstream.framework */; };
 		1A93AFF217823EF2005055C5 /* KSScreenshotAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A93AFDD17823EF1005055C5 /* KSScreenshotAction.m */; };
 		1A93AFF317823EF2005055C5 /* KSScreenshotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A93AFDF17823EF1005055C5 /* KSScreenshotManager.m */; };
 		1A93AFFF17823F9D005055C5 /* LTScreenshotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A93AFFE17823F9D005055C5 /* LTScreenshotManager.m */; };
@@ -241,7 +240,6 @@
 		1A8B216B1780ED0200D2AD5B /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		1A8B216D1780F4D100D2AD5B /* 90-lifebuoy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy.png"; sourceTree = "<group>"; };
 		1A8B216E1780F4D100D2AD5B /* 90-lifebuoy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy@2x.png"; sourceTree = "<group>"; };
-		1A90626D159EA33600982649 /* Tapstream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tapstream.framework; path = "Last Time/Resources/Tapstream.framework"; sourceTree = "<group>"; };
 		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
 		1A93AFDC17823EF1005055C5 /* KSScreenshotAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSScreenshotAction.h; sourceTree = "<group>"; };
 		1A93AFDD17823EF1005055C5 /* KSScreenshotAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSScreenshotAction.m; sourceTree = "<group>"; };
@@ -377,7 +375,6 @@
 				39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */,
 				39D70CB914BD3515009C3615 /* Foundation.framework in Frameworks */,
 				39D70CBB14BD3515009C3615 /* CoreGraphics.framework in Frameworks */,
-				1A90626E159EA33600982649 /* Tapstream.framework in Frameworks */,
 				1A9CBA1F175C22C10040D99F /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,7 +691,6 @@
 			isa = PBXGroup;
 			children = (
 				1A8B216B1780ED0200D2AD5B /* Twitter.framework */,
-				1A90626D159EA33600982649 /* Tapstream.framework */,
 				1A212A54159573E5001B6293 /* CoreData.framework */,
 				1A212A451595728A001B6293 /* CoreLocation.framework */,
 				1A17C1FA1589488200FED786 /* MessageUI.framework */,
@@ -1157,7 +1153,7 @@
 				);
 				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A83C0840-5D91-49B9-A835-CBA816A76534";
+				PROVISIONING_PROFILE = "7932F92D-E1AA-4475-935D-9CC19890F658";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = NO;
@@ -1468,131 +1464,6 @@
 			};
 			name = Release;
 		};
-		39B8C8701504661700A55B5C /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20130628151206;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_SHADOW = YES;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = NO;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_CFLAGS = "";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Coverage;
-		};
-		39B8C8711504661700A55B5C /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Moore (HGZS2NAYVG)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Last Time/Resources\"",
-				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
-				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
-				);
-				OTHER_CFLAGS = (
-					"-DDEBUG=1",
-					"-ftest-coverage",
-					"-fprofile-arcs",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A83C0840-5D91-49B9-A835-CBA816A76534";
-				RUN_CLANG_STATIC_ANALYZER = YES;
-				TARGETED_DEVICE_FAMILY = 1;
-				VALIDATE_PRODUCT = NO;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Coverage;
-		};
-		39B8C8731504661700A55B5C /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_SHADOW = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx;
-			};
-			name = Coverage;
-		};
-		39B8C8741504661700A55B5C /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Coverage;
-		};
-		39B8C8751504661700A55B5C /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Coverage;
-		};
-		39B8C8761504661700A55B5C /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Coverage;
-		};
 		39D70CDF14BD3516009C3615 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1676,7 +1547,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7932F92D-E1AA-4475-935D-9CC19890F658";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = NO;
@@ -1719,7 +1590,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3904CFAA14C078E200B7396A /* Debug */,
-				39B8C8751504661700A55B5C /* Coverage */,
 				3988B96914DC32690010062E /* Beta */,
 				3904CFAB14C078E200B7396A /* Release */,
 				1A93B004178242B5005055C5 /* Screenshots */,
@@ -1731,7 +1601,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3950E87014BFE0AB009C6F6F /* Debug */,
-				39B8C8741504661700A55B5C /* Coverage */,
 				3988B96814DC32690010062E /* Beta */,
 				3950E87114BFE0AB009C6F6F /* Release */,
 				1A93B003178242B5005055C5 /* Screenshots */,
@@ -1743,7 +1612,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39861AB014BD526D006F30A0 /* Debug */,
-				39B8C8731504661700A55B5C /* Coverage */,
 				3988B96714DC32690010062E /* Beta */,
 				39861AB114BD526D006F30A0 /* Release */,
 				1A93B002178242B5005055C5 /* Screenshots */,
@@ -1755,7 +1623,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39A0FA0014F0B9AF00BA0AFA /* Debug */,
-				39B8C8761504661700A55B5C /* Coverage */,
 				39A0FA0114F0B9AF00BA0AFA /* Beta */,
 				39A0FA0214F0B9AF00BA0AFA /* Release */,
 				1A93B005178242B5005055C5 /* Screenshots */,
@@ -1767,7 +1634,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39D70CDF14BD3516009C3615 /* Debug */,
-				39B8C8701504661700A55B5C /* Coverage */,
 				3988B96414DC32690010062E /* Beta */,
 				39D70CE014BD3516009C3615 /* Release */,
 				1A93B000178242B5005055C5 /* Screenshots */,
@@ -1779,7 +1645,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				39D70CE214BD3516009C3615 /* Debug */,
-				39B8C8711504661700A55B5C /* Coverage */,
 				3988B96514DC32690010062E /* Beta */,
 				39D70CE314BD3516009C3615 /* Release */,
 				1A93B001178242B5005055C5 /* Screenshots */,
