@@ -362,11 +362,6 @@
 	[[self event] refreshItems];
 	[[self eventTableView] reloadData];
 
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-
 	if (self.event == nil) {
 		NSAssert(self.event != nil, @"Our Event should not be nil");
 		self.addButton.enabled = NO;
@@ -381,7 +376,7 @@
 
 	self.addButton.title = NSLocalizedString(@"Add", @"Add Item");
 	self.exportButton.title = NSLocalizedString(@"Export", @"Export");
-	[super viewDidAppear:animated];
+
 }
 
 - (void)viewDidUnload
