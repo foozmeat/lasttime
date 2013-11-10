@@ -414,10 +414,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
 	NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-
-	FolderListCell *cell = (FolderListCell *)[textField superview];
-	[[cell textLabel] setText:newText];
-
+	self.activeCell.textLabel.text = newText;
 	return YES;
 }
 
@@ -426,9 +423,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 	
 	NSString *text = [textField text];
 
-	FolderListCell *cell = (FolderListCell *)[textField superview];
-	
-	NSIndexPath *path = [self.tableView indexPathForCell:cell];
+//	FolderListCell *cell = (FolderListCell *)[textField superview];
+
+	NSIndexPath *path = [self.tableView indexPathForCell:self.activeCell];
 	
 	EventFolder *folder = [self.fetchedResultsController objectAtIndexPath:path];
 	if ([text isEqualToString:@""]) {
@@ -440,7 +437,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-	[self setActiveCell:(FolderListCell *)[textField superview]];
+	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		// On iOS 7 the textfield get's put inside of a scrollview
+		self.activeCell = (FolderListCell *) textField.superview.superview;
+	} else {
+		self.activeCell = (FolderListCell *) textField.superview;
+	}
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
