@@ -121,9 +121,7 @@
 #pragma mark - PickerCell Delegate
 - (void)valueChanged:(id)sender
 {
-#ifdef DEBUG
-	NSLog(@"Base Picker Changed");
-#endif
+	DLog(@"Base Picker Changed");
 }
 
 

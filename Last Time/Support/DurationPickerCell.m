@@ -117,9 +117,8 @@
 	[delegate durationPickerDidChangeWithDuration:[self durationFromPicker]];
 
 	[[self pickerView] reloadComponent:kUnit];
-#ifdef DEBUG
-	NSLog(@"Duration changed: %@", [self durationString]);
-#endif
+
+	DLog(@"Duration changed: %@", [self durationString]);
 }
 
 
@@ -248,9 +247,7 @@
 - (void)setupPickerComponants
 {
 
-#ifdef DEBUG
-	NSLog(@"Duration: %d", self.duration);
-#endif
+	DLog(@"Duration: %d", self.duration);
 
 	if (self.duration == 0) {
 		_durationValue = 1;
@@ -287,9 +284,7 @@
 	[[self pickerView] selectRow:(_durationValue - 1) inComponent:kNumber animated:NO];
 	[[self pickerView] selectRow:[_unitRows indexOfObject:_durationUnit] inComponent:kUnit animated:NO];
 
-#ifdef DEBUG
-	NSLog(@"Picker set to %d, %@", _durationValue, _durationUnit);
-#endif
+	DLog(@"Picker set to %d, %@", _durationValue, _durationUnit);
 
 	return;
 

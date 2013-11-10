@@ -312,9 +312,7 @@
 		return;
 	}
 
-#ifdef DEBUG
-	NSLog(@"Reminder is switched to %d", _reminderEnabled);
-#endif
+	DLog(@"Reminder is switched to %d", _reminderEnabled);
 
 	_reminderEnabled = sender.on;
 
@@ -353,10 +351,8 @@
 {
 	[event setReminderDuration:duration];
 	[event updateReminderNotification];
-	 
-#ifdef DEBUG
-	NSLog(@"Duration set to %f", duration);
-#endif
+
+	DLog(@"Duration set to %f", duration);
 	
 }
 

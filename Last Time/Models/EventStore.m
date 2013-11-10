@@ -146,21 +146,16 @@ static EventStore *defaultStore = nil;
 
 - (Event *)eventForUUID:(NSString *)uuid
 {
-#ifdef DEBUG
-	NSLog(@"Fetching event for UUID %@", uuid);
-#endif
+
+	DLog(@"Fetching event for UUID %@", uuid);
 	
 	NSArray *objects = [[self context] fetchObjectArrayForEntityName:@"Event" withPredicateFormat:@"notificationUUID == %@", uuid];
 	
 	if ([objects count] > 0) {
-#ifdef DEBUG
-		NSLog(@"Found event named %@", [[objects objectAtIndex:0] eventName]);
-#endif
+		DLog(@"Found event named %@", [[objects objectAtIndex:0] eventName]);
 		return [objects objectAtIndex:0];
 	} else {
-#ifdef DEBUG
-		NSLog(@"Found no events with that uuid");
-#endif
+		DLog(@"Found no events with that uuid");
 		return nil;
 	}
 

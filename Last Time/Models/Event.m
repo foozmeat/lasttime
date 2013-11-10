@@ -295,9 +295,8 @@
 	} else if ([oldFormat isEqualToString:@"weeks"]) {
 		self.lastTimeDisplayFormat = NULL;
 	}
-#ifdef DEBUG
-	NSLog(@"Last Time Display format changed to: %@", self.lastTimeDisplayFormat);
-#endif
+
+	DLog(@"Last Time Display format changed to: %@", self.lastTimeDisplayFormat);
 }
 
 - (NSTimeInterval)lastDuration
@@ -397,9 +396,9 @@
 		//Print all notifications
 	NSArray *notificationsArray = [[UIApplication sharedApplication] scheduledLocalNotifications];
 	for (UILocalNotification *l in notificationsArray) {
-    NSLog(@"%@ -- %@", l.fireDate, [[l userInfo] objectForKey:@"UUID"]);
+    DLog(@"%@ -- %@", l.fireDate, [[l userInfo] objectForKey:@"UUID"]);
 	}
-	NSLog(@"Latest Date: %@", self.latestDate);
+	DLog(@"Latest Date: %@", self.latestDate);
 #endif
 	
 	if (self.reminderDuration == 0 || self.latestDate == nil) {
@@ -437,14 +436,11 @@
 			localNotification.userInfo = infoDict;
 			[[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 
-#ifdef DEBUG
-			NSLog(@"Notification scheduled for %@ -- %@", [self newReminderDate], uuid);
-#endif
+			DLog(@"Notification scheduled for %@ -- %@", [self newReminderDate], uuid);
 			
 		} else {
-#ifdef DEBUG
-			NSLog(@"Not scheduling reminder for date %@", [self newReminderDate]);
-#endif
+
+			DLog(@"Not scheduling reminder for date %@", [self newReminderDate]);
 		}
 		self.reminderDate = [self newReminderDate];
 		[[EventStore defaultStore] saveChanges];
@@ -455,9 +451,7 @@
 - (void)removeNotification
 {
 	if (self.notificationUUID == nil) {
-#ifdef DEBUG
-		NSLog(@"no notifications removed");
-#endif
+		DLog(@"no notifications removed");
 	}
 	
 	NSArray *notificationsArray = [[UIApplication sharedApplication] scheduledLocalNotifications];
@@ -467,9 +461,9 @@
 		NSString *uuid = [[l userInfo] objectForKey:@"UUID"];
 
 		if ([self.notificationUUID isEqualToString:uuid]) {
-#ifdef DEBUG
-			NSLog(@"Canceling notification %@", uuid);
-#endif
+
+			DLog(@"Canceling notification %@", uuid);
+
 			[[UIApplication sharedApplication] cancelLocalNotification:l];
 		}
 	}
@@ -513,12 +507,6 @@
 		return nil;
 	}
 
-#ifdef DEBUG
-//	NSDate *fakeDate = [[NSDate alloc] initWithTimeIntervalSinceNow:10];
-//
-//	return fakeDate;
-#endif
-	
 	NSDate *reminderDate = [[NSDate alloc] initWithTimeInterval:self.reminderDuration 
 																										sinceDate:self.latestDate];
 	NSCalendar *sysCalendar = [NSCalendar currentCalendar];
