@@ -52,22 +52,6 @@
                                     <action selector="tweetButtonPressed:" destination="Eij-sl-kGi" eventType="touchUpInside" id="xQo-sF-CRb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xJI-jf-ATh">
-                                <rect key="frame" x="91" y="256" width="138" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="Visit the Forum">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="openForum:" destination="Eij-sl-kGi" eventType="touchUpInside" id="t5t-Jn-Jmg"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="x.x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="npX-Yi-vm4">
                                 <rect key="frame" x="20" y="463" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -82,7 +66,6 @@
                     <navigationItem key="navigationItem" id="FgV-Pz-JcK"/>
                     <connections>
                         <outlet property="emailButton" destination="km4-LC-Tt7" id="YFX-SS-ru4"/>
-                        <outlet property="forumButton" destination="xJI-jf-ATh" id="4S9-LQ-gch"/>
                         <outlet property="helpText" destination="0l9-X6-XBU" id="06h-AT-YTq"/>
                         <outlet property="tweetButton" destination="cdf-LT-ln2" id="edO-wZ-Ykj"/>
                         <outlet property="versionString" destination="npX-Yi-vm4" id="10Q-of-gyy"/>

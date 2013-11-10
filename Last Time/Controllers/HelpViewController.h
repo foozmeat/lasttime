@@ -13,7 +13,6 @@
 @interface HelpViewController : UIViewController <MFMailComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *emailButton;
 @property (weak, nonatomic) IBOutlet UIButton *tweetButton;
-@property (weak, nonatomic) IBOutlet UIButton *forumButton;
 @property (weak, nonatomic) IBOutlet UILabel *versionString;
 @property (weak, nonatomic) IBOutlet UILabel *helpText;
 

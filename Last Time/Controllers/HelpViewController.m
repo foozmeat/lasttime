@@ -32,7 +32,7 @@
 
   LTStyleManager *sm = [LTStyleManager manager];
 
-	NSArray *buttons = @[self.emailButton, self.tweetButton, self.forumButton];
+	NSArray *buttons = @[self.emailButton, self.tweetButton];
 
 	for (UIButton *b in buttons) {
 		b.titleLabel.font = [sm cellDetailFontWithSize:[UIFont buttonFontSize]];
@@ -63,10 +63,6 @@
   [self.tweetButton setTitle:NSLocalizedString(@"Send a Tweet", @"Send a Tweet") forState:UIControlStateNormal];
   size = [self.tweetButton sizeThatFits:CGSizeMake(0, height)];
   self.tweetButton.frame = CGRectMake((center - (size.width / 2) - 10), self.tweetButton.frame.origin.y, size.width + 20, height );
-
-  [self.forumButton setTitle:NSLocalizedString(@"Visit the Forum", @"Visit the Forum") forState:UIControlStateNormal];
-  size = [self.forumButton sizeThatFits:CGSizeMake(0, height)];
-  self.forumButton.frame = CGRectMake((center - (size.width / 2) - 10), self.forumButton.frame.origin.y, size.width + 20, height );
 
 	self.versionString.font = [sm cellLabelFontWithSize:[UIFont buttonFontSize]];
 	NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -135,10 +131,6 @@
 	[self presentModalViewController:tweetSheet animated:YES];
 }
 
-- (IBAction) openForum:(id)sender {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://jmoore.me/forum/#!/last-time"]];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -148,7 +140,6 @@
 - (void)viewDidUnload {
     [self setEmailButton:nil];
     [self setTweetButton:nil];
-    [self setForumButton:nil];
     [self setVersionString:nil];
 	[self setHelpText:nil];
     [super viewDidUnload];
