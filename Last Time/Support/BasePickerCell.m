@@ -86,6 +86,11 @@
 - (void)deleteBackward {
 }
 
+- (BOOL)becomeFirstResponder {
+	[self.pickerView setNeedsLayout];
+	return [super becomeFirstResponder];
+}
+
 - (BOOL)resignFirstResponder {
 	UITableView *tableView;
 

@@ -224,13 +224,6 @@
 
 }
 
-#pragma mark - KeyInput
-
-- (BOOL)becomeFirstResponder {
-	[self.pickerView setNeedsLayout];
-	return [super becomeFirstResponder];
-}
-
 #pragma mark - UIPicker
 
 - (NSInteger)durationFromPicker

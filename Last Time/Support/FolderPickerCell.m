@@ -36,13 +36,6 @@
 
 }
 
-#pragma mark - KeyInput
-
-- (BOOL)becomeFirstResponder {
-	[self.pickerView setNeedsLayout];
-	return [super becomeFirstResponder];
-}
-
 #pragma mark - TableView
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
