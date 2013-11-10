@@ -404,7 +404,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 	cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 	cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
-	cell.accessoryView = [sm disclosureArrowImageView];
+	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	} else {
+		cell.accessoryView = [sm disclosureArrowImageView];
+	}
 
 }
 

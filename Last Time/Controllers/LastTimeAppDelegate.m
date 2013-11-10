@@ -104,6 +104,13 @@
 {
 	LTStyleManager *sm = [LTStyleManager manager];
 
+	[[UINavigationBar appearance] setTintColor:[sm tintColor]];
+	[[UIBarButtonItem appearance] setTintColor:[sm tintColor]];
+
+	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		return;
+	}
+
 	[[UINavigationBar appearance] setTintColor:[sm navBarBackgroundColor]];
 
 	[[UINavigationBar appearance] setTitleTextAttributes:

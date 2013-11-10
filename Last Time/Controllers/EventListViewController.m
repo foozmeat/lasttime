@@ -62,27 +62,27 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 
-    if ([segue.identifier isEqualToString:@"addEvent"]) {
-        // This vew controller is embedded in a navigation controller so we can have a nav bar to put buttons on
-        EventDetailController *edc = [segue destinationViewController];
-        [edc setEvent:[[EventStore defaultStore] createEvent]];
-        [edc setLogEntry:[[EventStore defaultStore] createLogEntry]];
-        [edc setFolder:self.folder];
-        [edc setDelegate:self];
-        [edc setIsModal:YES];
-    } else if ([segue.identifier isEqualToString:@"viewDetail"]) {
-        EventController *ec = [segue destinationViewController];
-        NSIndexPath *indexPath = [self.eventTableView indexPathForSelectedRow];
-        Event *event = [_fetchedResultsController objectAtIndexPath:indexPath];
-        ec.event = event;
-    } else if ([segue.identifier isEqualToString:@"editEvent"]) {
-        EventDetailController *edc = [segue destinationViewController];
-        NSIndexPath *indexPath = [self.eventTableView indexPathForSelectedRow];
-        edc.event =[_fetchedResultsController objectAtIndexPath:indexPath];
-        [edc setFolder:self.folder];
-        [edc setDelegate:self];
-        [edc setIsModal:NO];
-    }
+	if ([segue.identifier isEqualToString:@"addEvent"]) {
+		// This vew controller is embedded in a navigation controller so we can have a nav bar to put buttons on
+		EventDetailController *edc = [segue destinationViewController];
+		[edc setEvent:[[EventStore defaultStore] createEvent]];
+		[edc setLogEntry:[[EventStore defaultStore] createLogEntry]];
+		[edc setFolder:self.folder];
+		[edc setDelegate:self];
+		[edc setIsModal:YES];
+	} else if ([segue.identifier isEqualToString:@"viewDetail"]) {
+		EventController *ec = [segue destinationViewController];
+		NSIndexPath *indexPath = [self.eventTableView indexPathForSelectedRow];
+		Event *event = [_fetchedResultsController objectAtIndexPath:indexPath];
+		ec.event = event;
+	} else if ([segue.identifier isEqualToString:@"editEvent"]) {
+		EventDetailController *edc = [segue destinationViewController];
+		NSIndexPath *indexPath = [self.eventTableView indexPathForSelectedRow];
+		edc.event =[_fetchedResultsController objectAtIndexPath:indexPath];
+		[edc setFolder:self.folder];
+		[edc setDelegate:self];
+		[edc setIsModal:NO];
+	}
 }
 
 #pragma mark - Core Data
@@ -94,27 +94,27 @@
 
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Event" inManagedObjectContext:[[EventStore defaultStore] context]];
+																 entityForName:@"Event" inManagedObjectContext:[[EventStore defaultStore] context]];
 	[fetchRequest setEntity:entity];
 
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"folder == %@",
-                              folder];
+														folder];
 	[fetchRequest setPredicate:predicate];
 
 	NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:@"latestDate" ascending:NO];
+														initWithKey:@"latestDate" ascending:NO];
 	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
 
 	_fetchedResultsController =
 	[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext: [[EventStore defaultStore] context]
-                                          sectionNameKeyPath:nil
-                                                   cacheName:nil];
+																			managedObjectContext: [[EventStore defaultStore] context]
+																				sectionNameKeyPath:nil
+																								 cacheName:nil];
 	_fetchedResultsController.delegate = self;
 
 	NSError *error = nil;
 	if (![_fetchedResultsController performFetch:&error]) {
-        // Update to handle the error appropriately.
+		// Update to handle the error appropriately.
 		NSLog(@"Error fetching folders %@, %@", error, [error userInfo]);
 		exit(-1);  // Fail
 	}
@@ -239,9 +239,9 @@
 
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventListCell"];
 #ifndef _USE_OS_7_OR_LATER
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width + 10.0, 1)];
-    lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
-    [cell.contentView addSubview:lineView];
+	UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width + 10.0, 1)];
+	lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
+	[cell.contentView addSubview:lineView];
 #endif
 
 	[self configureCell:cell atIndexPath:indexPath];
@@ -257,23 +257,27 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
 
-    LTStyleManager *sm = [LTStyleManager manager];
+	LTStyleManager *sm = [LTStyleManager manager];
 
 	Event *item = (Event *)[self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = item.eventName;
-    cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+	cell.textLabel.text = item.eventName;
+	cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 
-    if ([item reminderExpired]) {
-        cell.textLabel.textColor = [sm alarmColor];
-    } else {
-        cell.textLabel.textColor = [sm defaultColor];
-    }
+	if ([item reminderExpired]) {
+		cell.textLabel.textColor = [sm alarmColor];
+	} else {
+		cell.textLabel.textColor = [sm defaultColor];
+	}
 
-    cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
-    cell.detailTextLabel.text = item.subtitle;
-    cell.detailTextLabel.textColor = [sm detailTextColor];
+	cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
+	cell.detailTextLabel.text = item.subtitle;
+	cell.detailTextLabel.textColor = [sm detailTextColor];
 
-    cell.accessoryView = [sm disclosureArrowImageView];
+	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	} else {
+		cell.accessoryView = [sm disclosureArrowImageView];
+	}
 }
 
 #pragma mark - ItemDetailViewControllerDelegate

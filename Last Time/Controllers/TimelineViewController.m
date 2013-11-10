@@ -242,7 +242,11 @@
 	cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 	cell.detailTextLabel.textColor = [sm tintColor];
 	
-	cell.accessoryView = [sm disclosureArrowImageView];
+	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	} else {
+		cell.accessoryView = [sm disclosureArrowImageView];
+	}
 
 }
 

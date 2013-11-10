@@ -110,15 +110,10 @@ static LTStyleManager *manager = nil;
 
 - (UIFont *) mediumFontWithSize:(float) size
 {
-    //    return [UIFont fontWithName:@"Georgia" size:size];
-//    return [UIFont fontWithName:@"AmericanTypewriter-Bold" size:size];
 	return [UIFont fontWithName:@"Avenir-Medium" size:size];
 }
 - (UIFont *) lightFontWithSize:(float) size
 {
-//    return [UIFont fontWithName:@"Georgia" size:size];
-//	return [UIFont fontWithName:@"AmericanTypewriter" size:size];
 	return [UIFont fontWithName:@"Avenir-Light" size:size];
-
 }
 @end
