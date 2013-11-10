@@ -24,7 +24,9 @@ enum PickerComponants {
 enum UnitRows {
 	kDay = 0,
 	kWeek,
-	kMonth
+	kMonth,
+	kYear,
+	NUM_UNITS
 };
 
 @interface DurationPickerCell : BasePickerCell <UIPickerViewDelegate, UIPickerViewDataSource>

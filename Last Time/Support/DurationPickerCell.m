@@ -217,7 +217,7 @@
 	if (component == kNumber) {
 		return 30;
 	} else if (component == kUnit) {
-		return 3;
+		return NUM_UNITS;
 	} else {
 		return 0;
 	}
@@ -244,6 +244,8 @@
 		return day * 7 * _durationValue;
 	} else if ([_durationUnit isEqualToString:@"month"]) {
 		return day * 30 * _durationValue;
+	} else if ([_durationUnit isEqualToString:@"year"]) {
+		return day * 365 * _durationValue;
 	} else {
 		return 0;
 	}
@@ -265,6 +267,7 @@
 		int day = 60 * 60 * 24;
 		int week = 7;
 		int month = 30;
+		int year = day * 365;
 
 		int days = self.duration / day;
 
@@ -275,6 +278,10 @@
 		} else if (days % week == 0) {
 			_durationValue = days / week;
 			_durationUnit = @"week";
+
+		} else if (days % year == 0) {
+			_durationValue = days / year;
+			_durationUnit = @"year";
 
 		} else {
 			_durationValue = days;
