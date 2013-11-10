@@ -242,7 +242,7 @@
         <scene sceneID="vGr-sj-AlJ">
             <objects>
                 <viewController id="mIQ-If-vg5" customClass="SASlideMenuRootViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="le1-2x-1o5">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="le1-2x-1o5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -252,7 +252,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="menuView" destination="bWJ-8k-QDo" id="bHt-0W-JW3"/>
