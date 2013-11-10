@@ -10,7 +10,7 @@
 #import "EventFolder.h"
 
 @implementation FolderPickerCell
-@synthesize pickerView, delegate, inputAccessoryView,folderPopover;
+@synthesize delegate, pickerView;
 
 - (void)initalizeInputView {
 	self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectZero];
@@ -27,77 +27,20 @@
 	self.selectionStyle = UITableViewCellSelectionStyleGray;
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-	if (self) {
-		[self initalizeInputView];
-	}
-	return self;
-}
-
 - (void)setFolder
 {
 	EventFolder *currentFolder = [[self delegate] folderPickerCurrentFolder];
 	NSInteger folderIndex = [[[EventStore defaultStore] allFolders] indexOfObject:currentFolder];
-	
+
 	[pickerView selectRow:folderIndex inComponent:0 animated:NO];
-		
+
 }
 
 #pragma mark - KeyInput
-- (UIView *)inputView {
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		return self.pickerView;
-	} else {
-		return nil;
-	}
-}
-
-- (UIView *)inputAccessoryView {
-	if (!inputAccessoryView) {
-		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-			inputAccessoryView = [[UIToolbar alloc] init];
-			[inputAccessoryView sizeToFit];
-			CGRect frame = inputAccessoryView.frame;
-			frame.size.height = 44.0f;
-			inputAccessoryView.frame = frame;
-			
-			UIBarButtonItem *doneBtn =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
-			UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-			
-			NSArray *array = [NSArray arrayWithObjects:flexibleSpaceLeft, doneBtn, nil];
-			[inputAccessoryView setItems:array];
-		}
-	}
-	return inputAccessoryView;
-}
-
-- (void)done:(id)sender {
-	[self resignFirstResponder];
-}
 
 - (BOOL)becomeFirstResponder {
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		[self.pickerView setNeedsLayout];
-	} else {
-		[folderPopover presentPopoverFromRect:[self bounds] 
-																 inView:self 
-							 permittedArrowDirections:UIPopoverArrowDirectionLeft 
-															 animated:YES];
-		[delegate popoverController:folderPopover isShowing:YES];
-	}
+	[self.pickerView setNeedsLayout];
 	return [super becomeFirstResponder];
-}
-
-- (BOOL)resignFirstResponder {
-	UITableView *tableView = (UITableView *)self.superview;
-	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:YES];
-	return [super resignFirstResponder];
-}
-
-- (BOOL)canBecomeFirstResponder {
-	return YES;
 }
 
 #pragma mark - TableView
@@ -110,18 +53,8 @@
 	}
 }
 
-- (BOOL)hasText {
-	return YES;
-}
-
-- (void)insertText:(NSString *)theText {
-}
-
-- (void)deleteBackward {
-}
-
 #pragma mark - PickerView
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {	
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
 	return 1;
 }
 
@@ -134,11 +67,11 @@
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-	
+
 	EventFolder *folder = [[[EventStore defaultStore] allFolders] objectAtIndex:row];
 	[[self delegate] folderPickerDidChange:folder];
-	
-//	NSLog(@"Selected Folder: %@. Index of selected folder: %i", [folder folderName], row);
+
+	//	NSLog(@"Selected Folder: %@. Index of selected folder: %i", [folder folderName], row);
 	[[self detailTextLabel] setText:[folder folderName]];
 
 }
@@ -151,7 +84,7 @@
   UILabel *pickerLabel = (UILabel *)view;
 
 	LTStyleManager *sm = [LTStyleManager manager];
-	
+
   if (pickerLabel == nil) {
     CGRect frame = CGRectMake(0.0, 0.0, self.superview.frame.size.width - 40, 32);
     pickerLabel = [[UILabel alloc] initWithFrame:frame];
@@ -164,26 +97,20 @@
   [pickerLabel setText:[self pickerView:self.pickerView titleForRow:row forComponent:component]];
 
   return pickerLabel;
-	
+
 }
 
 #pragma mark - Popover Delegate
 
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
++ (FolderPickerCell *)newFolderCellWithTag:(NSInteger)tag
+															withDelegate:(id)delegate
 {
-	[self resignFirstResponder];
-	[delegate popoverController:folderPopover isShowing:NO];
-}
+	FolderPickerCell *cell = [[FolderPickerCell alloc] initWithStyle:UITableViewCellStyleValue1
+																									 reuseIdentifier:@"FolderPickerCell"];
 
-+ (FolderPickerCell *)newFolderCellWithTag:(NSInteger)tag 
-															withDelegate:(id)delegate 
-{
-	FolderPickerCell *cell = [[FolderPickerCell alloc] initWithStyle:UITableViewCellStyleValue1 
-																							 reuseIdentifier:@"FolderPickerCell"];
-	
 	[cell setDelegate:delegate];
 	[cell setTag:tag];
-	
+
 	return cell;
 
 	

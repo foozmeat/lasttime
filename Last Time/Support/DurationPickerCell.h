@@ -12,7 +12,6 @@
 
 - (void)durationPickerDidChangeWithDuration:(NSTimeInterval)duration;
 - (void)endEditing;
-- (void)popoverController:(UIPopoverController *)poc isShowing:(BOOL)isShowing;
 
 @end
 

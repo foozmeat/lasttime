@@ -73,11 +73,7 @@
 
 #pragma mark - KeyInput
 - (UIView *)inputView {
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		return self.pickerView;
-	} else {
-		return nil;
-	}
+	return self.pickerView;
 }
 
 - (BOOL)hasText {
@@ -91,7 +87,15 @@
 }
 
 - (BOOL)resignFirstResponder {
-	UITableView *tableView = (UITableView *)self.superview;
+	UITableView *tableView;
+
+	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		// On iOS 7 the textfield get's put inside of a scrollview
+		tableView = (UITableView *)self.superview.superview;
+	} else {
+		tableView = (UITableView *)self.superview;
+	}
+
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:NO];
 	return [super resignFirstResponder];
 }

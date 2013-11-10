@@ -15,7 +15,7 @@
 	NSArray *_unitRows;
 
 }
-@synthesize pickerView, pickerPopover, delegate;
+@synthesize pickerView, delegate;
 @synthesize duration;
 @synthesize durationLabel;
 @synthesize durationStringLabel;
@@ -25,7 +25,7 @@
 - (void)initalizeInputView {
 
 	[self initalizeBaseInputView];
-	_unitRows = [[NSArray alloc] initWithObjects:@"day", @"week", @"month", nil];
+	_unitRows = @[@"day", @"week", @"month", @"year"];
 	pickerView = [[UIPickerView alloc] init];
 	pickerView.delegate = self;
 	pickerView.dataSource = self;
@@ -230,15 +230,6 @@
 	[self.pickerView setNeedsLayout];
 	return [super becomeFirstResponder];
 }
-
-#pragma mark - Popover Delegate
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-	[self resignFirstResponder];
-	[delegate popoverController:pickerPopover isShowing:NO];
-}
-
 
 #pragma mark - UIPicker
 

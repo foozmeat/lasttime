@@ -13,7 +13,6 @@
 
 - (void)pickerDidChange:(NSDate *)date;
 - (void)endEditing;
-- (void)popoverController:(UIPopoverController *)poc isShowing:(BOOL)isShowing;
 
 @end
 

@@ -9,7 +9,7 @@
 #import "DatePickerCell.h"
 
 @implementation DatePickerCell
-@synthesize pickerView, df, delegate, pickerPopover;
+@synthesize pickerView, df, delegate;
 
 - (void)initalizeInputView {
     [self initalizeBaseInputView];
@@ -38,26 +38,9 @@
 #pragma mark - KeyInput
 
 - (BOOL)becomeFirstResponder {
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-		[self.pickerView setNeedsLayout];
-	} else {
-		[pickerPopover presentPopoverFromRect:[self bounds]
-                                       inView:self
-                     permittedArrowDirections:UIPopoverArrowDirectionLeft
-                                     animated:YES];
-		[delegate popoverController:pickerPopover isShowing:YES];
-	}
+	[self.pickerView setNeedsLayout];
 	return [super becomeFirstResponder];
 }
-
-#pragma mark - Popover Delegate
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-	[self resignFirstResponder];
-	[delegate popoverController:pickerPopover isShowing:NO];
-}
-
 
 #pragma mark - UIDatePicker
 
