@@ -39,17 +39,12 @@
 	userDrivenDataModelChange = NO;
 	self.addButton.title = NSLocalizedString(@"Add", @"Add Item");
 
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
-
 	if ([[self.fetchedResultsController fetchedObjects] count] != 0) {
 		[[self navigationItem] setRightBarButtonItem:[self editButtonItem]];
 	}
 
 }
+
 #pragma mark - Add Actions
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate

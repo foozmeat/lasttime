@@ -19,19 +19,14 @@
 @synthesize timelineTableView;
 @synthesize exportButton;
 
-- (void)viewDidAppear:(BOOL)animated
-{
-		// we need to do this in case any events were renamed
-	[[self timelineTableView] reloadData];
-	
-	[super viewDidAppear:animated];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	self.title = NSLocalizedString(@"Timeline", @"Timeline");
     self.exportButton.title = NSLocalizedString(@"Export", @"Export");
+
+	// we need to do this in case any events were renamed
+	[[self timelineTableView] reloadData];
 }
 
 - (IBAction)exportTimeline:(id)sender
