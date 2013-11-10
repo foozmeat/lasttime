@@ -37,24 +37,7 @@
 		1A4B6AD3162A10740078A7EA /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4B6AC9162A10740078A7EA /* Icon@2x.png */; };
 		1A6284FC153EFECE003C57F9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A6284FB153EFECE003C57F9 /* QuartzCore.framework */; };
 		1A628504153F0FD7003C57F9 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A628503153F0FD7003C57F9 /* HeaderView.m */; };
-		1A81EC5D176A617800A65CF7 /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A81EC19176A617800A65CF7 /* disclosure.png */; };
-		1A81EC5E176A617800A65CF7 /* disclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A81EC1A176A617800A65CF7 /* disclosure@2x.png */; };
-		1A81EC6A176A617800A65CF7 /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A81EC2A176A617800A65CF7 /* menuicon.png */; };
-		1A81EC6B176A617800A65CF7 /* menuicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A81EC2B176A617800A65CF7 /* menuicon@2x.png */; };
-		1A81EC6E176A617800A65CF7 /* row.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A81EC2E176A617800A65CF7 /* row.png */; };
-		1A81EC6F176A617800A65CF7 /* row@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A81EC2F176A617800A65CF7 /* row@2x.png */; };
-		1A81EC75176A617800A65CF7 /* rowselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A81EC35176A617800A65CF7 /* rowselected.png */; };
-		1A81EC76176A617800A65CF7 /* rowselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A81EC36176A617800A65CF7 /* rowselected@2x.png */; };
-		1A81EC79176A617800A65CF7 /* SASlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A81EC3B176A617800A65CF7 /* SASlideMenuContentSegue.m */; };
-		1A81EC7A176A617800A65CF7 /* SASlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A81EC3F176A617800A65CF7 /* SASlideMenuLeftMenuSegue.m */; };
-		1A81EC7B176A617800A65CF7 /* SASlideMenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A81EC41176A617800A65CF7 /* SASlideMenuNavigationController.m */; };
-		1A81EC7C176A617800A65CF7 /* SASlideMenuPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A81EC43176A617800A65CF7 /* SASlideMenuPushSegue.m */; };
-		1A81EC7D176A617800A65CF7 /* SASlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A81EC45176A617800A65CF7 /* SASlideMenuRightMenuSegue.m */; };
-		1A81EC7E176A617800A65CF7 /* SASlideMenuRightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A81EC47176A617800A65CF7 /* SASlideMenuRightMenuViewController.m */; };
-		1A81EC7F176A617800A65CF7 /* SASlideMenuRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A81EC49176A617800A65CF7 /* SASlideMenuRootViewController.m */; };
-		1A81EC80176A617800A65CF7 /* SASlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A81EC4B176A617800A65CF7 /* SASlideMenuViewController.m */; };
 		1A81EC8E176A62F400A65CF7 /* LTSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A81EC8D176A62F400A65CF7 /* LTSlideViewController.m */; };
-		1A81EC91176A66AB00A65CF7 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A81EC90176A66AB00A65CF7 /* MenuCell.m */; };
 		1A823B6B153B959D00B997C8 /* default_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A823B6D153B959D00B997C8 /* default_data.plist */; };
 		1A8295B11767D6AA00CA0161 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A8295B01767D6AA00CA0161 /* Storyboard.storyboard */; };
 		1A8A645D1597D6E3009DD55F /* ReminderSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A645C1597D6E3009DD55F /* ReminderSwitchCell.m */; };
@@ -72,6 +55,25 @@
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
 		1AC08501176A8782004EB084 /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC084FF176A8782004EB084 /* 11-clock.png */; };
 		1AC08502176A8782004EB084 /* 11-clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC08500176A8782004EB084 /* 11-clock@2x.png */; };
+		1AC625DA182D48F000494F65 /* SASlideMenuContentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC625C9182D48F000494F65 /* SASlideMenuContentSegue.m */; };
+		1AC625DB182D48F000494F65 /* SASlideMenuLeftMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC625CD182D48F000494F65 /* SASlideMenuLeftMenuSegue.m */; };
+		1AC625DC182D48F000494F65 /* SASlideMenuNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC625CF182D48F000494F65 /* SASlideMenuNavigationController.m */; };
+		1AC625DD182D48F000494F65 /* SASlideMenuPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC625D1182D48F000494F65 /* SASlideMenuPushSegue.m */; };
+		1AC625DE182D48F000494F65 /* SASlideMenuRightMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC625D3182D48F000494F65 /* SASlideMenuRightMenuSegue.m */; };
+		1AC625DF182D48F000494F65 /* SASlideMenuRightMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC625D5182D48F000494F65 /* SASlideMenuRightMenuViewController.m */; };
+		1AC625E0182D48F000494F65 /* SASlideMenuRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC625D7182D48F000494F65 /* SASlideMenuRootViewController.m */; };
+		1AC625E1182D48F000494F65 /* SASlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC625D9182D48F000494F65 /* SASlideMenuViewController.m */; };
+		1AC625E4182D4A1900494F65 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC625E3182D4A1900494F65 /* MenuCell.m */; };
+		1AC625E9182D4DB300494F65 /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625E5182D4DB300494F65 /* disclosure.png */; };
+		1AC625EA182D4DB300494F65 /* disclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625E6182D4DB300494F65 /* disclosure@2x.png */; };
+		1AC625EB182D4DB300494F65 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625E7182D4DB300494F65 /* menu.png */; };
+		1AC625EC182D4DB300494F65 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625E8182D4DB300494F65 /* menu@2x.png */; };
+		1AC625F0182D4E5B00494F65 /* rowselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625EE182D4E5B00494F65 /* rowselected.png */; };
+		1AC625F1182D4E5B00494F65 /* rowselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625EF182D4E5B00494F65 /* rowselected@2x.png */; };
+		1AC625F4182D4EB300494F65 /* menuicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625F2182D4EB300494F65 /* menuicon.png */; };
+		1AC625F5182D4EB300494F65 /* menuicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625F3182D4EB300494F65 /* menuicon@2x.png */; };
+		1AC625F8182DA45100494F65 /* row.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625F6182DA45100494F65 /* row.png */; };
+		1AC625F9182DA45100494F65 /* row@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625F7182DA45100494F65 /* row@2x.png */; };
 		1AC62B9F152950760019362B /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC62B9E152950760019362B /* TimelineViewController.m */; };
 		1ADD036815165531006EAD7E /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD036715165531006EAD7E /* EventFolder.m */; };
 		1AED06051510EEC700CCDA4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AED06041510EEC700CCDA4F /* CoreData.framework */; };
@@ -193,36 +195,8 @@
 		1A6284FB153EFECE003C57F9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A628502153F0FD7003C57F9 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeaderView.h; path = ../Support/HeaderView.h; sourceTree = "<group>"; };
 		1A628503153F0FD7003C57F9 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeaderView.m; path = ../Support/HeaderView.m; sourceTree = "<group>"; };
-		1A81EC19176A617800A65CF7 /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
-		1A81EC1A176A617800A65CF7 /* disclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure@2x.png"; sourceTree = "<group>"; };
-		1A81EC2A176A617800A65CF7 /* menuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuicon.png; sourceTree = "<group>"; };
-		1A81EC2B176A617800A65CF7 /* menuicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuicon@2x.png"; sourceTree = "<group>"; };
-		1A81EC2E176A617800A65CF7 /* row.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = row.png; sourceTree = "<group>"; };
-		1A81EC2F176A617800A65CF7 /* row@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "row@2x.png"; sourceTree = "<group>"; };
-		1A81EC35176A617800A65CF7 /* rowselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowselected.png; sourceTree = "<group>"; };
-		1A81EC36176A617800A65CF7 /* rowselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rowselected@2x.png"; sourceTree = "<group>"; };
-		1A81EC3A176A617800A65CF7 /* SASlideMenuContentSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuContentSegue.h; sourceTree = "<group>"; };
-		1A81EC3B176A617800A65CF7 /* SASlideMenuContentSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuContentSegue.m; sourceTree = "<group>"; };
-		1A81EC3C176A617800A65CF7 /* SASlideMenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuDataSource.h; sourceTree = "<group>"; };
-		1A81EC3D176A617800A65CF7 /* SASlideMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuDelegate.h; sourceTree = "<group>"; };
-		1A81EC3E176A617800A65CF7 /* SASlideMenuLeftMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuLeftMenuSegue.h; sourceTree = "<group>"; };
-		1A81EC3F176A617800A65CF7 /* SASlideMenuLeftMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuLeftMenuSegue.m; sourceTree = "<group>"; };
-		1A81EC40176A617800A65CF7 /* SASlideMenuNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuNavigationController.h; sourceTree = "<group>"; };
-		1A81EC41176A617800A65CF7 /* SASlideMenuNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuNavigationController.m; sourceTree = "<group>"; };
-		1A81EC42176A617800A65CF7 /* SASlideMenuPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuPushSegue.h; sourceTree = "<group>"; };
-		1A81EC43176A617800A65CF7 /* SASlideMenuPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuPushSegue.m; sourceTree = "<group>"; };
-		1A81EC44176A617800A65CF7 /* SASlideMenuRightMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuRightMenuSegue.h; sourceTree = "<group>"; };
-		1A81EC45176A617800A65CF7 /* SASlideMenuRightMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuRightMenuSegue.m; sourceTree = "<group>"; };
-		1A81EC46176A617800A65CF7 /* SASlideMenuRightMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuRightMenuViewController.h; sourceTree = "<group>"; };
-		1A81EC47176A617800A65CF7 /* SASlideMenuRightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuRightMenuViewController.m; sourceTree = "<group>"; };
-		1A81EC48176A617800A65CF7 /* SASlideMenuRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuRootViewController.h; sourceTree = "<group>"; };
-		1A81EC49176A617800A65CF7 /* SASlideMenuRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuRootViewController.m; sourceTree = "<group>"; };
-		1A81EC4A176A617800A65CF7 /* SASlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuViewController.h; sourceTree = "<group>"; };
-		1A81EC4B176A617800A65CF7 /* SASlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuViewController.m; sourceTree = "<group>"; };
 		1A81EC8C176A62F400A65CF7 /* LTSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSlideViewController.h; sourceTree = "<group>"; };
 		1A81EC8D176A62F400A65CF7 /* LTSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSlideViewController.m; sourceTree = "<group>"; };
-		1A81EC8F176A66AB00A65CF7 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuCell.h; path = "Last Time/Resources/SASlideMenu/SASlideMenu/MenuCell.h"; sourceTree = SOURCE_ROOT; };
-		1A81EC90176A66AB00A65CF7 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuCell.m; path = "Last Time/Resources/SASlideMenu/SASlideMenu/MenuCell.m"; sourceTree = SOURCE_ROOT; };
 		1A823B6C153B959D00B997C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/default_data.plist; sourceTree = "<group>"; };
 		1A823B6E153B95A300B997C8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/default_data.plist; sourceTree = "<group>"; };
 		1A823B6F153B95A300B997C8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/default_data.plist; sourceTree = "<group>"; };
@@ -255,6 +229,36 @@
 		1AB6DEA61597705D00F68A50 /* Last Time 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 5.xcdatamodel"; sourceTree = "<group>"; };
 		1AC084FF176A8782004EB084 /* 11-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock.png"; sourceTree = "<group>"; };
 		1AC08500176A8782004EB084 /* 11-clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock@2x.png"; sourceTree = "<group>"; };
+		1AC625C8182D48F000494F65 /* SASlideMenuContentSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuContentSegue.h; sourceTree = "<group>"; };
+		1AC625C9182D48F000494F65 /* SASlideMenuContentSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuContentSegue.m; sourceTree = "<group>"; };
+		1AC625CA182D48F000494F65 /* SASlideMenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuDataSource.h; sourceTree = "<group>"; };
+		1AC625CB182D48F000494F65 /* SASlideMenuDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuDelegate.h; sourceTree = "<group>"; };
+		1AC625CC182D48F000494F65 /* SASlideMenuLeftMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuLeftMenuSegue.h; sourceTree = "<group>"; };
+		1AC625CD182D48F000494F65 /* SASlideMenuLeftMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuLeftMenuSegue.m; sourceTree = "<group>"; };
+		1AC625CE182D48F000494F65 /* SASlideMenuNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuNavigationController.h; sourceTree = "<group>"; };
+		1AC625CF182D48F000494F65 /* SASlideMenuNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuNavigationController.m; sourceTree = "<group>"; };
+		1AC625D0182D48F000494F65 /* SASlideMenuPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuPushSegue.h; sourceTree = "<group>"; };
+		1AC625D1182D48F000494F65 /* SASlideMenuPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuPushSegue.m; sourceTree = "<group>"; };
+		1AC625D2182D48F000494F65 /* SASlideMenuRightMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuRightMenuSegue.h; sourceTree = "<group>"; };
+		1AC625D3182D48F000494F65 /* SASlideMenuRightMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuRightMenuSegue.m; sourceTree = "<group>"; };
+		1AC625D4182D48F000494F65 /* SASlideMenuRightMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuRightMenuViewController.h; sourceTree = "<group>"; };
+		1AC625D5182D48F000494F65 /* SASlideMenuRightMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuRightMenuViewController.m; sourceTree = "<group>"; };
+		1AC625D6182D48F000494F65 /* SASlideMenuRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuRootViewController.h; sourceTree = "<group>"; };
+		1AC625D7182D48F000494F65 /* SASlideMenuRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuRootViewController.m; sourceTree = "<group>"; };
+		1AC625D8182D48F000494F65 /* SASlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASlideMenuViewController.h; sourceTree = "<group>"; };
+		1AC625D9182D48F000494F65 /* SASlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASlideMenuViewController.m; sourceTree = "<group>"; };
+		1AC625E2182D4A1900494F65 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuCell.h; path = "Last Time/Resources/SASlideMenu/SASlideMenu/MenuCell.h"; sourceTree = SOURCE_ROOT; };
+		1AC625E3182D4A1900494F65 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuCell.m; path = "Last Time/Resources/SASlideMenu/SASlideMenu/MenuCell.m"; sourceTree = SOURCE_ROOT; };
+		1AC625E5182D4DB300494F65 /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = disclosure.png; path = "Last Time/Resources/Images/disclosure.png"; sourceTree = SOURCE_ROOT; };
+		1AC625E6182D4DB300494F65 /* disclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "disclosure@2x.png"; path = "Last Time/Resources/Images/disclosure@2x.png"; sourceTree = SOURCE_ROOT; };
+		1AC625E7182D4DB300494F65 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = "Last Time/Resources/Images/menu.png"; sourceTree = SOURCE_ROOT; };
+		1AC625E8182D4DB300494F65 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu@2x.png"; path = "Last Time/Resources/Images/menu@2x.png"; sourceTree = SOURCE_ROOT; };
+		1AC625EE182D4E5B00494F65 /* rowselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rowselected.png; sourceTree = "<group>"; };
+		1AC625EF182D4E5B00494F65 /* rowselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rowselected@2x.png"; sourceTree = "<group>"; };
+		1AC625F2182D4EB300494F65 /* menuicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuicon.png; sourceTree = "<group>"; };
+		1AC625F3182D4EB300494F65 /* menuicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuicon@2x.png"; sourceTree = "<group>"; };
+		1AC625F6182DA45100494F65 /* row.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = row.png; sourceTree = "<group>"; };
+		1AC625F7182DA45100494F65 /* row@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "row@2x.png"; sourceTree = "<group>"; };
 		1AC62B9D152950760019362B /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		1AC62B9E152950760019362B /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		1ADD036615165531006EAD7E /* EventFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFolder.h; sourceTree = "<group>"; };
@@ -412,58 +416,6 @@
 			name = leather;
 			sourceTree = "<group>";
 		};
-		1A81EC12176A617800A65CF7 /* SASlideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				1A81EC92176A686300A65CF7 /* images */,
-				1A81EC39176A617800A65CF7 /* SASlideMenu */,
-			);
-			name = SASlideMenu;
-			path = Resources/SASlideMenu/SASlideMenu;
-			sourceTree = "<group>";
-		};
-		1A81EC39176A617800A65CF7 /* SASlideMenu */ = {
-			isa = PBXGroup;
-			children = (
-				1A81EC8F176A66AB00A65CF7 /* MenuCell.h */,
-				1A81EC90176A66AB00A65CF7 /* MenuCell.m */,
-				1A81EC3A176A617800A65CF7 /* SASlideMenuContentSegue.h */,
-				1A81EC3B176A617800A65CF7 /* SASlideMenuContentSegue.m */,
-				1A81EC3C176A617800A65CF7 /* SASlideMenuDataSource.h */,
-				1A81EC3D176A617800A65CF7 /* SASlideMenuDelegate.h */,
-				1A81EC3E176A617800A65CF7 /* SASlideMenuLeftMenuSegue.h */,
-				1A81EC3F176A617800A65CF7 /* SASlideMenuLeftMenuSegue.m */,
-				1A81EC40176A617800A65CF7 /* SASlideMenuNavigationController.h */,
-				1A81EC41176A617800A65CF7 /* SASlideMenuNavigationController.m */,
-				1A81EC42176A617800A65CF7 /* SASlideMenuPushSegue.h */,
-				1A81EC43176A617800A65CF7 /* SASlideMenuPushSegue.m */,
-				1A81EC44176A617800A65CF7 /* SASlideMenuRightMenuSegue.h */,
-				1A81EC45176A617800A65CF7 /* SASlideMenuRightMenuSegue.m */,
-				1A81EC46176A617800A65CF7 /* SASlideMenuRightMenuViewController.h */,
-				1A81EC47176A617800A65CF7 /* SASlideMenuRightMenuViewController.m */,
-				1A81EC48176A617800A65CF7 /* SASlideMenuRootViewController.h */,
-				1A81EC49176A617800A65CF7 /* SASlideMenuRootViewController.m */,
-				1A81EC4A176A617800A65CF7 /* SASlideMenuViewController.h */,
-				1A81EC4B176A617800A65CF7 /* SASlideMenuViewController.m */,
-			);
-			path = SASlideMenu;
-			sourceTree = "<group>";
-		};
-		1A81EC92176A686300A65CF7 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				1A81EC19176A617800A65CF7 /* disclosure.png */,
-				1A81EC1A176A617800A65CF7 /* disclosure@2x.png */,
-				1A81EC2A176A617800A65CF7 /* menuicon.png */,
-				1A81EC2B176A617800A65CF7 /* menuicon@2x.png */,
-				1A81EC2E176A617800A65CF7 /* row.png */,
-				1A81EC2F176A617800A65CF7 /* row@2x.png */,
-				1A81EC35176A617800A65CF7 /* rowselected.png */,
-				1A81EC36176A617800A65CF7 /* rowselected@2x.png */,
-			);
-			name = images;
-			sourceTree = "<group>";
-		};
 		1A823C2C153BB07000B997C8 /* Appearance */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +453,51 @@
 			);
 			name = KSScreenshotManager;
 			path = Resources/KSScreenshotManager;
+			sourceTree = "<group>";
+		};
+		1AC625C7182D48F000494F65 /* SASlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1AC625E2182D4A1900494F65 /* MenuCell.h */,
+				1AC625E3182D4A1900494F65 /* MenuCell.m */,
+				1AC625C8182D48F000494F65 /* SASlideMenuContentSegue.h */,
+				1AC625C9182D48F000494F65 /* SASlideMenuContentSegue.m */,
+				1AC625CA182D48F000494F65 /* SASlideMenuDataSource.h */,
+				1AC625CB182D48F000494F65 /* SASlideMenuDelegate.h */,
+				1AC625CC182D48F000494F65 /* SASlideMenuLeftMenuSegue.h */,
+				1AC625CD182D48F000494F65 /* SASlideMenuLeftMenuSegue.m */,
+				1AC625CE182D48F000494F65 /* SASlideMenuNavigationController.h */,
+				1AC625CF182D48F000494F65 /* SASlideMenuNavigationController.m */,
+				1AC625D0182D48F000494F65 /* SASlideMenuPushSegue.h */,
+				1AC625D1182D48F000494F65 /* SASlideMenuPushSegue.m */,
+				1AC625D2182D48F000494F65 /* SASlideMenuRightMenuSegue.h */,
+				1AC625D3182D48F000494F65 /* SASlideMenuRightMenuSegue.m */,
+				1AC625D4182D48F000494F65 /* SASlideMenuRightMenuViewController.h */,
+				1AC625D5182D48F000494F65 /* SASlideMenuRightMenuViewController.m */,
+				1AC625D6182D48F000494F65 /* SASlideMenuRootViewController.h */,
+				1AC625D7182D48F000494F65 /* SASlideMenuRootViewController.m */,
+				1AC625D8182D48F000494F65 /* SASlideMenuViewController.h */,
+				1AC625D9182D48F000494F65 /* SASlideMenuViewController.m */,
+			);
+			name = SASlideMenu;
+			path = Resources/SASlideMenu/SASlideMenu/SASlideMenu;
+			sourceTree = "<group>";
+		};
+		1AC625ED182D4E5000494F65 /* SASlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1AC625F6182DA45100494F65 /* row.png */,
+				1AC625F7182DA45100494F65 /* row@2x.png */,
+				1AC625F2182D4EB300494F65 /* menuicon.png */,
+				1AC625F3182D4EB300494F65 /* menuicon@2x.png */,
+				1AC625EE182D4E5B00494F65 /* rowselected.png */,
+				1AC625EF182D4E5B00494F65 /* rowselected@2x.png */,
+				1AC625E5182D4DB300494F65 /* disclosure.png */,
+				1AC625E6182D4DB300494F65 /* disclosure@2x.png */,
+				1AC625E7182D4DB300494F65 /* menu.png */,
+				1AC625E8182D4DB300494F65 /* menu@2x.png */,
+			);
+			name = SASlideMenu;
 			sourceTree = "<group>";
 		};
 		3904CFA214C078E200B7396A /* RandomEventFolder */ = {
@@ -742,6 +739,7 @@
 				1A2B26B8176BCA5F0006B902 /* clear_back@2x.png */,
 				1A21320C16156D9E00770280 /* Default-568h@2x.png */,
 				1A823C2C153BB07000B997C8 /* Appearance */,
+				1AC625ED182D4E5000494F65 /* SASlideMenu */,
 				39BE368414F3E2BD00DBCC43 /* Icons */,
 				398F458314F1B6E50095A405 /* map-pin.png */,
 				398F458414F1B6E50095A405 /* map-pin@2x.png */,
@@ -765,8 +763,8 @@
 		39F6F11414D1B79B00DBA262 /* Supporting Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1AC625C7182D48F000494F65 /* SASlideMenu */,
 				1A93AFB817823EF1005055C5 /* KSScreenshotManager */,
-				1A81EC12176A617800A65CF7 /* SASlideMenu */,
 				1A17C1EC158936DE00FED786 /* FourCSV */,
 				1A03C074152F470700249036 /* NSManagedObjectContext+FetchAdditions.h */,
 				1A03C075152F470700249036 /* NSManagedObjectContext+FetchAdditions.m */,
@@ -924,9 +922,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AC625E9182D4DB300494F65 /* disclosure.png in Resources */,
 				398F458514F1B6E50095A405 /* map-pin.png in Resources */,
 				398F458614F1B6E50095A405 /* map-pin@2x.png in Resources */,
 				1A823B6B153B959D00B997C8 /* default_data.plist in Resources */,
+				1AC625F8182DA45100494F65 /* row.png in Resources */,
 				1AEDBCE3153494310098E3A0 /* Localizable.strings in Resources */,
 				1A8A6468159BFCCB009DD55F /* DurationPickerCell.xib in Resources */,
 				1A21320D16156D9E00770280 /* Default-568h@2x.png in Resources */,
@@ -935,30 +935,30 @@
 				1A4B6ACE162A10740078A7EA /* Icon-Small-50.png in Resources */,
 				1A4B6ACF162A10740078A7EA /* Icon-Small-50@2x.png in Resources */,
 				1A4B6AD0162A10740078A7EA /* Icon-Small.png in Resources */,
+				1AC625F9182DA45100494F65 /* row@2x.png in Resources */,
 				1A4B6AD1162A10740078A7EA /* Icon-Small@2x.png in Resources */,
 				1A4B6AD2162A10740078A7EA /* Icon.png in Resources */,
 				1A4B6AD3162A10740078A7EA /* Icon@2x.png in Resources */,
 				1A8295B11767D6AA00CA0161 /* Storyboard.storyboard in Resources */,
-				1A81EC5D176A617800A65CF7 /* disclosure.png in Resources */,
-				1A81EC5E176A617800A65CF7 /* disclosure@2x.png in Resources */,
-				1A81EC6A176A617800A65CF7 /* menuicon.png in Resources */,
-				1A81EC6B176A617800A65CF7 /* menuicon@2x.png in Resources */,
-				1A81EC6E176A617800A65CF7 /* row.png in Resources */,
-				1A81EC6F176A617800A65CF7 /* row@2x.png in Resources */,
-				1A81EC75176A617800A65CF7 /* rowselected.png in Resources */,
-				1A81EC76176A617800A65CF7 /* rowselected@2x.png in Resources */,
+				1AC625EB182D4DB300494F65 /* menu.png in Resources */,
 				1AC08501176A8782004EB084 /* 11-clock.png in Resources */,
 				1AC08502176A8782004EB084 /* 11-clock@2x.png in Resources */,
+				1AC625F5182D4EB300494F65 /* menuicon@2x.png in Resources */,
+				1AC625EA182D4DB300494F65 /* disclosure@2x.png in Resources */,
 				1A2B26B9176BCA5F0006B902 /* clear_back.png in Resources */,
 				1A2B26BA176BCA5F0006B902 /* clear_back@2x.png in Resources */,
+				1AC625EC182D4DB300494F65 /* menu@2x.png in Resources */,
 				1A406029177112B700E236D4 /* 259-list.png in Resources */,
 				1A40602A177112B700E236D4 /* 259-list@2x.png in Resources */,
+				1AC625F1182D4E5B00494F65 /* rowselected@2x.png in Resources */,
 				1A22D765177E2B0D009C7537 /* disclosure arrow@2x.png in Resources */,
 				1A22D767177E2F95009C7537 /* disclosure arrow.png in Resources */,
 				1A22D769177E332D009C7537 /* back arrow@2x.png in Resources */,
+				1AC625F4182D4EB300494F65 /* menuicon.png in Resources */,
 				1A22D76B177E38E8009C7537 /* back arrow.png in Resources */,
 				1A22D76D177E38EE009C7537 /* menu button@2x.png in Resources */,
 				1A22D76F177E3ABC009C7537 /* menu button.png in Resources */,
+				1AC625F0182D4E5B00494F65 /* rowselected.png in Resources */,
 				1A8B216F1780F4D100D2AD5B /* 90-lifebuoy.png in Resources */,
 				1A8B21701780F4D100D2AD5B /* 90-lifebuoy@2x.png in Resources */,
 			);
@@ -1022,6 +1022,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AC625DA182D48F000494F65 /* SASlideMenuContentSegue.m in Sources */,
+				1AC625DF182D48F000494F65 /* SASlideMenuRightMenuViewController.m in Sources */,
 				39D70CC314BD3515009C3615 /* main.m in Sources */,
 				3969111514C9BCF0006E8272 /* EventController.m in Sources */,
 				3969111614C9BCF0006E8272 /* FolderListViewController.m in Sources */,
@@ -1031,10 +1033,14 @@
 				3988B9BC14E0214F0010062E /* EditableTableCell.m in Sources */,
 				39F6436014E40AAE004B0900 /* DatePickerCell.m in Sources */,
 				392009FF14E4B88D006B6A79 /* CustomTableViewController.m in Sources */,
+				1AC625E1182D48F000494F65 /* SASlideMenuViewController.m in Sources */,
 				39825C9014E8757200C4D684 /* FileHelpers.m in Sources */,
 				39DB081614E95640006E4E08 /* FolderPickerCell.m in Sources */,
+				1AC625E4182D4A1900494F65 /* MenuCell.m in Sources */,
+				1AC625DD182D48F000494F65 /* SASlideMenuPushSegue.m in Sources */,
 				3913EADC14EEB5DC0013A86A /* LocationSwitchCell.m in Sources */,
 				391AF43C14F0C03F00DCA3F0 /* NumberCell.m in Sources */,
+				1AC625DB182D48F000494F65 /* SASlideMenuLeftMenuSegue.m in Sources */,
 				3940D3F414F17E230056D01B /* HistoryLogCell.m in Sources */,
 				39918C1714F6062000D8D4EE /* EventListViewController.m in Sources */,
 				39918C2514F7F99700D8D4EE /* EventStore.m in Sources */,
@@ -1043,7 +1049,9 @@
 				1AED06241510F9F100CCDA4F /* LogEntry.m in Sources */,
 				1ADD036815165531006EAD7E /* EventFolder.m in Sources */,
 				1A161D6F152018D60062B4A5 /* Event.m in Sources */,
+				1AC625DC182D48F000494F65 /* SASlideMenuNavigationController.m in Sources */,
 				1AC62B9F152950760019362B /* TimelineViewController.m in Sources */,
+				1AC625E0182D48F000494F65 /* SASlideMenuRootViewController.m in Sources */,
 				1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */,
 				1A03C076152F470700249036 /* NSManagedObjectContext+FetchAdditions.m in Sources */,
 				1A628504153F0FD7003C57F9 /* HeaderView.m in Sources */,
@@ -1052,17 +1060,9 @@
 				1A8A646115981BDA009DD55F /* BasePickerCell.m in Sources */,
 				1A8A646515982311009DD55F /* DurationPickerCell.m in Sources */,
 				1A95D751159CB9F2005686C1 /* NSString+UUID.m in Sources */,
-				1A81EC79176A617800A65CF7 /* SASlideMenuContentSegue.m in Sources */,
-				1A81EC7A176A617800A65CF7 /* SASlideMenuLeftMenuSegue.m in Sources */,
-				1A81EC7B176A617800A65CF7 /* SASlideMenuNavigationController.m in Sources */,
-				1A81EC7C176A617800A65CF7 /* SASlideMenuPushSegue.m in Sources */,
-				1A81EC7D176A617800A65CF7 /* SASlideMenuRightMenuSegue.m in Sources */,
-				1A81EC7E176A617800A65CF7 /* SASlideMenuRightMenuViewController.m in Sources */,
-				1A81EC7F176A617800A65CF7 /* SASlideMenuRootViewController.m in Sources */,
-				1A81EC80176A617800A65CF7 /* SASlideMenuViewController.m in Sources */,
 				1A81EC8E176A62F400A65CF7 /* LTSlideViewController.m in Sources */,
-				1A81EC91176A66AB00A65CF7 /* MenuCell.m in Sources */,
 				1A40602D177117F500E236D4 /* LTStyleManager.m in Sources */,
+				1AC625DE182D48F000494F65 /* SASlideMenuRightMenuSegue.m in Sources */,
 				1AF436B1177E503C00C7B52D /* HelpViewController.m in Sources */,
 				1A93AFF217823EF2005055C5 /* KSScreenshotAction.m in Sources */,
 				1A93AFF317823EF2005055C5 /* KSScreenshotManager.m in Sources */,
@@ -1472,6 +1472,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 20130628151206;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
