@@ -41,7 +41,6 @@
 @property (nonatomic, strong) EditableTableCell *nameCell;
 @property (nonatomic, strong) NumberCell *numberCell;
 @property (nonatomic, strong) LocationSwitchCell *locationCell;
-@property (nonatomic, strong) UIPopoverController *popover;
 @property (nonatomic) BOOL isModal;
 
 //- (BOOL)isModal;
