@@ -82,7 +82,7 @@
     CGRect frame = CGRectMake(0.0, 0.0, self.superview.frame.size.width - 40, 32);
     pickerLabel = [[UILabel alloc] initWithFrame:frame];
 		pickerLabel.adjustsFontSizeToFitWidth = NO;
-    [pickerLabel setTextAlignment:UITextAlignmentLeft];
+    [pickerLabel setTextAlignment:NSTextAlignmentLeft];
     [pickerLabel setBackgroundColor:[UIColor clearColor]];
     [pickerLabel setFont:[sm cellLabelFontWithSize:[UIFont labelFontSize]]];
   }

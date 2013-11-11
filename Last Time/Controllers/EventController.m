@@ -20,7 +20,7 @@
 
 @implementation EventController
 @synthesize eventTableView;
-@synthesize event = _event; 
+@synthesize event = _event;
 @synthesize folder;
 
 #pragma mark -
@@ -28,7 +28,7 @@
 {
 	if (_event != event) {
 		_event = event;
-		
+
 		// Update the view.
 		[[self navigationItem] setTitle:[_event eventName]];
 		[eventTableView reloadData];
@@ -52,7 +52,7 @@
 		[picker setToRecipients:[NSArray array]];
 		[picker setMessageBody:exportedText isHTML:NO];
 		[picker setMailComposeDelegate:self];
-		[self presentModalViewController:picker animated:YES];
+		[self presentViewController:picker animated:YES completion:nil];
 	}
 	else {
 		[self launchMailAppOnDevice];
@@ -62,10 +62,10 @@
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-	// Launches the Mail application on the device.
+// Launches the Mail application on the device.
 -(void)launchMailAppOnDevice
 {
 	NSString *recipients = @"mailto:first@example.com?subject=Please set up your email!";
@@ -81,7 +81,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	if ([segue.identifier isEqualToString:@"addLogEntry"]) {
-//		HistoryLogDetailController *hldc = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+		//		HistoryLogDetailController *hldc = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
 		HistoryLogDetailController *hldc = [segue destinationViewController];
 
 		[hldc setLogEntry:[[EventStore defaultStore] createLogEntry]];
@@ -103,25 +103,25 @@
 #pragma mark - TableView Delegate methods
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+
 	if ([[_event logEntryCollection] count] > 0) {
 		return UITableViewCellEditingStyleDelete;
 	} else {
 		return UITableViewCellEditingStyleNone;
 	}
-	
+
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
+
 	NSInteger count = [[_event logEntryCollection] count];
 
 	if (count == 0) {
 		return;
 	}
-	
+
 	NSInteger section = [indexPath section];
-	
+
 	if (section == kLastTimeSection) {
 
 		[_event cycleLastTimeDisplayFormat];
@@ -144,9 +144,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
+
 	int section = [indexPath section];
-	
+
 	if ((section == kAverageSection && ![_event showAverage]) || section == kHistorySection){
 		if (editingStyle == UITableViewCellEditingStyleDelete) {
 			id item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
@@ -159,7 +159,7 @@
 			}
 		}
 	}
-	
+
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -169,7 +169,7 @@
 	return header;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section  
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
 	return 0;
 }
@@ -209,7 +209,7 @@
 	if (_event == nil) {
 		return 0;
 	}
-	
+
 	return NUM_EVENT_SECTIONS;
 }
 
@@ -223,8 +223,8 @@
 		} else {
 			return 0;
 		}
-		
-		
+
+
 	} else if (section == kAverageSection) {
 		if (count > 1) {
 			if ([_event showAverageValue]) {
@@ -235,7 +235,7 @@
 		} else {
 			return 0;
 		}
-		
+
 	} else if (section == kHistorySection) {
 
 		if (count == 0) {
@@ -248,45 +248,35 @@
 	}
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell = nil;
-    LTStyleManager *sm = [LTStyleManager manager];
+	LTStyleManager *sm = [LTStyleManager manager];
 
 	numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
 	numberFormatter.roundingIncrement = [NSNumber numberWithDouble:0.001];
 
 	cell = [tableView dequeueReusableCellWithIdentifier:@"AverageCell"];
-    cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
-    cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
-
-	UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width + 10.0, 1)];
-
-	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-	} else {
-		lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
-		[cell.contentView addSubview:lineView];
-
-	}
+	cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
+	cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 
 	if ([indexPath section] == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
 
 		cell.textLabel.text = NSLocalizedString(@"Last Time",@"Last Time");
 		cell.detailTextLabel.text = [_event lastStringInterval];
-        cell.detailTextLabel.textColor = [sm detailTextColor];
-		
+		cell.detailTextLabel.textColor = [sm detailTextColor];
+
 		return cell;
-		
+
 	} else if ([indexPath section] == kAverageSection && [_event showAverage]) {
-		
-	
+
+
 		switch ([indexPath row]) {
 			case kAverageTime:
 			{
 				cell.textLabel.text = NSLocalizedString(@"Time Span",@"Time Span");
 				cell.detailTextLabel.text = [_event averageStringInterval];
-                cell.detailTextLabel.textColor = [sm detailTextColor];
+				cell.detailTextLabel.textColor = [sm detailTextColor];
 
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
@@ -295,16 +285,16 @@
 			{
 				cell.textLabel.text = NSLocalizedString(@"Next Time",@"Next Time");
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
-				
+
 				NSDateFormatter *df = [[NSDateFormatter alloc] init];
-				
+
 				[df setDateStyle:NSDateFormatterFullStyle];
 				[df setTimeStyle:NSDateFormatterNoStyle];
-				
+
 				cell.detailTextLabel.text = [df stringFromDate:[_event nextTime]];
 				cell.detailTextLabel.numberOfLines = 2;
-				cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-                cell.detailTextLabel.textColor = [sm detailTextColor];
+				cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+				cell.detailTextLabel.textColor = [sm detailTextColor];
 
 				break;
 			}
@@ -312,7 +302,7 @@
 			{
 				cell.textLabel.text = NSLocalizedString(@"Average Value",@"Average Value");
 				cell.detailTextLabel.text = [_event averageStringValue];
-                cell.detailTextLabel.textColor = [sm detailTextColor];
+				cell.detailTextLabel.textColor = [sm detailTextColor];
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 				break;
 			}
@@ -322,32 +312,29 @@
 	} else if ([indexPath section] == kHistorySection) {
 
 		if ([[_event logEntryCollection] count] > 0) {
-			
+
 			HistoryLogCell *historyLogCell = [tableView dequeueReusableCellWithIdentifier:@"HistoryLogCell"];
-#ifndef _USE_OS_7_OR_LATER
-            [historyLogCell.contentView addSubview:lineView];
-#endif
 
 			LogEntry *item = [[_event logEntryCollection] objectAtIndex:[indexPath row]];
 
-            historyLogCell.logEntry = item;
+			historyLogCell.logEntry = item;
 
 			return historyLogCell;
 
 		} else {
 			cell = [tableView dequeueReusableCellWithIdentifier:@"NoHistoryCell"];
-			
+
 			cell.textLabel.text = NSLocalizedString(@"No History Entries",@"No History Entries");
 			return cell;
 
 		}
-		
+
 
 	} else {
 		cell.textLabel.text = @"Error";
 		return cell;
 	}
-		
+
 }
 
 #pragma mark - View lifecycle
@@ -356,7 +343,7 @@
 {
 	[super viewWillAppear:animated];
 	numberFormatter = [[NSNumberFormatter alloc] init];
-	
+
 	[[self navigationItem] setTitle:[_event eventName]];
 	[[self event] refreshItems];
 	[[self eventTableView] reloadData];

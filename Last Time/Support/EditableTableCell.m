@@ -12,7 +12,6 @@
 @implementation EditableTableCell
 
 @synthesize cellTextField;
-@synthesize drawBorder;
 
 - (void)initalizeInputView {
 	// Initialization code
@@ -21,7 +20,7 @@
 	self.cellTextField = [[UITextField alloc] initWithFrame:CGRectZero];
 	self.cellTextField.autocorrectionType = UITextAutocorrectionTypeDefault;
 	self.cellTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
-	self.cellTextField.textAlignment = UITextAlignmentRight;
+	self.cellTextField.textAlignment = NSTextAlignmentRight;
 	self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
 	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	self.cellTextField.returnKeyType = UIReturnKeyNext;
@@ -37,9 +36,6 @@
 
 	self.accessoryType = UITableViewCellAccessoryNone;
 
-	if (![[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		self.drawBorder = YES;
-	}
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -79,18 +75,13 @@
 		CGSize textSize = [self.textLabel sizeThatFits:CGSizeZero];
 		editFrame.origin.x += textSize.width + 10;
 		editFrame.size.width -= textSize.width + 10;
-		self.cellTextField.textAlignment = UITextAlignmentRight;
+		self.cellTextField.textAlignment = NSTextAlignmentRight;
 	} else {
-		self.cellTextField.textAlignment = UITextAlignmentLeft;
+		self.cellTextField.textAlignment = NSTextAlignmentLeft;
 	}
 	
 	self.cellTextField.frame = editFrame;
 
-	if (self.drawBorder) {
-		UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, self.contentView.frame.size.height - 1.0, self.contentView.frame.size.width + 10.0, 1)];
-		lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
-		[self.contentView addSubview:lineView];
-	}
 }
 
 - (void)setStringValue:(NSString *)value {

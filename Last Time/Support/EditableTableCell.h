@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) NSString *stringValue;
 @property (nonatomic, strong) UITextField *cellTextField;
-@property (nonatomic) BOOL drawBorder;
 
 + (EditableTableCell *)newDetailCellWithTag:(NSInteger)tag withDelegate:(id)delegate;
 

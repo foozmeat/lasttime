@@ -52,7 +52,6 @@
 
 	self.selectionStyle = UITableViewCellSelectionStyleGray;
 
-	self.drawBorder = NO;
 }
 
 - (void)setEventDate:(NSDate *)date
@@ -90,7 +89,7 @@
     CGRect frame = CGRectMake(0.0, 0.0, 100, 32);
     pickerLabel = [[UILabel alloc] initWithFrame:frame];
 		pickerLabel.adjustsFontSizeToFitWidth = NO;
-    [pickerLabel setTextAlignment:UITextAlignmentLeft];
+    [pickerLabel setTextAlignment:NSTextAlignmentLeft];
     [pickerLabel setBackgroundColor:[UIColor clearColor]];
     [pickerLabel setFont:[sm cellLabelFontWithSize:[UIFont labelFontSize]]];
   }

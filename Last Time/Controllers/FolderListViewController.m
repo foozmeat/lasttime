@@ -369,14 +369,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 		FolderListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"folderCell"];
 
-		if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-			tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-		} else {
-			UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width + 10.0, 1)];
-			lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
-			[cell.contentView addSubview:lineView];
-
-		}
 		[self configureCell:cell atIndexPath:indexPath];
 		return cell;
 	}
@@ -407,12 +399,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 	cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 	cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
-	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	} else {
-		cell.accessoryView = [sm disclosureArrowImageView];
-	}
-
 }
 
 #pragma mark - TextFieldDelegate
@@ -446,12 +432,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		// On iOS 7 the textfield get's put inside of a scrollview
-		self.activeCell = (FolderListCell *) textField.superview.superview;
-	} else {
-		self.activeCell = (FolderListCell *) textField.superview;
-	}
+	self.activeCell = (FolderListCell *) textField.superview.superview;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

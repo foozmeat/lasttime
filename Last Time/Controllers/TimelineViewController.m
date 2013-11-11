@@ -47,7 +47,7 @@
 			[picker setToRecipients:[NSArray array]];
 			[picker setMessageBody:@"" isHTML:NO];
 			[picker setMailComposeDelegate:self];
-			[self presentModalViewController:picker animated:YES];                    
+			[self presentViewController:picker animated:YES completion:nil];
 		}
 		else {
 			[self launchMailAppOnDevice];
@@ -57,7 +57,7 @@
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
 {	
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 	// Launches the Mail application on the device.
@@ -211,15 +211,6 @@
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
 
-	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-	} else {
-		UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width + 10.0, 1)];
-		lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
-		[cell.contentView addSubview:lineView];
-
-	}
-
 	[self configureCell:cell atIndexPath:indexPath];
 	return cell;
 }
@@ -242,12 +233,6 @@
 	cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 	cell.detailTextLabel.textColor = [sm tintColor];
 	
-	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	} else {
-		cell.accessoryView = [sm disclosureArrowImageView];
-	}
-
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

@@ -41,7 +41,7 @@ static CGFloat height = 28;
 
 	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10,0, rect.size.width,height)];
 	label.text = self.headerLabel;
-	label.textAlignment = UITextAlignmentLeft;
+	label.textAlignment = NSTextAlignmentLeft;
   label.backgroundColor = [sm tableHeaderColor];
   label.font = [sm cellLabelFontWithSize:17.0];
 

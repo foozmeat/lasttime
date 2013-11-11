@@ -202,10 +202,6 @@
 				[[cell cellTextField] setPlaceholder:NSLocalizedString(@"nameCellPlaceholder",@"An example for the event name field")];
 				[[cell textLabel] setText:NSLocalizedString(@"Name",@"Name")];
 
-				if ([tableView numberOfRowsInSection:[indexPath section]] == 1) {
-					cell.drawBorder = NO;
-				}
-
 				return cell;
 				break;
 			}
@@ -246,11 +242,6 @@
 			case kEventReminderSwitch:
 				rcell = [self reminderCell];
 				rcell.reminderSwitch.on = _reminderEnabled;
-				if ([tableView numberOfRowsInSection:[indexPath section]] == 1) {
-					rcell.drawBorder = NO;
-				} else {
-					rcell.drawBorder = YES;
-				}
 				return rcell;
 				break;
 			case kEventReminderDuration:

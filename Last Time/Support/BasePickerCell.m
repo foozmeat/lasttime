@@ -9,7 +9,7 @@
 #import "BasePickerCell.h"
 
 @implementation BasePickerCell
-@synthesize inputAccessoryView, pickerView, pickerPopover, drawBorder;
+@synthesize inputAccessoryView, pickerView, pickerPopover;
 
 - (void)initalizeBaseInputView {
 
@@ -17,9 +17,7 @@
 	self.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 	self.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 	self.detailTextLabel.textColor = [sm defaultColor];
-	if (![[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		self.drawBorder = YES;
-	}
+
 	return;
 }
 
@@ -35,15 +33,6 @@
 		[self initalizeInputView];
 	}
 	return self;
-}
-
-- (void)layoutSubviews {
-	[super layoutSubviews];
-	if (self.drawBorder) {
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, self.contentView.frame.size.height - 1.0, self.contentView.frame.size.width + 10.0, 1)];
-    lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
-    [self.contentView addSubview:lineView];
-	}
 }
 
 - (UIView *)inputAccessoryView {
@@ -96,12 +85,7 @@
 - (BOOL)resignFirstResponder {
 	UITableView *tableView;
 
-	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		// On iOS 7 the textfield get's put inside of a scrollview
-		tableView = (UITableView *)self.superview.superview;
-	} else {
-		tableView = (UITableView *)self.superview;
-	}
+	tableView = (UITableView *)self.superview.superview;
 
 	[tableView deselectRowAtIndexPath:[tableView indexPathForCell:self] animated:NO];
 	return [super resignFirstResponder];
