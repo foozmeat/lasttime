@@ -26,7 +26,9 @@
 
 	self.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 	self.textLabel.text = NSLocalizedString(@"Reminder?",@"Reminder?");
-	self.drawBorder = YES;
+	if (![[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		self.drawBorder = YES;
+	}
 	self.lineView = [[UIView alloc] initWithFrame:CGRectMake(10, self.contentView.frame.size.height - 1.0, self.contentView.frame.size.width + 10.0, 1)];
 	self.lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
 

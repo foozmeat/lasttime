@@ -17,7 +17,9 @@
 	self.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 	self.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 	self.detailTextLabel.textColor = [sm defaultColor];
-	self.drawBorder = YES;
+	if (![[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		self.drawBorder = YES;
+	}
 	return;
 }
 

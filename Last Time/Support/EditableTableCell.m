@@ -37,7 +37,9 @@
 
 	self.accessoryType = UITableViewCellAccessoryNone;
 
-	self.drawBorder = YES;
+	if (![[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		self.drawBorder = YES;
+	}
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

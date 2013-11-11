@@ -260,16 +260,15 @@
     cell.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
     cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 
-#ifndef _USE_OS_7_OR_LATER
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width + 10.0, 1)];
-    lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
+	UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width + 10.0, 1)];
 
-    NSInteger rowsAmount = [tableView numberOfRowsInSection:[indexPath section]];
-    if ([indexPath row] != rowsAmount - 1) {
-        [cell.contentView addSubview:lineView];
-    }
+	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+	} else {
+		lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
+		[cell.contentView addSubview:lineView];
 
-#endif
+	}
 
 	if ([indexPath section] == kLastTimeSection && [[_event logEntryCollection] count] > 0) {
 

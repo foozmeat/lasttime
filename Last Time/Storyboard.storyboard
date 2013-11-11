@@ -679,8 +679,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="1Og-Yj-wd6"/>
         <segue reference="Hxq-gv-16l"/>
-        <segue reference="L1V-sQ-VP6"/>
         <segue reference="OiC-I1-Gzp"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,11 +36,6 @@
 #pragma mark -
 #pragma mark UIViewController Methods
 
-- (void)viewWillAppear:(BOOL)animated
-{
-	[super viewWillAppear:animated];
-}
-
 - (void)viewDidLoad
 {
 	self.requiredField = -1;

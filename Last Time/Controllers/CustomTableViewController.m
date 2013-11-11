@@ -188,6 +188,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
+		self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+	} else {
+		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	}
+
 	[super viewWillAppear:animated];
 
 }
