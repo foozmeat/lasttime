@@ -138,8 +138,7 @@
 
 - (void)save
 {
-    [self.navigationController popViewControllerAnimated:YES];
-//	[self dismissModalViewControllerAnimated:YES];
+	[self.navigationController popViewControllerAnimated:YES];
 	if ([delegate respondsToSelector:@selector(itemDetailViewControllerWillDismiss:)]) {
 		[delegate itemDetailViewControllerWillDismiss:self];
 	}
@@ -147,8 +146,7 @@
 
 - (void)cancel
 {
-//	[self dismissModalViewControllerAnimated:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+	[self.navigationController popViewControllerAnimated:YES];
 	if ([delegate respondsToSelector:@selector(itemDetailViewControllerWillDismiss:)]) {
 		[delegate itemDetailViewControllerWillDismiss:self];
 	}
