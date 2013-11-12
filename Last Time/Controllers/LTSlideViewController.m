@@ -14,7 +14,6 @@
 #import "FolderListViewController.h"
 #import "TimelineViewController.h"
 #import "HelpViewController.h"
-#import "HeaderView.h"
 
 @interface LTSlideViewController () <SASlideMenuDataSource,SASlideMenuDelegate>
 
@@ -104,27 +103,6 @@
 
 -(CGFloat) leftMenuVisibleWidth{
 	return 280;
-}
-
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-	if (section != 0) {
-		return [HeaderView height];
-	} else {
-		return 0.00001f;
-	}
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-	CGFloat wd = tableView.bounds.size.width;
-	CGFloat ht = tableView.bounds.size.height;
-	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0., 0., wd, ht)];
-	headerView.contentMode = UIViewContentModeScaleToFill;
-	// Add project name/description as labels to the headerView.
-	return headerView;
-
 }
 
 @end

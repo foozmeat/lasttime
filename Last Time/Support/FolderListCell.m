@@ -19,7 +19,7 @@
 	self.cellTextField = [[UITextField alloc] initWithFrame:CGRectZero];
 	self.cellTextField.autocorrectionType = UITextAutocorrectionTypeDefault;
 	self.cellTextField.autocapitalizationType = UITextAutocapitalizationTypeWords;
-	self.cellTextField.textAlignment = UITextAlignmentLeft;
+	self.cellTextField.textAlignment = NSTextAlignmentLeft;
 	self.cellTextField.textColor = [sm defaultColor];
 	self.cellTextField.clearButtonMode = UITextFieldViewModeNever;
 	self.cellTextField.autoresizingMask = UIViewAutoresizingFlexibleWidth;

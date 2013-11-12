@@ -14,7 +14,6 @@
 #import "EventStore.h"
 #import "LogEntry.h"
 #import "Event.h"
-#import "HeaderView.h"
 
 @implementation EventDetailController
 {
@@ -163,22 +162,6 @@
 	}
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
-
-	return header;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return 0.00001f;
-    } else {
-        return [HeaderView height];
-    }
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	//  Determine the text field's value. Each section of the table view
@@ -201,10 +184,6 @@
 				[[cell cellTextField] setText:[event eventName]];
 				[[cell cellTextField] setPlaceholder:NSLocalizedString(@"nameCellPlaceholder",@"An example for the event name field")];
 				[[cell textLabel] setText:NSLocalizedString(@"Name",@"Name")];
-
-				if ([tableView numberOfRowsInSection:[indexPath section]] == 1) {
-					cell.drawBorder = NO;
-				}
 
 				return cell;
 				break;
@@ -246,11 +225,6 @@
 			case kEventReminderSwitch:
 				rcell = [self reminderCell];
 				rcell.reminderSwitch.on = _reminderEnabled;
-				if ([tableView numberOfRowsInSection:[indexPath section]] == 1) {
-					rcell.drawBorder = NO;
-				} else {
-					rcell.drawBorder = YES;
-				}
 				return rcell;
 				break;
 			case kEventReminderDuration:

@@ -79,7 +79,7 @@
     NSArray *toRecipients = [NSArray arrayWithObjects:@"lasttimeapp@jmoore.me", nil];
     [mailer setToRecipients:toRecipients];
 
-    [self presentModalViewController:mailer animated:YES];
+    [self presentViewController:mailer animated:YES completion:nil];
   }
   else
   {
@@ -113,22 +113,17 @@
 			break;
   }
 		// Remove the mail view
-  [self dismissModalViewControllerAnimated:YES];
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)tweetButtonPressed:(id)sender {
 		//Create the tweet sheet
-	TWTweetComposeViewController *tweetSheet = [[TWTweetComposeViewController alloc] init];
+	SLComposeViewController *socialSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
 
-	[tweetSheet setInitialText:@"@LastTimeApp "];
+	[socialSheet setInitialText:@"@LastTimeApp "];
 
-		//Set a blocking handler for the tweet sheet
-	tweetSheet.completionHandler = ^(TWTweetComposeViewControllerResult result){
-		[self dismissModalViewControllerAnimated:YES];
-	};
-
-		//Show the tweet sheet!
-	[self presentModalViewController:tweetSheet animated:YES];
+	//Show the tweet sheet!
+	[self presentViewController:socialSheet animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

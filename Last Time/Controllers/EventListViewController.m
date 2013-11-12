@@ -12,7 +12,6 @@
 #import "EventStore.h"
 #import "EventFolder.h"
 #import "Event.h"
-#import "HeaderView.h"
 
 @interface EventListViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
@@ -233,14 +232,6 @@
 {
 
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventListCell"];
-	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-	} else {
-		UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(10, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width + 10.0, 1)];
-		lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
-		[cell.contentView addSubview:lineView];
-
-	}
 
 	[self configureCell:cell atIndexPath:indexPath];
 	return cell;
@@ -271,11 +262,6 @@
 	cell.detailTextLabel.text = item.subtitle;
 	cell.detailTextLabel.textColor = [sm detailTextColor];
 
-	if ([[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	} else {
-		cell.accessoryView = [sm disclosureArrowImageView];
-	}
 }
 
 #pragma mark - ItemDetailViewControllerDelegate

@@ -9,7 +9,7 @@
 #import "ReminderSwitchCell.h"
 
 @implementation ReminderSwitchCell
-@synthesize reminderSwitch, delegate, drawBorder, lineView;
+@synthesize reminderSwitch, delegate, lineView;
 
 - (void)initalizeInputView {
 	// Initialization code
@@ -26,9 +26,7 @@
 
 	self.textLabel.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 	self.textLabel.text = NSLocalizedString(@"Reminder?",@"Reminder?");
-	if (![[UIDevice currentDevice].systemVersion hasPrefix:@"7"]) {
-		self.drawBorder = YES;
-	}
+
 	self.lineView = [[UIView alloc] initWithFrame:CGRectMake(10, self.contentView.frame.size.height - 1.0, self.contentView.frame.size.width + 10.0, 1)];
 	self.lineView.backgroundColor = [UIColor colorWithWhite:0.78 alpha:1.0];
 
@@ -47,16 +45,6 @@
 	[super setSelected:selected animated:animated];
 	[self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
-
-- (void)layoutSubviews {
-	[super layoutSubviews];
-	if (self.drawBorder) {
-		[self.contentView addSubview:self.lineView];
-	} else {
-		[self.lineView removeFromSuperview];
-	}
-}
-
 
 + (ReminderSwitchCell *)newReminderCellWithTag:(NSInteger)tag withDelegate:(id) delegate
 {
