@@ -11,7 +11,6 @@
 #import "LogEntry.h"
 #import "Event.h"
 #import <QuartzCore/QuartzCore.h>
-#import "HeaderView.h"
 
 @implementation TimelineViewController
 @synthesize detailViewController;
@@ -233,18 +232,6 @@
 	cell.detailTextLabel.font = [sm cellDetailFontWithSize:[UIFont labelFontSize]];
 	cell.detailTextLabel.textColor = [sm tintColor];
 	
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
-	
-	return header;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section  
-{
-	return [HeaderView height];
 }
 
 @end

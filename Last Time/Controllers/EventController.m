@@ -11,7 +11,6 @@
 #import "HistoryLogCell.h"
 #import "LogEntry.h"
 #import "Event.h"
-#import "HeaderView.h"
 
 @interface EventController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *exportButton;
@@ -160,31 +159,6 @@
 		}
 	}
 
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-	HeaderView *header = [[HeaderView alloc] initWithWidth:tableView.bounds.size.width label:[tableView.dataSource tableView:tableView titleForHeaderInSection:section]];
-
-	return header;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-	return 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-	int count = [[_event logEntryCollection] count];
-
-	if (section == kAverageSection && count > 1) {
-		return [HeaderView height];
-	} else if (section == kHistorySection) {
-		return [HeaderView height];
-	} else {
-		return 0.00001f;
-	}
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

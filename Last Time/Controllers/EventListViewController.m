@@ -12,7 +12,6 @@
 #import "EventStore.h"
 #import "EventFolder.h"
 #import "Event.h"
-#import "HeaderView.h"
 
 @interface EventListViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
