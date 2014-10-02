@@ -48,8 +48,6 @@
 
 - (void)viewDidUnload {
 	self.fetchedResultsController = nil;
-
-	[super viewDidUnload];
 }
 
 

@@ -36,7 +36,6 @@
 		1A93AFF317823EF2005055C5 /* KSScreenshotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A93AFDF17823EF1005055C5 /* KSScreenshotManager.m */; };
 		1A93AFFF17823F9D005055C5 /* LTScreenshotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A93AFFE17823F9D005055C5 /* LTScreenshotManager.m */; };
 		1A95D751159CB9F2005686C1 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A95D750159CB9F2005686C1 /* NSString+UUID.m */; };
-		1A9CBA1F175C22C10040D99F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3988B96114DC31500010062E /* libTestFlight.a */; };
 		1AA2E29F1830607D0079BD44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AA2E29E1830607D0079BD44 /* Images.xcassets */; };
 		1AA2E2A1183069CA0079BD44 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA2E2A0183069CA0079BD44 /* Social.framework */; };
 		1AB4B3E7152961B900D66347 /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB4B3E6152961B800D66347 /* SegmentsController.m */; };
@@ -268,8 +267,6 @@
 		39825C8F14E8757200C4D684 /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileHelpers.m; path = Support/FileHelpers.m; sourceTree = "<group>"; };
 		39861AA514BD526D006F30A0 /* RandomLogEntry */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomLogEntry; sourceTree = BUILT_PRODUCTS_DIR; };
 		39861AA914BD526D006F30A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Last Time/Tools/RandomLogEntry/main.m"; sourceTree = SOURCE_ROOT; };
-		3988B96114DC31500010062E /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		3988B96214DC31500010062E /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		3988B9BA14E0214F0010062E /* EditableTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditableTableCell.h; path = Support/EditableTableCell.h; sourceTree = "<group>"; };
 		3988B9BB14E0214F0010062E /* EditableTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditableTableCell.m; path = Support/EditableTableCell.m; sourceTree = "<group>"; };
 		398F458314F1B6E50095A405 /* map-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin.png"; sourceTree = "<group>"; };
@@ -351,7 +348,6 @@
 				39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */,
 				39D70CB914BD3515009C3615 /* Foundation.framework in Frameworks */,
 				39D70CBB14BD3515009C3615 /* CoreGraphics.framework in Frameworks */,
-				1A9CBA1F175C22C10040D99F /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,16 +543,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		3988B96014DC31500010062E /* TestFlight */ = {
-			isa = PBXGroup;
-			children = (
-				3988B96114DC31500010062E /* libTestFlight.a */,
-				3988B96214DC31500010062E /* TestFlight.h */,
-			);
-			name = TestFlight;
-			path = Resources/TestFlight;
-			sourceTree = "<group>";
-		};
 		39918C1114F604AD00D8D4EE /* Folder */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,7 +691,6 @@
 				39825C8F14E8757200C4D684 /* FileHelpers.m */,
 				1A95D74F159CB9F2005686C1 /* NSString+UUID.h */,
 				1A95D750159CB9F2005686C1 /* NSString+UUID.m */,
-				3988B96014DC31500010062E /* TestFlight */,
 			);
 			name = "Supporting Classes";
 			sourceTree = "<group>";
@@ -824,6 +809,11 @@
 			attributes = {
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Self;
+				TargetAttributes = {
+					39D70CB114BD3515009C3615 = {
+						DevelopmentTeam = 3C6XYXB3FQ;
+					};
+				};
 			};
 			buildConfigurationList = 39D70CAC14BD3515009C3615 /* Build configuration list for PBXProject "Last Time" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1027,7 +1017,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20130628151206;
+				CURRENT_PROJECT_VERSION = 20141001215418;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -1068,8 +1058,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "CREATING_SCREENSHOTS=1";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7932F92D-E1AA-4475-935D-9CC19890F658";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
@@ -1223,7 +1213,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20130628151206;
+				CURRENT_PROJECT_VERSION = 20141001215418;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -1252,7 +1242,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore (3C6XYXB3FQ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
@@ -1265,8 +1255,8 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "Last Time/Last Time-Info-Beta.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6D0B0C0B-8923-405A-AD4E-50D1ECE36FF8";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -1364,7 +1354,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20130628151206;
+				CURRENT_PROJECT_VERSION = 20141001215418;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1396,7 +1386,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20130628151206;
+				CURRENT_PROJECT_VERSION = 20141001215418;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -1427,7 +1417,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Moore (HGZS2NAYVG)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
@@ -1436,9 +1426,9 @@
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7932F92D-E1AA-4475-935D-9CC19890F658";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
@@ -1452,16 +1442,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore (3C6XYXB3FQ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D666853A-B275-40D9-AD88-599FFA54A363";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

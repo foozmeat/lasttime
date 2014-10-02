@@ -16,3 +16,4 @@
 
 :verification:
   :keychain_group: "3C6XYXB3FQ.me.jmoore.LastTime"
+  :archs: ["armv7", "arm64"]
