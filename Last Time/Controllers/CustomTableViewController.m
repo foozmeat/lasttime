@@ -60,6 +60,8 @@
 	}
 
 	[self viewFinishedLoading];
+
+	[super viewDidLoad];
 }
 
 #pragma mark - CLLocation Methods
@@ -173,6 +175,9 @@
                                                         length:2];
 
 	[[self tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:0];
+
+	[super viewDidAppear:animated];
+	
 }
 
 //  Force textfields to resign firstResponder so that our implementation of

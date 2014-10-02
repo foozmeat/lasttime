@@ -43,10 +43,13 @@
 		[self setEditing:NO animated:YES];
 	}
 
+	[super viewDidDisappear:animated];
 }
 
 - (void)viewDidUnload {
 	self.fetchedResultsController = nil;
+
+	[super viewDidUnload];
 }
 
 

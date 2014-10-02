@@ -110,7 +110,7 @@
 	
 		// Get the system calendar
 	NSCalendar *sysCalendar = [NSCalendar currentCalendar];
-	unsigned int unitFlags = NSDayCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSWeekCalendarUnit | NSYearCalendarUnit | NSTimeZoneCalendarUnit;
+	unsigned int unitFlags = NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitWeekday | NSWeekCalendarUnit | NSCalendarUnitYear | NSCalendarUnitTimeZone;
 	
 	NSDate *now = [[NSDate alloc] init];
 	NSDateComponents *nowComps = [sysCalendar components:unitFlags fromDate:now];
@@ -129,12 +129,12 @@
 	NSDate *normalizedNow = [sysCalendar dateFromComponents:nowComps];
 	NSDate *normalizedThen = [sysCalendar dateFromComponents:thenComps];
 	
-	NSUInteger nowOrdinal = [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:normalizedNow];
-	NSUInteger thenOrdinal = [sysCalendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSEraCalendarUnit forDate:normalizedThen];	
+	NSUInteger nowOrdinal = [sysCalendar ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitEra forDate:normalizedNow];
+	NSUInteger thenOrdinal = [sysCalendar ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitEra forDate:normalizedThen];
 	NSUInteger differenceInDays = ABS(nowOrdinal - thenOrdinal);
 
-	nowOrdinal = [sysCalendar ordinalityOfUnit:kCFCalendarUnitWeekOfYear inUnit:NSEraCalendarUnit forDate:normalizedNow];
-	thenOrdinal = [sysCalendar ordinalityOfUnit:kCFCalendarUnitWeekOfYear inUnit:NSEraCalendarUnit forDate:normalizedThen];	
+	nowOrdinal = [sysCalendar ordinalityOfUnit:kCFCalendarUnitWeekOfYear inUnit:NSCalendarUnitEra forDate:normalizedNow];
+	thenOrdinal = [sysCalendar ordinalityOfUnit:kCFCalendarUnitWeekOfYear inUnit:NSCalendarUnitEra forDate:normalizedThen];	
 	NSUInteger differenceInWeeks = ABS(nowOrdinal - thenOrdinal);
 	
 	//	NSLog(@"Difference in days: %i", differenceInDays);
