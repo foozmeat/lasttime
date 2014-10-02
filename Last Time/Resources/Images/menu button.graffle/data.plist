@@ -7,7 +7,7 @@
 	<key>ApplicationVersion</key>
 	<array>
 		<string>com.omnigroup.OmniGrafflePro</string>
-		<string>139.17.0.185490</string>
+		<string>139.18.0.187838</string>
 	</array>
 	<key>AutoAdjust</key>
 	<false/>
@@ -73,11 +73,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0</string>
+						<string>0.2</string>
 						<key>g</key>
-						<string>0.486275</string>
+						<string>0.4</string>
 						<key>r</key>
-						<string>0.92549</string>
+						<string>0.6</string>
 					</dict>
 					<key>HeadArrow</key>
 					<string>0</string>
@@ -110,11 +110,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0</string>
+						<string>0.2</string>
 						<key>g</key>
-						<string>0.486275</string>
+						<string>0.4</string>
 						<key>r</key>
-						<string>0.92549</string>
+						<string>0.6</string>
 					</dict>
 					<key>HeadArrow</key>
 					<string>0</string>
@@ -147,11 +147,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0</string>
+						<string>0.2</string>
 						<key>g</key>
-						<string>0.486275</string>
+						<string>0.4</string>
 						<key>r</key>
-						<string>0.92549</string>
+						<string>0.6</string>
 					</dict>
 					<key>HeadArrow</key>
 					<string>0</string>
@@ -269,7 +269,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-07-01 18:27:44 +0000</string>
+	<string>2013-12-30 04:50:32 +0000</string>
 	<key>Modifier</key>
 	<string>James Moore</string>
 	<key>NotesVisible</key>
@@ -350,7 +350,7 @@
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{817, 92}, {673, 642}}</string>
+		<string>{{183, 158}, {673, 642}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -362,7 +362,7 @@
 		<key>SidebarWidth</key>
 		<integer>116</integer>
 		<key>VisibleRegion</key>
-		<string>{{-11.875, -15.875}, {69.625, 66.5}}</string>
+		<string>{{-11.875, -16.875}, {69.625, 68.5}}</string>
 		<key>Zoom</key>
 		<real>8</real>
 		<key>ZoomValues</key>
