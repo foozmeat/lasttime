@@ -79,8 +79,7 @@
 	}
 	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	NSEntityDescription *entity = [NSEntityDescription 
-																 entityForName:@"LogEntry" inManagedObjectContext:[[EventStore defaultStore] context]];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"LogEntry" inManagedObjectContext:[[EventStore defaultStore] context]];
 	[fetchRequest setEntity:entity];
 	
 //	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"",
