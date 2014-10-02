@@ -16,10 +16,6 @@
 	#import "NSManagedObjectContext+FetchAdditions.h"
   #import "LTStyleManager.h"
 
-#ifdef TESTFLIGHT
-	#import "TestFlight.h"
-#endif
-
 #ifdef DEBUG
 #   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else

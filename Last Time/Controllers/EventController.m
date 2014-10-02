@@ -44,9 +44,6 @@
 	picker.mailComposeDelegate = self;
 
 	if ([MFMailComposeViewController canSendMail]) {
-#ifdef TESTFLIGHT
-		[TestFlight passCheckpoint:@"Exported Event Data"];
-#endif
 		[picker setSubject:[NSString stringWithFormat:@"Last Time: %@",self.event.eventName]];
 		[picker setToRecipients:[NSArray array]];
 		[picker setMessageBody:exportedText isHTML:NO];

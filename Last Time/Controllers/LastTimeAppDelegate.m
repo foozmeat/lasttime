@@ -23,14 +23,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-#ifdef TESTFLIGHT
-#ifdef BETA
-	[TestFlight takeOff:@"63a0aabe-c8e3-46a8-8041-0860cb5ea3e9"];
-#else
-	[TestFlight takeOff:@"6bf62164-8b9b-46dc-b894-74ebd8c699d7"];
-#endif
-#endif
-
 	[self versionCheck];
 
 	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];

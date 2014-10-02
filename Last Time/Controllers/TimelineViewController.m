@@ -38,9 +38,7 @@
 
 	if (tmpFile != nil) {
 		if ([MFMailComposeViewController canSendMail]) {
-#ifdef TESTFLIGHT			
-			[TestFlight passCheckpoint:@"Exported Data"]; 
-#endif
+
 			[picker setSubject:[tmpFile lastPathComponent]];
 			[picker addAttachmentData:exportedData mimeType:@"text/csv" fileName:[tmpFile lastPathComponent]];
 			[picker setToRecipients:[NSArray array]];

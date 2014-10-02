@@ -1068,11 +1068,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "CREATING_SCREENSHOTS=1";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
-				);
-				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7932F92D-E1AA-4475-935D-9CC19890F658";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -1265,17 +1260,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"TESTFLIGHT=1",
 					"SEND_UDID=1",
 					"BETA=1",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "Last Time/Last Time-Info-Beta.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
-				);
-				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6D0B0C0B-8923-405A-AD4E-50D1ECE36FF8";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -1447,10 +1436,6 @@
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
-				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7932F92D-E1AA-4475-935D-9CC19890F658";
@@ -1474,13 +1459,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = "TESTFLIGHT=1";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Last Time/Resources/TestFlight\"",
-				);
-				OTHER_LDFLAGS = "-lTestFlight";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D666853A-B275-40D9-AD88-599FFA54A363";
 				RUN_CLANG_STATIC_ANALYZER = YES;
