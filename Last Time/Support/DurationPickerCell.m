@@ -160,7 +160,7 @@
 
 - (NSString *)durationString
 {
-	return [NSString stringWithFormat:@"%d %@", _durationValue, [self durationUnitFromNumber:_durationValue withUnit:_durationUnit]];
+	return [NSString stringWithFormat:@"%ld %@", (long)_durationValue, [self durationUnitFromNumber:_durationValue withUnit:_durationUnit]];
 }
 
 - (NSString *)durationUnitFromNumber:(NSInteger)number
@@ -246,7 +246,7 @@
 - (void)setupPickerComponants
 {
 
-	DLog(@"Duration: %d", self.duration);
+	DLog(@"Duration: %ld", (long)self.duration);
 
 	if (self.duration == 0) {
 		_durationValue = 1;
@@ -258,7 +258,7 @@
 		int month = 30;
 		int year = day * 365;
 
-		int days = self.duration / day;
+		NSInteger days = self.duration / day;
 
 		if (days % month == 0) {
 			_durationValue = days / month;
@@ -283,7 +283,7 @@
 	[[self pickerView] selectRow:(_durationValue - 1) inComponent:kNumber animated:NO];
 	[[self pickerView] selectRow:[_unitRows indexOfObject:_durationUnit] inComponent:kUnit animated:NO];
 
-	DLog(@"Picker set to %d, %@", _durationValue, _durationUnit);
+	DLog(@"Picker set to %ld, %@", (long)_durationValue, _durationUnit);
 
 	return;
 

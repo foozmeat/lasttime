@@ -122,7 +122,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	int row = [indexPath row];
+	NSInteger row = [indexPath row];
 	//  Determine the text field's value. Each section of the table view
 	//  is mapped to a property of the event object we're displaying.
 	//

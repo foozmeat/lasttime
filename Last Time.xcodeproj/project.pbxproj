@@ -32,6 +32,7 @@
 		1A8A6468159BFCCB009DD55F /* DurationPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8A6467159BFCCB009DD55F /* DurationPickerCell.xib */; };
 		1A8B216F1780F4D100D2AD5B /* 90-lifebuoy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B216D1780F4D100D2AD5B /* 90-lifebuoy.png */; };
 		1A8B21701780F4D100D2AD5B /* 90-lifebuoy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8B216E1780F4D100D2AD5B /* 90-lifebuoy@2x.png */; };
+		1A8C64881A22C4B200D89D8B /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A8C64871A22C4B200D89D8B /* Launch Screen.xib */; };
 		1A93AFF217823EF2005055C5 /* KSScreenshotAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A93AFDD17823EF1005055C5 /* KSScreenshotAction.m */; };
 		1A93AFF317823EF2005055C5 /* KSScreenshotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A93AFDF17823EF1005055C5 /* KSScreenshotManager.m */; };
 		1A93AFFF17823F9D005055C5 /* LTScreenshotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A93AFFE17823F9D005055C5 /* LTScreenshotManager.m */; };
@@ -183,6 +184,7 @@
 		1A8B216B1780ED0200D2AD5B /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		1A8B216D1780F4D100D2AD5B /* 90-lifebuoy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy.png"; sourceTree = "<group>"; };
 		1A8B216E1780F4D100D2AD5B /* 90-lifebuoy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy@2x.png"; sourceTree = "<group>"; };
+		1A8C64871A22C4B200D89D8B /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		1A923742152F33F700521C89 /* Last Time 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time 2.xcdatamodel"; sourceTree = "<group>"; };
 		1A93AFDC17823EF1005055C5 /* KSScreenshotAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSScreenshotAction.h; sourceTree = "<group>"; };
 		1A93AFDD17823EF1005055C5 /* KSScreenshotAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSScreenshotAction.m; sourceTree = "<group>"; };
@@ -390,6 +392,16 @@
 				39DB081514E95640006E4E08 /* FolderPickerCell.m */,
 			);
 			name = Pickers;
+			sourceTree = "<group>";
+		};
+		1A8C64891A22C4BE00D89D8B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1A8295B01767D6AA00CA0161 /* Storyboard.storyboard */,
+				1A8C64871A22C4B200D89D8B /* Launch Screen.xib */,
+				1AA2E29E1830607D0079BD44 /* Images.xcassets */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		1A93AFB817823EF1005055C5 /* KSScreenshotManager */ = {
@@ -632,7 +644,7 @@
 		39D70CBC14BD3515009C3615 /* Last Time */ = {
 			isa = PBXGroup;
 			children = (
-				1A8295B01767D6AA00CA0161 /* Storyboard.storyboard */,
+				1A8C64891A22C4BE00D89D8B /* UI */,
 				3969110E14C9BCF0006E8272 /* Controllers */,
 				3969111814C9BCF8006E8272 /* Models */,
 				3969112214C9BD04006E8272 /* Views */,
@@ -640,7 +652,6 @@
 				39D70CBD14BD3515009C3615 /* Supporting Files */,
 				3988B95F14DC31360010062E /* Resources */,
 				39861A9D14BD518C006F30A0 /* Tools */,
-				1AA2E29E1830607D0079BD44 /* Images.xcassets */,
 			);
 			path = "Last Time";
 			sourceTree = "<group>";
@@ -850,6 +861,7 @@
 				398F458514F1B6E50095A405 /* map-pin.png in Resources */,
 				398F458614F1B6E50095A405 /* map-pin@2x.png in Resources */,
 				1A823B6B153B959D00B997C8 /* default_data.plist in Resources */,
+				1A8C64881A22C4B200D89D8B /* Launch Screen.xib in Resources */,
 				1AC625F8182DA45100494F65 /* row.png in Resources */,
 				1AEDBCE3153494310098E3A0 /* Localizable.strings in Resources */,
 				1A8A6468159BFCCB009DD55F /* DurationPickerCell.xib in Resources */,
@@ -1048,7 +1060,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Moore (HGZS2NAYVG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
@@ -1058,7 +1070,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "CREATING_SCREENSHOTS=1";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = NO;
@@ -1242,7 +1254,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore (3C6XYXB3FQ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
@@ -1255,7 +1267,7 @@
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "Last Time/Last Time-Info-Beta.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = YES;
@@ -1417,7 +1429,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_IDENTITY = "iPhone Developer: James Moore (HGZS2NAYVG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
@@ -1426,7 +1438,7 @@
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -1442,7 +1454,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: James Moore (3C6XYXB3FQ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
@@ -1451,7 +1463,7 @@
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				INFOPLIST_FILE = "Last Time/Last Time-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALIDATE_PRODUCT = YES;

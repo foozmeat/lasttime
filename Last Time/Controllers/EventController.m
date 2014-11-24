@@ -130,7 +130,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	int section = [indexPath section];
+	NSInteger section = [indexPath section];
 	if ((section == kAverageSection && ![_event showAverage]) || section == kHistorySection){
 		return YES;
 	} else {
@@ -141,7 +141,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-	int section = [indexPath section];
+	NSInteger section = [indexPath section];
 
 	if ((section == kAverageSection && ![_event showAverage]) || section == kHistorySection){
 		if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -160,7 +160,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	int count = [[_event logEntryCollection] count];
+	NSInteger count = [[_event logEntryCollection] count];
 
 	if (section == kLastTimeSection) {
 		return nil;
@@ -186,7 +186,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	int count = [[_event logEntryCollection] count];
+	NSInteger count = [[_event logEntryCollection] count];
 
 	if (section == kLastTimeSection) {
 		if (count > 0) {

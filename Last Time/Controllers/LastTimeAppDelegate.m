@@ -66,7 +66,7 @@
 
 - (void)versionCheck
 {
-	int lastVersionRun = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastVersionRun"];
+	NSInteger lastVersionRun = [[NSUserDefaults standardUserDefaults] integerForKey:@"LastVersionRun"];
 	if (lastVersionRun >= 10 && lastVersionRun <= 99) {
 		lastVersionRun *= 10;
 	}
@@ -80,7 +80,7 @@
 	}
 
 	if (newVersion != lastVersionRun) {
-		NSLog(@"Last Version: %i, New Version: %i", lastVersionRun, newVersion);
+		NSLog(@"Last Version: %li, New Version: %i", (long)lastVersionRun, newVersion);
 		[[EventStore defaultStore] migrateDataFromVersion:lastVersionRun];
 		[[NSUserDefaults standardUserDefaults] setInteger:newVersion forKey:@"LastVersionRun"];
 		[[NSUserDefaults standardUserDefaults] synchronize];

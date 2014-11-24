@@ -41,7 +41,7 @@
 - (void)removeLogEntry:(LogEntry *)logEntry;
 
 #pragma mark - Migrations
-- (void)migrateDataFromVersion:(int)version;
+- (void)migrateDataFromVersion:(NSInteger)version;
 
 #pragma mark - Exporting
 - (NSString *)exportToFile;

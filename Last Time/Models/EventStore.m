@@ -255,7 +255,7 @@ static EventStore *defaultStore = nil;
 	
 }
 
-- (void)migrateDataFromVersion:(int)version
+- (void)migrateDataFromVersion:(NSInteger)version
 {
 	
 	if (version == 0) {		
