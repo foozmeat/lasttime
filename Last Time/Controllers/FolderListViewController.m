@@ -16,7 +16,7 @@
 
 @interface FolderListViewController()
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-@property NSIndexPath *activeCell;
+@property (nonatomic) NSIndexPath *activeCell;
 @end
 
 
