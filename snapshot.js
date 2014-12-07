@@ -6,7 +6,7 @@ captureLocalizedScreenshot("01-Lists")
 
 target.frontMostApp().navigationBar().buttons()[1].tap();
 target.delay(1)
-target.frontMostApp().mainWindow().tableViews()[1].tapWithOptions({tapOffset:{x:0.50, y:0.20}});
+target.frontMostApp().mainWindow().tableViews()[1].tapWithOptions({tapOffset:{x:0.50, y:0.22}});
 captureLocalizedScreenshot("02-Timeline")
 target.delay(1)
 

@@ -2,14 +2,14 @@
 
 # A list of devices you want to take the screenshots from
 devices([
-  "iPhone 6 Plus",
-  "iPhone 6",
-  "iPhone 5",
+  # "iPhone 6 Plus",
+  # "iPhone 6",
+  # "iPhone 5",
   "iPhone 4s",
 ])
 
 languages([
-  'en-US',
+  # 'en-US',
   'de-DE',
   'fr-FR',
   'ja-JP',
@@ -17,7 +17,7 @@ languages([
 ])
 
 # Where should the resulting screenshots be stored?
-screenshots_path "/Users/james/Dropbox/Projects/Last Time/screenshots"
+screenshots_path "deliver/screenshots"
 
 # JavaScript UIAutomation file
 js_file './snapshot.js'
@@ -32,7 +32,7 @@ project_path './Last Time.xcodeproj'
 ios_version '8.1'
 
 # The path, on which the HTML file should be exported to
-html_path "/Users/james/Dropbox/Projects/Last Time/screenshots/screenshots.html"
+html_path "deliver/screenshots/screenshots.html"
 
 
 # Custom Callbacks
