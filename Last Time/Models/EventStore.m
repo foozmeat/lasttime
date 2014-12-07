@@ -73,7 +73,11 @@ static EventStore *defaultStore = nil;
 
 	NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.model];
 	
+#if CREATING_SCREENSHOTS
+	NSString *path = pathInDocumentDirectory(@"LastTimeDemo.sqlite");
+#else
 	NSString *path = pathInDocumentDirectory(@"LastTime.sqlite");
+#endif
 	NSURL *storeURL = [NSURL fileURLWithPath:path];
 	
 	NSError *error = nil;
@@ -257,6 +261,9 @@ static EventStore *defaultStore = nil;
 
 - (void)migrateDataFromVersion:(NSInteger)version
 {
+#if CREATING_SCREENSHOTS
+	return;
+#endif
 	
 	if (version == 0) {		
 		[[EventStore defaultStore] loadDefaultData];
