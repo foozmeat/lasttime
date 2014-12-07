@@ -306,7 +306,7 @@ static EventStore *defaultStore = nil;
 								format:@"Reason: %@", [error localizedDescription]];
 	}
 
-	NSLog(@"Found %i entries to delete", [result count]);
+	NSLog(@"Found %lu entries to delete", (unsigned long)[result count]);
 	
 	for (LogEntry *le in result) {
 		[self removeLogEntry:le];
