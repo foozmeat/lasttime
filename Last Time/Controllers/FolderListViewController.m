@@ -14,9 +14,13 @@
 #import "EventFolder.h"
 #import "FolderListCell.h"
 
+@interface FolderListViewController()
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property NSIndexPath *activeCell;
+@end
+
+
 @implementation FolderListViewController
-@synthesize activeCell, detailViewController;
-@synthesize fetchedResultsController = _fetchedResultsController;
 
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
@@ -71,12 +75,21 @@
 	}
 }
 
+- (FolderListCell *)activeFolderCell
+{
+	FolderListCell *f = (FolderListCell *) [self.tableView cellForRowAtIndexPath:self.activeCell];
+	return f;
+}
+
 #pragma mark - Add Actions
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate
 {
 	if (!editing) 	{
-		[[activeCell cellTextField] resignFirstResponder];
+
+		FolderListCell *f = [self activeFolderCell];
+
+		[[f cellTextField] resignFirstResponder];
 	}
 
 	[super setEditing:editing animated:animate];
@@ -410,7 +423,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
 	NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-	self.activeCell.textLabel.text = newText;
+	FolderListCell *f = [self activeFolderCell];
+
+	f.textLabel.text = newText;
 	return YES;
 }
 
@@ -421,9 +436,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 	//	FolderListCell *cell = (FolderListCell *)[textField superview];
 
-	NSIndexPath *path = [self.tableView indexPathForCell:self.activeCell];
-
-	EventFolder *folder = [self.fetchedResultsController objectAtIndexPath:path];
+	EventFolder *folder = [self.fetchedResultsController objectAtIndexPath:self.activeCell];
 	if ([text isEqualToString:@""]) {
 		[[EventStore defaultStore] removeFolder:folder];
 	} else {
@@ -433,7 +446,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-	self.activeCell = (FolderListCell *) textField.superview.superview;
+	FolderListCell *f = (FolderListCell *)[(UIView *)[textField superview] superview];
+
+	self.activeCell = [self.tableView indexPathForCell:f];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

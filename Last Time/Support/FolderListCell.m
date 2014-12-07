@@ -9,7 +9,7 @@
 #import "FolderListCell.h"
 
 @implementation FolderListCell
-@synthesize cellTextField;
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
 	if ( !(self = [super initWithCoder:aDecoder]) ) return nil;
@@ -27,7 +27,7 @@
 	self.cellTextField.hidden = YES;
 	self.cellTextField.font = [sm cellLabelFontWithSize:[UIFont labelFontSize]];
 
-	[self addSubview:self.cellTextField];
+	[self.contentView addSubview:self.cellTextField];
 	return self;
 }
 
@@ -43,10 +43,7 @@
 	[super layoutSubviews];
 
 	self.cellTextField.text = self.textLabel.text;
-
-	CGRect editFrame = CGRectInset(self.contentView.frame, 10, 11);
-	
-	self.cellTextField.frame = editFrame;
+	self.cellTextField.frame = self.contentView.frame;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
