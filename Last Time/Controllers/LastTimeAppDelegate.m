@@ -9,6 +9,7 @@
 #import "LastTimeAppDelegate.h"
 #import "EventStore.h"
 #import "Event.h"
+#import <HockeySDK/HockeySDK.h>
 
 #if CREATING_SCREENSHOTS
 #import "LTScreenshotManager.h"
@@ -22,6 +23,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+	[[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"5a45072beb3c9b563e69a3515f0bc8fd"];
+	[[BITHockeyManager sharedHockeyManager] startManager];
 
 	[self versionCheck];
 

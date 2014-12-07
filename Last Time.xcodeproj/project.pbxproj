@@ -63,6 +63,15 @@
 		1AC625F9182DA45100494F65 /* row@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC625F7182DA45100494F65 /* row@2x.png */; };
 		1AC62B9F152950760019362B /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC62B9E152950760019362B /* TimelineViewController.m */; };
 		1ADD036815165531006EAD7E /* EventFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADD036715165531006EAD7E /* EventFolder.m */; };
+		1AEB29FE1A3405B4008CD901 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEB29FA1A3405B4008CD901 /* HockeySDK.framework */; };
+		1AEB29FF1A3405B4008CD901 /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 1AEB29FC1A3405B4008CD901 /* HockeySDK.xcconfig */; };
+		1AEB2A001A3405B4008CD901 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1AEB29FD1A3405B4008CD901 /* HockeySDKResources.bundle */; };
+		1AEB2A021A3405CF008CD901 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEB2A011A3405CF008CD901 /* AssetsLibrary.framework */; };
+		1AEB2A041A3405D9008CD901 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEB2A031A3405D9008CD901 /* CoreText.framework */; };
+		1AEB2A061A3405E4008CD901 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEB2A051A3405E4008CD901 /* MobileCoreServices.framework */; };
+		1AEB2A081A3405F1008CD901 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEB2A071A3405F1008CD901 /* QuickLook.framework */; };
+		1AEB2A0A1A3405F7008CD901 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEB2A091A3405F7008CD901 /* Security.framework */; };
+		1AEB2A0C1A340604008CD901 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEB2A0B1A340604008CD901 /* SystemConfiguration.framework */; };
 		1AED06051510EEC700CCDA4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AED06041510EEC700CCDA4F /* CoreData.framework */; };
 		1AED06091510EEF100CCDA4F /* Last Time.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06071510EEF100CCDA4F /* Last Time.xcdatamodeld */; };
 		1AED06241510F9F100CCDA4F /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED06231510F9F100CCDA4F /* LogEntry.m */; };
@@ -236,6 +245,15 @@
 		1AC62B9E152950760019362B /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		1ADD036615165531006EAD7E /* EventFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFolder.h; sourceTree = "<group>"; };
 		1ADD036715165531006EAD7E /* EventFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventFolder.m; sourceTree = "<group>"; };
+		1AEB29FA1A3405B4008CD901 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
+		1AEB29FC1A3405B4008CD901 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
+		1AEB29FD1A3405B4008CD901 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
+		1AEB2A011A3405CF008CD901 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		1AEB2A031A3405D9008CD901 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		1AEB2A051A3405E4008CD901 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		1AEB2A071A3405F1008CD901 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		1AEB2A091A3405F7008CD901 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1AEB2A0B1A340604008CD901 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1AED06041510EEC700CCDA4F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1AED06081510EEF100CCDA4F /* Last Time.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Last Time.xcdatamodel"; sourceTree = "<group>"; };
 		1AED06221510F9F100CCDA4F /* LogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEntry.h; sourceTree = "<group>"; };
@@ -341,6 +359,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AEB2A0C1A340604008CD901 /* SystemConfiguration.framework in Frameworks */,
+				1AEB2A0A1A3405F7008CD901 /* Security.framework in Frameworks */,
+				1AEB2A081A3405F1008CD901 /* QuickLook.framework in Frameworks */,
+				1AEB2A061A3405E4008CD901 /* MobileCoreServices.framework in Frameworks */,
+				1AEB2A041A3405D9008CD901 /* CoreText.framework in Frameworks */,
+				1AEB2A021A3405CF008CD901 /* AssetsLibrary.framework in Frameworks */,
 				1AA2E2A1183069CA0079BD44 /* Social.framework in Frameworks */,
 				1A17C1FB1589488200FED786 /* MessageUI.framework in Frameworks */,
 				1A6284FC153EFECE003C57F9 /* QuartzCore.framework in Frameworks */,
@@ -349,6 +373,7 @@
 				39AED56714BD3B6600AE6625 /* CoreLocation.framework in Frameworks */,
 				39D70CB714BD3515009C3615 /* UIKit.framework in Frameworks */,
 				39D70CB914BD3515009C3615 /* Foundation.framework in Frameworks */,
+				1AEB29FE1A3405B4008CD901 /* HockeySDK.framework in Frameworks */,
 				39D70CBB14BD3515009C3615 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +488,25 @@
 				1AC625E8182D4DB300494F65 /* menu@2x.png */,
 			);
 			name = SASlideMenu;
+			sourceTree = "<group>";
+		};
+		1AEB29F91A3405B4008CD901 /* HockeySDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				1AEB29FA1A3405B4008CD901 /* HockeySDK.framework */,
+				1AEB29FB1A3405B4008CD901 /* Resources */,
+			);
+			name = HockeySDK.embeddedframework;
+			path = "Last Time/HockeySDK-iOS/HockeySDK.embeddedframework";
+			sourceTree = "<group>";
+		};
+		1AEB29FB1A3405B4008CD901 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1AEB29FC1A3405B4008CD901 /* HockeySDK.xcconfig */,
+				1AEB29FD1A3405B4008CD901 /* HockeySDKResources.bundle */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		3904CFA214C078E200B7396A /* RandomEventFolder */ = {
@@ -623,6 +667,13 @@
 		39D70CB514BD3515009C3615 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1AEB2A0B1A340604008CD901 /* SystemConfiguration.framework */,
+				1AEB2A091A3405F7008CD901 /* Security.framework */,
+				1AEB2A071A3405F1008CD901 /* QuickLook.framework */,
+				1AEB2A051A3405E4008CD901 /* MobileCoreServices.framework */,
+				1AEB2A031A3405D9008CD901 /* CoreText.framework */,
+				1AEB2A011A3405CF008CD901 /* AssetsLibrary.framework */,
+				1AEB29F91A3405B4008CD901 /* HockeySDK.embeddedframework */,
 				1AA2E2A0183069CA0079BD44 /* Social.framework */,
 				1A8B216B1780ED0200D2AD5B /* Twitter.framework */,
 				1A212A54159573E5001B6293 /* CoreData.framework */,
@@ -864,6 +915,7 @@
 				1A8C64881A22C4B200D89D8B /* Launch Screen.xib in Resources */,
 				1AC625F8182DA45100494F65 /* row.png in Resources */,
 				1AEDBCE3153494310098E3A0 /* Localizable.strings in Resources */,
+				1AEB29FF1A3405B4008CD901 /* HockeySDK.xcconfig in Resources */,
 				1A8A6468159BFCCB009DD55F /* DurationPickerCell.xib in Resources */,
 				1AC625F9182DA45100494F65 /* row@2x.png in Resources */,
 				1A8295B11767D6AA00CA0161 /* Storyboard.storyboard in Resources */,
@@ -872,6 +924,7 @@
 				1AC08502176A8782004EB084 /* 11-clock@2x.png in Resources */,
 				1AC625F5182D4EB300494F65 /* menuicon@2x.png in Resources */,
 				1AC625EA182D4DB300494F65 /* disclosure@2x.png in Resources */,
+				1AEB2A001A3405B4008CD901 /* HockeySDKResources.bundle in Resources */,
 				1A2B26B9176BCA5F0006B902 /* clear_back.png in Resources */,
 				1A2B26BA176BCA5F0006B902 /* clear_back@2x.png in Resources */,
 				1AC625EC182D4DB300494F65 /* menu@2x.png in Resources */,
@@ -1029,7 +1082,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20141001215418;
+				CURRENT_PROJECT_VERSION = 20141206194646;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -1064,6 +1117,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
+					"$(PROJECT_DIR)/Last",
+					"Time/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
@@ -1225,7 +1280,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20141001215418;
+				CURRENT_PROJECT_VERSION = 20141206194646;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -1258,6 +1313,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
+					"$(PROJECT_DIR)/Last",
+					"Time/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
@@ -1366,7 +1423,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20141001215418;
+				CURRENT_PROJECT_VERSION = 20141206194646;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1398,7 +1455,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 20141001215418;
+				CURRENT_PROJECT_VERSION = 20141206194646;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -1433,6 +1490,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
+					"$(PROJECT_DIR)/Last",
+					"Time/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
@@ -1458,6 +1517,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Last Time/Resources\"",
+					"$(PROJECT_DIR)/Last",
+					"Time/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Last Time/Last Time-Prefix.pch";
