@@ -1,6 +1,3 @@
 [submodule "Last Time/Resources/SASlideMenu"]
 	path = Last Time/Resources/SASlideMenu
 	url = git@github.com:foozmeat/SASlideMenu.git
-[submodule "Last Time/Resources/KSScreenshotManager"]
-	path = Last Time/Resources/KSScreenshotManager
-	url = git@github.com:foozmeat/KSScreenshotManager.git

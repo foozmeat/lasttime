@@ -11,12 +11,6 @@
 #import "Event.h"
 #import <HockeySDK/HockeySDK.h>
 
-#if CREATING_SCREENSHOTS
-#import "LTScreenshotManager.h"
-#import "FolderListViewController.h"
-#import "LTSlideViewController.h"
-#endif
-
 @implementation LastTimeAppDelegate
 
 @synthesize window;
@@ -24,25 +18,45 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
+#ifndef CREATING_SCREENSHOTS
 	[[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"5a45072beb3c9b563e69a3515f0bc8fd"];
 	[[BITHockeyManager sharedHockeyManager] startManager];
-
 	[self versionCheck];
+#endif
 
 	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
 	[self handleNotification:localNotif];
 
 	[self customizeAppearance];
 
-#if CREATING_SCREENSHOTS
-    SASlideMenuRootViewController *myStoryBoardInitialViewController = (SASlideMenuRootViewController *) self.window.rootViewController;
+#ifndef CREATING_SCREENSHOTS
+	NSString *path = pathInDocumentDirectory(@"LastTime.sqlite");
+	NSURL *storeURL = [NSURL fileURLWithPath:path];
 
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        LTScreenshotManager *screenshotManager = [[LTScreenshotManager alloc] init];
-        [screenshotManager setInitialViewController:myStoryBoardInitialViewController];
-        [screenshotManager takeScreenshots];
-    });
+	NSLog(@"Store URL: %@", storeURL.path);
+#endif
+	
+#if CREATING_SCREENSHOTS
+
+	NSError *error;
+	NSString *dataFilePath = [[NSBundle mainBundle] pathForResource:@"LastTimeDemo" ofType:@"sqlite"];
+	NSURL *dataFile = [NSURL fileURLWithPath:dataFilePath];
+//	NSLog(@"Data file: %@", dataFile.path);
+
+	NSString *path = pathInDocumentDirectory(@"LastTimeDemo.sqlite");
+	NSURL *storeURL = [NSURL fileURLWithPath:path];
+
+//	NSLog(@"Dest URL: %@", storeURL.path);
+
+	NSFileManager *fm = [NSFileManager defaultManager];
+
+	NSLog(@"Installing demo data file");
+	[fm copyItemAtURL:dataFile toURL:storeURL error:&error];
+
+	if (error) {
+//		NSLog(@"Error copying: %@", error);
+	}
+
 #endif
 
 	return YES;
